@@ -84,6 +84,37 @@
   border-left-color: #ff6600;
 }
 
+.menu-restart-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  color: white;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.menu-restart-btn:hover {
+  background: rgba(255, 102, 0, 0.2);
+  border-left-color: #ff6600;
+}
+
+.beta-badge {
+  background: rgba(255, 102, 0, 0.8);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+}
+
 @media (max-width: 768px) {
   .app-header {
     height: 50px;

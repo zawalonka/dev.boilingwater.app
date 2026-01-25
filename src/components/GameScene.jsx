@@ -34,8 +34,10 @@ function GameScene({ stage, location, onStageChange }) {
   // Current temperature of the water in Celsius (starts at room temperature)
   const [temperature, setTemperature] = useState(GAME_CONFIG.ROOM_TEMPERATURE)
 
-  // Is the heat burner currently turned on? (true = heat is on, false = heat is off)
-  const [heatOn, setHeatOn] = useState(false)
+  // Burner heat setting: 0=off, 1=low, 2=med, 3=high
+  // Controls the output power of the gas burner
+  // Only applies heat when pot is over the flame AND knob is turned on
+  const [burnerHeat, setBurnerHeat] = useState(0)
 
   // Time speed multiplier (1x = normal, 2x = double speed, 4x = 4x speed, etc.)
   const [timeSpeed, setTimeSpeed] = useState(1)
@@ -120,20 +122,45 @@ function GameScene({ stage, location, onStageChange }) {
   }, [])
 
   // ============================================================================
-  // EFFECT 2: Physics simulation loop (runs when heat is on)
+  // EFFECT 2: Physics simulation loop (runs continuously when water is in pot)
   // ============================================================================
 
   useEffect(() => {
-    // This effect handles the physics simulation of heating water
-    // It only runs if both of these are true:
-    // 1. The heat is turned on (heatOn === true)
-    // 2. There's actually water in the pot (waterInPot > 0)
-    if (!heatOn || waterInPot <= 0) return
+    // This effect handles the physics simulation of heating/cooling water
+    // It runs continuously while there's water in the pot
+    // Heat is only applied when the pot is over the flame
+    if (waterInPot <= 0) return
 
+    // Define the heat activation area around the flame
+    // Flame is at ~62.6% X, ~53.4% Y with 40% size container
+    // Activation radius: 6.25% of game window (requires tight positioning for precision)
+    const flameX = 62.6
+    const flameY = 53.4
+    const heatActivationRadius = 6.25
+    
     // Start a repeating timer that runs every TIME_STEP milliseconds (e.g., every 100ms)
     simulationRef.current = setInterval(() => {
-      // Amount of heat energy being input to the water (in Watts = Joules/second)
-      const heatInputWatts = 2000  // 2000 Watts = typical electric stove burner
+      // Calculate distance from pot center to flame center
+      const deltaX = Math.abs(potPosition.x - flameX)
+      const deltaY = Math.abs(potPosition.y - flameY)
+      const distanceToFlame = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+      
+      // Check if pot is within the heat activation area
+      const potOverFlame = distanceToFlame <= heatActivationRadius
+      
+      // Determine heat output based on burner knob setting and pot position
+      // Heat only applies when BOTH conditions are true:
+      // 1. Burner knob is turned on (not set to 0/off)
+      // 2. Pot is positioned over the flame
+      let heatInputWatts = 0
+      if (burnerHeat > 0 && potOverFlame) {
+        // Map burner heat setting to watts: off=0, low=400W, med=1700W, high=2500W
+        const heatLevels = [0, 400, 1700, 2500]
+        heatInputWatts = heatLevels[burnerHeat]
+      } else {
+        // No heat applied - use ambient cooling instead
+        heatInputWatts = -GAME_CONFIG.AMBIENT_COOLING_WATTS  // -200W
+      }
 
       // Convert the TIME_STEP from milliseconds to seconds
       // If TIME_STEP = 100 (milliseconds), deltaTime = 0.1 (seconds)
@@ -143,7 +170,7 @@ function GameScene({ stage, location, onStageChange }) {
       // Call the physics engine function to calculate what happens in this time step
       // It takes:
       // - Current water properties (mass, temperature, altitude)
-      // - Heat being applied (Watts)
+      // - Heat being applied (Watts, can be negative for cooling)
       // - Time elapsed in this step (seconds × speed multiplier)
       // And returns new temperature, water mass, and whether it's boiling
       const newState = simulateTimeStep(
@@ -152,12 +179,12 @@ function GameScene({ stage, location, onStageChange }) {
           temperature: temperature,      // Current temperature (°C)
           altitude: altitude             // Current altitude (meters)
         },
-        heatInputWatts,                   // How much heat to apply (Watts)
+        heatInputWatts,                   // How much heat to apply (Watts, can be negative)
         deltaTime                         // How much time this step represents (seconds)
       )
 
       // Update all the values returned from the physics simulation
-      setTemperature(newState.temperature)      // Water is now hotter
+      setTemperature(newState.temperature)      // Water is now hotter or cooler
       setWaterInPot(newState.waterMass)        // Water mass decreases if boiling (evaporation)
       setTimeElapsed(prev => prev + deltaTime)  // Track elapsed time (accounts for speed)
 
@@ -176,7 +203,7 @@ function GameScene({ stage, location, onStageChange }) {
         clearInterval(simulationRef.current)
       }
     }
-  }, [heatOn, waterInPot, temperature, altitude, boilingPoint, isBoiling, timeSpeed])  // Re-run if any of these change
+  }, [waterInPot, temperature, altitude, boilingPoint, isBoiling, timeSpeed, potPosition, burnerHeat])  // Re-run if any of these change
 
   // ============================================================================
   // POT DRAGGING HANDLERS: Three functions handle the drag lifecycle
@@ -255,11 +282,12 @@ function GameScene({ stage, location, onStageChange }) {
     // Update the pot's position state
     setPotPosition({ x: newXPercent, y: newYPercent })
 
-    // AUTO-FILL: Check if pot is touching the sink (top-left corner)
-    // Sink is in region: x from 1% to 11%, y from 2% to 14%
-    // We check if pot center is in this region AND pot is empty
-    const nearSink = newXPercent < 12 && newYPercent < 15
-    if (nearSink && waterInPot === 0) {
+    // AUTO-FILL: Check if pot is in the water stream area
+    // Water stream is from (295,451) to (285,724) in original 1024x1024 image
+    // Converting to percentages: X is around 27-29%, Y is from 44% to 71%
+    // We check if pot center is passing through this vertical stream AND pot is empty
+    const inWaterStream = newXPercent >= 26 && newXPercent <= 30 && newYPercent >= 44 && newYPercent <= 72
+    if (inWaterStream && waterInPot === 0) {
       // Auto-fill with the default water amount (1.0 kg)
       setWaterInPot(GAME_CONFIG.DEFAULT_WATER_MASS)
       // Reset temperature to room temp when filling with fresh water
@@ -289,19 +317,6 @@ function GameScene({ stage, location, onStageChange }) {
   // ============================================================================
 
   /**
-   * Turns on the heat burner when user clicks "Turn Heat On" button
-   */
-  const handleTurnOnHeat = () => {
-    // Only allow heat to turn on if there's water in the pot
-    // No point heating an empty pot!
-    if (waterInPot > 0) {
-      setHeatOn(true)
-      setTimeElapsed(0)  // Reset timer when starting
-      // Once true, the physics simulation effect will start running
-    }
-  }
-
-  /**
    * Cycle through time speed options: 1x → 2x → 4x → 8x → 1x
    */
   const handleSpeedUp = () => {
@@ -310,6 +325,19 @@ function GameScene({ stage, location, onStageChange }) {
       if (current === 2) return 4
       if (current === 4) return 8
       return 1  // Wrap back to 1x
+    })
+  }
+
+  /**
+   * Cycle through burner heat settings: off → low → med → high → off
+   * 0=off, 1=low (400W), 2=med (1700W), 3=high (2500W)
+   */
+  const handleBurnerKnob = () => {
+    setBurnerHeat(current => {
+      if (current === 0) return 1
+      if (current === 1) return 2
+      if (current === 2) return 3
+      return 0  // Wrap back to off
     })
   }
 
@@ -327,8 +355,8 @@ function GameScene({ stage, location, onStageChange }) {
   // ============================================================================
 
   // Original background image dimensions (what it is in the PNG file)
-  const baseWidth = 1280   // pixels
-  const baseHeight = 800   // pixels
+  const baseWidth = 1280   // pixels - current display width
+  const baseHeight = 800   // pixels - current display height
 
   // Calculate scale factors (not used much since we use percentages, but kept for reference)
   const scaleX = sceneDimensions.width / baseWidth
@@ -336,10 +364,22 @@ function GameScene({ stage, location, onStageChange }) {
   const scale = Math.min(scaleX, scaleY)
 
   // Calculate where the flame should appear on the burner
-  // The burner is located at pixel coordinates (641, 567) on the original 1280x800 background
-  // Convert to percentages so it stays in the right place regardless of screen size
-  const flameX = (641 / baseWidth) * 100    // = ~50% across the game window
-  const flameY = (567 / baseHeight) * 100   // = ~71% down the game window
+  // Original burner location was designed for 1024x1024 image at pixel (641, 567)
+  // But we're now displaying at 1280x800, so adjust the percentages
+  // If original was 1024x1024: 641/1024 = 62.6% X, 567/1024 = 55.4% Y
+  // Adjusted Y by -2% to move flame up slightly
+  const flameX = (641 / 1024) * 100    // = ~62.6% across (adjusted for original square aspect)
+  const flameY = (567 / 1024) * 100 - 2    // = ~53.4% down (moved up by 2%)
+
+  // Calculate water stream position (from original 1024x1024: starts at 295,451 ends at 285,724)
+  const waterStreamStartX = (295 / 1024) * 100  // = ~28.8%
+  const waterStreamStartY = (451 / 1024) * 100  // = ~44.0%
+  const waterStreamEndX = (285 / 1024) * 100    // = ~27.8%
+  const waterStreamEndY = (724 / 1024) * 100    // = ~70.7%
+  const waterStreamHeight = waterStreamEndY - waterStreamStartY  // = ~26.7%
+
+  // Check if pot is in the water stream area to show the pouring effect
+  const showWaterStream = potPosition.x >= 26 && potPosition.x <= 30 && potPosition.y >= 44 && potPosition.y <= 72
 
   // Drag boundaries: how far the pot center can move (in percentages)
   // These are conservative to keep the pot mostly on screen
@@ -364,21 +404,21 @@ function GameScene({ stage, location, onStageChange }) {
         className="game-scene-inner"
       >
         {/* 
-          ========== SINK (Water source) ==========
-          Located in the top-left corner
-          Clicking the pot here auto-fills it with water
+          ========== WATER STREAM (Water Source) ==========
+          Pouring water effect from faucet area
+          Appears only when pot is passing through the stream
         */}
-        <div 
-          className="sink"
-          style={{
-            left: '1%',      // 1% from the left edge of game window
-            top: '2%',       // 2% from the top edge of game window
-            width: '10%',    // 10% of game window width (128 pixels)
-            height: '12%'    // 12% of game window height (96 pixels)
-          }}
-        >
-          <span className="sink-icon">💧</span>
-        </div>
+        {showWaterStream && (
+          <div 
+            className="water-stream"
+            style={{
+              left: `${waterStreamStartX}%`,
+              top: `${waterStreamStartY}%`,
+              width: '2%',
+              height: `${waterStreamHeight}%`
+            }}
+          />
+        )}
 
         {/* 
           ========== FLAME (Burner visualization) ==========
@@ -388,22 +428,48 @@ function GameScene({ stage, location, onStageChange }) {
         <div 
           className="stove-burner"
           style={{
-            left: `${flameX}%`,     // ~50% across (at burner location)
-            top: `${flameY}%`,      // ~71% down (at burner location)
-            width: '15%',           // 15% of game window width (192 pixels)
-            height: '15%',          // 15% of game window height (120 pixels)
-            minWidth: '80px',       // Never smaller than 80 pixels (for readability)
-            minHeight: '80px'       // Never smaller than 80 pixels (for readability)
+            left: `${flameX}%`,     // ~62.6% across (at burner location)
+            top: `${flameY}%`,      // ~55.4% down (at burner location)
+            width: burnerHeat === 0 ? '0%' : ['35%', '37%', '40%', '45%'][burnerHeat],  // Scale flame with heat
+            height: burnerHeat === 0 ? '0%' : ['35%', '37%', '40%', '45%'][burnerHeat],
+            minWidth: burnerHeat === 0 ? '0px' : ['180px', '200px', '220px', '240px'][burnerHeat],
+            minHeight: burnerHeat === 0 ? '0px' : ['180px', '200px', '220px', '240px'][burnerHeat]
           }}
         >
-          {/* Only show the flame image if heat is currently on */}
-          {heatOn && (
+          {/* Show flame when burner is on (burnerHeat > 0) */}
+          {burnerHeat > 0 && (
             <img 
               src="/assets/images/game/flame.png" 
               alt="Flame"
               className="flame-graphic"
             />
           )}
+        </div>
+
+        {/* 
+          ========== BURNER KNOB (Heat Control) ==========
+          Tiny dial control at the bottom of the stove
+          Click to cycle through: off → low → med → high → off
+          Top-left positioned at (681, 695) in the original 1024x1024 image
+          Centered using transform: translate(-50%, -50%)
+        */}
+        <div 
+          className="burner-knob"
+          style={{
+            left: `${(681 / 1024) * 100}%`,  // 66.5% - positioned at top-left
+            top: `${(695 / 1024) * 100}%`,   // 67.8% - positioned at top-left
+            width: '5%',                      // Knob: 5% of game window (64 pixels)
+            height: '5%',                     // Knob: 5% of game window (40 pixels)
+          }}
+          onClick={handleBurnerKnob}
+          title={`Burner: ${['OFF', 'LOW (400W)', 'MED (1700W)', 'HIGH (2500W)'][burnerHeat]}`}
+        >
+          {/* Outer knob rim */}
+          <div className="knob-rim"></div>
+          {/* Inner knob center */}
+          <div className="knob-center"></div>
+          {/* Indicator line showing current position */}
+          <div className="knob-pointer" style={{ transform: `rotate(${180 + burnerHeat * 90}deg)` }}></div>
         </div>
 
         {/* 
@@ -441,135 +507,109 @@ function GameScene({ stage, location, onStageChange }) {
           {/* Show steam animation when water is actively boiling */}
           {isBoiling && <div className="steam-effect">💨</div>}
         </div>
-
         {/* 
-          ========== DEBUG/VARIABLE WINDOW ==========
-          Shows current temp, altitude, water amount, time
-          Located in top-left under sink
+          ========== STATUS PANEL ==========
+          Combined info panel showing temperature, water status, burner setting, and game info
+          Located in the top-left corner
         */}
-        <div className="debug-panel">
-          <div className="debug-label">Variables:</div>
-          <div className="debug-item">Temp: {formatTemperature(temperature)}°C</div>
-          <div className="debug-item">Altitude: {altitude}m</div>
-          <div className="debug-item">Water: {waterInPot.toFixed(2)} kg</div>
-          <div className="debug-item">Boiling Point: {formatTemperature(boilingPoint)}°C</div>
-          {heatOn && <div className="debug-item">Time: {timeElapsed.toFixed(1)}s</div>}
-          {heatOn && <div className="debug-item">Speed: {timeSpeed}x</div>}
-        </div>
-
-        {/* 
-          ========== CONTROLS PANEL ==========
-          Status display and buttons
-          Located in the bottom-right corner of the game window
-        */}
-        <div className="controls-panel">
-          <div className="control-section">
-            {/* 
-              Show the "Turn Heat On" button if:
-              - Heat is NOT on (!heatOn)
-              - AND there's water in the pot (waterInPot > 0)
-            */}
-            {!heatOn && waterInPot > 0 && (
-              <button 
-                className="action-button primary"
-                onClick={handleTurnOnHeat}
-              >
-                🔥 Turn Heat On
-              </button>
+        <div className="status-panel">
+          <div className="status-header">
+            <span className="burner-label">{['🔴 OFF', '🟡 LOW', '🟠 MED', '🔴 HIGH'][burnerHeat]}</span>
+          </div>
+          
+          <div className="status-content">
+            {/* Ambient/Room temperature */}
+            <div className="status-item">
+              <span className="label">Ambient:</span>
+              <span className="value">{GAME_CONFIG.ROOM_TEMPERATURE}°C</span>
+            </div>
+            
+            {/* Temperature display */}
+            {waterInPot > 0 && (
+              <div className="status-item">
+                <span className="label">Temp:</span>
+                <span className="value">{formatTemperature(temperature)}°C</span>
+              </div>
             )}
-
-            {/* 
-              Show speed-up button when heat is on
-            */}
-            {heatOn && (
+            
+            {/* Water status */}
+            <div className="status-item">
+              <span className="label">Water:</span>
+              <span className="value">{waterInPot > 0 ? waterInPot.toFixed(2) + 'kg' : 'Empty'}</span>
+            </div>
+            
+            {/* Boiling point info */}
+            {waterInPot > 0 && (
+              <div className="status-item">
+                <span className="label">Boils at:</span>
+                <span className="value">{formatTemperature(boilingPoint)}°C</span>
+              </div>
+            )}
+            
+            {/* Game controls - speed button */}
+            {waterInPot > 0 && (
               <button 
-                className="action-button speed-button"
+                className="action-button speed-button status-button"
                 onClick={handleSpeedUp}
               >
                 ⚡ Speed: {timeSpeed}x
               </button>
             )}
-
-            {/* 
-              Show the temperature display while heat is on
-              This replaces the "Turn Heat On" button
-            */}
-            {heatOn && (
-              <div className="status-display">
-                {/* Display the current water temperature */}
-                <div className="temperature-reading">
-                  <span className="temp-value">{formatTemperature(temperature)}°C</span>
-                  <span className="temp-label">Temperature</span>
-                </div>
-                
-                {/* Show "Heating..." while water is warming but not yet boiling */}
-                {!isBoiling && (
-                  <p className="status-text">Heating...</p>
-                )}
-
-                {/* Show "Boiling!" once water reaches boiling point */}
-                {isBoiling && (
-                  <p className="status-text boiling">Boiling! 🫖</p>
-                )}
-              </div>
+            
+            {/* Heating status */}
+            {waterInPot > 0 && temperature < boilingPoint && (
+              <p className="status-text">Heating...</p>
             )}
-
-            {/* 
-              Show the hint text when pot is empty and heat is off
-              This guides the player on what to do next
-            */}
-            {waterInPot === 0 && !heatOn && (
-              <p className="hint-text">Drag the pot to the tap (top-left) to fill it</p>
+            
+            {/* Boiling status */}
+            {waterInPot > 0 && isBoiling && (
+              <p className="status-text boiling">Boiling! 🫖</p>
+            )}
+            
+            {/* Empty pot hint */}
+            {waterInPot === 0 && (
+              <p className="hint-text">Fill pot at water tap</p>
             )}
           </div>
-
-          {/* 
-            ========== EDUCATIONAL HOOK ==========
-            Shows a message about boiling points at different altitudes
-            Appears when water starts boiling
-          */}
-
-          {/* 
-            If at altitude (not at sea level) and water is boiling:
-            Show message that water boiled at a different temperature than 100°C
-          */}
-          {showHook && altitude !== 0 && (
-            <div className="hook-message">
-              <p>💧 Your water boiled at {formatTemperature(boilingPoint)}°C (not 100°C!) ❗</p>
-              <button 
-                className="action-button learn-more"
-                onClick={handleLearnMore}
-              >
-                🤔 Curious why? Learn more
-              </button>
-            </div>
-          )}
-
-          {/* 
-            If at sea level (altitude = 0) and water is boiling:
-            Confirm that water boiled at 100°C as expected
-          */}
-          {showHook && altitude === 0 && (
-            <div className="hook-message">
-              <p>💧 Your water boiled at exactly {formatTemperature(boilingPoint)}°C!</p>
-              <button 
-                className="action-button learn-more"
-                onClick={handleLearnMore}
-              >
-                📚 Learn more
-              </button>
-            </div>
-          )}
         </div>
 
         {/* 
-          ========== BETA BADGE ==========
-          Indicates this is a beta/test version
-          Located in top-right corner
+          ========== EDUCATIONAL HOOK ==========
+          Shows a message about boiling points at different altitudes
+          Appears when water starts boiling
         */}
-        <div className="mode-indicator">
-          <span className="badge">Beta</span>
-        </div>
+
+        {/* 
+          If at altitude (not at sea level) and water is boiling:
+          Show message that water boiled at a different temperature than 100°C
+        */}
+        {showHook && altitude !== 0 && (
+          <div className="hook-message">
+            <p>💧 Your water boiled at {formatTemperature(boilingPoint)}°C (not 100°C!) ❗</p>
+            <button 
+              className="action-button learn-more"
+              onClick={handleLearnMore}
+            >
+              🤔 Curious why? Learn more
+            </button>
+          </div>
+        )}
+
+        {/* 
+          If at sea level (altitude = 0) and water is boiling:
+          Confirm that water boiled at 100°C as expected
+        */}
+        {showHook && altitude === 0 && (
+          <div className="hook-message">
+            <p>💧 Your water boiled at exactly {formatTemperature(boilingPoint)}°C!</p>
+            <button 
+              className="action-button learn-more"
+              onClick={handleLearnMore}
+            >
+              📚 Learn more
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

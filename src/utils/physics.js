@@ -271,13 +271,18 @@ export function simulateTimeStep(state, heatInputWatts, deltaTime) {
   // Apply all the energy to the water and get back new state
   const result = applyHeatEnergy(waterMass, temperature, energyApplied, boilingPoint)
   
+  // Temperature cannot drop below ambient temperature (20°C)
+  // Water naturally approaches ambient temperature but cannot go below it
+  const AMBIENT_TEMP = 20  // Room temperature in Celsius
+  const finalTemp = Math.max(result.newTemp, AMBIENT_TEMP)
+  
   // Return updated game state with all new values
   return {
     ...state,
-    temperature: result.newTemp,
+    temperature: finalTemp,
     waterMass: waterMass - result.steamGenerated,
     energyToVaporization: result.energyToVaporization,
     steamGenerated: result.steamGenerated,
-    isBoiling: result.newTemp >= boilingPoint
+    isBoiling: finalTemp >= boilingPoint
   }
 }

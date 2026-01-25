@@ -20,8 +20,9 @@ import '../styles/Header.css'
  * Props:
  * - onMenuClick: Optional callback function to notify parent when menu is toggled
  *   (Currently unused but available for future features like analytics or state changes)
+ * - onRestart: Optional callback function to restart the game
  */
-function Header({ onMenuClick }) {
+function Header({ onMenuClick, onRestart }) {
   // ============================================================================
   // STATE
   // ============================================================================
@@ -49,6 +50,19 @@ function Header({ onMenuClick }) {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)        // Flip the menu state
     onMenuClick?.()               // Call parent callback if it exists (using optional chaining)
+  }
+
+  /**
+   * handleRestart - Restart the game
+   * Reloads the page to reset everything to initial state
+   */
+  const handleRestart = () => {
+    if (onRestart) {
+      onRestart()  // Call parent's restart function if provided
+    } else {
+      window.location.reload()  // Default: reload the page
+    }
+    setMenuOpen(false)  // Close menu after restarting
   }
 
   // ============================================================================
@@ -86,6 +100,12 @@ function Header({ onMenuClick }) {
           Displays "Boiling Water" as the main heading
         */}
         <h1 className="app-title">Boiling Water</h1>
+
+        {/* 
+          ===== BETA BADGE =====
+          Shows "Beta" label in header
+        */}
+        <span className="beta-badge">Beta</span>
       </div>
 
       {/* 
@@ -106,6 +126,7 @@ function Header({ onMenuClick }) {
             <li><a href="#about">About</a></li>
             <li><a href="#docs">Documentation</a></li>
             <li><a href="#settings">Settings</a></li>
+            <li><button onClick={handleRestart} className="menu-restart-btn">🔄 Restart Game</button></li>
           </ul>
         </nav>
       )}

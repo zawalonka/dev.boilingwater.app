@@ -161,8 +161,22 @@ export const GAME_CONFIG = {
   // energyApplied = heatInputWatts × 0.1 seconds
   TIME_STEP: 100,
   
+  // GAS BURNER OUTPUT (in Watts)
+  // A typical medium heat setting on a household gas range
+  // A standard household gas burner outputs 5,000-7,000 BTU/hour
+  // 1700 Watts = ~5,800 BTU/hour (medium heat on a gas stove)
+  // This heats 1 kg of water from 20°C to 100°C in about 3.5 minutes of real time
+  GAS_BURNER_WATTS: 1700,
+  
+  // HEAT LOSS RATE (in Watts)
+  // When pot is removed from the flame, it loses heat to the environment
+  // This is ambient cooling due to air and pot material radiation
+  // Realistic value: 200W for a pot containing hot water
+  AMBIENT_COOLING_WATTS: 200,
+  
   // DEFAULT STARTING TEMPERATURE (in Celsius)
   // Water always starts at room temperature
+  // This is also the ambient temperature used for cooling calculations
   // 
   // 20°C is approximately room temperature in most environments.
   // Some people use 22-25°C, but 20°C is standard for physics/chemistry calculations.
@@ -175,6 +189,14 @@ export const GAME_CONFIG = {
   // This makes calculations easier: heating 1 kg by 10°C requires exactly
   // 1000g × 4.186 J/(g·°C) × 10°C = 41,860 Joules
   DEFAULT_WATER_MASS: 1.0,
+  
+  // HEATING TIME CALCULATIONS (in seconds)
+  // For 1kg of water from 20°C (room temp) to 100°C (boiling at sea level)
+  // Energy needed: Q = mcΔT = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 Joules
+  // Time = Energy / Power (Watts)
+  HEATING_TIME_LOW: 837,      // 400W burner: ~14 minutes
+  HEATING_TIME_MED: 197,      // 1700W burner: ~3.3 minutes  
+  HEATING_TIME_HIGH: 134,     // 2500W burner: ~2.2 minutes
   
   // EDUCATIONAL LANGUAGE LEVELS
   // Used for displaying explanations at different complexity levels

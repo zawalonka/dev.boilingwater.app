@@ -75,6 +75,33 @@
 }
 
 /* ========================================================================
+   WATER STREAM (Pouring Water Effect)
+   ======================================================================== */
+/* Animated water stream that appears when pot is in the water area */
+/* Shows a flowing blue gradient to simulate water pouring */
+.water-stream {
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    rgba(100, 180, 255, 0.9) 0%,
+    rgba(100, 180, 255, 0.8) 50%,
+    rgba(100, 180, 255, 0.7) 100%
+  );
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;  /* Rounded top, straight bottom */
+  box-shadow: 0 0 10px rgba(100, 180, 255, 0.6);
+  z-index: 100;                 /* Above background, below pot */
+  animation: waterFlow 0.6s ease-in-out infinite;
+  pointer-events: none;         /* Don't block interaction */
+}
+
+/* Animate the water stream to simulate flowing water */
+@keyframes waterFlow {
+  0% { opacity: 0.7; transform: scaleY(1); }
+  50% { opacity: 0.9; transform: scaleY(1.02); }
+  100% { opacity: 0.7; transform: scaleY(1); }
+}
+
+/* ========================================================================
    STOVE BURNER & FLAME (Center)
    ======================================================================== */
 /* The stove burner is the heat source—positioned at center bottom (50% X, 71% Y) */
@@ -92,8 +119,8 @@
 
 /* Flame image: PNG graphic that animates */
 .flame-graphic {
-  width: 120px;
-  height: 120px;
+  width: 100%;                      /* Fill container width (30% of game window) */
+  height: 100%;                     /* Fill container height (30% of game window) */
   object-fit: contain;              /* Scale image while preserving aspect ratio */
   animation: flameFlicker 0.4s infinite alternate;  /* Continuous flicker effect */
 }
@@ -103,6 +130,67 @@
 @keyframes flameFlicker {
   0% { opacity: 0.9; transform: scale(1); }
   100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ========================================================================
+   BURNER KNOB (Heat Control)
+   ======================================================================== */
+/* Rotatable dial knob at the base of the stove for heat control */
+/* Positioned at (681, 695) in original 1024x1024 image - top-left corner */
+.burner-knob {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 300;  /* Above pot (z-index 200) */
+  transform: translate(-50%, -50%);  /* Center the knob at the specified position */
+  transition: all 0.2s ease;
+}
+
+.burner-knob:hover {
+  filter: brightness(1.2);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Outer rim of the knob with tick marks appearance */
+.knob-rim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #e0e0e0, #606060);
+  border: 3px solid #333;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4), 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Center of the knob */
+.knob-center {
+  position: absolute;
+  width: 35%;
+  height: 35%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #888888);
+  border: 2px solid #333;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Indicator line/pointer showing current knob position (rotates) */
+.knob-pointer {
+  position: absolute;
+  width: 16%;
+  height: 45%;
+  background: linear-gradient(to bottom, #ff3333, #cc0000);
+  border-radius: 2px;
+  top: 5%;
+  left: 50%;
+  margin-left: -8%;  /* Center the pointer: -(width/2) */
+  transform-origin: 50% 100%;  /* Rotate around knob center (at pointer's bottom edge) */
+  transform: rotate(180deg);  /* OFF = 180° (pointing down) */
+  transition: transform 0.3s ease;
+  z-index: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ========================================================================
@@ -174,7 +262,7 @@
 }
 
 /* ========================================================================
-   CONTROLS PANEL (Bottom Right)
+   CONTROLS PANEL (Bottom Right - DEPRECATED)
    ======================================================================== */
 /* The main UI panel showing temperature, status, and action buttons */
 /* Positioned in bottom-right corner with semi-transparent white background */
@@ -189,6 +277,7 @@
   min-width: 260px;             /* Minimum width to fit content */
   max-width: min(400px, 90vw);  /* Max width, but responsive on mobile */
   z-index: 100;                 /* In front of game elements */
+  display: none;  /* Hidden, replaced by status-panel in top-left */
 }
 
 /* Container for grouped control elements */
@@ -345,7 +434,7 @@
 /* Badge showing altitude level or game difficulty (e.g., "Sea Level", "Denver") */
 .mode-indicator {
   position: absolute;
-  top: 75px;                    /* Below header, above game */
+  top: 5px;                     /* Near top of game window */
   right: 20px;
   z-index: 50;
 }
@@ -379,11 +468,108 @@
 /* ========================================================================
    DEBUG PANEL (Variable display for development)
    ======================================================================== */
+/* ========================================================================
+   STATUS PANEL (Combined Info Display)
+   ======================================================================== */
+/* Shows temperature, water status, burner setting, and game controls */
+/* Located in top-left corner */
+.status-panel {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background: linear-gradient(135deg, rgba(60, 120, 180, 0.85), rgba(40, 100, 160, 0.85));
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid rgba(100, 180, 255, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  z-index: 150;
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.burner-label {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.status-item .label {
+  font-weight: bold;
+  color: #b0d4ff;
+}
+
+.status-item .value {
+  color: #ffff99;
+  font-weight: 600;
+}
+
+.status-button {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  margin-top: 4px;
+}
+
+.status-text {
+  margin: 4px 0 0 0;
+  text-align: center;
+  font-weight: bold;
+  color: #ffff99;
+}
+
+.status-text.boiling {
+  color: #ff6666;
+  font-size: 0.95rem;
+  animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.hint-text {
+  margin: 6px 0 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #b0d4ff;
+  font-style: italic;
+}
+
+/* ========================================================================
+   OLD DEBUG PANEL (Kept for reference, can be removed)
+   ======================================================================== */
 /* Shows game variables (temp, altitude, water amount, time) */
-/* Located in top-left corner below the sink */
+/* Located in top-left corner */
 .debug-panel {
   position: absolute;
-  top: 80px;                    /* Below sink */
+  top: 10px;                    /* Near top of game window */
   left: 15px;
   background: rgba(0, 0, 0, 0.7);  /* Semi-transparent black */
   color: #fff;
@@ -393,6 +579,7 @@
   font-family: 'Courier New', monospace;  /* Monospace font for technical look */
   z-index: 150;                /* Above most elements */
   min-width: 180px;
+  display: none;  /* Hidden, replaced by status-panel */
 }
 
 .debug-label {
