@@ -50,15 +50,26 @@ function App() {
     }
   }
 
-  // Get user's approximate location for altitude-based calculations
+  // Location will be requested when entering stage 2 (altitude-based lessons)
+  // For now, default to sea level
   useEffect(() => {
-    // In production, this would use geolocation API
-    setUserLocation({
-      altitude: 0,
-      latitude: 0,
-      longitude: 0
-    })
-  }, [])
+    if (gameStage === 2) {
+      // Future: Request geolocation here when we implement stage 2
+      // For now, just set to sea level
+      setUserLocation({
+        altitude: 0,
+        latitude: 0,
+        longitude: 0
+      })
+    } else {
+      // Stage 0-1: Use default sea level
+      setUserLocation({
+        altitude: 0,
+        latitude: 0,
+        longitude: 0
+      })
+    }
+  }, [gameStage])
 
   const handleNavigate = (view) => {
     setActiveView(view)

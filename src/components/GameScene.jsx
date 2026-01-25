@@ -434,6 +434,13 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
     onStageChange(1)
   }
 
+  /**
+   * Proceed to next stage from info screen
+   */
+  const handleNextStage = () => {
+    onStageChange(stage + 1)
+  }
+
   // ============================================================================
   // CALCULATED VALUES (derived from state)
   // ============================================================================
@@ -476,6 +483,29 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
   // RENDER: Build and return the UI
   // ============================================================================
 
+  // Stage 1: Educational info screen after first boil
+  if (stage === 1) {
+    return (
+      <div className="info-screen">
+        <div className="info-content">
+          <h2>🎓 How Boiling Works</h2>
+          <p>You just boiled water! Here's what happened:</p>
+          <ul>
+            <li><strong>Heat Transfer:</strong> The burner transferred thermal energy to the water molecules</li>
+            <li><strong>Temperature Rise:</strong> As molecules gained energy, they moved faster, increasing temperature</li>
+            <li><strong>Phase Change:</strong> At 100°C (sea level), molecules gained enough energy to escape as vapor</li>
+            <li><strong>Boiling Point:</strong> This temperature depends on atmospheric pressure—it changes with altitude!</li>
+          </ul>
+          <p className="fun-fact">🏔️ <strong>Fun Fact:</strong> At the top of Mount Everest, water boils at only 68°C (154°F) because of the lower air pressure!</p>
+          <button className="action-button next-stage-button" onClick={handleNextStage}>
+            Continue Exploring →
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // Stage 0: Interactive game scene
   return (
     <div className="game-scene">
       {/* 
