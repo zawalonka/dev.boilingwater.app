@@ -62,6 +62,11 @@ export function validateThemeData(themeData) {
     }
   }
 
+  // Validate that theme has a name (either top-level or in metadata)
+  if (!themeData.name && (!themeData.metadata || !themeData.metadata.name)) {
+    throw new Error(`Theme must have a 'name' field`)
+  }
+
   // Validate that all required colors are defined
   if (themeData.colors && typeof themeData.colors === 'object') {
     for (const color of THEME_CONFIG.requiredColors) {
@@ -91,13 +96,9 @@ export function validateThemeData(themeData) {
     throw new Error(`'images' field must be an object`)
   }
 
-  // Validate metadata
-  if (!themeData.metadata || typeof themeData.metadata !== 'object') {
+  // Validate metadata if present (optional but if present must be object)
+  if (themeData.metadata && typeof themeData.metadata !== 'object') {
     throw new Error(`'metadata' field must be an object`)
-  }
-
-  if (!themeData.metadata.name) {
-    throw new Error(`metadata.name is required`)
   }
 }
 
@@ -160,6 +161,9 @@ export function processTheme(themeData, parentTheme = null) {
 export function applyTheme(processedTheme) {
   const root = document.documentElement
 
+  console.log('🎨 applyTheme called for:', processedTheme.name)
+  console.log('🎨 Theme colors:', processedTheme.colors)
+
   // Apply color variables
   if (processedTheme.colors) {
     for (const [colorKey, colorValue] of Object.entries(processedTheme.colors)) {
@@ -167,6 +171,7 @@ export function applyTheme(processedTheme) {
       // Example: header_background → --theme-header-background
       const cssVarName = `--theme-${colorKey.replace(/_/g, '-')}`
       root.style.setProperty(cssVarName, colorValue)
+      console.log(`  Set ${cssVarName} = ${colorValue}`)
     }
   }
 
@@ -187,6 +192,11 @@ export function applyTheme(processedTheme) {
   }
 
   console.log(`✓ Applied theme: "${processedTheme.name}"`)
+  console.log('🎨 Current CSS variables on :root:', {
+    headerBg: getComputedStyle(root).getPropertyValue('--theme-header-background'),
+    knobRim: getComputedStyle(root).getPropertyValue('--theme-knob-rim'),
+    statusBg: getComputedStyle(root).getPropertyValue('--theme-status-background')
+  })
 }
 
 /**

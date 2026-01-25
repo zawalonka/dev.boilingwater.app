@@ -35,12 +35,16 @@ function App() {
 
   // Theme change handler
   const handleThemeChange = async (themeId) => {
+    console.log('🎨 Theme change requested:', themeId)
     try {
       const processed = await initializeTheme(themeId, { apply: true })
+      console.log('🎨 Theme processed:', processed)
       // Preload new theme images immediately
       await preloadThemeImages(processed)
+      console.log('🎨 Setting activeThemeId to:', themeId)
       setActiveThemeId(themeId)
       setActiveThemeData(processed)
+      console.log('🎨 Theme state updated')
     } catch (error) {
       console.error('Failed to change theme:', error)
     }
