@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   height: 60px;
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
+  background: var(--theme-header-background, rgba(0, 0, 0, 0.85));
+  color: var(--theme-header-text, #fff);
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -35,13 +35,13 @@
 .hamburger-menu span {
   width: 25px;
   height: 3px;
-  background: white;
+  background: var(--theme-header-text, #fff);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 .hamburger-menu:hover span {
-  background: #ff6600;
+  background: var(--theme-header-accent, #ff6600);
 }
 
 .app-title {
@@ -49,13 +49,14 @@
   font-weight: 700;
   margin: 0;
   letter-spacing: 1px;
+  color: var(--theme-header-text, #fff);
 }
 
 .menu-dropdown {
   position: absolute;
   top: 60px;
   left: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: var(--theme-panel-background, rgba(0, 0, 0, 0.95));
   min-width: 200px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
@@ -73,7 +74,7 @@
 .menu-dropdown a {
   display: block;
   padding: 12px 20px;
-  color: white;
+  color: var(--theme-panel-text, #fff);
   text-decoration: none;
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
@@ -81,7 +82,7 @@
 
 .menu-dropdown a:hover {
   background: rgba(255, 102, 0, 0.2);
-  border-left-color: #ff6600;
+  border-left-color: var(--theme-header-accent, #ff6600);
 }
 
 .menu-restart-btn {
@@ -103,16 +104,48 @@
   border-left-color: #ff6600;
 }
 
-.pre-alpha-badge {
-  background: rgba(220, 53, 69, 0.9);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.theme-selector {
+  display: flex;
+  align-items: center;
   margin-left: auto;
+  gap: 6px;
+}
+
+.theme-label {
+  font-size: 0.8rem;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.theme-selector select {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--theme-header-text, #fff);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.theme-selector select:focus {
+  border-color: var(--theme-header-accent, #ff6600);
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+.menu-link {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--theme-panel-text, #fff);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  background: rgba(255, 102, 0, 0.2);
+  border-left: 3px solid var(--theme-header-accent, #ff6600);
 }
 
 @media (max-width: 768px) {

@@ -10,7 +10,7 @@
  *   const available = getAvailableThemes()
  */
 
-import { THEME_CONFIG, THEME_METADATA_TEMPLATE } from '../constants/themes'
+import { AVAILABLE_THEMES, THEME_CONFIG, THEME_METADATA_TEMPLATE } from '../constants/themes'
 
 /**
  * Dynamically imports a theme JSON file from src/data/themes/
@@ -25,20 +25,17 @@ import { THEME_CONFIG, THEME_METADATA_TEMPLATE } from '../constants/themes'
  */
 export async function loadTheme(themeId) {
   try {
-    // Import theme based on ID using explicit path
-    // This approach is Vite-compatible and allows for proper static analysis
-    let themeData
-    
-    if (themeId === 'classic') {
-      const module = await import('../data/themes/classic.json', {
-        assert: { type: 'json' }
-      })
-      themeData = module.default
-    } else {
-      // For future dynamic loading, we can expand this switch statement
-      // or implement a theme manifest file
-      throw new Error(`Theme '${themeId}' not yet registered`)
+    // Fetch theme JSON from public assets (works in dev, prod, and file://)
+    let base = import.meta.env?.BASE_URL || '/'
+    if (base.startsWith('/')) {
+      base = base.slice(1)
     }
+    const url = new URL(`${base}assets/themes/${themeId}/theme.json`, window.location.href).toString()
+    const res = await fetch(url)
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} loading ${url}`)
+    }
+    const themeData = await res.json()
 
     // Validate the theme has all required fields
     validateThemeData(themeData)
@@ -83,6 +80,13 @@ export function validateThemeData(themeData) {
         console.warn(`Theme warning: Missing image '${image}'. This may cause rendering issues.`)
       }
     }
+    // Normalize relative image paths to absolute /assets/themes/... if provided as relative
+    Object.entries(themeData.images).forEach(([key, value]) => {
+      if (typeof value === 'string' && value.startsWith('./')) {
+        // Resolve relative to theme folder
+        themeData.images[key] = value.replace('./', `/assets/themes/${themeData.id}/`)
+      }
+    })
   } else {
     throw new Error(`'images' field must be an object`)
   }
@@ -133,6 +137,10 @@ export function processTheme(themeData, parentTheme = null) {
     typography: {
       ...processed.typography,
       ...themeData.typography
+    },
+    layout: {
+      ...processed.layout,
+      ...themeData.layout
     }
   }
 }
@@ -193,13 +201,10 @@ export function applyTheme(processedTheme) {
  */
 export async function getAvailableThemes() {
   try {
-    // In a real implementation, this would scan src/data/themes/ directory
-    // For now, we return a hardcoded list that can be expanded
-    // TODO: Implement dynamic scanning once Vite glob support is added
-    return ['classic']
+    return Object.entries(AVAILABLE_THEMES).map(([id, meta]) => ({ id, name: meta.name }))
   } catch (error) {
     console.error('Failed to get available themes:', error)
-    return ['classic']  // Fallback
+    return [{ id: THEME_CONFIG.defaultTheme, name: 'Alpha Theme' }]  // Fallback
   }
 }
 

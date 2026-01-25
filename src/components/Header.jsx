@@ -11,7 +11,7 @@
  * It's positioned above the main game scene.
  */
 
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import '../styles/Header.css'
 
 /**
@@ -19,10 +19,22 @@ import '../styles/Header.css'
  * 
  * Props:
  * - onMenuClick: Optional callback function to notify parent when menu is toggled
- *   (Currently unused but available for future features like analytics or state changes)
- * - onRestart: Optional callback function to restart the game
+ * - onNavigate: Navigate to a given view (game, about, docs, issue, theme)
+ * - onReload: Reload the current level/game view
+ * - onThemeChange: Change the active theme id
+ * - activeThemeId: Currently selected theme id
+ * - availableThemes: Array of theme ids to choose from
+ * - activeView: Current active view (game, about, docs, submit-issue, submit-theme)
  */
-function Header({ onMenuClick, onRestart }) {
+function Header({ 
+  onMenuClick, 
+  onNavigate, 
+  onReload,
+  onThemeChange,
+  activeThemeId,
+  availableThemes = [],
+  activeView
+}) {
   // ============================================================================
   // STATE
   // ============================================================================
@@ -52,17 +64,22 @@ function Header({ onMenuClick, onRestart }) {
     onMenuClick?.()               // Call parent callback if it exists (using optional chaining)
   }
 
-  /**
-   * handleRestart - Restart the game
-   * Reloads the page to reset everything to initial state
-   */
-  const handleRestart = () => {
-    if (onRestart) {
-      onRestart()  // Call parent's restart function if provided
-    } else {
-      window.location.reload()  // Default: reload the page
-    }
-    setMenuOpen(false)  // Close menu after restarting
+  // Navigate helper
+  const handleNavigate = (view) => {
+    onNavigate?.(view)
+    setMenuOpen(false)
+  }
+
+  // Reload helper (used when already in game view)
+  const handleReload = () => {
+    onReload?.()
+    setMenuOpen(false)
+  }
+
+  // Theme selector
+  const handleThemeChange = (e) => {
+    const next = e.target.value
+    onThemeChange?.(next)
   }
 
   // ============================================================================
@@ -101,11 +118,15 @@ function Header({ onMenuClick, onRestart }) {
         */}
         <h1 className="app-title">Boiling Water</h1>
 
-        {/* 
-          ===== PRE-ALPHA BADGE =====
-          Shows "Pre-Alpha" label in header (extremely early development stage)
-        */}
-        <span className="pre-alpha-badge">Pre-Alpha</span>
+        {/* Theme selector replaces the badge so players can switch themes */}
+        <div className="theme-selector">
+          <label htmlFor="theme-select" className="theme-label">Theme:</label>
+          <select id="theme-select" value={activeThemeId} onChange={handleThemeChange}>
+            {availableThemes.map((theme) => (
+              <option key={theme.id} value={theme.id}>{theme.name}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* 
@@ -122,11 +143,17 @@ function Header({ onMenuClick, onRestart }) {
               Currently these are placeholder links (href="#home", etc.)
               In a real app, these might navigate to different pages or trigger app functions
             */}
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#docs">Documentation</a></li>
-            <li><a href="#settings">Settings</a></li>
-            <li><button onClick={handleRestart} className="menu-restart-btn">🔄 Restart Game</button></li>
+            <li>
+              {activeView === 'game' ? (
+                <button onClick={handleReload} className="menu-link">Reload Level</button>
+              ) : (
+                <button onClick={() => handleNavigate('game')} className="menu-link">Back to Game</button>
+              )}
+            </li>
+            <li><button onClick={() => handleNavigate('about')} className="menu-link">About</button></li>
+            <li><button onClick={() => handleNavigate('docs')} className="menu-link">Docs</button></li>
+            <li><button onClick={() => handleNavigate('submit-issue')} className="menu-link">Submit Issue</button></li>
+            <li><button onClick={() => handleNavigate('submit-theme')} className="menu-link">Submit Theme</button></li>
           </ul>
         </nav>
       )}

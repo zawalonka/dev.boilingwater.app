@@ -83,7 +83,7 @@ export const THEME_CONFIG = {
   ],
   
   // Default theme to load if no theme specified
-  defaultTheme: 'classic',
+  defaultTheme: 'alpha',
   
   // Themes directory relative to src/data/
   themesDirectory: 'themes'
@@ -161,10 +161,15 @@ export const THEME_METADATA_TEMPLATE = {
  * Populated dynamically from theme JSON files in src/data/themes/
  */
 export const AVAILABLE_THEMES = {
-  'classic': {
-    name: 'Classic Kitchen',
+  'alpha': {
+    name: 'Alpha Theme',
     scope: 'workshop',
-    description: 'Default kitchen theme with warm, inviting colors'
+    description: 'Warm, inviting baseline theme for pre-alpha'
+  },
+  'alpha-alt': {
+    name: 'Alpha Theme Alt',
+    scope: 'workshop',
+    description: 'Cool blue/teal alternate for pre-alpha'
   }
   // Additional themes will be registered here dynamically
   // or loaded from a themes manifest JSON file

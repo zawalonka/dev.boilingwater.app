@@ -1,19 +1,17 @@
 {
-  "id": "classic",
-  "name": "Classic Kitchen",
+  "id": "alpha",
+  "name": "Alpha Theme",
   "scope": "workshop",
   "workshopId": null,
   "levelId": null,
   "parentTheme": null,
-  "description": "The default kitchen theme featuring warm, inviting colors and traditional cooking aesthetic.",
-  
+  "description": "Warm, inviting baseline theme for pre-alpha (same visuals as classic).",
   "colors": {
     "header_background": "rgba(0, 0, 0, 0.85)",
     "header_text": "white",
     "header_accent": "#ff6600",
     "badge_background": "rgba(220, 53, 69, 0.9)",
     "badge_text": "white",
-    
     "button_primary": "#4CAF50",
     "button_primary_text": "white",
     "button_hover": "#45a049",
@@ -25,21 +23,30 @@
     "button_secondary": "#2196F3",
     "button_secondary_text": "white",
     "button_secondary_hover": "#1976D2",
-    
     "panel_background": "rgba(255, 255, 255, 0.9)",
     "panel_text": "#333333",
     "panel_border": "#cccccc",
     "panel_accent": "#ff6600",
-    
+    "status_background": "linear-gradient(135deg, rgba(255, 165, 120, 0.9), rgba(255, 120, 60, 0.9))",
+    "status_border": "#ff8c42",
+    "status_text": "#2b1c12",
+    "status_divider": "rgba(0, 0, 0, 0.2)",
+    "status_chip": "rgba(0, 0, 0, 0.2)",
+    "status_label": "#5b2400",
+    "status_value": "#1f130a",
+    "status_boiling": "#c62828",
     "burner_background": "#444444",
     "burner_grate": "#222222",
+    "knob_rim": "#f3e0c0",
+    "knob_center": "#ffe5c2",
+    "knob_border": "#9c6b2d",
+    "knob_pointer": "#ff6600",
     "sink_background": "linear-gradient(135deg, #c0c0c0 0%, #808080 100%)",
     "sink_border": "#555555",
     "water_color": "#87CEEB",
     "water_highlight": "#B0E0E6",
     "water_deep": "#4682B4",
     "flame_glow": "#ff3300",
-    
     "warning_background": "rgba(255, 193, 7, 0.2)",
     "warning_text": "#856404",
     "warning_border": "#ffc107",
@@ -50,14 +57,39 @@
     "error_text": "#721c24",
     "error_border": "#f44336"
   },
-  
   "images": {
-    "background": "/assets/images/game/background.png",
-    "pot_empty": "/assets/images/game/pot-empty.png",
-    "pot_full": "/assets/images/game/pot-full.png",
-    "flame": "/assets/images/game/flame.png"
+    "background": "/assets/themes/alpha/background.png",
+    "pot_empty": "/assets/themes/alpha/pot-empty.png",
+    "pot_full": "/assets/themes/alpha/pot-full.png",
+    "flame": "/assets/themes/alpha/flame.png"
   },
-  
+  "layout": {
+    "scene": { "width": 1280, "height": 800 },
+    "pot": {
+      "start": { "xPercent": 75, "yPercent": 45 },
+      "sizePercent": 36,
+      "dragBounds": { "minX": 8, "maxX": 92, "minY": 8, "maxY": 92 }
+    },
+    "flame": {
+      "xPercent": 62.6,
+      "yPercent": 53.4,
+      "activationRadius": 6.25,
+      "sizePercentByHeat": [35, 37, 40, 45],
+      "minSizePxByHeat": [180, 200, 220, 240]
+    },
+    "burnerKnob": {
+      "xPercent": 66.5,
+      "yPercent": 67.8,
+      "sizePercent": 5
+    },
+    "waterStream": {
+      "xRange": [26, 30],
+      "yRange": [44, 72],
+      "start": { "xPercent": 28.8, "yPercent": 44.0 },
+      "end": { "xPercent": 27.8, "yPercent": 70.7 },
+      "widthPercent": 2
+    }
+  },
   "typography": {
     "font_family_primary": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     "font_family_mono": "'Courier New', Courier, monospace",
@@ -70,25 +102,13 @@
     "label_size": "0.75rem",
     "label_weight": "600"
   },
-  
   "metadata": {
     "author": "BoilingWater Team",
     "version": "1.0.0",
     "createdDate": "2026-01-24",
     "updatedDate": "2026-01-24",
-    "tags": ["default", "kitchen", "warm", "inviting"],
+    "tags": ["alpha", "kitchen", "warm"],
     "targetAudience": "educational",
     "suitableFor": ["elementary", "middle-school", "high-school"]
-  },
-  
-  "documentation": {
-    "colorPhilosophy": "Warm, inviting kitchen colors that feel familiar and non-threatening to students. Orange accents provide energy and engagement.",
-    "imageRequirements": {
-      "background": "Main kitchen scene - should be 1280x800 PNG, no stretching",
-      "pot_empty": "Empty cooking pot - transparent PNG, any size",
-      "pot_full": "Same pot filled with water - transparent PNG, same size as pot_empty",
-      "flame": "Animated flame - transparent PNG, approximately 60x100 pixels"
-    },
-    "addingNewTheme": "To add a new theme, copy this file to src/data/themes/[themeName].json and modify the properties. All color and image properties are required."
   }
 }

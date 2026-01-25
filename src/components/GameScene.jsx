@@ -24,7 +24,41 @@ import { loadFluid, parseFluidProperties, DEFAULT_FLUID } from '../utils/fluidLo
 import { GAME_CONFIG } from '../constants/physics'
 import '../styles/GameScene.css'
 
-function GameScene({ stage, location, onStageChange }) {
+// Default layout values (used if theme layout not provided)
+const DEFAULT_LAYOUT = {
+  scene: { width: 1280, height: 800 },
+  pot: {
+    start: { xPercent: 75, yPercent: 45 },
+    sizePercent: 36,
+    dragBounds: { minX: 8, maxX: 92, minY: 8, maxY: 92 }
+  },
+  flame: {
+    xPercent: 62.6,
+    yPercent: 53.4,
+    activationRadius: 6.25,
+    sizePercentByHeat: [35, 37, 40, 45],
+    minSizePxByHeat: [180, 200, 220, 240]
+  },
+  burnerKnob: {
+    xPercent: 66.5,
+    yPercent: 67.8,
+    sizePercent: 5
+  },
+  waterStream: {
+    xRange: [26, 30],
+    yRange: [44, 72],
+    start: { xPercent: 28.8, yPercent: 44.0 },
+    end: { xPercent: 27.8, yPercent: 70.7 },
+    widthPercent: 2
+  }
+}
+
+function GameScene({ stage, location, onStageChange, themeLayout, themeImages }) {
+  const layout = themeLayout || DEFAULT_LAYOUT
+  const backgroundImage = themeImages?.background || '/assets/images/game/background.png'
+  const potEmptyImage = themeImages?.pot_empty || '/assets/images/game/pot-empty.png'
+  const potFullImage = themeImages?.pot_full || '/assets/images/game/pot-full.png'
+  const flameImage = themeImages?.flame || '/assets/images/game/flame.png'
   // ============================================================================
   // STATE VARIABLES: These change during gameplay
   // ============================================================================
@@ -61,7 +95,7 @@ function GameScene({ stage, location, onStageChange }) {
   // x: 0% = left edge, 100% = right edge
   // y: 0% = top edge, 100% = bottom edge
   // The pot's center is positioned at these coordinates
-  const [potPosition, setPotPosition] = useState({ x: 75, y: 45 })
+  const [potPosition, setPotPosition] = useState({ x: layout.pot.start.xPercent, y: layout.pot.start.yPercent })
 
   // Is the user currently dragging the pot? (true = dragging, false = not dragging)
   const [isDragging, setIsDragging] = useState(false)
@@ -73,6 +107,11 @@ function GameScene({ stage, location, onStageChange }) {
 
   // The dimensions of the game window (always 1280x800, but stored for calculations)
   const [sceneDimensions, setSceneDimensions] = useState({ width: 0, height: 0 })
+
+  // Reset pot position when layout changes
+  useEffect(() => {
+    setPotPosition({ x: layout.pot.start.xPercent, y: layout.pot.start.yPercent })
+  }, [themeLayout])
 
   // ============================================================================
   // REFERENCES: Direct access to DOM elements (not state, just object references)
@@ -132,7 +171,7 @@ function GameScene({ stage, location, onStageChange }) {
       }
     }
     initializeFluid()
-  }, [])
+  }, [themeLayout])
 
   // EFFECT 2: Initialize the game window dimensions (runs once on component load)
   // ============================================================================
@@ -145,8 +184,8 @@ function GameScene({ stage, location, onStageChange }) {
         // We set dimensions to a fixed size (matching the background image dimensions)
         // This ensures all percentage-based positioning stays consistent
         setSceneDimensions({
-          width: 1280,   // Fixed width in pixels
-          height: 800    // Fixed height in pixels
+          width: layout.scene.width,   // Fixed width in pixels
+          height: layout.scene.height  // Fixed height in pixels
         })
       }
     }
@@ -173,12 +212,10 @@ function GameScene({ stage, location, onStageChange }) {
     // Now uses Newton's Law of Cooling for realistic temperature decay
     if (waterInPot <= 0 || !fluidProps) return  // Wait for fluid props to load
 
-    // Define the heat activation area around the flame
-    // Flame is at ~62.6% X, ~53.4% Y with 40% size container
-    // Activation radius: 6.25% of game window (requires tight positioning for precision)
-    const flameX = 62.6
-    const flameY = 53.4
-    const heatActivationRadius = 6.25
+    // Define the heat activation area around the flame (theme-driven)
+    const flameX = layout.flame.xPercent
+    const flameY = layout.flame.yPercent
+    const heatActivationRadius = layout.flame.activationRadius
     
     // Start a repeating timer that runs every TIME_STEP milliseconds (e.g., every 100ms)
     simulationRef.current = setInterval(() => {
@@ -246,7 +283,7 @@ function GameScene({ stage, location, onStageChange }) {
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, temperature, altitude, boilingPoint, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps])  // Re-run if any of these change
+  }, [waterInPot, temperature, altitude, boilingPoint, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps, themeLayout])  // Re-run if any of these change
 
   // ============================================================================
   // POT DRAGGING HANDLERS: Three functions handle the drag lifecycle
@@ -329,7 +366,11 @@ function GameScene({ stage, location, onStageChange }) {
     // Water stream is from (295,451) to (285,724) in original 1024x1024 image
     // Converting to percentages: X is around 27-29%, Y is from 44% to 71%
     // We check if pot center is passing through this vertical stream AND pot is empty
-    const inWaterStream = newXPercent >= 26 && newXPercent <= 30 && newYPercent >= 44 && newYPercent <= 72
+    const inWaterStream =
+      newXPercent >= layout.waterStream.xRange[0] &&
+      newXPercent <= layout.waterStream.xRange[1] &&
+      newYPercent >= layout.waterStream.yRange[0] &&
+      newYPercent <= layout.waterStream.yRange[1]
     if (inWaterStream && waterInPot === 0) {
       // Auto-fill with the default water amount (1.0 kg)
       setWaterInPot(GAME_CONFIG.DEFAULT_WATER_MASS)
@@ -398,38 +439,38 @@ function GameScene({ stage, location, onStageChange }) {
   // ============================================================================
 
   // Original background image dimensions (what it is in the PNG file)
-  const baseWidth = 1280   // pixels - current display width
-  const baseHeight = 800   // pixels - current display height
+  const baseWidth = layout.scene.width   // pixels - current display width
+  const baseHeight = layout.scene.height   // pixels - current display height
 
   // Calculate scale factors (not used much since we use percentages, but kept for reference)
   const scaleX = sceneDimensions.width / baseWidth
   const scaleY = sceneDimensions.height / baseHeight
   const scale = Math.min(scaleX, scaleY)
 
-  // Calculate where the flame should appear on the burner
-  // Original burner location was designed for 1024x1024 image at pixel (641, 567)
-  // But we're now displaying at 1280x800, so adjust the percentages
-  // If original was 1024x1024: 641/1024 = 62.6% X, 567/1024 = 55.4% Y
-  // Adjusted Y by -2% to move flame up slightly
-  const flameX = (641 / 1024) * 100    // = ~62.6% across (adjusted for original square aspect)
-  const flameY = (567 / 1024) * 100 - 2    // = ~53.4% down (moved up by 2%)
+  // Flame position (theme-driven)
+  const flameX = layout.flame.xPercent
+  const flameY = layout.flame.yPercent
 
   // Calculate water stream position (from original 1024x1024: starts at 295,451 ends at 285,724)
-  const waterStreamStartX = (295 / 1024) * 100  // = ~28.8%
-  const waterStreamStartY = (451 / 1024) * 100  // = ~44.0%
-  const waterStreamEndX = (285 / 1024) * 100    // = ~27.8%
-  const waterStreamEndY = (724 / 1024) * 100    // = ~70.7%
-  const waterStreamHeight = waterStreamEndY - waterStreamStartY  // = ~26.7%
+  const waterStreamStartX = layout.waterStream.start.xPercent
+  const waterStreamStartY = layout.waterStream.start.yPercent
+  const waterStreamEndX = layout.waterStream.end.xPercent
+  const waterStreamEndY = layout.waterStream.end.yPercent
+  const waterStreamHeight = waterStreamEndY - waterStreamStartY
 
   // Check if pot is in the water stream area to show the pouring effect
-  const showWaterStream = potPosition.x >= 26 && potPosition.x <= 30 && potPosition.y >= 44 && potPosition.y <= 72
+  const showWaterStream =
+    potPosition.x >= layout.waterStream.xRange[0] &&
+    potPosition.x <= layout.waterStream.xRange[1] &&
+    potPosition.y >= layout.waterStream.yRange[0] &&
+    potPosition.y <= layout.waterStream.yRange[1]
 
   // Drag boundaries: how far the pot center can move (in percentages)
   // These are conservative to keep the pot mostly on screen
-  const maxXPercent = 92   // Pot center can't go further right than 92%
-  const maxYPercent = 92   // Pot center can't go further down than 92%
-  const minXPercent = 8    // Pot center can't go further left than 8%
-  const minYPercent = 8    // Pot center can't go further up than 8%
+  const maxXPercent = layout.pot.dragBounds.maxX
+  const maxYPercent = layout.pot.dragBounds.maxY
+  const minXPercent = layout.pot.dragBounds.minX
+  const minYPercent = layout.pot.dragBounds.minY
 
   // ============================================================================
   // RENDER: Build and return the UI
@@ -445,6 +486,7 @@ function GameScene({ stage, location, onStageChange }) {
       <div 
         ref={sceneRef}
         className="game-scene-inner"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         {/* 
           ========== WATER STREAM (Water Source) ==========
@@ -457,7 +499,7 @@ function GameScene({ stage, location, onStageChange }) {
             style={{
               left: `${waterStreamStartX}%`,
               top: `${waterStreamStartY}%`,
-              width: '2%',
+              width: `${layout.waterStream.widthPercent}%`,
               height: `${waterStreamHeight}%`
             }}
           />
@@ -471,18 +513,18 @@ function GameScene({ stage, location, onStageChange }) {
         <div 
           className="stove-burner"
           style={{
-            left: `${flameX}%`,     // ~62.6% across (at burner location)
-            top: `${flameY}%`,      // ~55.4% down (at burner location)
-            width: burnerHeat === 0 ? '0%' : ['35%', '37%', '40%', '45%'][burnerHeat],  // Scale flame with heat
-            height: burnerHeat === 0 ? '0%' : ['35%', '37%', '40%', '45%'][burnerHeat],
-            minWidth: burnerHeat === 0 ? '0px' : ['180px', '200px', '220px', '240px'][burnerHeat],
-            minHeight: burnerHeat === 0 ? '0px' : ['180px', '200px', '220px', '240px'][burnerHeat]
+            left: `${flameX}%`,
+            top: `${flameY}%`,
+            width: burnerHeat === 0 ? '0%' : `${layout.flame.sizePercentByHeat[burnerHeat]}%`,
+            height: burnerHeat === 0 ? '0%' : `${layout.flame.sizePercentByHeat[burnerHeat]}%`,
+            minWidth: burnerHeat === 0 ? '0px' : `${layout.flame.minSizePxByHeat[burnerHeat]}px`,
+            minHeight: burnerHeat === 0 ? '0px' : `${layout.flame.minSizePxByHeat[burnerHeat]}px`
           }}
         >
           {/* Show flame when burner is on (burnerHeat > 0) */}
           {burnerHeat > 0 && (
             <img 
-              src="/assets/images/game/flame.png" 
+              src={flameImage}
               alt="Flame"
               className="flame-graphic"
             />
@@ -499,10 +541,10 @@ function GameScene({ stage, location, onStageChange }) {
         <div 
           className="burner-knob"
           style={{
-            left: `${(681 / 1024) * 100}%`,  // 66.5% - positioned at top-left
-            top: `${(695 / 1024) * 100}%`,   // 67.8% - positioned at top-left
-            width: '5%',                      // Knob: 5% of game window (64 pixels)
-            height: '5%',                     // Knob: 5% of game window (40 pixels)
+            left: `${layout.burnerKnob.xPercent}%`,
+            top: `${layout.burnerKnob.yPercent}%`,
+            width: `${layout.burnerKnob.sizePercent}%`,
+            height: `${layout.burnerKnob.sizePercent}%`,
           }}
           onClick={handleBurnerKnob}
           title={`Burner: ${['OFF', 'LOW (400W)', 'MED (1700W)', 'HIGH (2500W)'][burnerHeat]}`}
@@ -526,8 +568,8 @@ function GameScene({ stage, location, onStageChange }) {
           style={{
             left: `${potPosition.x}%`,      // Current X position (updated while dragging)
             top: `${potPosition.y}%`,       // Current Y position (updated while dragging)
-            width: '36%',                   // Pot is 36% of game window width (461 pixels)
-            height: '36%',                  // Pot is 36% of game window height (288 pixels)
+            width: `${layout.pot.sizePercent}%`,
+            height: `${layout.pot.sizePercent}%`,
             touchAction: 'none'             // Disable default browser touch behaviors (scroll, zoom, etc.)
           }}
           onPointerDown={handlePointerDown}  // Start dragging when user clicks
@@ -541,7 +583,7 @@ function GameScene({ stage, location, onStageChange }) {
             - pot-full.png: when waterInPot > 0
           */}
           <img
-            src={waterInPot > 0 ? '/assets/images/game/pot-full.png' : '/assets/images/game/pot-empty.png'}
+            src={waterInPot > 0 ? potFullImage : potEmptyImage}
             alt={waterInPot > 0 ? 'Full Pot' : 'Empty Pot'}
             className="pot-image"
             draggable={false}  // Disable browser's native drag for images

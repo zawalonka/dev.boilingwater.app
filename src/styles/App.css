@@ -13,3 +13,35 @@
   overflow: hidden;
   background: #fff;
 }
+
+.info-page {
+  flex: 1;
+  padding: 90px 32px 32px; /* push content below fixed header (60px) */
+  background: var(--theme-panel-background, #0e1623);
+  color: var(--theme-panel-text, #e8f1ff);
+  overflow-y: auto;
+}
+
+.info-page h2 {
+  margin-bottom: 12px;
+}
+
+.info-page p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.info-page a.action-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--theme-button-primary, #3cb8ff);
+  color: var(--theme-button-primary-text, #0b1220);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.info-page a.action-button:hover {
+  background: var(--theme-button-hover, #1ca7ec);
+}
