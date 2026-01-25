@@ -6,6 +6,12 @@
   "levelId": null,
   "parentTheme": "alpha",
   "description": "Cool blue/teal alt palette for pre-alpha, same layout/assets as alpha.",
+  "_notes": {
+    "layout": "Shares alpha layout; positions are percentages against layout.scene (1280x800). Background must match layout.scene size.",
+    "images": "Background as optimized JPG (no transparency). UI elements (pot, flame) as PNG for transparency. May inherit parent images if omitted.",
+    "colors": "Overrides palette only. Values map to CSS vars --theme-*; gradients allowed where currently used.",
+    "parentTheme": "Inherits alpha where fields are missing; only override palette unless layout truly changes."
+  },
   "colors": {
     "header_background": "rgba(20, 28, 45, 0.9)",
     "header_text": "#e9f2ff",
@@ -58,7 +64,7 @@
     "error_border": "#f44336"
   },
   "images": {
-    "background": "/assets/themes/alpha-alt/background.png",
+    "background": "/assets/themes/alpha-alt/background.jpg",
     "pot_empty": "/assets/themes/alpha-alt/pot-empty.png",
     "pot_full": "/assets/themes/alpha-alt/pot-full.png",
     "flame": "/assets/themes/alpha-alt/flame.png"

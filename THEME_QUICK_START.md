@@ -4,9 +4,10 @@
 
 ## 5-Minute Quickstart
 
-### 1. Create Theme File
+### 1. Create Theme Folder & File
 
-Create: `src/data/themes/[yourThemeName].json`
+Create folder: `public/assets/themes/[yourThemeName]/`
+Create file: `public/assets/themes/[yourThemeName]/theme.json`
 
 ```json
 {
@@ -27,10 +28,10 @@ Create: `src/data/themes/[yourThemeName].json`
   },
   
   "images": {
-    "background": "/assets/images/themes/your-theme/background.png",
-    "pot_empty": "/assets/images/themes/your-theme/pot-empty.png",
-    "pot_full": "/assets/images/themes/your-theme/pot-full.png",
-    "flame": "/assets/images/themes/your-theme/flame.png"
+    "background": "/assets/themes/your-theme/background.png",
+    "pot_empty": "/assets/themes/your-theme/pot-empty.png",
+    "pot_full": "/assets/themes/your-theme/pot-full.png",
+    "flame": "/assets/themes/your-theme/flame.png"
   },
   
   "metadata": {
@@ -191,10 +192,10 @@ img.save('output.png')
 
 Before deploying your theme:
 
-- [ ] JSON file created: `src/data/themes/[id].json`
+- [ ] JSON file created: `public/assets/themes/[id]/theme.json`
 - [ ] All required JSON fields present (id, name, colors, images, metadata)
 - [ ] Background image: exactly **1280×800 pixels**
-- [ ] Background file exists: `public/assets/images/themes/[id]/background.png`
+- [ ] Background file exists: `public/assets/themes/[id]/background.png`
 - [ ] Pot empty image exists and is transparent PNG
 - [ ] Pot full image exists, same size as pot empty
 - [ ] Flame image exists (~60×100 pixels)

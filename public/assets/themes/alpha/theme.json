@@ -6,6 +6,12 @@
   "levelId": null,
   "parentTheme": null,
   "description": "Warm, inviting baseline theme for pre-alpha (same visuals as classic).",
+  "_notes": {
+    "layout": "Positions are percentages against layout.scene (1280x800). Export background at layout.scene size to avoid stretching.",
+    "images": "Background as optimized JPG (no transparency). UI elements (pot, flame) as PNG for transparency. Paths can be absolute (/assets/themes/alpha/..) or './' relative to this folder.",
+    "colors": "Maps directly to CSS vars --theme-*. Keep rgba/hex values; gradients allowed where used today (status, sink).",
+    "parentTheme": "Keep null; this is the base palette/layout for others to inherit."
+  },
   "colors": {
     "header_background": "rgba(0, 0, 0, 0.85)",
     "header_text": "white",
@@ -58,7 +64,7 @@
     "error_border": "#f44336"
   },
   "images": {
-    "background": "/assets/themes/alpha/background.png",
+    "background": "/assets/themes/alpha/background.jpg",
     "pot_empty": "/assets/themes/alpha/pot-empty.png",
     "pot_full": "/assets/themes/alpha/pot-full.png",
     "flame": "/assets/themes/alpha/flame.png"

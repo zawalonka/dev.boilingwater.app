@@ -13,15 +13,15 @@
 import { AVAILABLE_THEMES, THEME_CONFIG, THEME_METADATA_TEMPLATE } from '../constants/themes'
 
 /**
- * Dynamically imports a theme JSON file from src/data/themes/
+ * Dynamically loads a theme JSON file from public/assets/themes/
  * 
- * @param {string} themeId - The theme identifier (e.g., 'classic', 'workshop_1')
+ * @param {string} themeId - The theme identifier (e.g., 'alpha', 'alpha-alt')
  * @returns {Promise<Object>} The loaded theme configuration object
  * @throws {Error} If theme file not found or invalid
  * 
  * @example
- *   const theme = await loadTheme('classic')
- *   // Returns: { id: 'classic', name: 'Classic Kitchen', colors: {...}, images: {...} }
+ *   const theme = await loadTheme('alpha')
+ *   // Returns: { id: 'alpha', name: 'Alpha Theme', colors: {...}, images: {...} }
  */
 export async function loadTheme(themeId) {
   try {
@@ -161,9 +161,6 @@ export function processTheme(themeData, parentTheme = null) {
 export function applyTheme(processedTheme) {
   const root = document.documentElement
 
-  console.log('🎨 applyTheme called for:', processedTheme.name)
-  console.log('🎨 Theme colors:', processedTheme.colors)
-
   // Apply color variables
   if (processedTheme.colors) {
     for (const [colorKey, colorValue] of Object.entries(processedTheme.colors)) {
@@ -171,7 +168,6 @@ export function applyTheme(processedTheme) {
       // Example: header_background → --theme-header-background
       const cssVarName = `--theme-${colorKey.replace(/_/g, '-')}`
       root.style.setProperty(cssVarName, colorValue)
-      console.log(`  Set ${cssVarName} = ${colorValue}`)
     }
   }
 
@@ -192,11 +188,6 @@ export function applyTheme(processedTheme) {
   }
 
   console.log(`✓ Applied theme: "${processedTheme.name}"`)
-  console.log('🎨 Current CSS variables on :root:', {
-    headerBg: getComputedStyle(root).getPropertyValue('--theme-header-background'),
-    knobRim: getComputedStyle(root).getPropertyValue('--theme-knob-rim'),
-    statusBg: getComputedStyle(root).getPropertyValue('--theme-status-background')
-  })
 }
 
 /**

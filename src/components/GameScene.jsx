@@ -2,8 +2,8 @@
  * GameScene Component
  * 
  * This is the main interactive game environment for the Boiling Water educational app.
- * It displays a 1280x800 game window with a draggable pot, burner with flame, sink for filling water,
- * and physics simulation for heating/boiling water at different altitudes.
+ * It displays a theme-defined game window (default 1280x800) with a draggable pot, burner with flame,
+ * sink for filling water, and physics simulation for heating/boiling water at different altitudes.
  * 
  * The component handles:
  * - Rendering the fixed-size game window and all visual elements
@@ -12,6 +12,7 @@
  * - Water filling when pot touches sink
  * - Temperature display and boiling detection
  * - Educational messages about boiling points at different altitudes
+ * - Stage 1 overlay with post-boil explainer and progression button
  */
 
 import { useState, useRef, useEffect } from 'react'
@@ -105,7 +106,7 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
   // Example: if user clicks 50 pixels left of pot center, dragOffset.x = -50
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
 
-  // The dimensions of the game window (always 1280x800, but stored for calculations)
+  // The dimensions of the game window (theme-provided, default 1280x800)
   const [sceneDimensions, setSceneDimensions] = useState({ width: 0, height: 0 })
 
   // Reset pot position when layout changes
@@ -154,7 +155,8 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
         const fluidData = await loadFluid(DEFAULT_FLUID)  // 'water'
         const props = parseFluidProperties(fluidData)
         setFluidProps(props)
-        console.log(`Loaded fluid: ${props.name} (${props.formula})`, props)
+        // Debug log: useful for verifying fluid properties loaded correctly
+        console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
       } catch (error) {
         console.error('Failed to load fluid properties:', error)
         // Set a fallback with basic water properties

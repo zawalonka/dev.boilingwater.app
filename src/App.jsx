@@ -35,16 +35,12 @@ function App() {
 
   // Theme change handler
   const handleThemeChange = async (themeId) => {
-    console.log('🎨 Theme change requested:', themeId)
     try {
       const processed = await initializeTheme(themeId, { apply: true })
-      console.log('🎨 Theme processed:', processed)
       // Preload new theme images immediately
       await preloadThemeImages(processed)
-      console.log('🎨 Setting activeThemeId to:', themeId)
       setActiveThemeId(themeId)
       setActiveThemeData(processed)
-      console.log('🎨 Theme state updated')
     } catch (error) {
       console.error('Failed to change theme:', error)
     }
@@ -84,7 +80,8 @@ function App() {
     setActiveView('game')
   }
 
-  const issueUrl = 'https://github.com/BoilingWaterApp/Boilingwater.app/issues/new'
+  // Submit issues to the repo (updated link)
+  const issueUrl = 'https://github.com/zawalonka/Boilingwater.app/issues/new'
 
   const renderView = () => {
     if (activeView === 'about') {
@@ -104,7 +101,7 @@ function App() {
           <h2>Project Docs (Concise)</h2>
           <p><strong>Core idea:</strong> Teach thermodynamics through interactive play. Heating uses power → temperature rise via specific heat; boiling uses latent heat; cooling uses Newton&apos;s Law of Cooling with altitude-adjusted boiling points.</p>
           <p><strong>Data-first design:</strong> Fluids live in JSON (specific heat, latent heat, boiling point, cooling coefficient). Themes live in JSON (colors, images, layout). Add a file → get a new fluid or visual style.</p>
-          <p><strong>Key files:</strong> Fluid data in <a href="/src/data/fluids">src/data/fluids</a>, theme data in <a href="/src/data/themes">src/data/themes</a>, physics in <a href="/src/utils/physics.js">src/utils/physics.js</a>, theme loader in <a href="/src/utils/themeLoader.js">src/utils/themeLoader.js</a>.</p>
+          <p><strong>Key files:</strong> Fluid data in <a href="/src/data/fluids">src/data/fluids</a>, theme files in <a href="/public/assets/themes">public/assets/themes</a>, physics in <a href="/src/utils/physics.js">src/utils/physics.js</a>, theme loader in <a href="/src/utils/themeLoader.js">src/utils/themeLoader.js</a>.</p>
           <p><strong>What&apos;s next:</strong> More fluids (ethanol, oils), periodic table content, UI selectors for fluids, richer lesson stages, and additional themed environments.</p>
         </div>
       )
@@ -124,9 +121,9 @@ function App() {
       return (
         <div className="info-page">
           <h2>Submit a Theme or Environment</h2>
-          <p>Themes are JSON files in <code>src/data/themes/</code> plus images in <code>public/assets/images/themes/&lt;themeId&gt;/</code>. Layout (pot, flame, water stream) lives in the <code>layout</code> section so placement can change per environment.</p>
+          <p>Themes are JSON files stored with images in <code>public/assets/themes/&lt;themeId&gt;/</code>. Layout (pot, flame, water stream) lives in the <code>layout</code> section so placement can change per environment.</p>
           <p><strong>Minimum required fields:</strong> colors (header_background, button_primary, panel_background, etc.), images (background, pot_empty, pot_full, flame), metadata (id, name, author), and layout (pot start/size, flame position, water stream ranges).</p>
-          <p><strong>How to share:</strong> Send the JSON plus your images. Keep background at 1280x800, use transparent PNGs for pot and flame, and reuse the existing placement unless your layout changes are intentional.</p>
+          <p><strong>How to share:</strong> Send the JSON plus your images. Keep background at 1280×800 pixels, use transparent PNGs for pot and flame, and reuse the existing placement unless your layout truly changes.</p>
         </div>
       )
     }

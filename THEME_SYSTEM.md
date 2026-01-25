@@ -62,10 +62,10 @@ Each theme is a JSON file defining colors, images, typography, and metadata.
   },
   
   "images": {
-    "background": "/assets/images/game/background.png",
-    "pot_empty": "/assets/images/game/pot-empty.png",
-    "pot_full": "/assets/images/game/pot-full.png",
-    "flame": "/assets/images/game/flame.png"
+    "background": "/assets/themes/classic/background.png",
+    "pot_empty": "/assets/themes/classic/pot-empty.png",
+    "pot_full": "/assets/themes/classic/pot-full.png",
+    "flame": "/assets/themes/classic/flame.png"
   },
   
   "typography": {
@@ -207,10 +207,10 @@ Every theme MUST provide these 4 images:
 
 ```json
 "images": {
-  "background": "/assets/images/game/background.png",
-  "pot_empty": "/assets/images/game/pot-empty.png",
-  "pot_full": "/assets/images/game/pot-full.png",
-  "flame": "/assets/images/game/flame.png"
+  "background": "/assets/themes/dark-mode/background.png",
+  "pot_empty": "/assets/themes/dark-mode/pot-empty.png",
+  "pot_full": "/assets/themes/dark-mode/pot-full.png",
+  "flame": "/assets/themes/dark-mode/flame.png"
 }
 ```
 
@@ -287,9 +287,10 @@ Essential information about the theme.
 
 ### Step 1: Create Theme JSON File
 
-Create a new file: `src/data/themes/[themeName].json`
+Create folder: `public/assets/themes/[themeName]/`
+Create file: `public/assets/themes/[themeName]/theme.json`
 
-Copy and modify the classic theme:
+Copy and modify the alpha theme:
 
 ```json
 {
@@ -303,10 +304,10 @@ Copy and modify the classic theme:
     ...
   },
   "images": {
-    "background": "/assets/images/themes/dark-mode/background.png",
-    "pot_empty": "/assets/images/themes/dark-mode/pot-empty.png",
-    "pot_full": "/assets/images/themes/dark-mode/pot-full.png",
-    "flame": "/assets/images/themes/dark-mode/flame.png"
+    "background": "/assets/themes/dark-mode/background.png",
+    "pot_empty": "/assets/themes/dark-mode/pot-empty.png",
+    "pot_full": "/assets/themes/dark-mode/pot-full.png",
+    "flame": "/assets/themes/dark-mode/flame.png"
   },
   "metadata": {
     "author": "Your Name",
@@ -318,11 +319,11 @@ Copy and modify the classic theme:
 
 ### Step 2: Create Asset Folder
 
-Create directory: `public/assets/images/themes/[themeName]/`
+Create directory: `public/assets/themes/[themeName]/`
 
 Place your images there:
 ```
-public/assets/images/themes/dark-mode/
+public/assets/themes/dark-mode/
 ├── background.png      # 1280×800, no stretching
 ├── pot-empty.png
 ├── pot-full.png
@@ -343,7 +344,7 @@ Update `src/constants/themes.js` `AVAILABLE_THEMES` object for discovery:
 
 ```javascript
 export const AVAILABLE_THEMES = {
-  'classic': { ... },
+  'alpha': { ... },
   'dark-mode': {
     name: 'Dark Mode Chemistry',
     scope: 'workshop',
