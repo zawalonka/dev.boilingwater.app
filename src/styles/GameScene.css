@@ -1,0 +1,377 @@
+/* ========================================================================
+   OUTER GAME CONTAINER (.game-scene)
+   ======================================================================== */
+/* The outer container fills the screen below the header (top: 60px) */
+/* This container uses flexbox to center the inner game window */
+/* Black background provides letterbox effect when game window is smaller than viewport */
+.game-scene {
+  position: absolute;
+  top: 60px;                    /* Start below header (which is 60px tall) */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;                /* Center children using flexbox */
+  align-items: center;          /* Vertical center */
+  justify-content: center;      /* Horizontal center */
+  background: #000;             /* Black letterbox area */
+  overflow: hidden;             /* Hide anything that extends beyond viewport */
+}
+
+/* ========================================================================
+   INNER GAME WINDOW (.game-scene-inner)
+   ======================================================================== */
+/* The inner container has a FIXED 1280x800 size that never changes */
+/* This fixed size is critical: all game elements (pot, sink, flame) are
+   positioned as percentages relative to this fixed 1280x800 window */
+/* 
+   Design rationale:
+   - Background PNG is exactly 1280x800 pixels
+   - Percentage-based positioning (e.g., pot at 50% X, 40% Y) only works correctly
+     with a known fixed reference size
+   - The outer container resizes with the viewport, but this inner one does not
+   - This prevents scaling drift and ensures consistent drag behavior
+*/
+.game-scene-inner {
+  position: relative;           /* Create positioning context for child elements */
+  width: 1280px;                /* FIXED: matches background.png dimensions */
+  height: 800px;                /* FIXED: matches background.png dimensions */
+  background-image: url(/assets/images/game/background.png);
+  background-size: 100% 100%;   /* Stretch to fill entire 1280x800 area */
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);  /* Add depth with shadow */
+}
+
+/* ========================================================================
+   SINK AREA (Top Left Corner)
+   ======================================================================== */
+/* The sink is the refill point—when the pot touches it (< 12% X, < 15% Y),
+   the water automatically fills to maximum */
+/* Positioned as a clickable/touchable zone in the top-left corner */
+.sink {
+  position: absolute;
+  background: linear-gradient(135deg, #c0c0c0 0%, #808080 100%);  /* Metallic silver gradient */
+  border-radius: 8px;
+  border: 2px solid #555;       /* Dark border for depth */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;                 /* Above background, below pot */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;               /* Indicate this is interactive */
+  transition: transform 0.2s ease;  /* Smooth scale on hover */
+}
+
+/* Visual feedback when user hovers over sink */
+.sink:hover {
+  transform: scale(1.05);        /* Slightly enlarge on hover */
+}
+
+/* Icon inside the sink (typically a water droplet emoji) */
+.sink-icon {
+  font-size: 2rem;
+  pointer-events: none;         /* Let clicks pass through to sink element */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);  /* Add depth */
+}
+
+/* ========================================================================
+   STOVE BURNER & FLAME (Center)
+   ======================================================================== */
+/* The stove burner is the heat source—positioned at center bottom (50% X, 71% Y) */
+/* The flame graphic only appears when heat is applied (display: block in JS) */
+.stove-burner {
+  position: absolute;
+  transform: translate(-50%, -50%);  /* Center the flame on the burner point */
+  background: transparent;
+  border-radius: 50%;               /* Circular container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;                      /* Behind pot (z-index 200) so pot sits on stove */
+}
+
+/* Flame image: PNG graphic that animates */
+.flame-graphic {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;              /* Scale image while preserving aspect ratio */
+  animation: flameFlicker 0.4s infinite alternate;  /* Continuous flicker effect */
+}
+
+/* Animation: flame flickers to simulate burning */
+/* Alternates between 0.9 opacity (dim) and 1.0 opacity (bright) + slight scale */
+@keyframes flameFlicker {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ========================================================================
+   DRAGGABLE POT
+   ======================================================================== */
+/* The pot is the main interactive element—user drags it around the game area */
+/* Positioned using percentage-based coordinates (e.g., potX = 50 = 50% across) */
+/* IMPORTANT: The pot has a center-based position, not corner-based:
+     - potX = 50 means the pot CENTER is at 50% horizontally (640px in 1280px window)
+     - potY = 40 means the pot CENTER is at 40% vertically (320px in 800px window)
+     - We calculate actual pixel positions as: left = (percentX/100) * 1280, etc.
+*/
+.pot-draggable {
+  position: absolute;
+  cursor: grab;                 /* "Hand" cursor indicates draggable */
+  user-select: none;            /* Prevent text selection during drag */
+  transform: translate(-50%, -50%);  /* Center the pot on its position point */
+  z-index: 200;                 /* Above stove (z-50), below controls (z-100 for other things) */
+  -webkit-user-drag: none;      /* Prevent browser's default drag behavior */
+}
+
+/* Hover feedback: brighten pot to indicate it's interactive */
+.pot-draggable:hover {
+  filter: brightness(1.1);      /* 10% brighter */
+}
+
+/* While dragging: change cursor to "grabbing" and brighten more */
+.pot-draggable.dragging {
+  cursor: grabbing;
+  filter: brightness(1.2);      /* 20% brighter */
+  z-index: 300;                 /* Ensure dragging pot is on top */
+}
+
+/* The actual image inside the pot container */
+.pot-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;          /* Scale image while preserving aspect ratio */
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));  /* Shadow for depth */
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;         /* Let clicks pass through to pot container */
+}
+
+/* ========================================================================
+   STEAM EFFECT (Visual feedback when water boils)
+   ======================================================================== */
+/* Small visual indicator showing steam escaping from the pot */
+.steam-effect {
+  position: absolute;
+  top: -30px;                   /* Position above the pot */
+  left: 50%;
+  transform: translateX(-50%);  /* Center horizontally */
+  font-size: 1.5rem;            /* Large emoji */
+  animation: rise 1.5s infinite;  /* Continuous rising animation */
+}
+
+/* Animation: steam emoji rises and fades out */
+@keyframes rise {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;                 /* Fade to invisible */
+    transform: translateX(-50%) translateY(-40px);  /* Move up 40px */
+  }
+}
+
+/* ========================================================================
+   CONTROLS PANEL (Bottom Right)
+   ======================================================================== */
+/* The main UI panel showing temperature, status, and action buttons */
+/* Positioned in bottom-right corner with semi-transparent white background */
+.controls-panel {
+  position: absolute;
+  bottom: 20px;                 /* 20px from bottom edge */
+  right: 20px;                  /* 20px from right edge */
+  background: rgba(255, 255, 255, 0.95);  /* Semi-transparent white */
+  padding: 20px;
+  border-radius: 12px;          /* Rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);  /* Drop shadow for depth */
+  min-width: 260px;             /* Minimum width to fit content */
+  max-width: min(400px, 90vw);  /* Max width, but responsive on mobile */
+  z-index: 100;                 /* In front of game elements */
+}
+
+/* Container for grouped control elements */
+.control-section {
+  display: flex;
+  flex-direction: column;       /* Stack items vertically */
+  gap: 15px;                    /* 15px spacing between sections */
+}
+
+/* ========================================================================
+   ACTION BUTTONS (Turn stove on/off, Fill water, etc.)
+   ======================================================================== */
+.action-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #4CAF50;          /* Green default button */
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;    /* Smooth animation on state change */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover state: brighten and lift button */
+.action-button:hover:not(:disabled) {
+  background: #45a049;          /* Darker green */
+  transform: translateY(-2px);  /* Lift slightly (depth effect) */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Primary action button: larger and orange (more prominent) */
+.action-button.primary {
+  background: #ff6600;          /* Orange */
+  font-size: 1.1rem;
+  padding: 15px 30px;
+}
+
+.action-button.primary:hover {
+  background: #ff5500;          /* Darker orange */
+}
+
+/* "Learn More" button: blue with pulsing animation to draw attention */
+.action-button.learn-more {
+  background: #2196F3;          /* Blue */
+  animation: pulse 2s infinite;  /* Pulse effect draws eye */
+}
+
+.action-button.learn-more:hover {
+  background: #1976D2;          /* Darker blue */
+  animation: none;              /* Stop pulsing on hover */
+}
+
+/* Pulse animation: size grows and shrinks */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ========================================================================
+   STATUS DISPLAY (Temperature, water level, boiling status)
+   ======================================================================== */
+/* Container for temperature reading and status messages */
+.status-display {
+  display: flex;
+  flex-direction: column;       /* Stack items vertically */
+  align-items: center;          /* Center items horizontally */
+  gap: 10px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.05);  /* Very light gray background */
+  border-radius: 8px;
+}
+
+/* Temperature reading section */
+.temperature-reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Large temperature number (e.g., "87.3°C") */
+.temp-value {
+  font-size: 2.5rem;            /* Large, prominent */
+  font-weight: bold;
+  color: #ff6600;               /* Orange: matches heat/danger theme */
+}
+
+/* Label below temperature (e.g., "Water Temperature") */
+.temp-label {
+  font-size: 0.85rem;
+  color: #666;                  /* Subdued gray */
+}
+
+/* Status messages (e.g., "Water is heating up", "Water is boiling!") */
+.status-text {
+  font-size: 1.1rem;
+  color: #333;                  /* Dark gray for readability */
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Special styling when water reaches boiling point */
+.status-text.boiling {
+  color: #ff6600;               /* Orange: urgent/hot status */
+  font-weight: 700;             /* Extra bold: more dramatic */
+}
+
+/* Hint text at bottom of controls (e.g., "Drag the pot to the sink to refill") */
+.hint-text {
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  margin: 10px 0 0 0;
+  font-style: italic;           /* Italicized to distinguish from regular text */
+}
+
+/* ========================================================================
+   HOOK MESSAGE (Educational discovery message)
+   ======================================================================== */
+/* Special message that appears when water reaches boiling point */
+/* Designed to draw attention and teach an important lesson */
+.hook-message {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* Purple gradient */
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 15px;
+  animation: slideIn 0.5s ease;  /* Slides in when message appears */
+}
+
+.hook-message p {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  line-height: 1.4;            /* Extra line height for readability */
+}
+
+/* Slide-in animation: message emerges from below with fade-in */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);  /* Start 20px below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);     /* End at normal position */
+  }
+}
+
+/* ========================================================================
+   MODE INDICATOR (Displays current altitude level or game mode)
+   ======================================================================== */
+/* Badge showing altitude level or game difficulty (e.g., "Sea Level", "Denver") */
+.mode-indicator {
+  position: absolute;
+  top: 75px;                    /* Below header, above game */
+  right: 20px;
+  z-index: 50;
+}
+
+/* Badge styling: distinctive label */
+.badge {
+  background: rgba(255, 102, 0, 0.8);  /* Orange with transparency */
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;          /* Pill-shaped */
+  font-size: 0.75rem;           /* Small */
+  font-weight: 600;
+  text-transform: uppercase;    /* ALL CAPS for prominence */
+  letter-spacing: 0.5px;        /* Spread out letters */
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN (Mobile/Tablet Adjustments)
+   ======================================================================== */
+/* On smaller screens (less than 768px width), adjust controls panel */
+/* NOTE: Game window itself (1280x800) doesn't change size, but panel adapts */
+@media (max-width: 768px) {
+  .controls-panel {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;                 /* Stretch to left edge too on mobile */
+    min-width: auto;            /* Allow panel to shrink as needed */
+  }
+}
