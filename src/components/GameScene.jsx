@@ -126,6 +126,9 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
   // Time at which pot was first placed over flame (to track boil duration)
   const [timePotOnFlame, setTimePotOnFlame] = useState(null)
 
+  // Burner heat setting (0-3) when boiling was achieved (for ideal time calculation)
+  const [burnerHeatWhenBoiled, setBurnerHeatWhenBoiled] = useState(0)
+
   // Should we pause time flow while popup is visible?
   const [pauseTime, setPauseTime] = useState(false)
 
@@ -384,6 +387,8 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
           const elapsedBoilTime = timePotOnFlame + deltaTime
           setBoilTime(elapsedBoilTime)
         }
+        // Capture the burner heat setting when boiling is achieved
+        setBurnerHeatWhenBoiled(burnerHeat)
         onWaterBoiled?.()    // Notify parent that water has boiled
       }
       
@@ -495,6 +500,8 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
       setTemperature(GAME_CONFIG.ROOM_TEMPERATURE)
       // Reset boiling state
       setIsBoiling(false)
+      // Reset burner heat tracking
+      setBurnerHeatWhenBoiled(0)
     }
   }
 
@@ -793,6 +800,27 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
     const mins = Math.floor(seconds / 60)
     const secs = Math.floor(seconds % 60)
     return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
+
+  // Calculate ideal boil time based on burner heat setting
+  // (Energy needed: Q = mcΔT = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 Joules)
+  // (Time = Energy / Power in Watts, but accounting for altitude pressure effects)
+  const calculateIdealBoilTime = (heatLevel, boilPointTarget) => {
+    const heatLevels = [0, 400, 1700, 2500]  // watts
+    const watts = heatLevels[heatLevel] || heatLevels[2]  // default to medium if invalid
+    
+    if (watts === 0) return null  // Can't boil without heat
+    
+    // Energy to heat water from room temp (20°C) to boiling point
+    const roomTemp = GAME_CONFIG.ROOM_TEMPERATURE
+    const waterMass = GAME_CONFIG.DEFAULT_WATER_MASS * 1000  // grams
+    const specificHeat = fluidProps?.specificHeat || 4.186  // J/(g·°C)
+    const tempDifference = boilPointTarget - roomTemp
+    
+    const energyNeeded = waterMass * specificHeat * tempDifference  // Joules
+    const timeSeconds = energyNeeded / watts
+    
+    return timeSeconds
   }
 
   // Drag boundaries: how far the pot center can move (in percentages)
@@ -1253,9 +1281,15 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
                   <span className="stat-value">{formatTemperature(boilingPoint)}°C</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-label">Time to Boil:</span>
+                  <span className="stat-label">Actual Time:</span>
                   <span className="stat-value">{formatTime(boilTime)}</span>
                 </div>
+                {burnerHeatWhenBoiled > 0 && (
+                  <div className="stat-item">
+                    <span className="stat-label">Ideal Time (Max Heat):</span>
+                    <span className="stat-value">{formatTime(calculateIdealBoilTime(3, boilingPoint))}</span>
+                  </div>
+                )}
               </div>
 
               <p className="modal-insight">
