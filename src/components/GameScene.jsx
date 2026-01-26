@@ -54,12 +54,39 @@ const DEFAULT_LAYOUT = {
   }
 }
 
-function GameScene({ stage, location, onStageChange, themeLayout, themeImages }) {
+function GameScene({ stage, location, onStageChange, themeLayout, themeImages, themeEffects }) {
   const layout = themeLayout || DEFAULT_LAYOUT
   const backgroundImage = themeImages?.background || '/assets/images/game/background.png'
   const potEmptyImage = themeImages?.pot_empty || '/assets/images/game/pot-empty.png'
   const potFullImage = themeImages?.pot_full || '/assets/images/game/pot-full.png'
   const flameImage = themeImages?.flame || '/assets/images/game/flame.png'
+  // Theme-driven optional visual effects (steam, flame glow)
+  // Default: effects DISABLED unless theme provides effects.json
+  // This ensures simple themes have no VFX overhead; only showcase themes (like alpha) enable them
+  const defaultEffects = {
+    steam: {
+      enabled: false,
+      symbol: '💨',
+      color: 'rgba(255, 255, 255, 0.95)',
+      glow: 'rgba(255, 255, 255, 0.45)',
+      sizeRem: 1.5,
+      risePx: -40,
+      durationMs: 1500,
+      offset: { xPercent: 0, yPx: -30 }
+    },
+    flameGlow: {
+      enabled: false,
+      color: null, // falls back to --theme-flame-glow
+      blurPx: 16,
+      flickerMs: null,
+      intensityByHeat: [0, 1, 1.08, 1.16]
+    }
+  }
+
+  const effects = {
+    steam: { ...defaultEffects.steam, ...(themeEffects?.steam || {}) },
+    flameGlow: { ...defaultEffects.flameGlow, ...(themeEffects?.flameGlow || {}) }
+  }
   // ============================================================================
   // STATE VARIABLES: These change during gameplay
   // ============================================================================
@@ -467,6 +494,29 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
   const waterStreamEndY = layout.waterStream.end.yPercent
   const waterStreamHeight = waterStreamEndY - waterStreamStartY
 
+  // Theme-driven optional glow/steam tuning
+  const flameGlowConfig = effects.flameGlow
+  const flameGlowIntensity = flameGlowConfig.intensityByHeat?.[burnerHeat] ?? 1
+  const flameGlowBlur = (flameGlowConfig.blurPx ?? 16) * flameGlowIntensity
+  const flameGlowColor = flameGlowConfig.color || 'var(--theme-flame-glow, #ff3300)'
+  const flameFilter = flameGlowConfig.enabled
+    ? `drop-shadow(0 0 ${flameGlowBlur}px ${flameGlowColor})`
+    : undefined
+  const flameAnimationDuration = flameGlowConfig.flickerMs
+    ? `${flameGlowConfig.flickerMs}ms`
+    : undefined
+
+  const steamConfig = effects.steam
+  const steamStyle = {
+    '--steam-duration': `${(steamConfig.durationMs ?? 1500) / 1000}s`,
+    '--steam-rise': `${steamConfig.risePx ?? -40}px`,
+    '--steam-size': `${steamConfig.sizeRem ?? 1.5}rem`,
+    '--steam-color': steamConfig.color,
+    '--steam-glow': steamConfig.glow,
+    top: `${steamConfig.offset?.yPx ?? -30}px`,
+    left: `calc(50% + ${steamConfig.offset?.xPercent ?? 0}%)`
+  }
+
   // Check if pot is in the water stream area to show the pouring effect
   const showWaterStream =
     potPosition.x >= layout.waterStream.xRange[0] &&
@@ -564,6 +614,10 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
               src={flameImage}
               alt="Flame"
               className="flame-graphic"
+              style={{
+                filter: flameFilter,
+                animationDuration: flameAnimationDuration
+              }}
             />
           )}
         </div>
@@ -626,8 +680,21 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages })
             draggable={false}  // Disable browser's native drag for images
           />
           
-          {/* Show steam animation when water is actively boiling */}
-          {isBoiling && <div className="steam-effect">💨</div>}
+          {/* Show steam animation when water is actively boiling (theme-tunable, optional) */}
+          {steamConfig.enabled && isBoiling && (
+            <div className="steam-effect" style={steamStyle}>
+              {steamConfig.asset ? (
+                <img
+                  src={steamConfig.asset}
+                  alt="Steam effect"
+                  className="steam-sprite"
+                  draggable={false}
+                />
+              ) : (
+                steamConfig.symbol || '💨'
+              )}
+            </div>
+          )}
         </div>
         {/* 
           ========== STATUS PANEL ==========

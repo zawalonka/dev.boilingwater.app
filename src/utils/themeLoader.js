@@ -30,12 +30,24 @@ export async function loadTheme(themeId) {
     if (base.startsWith('/')) {
       base = base.slice(1)
     }
-    const url = new URL(`${base}assets/themes/${themeId}/theme.json`, window.location.href).toString()
-    const res = await fetch(url)
+    const themeUrl = new URL(`${base}assets/themes/${themeId}/theme.json`, window.location.href).toString()
+    const res = await fetch(themeUrl)
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status} loading ${url}`)
+      throw new Error(`HTTP ${res.status} loading ${themeUrl}`)
     }
     const themeData = await res.json()
+
+    // Optional: load theme effects from effects.json if present (non-blocking)
+    try {
+      const effectsUrl = new URL(`${base}assets/themes/${themeId}/effects.json`, window.location.href).toString()
+      const effectsRes = await fetch(effectsUrl)
+      if (effectsRes.ok) {
+        themeData.effects = await effectsRes.json()
+        console.log(`✓ Loaded theme effects for '${themeId}' from effects.json`)
+      }
+    } catch (effectsError) {
+      console.info(`No effects.json for theme '${themeId}' (optional): ${effectsError.message}`)
+    }
 
     // Validate the theme has all required fields
     validateThemeData(themeData)
@@ -96,6 +108,11 @@ export function validateThemeData(themeData) {
     throw new Error(`'images' field must be an object`)
   }
 
+  // Effects are optional; if provided, ensure they are objects
+  if (themeData.effects && typeof themeData.effects !== 'object') {
+    throw new Error(`'effects' field, when provided, must be an object`)
+  }
+
   // Validate metadata if present (optional but if present must be object)
   if (themeData.metadata && typeof themeData.metadata !== 'object') {
     throw new Error(`'metadata' field must be an object`)
@@ -142,7 +159,8 @@ export function processTheme(themeData, parentTheme = null) {
     layout: {
       ...processed.layout,
       ...themeData.layout
-    }
+    },
+    effects: themeData.effects || {}  // Do NOT inherit effects; only use if theme defines them
   }
 }
 
@@ -202,9 +220,19 @@ export function applyTheme(processedTheme) {
  *   await preloadThemeImages(theme)
  */
 export async function preloadThemeImages(themeData) {
-  if (!themeData.images) return
+  const effectAssets = []
+  if (themeData.effects?.steam?.asset && typeof themeData.effects.steam.asset === 'string') {
+    effectAssets.push(['steam', themeData.effects.steam.asset])
+  }
 
-  const imagePromises = Object.entries(themeData.images).map(([key, url]) => {
+  const assets = [
+    ...(themeData.images ? Object.entries(themeData.images) : []),
+    ...effectAssets
+  ]
+
+  if (assets.length === 0) return
+
+  const imagePromises = assets.map(([key, url]) => {
     return new Promise((resolve, reject) => {
       const img = new Image()
       img.onload = () => {
@@ -345,10 +373,11 @@ export async function initializeTheme(themeId, options = {}) {
     // Load the theme JSON
     const rawTheme = await loadTheme(themeId)
 
-    // Load parent theme if specified
+    // Load parent theme if specified via option OR declared in theme JSON
     let parentTheme = null
-    if (parentThemeId) {
-      const parentData = await loadTheme(parentThemeId)
+    const parentId = parentThemeId || rawTheme.parentTheme
+    if (parentId) {
+      const parentData = await loadTheme(parentId)
       parentTheme = processTheme(parentData)
     }
 

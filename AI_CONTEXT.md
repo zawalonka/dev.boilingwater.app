@@ -230,8 +230,10 @@ npm run preview         # Preview production build
 # Image Optimization
 node scripts/optimize-images.js
 
-# Git
-git log --oneline       # See commit history (many theme-related fixes)
+# Git - Remotes
+git remote -v           # View remotes (dev vs origin)
+git push dev main       # Push to dev.boilingwater.app
+git push origin main    # Push to production (ONLY after dev verification)
 ```
 
 ---
@@ -239,6 +241,10 @@ git log --oneline       # See commit history (many theme-related fixes)
 ## 🚨 CRITICAL DEPLOYMENT WORKFLOW
 
 **⚠️ ALWAYS PUSH TO DEV REPO FIRST ⚠️**
+
+### Git Remotes (Already Configured)
+- **`dev`** → https://github.com/zawalonka/dev.boilingwater.app.git (testing/dev)
+- **`origin`** → https://github.com/zawalonka/Boilingwater.app.git (production)
 
 ### The Process (NEVER Skip Steps)
 

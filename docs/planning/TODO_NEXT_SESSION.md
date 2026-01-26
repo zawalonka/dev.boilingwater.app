@@ -1,5 +1,7 @@
 # Next Session TODO - Image & Asset Overhaul
 
+- [ ] Confirm whether effects (steam, glowing fire, etc.) are defined within the theme folder structure; if not, add an optional `effects.json` schema/file to themes (document optionality, no placeholder effects required for simple themes)
+
 ## Priority 1: ComfyUI Workflows & SVG Conversion
 - [ ] Create ComfyUI workflows for all transparent images (pot-empty, pot-full, flame)
 - [ ] Generate SVG versions of theme images from ComfyUI workflows

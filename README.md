@@ -57,9 +57,10 @@ Someone googles "how to boil water" → finds BoilingWater.app → gets an insta
 
 ## 📖 Documentation
 
-- [Full Documentation](BoilingWater_Full_Documentation.md) - Complete project vision and technical details
-- [One-Page Pitch](BoilingWater_OnePage_Pitch.md) - Quick overview of the concept
-- [DEVELOPMENT.md](DEVELOPMENT.md) - Setup and contribution guide _(coming soon)_
+- [Full Documentation](docs/planning/BoilingWater_Full_Documentation.md) - Complete project vision and technical details
+- [One-Page Pitch](docs/planning/BoilingWater_OnePage_Pitch.md) - Quick overview of the concept
+- [AI Context Guide](AI_CONTEXT.md) - For AI agents working on this codebase
+- [Development Setup](docs/guides/DEVELOPMENT.md) - Setup and contribution guide
 
 ## 🎯 Current Status
 

@@ -138,6 +138,7 @@ function App() {
           onStageChange={setGameStage}
           themeLayout={activeThemeData?.layout}
           themeImages={activeThemeData?.images}
+          themeEffects={activeThemeData?.effects}
         />
       </div>
     )

@@ -248,8 +248,19 @@
   top: -30px;                   /* Position above the pot */
   left: 50%;
   transform: translateX(-50%);  /* Center horizontally */
-  font-size: 1.5rem;            /* Large emoji */
-  animation: rise 1.5s infinite;  /* Continuous rising animation */
+  font-size: var(--steam-size, 1.5rem);            /* Large emoji */
+  animation: rise var(--steam-duration, 1.5s) infinite;  /* Continuous rising animation */
+  color: var(--steam-color, inherit);
+  text-shadow: 0 0 12px var(--steam-glow, rgba(255, 255, 255, 0.45));
+  pointer-events: none;
+}
+
+.steam-effect .steam-sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 /* Animation: steam emoji rises and fades out */
@@ -260,7 +271,7 @@
   }
   100% {
     opacity: 0;                 /* Fade to invisible */
-    transform: translateX(-50%) translateY(-40px);  /* Move up 40px */
+    transform: translateX(-50%) translateY(var(--steam-rise, -40px));  /* Move up */
   }
 }
 

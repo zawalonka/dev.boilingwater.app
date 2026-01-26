@@ -78,6 +78,16 @@ Now I'll commit these changes with a description...
 
 **⚠️ ALWAYS PUSH TO DEV FIRST - NEVER SKIP THIS ⚠️**
 
+### Git Remotes (Already Configured)
+- **`dev`** = dev.boilingwater.app (testing)
+- **`origin`** = Boilingwater.app (production)
+
+### Commands
+```bash
+git push dev main       # Push to dev.boilingwater.app
+git push origin main    # Push to production (ONLY after dev verification)
+```
+
 ### Every Push Must Follow This Process:
 
 1. **Local Testing**

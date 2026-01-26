@@ -1,0 +1,19 @@
+{
+  "steam": {
+    "enabled": true,
+    "symbol": "💨",
+    "color": "rgba(255, 255, 255, 0.95)",
+    "glow": "rgba(255, 255, 255, 0.50)",
+    "sizeRem": 1.6,
+    "risePx": -46,
+    "durationMs": 1400,
+    "offset": { "xPercent": 0, "yPx": -34 }
+  },
+  "flameGlow": {
+    "enabled": true,
+    "color": "rgba(255, 136, 64, 0.85)",
+    "blurPx": 18,
+    "flickerMs": 360,
+    "intensityByHeat": [0, 1, 1.10, 1.22]
+  }
+}

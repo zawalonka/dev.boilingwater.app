@@ -106,6 +106,35 @@ Each theme is a JSON file defining colors, images, typography, and metadata.
 | `parentTheme` | string | ID of parent theme to inherit from |
 | `description` | string | Detailed description of theme |
 | `typography` | object | Font and text styling definitions |
+| `effects` | object | Optional VFX tuning (steam, flame glow). Prefer storing in `effects.json` next to `theme.json`; safe to omit for simple themes |
+
+### Optional Effects File (`effects.json`)
+
+- **Location:** `public/assets/themes/<themeId>/effects.json`
+- **Purpose:** Theme-specific VFX tuning without bloating `theme.json` (e.g., steam symbol/glow, flame glow blur/intensity). If the file is absent, the game falls back to built-in defaults.
+- **Example:**
+```json
+{
+  "steam": {
+    "enabled": true,
+    "symbol": "💨",
+    "color": "rgba(255, 255, 255, 0.95)",
+    "glow": "rgba(255, 255, 255, 0.50)",
+    "sizeRem": 1.6,
+    "risePx": -46,
+    "durationMs": 1400,
+    "offset": { "xPercent": 0, "yPx": -34 }
+  },
+  "flameGlow": {
+    "enabled": true,
+    "color": "rgba(255, 136, 64, 0.85)",
+    "blurPx": 18,
+    "flickerMs": 360,
+    "intensityByHeat": [0, 1, 1.1, 1.22]
+  }
+}
+```
+- **Opt-in only:** Do not create placeholder effects for minimal themes; omit the file entirely if you do not want VFX overrides.
 
 ---
 
