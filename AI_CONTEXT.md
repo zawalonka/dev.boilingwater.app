@@ -196,6 +196,22 @@ public/assets/
 2. Include commit hash, date, and WHY it was hard to spot
 3. Show before/after code
 
+### Communication Style
+- **Explain before executing** - Say what you're about to do and why
+- **Don't chain silently** - If using multiple git operations, explain between them
+- **Show results** - Confirm what happened after execution
+- **Be specific** - Name the tool/operation and what it accomplishes
+- **Example:**
+  ```
+  First, I'll stage the updated files...
+  [git add operation]
+  
+  Now I'll commit with a message explaining the changes...
+  [git commit operation]
+  
+  ✅ Committed: [summary of what went in]
+  ```
+
 ### File Size Awareness
 - Background images are large (optimized to ~200KB each)
 - Theme JSONs are small (<10KB)

@@ -52,6 +52,28 @@ Add it to [`GOTCHAS.md`](../GOTCHAS.md) with:
 
 ---
 
+## Communication Guidelines
+
+**When using git/tool operations:**
+- Always explain what you're doing BEFORE executing
+- Say why the operation is needed
+- Don't chain multiple operations silently - explain between them
+- Show what happened after execution
+- Be specific: name the operation and its purpose
+
+**Example of clear communication:**
+```
+First, I'll stage the modified files...
+[execute operation]
+
+Now I'll commit these changes with a description...
+[execute operation]
+
+✅ Done: [summary of result]
+```
+
+---
+
 ## 🚨 DEPLOYMENT WORKFLOW (CRITICAL!)
 
 **⚠️ ALWAYS PUSH TO DEV FIRST - NEVER SKIP THIS ⚠️**
