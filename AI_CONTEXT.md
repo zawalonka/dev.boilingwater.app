@@ -242,10 +242,16 @@ git log --oneline       # See commit history (many theme-related fixes)
    - Check for any issues
    - Dev is a full production-like environment
 
-4. **ONLY THEN push to main production repo**
+4. **Strategic Bug Check (BEFORE production)**
+   - Review changes for edge cases
+   - Check error handling
+   - Verify theme switching, physics, UI
+   - Look for regressions
+   - Only when confident → proceed to production
+
+5. **ONLY THEN push to main production repo**
    - Production pushes are NEVER immediate
    - Always wait for confirmation dev works
-   - Even small docs changes need dev verification
    - Production deployments are deliberate, not rushed
 
 ### Why This Matters

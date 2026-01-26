@@ -65,18 +65,23 @@ Add it to [`GOTCHAS.md`](../GOTCHAS.md) with:
    - Test on dev site (production-like environment)
    - Verify everything works correctly
    
-3. **Wait for Confirmation**
-   - DO NOT immediately push to production
-   - Wait to verify dev deployment is working
+3. **Strategic Bug Check** (REQUIRED BEFORE PRODUCTION)
+   - Review changes for edge cases and regressions
+   - Check error handling and UI responsiveness
+   - Verify theme switching, physics simulation, all key features
+   - Only when confident should you proceed to production
    
 4. **Only Then Push to Production**
    - Production is live to real users
    - Changes cannot be undone instantly
    - This is intentionally deliberate and slow
+   - Production pushes are RARE (not the default)
 
 ### Critical Rules
 - ✅ Always dev first
-- ✅ Always wait for dev verification
+- ✅ Always test thoroughly on dev
+- ✅ Always do strategic bug check before production
+- ✅ Production is ONLY after dev verification
 - ❌ Never push directly to production
 - ❌ Never skip dev testing
 - ❌ Never rush to production
