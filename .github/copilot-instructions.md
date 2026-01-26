@@ -52,16 +52,36 @@ Add it to [`GOTCHAS.md`](../GOTCHAS.md) with:
 
 ---
 
-## 🚨 DEPLOYMENT WORKFLOW
+## 🚨 DEPLOYMENT WORKFLOW (CRITICAL!)
 
-**⚠️ ALWAYS PUSH TO DEV FIRST ⚠️**
+**⚠️ ALWAYS PUSH TO DEV FIRST - NEVER SKIP THIS ⚠️**
 
-1. Test locally
-2. **Push to dev.boilingwater.app repo** (separate dev repository)
-3. Test on dev site
-4. Only then push to production
+### Every Push Must Follow This Process:
 
-**Never skip dev testing!**
+1. **Local Testing**
+   - `npm run dev` and verify changes work
+   
+2. **Push to dev.boilingwater.app** (SEPARATE REPO)
+   - Test on dev site (production-like environment)
+   - Verify everything works correctly
+   
+3. **Wait for Confirmation**
+   - DO NOT immediately push to production
+   - Wait to verify dev deployment is working
+   
+4. **Only Then Push to Production**
+   - Production is live to real users
+   - Changes cannot be undone instantly
+   - This is intentionally deliberate and slow
+
+### Critical Rules
+- ✅ Always dev first
+- ✅ Always wait for dev verification
+- ❌ Never push directly to production
+- ❌ Never skip dev testing
+- ❌ Never rush to production
+
+**This applies to EVERYTHING: code, docs, assets, config. No exceptions.**
 
 ---
 

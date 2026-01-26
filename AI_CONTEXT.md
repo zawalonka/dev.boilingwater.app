@@ -224,12 +224,37 @@ git log --oneline       # See commit history (many theme-related fixes)
 
 **⚠️ ALWAYS PUSH TO DEV REPO FIRST ⚠️**
 
-1. **Test changes locally** (`npm run dev`)
-2. **Push to dev.boilingwater.app repository** (separate dev repo)
-3. **Test on dev site** (verify everything works in production-like environment)
-4. **ONLY THEN** push to main production repo
+### The Process (NEVER Skip Steps)
 
-**Never push directly to production without dev testing!**
+1. **Test changes locally** 
+   ```bash
+   npm run dev
+   ```
+
+2. **Push to dev.boilingwater.app repository** 
+   - This is a **SEPARATE repository** (not a branch)
+   - You must test changes in dev environment first
+   - This prevents breaking production
+   
+3. **Test thoroughly on dev site**
+   - Verify all links work
+   - Test new features
+   - Check for any issues
+   - Dev is a full production-like environment
+
+4. **ONLY THEN push to main production repo**
+   - Production pushes are NEVER immediate
+   - Always wait for confirmation dev works
+   - Even small docs changes need dev verification
+   - Production deployments are deliberate, not rushed
+
+### Why This Matters
+- Production is live to real users
+- Dev is your safety testing ground
+- One mistake in production can't be undone instantly
+- Mistakes caught in dev never reach users
+
+**Never bypass dev. Ever. No exceptions.**
 
 ---
 
