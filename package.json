@@ -1,6 +1,6 @@
 {
   "name": "boilingwater-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "private": true,
   "description": "An interactive physics and chemistry learning game that starts with boiling water",
