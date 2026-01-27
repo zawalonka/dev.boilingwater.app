@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 4,
-  "oxidationStates": [4],
+  "oxidationStates": [
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 91.224,
     "electronegativity": 1.33,
@@ -15,9 +16,13 @@
     "atomicRadius": 160,
     "electronAffinity": 41.1,
     "standardMolarEntropy": 38.99,
-    "specificHeatCapacity": 0.278
+    "specificHeatCapacity": 0.278,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1855,
+    "boilingPoint": 4409,
+    "density": 6.52,
+    "thermalConductivity": 22.6
   },
-  
   "iupac": {
     "atomicMass": 91.224,
     "electronegativity": 1.33,
@@ -25,19 +30,23 @@
     "atomicRadius": 160,
     "electronAffinity": 41.1,
     "standardMolarEntropy": 38.99,
-    "specificHeatCapacity": 0.278
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.278,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1855,
     "boilingPoint": 4409,
     "density": 6.52,
-    "thermalConductivity": 22.6,
+    "thermalConductivity": 22.6
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white lustrous metal",
-    "uses": ["nuclear reactors", "corrosion-resistant alloys", "ceramic knives", "cubic zirconia (jewelry)"],
+    "uses": [
+      "nuclear reactors",
+      "corrosion-resistant alloys",
+      "ceramic knives",
+      "cubic zirconia (jewelry)"
+    ],
     "notes": "Named from Arabic 'zargun' (gold-colored). Extremely corrosion-resistant - used for nuclear fuel rods. Cubic zirconia (ZrO₂) is diamond simulant in jewelry. Zirconium alloys used in chemical processing equipment and pumps."
   },
-  
   "lastUpdated": "2026-01-27"
 }

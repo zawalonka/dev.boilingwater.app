@@ -16,6 +16,10 @@
     "electronAffinity": 52.9,
     "standardMolarEntropy": 51.3,
     "specificHeatCapacity": 28.2,
+    "meltingPoint": 97.72,
+    "boilingPoint": 883,
+    "density": 0.971,
+    "thermalConductivity": 142.0,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 52.9,
     "standardMolarEntropy": 51.3,
     "specificHeatCapacity": 28.2,
+    "meltingPoint": 97.72,
+    "boilingPoint": 883,
+    "density": 0.971,
+    "thermalConductivity": 142.0,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "soft silvery-white metal",
+    "uses": ["table salt (NaCl)", "baking soda and other sodium compounds", "coolant in nuclear reactors", "street lighting (sodium vapor lamps)", "chemical synthesis"],
+    "notes": "Extremely reactive alkali metal; reacts violently with water producing hydrogen gas and heat; must be stored under mineral oil or inert gas; essential electrolyte for nerve/muscle function; most common sodium compound is table salt (necessary for life)"
   },
   
   "lastUpdated": "2026-01-27"

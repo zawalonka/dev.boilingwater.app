@@ -5,9 +5,10 @@
   "elementCategory": "actinide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 13,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 252,
     "electronegativity": 1.3,
@@ -15,9 +16,13 @@
     "atomicRadius": 165,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 860,
+    "boilingPoint": 996,
+    "density": 8.84,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 252,
     "electronegativity": 1.3,
@@ -25,19 +30,20 @@
     "atomicRadius": 165,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 860,
     "boilingPoint": 996,
     "density": 8.84,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery metal (radioactive)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Albert Einstein. Discovered in debris from first hydrogen bomb test (1952) - kept secret until 1955! Glows blue from radiation. Es-253 half-life: 20 days. Produces only nanogram quantities. Research only - no practical applications."
   },
-  
   "lastUpdated": "2026-01-27"
 }

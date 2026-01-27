@@ -16,6 +16,10 @@
     "electronAffinity": 141.0,
     "standardMolarEntropy": 205.15,
     "specificHeatCapacity": 20.9,
+    "meltingPoint": -218.79,
+    "boilingPoint": -182.95,
+    "density": 0.001429,
+    "thermalConductivity": 0.0262,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 141.0,
     "standardMolarEntropy": 205.15,
     "specificHeatCapacity": 20.9,
+    "meltingPoint": -218.79,
+    "boilingPoint": -182.95,
+    "density": 0.001429,
+    "thermalConductivity": 0.0262,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless, odorless gas (liquid is pale blue)",
+    "uses": ["respiration (cellular energy)", "combustion (burning)", "water (with hydrogen)", "medical (oxygen therapy)", "industrial oxidation"],
+    "notes": "Makes up 21% of atmosphere; essential for aerobic respiration in animals; produced by plants via photosynthesis; forms water with hydrogen; most electronegative element; reactive and supports combustion"
   },
   
   "lastUpdated": "2026-01-27"

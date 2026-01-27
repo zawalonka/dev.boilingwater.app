@@ -5,39 +5,48 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 5,
-  "oxidationStates": [5],
+  "oxidationStates": [
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 180.94788,
     "electronegativity": 1.5,
-    "ionizationEnergy": 761.0,
+    "ionizationEnergy": 761,
     "atomicRadius": 146,
     "electronAffinity": 31,
     "standardMolarEntropy": 41.51,
-    "specificHeatCapacity": 0.140
-  },
-  
-  "iupac": {
-    "atomicMass": 180.94788,
-    "electronegativity": 1.5,
-    "ionizationEnergy": 761.0,
-    "atomicRadius": 146,
-    "electronAffinity": 31,
-    "standardMolarEntropy": 41.51,
-    "specificHeatCapacity": 0.140
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.14,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 3017,
     "boilingPoint": 5458,
     "density": 16.69,
-    "thermalConductivity": 57.5,
+    "thermalConductivity": 57.5
+  },
+  "iupac": {
+    "atomicMass": 180.94788,
+    "electronegativity": 1.5,
+    "ionizationEnergy": 761,
+    "atomicRadius": 146,
+    "electronAffinity": 31,
+    "standardMolarEntropy": 41.51,
+    "specificHeatCapacity": 0.14,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 3017,
+    "boilingPoint": 5458,
+    "density": 16.69,
+    "thermalConductivity": 57.5
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "blue-gray lustrous metal",
-    "uses": ["capacitors (phones)", "surgical implants", "jet engines", "chemical equipment"],
+    "uses": [
+      "capacitors (phones)",
+      "surgical implants",
+      "jet engines",
+      "chemical equipment"
+    ],
     "notes": "Named after Tantalus (Greek mythology). Extremely corrosion-resistant - unaffected by most acids. Tantalum capacitors in every smartphone (holds charge efficiently). Biocompatible - used in bone repair and surgical instruments. Third highest melting point (after tungsten and rhenium)."
   },
-  
   "lastUpdated": "2026-01-27"
 }

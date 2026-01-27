@@ -5,39 +5,49 @@
   "elementCategory": "post-transition-metal",
   "chemicalBlock": "p-block",
   "valenceElectrons": 5,
-  "oxidationStates": [3, 5],
+  "oxidationStates": [
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
-    "atomicMass": 208.98040,
+    "atomicMass": 208.9804,
     "electronegativity": 2.02,
-    "ionizationEnergy": 703.0,
+    "ionizationEnergy": 703,
     "atomicRadius": 160,
     "electronAffinity": 91.2,
     "standardMolarEntropy": 56.74,
-    "specificHeatCapacity": 0.122
-  },
-  
-  "iupac": {
-    "atomicMass": 208.98040,
-    "electronegativity": 2.02,
-    "ionizationEnergy": 703.0,
-    "atomicRadius": 160,
-    "electronAffinity": 91.2,
-    "standardMolarEntropy": 56.74,
-    "specificHeatCapacity": 0.122
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.122,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 271.3,
     "boilingPoint": 1564,
     "density": 9.78,
-    "thermalConductivity": 7.97,
+    "thermalConductivity": 7.97
+  },
+  "iupac": {
+    "atomicMass": 208.9804,
+    "electronegativity": 2.02,
+    "ionizationEnergy": 703,
+    "atomicRadius": 160,
+    "electronAffinity": 91.2,
+    "standardMolarEntropy": 56.74,
+    "specificHeatCapacity": 0.122,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 271.3,
+    "boilingPoint": 1564,
+    "density": 9.78,
+    "thermalConductivity": 7.97
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "pinkish-white lustrous metal",
-    "uses": ["Pepto-Bismol", "cosmetics", "fire sprinklers", "low-melting alloys"],
+    "uses": [
+      "Pepto-Bismol",
+      "cosmetics",
+      "fire sprinklers",
+      "low-melting alloys"
+    ],
     "notes": "Named from German 'wismut' (uncertain origin). Heaviest stable element (all heavier elements are radioactive). Expands when solidifying (like water → ice) - used in low-melting alloys. Bismuth subsalicylate = Pepto-Bismol (treats diarrhea). Forms beautiful rainbow-colored oxide crystals."
   },
-  
   "lastUpdated": "2026-01-27"
 }

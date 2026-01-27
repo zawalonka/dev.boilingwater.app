@@ -5,9 +5,10 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 6,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 144.242,
     "electronegativity": 1.14,
@@ -15,9 +16,13 @@
     "atomicRadius": 181,
     "electronAffinity": 50,
     "standardMolarEntropy": 71.5,
-    "specificHeatCapacity": 0.190
+    "specificHeatCapacity": 0.19,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1016,
+    "boilingPoint": 3074,
+    "density": 7.01,
+    "thermalConductivity": 16.5
   },
-  
   "iupac": {
     "atomicMass": 144.242,
     "electronegativity": 1.14,
@@ -25,19 +30,23 @@
     "atomicRadius": 181,
     "electronAffinity": 50,
     "standardMolarEntropy": 71.5,
-    "specificHeatCapacity": 0.190
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.19,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1016,
     "boilingPoint": 3074,
     "density": 7.01,
-    "thermalConductivity": 16.5,
+    "thermalConductivity": 16.5
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["permanent magnets", "lasers", "glass coloring", "hard drive motors"],
+    "uses": [
+      "permanent magnets",
+      "lasers",
+      "glass coloring",
+      "hard drive motors"
+    ],
     "notes": "Named from Greek 'neos didymos' (new twin). Neodymium magnets (NdFeB) are strongest permanent magnets - used in hard drives, headphones, electric motors, wind turbines. Nd:YAG lasers cut metal and perform eye surgery. Colors glass purple-blue."
   },
-  
   "lastUpdated": "2026-01-27"
 }

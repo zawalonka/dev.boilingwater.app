@@ -16,6 +16,10 @@
     "electronAffinity": 122.3,
     "standardMolarEntropy": 5.7,
     "specificHeatCapacity": 8.6,
+    "meltingPoint": 3823,
+    "boilingPoint": 4827,
+    "density": 2.267,
+    "thermalConductivity": 24.0,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 122.3,
     "standardMolarEntropy": 5.7,
     "specificHeatCapacity": 8.6,
+    "meltingPoint": 3823,
+    "boilingPoint": 4827,
+    "density": 2.267,
+    "thermalConductivity": 24.0,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "black crystalline solid (graphite) or colorless crystal (diamond)",
+    "uses": ["diamonds (gems, cutting tools)", "graphite (pencils, lubricant, electrodes)", "steel reinforcement", "CO2 (dry ice)", "organic chemistry foundation"],
+    "notes": "Foundation of all organic chemistry and life; forms many allotropes (diamond, graphite, coal, charcoal); can bond with itself in infinite chains; most versatile element chemically"
   },
   
   "lastUpdated": "2026-01-27"

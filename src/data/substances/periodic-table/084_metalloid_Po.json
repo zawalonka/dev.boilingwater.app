@@ -5,39 +5,48 @@
   "elementCategory": "metalloid",
   "chemicalBlock": "p-block",
   "valenceElectrons": 6,
-  "oxidationStates": [2, 4],
+  "oxidationStates": [
+    2,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 209,
-    "electronegativity": 2.0,
+    "electronegativity": 2,
     "ionizationEnergy": 812.1,
     "atomicRadius": 190,
     "electronAffinity": 183.3,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.125
-  },
-  
-  "iupac": {
-    "atomicMass": 209,
-    "electronegativity": 2.0,
-    "ionizationEnergy": 812.1,
-    "atomicRadius": 190,
-    "electronAffinity": 183.3,
-    "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.125
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.125,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 254,
     "boilingPoint": 962,
     "density": 9.196,
-    "thermalConductivity": 0.2,
+    "thermalConductivity": 0.2
+  },
+  "iupac": {
+    "atomicMass": 209,
+    "electronegativity": 2,
+    "ionizationEnergy": 812.1,
+    "atomicRadius": 190,
+    "electronAffinity": 183.3,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.125,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 254,
+    "boilingPoint": 962,
+    "density": 9.196,
+    "thermalConductivity": 0.2
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery metal (radioactive)",
-    "uses": ["anti-static brushes", "spacecraft heaters", "nuclear batteries"],
+    "uses": [
+      "anti-static brushes",
+      "spacecraft heaters",
+      "nuclear batteries"
+    ],
     "notes": "Named after Poland (Marie Curie's homeland). Extremely radioactive - Po-210 emits alpha particles. Glows blue from air ionization. One gram releases 140 watts of heat! Used in thermoelectric power for spacecraft. Toxic - one microgram is lethal dose."
   },
-  
   "lastUpdated": "2026-01-27"
 }

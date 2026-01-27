@@ -5,9 +5,10 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 17,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 174.9668,
     "electronegativity": 1.27,
@@ -15,9 +16,13 @@
     "atomicRadius": 174,
     "electronAffinity": 50,
     "standardMolarEntropy": 50.96,
-    "specificHeatCapacity": 0.154
+    "specificHeatCapacity": 0.154,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1663,
+    "boilingPoint": 3402,
+    "density": 9.841,
+    "thermalConductivity": 16.4
   },
-  
   "iupac": {
     "atomicMass": 174.9668,
     "electronegativity": 1.27,
@@ -25,19 +30,22 @@
     "atomicRadius": 174,
     "electronAffinity": 50,
     "standardMolarEntropy": 50.96,
-    "specificHeatCapacity": 0.154
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.154,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1663,
     "boilingPoint": 3402,
     "density": 9.841,
-    "thermalConductivity": 16.4,
+    "thermalConductivity": 16.4
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["PET scan detectors", "catalysts", "research"],
+    "uses": [
+      "PET scan detectors",
+      "catalysts",
+      "research"
+    ],
     "notes": "Named after Lutetia (ancient name for Paris). Last and densest lanthanide. Hardest and highest melting point of lanthanides. Lutetium oxyorthosilicate (LSO) scintillators used in PET scanners - detect cancer. Very expensive and rare."
   },
-  
   "lastUpdated": "2026-01-27"
 }

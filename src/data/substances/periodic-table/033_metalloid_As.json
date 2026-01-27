@@ -5,40 +5,51 @@
   "elementCategory": "metalloid",
   "chemicalBlock": "p-block",
   "valenceElectrons": 5,
-  "oxidationStates": [-3, 3, 5],
+  "oxidationStates": [
+    -3,
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 74.921595,
     "electronegativity": 2.18,
-    "ionizationEnergy": 947.0,
+    "ionizationEnergy": 947,
     "atomicRadius": 119,
     "electronAffinity": 78,
     "standardMolarEntropy": 35.1,
-    "specificHeatCapacity": 0.329
+    "specificHeatCapacity": 0.329,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 817,
+    "boilingPoint": 616,
+    "density": 5.727,
+    "thermalConductivity": 50.2
   },
-  
   "iupac": {
     "atomicMass": 74.921595,
     "electronegativity": 2.18,
-    "ionizationEnergy": 947.0,
+    "ionizationEnergy": 947,
     "atomicRadius": 119,
     "electronAffinity": 78,
     "standardMolarEntropy": 35.1,
-    "specificHeatCapacity": 0.329
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.329,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 817,
     "boilingPoint": 616,
-    "sublimationPoint": 615,
     "density": 5.727,
-    "thermalConductivity": 50.2,
+    "thermalConductivity": 50.2
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "sublimationPoint": 615,
     "appearance": "metallic grey (most stable form)",
-    "uses": ["semiconductors", "wood preservative (banned)", "lead alloys", "historical poison"],
+    "uses": [
+      "semiconductors",
+      "wood preservative (banned)",
+      "lead alloys",
+      "historical poison"
+    ],
     "notes": "Infamous as poison - but also essential trace element. Sublimes (solid → gas) at 615°C without melting! Used in gallium arsenide (GaAs) semiconductors for phones. Historically used as poison (arsenic trioxide is tasteless, hard to detect)."
   },
-  
   "lastUpdated": "2026-01-27"
 }

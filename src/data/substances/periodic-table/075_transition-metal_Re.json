@@ -5,39 +5,50 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 7,
-  "oxidationStates": [4, 6, 7],
+  "oxidationStates": [
+    4,
+    6,
+    7
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 186.207,
     "electronegativity": 1.9,
-    "ionizationEnergy": 760.0,
+    "ionizationEnergy": 760,
     "atomicRadius": 137,
     "electronAffinity": 14.5,
     "standardMolarEntropy": 36.53,
-    "specificHeatCapacity": 0.137
-  },
-  
-  "iupac": {
-    "atomicMass": 186.207,
-    "electronegativity": 1.9,
-    "ionizationEnergy": 760.0,
-    "atomicRadius": 137,
-    "electronAffinity": 14.5,
-    "standardMolarEntropy": 36.53,
-    "specificHeatCapacity": 0.137
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.137,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 3186,
     "boilingPoint": 5596,
     "density": 21.02,
-    "thermalConductivity": 48.0,
+    "thermalConductivity": 48
+  },
+  "iupac": {
+    "atomicMass": 186.207,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 760,
+    "atomicRadius": 137,
+    "electronAffinity": 14.5,
+    "standardMolarEntropy": 36.53,
+    "specificHeatCapacity": 0.137,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 3186,
+    "boilingPoint": 5596,
+    "density": 21.02,
+    "thermalConductivity": 48
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white heavy metal",
-    "uses": ["jet engine turbines", "catalysts", "thermocouples", "filaments"],
+    "uses": [
+      "jet engine turbines",
+      "catalysts",
+      "thermocouples",
+      "filaments"
+    ],
     "notes": "Named after Rhine river (Latin: Rhenus). Third highest melting point (3186°C). Rhenium superalloys withstand extreme temperatures - used in jet engine turbine blades. One of rarest elements in Earth's crust. Extremely expensive."
   },
-  
   "lastUpdated": "2026-01-27"
 }

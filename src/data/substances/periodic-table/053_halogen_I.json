@@ -5,9 +5,13 @@
   "elementCategory": "halogen",
   "chemicalBlock": "p-block",
   "valenceElectrons": 7,
-  "oxidationStates": [-1, 1, 5, 7],
+  "oxidationStates": [
+    -1,
+    1,
+    5,
+    7
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 126.90447,
     "electronegativity": 2.66,
@@ -15,9 +19,13 @@
     "atomicRadius": 139,
     "electronAffinity": 295.2,
     "standardMolarEntropy": 116.135,
-    "specificHeatCapacity": 0.214
+    "specificHeatCapacity": 0.214,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 113.7,
+    "boilingPoint": 184.3,
+    "density": 4.933,
+    "thermalConductivity": 0.449
   },
-  
   "iupac": {
     "atomicMass": 126.90447,
     "electronegativity": 2.66,
@@ -25,19 +33,23 @@
     "atomicRadius": 139,
     "electronAffinity": 295.2,
     "standardMolarEntropy": 116.135,
-    "specificHeatCapacity": 0.214
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.214,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 113.7,
     "boilingPoint": 184.3,
     "density": 4.933,
-    "thermalConductivity": 0.449,
+    "thermalConductivity": 0.449
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "lustrous purple-black solid",
-    "uses": ["disinfectant", "iodized salt", "contrast agents", "antiseptic"],
+    "uses": [
+      "disinfectant",
+      "iodized salt",
+      "contrast agents",
+      "antiseptic"
+    ],
     "notes": "Named from Greek 'ioeides' (violet) - purple vapor. Essential for life - thyroid hormone production. Added to table salt to prevent goiter. Tincture of iodine is antiseptic. Sublimes easily - solid → purple vapor. Used in medical imaging (iodine contrast)."
   },
-  
   "lastUpdated": "2026-01-27"
 }

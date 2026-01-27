@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 5,
-  "oxidationStates": [5],
+  "oxidationStates": [
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 268,
     "electronegativity": 0,
@@ -15,9 +16,13 @@
     "atomicRadius": 139,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 29.3,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 268,
     "electronegativity": 0,
@@ -25,19 +30,20 @@
     "atomicRadius": 139,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 0,
     "boilingPoint": 0,
     "density": 29.3,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Dubna, Russia (Joint Institute for Nuclear Research). Naming controversy - Americans proposed 'hahnium' after Otto Hahn. Db-268 half-life: 29 hours. Chemistry similar to tantalum. Produced by bombarding californium with nitrogen. Research only - no practical applications."
   },
-  
   "lastUpdated": "2026-01-27"
 }

@@ -5,9 +5,12 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 6,
-  "oxidationStates": [2, 3, 6],
+  "oxidationStates": [
+    2,
+    3,
+    6
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 51.9961,
     "electronegativity": 1.66,
@@ -15,9 +18,13 @@
     "atomicRadius": 128,
     "electronAffinity": 64.3,
     "standardMolarEntropy": 23.77,
-    "specificHeatCapacity": 0.449
+    "specificHeatCapacity": 0.449,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1907,
+    "boilingPoint": 2671,
+    "density": 7.19,
+    "thermalConductivity": 93.9
   },
-  
   "iupac": {
     "atomicMass": 51.9961,
     "electronegativity": 1.66,
@@ -25,19 +32,23 @@
     "atomicRadius": 128,
     "electronAffinity": 64.3,
     "standardMolarEntropy": 23.77,
-    "specificHeatCapacity": 0.449
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.449,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1907,
     "boilingPoint": 2671,
     "density": 7.19,
-    "thermalConductivity": 93.9,
+    "thermalConductivity": 93.9
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery, lustrous, hard metal",
-    "uses": ["chrome plating", "stainless steel (10-20% Cr)", "pigments", "leather tanning"],
+    "uses": [
+      "chrome plating",
+      "stainless steel (10-20% Cr)",
+      "pigments",
+      "leather tanning"
+    ],
     "notes": "Named from Greek 'chroma' (color) - chromium compounds are brilliantly colored. Chrome plating creates shiny protective coating on metal (car bumpers, faucets). Chromium makes steel 'stainless' - resists rust and corrosion."
   },
-  
   "lastUpdated": "2026-01-27"
 }

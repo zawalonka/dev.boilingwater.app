@@ -16,6 +16,10 @@
     "electronAffinity": 348.6,
     "standardMolarEntropy": 223.08,
     "specificHeatCapacity": 33.9,
+    "meltingPoint": -101.5,
+    "boilingPoint": -34.04,
+    "density": 0.003214,
+    "thermalConductivity": 0.0089,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 348.6,
     "standardMolarEntropy": 223.08,
     "specificHeatCapacity": 33.9,
+    "meltingPoint": -101.5,
+    "boilingPoint": -34.04,
+    "density": 0.003214,
+    "thermalConductivity": 0.0089,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "yellow-green gas with pungent odor",
+    "uses": ["water disinfection/purification", "bleach production", "PVC plastic", "salt refining", "industrial chemistry"],
+    "notes": "Highly toxic reactive halogen; strong oxidizer; kills bacteria making it essential for water treatment; produces chlorine gas (WWI chemical weapon); most common chlorine compound is table salt (NaCl); essential trace element in biological systems"
   },
   
   "lastUpdated": "2026-01-27"

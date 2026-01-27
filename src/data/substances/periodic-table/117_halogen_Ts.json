@@ -5,9 +5,12 @@
   "elementCategory": "halogen",
   "chemicalBlock": "p-block",
   "valenceElectrons": 17,
-  "oxidationStates": [1, 3, 5],
+  "oxidationStates": [
+    1,
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 294,
     "electronegativity": 0,
@@ -15,9 +18,13 @@
     "atomicRadius": 165,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 723,
+    "boilingPoint": 883,
+    "density": 7.17,
+    "thermalConductivity": 0
   },
-  
   "iupac": {
     "atomicMass": 294,
     "electronegativity": 0,
@@ -25,19 +32,20 @@
     "atomicRadius": 165,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 723,
     "boilingPoint": 883,
     "density": 7.17,
-    "thermalConductivity": 0,
+    "thermalConductivity": 0
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic/semiconducting (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Tennessee (Oak Ridge National Laboratory). Second element named after US state (after californium). Produced by bombarding berkelium with calcium. Ts-294 half-life: 51 milliseconds. Heaviest halogen but metallic, not reactive like other halogens! Relativistic effects completely change chemistry. Research only."
   },
-  
   "lastUpdated": "2026-01-27"
 }

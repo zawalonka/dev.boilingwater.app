@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 4,
-  "oxidationStates": [4],
+  "oxidationStates": [
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 178.49,
     "electronegativity": 1.3,
@@ -15,9 +16,13 @@
     "atomicRadius": 159,
     "electronAffinity": 0,
     "standardMolarEntropy": 43.55,
-    "specificHeatCapacity": 0.144
+    "specificHeatCapacity": 0.144,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 2233,
+    "boilingPoint": 4603,
+    "density": 13.31,
+    "thermalConductivity": 23
   },
-  
   "iupac": {
     "atomicMass": 178.49,
     "electronegativity": 1.3,
@@ -25,19 +30,23 @@
     "atomicRadius": 159,
     "electronAffinity": 0,
     "standardMolarEntropy": 43.55,
-    "specificHeatCapacity": 0.144
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.144,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 2233,
     "boilingPoint": 4603,
     "density": 13.31,
-    "thermalConductivity": 23.0,
+    "thermalConductivity": 23
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-gray lustrous metal",
-    "uses": ["nuclear reactor control rods", "microprocessors", "plasma cutting", "superalloys"],
+    "uses": [
+      "nuclear reactor control rods",
+      "microprocessors",
+      "plasma cutting",
+      "superalloys"
+    ],
     "notes": "Named after Copenhagen (Latin: Hafnia). Excellent neutron absorber - used in nuclear submarine reactors. Hafnium oxide used in microprocessor gates (Intel 45nm and beyond). Extremely similar chemistry to zirconium - difficult to separate."
   },
-  
   "lastUpdated": "2026-01-27"
 }

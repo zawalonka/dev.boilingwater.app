@@ -5,9 +5,11 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 11,
-  "oxidationStates": [3, 4],
+  "oxidationStates": [
+    3,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 158.92535,
     "electronegativity": 1.2,
@@ -15,9 +17,13 @@
     "atomicRadius": 177,
     "electronAffinity": 50,
     "standardMolarEntropy": 73.2,
-    "specificHeatCapacity": 0.182
+    "specificHeatCapacity": 0.182,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1356,
+    "boilingPoint": 3230,
+    "density": 8.23,
+    "thermalConductivity": 11.1
   },
-  
   "iupac": {
     "atomicMass": 158.92535,
     "electronegativity": 1.2,
@@ -25,19 +31,23 @@
     "atomicRadius": 177,
     "electronAffinity": 50,
     "standardMolarEntropy": 73.2,
-    "specificHeatCapacity": 0.182
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.182,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1356,
     "boilingPoint": 3230,
     "density": 8.23,
-    "thermalConductivity": 11.1,
+    "thermalConductivity": 11.1
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["green phosphors", "fuel cells", "magnets", "euro coins"],
+    "uses": [
+      "green phosphors",
+      "fuel cells",
+      "magnets",
+      "euro coins"
+    ],
     "notes": "Named after Ytterby, Sweden (4th element from this village!). Green phosphor in fluorescent lamps and TV screens. Terfenol-D (Tb-Dy-Fe) expands/contracts with magnetic field - used in sonar and precision actuators. Magnetostrictive properties."
   },
-  
   "lastUpdated": "2026-01-27"
 }

@@ -5,9 +5,10 @@
   "elementCategory": "alkaline-earth-metal",
   "chemicalBlock": "s-block",
   "valenceElectrons": 2,
-  "oxidationStates": [2],
+  "oxidationStates": [
+    2
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 87.62,
     "electronegativity": 0.95,
@@ -15,9 +16,13 @@
     "atomicRadius": 215,
     "electronAffinity": 5.03,
     "standardMolarEntropy": 52.3,
-    "specificHeatCapacity": 0.301
+    "specificHeatCapacity": 0.301,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 777,
+    "boilingPoint": 1382,
+    "density": 2.64,
+    "thermalConductivity": 35.4
   },
-  
   "iupac": {
     "atomicMass": 87.62,
     "electronegativity": 0.95,
@@ -25,19 +30,23 @@
     "atomicRadius": 215,
     "electronAffinity": 5.03,
     "standardMolarEntropy": 52.3,
-    "specificHeatCapacity": 0.301
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.301,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 777,
     "boilingPoint": 1382,
     "density": 2.64,
-    "thermalConductivity": 35.4,
+    "thermalConductivity": 35.4
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metallic",
-    "uses": ["fireworks (red color)", "flares", "magnets", "zinc refining"],
+    "uses": [
+      "fireworks (red color)",
+      "flares",
+      "magnets",
+      "zinc refining"
+    ],
     "notes": "Named after Strontian, Scotland (where first found). Produces brilliant red color in fireworks - more intense than lithium. Strontium-90 (radioactive) is dangerous nuclear fallout product. Behaves chemically like calcium - can replace it in bones."
   },
-  
   "lastUpdated": "2026-01-27"
 }

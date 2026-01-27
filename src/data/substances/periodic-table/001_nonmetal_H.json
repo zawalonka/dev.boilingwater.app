@@ -16,6 +16,10 @@
     "electronAffinity": 72.8,
     "standardMolarEntropy": 130.57,
     "specificHeatCapacity": 14.3,
+    "meltingPoint": -259.16,
+    "boilingPoint": -252.87,
+    "density": 0.0000899,
+    "thermalConductivity": 0.1815,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 72.8,
     "standardMolarEntropy": 130.57,
     "specificHeatCapacity": 14.3,
+    "meltingPoint": -259.16,
+    "boilingPoint": -252.87,
+    "density": 0.0000899,
+    "thermalConductivity": 0.1815,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless, odorless gas",
+    "uses": ["fuel", "water production", "ammonia synthesis", "rocket propellant", "welding"],
+    "notes": "Most abundant element in universe; stars powered by hydrogen fusion; lightest element; combines with oxygen to form water; essential for life; can form explosive mixtures with oxygen"
   },
   
   "lastUpdated": "2026-01-27"

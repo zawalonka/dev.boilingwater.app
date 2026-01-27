@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 12,
-  "oxidationStates": [2],
+  "oxidationStates": [
+    2
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 112.414,
     "electronegativity": 1.69,
@@ -15,9 +16,13 @@
     "atomicRadius": 151,
     "electronAffinity": 0,
     "standardMolarEntropy": 51.76,
-    "specificHeatCapacity": 0.232
+    "specificHeatCapacity": 0.232,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 321.07,
+    "boilingPoint": 767,
+    "density": 8.65,
+    "thermalConductivity": 96.6
   },
-  
   "iupac": {
     "atomicMass": 112.414,
     "electronegativity": 1.69,
@@ -25,19 +30,23 @@
     "atomicRadius": 151,
     "electronAffinity": 0,
     "standardMolarEntropy": 51.76,
-    "specificHeatCapacity": 0.232
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.232,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 321.07,
     "boilingPoint": 767,
     "density": 8.65,
-    "thermalConductivity": 96.6,
+    "thermalConductivity": 96.6
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white soft metal",
-    "uses": ["rechargeable batteries", "pigments (banned)", "electroplating", "nuclear reactors"],
+    "uses": [
+      "rechargeable batteries",
+      "pigments (banned)",
+      "electroplating",
+      "nuclear reactors"
+    ],
     "notes": "Named from Latin 'cadmia' (calamine, zinc ore). Toxic heavy metal. Once used in yellow/orange pigments (now banned). Main use is nickel-cadmium (NiCd) rechargeable batteries. Absorbs neutrons - used in nuclear control rods."
   },
-  
   "lastUpdated": "2026-01-27"
 }

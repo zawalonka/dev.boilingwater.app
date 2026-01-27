@@ -5,9 +5,11 @@
   "elementCategory": "post-transition-metal",
   "chemicalBlock": "p-block",
   "valenceElectrons": 3,
-  "oxidationStates": [1, 3],
+  "oxidationStates": [
+    1,
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 204.38,
     "electronegativity": 1.62,
@@ -15,9 +17,13 @@
     "atomicRadius": 190,
     "electronAffinity": 36,
     "standardMolarEntropy": 64.18,
-    "specificHeatCapacity": 0.129
+    "specificHeatCapacity": 0.129,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 304,
+    "boilingPoint": 1473,
+    "density": 11.85,
+    "thermalConductivity": 46.1
   },
-  
   "iupac": {
     "atomicMass": 204.38,
     "electronegativity": 1.62,
@@ -25,19 +31,22 @@
     "atomicRadius": 190,
     "electronAffinity": 36,
     "standardMolarEntropy": 64.18,
-    "specificHeatCapacity": 0.129
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.129,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 304,
     "boilingPoint": 1473,
     "density": 11.85,
-    "thermalConductivity": 46.1,
+    "thermalConductivity": 46.1
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white soft metal",
-    "uses": ["infrared detectors", "gamma radiation detection", "rat poison (banned)"],
+    "uses": [
+      "infrared detectors",
+      "gamma radiation detection",
+      "rat poison (banned)"
+    ],
     "notes": "Named from Greek 'thallos' (green twig) - bright green spectral line. Extremely toxic ('poisoner's poison') - odorless, tasteless, now banned. Thallium sulfide photocells detect infrared. Thallium-doped NaI scintillators detect gamma rays. Soft - can be cut with knife."
   },
-  
   "lastUpdated": "2026-01-27"
 }

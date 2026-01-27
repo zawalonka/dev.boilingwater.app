@@ -5,39 +5,50 @@
   "elementCategory": "metalloid",
   "chemicalBlock": "p-block",
   "valenceElectrons": 5,
-  "oxidationStates": [-3, 3, 5],
+  "oxidationStates": [
+    -3,
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
-    "atomicMass": 121.760,
+    "atomicMass": 121.76,
     "electronegativity": 2.05,
-    "ionizationEnergy": 834.0,
+    "ionizationEnergy": 834,
     "atomicRadius": 139,
     "electronAffinity": 103.2,
     "standardMolarEntropy": 45.52,
-    "specificHeatCapacity": 0.207
-  },
-  
-  "iupac": {
-    "atomicMass": 121.760,
-    "electronegativity": 2.05,
-    "ionizationEnergy": 834.0,
-    "atomicRadius": 139,
-    "electronAffinity": 103.2,
-    "standardMolarEntropy": 45.52,
-    "specificHeatCapacity": 0.207
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.207,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 630.63,
     "boilingPoint": 1587,
     "density": 6.697,
-    "thermalConductivity": 24.4,
+    "thermalConductivity": 24.4
+  },
+  "iupac": {
+    "atomicMass": 121.76,
+    "electronegativity": 2.05,
+    "ionizationEnergy": 834,
+    "atomicRadius": 139,
+    "electronAffinity": 103.2,
+    "standardMolarEntropy": 45.52,
+    "specificHeatCapacity": 0.207,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 630.63,
+    "boilingPoint": 1587,
+    "density": 6.697,
+    "thermalConductivity": 24.4
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white lustrous metalloid",
-    "uses": ["flame retardants", "lead-acid batteries", "semiconductors", "pewter"],
+    "uses": [
+      "flame retardants",
+      "lead-acid batteries",
+      "semiconductors",
+      "pewter"
+    ],
     "notes": "Symbol Sb from Latin 'stibium'. Used for 5000+ years - ancient Egyptians used antimony sulfide as eyeliner. Main use today: flame retardants in fabrics and plastics. Hardens lead alloys - used in batteries and bullets. Expands when solidifying (like water/ice)."
   },
-  
   "lastUpdated": "2026-01-27"
 }

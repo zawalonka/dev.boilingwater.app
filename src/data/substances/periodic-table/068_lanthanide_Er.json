@@ -5,9 +5,10 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 14,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 167.259,
     "electronegativity": 1.24,
@@ -15,9 +16,13 @@
     "atomicRadius": 176,
     "electronAffinity": 50,
     "standardMolarEntropy": 73.18,
-    "specificHeatCapacity": 0.168
+    "specificHeatCapacity": 0.168,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1529,
+    "boilingPoint": 2868,
+    "density": 9.066,
+    "thermalConductivity": 14.5
   },
-  
   "iupac": {
     "atomicMass": 167.259,
     "electronegativity": 1.24,
@@ -25,19 +30,23 @@
     "atomicRadius": 176,
     "electronAffinity": 50,
     "standardMolarEntropy": 73.18,
-    "specificHeatCapacity": 0.168
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.168,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1529,
     "boilingPoint": 2868,
     "density": 9.066,
-    "thermalConductivity": 14.5,
+    "thermalConductivity": 14.5
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["fiber optic amplifiers", "lasers (medical/dental)", "nuclear technology", "pink glass"],
+    "uses": [
+      "fiber optic amplifiers",
+      "lasers (medical/dental)",
+      "nuclear technology",
+      "pink glass"
+    ],
     "notes": "Named after Ytterby, Sweden. Erbium-doped fiber amplifiers (EDFAs) enable long-distance fiber optic communication - backbone of internet! Er:YAG lasers ablate tissue - used in dentistry and skin resurfacing. Colors glass pink."
   },
-  
   "lastUpdated": "2026-01-27"
 }

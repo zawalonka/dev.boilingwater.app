@@ -5,9 +5,11 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 5,
-  "oxidationStates": [3, 5],
+  "oxidationStates": [
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 92.90637,
     "electronegativity": 1.6,
@@ -15,9 +17,13 @@
     "atomicRadius": 146,
     "electronAffinity": 86.1,
     "standardMolarEntropy": 36.27,
-    "specificHeatCapacity": 0.265
+    "specificHeatCapacity": 0.265,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 2477,
+    "boilingPoint": 4744,
+    "density": 8.57,
+    "thermalConductivity": 53.7
   },
-  
   "iupac": {
     "atomicMass": 92.90637,
     "electronegativity": 1.6,
@@ -25,19 +31,23 @@
     "atomicRadius": 146,
     "electronAffinity": 86.1,
     "standardMolarEntropy": 36.27,
-    "specificHeatCapacity": 0.265
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.265,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 2477,
     "boilingPoint": 4744,
     "density": 8.57,
-    "thermalConductivity": 53.7,
+    "thermalConductivity": 53.7
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "gray lustrous metal",
-    "uses": ["superconducting magnets", "steel alloys", "jet engines", "MRI scanners"],
+    "uses": [
+      "superconducting magnets",
+      "steel alloys",
+      "jet engines",
+      "MRI scanners"
+    ],
     "notes": "Named after Niobe (Greek mythology). Becomes superconducting at 9.2 K - used in particle accelerators and MRI magnets. Added to steel for high-strength, heat-resistant alloys used in jet engines and pipelines. Hypoallergenic - used in body piercing jewelry."
   },
-  
   "lastUpdated": "2026-01-27"
 }

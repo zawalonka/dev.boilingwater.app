@@ -5,9 +5,10 @@
   "elementCategory": "post-transition-metal",
   "chemicalBlock": "p-block",
   "valenceElectrons": 3,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 69.723,
     "electronegativity": 1.81,
@@ -15,9 +16,13 @@
     "atomicRadius": 122,
     "electronAffinity": 41,
     "standardMolarEntropy": 40.83,
-    "specificHeatCapacity": 0.371
+    "specificHeatCapacity": 0.371,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 29.76,
+    "boilingPoint": 2204,
+    "density": 5.91,
+    "thermalConductivity": 40.6
   },
-  
   "iupac": {
     "atomicMass": 69.723,
     "electronegativity": 1.81,
@@ -25,19 +30,23 @@
     "atomicRadius": 122,
     "electronAffinity": 41,
     "standardMolarEntropy": 40.83,
-    "specificHeatCapacity": 0.371
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.371,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 29.76,
     "boilingPoint": 2204,
     "density": 5.91,
-    "thermalConductivity": 40.6,
+    "thermalConductivity": 40.6
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white soft metal",
-    "uses": ["LEDs", "semiconductors", "solar panels", "thermometers (high-temp)"],
+    "uses": [
+      "LEDs",
+      "semiconductors",
+      "solar panels",
+      "thermometers (high-temp)"
+    ],
     "notes": "Melts at 29.76°C - will melt in your hand! But boils at 2204°C - widest liquid range of any element. Used in gallium arsenide (GaAs) semiconductors for LEDs and solar cells. Named after Gaul (France)."
   },
-  
   "lastUpdated": "2026-01-27"
 }

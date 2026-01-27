@@ -5,39 +5,49 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 12,
-  "oxidationStates": [1, 2],
+  "oxidationStates": [
+    1,
+    2
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 200.592,
-    "electronegativity": 2.00,
+    "electronegativity": 2,
     "ionizationEnergy": 1007.1,
     "atomicRadius": 151,
     "electronAffinity": 0,
     "standardMolarEntropy": 75.9,
-    "specificHeatCapacity": 0.140
-  },
-  
-  "iupac": {
-    "atomicMass": 200.592,
-    "electronegativity": 2.00,
-    "ionizationEnergy": 1007.1,
-    "atomicRadius": 151,
-    "electronAffinity": 0,
-    "standardMolarEntropy": 75.9,
-    "specificHeatCapacity": 0.140
-  },
-  
-  "physicalProperties": {
-    "phase": "liquid",
+    "specificHeatCapacity": 0.14,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": -38.83,
     "boilingPoint": 356.73,
     "density": 13.534,
-    "thermalConductivity": 8.30,
+    "thermalConductivity": 8.3
+  },
+  "iupac": {
+    "atomicMass": 200.592,
+    "electronegativity": 2,
+    "ionizationEnergy": 1007.1,
+    "atomicRadius": 151,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 75.9,
+    "specificHeatCapacity": 0.14,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": -38.83,
+    "boilingPoint": 356.73,
+    "density": 13.534,
+    "thermalConductivity": 8.3
+  },
+  "physicalProperties": {
+    "phase": "liquid",
     "appearance": "silvery liquid metal",
-    "uses": ["thermometers (banned)", "fluorescent lights", "barometers", "dental amalgam (phased out)"],
+    "uses": [
+      "thermometers (banned)",
+      "fluorescent lights",
+      "barometers",
+      "dental amalgam (phased out)"
+    ],
     "notes": "Symbol Hg from Greek 'hydrargyrum' (liquid silver). Only metal liquid at room temperature (besides bromine, a nonmetal). Toxic - accumulates in body, damages nervous system. Mercury vapor lamps produce UV light (tanning beds, street lights). Amalgams with gold, silver used in mining and dentistry."
   },
-  
   "lastUpdated": "2026-01-27"
 }

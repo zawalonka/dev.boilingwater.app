@@ -5,9 +5,10 @@
   "elementCategory": "alkali-metal",
   "chemicalBlock": "s-block",
   "valenceElectrons": 1,
-  "oxidationStates": [1],
+  "oxidationStates": [
+    1
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 223,
     "electronegativity": 0.7,
@@ -15,9 +16,13 @@
     "atomicRadius": 348,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 27,
+    "boilingPoint": 677,
+    "density": 1.87,
+    "thermalConductivity": 15
   },
-  
   "iupac": {
     "atomicMass": 223,
     "electronegativity": 0.7,
@@ -25,19 +30,20 @@
     "atomicRadius": 348,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 27,
     "boilingPoint": 677,
     "density": 1.87,
-    "thermalConductivity": 15,
+    "thermalConductivity": 15
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted, never seen in bulk)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after France. Most unstable of first 103 elements - Fr-223 half-life only 22 minutes! Less than 30g exists on Earth at any moment. Would be most reactive element - explodes instantly with water. Never been seen in bulk due to extreme radioactivity. Largest atomic radius of any element."
   },
-  
   "lastUpdated": "2026-01-27"
 }

@@ -5,9 +5,11 @@
   "elementCategory": "actinide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 12,
-  "oxidationStates": [3, 4],
+  "oxidationStates": [
+    3,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 251,
     "electronegativity": 1.3,
@@ -15,9 +17,13 @@
     "atomicRadius": 169,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 900,
+    "boilingPoint": 1470,
+    "density": 15.1,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 251,
     "electronegativity": 1.3,
@@ -25,19 +31,23 @@
     "atomicRadius": 169,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 900,
     "boilingPoint": 1470,
     "density": 15.1,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery metal (radioactive)",
-    "uses": ["neutron moisture gauges", "cancer treatment", "gold/silver detection", "startup neutron source for nuclear reactors"],
+    "uses": [
+      "neutron moisture gauges",
+      "cancer treatment",
+      "gold/silver detection",
+      "startup neutron source for nuclear reactors"
+    ],
     "notes": "Named after California. Strongest neutron emitter - Cf-252 produces 170 million neutrons/second/microgram! Used to start nuclear reactors. Detects moisture in soil (oil drilling, road building). Treats cervical/brain cancer. Detects gold/silver in ore. Extremely valuable - $27 million/gram!"
   },
-  
   "lastUpdated": "2026-01-27"
 }

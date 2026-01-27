@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 3,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 44.955908,
     "electronegativity": 1.36,
@@ -15,9 +16,13 @@
     "atomicRadius": 162,
     "electronAffinity": 18.1,
     "standardMolarEntropy": 34.64,
-    "specificHeatCapacity": 0.568
+    "specificHeatCapacity": 0.568,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1541,
+    "boilingPoint": 2836,
+    "density": 2.989,
+    "thermalConductivity": 15.8
   },
-  
   "iupac": {
     "atomicMass": 44.955908,
     "electronegativity": 1.36,
@@ -25,19 +30,23 @@
     "atomicRadius": 162,
     "electronAffinity": 18.1,
     "standardMolarEntropy": 34.64,
-    "specificHeatCapacity": 0.568
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.568,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1541,
     "boilingPoint": 2836,
     "density": 2.989,
-    "thermalConductivity": 15.8,
+    "thermalConductivity": 15.8
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["aluminum-scandium alloys", "high-intensity lights", "aerospace industry", "baseball bats"],
+    "uses": [
+      "aluminum-scandium alloys",
+      "high-intensity lights",
+      "aerospace industry",
+      "baseball bats"
+    ],
     "notes": "Scandium is named after Scandinavia. Rare and expensive. Makes aluminum alloys much stronger - used in aerospace and sports equipment. Burns easily when powdered."
   },
-  
   "lastUpdated": "2026-01-27"
 }

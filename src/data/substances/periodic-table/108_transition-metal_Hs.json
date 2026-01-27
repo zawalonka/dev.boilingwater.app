@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 8,
-  "oxidationStates": [8],
+  "oxidationStates": [
+    8
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 277,
     "electronegativity": 0,
@@ -15,9 +16,13 @@
     "atomicRadius": 134,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 40.7,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 277,
     "electronegativity": 0,
@@ -25,19 +30,20 @@
     "atomicRadius": 134,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 0,
     "boilingPoint": 0,
     "density": 40.7,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Hesse (Hassia in Latin), Germany (GSI Helmholtz Centre). Produced by bombarding lead with iron. Hs-277 half-life: 11.4 minutes. Expected to behave like osmium. Predicted to form volatile hassium tetroxide HsO4. Research only."
   },
-  
   "lastUpdated": "2026-01-27"
 }

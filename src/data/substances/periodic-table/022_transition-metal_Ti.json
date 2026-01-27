@@ -5,9 +5,12 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 4,
-  "oxidationStates": [2, 3, 4],
+  "oxidationStates": [
+    2,
+    3,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 47.867,
     "electronegativity": 1.54,
@@ -15,9 +18,13 @@
     "atomicRadius": 147,
     "electronAffinity": 7.6,
     "standardMolarEntropy": 30.63,
-    "specificHeatCapacity": 0.523
+    "specificHeatCapacity": 0.523,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1668,
+    "boilingPoint": 3287,
+    "density": 4.506,
+    "thermalConductivity": 21.9
   },
-  
   "iupac": {
     "atomicMass": 47.867,
     "electronegativity": 1.54,
@@ -25,19 +32,24 @@
     "atomicRadius": 147,
     "electronAffinity": 7.6,
     "standardMolarEntropy": 30.63,
-    "specificHeatCapacity": 0.523
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.523,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1668,
     "boilingPoint": 3287,
     "density": 4.506,
-    "thermalConductivity": 21.9,
+    "thermalConductivity": 21.9
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white lustrous metal",
-    "uses": ["aircraft", "spacecraft", "medical implants", "jewelry", "white pigment (TiO₂)"],
+    "uses": [
+      "aircraft",
+      "spacecraft",
+      "medical implants",
+      "jewelry",
+      "white pigment (TiO₂)"
+    ],
     "notes": "Named after the Titans of Greek mythology. Strong as steel but 45% lighter. Extremely corrosion-resistant. Biocompatible - used in artificial joints and dental implants. TiO₂ is the whitest substance known, used in paint."
   },
-  
   "lastUpdated": "2026-01-27"
 }

@@ -5,9 +5,10 @@
   "elementCategory": "post-transition-metal",
   "chemicalBlock": "p-block",
   "valenceElectrons": 3,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 114.818,
     "electronegativity": 1.78,
@@ -15,9 +16,13 @@
     "atomicRadius": 167,
     "electronAffinity": 37.043,
     "standardMolarEntropy": 57.82,
-    "specificHeatCapacity": 0.233
+    "specificHeatCapacity": 0.233,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 156.6,
+    "boilingPoint": 2072,
+    "density": 7.31,
+    "thermalConductivity": 81.8
   },
-  
   "iupac": {
     "atomicMass": 114.818,
     "electronegativity": 1.78,
@@ -25,19 +30,24 @@
     "atomicRadius": 167,
     "electronAffinity": 37.043,
     "standardMolarEntropy": 57.82,
-    "specificHeatCapacity": 0.233
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.233,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 156.6,
     "boilingPoint": 2072,
     "density": 7.31,
-    "thermalConductivity": 81.8,
+    "thermalConductivity": 81.8
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white lustrous soft metal",
-    "uses": ["LCD screens", "touchscreens", "LEDs", "solar panels", "semiconductors"],
+    "uses": [
+      "LCD screens",
+      "touchscreens",
+      "LEDs",
+      "solar panels",
+      "semiconductors"
+    ],
     "notes": "Named from indigo (blue spectral line). Indium tin oxide (ITO) is transparent conductor - used in every smartphone and tablet touchscreen! Critical for flat-panel displays, LEDs, solar cells. Soft enough to scratch with fingernail. Very rare element."
   },
-  
   "lastUpdated": "2026-01-27"
 }

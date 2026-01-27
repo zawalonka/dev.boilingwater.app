@@ -5,9 +5,11 @@
   "elementCategory": "post-transition-metal",
   "chemicalBlock": "p-block",
   "valenceElectrons": 14,
-  "oxidationStates": [2, 4],
+  "oxidationStates": [
+    2,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 289,
     "electronegativity": 0,
@@ -15,9 +17,13 @@
     "atomicRadius": 143,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 340,
+    "boilingPoint": 420,
+    "density": 14,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 289,
     "electronegativity": 0,
@@ -25,19 +31,20 @@
     "atomicRadius": 143,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 340,
     "boilingPoint": 420,
-    "density": 14.0,
+    "density": 14,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Georgy Flerov (Soviet nuclear physicist). Produced by bombarding plutonium with calcium. Fl-289 half-life: 2.6 seconds. May be volatile like noble gas due to relativistic effects - possibly gaseous at room temperature! Part of predicted 'island of stability'. Research only."
   },
-  
   "lastUpdated": "2026-01-27"
 }

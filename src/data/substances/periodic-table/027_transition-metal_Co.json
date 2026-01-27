@@ -5,9 +5,11 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 9,
-  "oxidationStates": [2, 3],
+  "oxidationStates": [
+    2,
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 58.933194,
     "electronegativity": 1.88,
@@ -15,9 +17,13 @@
     "atomicRadius": 126,
     "electronAffinity": 63.7,
     "standardMolarEntropy": 30.04,
-    "specificHeatCapacity": 0.421
+    "specificHeatCapacity": 0.421,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1495,
+    "boilingPoint": 2927,
+    "density": 8.86,
+    "thermalConductivity": 100
   },
-  
   "iupac": {
     "atomicMass": 58.933194,
     "electronegativity": 1.88,
@@ -25,19 +31,24 @@
     "atomicRadius": 126,
     "electronAffinity": 63.7,
     "standardMolarEntropy": 30.04,
-    "specificHeatCapacity": 0.421
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.421,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1495,
     "boilingPoint": 2927,
     "density": 8.86,
-    "thermalConductivity": 100,
+    "thermalConductivity": 100
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "hard, lustrous, silvery-blue metal",
-    "uses": ["rechargeable batteries", "permanent magnets", "cutting tools", "blue pigments", "vitamin B12"],
+    "uses": [
+      "rechargeable batteries",
+      "permanent magnets",
+      "cutting tools",
+      "blue pigments",
+      "vitamin B12"
+    ],
     "notes": "Named from German 'kobold' (goblin) - miners blamed goblins for cobalt ore's toxic arsenic content. Critical for lithium-ion batteries in phones and electric cars. Cobalt blue pigment has been used for thousands of years. Essential element in vitamin B12."
   },
-  
   "lastUpdated": "2026-01-27"
 }

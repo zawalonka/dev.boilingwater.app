@@ -5,39 +5,49 @@
   "elementCategory": "metalloid",
   "chemicalBlock": "p-block",
   "valenceElectrons": 4,
-  "oxidationStates": [2, 4],
+  "oxidationStates": [
+    2,
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
-    "atomicMass": 72.630,
+    "atomicMass": 72.63,
     "electronegativity": 2.01,
-    "ionizationEnergy": 762.0,
+    "ionizationEnergy": 762,
     "atomicRadius": 122,
     "electronAffinity": 119,
     "standardMolarEntropy": 31.09,
-    "specificHeatCapacity": 0.32
-  },
-  
-  "iupac": {
-    "atomicMass": 72.630,
-    "electronegativity": 2.01,
-    "ionizationEnergy": 762.0,
-    "atomicRadius": 122,
-    "electronAffinity": 119,
-    "standardMolarEntropy": 31.09,
-    "specificHeatCapacity": 0.32
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.32,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 938.3,
     "boilingPoint": 2833,
     "density": 5.323,
-    "thermalConductivity": 60.2,
+    "thermalConductivity": 60.2
+  },
+  "iupac": {
+    "atomicMass": 72.63,
+    "electronegativity": 2.01,
+    "ionizationEnergy": 762,
+    "atomicRadius": 122,
+    "electronAffinity": 119,
+    "standardMolarEntropy": 31.09,
+    "specificHeatCapacity": 0.32,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 938.3,
+    "boilingPoint": 2833,
+    "density": 5.323,
+    "thermalConductivity": 60.2
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "grayish-white metalloid",
-    "uses": ["fiber optics", "infrared optics", "transistors (early)", "solar cells"],
+    "uses": [
+      "fiber optics",
+      "infrared optics",
+      "transistors (early)",
+      "solar cells"
+    ],
     "notes": "Named after Germany. First transistor (1947) was made of germanium - launched the semiconductor age! Now mostly replaced by silicon. Transparent to infrared light - used in night vision and fiber optics."
   },
-  
   "lastUpdated": "2026-01-27"
 }

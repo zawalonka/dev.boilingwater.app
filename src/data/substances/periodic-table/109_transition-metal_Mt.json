@@ -5,9 +5,12 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 9,
-  "oxidationStates": [3, 6, 9],
+  "oxidationStates": [
+    3,
+    6,
+    9
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 278,
     "electronegativity": 0,
@@ -15,9 +18,13 @@
     "atomicRadius": 129,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 37.4,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 278,
     "electronegativity": 0,
@@ -25,19 +32,20 @@
     "atomicRadius": 129,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 0,
     "boilingPoint": 0,
     "density": 37.4,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Lise Meitner (nuclear fission co-discoverer, overlooked for Nobel Prize). Produced by bombarding bismuth with iron. Mt-278 half-life: 4.5 seconds. Expected chemistry similar to iridium. Only a few atoms ever produced. Research only."
   },
-  
   "lastUpdated": "2026-01-27"
 }

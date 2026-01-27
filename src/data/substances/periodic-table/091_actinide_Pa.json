@@ -5,9 +5,10 @@
   "elementCategory": "actinide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 5,
-  "oxidationStates": [5],
+  "oxidationStates": [
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 231.03588,
     "electronegativity": 1.5,
@@ -15,9 +16,13 @@
     "atomicRadius": 180,
     "electronAffinity": 0,
     "standardMolarEntropy": 51.9,
-    "specificHeatCapacity": 0.121
+    "specificHeatCapacity": 0.121,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1572,
+    "boilingPoint": 4000,
+    "density": 15.37,
+    "thermalConductivity": 47
   },
-  
   "iupac": {
     "atomicMass": 231.03588,
     "electronegativity": 1.5,
@@ -25,19 +30,20 @@
     "atomicRadius": 180,
     "electronAffinity": 0,
     "standardMolarEntropy": 51.9,
-    "specificHeatCapacity": 0.121
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.121,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1572,
     "boilingPoint": 4000,
     "density": 15.37,
-    "thermalConductivity": 47,
+    "thermalConductivity": 47
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-gray metal (radioactive)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named from Greek 'protos' (first) + 'actinium' - decays to actinium. Extremely rare - one of rarest/most expensive elements. Less than 100g available worldwide. Toxic and radioactive - no practical uses beyond research. Pa-231 half-life: 32,760 years."
   },
-  
   "lastUpdated": "2026-01-27"
 }

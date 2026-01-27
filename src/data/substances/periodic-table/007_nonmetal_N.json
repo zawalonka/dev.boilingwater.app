@@ -16,6 +16,10 @@
     "electronAffinity": 7.0,
     "standardMolarEntropy": 191.61,
     "specificHeatCapacity": 20.8,
+    "meltingPoint": -210.0,
+    "boilingPoint": -195.8,
+    "density": 0.001251,
+    "thermalConductivity": 0.0242,
     "source": "NIST Chemistry WebBook 2024"
   },
   
@@ -27,7 +31,18 @@
     "electronAffinity": 7.0,
     "standardMolarEntropy": 191.61,
     "specificHeatCapacity": 20.8,
+    "meltingPoint": -210.0,
+    "boilingPoint": -195.8,
+    "density": 0.001251,
+    "thermalConductivity": 0.0242,
     "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless, odorless gas",
+    "uses": ["fertilizer (nitrates, ammonia)", "explosives", "inert atmosphere", "cryogenic cooling", "industrial chemicals"],
+    "notes": "Makes up 78% of Earth's atmosphere; inert diatomic N2 requires high energy to break apart; essential for proteins and nucleic acids; nitrogen cycle vital to ecosystems; Haber-Bosch process (nitrogen fixation) feeds billions"
   },
   
   "lastUpdated": "2026-01-27"

@@ -5,39 +5,52 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 6,
-  "oxidationStates": [2, 3, 4, 5, 6],
+  "oxidationStates": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 183.84,
     "electronegativity": 2.36,
-    "ionizationEnergy": 770.0,
+    "ionizationEnergy": 770,
     "atomicRadius": 139,
     "electronAffinity": 78.6,
     "standardMolarEntropy": 32.64,
-    "specificHeatCapacity": 0.132
-  },
-  
-  "iupac": {
-    "atomicMass": 183.84,
-    "electronegativity": 2.36,
-    "ionizationEnergy": 770.0,
-    "atomicRadius": 139,
-    "electronAffinity": 78.6,
-    "standardMolarEntropy": 32.64,
-    "specificHeatCapacity": 0.132
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.132,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 3422,
     "boilingPoint": 5555,
     "density": 19.25,
-    "thermalConductivity": 173,
+    "thermalConductivity": 173
+  },
+  "iupac": {
+    "atomicMass": 183.84,
+    "electronegativity": 2.36,
+    "ionizationEnergy": 770,
+    "atomicRadius": 139,
+    "electronAffinity": 78.6,
+    "standardMolarEntropy": 32.64,
+    "specificHeatCapacity": 0.132,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 3422,
+    "boilingPoint": 5555,
+    "density": 19.25,
+    "thermalConductivity": 173
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "grayish-white lustrous metal",
-    "uses": ["light bulb filaments", "radiation shielding", "armor-piercing ammunition", "cutting tools"],
+    "uses": [
+      "light bulb filaments",
+      "radiation shielding",
+      "armor-piercing ammunition",
+      "cutting tools"
+    ],
     "notes": "Symbol W from German 'Wolfram'. Highest melting point of all metals (3422°C)! Used in incandescent bulb filaments (glows white-hot without melting). Tungsten carbide - extremely hard cutting tools and drill bits. Tungsten is HEAVY - denser than gold."
   },
-  
   "lastUpdated": "2026-01-27"
 }

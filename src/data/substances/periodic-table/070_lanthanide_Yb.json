@@ -5,9 +5,11 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 16,
-  "oxidationStates": [2, 3],
+  "oxidationStates": [
+    2,
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 173.045,
     "electronegativity": 1.1,
@@ -15,9 +17,13 @@
     "atomicRadius": 176,
     "electronAffinity": 50,
     "standardMolarEntropy": 59.9,
-    "specificHeatCapacity": 0.155
+    "specificHeatCapacity": 0.155,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 819,
+    "boilingPoint": 1196,
+    "density": 6.9,
+    "thermalConductivity": 38.5
   },
-  
   "iupac": {
     "atomicMass": 173.045,
     "electronegativity": 1.1,
@@ -25,19 +31,23 @@
     "atomicRadius": 176,
     "electronAffinity": 50,
     "standardMolarEntropy": 59.9,
-    "specificHeatCapacity": 0.155
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.155,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 819,
     "boilingPoint": 1196,
-    "density": 6.90,
-    "thermalConductivity": 38.5,
+    "density": 6.9,
+    "thermalConductivity": 38.5
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white soft metal",
-    "uses": ["atomic clocks", "stress gauges", "lasers", "fiber optic amplifiers"],
+    "uses": [
+      "atomic clocks",
+      "stress gauges",
+      "lasers",
+      "fiber optic amplifiers"
+    ],
     "notes": "Named after Ytterby, Sweden. Ytterbium atomic clocks are most accurate clocks - measure time fluctuations due to relativity! Used as dopant in stainless steel for strength testing. Yb-doped lasers for cutting and welding."
   },
-  
   "lastUpdated": "2026-01-27"
 }

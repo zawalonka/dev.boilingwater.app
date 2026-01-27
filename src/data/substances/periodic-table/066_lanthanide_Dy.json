@@ -5,39 +5,48 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 12,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
-    "atomicMass": 162.500,
+    "atomicMass": 162.5,
     "electronegativity": 1.22,
-    "ionizationEnergy": 573.0,
+    "ionizationEnergy": 573,
     "atomicRadius": 178,
     "electronAffinity": 50,
     "standardMolarEntropy": 74.9,
-    "specificHeatCapacity": 0.170
-  },
-  
-  "iupac": {
-    "atomicMass": 162.500,
-    "electronegativity": 1.22,
-    "ionizationEnergy": 573.0,
-    "atomicRadius": 178,
-    "electronAffinity": 50,
-    "standardMolarEntropy": 74.9,
-    "specificHeatCapacity": 0.170
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.17,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 1412,
     "boilingPoint": 2567,
-    "density": 8.540,
-    "thermalConductivity": 10.7,
+    "density": 8.54,
+    "thermalConductivity": 10.7
+  },
+  "iupac": {
+    "atomicMass": 162.5,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 573,
+    "atomicRadius": 178,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 74.9,
+    "specificHeatCapacity": 0.17,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 1412,
+    "boilingPoint": 2567,
+    "density": 8.54,
+    "thermalConductivity": 10.7
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["permanent magnets", "nuclear reactors", "lasers", "data storage"],
+    "uses": [
+      "permanent magnets",
+      "nuclear reactors",
+      "lasers",
+      "data storage"
+    ],
     "notes": "Named from Greek 'dysprositos' (hard to get). High magnetic susceptibility - used in neodymium magnets to improve high-temp performance. Critical for hybrid car motors and wind turbines. Absorbs neutrons - used in nuclear control rods."
   },
-  
   "lastUpdated": "2026-01-27"
 }

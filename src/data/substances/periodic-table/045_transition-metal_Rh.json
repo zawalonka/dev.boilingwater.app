@@ -5,39 +5,48 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 9,
-  "oxidationStates": [3],
+  "oxidationStates": [
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
-    "atomicMass": 102.90550,
+    "atomicMass": 102.9055,
     "electronegativity": 2.28,
     "ionizationEnergy": 719.7,
     "atomicRadius": 134,
     "electronAffinity": 110,
     "standardMolarEntropy": 31.5,
-    "specificHeatCapacity": 0.243
-  },
-  
-  "iupac": {
-    "atomicMass": 102.90550,
-    "electronegativity": 2.28,
-    "ionizationEnergy": 719.7,
-    "atomicRadius": 134,
-    "electronAffinity": 110,
-    "standardMolarEntropy": 31.5,
-    "specificHeatCapacity": 0.243
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.243,
+    "source": "NIST Chemistry WebBook 2024",
     "meltingPoint": 1964,
     "boilingPoint": 3695,
     "density": 12.41,
-    "thermalConductivity": 150,
+    "thermalConductivity": 150
+  },
+  "iupac": {
+    "atomicMass": 102.9055,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 719.7,
+    "atomicRadius": 134,
+    "electronAffinity": 110,
+    "standardMolarEntropy": 31.5,
+    "specificHeatCapacity": 0.243,
+    "source": "IUPAC Periodic Table 2024",
+    "meltingPoint": 1964,
+    "boilingPoint": 3695,
+    "density": 12.41,
+    "thermalConductivity": 150
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white hard metal",
-    "uses": ["catalytic converters", "jewelry", "searchlights", "electroplating"],
+    "uses": [
+      "catalytic converters",
+      "jewelry",
+      "searchlights",
+      "electroplating"
+    ],
     "notes": "Named from Greek 'rhodon' (rose) - its compounds are rose-colored. Extremely rare and expensive (costlier than gold or platinum). Essential in catalytic converters - reduces NOx emissions. Rhodium-plated 'white gold' jewelry has brilliant reflective finish."
   },
-  
   "lastUpdated": "2026-01-27"
 }

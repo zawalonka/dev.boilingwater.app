@@ -5,9 +5,11 @@
   "elementCategory": "lanthanide",
   "chemicalBlock": "f-block",
   "valenceElectrons": 8,
-  "oxidationStates": [2, 3],
+  "oxidationStates": [
+    2,
+    3
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 150.36,
     "electronegativity": 1.17,
@@ -15,9 +17,13 @@
     "atomicRadius": 180,
     "electronAffinity": 50,
     "standardMolarEntropy": 69.6,
-    "specificHeatCapacity": 0.197
+    "specificHeatCapacity": 0.197,
+    "source": "NIST Chemistry WebBook 2024",
+    "meltingPoint": 1072,
+    "boilingPoint": 1794,
+    "density": 7.52,
+    "thermalConductivity": 13.3
   },
-  
   "iupac": {
     "atomicMass": 150.36,
     "electronegativity": 1.17,
@@ -25,19 +31,23 @@
     "atomicRadius": 180,
     "electronAffinity": 50,
     "standardMolarEntropy": 69.6,
-    "specificHeatCapacity": 0.197
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0.197,
+    "source": "IUPAC Periodic Table 2024",
     "meltingPoint": 1072,
     "boilingPoint": 1794,
     "density": 7.52,
-    "thermalConductivity": 13.3,
+    "thermalConductivity": 13.3
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "silvery-white metal",
-    "uses": ["permanent magnets", "neutron absorber", "cancer treatment", "headphones"],
+    "uses": [
+      "permanent magnets",
+      "neutron absorber",
+      "cancer treatment",
+      "headphones"
+    ],
     "notes": "Named after samarskite mineral. SmCo magnets retain magnetism at high temperatures - used in aircraft and Formula 1 racing. Samarium-153 treats bone cancer (radiation therapy). Strong neutron absorber - used in nuclear reactor control rods."
   },
-  
   "lastUpdated": "2026-01-27"
 }

@@ -5,9 +5,10 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 4,
-  "oxidationStates": [4],
+  "oxidationStates": [
+    4
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 267,
     "electronegativity": 0,
@@ -15,9 +16,13 @@
     "atomicRadius": 150,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 2100,
+    "boilingPoint": 5500,
+    "density": 23.2,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 267,
     "electronegativity": 0,
@@ -25,19 +30,20 @@
     "atomicRadius": 150,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 2100,
     "boilingPoint": 5500,
     "density": 23.2,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Ernest Rutherford (nuclear physics pioneer). First transactinide element - begins superheavy elements. Naming controversy between American (rutherfordium) and Soviet (kurchatovium) teams. Rf-267 half-life: 1.3 hours. Produced few atoms at a time. Behaves like hafnium chemically."
   },
-  
   "lastUpdated": "2026-01-27"
 }

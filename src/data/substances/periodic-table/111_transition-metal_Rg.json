@@ -5,9 +5,11 @@
   "elementCategory": "transition-metal",
   "chemicalBlock": "d-block",
   "valenceElectrons": 11,
-  "oxidationStates": [3, 5],
+  "oxidationStates": [
+    3,
+    5
+  ],
   "standardUsed": "both",
-  
   "nist": {
     "atomicMass": 282,
     "electronegativity": 0,
@@ -15,9 +17,13 @@
     "atomicRadius": 121,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
+    "specificHeatCapacity": 0,
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 28.7,
+    "thermalConductivity": 0,
+    "source": "NIST Chemistry WebBook 2024"
   },
-  
   "iupac": {
     "atomicMass": 282,
     "electronegativity": 0,
@@ -25,19 +31,20 @@
     "atomicRadius": 121,
     "electronAffinity": 0,
     "standardMolarEntropy": 0,
-    "specificHeatCapacity": 0.0
-  },
-  
-  "physicalProperties": {
-    "phase": "solid",
+    "specificHeatCapacity": 0,
     "meltingPoint": 0,
     "boilingPoint": 0,
     "density": 28.7,
     "thermalConductivity": 0,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
     "appearance": "metallic (predicted)",
-    "uses": ["research only"],
+    "uses": [
+      "research only"
+    ],
     "notes": "Named after Wilhelm Röntgen (discovered X-rays, first Nobel Prize in Physics). Produced by bombarding bismuth with nickel. Rg-282 half-life: 2.1 minutes. Expected below gold in periodic table but relativistic effects may make it behave differently. Research only."
   },
-  
   "lastUpdated": "2026-01-27"
 }
