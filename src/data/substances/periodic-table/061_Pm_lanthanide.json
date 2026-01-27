@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 61,
+  "symbol": "Pm",
+  "name": "Promethium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 145,
+    "electronegativity": null,
+    "ionizationEnergy": 540,
+    "atomicRadius": 236,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 72,
+    "specificHeatCapacity": 0.19,
+    "meltingPoint": 1042,
+    "boilingPoint": 3000,
+    "density": 7.26,
+    "thermalConductivity": 15,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 145,
+    "electronegativity": null,
+    "ionizationEnergy": 540,
+    "atomicRadius": 236,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 72,
+    "specificHeatCapacity": 0.19,
+    "meltingPoint": 1042,
+    "boilingPoint": 3000,
+    "density": 7.26,
+    "thermalConductivity": 15,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

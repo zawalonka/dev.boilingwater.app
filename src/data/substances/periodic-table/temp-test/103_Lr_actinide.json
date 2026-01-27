@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 103,
+  "symbol": "Lr",
+  "name": "Lawrencium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 262,
+    "electronegativity": null,
+    "ionizationEnergy": 648,
+    "atomicRadius": 246,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1627,
+    "boilingPoint": null,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 262,
+    "electronegativity": null,
+    "ionizationEnergy": 648,
+    "atomicRadius": 246,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1627,
+    "boilingPoint": null,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

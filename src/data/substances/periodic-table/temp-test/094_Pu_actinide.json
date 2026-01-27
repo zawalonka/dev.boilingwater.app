@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 94,
+  "symbol": "Pu",
+  "name": "Plutonium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    6,
+    5,
+    4,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 244,
+    "electronegativity": 1.28,
+    "ionizationEnergy": 584.7,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 55.4,
+    "specificHeatCapacity": 0.13,
+    "meltingPoint": 640,
+    "boilingPoint": 3228,
+    "density": 19.84,
+    "thermalConductivity": 6.74,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 244,
+    "electronegativity": 1.28,
+    "ionizationEnergy": 584.7,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 55.4,
+    "specificHeatCapacity": 0.13,
+    "meltingPoint": 640,
+    "boilingPoint": 3228,
+    "density": 19.84,
+    "thermalConductivity": 6.74,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

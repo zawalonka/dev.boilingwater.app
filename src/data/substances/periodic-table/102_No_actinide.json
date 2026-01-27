@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 102,
+  "symbol": "No",
+  "name": "Nobelium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 259,
+    "electronegativity": null,
+    "ionizationEnergy": 642,
+    "atomicRadius": 246,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 827,
+    "boilingPoint": 1050,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 259,
+    "electronegativity": null,
+    "ionizationEnergy": 642,
+    "atomicRadius": 246,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 827,
+    "boilingPoint": 1050,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 92,
+  "symbol": "U",
+  "name": "Uranium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    5,
+    4,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 238.029,
+    "electronegativity": 1.38,
+    "ionizationEnergy": 597.6,
+    "atomicRadius": 240,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 50.2,
+    "specificHeatCapacity": 0.116,
+    "meltingPoint": 1135,
+    "boilingPoint": 4131,
+    "density": 19.1,
+    "thermalConductivity": 27.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 238.029,
+    "electronegativity": 1.38,
+    "ionizationEnergy": 597.6,
+    "atomicRadius": 240,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 50.2,
+    "specificHeatCapacity": 0.116,
+    "meltingPoint": 1135,
+    "boilingPoint": 4131,
+    "density": 19.1,
+    "thermalConductivity": 27.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

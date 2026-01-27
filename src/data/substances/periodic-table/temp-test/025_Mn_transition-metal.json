@@ -1,0 +1,51 @@
+{
+  "atomicNumber": 25,
+  "symbol": "Mn",
+  "name": "Manganese",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7,
+    6,
+    4,
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 54.938,
+    "electronegativity": 1.55,
+    "ionizationEnergy": 717.3,
+    "atomicRadius": 161,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.01,
+    "specificHeatCapacity": 0.479,
+    "meltingPoint": 1246,
+    "boilingPoint": 2061,
+    "density": 7.47,
+    "thermalConductivity": 7.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 54.938,
+    "electronegativity": 1.55,
+    "ionizationEnergy": 717.3,
+    "atomicRadius": 161,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.01,
+    "specificHeatCapacity": 0.479,
+    "meltingPoint": 1246,
+    "boilingPoint": 2061,
+    "density": 7.47,
+    "thermalConductivity": 7.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

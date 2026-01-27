@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 85,
+  "symbol": "At",
+  "name": "Astatine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7,
+    5,
+    1,
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 210,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 899,
+    "atomicRadius": 202,
+    "electronAffinity": 270,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 302,
+    "boilingPoint": 337,
+    "density": null,
+    "thermalConductivity": 2,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 210,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 899,
+    "atomicRadius": 202,
+    "electronAffinity": 270,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 302,
+    "boilingPoint": 337,
+    "density": null,
+    "thermalConductivity": 2,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dark gray-brown solid",
+    "uses": [],
+    "notes": "Element of the halogen group"
+  },
+  "lastUpdated": "2026-01-27"
+}

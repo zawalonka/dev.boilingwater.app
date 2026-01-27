@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 24,
+  "symbol": "Cr",
+  "name": "Chromium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 51.996,
+    "electronegativity": 1.66,
+    "ionizationEnergy": 652.9,
+    "atomicRadius": 166,
+    "electronAffinity": 64.3,
+    "standardMolarEntropy": 23.77,
+    "specificHeatCapacity": 0.449,
+    "meltingPoint": 1907,
+    "boilingPoint": 2671,
+    "density": 7.19,
+    "thermalConductivity": 93.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 51.996,
+    "electronegativity": 1.66,
+    "ionizationEnergy": 652.9,
+    "atomicRadius": 166,
+    "electronAffinity": 64.3,
+    "standardMolarEntropy": 23.77,
+    "specificHeatCapacity": 0.449,
+    "meltingPoint": 1907,
+    "boilingPoint": 2671,
+    "density": 7.19,
+    "thermalConductivity": 93.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "blue-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 75,
+  "symbol": "Re",
+  "name": "Rhenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 186.207,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 760,
+    "atomicRadius": 217,
+    "electronAffinity": 15,
+    "standardMolarEntropy": 36.53,
+    "specificHeatCapacity": 0.137,
+    "meltingPoint": 3185,
+    "boilingPoint": 5590,
+    "density": 21.02,
+    "thermalConductivity": 48,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 186.207,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 760,
+    "atomicRadius": 217,
+    "electronAffinity": 15,
+    "standardMolarEntropy": 36.53,
+    "specificHeatCapacity": 0.137,
+    "meltingPoint": 3185,
+    "boilingPoint": 5590,
+    "density": 21.02,
+    "thermalConductivity": 48,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

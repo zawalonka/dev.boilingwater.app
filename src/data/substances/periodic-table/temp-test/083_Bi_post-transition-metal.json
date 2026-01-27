@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 83,
+  "symbol": "Bi",
+  "name": "Bismuth",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 208.98,
+    "electronegativity": 2.02,
+    "ionizationEnergy": 703.5,
+    "atomicRadius": 207,
+    "electronAffinity": 91.2,
+    "standardMolarEntropy": 56.74,
+    "specificHeatCapacity": 0.122,
+    "meltingPoint": 271.5,
+    "boilingPoint": 1564,
+    "density": 9.78,
+    "thermalConductivity": 7.87,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 208.98,
+    "electronegativity": 2.02,
+    "ionizationEnergy": 703.5,
+    "atomicRadius": 207,
+    "electronAffinity": 91.2,
+    "standardMolarEntropy": 56.74,
+    "specificHeatCapacity": 0.122,
+    "meltingPoint": 271.5,
+    "boilingPoint": 1564,
+    "density": 9.78,
+    "thermalConductivity": 7.87,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-white metal",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 50,
+  "symbol": "Sn",
+  "name": "Tin",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 118.711,
+    "electronegativity": 1.96,
+    "ionizationEnergy": 708.6,
+    "atomicRadius": 140,
+    "electronAffinity": 107.3,
+    "standardMolarEntropy": 51.18,
+    "specificHeatCapacity": 0.227,
+    "meltingPoint": 231.928,
+    "boilingPoint": 2602,
+    "density": 7.287,
+    "thermalConductivity": 66.6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 118.711,
+    "electronegativity": 1.96,
+    "ionizationEnergy": 708.6,
+    "atomicRadius": 140,
+    "electronAffinity": 107.3,
+    "standardMolarEntropy": 51.18,
+    "specificHeatCapacity": 0.227,
+    "meltingPoint": 231.928,
+    "boilingPoint": 2602,
+    "density": 7.287,
+    "thermalConductivity": 66.6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

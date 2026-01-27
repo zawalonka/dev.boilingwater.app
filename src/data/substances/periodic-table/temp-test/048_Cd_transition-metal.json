@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 48,
+  "symbol": "Cd",
+  "name": "Cadmium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 112.411,
+    "electronegativity": 1.69,
+    "ionizationEnergy": 867.8,
+    "atomicRadius": 144,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 51.8,
+    "specificHeatCapacity": 0.232,
+    "meltingPoint": 321.07,
+    "boilingPoint": 767,
+    "density": 8.65,
+    "thermalConductivity": 96.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 112.411,
+    "electronegativity": 1.69,
+    "ionizationEnergy": 867.8,
+    "atomicRadius": 144,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 51.8,
+    "specificHeatCapacity": 0.232,
+    "meltingPoint": 321.07,
+    "boilingPoint": 767,
+    "density": 8.65,
+    "thermalConductivity": 96.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

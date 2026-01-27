@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 84,
+  "symbol": "Po",
+  "name": "Polonium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    4,
+    -2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 209,
+    "electronegativity": 2,
+    "ionizationEnergy": 812.1,
+    "atomicRadius": 197,
+    "electronAffinity": 183,
+    "standardMolarEntropy": 36.9,
+    "specificHeatCapacity": null,
+    "meltingPoint": 254,
+    "boilingPoint": 962,
+    "density": 9.196,
+    "thermalConductivity": 2,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 209,
+    "electronegativity": 2,
+    "ionizationEnergy": 812.1,
+    "atomicRadius": 197,
+    "electronAffinity": 183,
+    "standardMolarEntropy": 36.9,
+    "specificHeatCapacity": null,
+    "meltingPoint": 254,
+    "boilingPoint": 962,
+    "density": 9.196,
+    "thermalConductivity": 2,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery gray-white metal",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

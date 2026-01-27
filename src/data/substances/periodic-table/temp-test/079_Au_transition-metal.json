@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 79,
+  "symbol": "Au",
+  "name": "Gold",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    3,
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 196.967,
+    "electronegativity": 2.54,
+    "ionizationEnergy": 890.1,
+    "atomicRadius": 206,
+    "electronAffinity": 222.8,
+    "standardMolarEntropy": 47.4,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 1064.18,
+    "boilingPoint": 2856,
+    "density": 19.3,
+    "thermalConductivity": 317,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 196.967,
+    "electronegativity": 2.54,
+    "ionizationEnergy": 890.1,
+    "atomicRadius": 206,
+    "electronAffinity": 222.8,
+    "standardMolarEntropy": 47.4,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 1064.18,
+    "boilingPoint": 2856,
+    "density": 19.3,
+    "thermalConductivity": 317,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "yellow metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

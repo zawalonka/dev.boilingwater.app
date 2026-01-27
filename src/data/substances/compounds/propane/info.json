@@ -14,13 +14,13 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 3,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 8,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     }
   ],
   
@@ -44,3 +44,4 @@
   "educationalNotes": "Boiling point -42.1°C - propane is normally a gas, but easy to liquefy with modest pressure (stored in tanks as liquid, vaporizes when released). Heavier than air, so leaks accumulate in low spots. Common BBQ fuel because it's easy to transport as liquid under pressure.",
   "lastUpdated": "2026-01-27"
 }
+

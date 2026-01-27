@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 22,
+  "symbol": "Ti",
+  "name": "Titanium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 47.867,
+    "electronegativity": 1.54,
+    "ionizationEnergy": 658.8,
+    "atomicRadius": 176,
+    "electronAffinity": 7.6,
+    "standardMolarEntropy": 30.76,
+    "specificHeatCapacity": 0.523,
+    "meltingPoint": 1941,
+    "boilingPoint": 3560,
+    "density": 4.506,
+    "thermalConductivity": 21.9,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 47.867,
+    "electronegativity": 1.54,
+    "ionizationEnergy": 658.8,
+    "atomicRadius": 176,
+    "electronAffinity": 7.6,
+    "standardMolarEntropy": 30.76,
+    "specificHeatCapacity": 0.523,
+    "meltingPoint": 1941,
+    "boilingPoint": 3560,
+    "density": 4.506,
+    "thermalConductivity": 21.9,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silver-gray metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 98,
+  "symbol": "Cf",
+  "name": "Californium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    4,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 251,
+    "electronegativity": null,
+    "ionizationEnergy": 608,
+    "atomicRadius": 245,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 900,
+    "boilingPoint": 1745,
+    "density": 15.1,
+    "thermalConductivity": 10,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 251,
+    "electronegativity": null,
+    "ionizationEnergy": 608,
+    "atomicRadius": 245,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 900,
+    "boilingPoint": 1745,
+    "density": 15.1,
+    "thermalConductivity": 10,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

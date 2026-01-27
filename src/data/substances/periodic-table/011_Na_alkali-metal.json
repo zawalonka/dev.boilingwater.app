@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 11,
+  "symbol": "Na",
+  "name": "Sodium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 22.99,
+    "electronegativity": 0.93,
+    "ionizationEnergy": 495.8,
+    "atomicRadius": 186,
+    "electronAffinity": 52.9,
+    "standardMolarEntropy": 51.45,
+    "specificHeatCapacity": 1.228,
+    "meltingPoint": 97.72,
+    "boilingPoint": 883,
+    "density": 0.971,
+    "thermalConductivity": 142,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 22.99,
+    "electronegativity": 0.93,
+    "ionizationEnergy": 495.8,
+    "atomicRadius": 186,
+    "electronAffinity": 52.9,
+    "standardMolarEntropy": 51.45,
+    "specificHeatCapacity": 1.228,
+    "meltingPoint": 97.72,
+    "boilingPoint": 883,
+    "density": 0.971,
+    "thermalConductivity": 142,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "soft, silvery metal",
+    "uses": [],
+    "notes": "Element of the alkali-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

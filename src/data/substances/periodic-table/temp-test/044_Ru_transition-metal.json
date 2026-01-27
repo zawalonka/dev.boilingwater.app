@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 44,
+  "symbol": "Ru",
+  "name": "Ruthenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 8,
+  "oxidationStates": [
+    8
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 101.07,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 710.2,
+    "atomicRadius": 178,
+    "electronAffinity": 101.3,
+    "standardMolarEntropy": 28.54,
+    "specificHeatCapacity": 0.238,
+    "meltingPoint": 2334,
+    "boilingPoint": 4150,
+    "density": 12.37,
+    "thermalConductivity": 117,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 101.07,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 710.2,
+    "atomicRadius": 178,
+    "electronAffinity": 101.3,
+    "standardMolarEntropy": 28.54,
+    "specificHeatCapacity": 0.238,
+    "meltingPoint": 2334,
+    "boilingPoint": 4150,
+    "density": 12.37,
+    "thermalConductivity": 117,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

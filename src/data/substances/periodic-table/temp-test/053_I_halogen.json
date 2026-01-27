@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 53,
+  "symbol": "I",
+  "name": "Iodine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7,
+    5,
+    1,
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 126.904,
+    "electronegativity": 2.66,
+    "ionizationEnergy": 1008.4,
+    "atomicRadius": 133,
+    "electronAffinity": 295.4,
+    "standardMolarEntropy": 116.14,
+    "specificHeatCapacity": 0.214,
+    "meltingPoint": 113.7,
+    "boilingPoint": 184.4,
+    "density": 4.933,
+    "thermalConductivity": 0.438,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 126.904,
+    "electronegativity": 2.66,
+    "ionizationEnergy": 1008.4,
+    "atomicRadius": 133,
+    "electronAffinity": 295.4,
+    "standardMolarEntropy": 116.14,
+    "specificHeatCapacity": 0.214,
+    "meltingPoint": 113.7,
+    "boilingPoint": 184.4,
+    "density": 4.933,
+    "thermalConductivity": 0.438,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dark gray shiny solid",
+    "uses": [],
+    "notes": "Element of the halogen group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 69,
+  "symbol": "Tm",
+  "name": "Thulium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 168.934,
+    "electronegativity": 1.25,
+    "ionizationEnergy": 596.7,
+    "atomicRadius": 222,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 74,
+    "specificHeatCapacity": 0.16,
+    "meltingPoint": 1545,
+    "boilingPoint": 1950,
+    "density": 9.321,
+    "thermalConductivity": 16.9,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 168.934,
+    "electronegativity": 1.25,
+    "ionizationEnergy": 596.7,
+    "atomicRadius": 222,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 74,
+    "specificHeatCapacity": 0.16,
+    "meltingPoint": 1545,
+    "boilingPoint": 1950,
+    "density": 9.321,
+    "thermalConductivity": 16.9,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

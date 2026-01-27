@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 78,
+  "symbol": "Pt",
+  "name": "Platinum",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 10,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 195.084,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 870,
+    "atomicRadius": 202,
+    "electronAffinity": 205.3,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.133,
+    "meltingPoint": 1768.4,
+    "boilingPoint": 3825,
+    "density": 21.46,
+    "thermalConductivity": 71.6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 195.084,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 870,
+    "atomicRadius": 202,
+    "electronAffinity": 205.3,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.133,
+    "meltingPoint": 1768.4,
+    "boilingPoint": 3825,
+    "density": 21.46,
+    "thermalConductivity": 71.6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

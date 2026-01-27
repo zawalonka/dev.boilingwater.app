@@ -1,0 +1,45 @@
+{
+  "atomicNumber": 10,
+  "symbol": "Ne",
+  "name": "Neon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "valenceElectrons": 8,
+  "oxidationStates": [],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 20.18,
+    "electronegativity": null,
+    "ionizationEnergy": 2081,
+    "atomicRadius": 38,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 146.33,
+    "specificHeatCapacity": 1.03,
+    "meltingPoint": -248.59,
+    "boilingPoint": -246.05,
+    "density": 0.0009002,
+    "thermalConductivity": 0.0491,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 20.18,
+    "electronegativity": null,
+    "ionizationEnergy": 2081,
+    "atomicRadius": 38,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 146.33,
+    "specificHeatCapacity": 1.03,
+    "meltingPoint": -248.59,
+    "boilingPoint": -246.05,
+    "density": 0.0009002,
+    "thermalConductivity": 0.0491,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless gas",
+    "uses": [],
+    "notes": "Element of the noble-gas group"
+  },
+  "lastUpdated": "2026-01-27"
+}

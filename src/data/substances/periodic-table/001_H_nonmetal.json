@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 1,
+  "symbol": "H",
+  "name": "Hydrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    1,
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 1.008,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 1312,
+    "atomicRadius": 37,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 130.57,
+    "specificHeatCapacity": 14.3,
+    "meltingPoint": -259.16,
+    "boilingPoint": -252.87,
+    "density": 0.00008988,
+    "thermalConductivity": 0.1815,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 1.008,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 1312,
+    "atomicRadius": 37,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 130.57,
+    "specificHeatCapacity": 14.3,
+    "meltingPoint": -259.16,
+    "boilingPoint": -252.87,
+    "density": 0.00008988,
+    "thermalConductivity": 0.1815,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless, odorless gas",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

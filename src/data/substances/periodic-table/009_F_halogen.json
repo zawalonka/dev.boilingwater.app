@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 9,
+  "symbol": "F",
+  "name": "Fluorine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 18.998,
+    "electronegativity": 3.98,
+    "ionizationEnergy": 1681,
+    "atomicRadius": 50,
+    "electronAffinity": 328,
+    "standardMolarEntropy": 158.75,
+    "specificHeatCapacity": 0.824,
+    "meltingPoint": -219.6,
+    "boilingPoint": -188.12,
+    "density": 0.001696,
+    "thermalConductivity": 0.0269,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 18.998,
+    "electronegativity": 3.98,
+    "ionizationEnergy": 1681,
+    "atomicRadius": 50,
+    "electronAffinity": 328,
+    "standardMolarEntropy": 158.75,
+    "specificHeatCapacity": 0.824,
+    "meltingPoint": -219.6,
+    "boilingPoint": -188.12,
+    "density": 0.001696,
+    "thermalConductivity": 0.0269,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "pale yellow-green gas",
+    "uses": [],
+    "notes": "Element of the halogen group"
+  },
+  "lastUpdated": "2026-01-27"
+}

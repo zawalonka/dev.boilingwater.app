@@ -14,13 +14,13 @@
       "symbol": "N",
       "atomicNumber": 7,
       "count": 1,
-      "reference": "periodic-table/007_nonmetal_N.json"
+      "reference": "periodic-table/007_N_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 3,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     }
   ],
   
@@ -44,3 +44,4 @@
   "educationalNotes": "Boiling point is -33°C; exists as gas at room temperature but easily liquefied under pressure; highly soluble in water creating ammonium hydroxide (NH₄OH)",
   "lastUpdated": "2026-01-27"
 }
+

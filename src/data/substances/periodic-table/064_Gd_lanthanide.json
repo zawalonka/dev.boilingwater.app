@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 64,
+  "symbol": "Gd",
+  "name": "Gadolinium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 157.25,
+    "electronegativity": 1.2,
+    "ionizationEnergy": 592.5,
+    "atomicRadius": 234,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 68.1,
+    "specificHeatCapacity": 0.236,
+    "meltingPoint": 1313,
+    "boilingPoint": 3273,
+    "density": 7.901,
+    "thermalConductivity": 10.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 157.25,
+    "electronegativity": 1.2,
+    "ionizationEnergy": 592.5,
+    "atomicRadius": 234,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 68.1,
+    "specificHeatCapacity": 0.236,
+    "meltingPoint": 1313,
+    "boilingPoint": 3273,
+    "density": 7.901,
+    "thermalConductivity": 10.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

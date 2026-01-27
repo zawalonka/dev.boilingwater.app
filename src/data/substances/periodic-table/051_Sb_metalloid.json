@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 51,
+  "symbol": "Sb",
+  "name": "Antimony",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    3,
+    -3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 121.76,
+    "electronegativity": 2.05,
+    "ionizationEnergy": 834,
+    "atomicRadius": 133,
+    "electronAffinity": 103.2,
+    "standardMolarEntropy": 45.52,
+    "specificHeatCapacity": 0.207,
+    "meltingPoint": 630.74,
+    "boilingPoint": 1587,
+    "density": 6.691,
+    "thermalConductivity": 24.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 121.76,
+    "electronegativity": 2.05,
+    "ionizationEnergy": 834,
+    "atomicRadius": 133,
+    "electronAffinity": 103.2,
+    "standardMolarEntropy": 45.52,
+    "specificHeatCapacity": 0.207,
+    "meltingPoint": 630.74,
+    "boilingPoint": 1587,
+    "density": 6.691,
+    "thermalConductivity": 24.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray, brittle solid",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 115,
+  "symbol": "Mc",
+  "name": "Moscovium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 290,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 670,
+    "boilingPoint": 1340,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 290,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 670,
+    "boilingPoint": 1340,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "synthetic element",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

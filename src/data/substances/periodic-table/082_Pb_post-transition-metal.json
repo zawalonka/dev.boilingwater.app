@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 82,
+  "symbol": "Pb",
+  "name": "Lead",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 207.2,
+    "electronegativity": 2.33,
+    "ionizationEnergy": 715.6,
+    "atomicRadius": 202,
+    "electronAffinity": 35.1,
+    "standardMolarEntropy": 64.81,
+    "specificHeatCapacity": 0.127,
+    "meltingPoint": 327.46,
+    "boilingPoint": 1749,
+    "density": 11.34,
+    "thermalConductivity": 35.3,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 207.2,
+    "electronegativity": 2.33,
+    "ionizationEnergy": 715.6,
+    "atomicRadius": 202,
+    "electronAffinity": 35.1,
+    "standardMolarEntropy": 64.81,
+    "specificHeatCapacity": 0.127,
+    "meltingPoint": 327.46,
+    "boilingPoint": 1749,
+    "density": 11.34,
+    "thermalConductivity": 35.3,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "bluish-white metal",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

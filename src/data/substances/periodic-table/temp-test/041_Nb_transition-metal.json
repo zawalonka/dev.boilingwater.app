@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 41,
+  "symbol": "Nb",
+  "name": "Niobium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 92.906,
+    "electronegativity": 1.6,
+    "ionizationEnergy": 664.3,
+    "atomicRadius": 200,
+    "electronAffinity": 88.6,
+    "standardMolarEntropy": 36.4,
+    "specificHeatCapacity": 0.265,
+    "meltingPoint": 2477,
+    "boilingPoint": 5017,
+    "density": 8.57,
+    "thermalConductivity": 53.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 92.906,
+    "electronegativity": 1.6,
+    "ionizationEnergy": 664.3,
+    "atomicRadius": 200,
+    "electronAffinity": 88.6,
+    "standardMolarEntropy": 36.4,
+    "specificHeatCapacity": 0.265,
+    "meltingPoint": 2477,
+    "boilingPoint": 5017,
+    "density": 8.57,
+    "thermalConductivity": 53.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "blue-gray metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

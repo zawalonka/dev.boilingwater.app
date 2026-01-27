@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 34,
+  "symbol": "Se",
+  "name": "Selenium",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    4,
+    -2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 78.971,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 941,
+    "atomicRadius": 120,
+    "electronAffinity": 195,
+    "standardMolarEntropy": 42.44,
+    "specificHeatCapacity": 0.321,
+    "meltingPoint": 221,
+    "boilingPoint": 685,
+    "density": 4.809,
+    "thermalConductivity": 0.519,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 78.971,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 941,
+    "atomicRadius": 120,
+    "electronAffinity": 195,
+    "standardMolarEntropy": 42.44,
+    "specificHeatCapacity": 0.321,
+    "meltingPoint": 221,
+    "boilingPoint": 685,
+    "density": 4.809,
+    "thermalConductivity": 0.519,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "black or red allotropes",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

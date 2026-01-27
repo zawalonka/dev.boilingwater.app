@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 88,
+  "symbol": "Ra",
+  "name": "Radium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 226,
+    "electronegativity": 0.9,
+    "ionizationEnergy": 509.3,
+    "atomicRadius": 283,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 71,
+    "specificHeatCapacity": null,
+    "meltingPoint": 700,
+    "boilingPoint": 1737,
+    "density": 5.5,
+    "thermalConductivity": 18.6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 226,
+    "electronegativity": 0.9,
+    "ionizationEnergy": 509.3,
+    "atomicRadius": 283,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 71,
+    "specificHeatCapacity": null,
+    "meltingPoint": 700,
+    "boilingPoint": 1737,
+    "density": 5.5,
+    "thermalConductivity": 18.6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkaline-earth-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

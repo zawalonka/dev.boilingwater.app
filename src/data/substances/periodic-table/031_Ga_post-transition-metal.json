@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 31,
+  "symbol": "Ga",
+  "name": "Gallium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 69.723,
+    "electronegativity": 1.81,
+    "ionizationEnergy": 578.8,
+    "atomicRadius": 141,
+    "electronAffinity": 29,
+    "standardMolarEntropy": 40.88,
+    "specificHeatCapacity": 0.371,
+    "meltingPoint": 29.76,
+    "boilingPoint": 2204,
+    "density": 5.904,
+    "thermalConductivity": 29,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 69.723,
+    "electronegativity": 1.81,
+    "ionizationEnergy": 578.8,
+    "atomicRadius": 141,
+    "electronAffinity": 29,
+    "standardMolarEntropy": 40.88,
+    "specificHeatCapacity": 0.371,
+    "meltingPoint": 29.76,
+    "boilingPoint": 2204,
+    "density": 5.904,
+    "thermalConductivity": 29,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery white liquid above 30C",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

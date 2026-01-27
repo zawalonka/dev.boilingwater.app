@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 45,
+  "symbol": "Rh",
+  "name": "Rhodium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 9,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 102.906,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 719.7,
+    "atomicRadius": 173,
+    "electronAffinity": 110,
+    "standardMolarEntropy": 24.98,
+    "specificHeatCapacity": 0.244,
+    "meltingPoint": 1966,
+    "boilingPoint": 3727,
+    "density": 12.41,
+    "thermalConductivity": 150,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 102.906,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 719.7,
+    "atomicRadius": 173,
+    "electronAffinity": 110,
+    "standardMolarEntropy": 24.98,
+    "specificHeatCapacity": 0.244,
+    "meltingPoint": 1966,
+    "boilingPoint": 3727,
+    "density": 12.41,
+    "thermalConductivity": 150,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

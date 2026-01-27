@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 16,
+  "symbol": "S",
+  "name": "Sulfur",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    4,
+    2,
+    -2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 32.06,
+    "electronegativity": 2.58,
+    "ionizationEnergy": 999.6,
+    "atomicRadius": 105,
+    "electronAffinity": 200.4,
+    "standardMolarEntropy": 32.05,
+    "specificHeatCapacity": 0.706,
+    "meltingPoint": 115.21,
+    "boilingPoint": 444.72,
+    "density": 2.067,
+    "thermalConductivity": 0.205,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 32.06,
+    "electronegativity": 2.58,
+    "ionizationEnergy": 999.6,
+    "atomicRadius": 105,
+    "electronAffinity": 200.4,
+    "standardMolarEntropy": 32.05,
+    "specificHeatCapacity": 0.706,
+    "meltingPoint": 115.21,
+    "boilingPoint": 444.72,
+    "density": 2.067,
+    "thermalConductivity": 0.205,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "yellow solid",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

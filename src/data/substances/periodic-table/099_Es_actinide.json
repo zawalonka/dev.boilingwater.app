@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 99,
+  "symbol": "Es",
+  "name": "Einsteinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 252,
+    "electronegativity": null,
+    "ionizationEnergy": 619,
+    "atomicRadius": 245,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 860,
+    "boilingPoint": 1130,
+    "density": 13.5,
+    "thermalConductivity": 10,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 252,
+    "electronegativity": null,
+    "ionizationEnergy": 619,
+    "atomicRadius": 245,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 860,
+    "boilingPoint": 1130,
+    "density": 13.5,
+    "thermalConductivity": 10,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

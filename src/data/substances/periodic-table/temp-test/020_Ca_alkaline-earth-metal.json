@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 20,
+  "symbol": "Ca",
+  "name": "Calcium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 40.078,
+    "electronegativity": 1,
+    "ionizationEnergy": 589.8,
+    "atomicRadius": 197,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.59,
+    "specificHeatCapacity": 0.647,
+    "meltingPoint": 842,
+    "boilingPoint": 1484,
+    "density": 1.55,
+    "thermalConductivity": 201,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 40.078,
+    "electronegativity": 1,
+    "ionizationEnergy": 589.8,
+    "atomicRadius": 197,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.59,
+    "specificHeatCapacity": 0.647,
+    "meltingPoint": 842,
+    "boilingPoint": 1484,
+    "density": 1.55,
+    "thermalConductivity": 201,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkaline-earth-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

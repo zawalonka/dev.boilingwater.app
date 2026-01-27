@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 56,
+  "symbol": "Ba",
+  "name": "Barium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 137.327,
+    "electronegativity": 0.89,
+    "ionizationEnergy": 502.9,
+    "atomicRadius": 222,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 62.42,
+    "specificHeatCapacity": 0.204,
+    "meltingPoint": 727,
+    "boilingPoint": 1897,
+    "density": 3.594,
+    "thermalConductivity": 18.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 137.327,
+    "electronegativity": 0.89,
+    "ionizationEnergy": 502.9,
+    "atomicRadius": 222,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 62.42,
+    "specificHeatCapacity": 0.204,
+    "meltingPoint": 727,
+    "boilingPoint": 1897,
+    "density": 3.594,
+    "thermalConductivity": 18.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkaline-earth-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

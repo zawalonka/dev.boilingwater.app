@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 21,
+  "symbol": "Sc",
+  "name": "Scandium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 44.956,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 633.4,
+    "atomicRadius": 184,
+    "electronAffinity": 18.1,
+    "standardMolarEntropy": 34.77,
+    "specificHeatCapacity": 0.568,
+    "meltingPoint": 1814,
+    "boilingPoint": 3109,
+    "density": 2.989,
+    "thermalConductivity": 15.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 44.956,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 633.4,
+    "atomicRadius": 184,
+    "electronAffinity": 18.1,
+    "standardMolarEntropy": 34.77,
+    "specificHeatCapacity": 0.568,
+    "meltingPoint": 1814,
+    "boilingPoint": 3109,
+    "density": 2.989,
+    "thermalConductivity": 15.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-gray metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

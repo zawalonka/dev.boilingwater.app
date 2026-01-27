@@ -1,0 +1,45 @@
+{
+  "atomicNumber": 18,
+  "symbol": "Ar",
+  "name": "Argon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "valenceElectrons": 8,
+  "oxidationStates": [],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 39.948,
+    "electronegativity": null,
+    "ionizationEnergy": 1520.6,
+    "atomicRadius": 71,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 154.85,
+    "specificHeatCapacity": 0.52,
+    "meltingPoint": -189.34,
+    "boilingPoint": -185.85,
+    "density": 0.001784,
+    "thermalConductivity": 0.0163,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 39.948,
+    "electronegativity": null,
+    "ionizationEnergy": 1520.6,
+    "atomicRadius": 71,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 154.85,
+    "specificHeatCapacity": 0.52,
+    "meltingPoint": -189.34,
+    "boilingPoint": -185.85,
+    "density": 0.001784,
+    "thermalConductivity": 0.0163,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless gas",
+    "uses": [],
+    "notes": "Element of the noble-gas group"
+  },
+  "lastUpdated": "2026-01-27"
+}

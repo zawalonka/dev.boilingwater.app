@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 30,
+  "symbol": "Zn",
+  "name": "Zinc",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 65.38,
+    "electronegativity": 1.65,
+    "ionizationEnergy": 906.4,
+    "atomicRadius": 134,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.388,
+    "meltingPoint": 419.53,
+    "boilingPoint": 907,
+    "density": 7.134,
+    "thermalConductivity": 116,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 65.38,
+    "electronegativity": 1.65,
+    "ionizationEnergy": 906.4,
+    "atomicRadius": 134,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.388,
+    "meltingPoint": 419.53,
+    "boilingPoint": 907,
+    "density": 7.134,
+    "thermalConductivity": 116,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

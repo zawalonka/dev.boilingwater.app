@@ -14,13 +14,13 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 1,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 4,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     }
   ],
   
@@ -44,3 +44,4 @@
   "educationalNotes": "Boiling point -161.5°C - methane is a gas at all normal Earth temperatures! Must be cooled to -161.5°C or compressed to liquefy. Simplest hydrocarbon (one carbon atom). Main component of natural gas (~95%). Major greenhouse gas (25× more potent than CO₂ over 100 years).",
   "lastUpdated": "2026-01-27"
 }
+

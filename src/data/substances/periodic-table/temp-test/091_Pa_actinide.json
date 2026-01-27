@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 91,
+  "symbol": "Pa",
+  "name": "Protactinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 231.04,
+    "electronegativity": 1.5,
+    "ionizationEnergy": 568,
+    "atomicRadius": 243,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 73,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1572,
+    "boilingPoint": 4300,
+    "density": 15.37,
+    "thermalConductivity": 47,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 231.04,
+    "electronegativity": 1.5,
+    "ionizationEnergy": 568,
+    "atomicRadius": 243,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 73,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1572,
+    "boilingPoint": 4300,
+    "density": 15.37,
+    "thermalConductivity": 47,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

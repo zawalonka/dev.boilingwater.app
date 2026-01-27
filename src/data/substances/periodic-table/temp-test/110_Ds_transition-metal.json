@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 110,
+  "symbol": "Ds",
+  "name": "Darmstadtium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 10,
+  "oxidationStates": [
+    10
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 281,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 281,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "synthetic element",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

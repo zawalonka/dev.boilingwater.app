@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 39,
+  "symbol": "Y",
+  "name": "Yttrium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 88.906,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 600,
+    "atomicRadius": 212,
+    "electronAffinity": 30,
+    "standardMolarEntropy": 44.43,
+    "specificHeatCapacity": 0.298,
+    "meltingPoint": 1522,
+    "boilingPoint": 3345,
+    "density": 4.472,
+    "thermalConductivity": 17.2,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 88.906,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 600,
+    "atomicRadius": 212,
+    "electronAffinity": 30,
+    "standardMolarEntropy": 44.43,
+    "specificHeatCapacity": 0.298,
+    "meltingPoint": 1522,
+    "boilingPoint": 3345,
+    "density": 4.472,
+    "thermalConductivity": 17.2,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-gray metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

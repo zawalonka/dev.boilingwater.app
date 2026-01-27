@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 4,
+  "symbol": "Be",
+  "name": "Beryllium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 9.012,
+    "electronegativity": 1.57,
+    "ionizationEnergy": 899.5,
+    "atomicRadius": 112,
+    "electronAffinity": -48,
+    "standardMolarEntropy": 9.5,
+    "specificHeatCapacity": 1.825,
+    "meltingPoint": 1287,
+    "boilingPoint": 2471,
+    "density": 1.85,
+    "thermalConductivity": 200,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 9.012,
+    "electronegativity": 1.57,
+    "ionizationEnergy": 899.5,
+    "atomicRadius": 112,
+    "electronAffinity": -48,
+    "standardMolarEntropy": 9.5,
+    "specificHeatCapacity": 1.825,
+    "meltingPoint": 1287,
+    "boilingPoint": 2471,
+    "density": 1.85,
+    "thermalConductivity": 200,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "hard, grayish-white metal",
+    "uses": [],
+    "notes": "Element of the alkaline-earth-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

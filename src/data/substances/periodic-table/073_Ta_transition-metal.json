@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 73,
+  "symbol": "Ta",
+  "name": "Tantalum",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 180.948,
+    "electronegativity": 1.5,
+    "ionizationEnergy": 761.1,
+    "atomicRadius": 217,
+    "electronAffinity": 31,
+    "standardMolarEntropy": 41.47,
+    "specificHeatCapacity": 0.14,
+    "meltingPoint": 3290,
+    "boilingPoint": 5731,
+    "density": 16.69,
+    "thermalConductivity": 57.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 180.948,
+    "electronegativity": 1.5,
+    "ionizationEnergy": 761.1,
+    "atomicRadius": 217,
+    "electronAffinity": 31,
+    "standardMolarEntropy": 41.47,
+    "specificHeatCapacity": 0.14,
+    "meltingPoint": 3290,
+    "boilingPoint": 5731,
+    "density": 16.69,
+    "thermalConductivity": 57.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-blue metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

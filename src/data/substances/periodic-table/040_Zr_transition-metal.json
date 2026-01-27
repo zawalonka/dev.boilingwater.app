@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 40,
+  "symbol": "Zr",
+  "name": "Zirconium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 91.224,
+    "electronegativity": 1.33,
+    "ionizationEnergy": 640.1,
+    "atomicRadius": 206,
+    "electronAffinity": 41.8,
+    "standardMolarEntropy": 39.46,
+    "specificHeatCapacity": 0.278,
+    "meltingPoint": 1855,
+    "boilingPoint": 4409,
+    "density": 6.506,
+    "thermalConductivity": 22.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 91.224,
+    "electronegativity": 1.33,
+    "ionizationEnergy": 640.1,
+    "atomicRadius": 206,
+    "electronAffinity": 41.8,
+    "standardMolarEntropy": 39.46,
+    "specificHeatCapacity": 0.278,
+    "meltingPoint": 1855,
+    "boilingPoint": 4409,
+    "density": 6.506,
+    "thermalConductivity": 22.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

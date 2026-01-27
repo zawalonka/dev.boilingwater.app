@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 67,
+  "symbol": "Ho",
+  "name": "Holmium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 164.93,
+    "electronegativity": 1.23,
+    "ionizationEnergy": 581,
+    "atomicRadius": 226,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75,
+    "specificHeatCapacity": 0.165,
+    "meltingPoint": 1474,
+    "boilingPoint": 2700,
+    "density": 8.795,
+    "thermalConductivity": 16.2,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 164.93,
+    "electronegativity": 1.23,
+    "ionizationEnergy": 581,
+    "atomicRadius": 226,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75,
+    "specificHeatCapacity": 0.165,
+    "meltingPoint": 1474,
+    "boilingPoint": 2700,
+    "density": 8.795,
+    "thermalConductivity": 16.2,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

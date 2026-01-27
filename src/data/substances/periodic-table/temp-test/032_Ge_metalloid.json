@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 32,
+  "symbol": "Ge",
+  "name": "Germanium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 72.63,
+    "electronegativity": 2.01,
+    "ionizationEnergy": 762.2,
+    "atomicRadius": 122,
+    "electronAffinity": 119,
+    "standardMolarEntropy": 31.09,
+    "specificHeatCapacity": 0.32,
+    "meltingPoint": 938.25,
+    "boilingPoint": 2833,
+    "density": 5.323,
+    "thermalConductivity": 59.6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 72.63,
+    "electronegativity": 2.01,
+    "ionizationEnergy": 762.2,
+    "atomicRadius": 122,
+    "electronAffinity": 119,
+    "standardMolarEntropy": 31.09,
+    "specificHeatCapacity": 0.32,
+    "meltingPoint": 938.25,
+    "boilingPoint": 2833,
+    "density": 5.323,
+    "thermalConductivity": 59.6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "grayish-white hard metal",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

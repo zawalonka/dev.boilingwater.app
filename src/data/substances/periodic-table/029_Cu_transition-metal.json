@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 29,
+  "symbol": "Cu",
+  "name": "Copper",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    2,
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 63.546,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 745.5,
+    "atomicRadius": 128,
+    "electronAffinity": 118.4,
+    "standardMolarEntropy": 33.15,
+    "specificHeatCapacity": 0.385,
+    "meltingPoint": 1084.62,
+    "boilingPoint": 2562,
+    "density": 8.96,
+    "thermalConductivity": 401,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 63.546,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 745.5,
+    "atomicRadius": 128,
+    "electronAffinity": 118.4,
+    "standardMolarEntropy": 33.15,
+    "specificHeatCapacity": 0.385,
+    "meltingPoint": 1084.62,
+    "boilingPoint": 2562,
+    "density": 8.96,
+    "thermalConductivity": 401,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "reddish-orange metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

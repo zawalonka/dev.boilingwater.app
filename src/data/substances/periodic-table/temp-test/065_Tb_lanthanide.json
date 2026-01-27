@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 65,
+  "symbol": "Tb",
+  "name": "Terbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3,
+    4
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 158.925,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 565.8,
+    "atomicRadius": 225,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.51,
+    "specificHeatCapacity": 0.182,
+    "meltingPoint": 1356,
+    "boilingPoint": 3230,
+    "density": 8.229,
+    "thermalConductivity": 11.1,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 158.925,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 565.8,
+    "atomicRadius": 225,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.51,
+    "specificHeatCapacity": 0.182,
+    "meltingPoint": 1356,
+    "boilingPoint": 3230,
+    "density": 8.229,
+    "thermalConductivity": 11.1,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -14,19 +14,19 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 12,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 22,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     },
     {
       "symbol": "O",
       "atomicNumber": 8,
       "count": 11,
-      "reference": "periodic-table/008_nonmetal_O.json"
+      "reference": "periodic-table/008_O_nonmetal.json"
     }
   ],
   
@@ -44,3 +44,4 @@
   "educationalNotes": "Does not have a normal boiling point - decomposes into caramel before boiling! Melts at 186°C. When heated, sucrose breaks down into glucose + fructose, then further decomposes into hundreds of flavor/color compounds (caramelization). Solubility in water increases dramatically with temperature (180g/100mL at 0°C → 487g/100mL at 100°C).",
   "lastUpdated": "2026-01-27"
 }
+

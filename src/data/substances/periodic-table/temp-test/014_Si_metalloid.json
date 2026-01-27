@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 14,
+  "symbol": "Si",
+  "name": "Silicon",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    -4
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 28.086,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 786.5,
+    "atomicRadius": 118,
+    "electronAffinity": 134,
+    "standardMolarEntropy": 18.81,
+    "specificHeatCapacity": 0.705,
+    "meltingPoint": 1414,
+    "boilingPoint": 3265,
+    "density": 2.329,
+    "thermalConductivity": 149,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 28.086,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 786.5,
+    "atomicRadius": 118,
+    "electronAffinity": 134,
+    "standardMolarEntropy": 18.81,
+    "specificHeatCapacity": 0.705,
+    "meltingPoint": 1414,
+    "boilingPoint": 3265,
+    "density": 2.329,
+    "thermalConductivity": 149,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dark gray, shiny, brittle",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

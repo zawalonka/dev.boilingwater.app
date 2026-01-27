@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 52,
+  "symbol": "Te",
+  "name": "Tellurium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6,
+    4,
+    -2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 127.6,
+    "electronegativity": 2.1,
+    "ionizationEnergy": 869.3,
+    "atomicRadius": 140,
+    "electronAffinity": 190.2,
+    "standardMolarEntropy": 49.71,
+    "specificHeatCapacity": 0.202,
+    "meltingPoint": 449.51,
+    "boilingPoint": 989.8,
+    "density": 6.232,
+    "thermalConductivity": 2.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 127.6,
+    "electronegativity": 2.1,
+    "ionizationEnergy": 869.3,
+    "atomicRadius": 140,
+    "electronAffinity": 190.2,
+    "standardMolarEntropy": 49.71,
+    "specificHeatCapacity": 0.202,
+    "meltingPoint": 449.51,
+    "boilingPoint": 989.8,
+    "density": 6.232,
+    "thermalConductivity": 2.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white brittle solid",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

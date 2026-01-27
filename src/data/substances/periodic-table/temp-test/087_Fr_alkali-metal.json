@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 87,
+  "symbol": "Fr",
+  "name": "Francium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 223,
+    "electronegativity": 0.7,
+    "ionizationEnergy": 380,
+    "atomicRadius": 348,
+    "electronAffinity": 42,
+    "standardMolarEntropy": 84,
+    "specificHeatCapacity": null,
+    "meltingPoint": 8,
+    "boilingPoint": 677,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 223,
+    "electronegativity": 0.7,
+    "ionizationEnergy": 380,
+    "atomicRadius": 348,
+    "electronAffinity": 42,
+    "standardMolarEntropy": 84,
+    "specificHeatCapacity": null,
+    "meltingPoint": 8,
+    "boilingPoint": 677,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkali-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

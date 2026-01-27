@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 15,
+  "symbol": "P",
+  "name": "Phosphorus",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    3,
+    -3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 30.974,
+    "electronegativity": 2.19,
+    "ionizationEnergy": 1011.8,
+    "atomicRadius": 107,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 41.09,
+    "specificHeatCapacity": 0.769,
+    "meltingPoint": 44.15,
+    "boilingPoint": 280.45,
+    "density": 1.823,
+    "thermalConductivity": 0.235,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 30.974,
+    "electronegativity": 2.19,
+    "ionizationEnergy": 1011.8,
+    "atomicRadius": 107,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 41.09,
+    "specificHeatCapacity": 0.769,
+    "meltingPoint": 44.15,
+    "boilingPoint": 280.45,
+    "density": 1.823,
+    "thermalConductivity": 0.235,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "white, red, or black allotropes",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

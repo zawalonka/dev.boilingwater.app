@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 97,
+  "symbol": "Bk",
+  "name": "Berkelium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    4,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 247,
+    "electronegativity": null,
+    "ionizationEnergy": 601,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1259,
+    "boilingPoint": 2900,
+    "density": 14.78,
+    "thermalConductivity": 10,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 247,
+    "electronegativity": null,
+    "ionizationEnergy": 601,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 1259,
+    "boilingPoint": 2900,
+    "density": 14.78,
+    "thermalConductivity": 10,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

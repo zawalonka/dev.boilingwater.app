@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 49,
+  "symbol": "In",
+  "name": "Indium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 114.818,
+    "electronegativity": 1.78,
+    "ionizationEnergy": 558.3,
+    "atomicRadius": 167,
+    "electronAffinity": 29,
+    "standardMolarEntropy": 57.8,
+    "specificHeatCapacity": 0.233,
+    "meltingPoint": 156.6,
+    "boilingPoint": 2072,
+    "density": 7.31,
+    "thermalConductivity": 81.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 114.818,
+    "electronegativity": 1.78,
+    "ionizationEnergy": 558.3,
+    "atomicRadius": 167,
+    "electronAffinity": 29,
+    "standardMolarEntropy": 57.8,
+    "specificHeatCapacity": 0.233,
+    "meltingPoint": 156.6,
+    "boilingPoint": 2072,
+    "density": 7.31,
+    "thermalConductivity": 81.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

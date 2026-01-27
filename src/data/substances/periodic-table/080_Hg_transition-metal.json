@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 80,
+  "symbol": "Hg",
+  "name": "Mercury",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2,
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 200.592,
+    "electronegativity": 2,
+    "ionizationEnergy": 1007.1,
+    "atomicRadius": 171,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 75.9,
+    "specificHeatCapacity": 0.14,
+    "meltingPoint": -38.83,
+    "boilingPoint": 356.73,
+    "density": 13.534,
+    "thermalConductivity": 8.87,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 200.592,
+    "electronegativity": 2,
+    "ionizationEnergy": 1007.1,
+    "atomicRadius": 171,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 75.9,
+    "specificHeatCapacity": 0.14,
+    "meltingPoint": -38.83,
+    "boilingPoint": 356.73,
+    "density": 13.534,
+    "thermalConductivity": 8.87,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "liquid",
+    "appearance": "silver-white liquid",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

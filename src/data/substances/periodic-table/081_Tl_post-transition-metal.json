@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 81,
+  "symbol": "Tl",
+  "name": "Thallium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3,
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 204.383,
+    "electronegativity": 1.62,
+    "ionizationEnergy": 589.4,
+    "atomicRadius": 196,
+    "electronAffinity": 19.2,
+    "standardMolarEntropy": 64.18,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 304,
+    "boilingPoint": 1473,
+    "density": 11.85,
+    "thermalConductivity": 46.1,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 204.383,
+    "electronegativity": 1.62,
+    "ionizationEnergy": 589.4,
+    "atomicRadius": 196,
+    "electronAffinity": 19.2,
+    "standardMolarEntropy": 64.18,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 304,
+    "boilingPoint": 1473,
+    "density": 11.85,
+    "thermalConductivity": 46.1,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

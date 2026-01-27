@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 71,
+  "symbol": "Lu",
+  "name": "Lutetium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 174.967,
+    "electronegativity": 1.27,
+    "ionizationEnergy": 523.5,
+    "atomicRadius": 221,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 51,
+    "specificHeatCapacity": 0.154,
+    "meltingPoint": 1663,
+    "boilingPoint": 3402,
+    "density": 9.841,
+    "thermalConductivity": 16.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 174.967,
+    "electronegativity": 1.27,
+    "ionizationEnergy": 523.5,
+    "atomicRadius": 221,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 51,
+    "specificHeatCapacity": 0.154,
+    "meltingPoint": 1663,
+    "boilingPoint": 3402,
+    "density": 9.841,
+    "thermalConductivity": 16.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

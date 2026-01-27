@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 33,
+  "symbol": "As",
+  "name": "Arsenic",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    3,
+    -3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 74.922,
+    "electronegativity": 2.18,
+    "ionizationEnergy": 947,
+    "atomicRadius": 119,
+    "electronAffinity": 78,
+    "standardMolarEntropy": 35.1,
+    "specificHeatCapacity": 0.329,
+    "meltingPoint": 817,
+    "boilingPoint": 613,
+    "density": 5.727,
+    "thermalConductivity": 50,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 74.922,
+    "electronegativity": 2.18,
+    "ionizationEnergy": 947,
+    "atomicRadius": 119,
+    "electronAffinity": 78,
+    "standardMolarEntropy": 35.1,
+    "specificHeatCapacity": 0.329,
+    "meltingPoint": 817,
+    "boilingPoint": 613,
+    "density": 5.727,
+    "thermalConductivity": 50,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-white solid",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

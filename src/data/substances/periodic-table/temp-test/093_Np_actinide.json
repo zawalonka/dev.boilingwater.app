@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 93,
+  "symbol": "Np",
+  "name": "Neptunium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 237,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 604.5,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 644,
+    "boilingPoint": 3902,
+    "density": 20.25,
+    "thermalConductivity": 6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 237,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 604.5,
+    "atomicRadius": 244,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 644,
+    "boilingPoint": 3902,
+    "density": 20.25,
+    "thermalConductivity": 6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the actinide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

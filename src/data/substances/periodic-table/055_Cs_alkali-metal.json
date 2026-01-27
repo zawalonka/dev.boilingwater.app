@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 55,
+  "symbol": "Cs",
+  "name": "Cesium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 132.906,
+    "electronegativity": 0.79,
+    "ionizationEnergy": 375.7,
+    "atomicRadius": 265,
+    "electronAffinity": 45.5,
+    "standardMolarEntropy": 85.23,
+    "specificHeatCapacity": 0.242,
+    "meltingPoint": 28.5,
+    "boilingPoint": 671,
+    "density": 1.873,
+    "thermalConductivity": 36,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 132.906,
+    "electronegativity": 0.79,
+    "ionizationEnergy": 375.7,
+    "atomicRadius": 265,
+    "electronAffinity": 45.5,
+    "standardMolarEntropy": 85.23,
+    "specificHeatCapacity": 0.242,
+    "meltingPoint": 28.5,
+    "boilingPoint": 671,
+    "density": 1.873,
+    "thermalConductivity": 36,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "soft, silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkali-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

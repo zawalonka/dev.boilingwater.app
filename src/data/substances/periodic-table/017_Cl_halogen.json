@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 17,
+  "symbol": "Cl",
+  "name": "Chlorine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7,
+    5,
+    1,
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 35.45,
+    "electronegativity": 3.16,
+    "ionizationEnergy": 1251.2,
+    "atomicRadius": 102,
+    "electronAffinity": 349,
+    "standardMolarEntropy": 223.08,
+    "specificHeatCapacity": 0.479,
+    "meltingPoint": -101.5,
+    "boilingPoint": -34.04,
+    "density": 0.003214,
+    "thermalConductivity": 0.0089,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 35.45,
+    "electronegativity": 3.16,
+    "ionizationEnergy": 1251.2,
+    "atomicRadius": 102,
+    "electronAffinity": 349,
+    "standardMolarEntropy": 223.08,
+    "specificHeatCapacity": 0.479,
+    "meltingPoint": -101.5,
+    "boilingPoint": -34.04,
+    "density": 0.003214,
+    "thermalConductivity": 0.0089,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "yellowish-green gas",
+    "uses": [],
+    "notes": "Element of the halogen group"
+  },
+  "lastUpdated": "2026-01-27"
+}

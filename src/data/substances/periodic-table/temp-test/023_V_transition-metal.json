@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 23,
+  "symbol": "V",
+  "name": "Vanadium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    4,
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 50.942,
+    "electronegativity": 1.63,
+    "ionizationEnergy": 650.9,
+    "atomicRadius": 171,
+    "electronAffinity": 50.6,
+    "standardMolarEntropy": 28.45,
+    "specificHeatCapacity": 0.489,
+    "meltingPoint": 1910,
+    "boilingPoint": 3407,
+    "density": 6.11,
+    "thermalConductivity": 30.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 50.942,
+    "electronegativity": 1.63,
+    "ionizationEnergy": 650.9,
+    "atomicRadius": 171,
+    "electronAffinity": 50.6,
+    "standardMolarEntropy": 28.45,
+    "specificHeatCapacity": 0.489,
+    "meltingPoint": 1910,
+    "boilingPoint": 3407,
+    "density": 6.11,
+    "thermalConductivity": 30.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "bright white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

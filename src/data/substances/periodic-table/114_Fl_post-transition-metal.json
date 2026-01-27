@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 114,
+  "symbol": "Fl",
+  "name": "Flerovium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 289,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 61,
+    "boilingPoint": 210,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 289,
+    "electronegativity": null,
+    "ionizationEnergy": 600,
+    "atomicRadius": 220,
+    "electronAffinity": 0,
+    "standardMolarEntropy": null,
+    "specificHeatCapacity": null,
+    "meltingPoint": 61,
+    "boilingPoint": 210,
+    "density": null,
+    "thermalConductivity": null,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "synthetic element",
+    "uses": [],
+    "notes": "Element of the post-transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

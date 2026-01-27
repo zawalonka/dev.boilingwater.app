@@ -1,0 +1,53 @@
+{
+  "atomicNumber": 7,
+  "symbol": "N",
+  "name": "Nitrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [
+    5,
+    4,
+    3,
+    2,
+    1,
+    -1,
+    -3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 14.007,
+    "electronegativity": 3.04,
+    "ionizationEnergy": 1402.3,
+    "atomicRadius": 65,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 191.61,
+    "specificHeatCapacity": 1.04,
+    "meltingPoint": -210.01,
+    "boilingPoint": -195.79,
+    "density": 0.001251,
+    "thermalConductivity": 0.0259,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 14.007,
+    "electronegativity": 3.04,
+    "ionizationEnergy": 1402.3,
+    "atomicRadius": 65,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 191.61,
+    "specificHeatCapacity": 1.04,
+    "meltingPoint": -210.01,
+    "boilingPoint": -195.79,
+    "density": 0.001251,
+    "thermalConductivity": 0.0259,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless, odorless gas",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

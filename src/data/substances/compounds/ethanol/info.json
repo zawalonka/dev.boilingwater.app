@@ -14,19 +14,19 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 2,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 6,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     },
     {
       "symbol": "O",
       "atomicNumber": 8,
       "count": 1,
-      "reference": "periodic-table/008_nonmetal_O.json"
+      "reference": "periodic-table/008_O_nonmetal.json"
     }
   ],
   
@@ -50,3 +50,4 @@
   "educationalNotes": "Boiling point significantly lower than water (78°C vs 100°C); this is why alcohol evaporates quickly and why distillation can separate alcohol from water",
   "lastUpdated": "2026-01-27"
 }
+

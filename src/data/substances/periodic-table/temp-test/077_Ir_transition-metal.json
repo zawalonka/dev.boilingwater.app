@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 77,
+  "symbol": "Ir",
+  "name": "Iridium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 9,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 192.217,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 880,
+    "atomicRadius": 202,
+    "electronAffinity": 150,
+    "standardMolarEntropy": 35.48,
+    "specificHeatCapacity": 0.131,
+    "meltingPoint": 2466,
+    "boilingPoint": 4428,
+    "density": 22.56,
+    "thermalConductivity": 147,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 192.217,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 880,
+    "atomicRadius": 202,
+    "electronAffinity": 150,
+    "standardMolarEntropy": 35.48,
+    "specificHeatCapacity": 0.131,
+    "meltingPoint": 2466,
+    "boilingPoint": 4428,
+    "density": 22.56,
+    "thermalConductivity": 147,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "white-yellow metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

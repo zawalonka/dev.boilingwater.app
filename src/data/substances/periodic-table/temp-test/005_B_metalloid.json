@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 5,
+  "symbol": "B",
+  "name": "Boron",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 10.81,
+    "electronegativity": 2.04,
+    "ionizationEnergy": 800.6,
+    "atomicRadius": 82,
+    "electronAffinity": 26.9,
+    "standardMolarEntropy": 5.86,
+    "specificHeatCapacity": 1.026,
+    "meltingPoint": 2077,
+    "boilingPoint": 4185,
+    "density": 2.34,
+    "thermalConductivity": 27,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 10.81,
+    "electronegativity": 2.04,
+    "ionizationEnergy": 800.6,
+    "atomicRadius": 82,
+    "electronAffinity": 26.9,
+    "standardMolarEntropy": 5.86,
+    "specificHeatCapacity": 1.026,
+    "meltingPoint": 2077,
+    "boilingPoint": 4185,
+    "density": 2.34,
+    "thermalConductivity": 27,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dark brown to black amorphous powder",
+    "uses": [],
+    "notes": "Element of the metalloid group"
+  },
+  "lastUpdated": "2026-01-27"
+}

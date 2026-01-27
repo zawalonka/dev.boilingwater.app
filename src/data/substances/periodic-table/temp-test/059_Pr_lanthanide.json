@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 59,
+  "symbol": "Pr",
+  "name": "Praseodymium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    4,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 140.908,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 527,
+    "atomicRadius": 239,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.24,
+    "specificHeatCapacity": 0.193,
+    "meltingPoint": 931,
+    "boilingPoint": 3520,
+    "density": 6.773,
+    "thermalConductivity": 12.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 140.908,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 527,
+    "atomicRadius": 239,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.24,
+    "specificHeatCapacity": 0.193,
+    "meltingPoint": 931,
+    "boilingPoint": 3520,
+    "density": 6.773,
+    "thermalConductivity": 12.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

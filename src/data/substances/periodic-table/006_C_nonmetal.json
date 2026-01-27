@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 6,
+  "symbol": "C",
+  "name": "Carbon",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [
+    4,
+    2,
+    -4
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 12.011,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 1086.5,
+    "atomicRadius": 70,
+    "electronAffinity": 121.7,
+    "standardMolarEntropy": 5.74,
+    "specificHeatCapacity": 0.709,
+    "meltingPoint": 3823,
+    "boilingPoint": 4098,
+    "density": 2.267,
+    "thermalConductivity": 119,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 12.011,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 1086.5,
+    "atomicRadius": 70,
+    "electronAffinity": 121.7,
+    "standardMolarEntropy": 5.74,
+    "specificHeatCapacity": 0.709,
+    "meltingPoint": 3823,
+    "boilingPoint": 4098,
+    "density": 2.267,
+    "thermalConductivity": 119,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray to black amorphous solid, graphite, diamond",
+    "uses": [],
+    "notes": "Element of the nonmetal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 70,
+  "symbol": "Yb",
+  "name": "Ytterbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 173.054,
+    "electronegativity": null,
+    "ionizationEnergy": 603.4,
+    "atomicRadius": 222,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 98.3,
+    "specificHeatCapacity": 0.155,
+    "meltingPoint": 824,
+    "boilingPoint": 1469,
+    "density": 6.966,
+    "thermalConductivity": 34.9,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 173.054,
+    "electronegativity": null,
+    "ionizationEnergy": 603.4,
+    "atomicRadius": 222,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 98.3,
+    "specificHeatCapacity": 0.155,
+    "meltingPoint": 824,
+    "boilingPoint": 1469,
+    "density": 6.966,
+    "thermalConductivity": 34.9,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

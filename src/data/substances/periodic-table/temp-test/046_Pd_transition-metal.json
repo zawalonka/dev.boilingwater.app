@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 46,
+  "symbol": "Pd",
+  "name": "Palladium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 10,
+  "oxidationStates": [
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 106.42,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 804.4,
+    "atomicRadius": 169,
+    "electronAffinity": 53.7,
+    "standardMolarEntropy": 37.59,
+    "specificHeatCapacity": 0.244,
+    "meltingPoint": 1554.8,
+    "boilingPoint": 2963,
+    "density": 12.02,
+    "thermalConductivity": 71.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 106.42,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 804.4,
+    "atomicRadius": 169,
+    "electronAffinity": 53.7,
+    "standardMolarEntropy": 37.59,
+    "specificHeatCapacity": 0.244,
+    "meltingPoint": 1554.8,
+    "boilingPoint": 2963,
+    "density": 12.02,
+    "thermalConductivity": 71.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

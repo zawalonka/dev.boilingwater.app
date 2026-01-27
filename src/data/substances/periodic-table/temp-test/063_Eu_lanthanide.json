@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 63,
+  "symbol": "Eu",
+  "name": "Europium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3,
+    2
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 151.964,
+    "electronegativity": null,
+    "ionizationEnergy": 547.1,
+    "atomicRadius": 233,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 77.78,
+    "specificHeatCapacity": 0.182,
+    "meltingPoint": 822,
+    "boilingPoint": 1597,
+    "density": 5.244,
+    "thermalConductivity": 13.9,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 151.964,
+    "electronegativity": null,
+    "ionizationEnergy": 547.1,
+    "atomicRadius": 233,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 77.78,
+    "specificHeatCapacity": 0.182,
+    "meltingPoint": 822,
+    "boilingPoint": 1597,
+    "density": 5.244,
+    "thermalConductivity": 13.9,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

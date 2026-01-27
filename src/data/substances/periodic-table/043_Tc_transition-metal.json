@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 43,
+  "symbol": "Tc",
+  "name": "Technetium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 98,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 702.2,
+    "atomicRadius": 186,
+    "electronAffinity": 53,
+    "standardMolarEntropy": 24.27,
+    "specificHeatCapacity": 0.243,
+    "meltingPoint": 2157,
+    "boilingPoint": 4265,
+    "density": 11.5,
+    "thermalConductivity": 50.6,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 98,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 702.2,
+    "atomicRadius": 186,
+    "electronAffinity": 53,
+    "standardMolarEntropy": 24.27,
+    "specificHeatCapacity": 0.243,
+    "meltingPoint": 2157,
+    "boilingPoint": 4265,
+    "density": 11.5,
+    "thermalConductivity": 50.6,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-gray metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

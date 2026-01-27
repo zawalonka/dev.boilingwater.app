@@ -14,19 +14,19 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 2,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 4,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     },
     {
       "symbol": "O",
       "atomicNumber": 8,
       "count": 2,
-      "reference": "periodic-table/008_nonmetal_O.json"
+      "reference": "periodic-table/008_O_nonmetal.json"
     }
   ],
   
@@ -50,3 +50,4 @@
   "educationalNotes": "Freezes at 16.6°C - you can sometimes see ice crystals in stored vinegar! Pure acetic acid is called 'glacial' because it forms ice-like crystals. Boils at 118°C, well above water.",
   "lastUpdated": "2026-01-27"
 }
+

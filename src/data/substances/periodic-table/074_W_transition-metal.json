@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 74,
+  "symbol": "W",
+  "name": "Tungsten",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 6,
+  "oxidationStates": [
+    6
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 183.84,
+    "electronegativity": 2.36,
+    "ionizationEnergy": 770.7,
+    "atomicRadius": 210,
+    "electronAffinity": 78.6,
+    "standardMolarEntropy": 32.64,
+    "specificHeatCapacity": 0.132,
+    "meltingPoint": 3422,
+    "boilingPoint": 5555,
+    "density": 19.3,
+    "thermalConductivity": 173.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 183.84,
+    "electronegativity": 2.36,
+    "ionizationEnergy": 770.7,
+    "atomicRadius": 210,
+    "electronAffinity": 78.6,
+    "standardMolarEntropy": 32.64,
+    "specificHeatCapacity": 0.132,
+    "meltingPoint": 3422,
+    "boilingPoint": 5555,
+    "density": 19.3,
+    "thermalConductivity": 173.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

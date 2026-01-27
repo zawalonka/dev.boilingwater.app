@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 60,
+  "symbol": "Nd",
+  "name": "Neodymium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 144.242,
+    "electronegativity": 1.14,
+    "ionizationEnergy": 533,
+    "atomicRadius": 229,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 71.5,
+    "specificHeatCapacity": 0.19,
+    "meltingPoint": 1021,
+    "boilingPoint": 3074,
+    "density": 7.008,
+    "thermalConductivity": 16.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 144.242,
+    "electronegativity": 1.14,
+    "ionizationEnergy": 533,
+    "atomicRadius": 229,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 71.5,
+    "specificHeatCapacity": 0.19,
+    "meltingPoint": 1021,
+    "boilingPoint": 3074,
+    "density": 7.008,
+    "thermalConductivity": 16.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

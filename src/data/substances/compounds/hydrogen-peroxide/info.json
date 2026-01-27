@@ -14,13 +14,13 @@
       "symbol": "H",
       "atomicNumber": 1,
       "count": 2,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     },
     {
       "symbol": "O",
       "atomicNumber": 8,
       "count": 2,
-      "reference": "periodic-table/008_nonmetal_O.json"
+      "reference": "periodic-table/008_O_nonmetal.json"
     }
   ],
   
@@ -45,3 +45,4 @@
   "educationalNotes": "Boiling point 150°C - much higher than water! This is surprising given H₂O₂ is so similar to H₂O. Decomposes at high heat into 2H₂O₂ → 2H₂O + O₂ (this is why it foams on wounds - catalase enzyme speeds decomposition, releasing oxygen bubbles). Store in dark containers - light accelerates decomposition.",
   "lastUpdated": "2026-01-27"
 }
+

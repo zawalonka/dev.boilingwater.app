@@ -1,0 +1,48 @@
+{
+  "atomicNumber": 28,
+  "symbol": "Ni",
+  "name": "Nickel",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [
+    2,
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 58.693,
+    "electronegativity": 1.91,
+    "ionizationEnergy": 737.1,
+    "atomicRadius": 124,
+    "electronAffinity": 111.5,
+    "standardMolarEntropy": 29.87,
+    "specificHeatCapacity": 0.444,
+    "meltingPoint": 1455,
+    "boilingPoint": 2913,
+    "density": 8.908,
+    "thermalConductivity": 90.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 58.693,
+    "electronegativity": 1.91,
+    "ionizationEnergy": 737.1,
+    "atomicRadius": 124,
+    "electronAffinity": 111.5,
+    "standardMolarEntropy": 29.87,
+    "specificHeatCapacity": 0.444,
+    "meltingPoint": 1455,
+    "boilingPoint": 2913,
+    "density": 8.908,
+    "thermalConductivity": 90.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the transition-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

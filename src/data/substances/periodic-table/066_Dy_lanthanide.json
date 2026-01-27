@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 66,
+  "symbol": "Dy",
+  "name": "Dysprosium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 162.5,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 573,
+    "atomicRadius": 228,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75.6,
+    "specificHeatCapacity": 0.17,
+    "meltingPoint": 1412,
+    "boilingPoint": 2567,
+    "density": 8.551,
+    "thermalConductivity": 10.7,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 162.5,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 573,
+    "atomicRadius": 228,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75.6,
+    "specificHeatCapacity": 0.17,
+    "meltingPoint": 1412,
+    "boilingPoint": 2567,
+    "density": 8.551,
+    "thermalConductivity": 10.7,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}

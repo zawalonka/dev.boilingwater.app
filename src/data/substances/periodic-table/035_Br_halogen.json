@@ -1,0 +1,50 @@
+{
+  "atomicNumber": 35,
+  "symbol": "Br",
+  "name": "Bromine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "valenceElectrons": 7,
+  "oxidationStates": [
+    7,
+    5,
+    1,
+    -1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 79.904,
+    "electronegativity": 2.96,
+    "ionizationEnergy": 1139.9,
+    "atomicRadius": 120,
+    "electronAffinity": 324.6,
+    "standardMolarEntropy": 175.02,
+    "specificHeatCapacity": 0.474,
+    "meltingPoint": -7.2,
+    "boilingPoint": 58.8,
+    "density": 3.105,
+    "thermalConductivity": 0.12,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 79.904,
+    "electronegativity": 2.96,
+    "ionizationEnergy": 1139.9,
+    "atomicRadius": 120,
+    "electronAffinity": 324.6,
+    "standardMolarEntropy": 175.02,
+    "specificHeatCapacity": 0.474,
+    "meltingPoint": -7.2,
+    "boilingPoint": 58.8,
+    "density": 3.105,
+    "thermalConductivity": 0.12,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "liquid",
+    "appearance": "reddish-brown liquid",
+    "uses": [],
+    "notes": "Element of the halogen group"
+  },
+  "lastUpdated": "2026-01-27"
+}

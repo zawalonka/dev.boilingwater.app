@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 37,
+  "symbol": "Rb",
+  "name": "Rubidium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [
+    1
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 85.468,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 402.3,
+    "atomicRadius": 248,
+    "electronAffinity": 46.9,
+    "standardMolarEntropy": 76.78,
+    "specificHeatCapacity": 0.363,
+    "meltingPoint": 39.3,
+    "boilingPoint": 688,
+    "density": 1.532,
+    "thermalConductivity": 58.2,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 85.468,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 402.3,
+    "atomicRadius": 248,
+    "electronAffinity": 46.9,
+    "standardMolarEntropy": 76.78,
+    "specificHeatCapacity": 0.363,
+    "meltingPoint": 39.3,
+    "boilingPoint": 688,
+    "density": 1.532,
+    "thermalConductivity": 58.2,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "soft, silvery-white metal",
+    "uses": [],
+    "notes": "Element of the alkali-metal group"
+  },
+  "lastUpdated": "2026-01-27"
+}

@@ -14,19 +14,19 @@
       "symbol": "C",
       "atomicNumber": 6,
       "count": 3,
-      "reference": "periodic-table/006_nonmetal_C.json"
+      "reference": "periodic-table/006_C_nonmetal.json"
     },
     {
       "symbol": "H",
       "atomicNumber": 1,
       "count": 8,
-      "reference": "periodic-table/001_nonmetal_H.json"
+      "reference": "periodic-table/001_H_nonmetal.json"
     },
     {
       "symbol": "O",
       "atomicNumber": 8,
       "count": 3,
-      "reference": "periodic-table/008_nonmetal_O.json"
+      "reference": "periodic-table/008_O_nonmetal.json"
     }
   ],
   
@@ -51,3 +51,4 @@
   "educationalNotes": "Boiling point 290°C - extremely high! This is because glycerin has THREE hydroxyl (OH) groups, allowing extensive hydrogen bonding. Very viscous, thick, syrupy liquid. Freezes at 17.8°C - can solidify in cold weather. Used in antifreeze, cosmetics (holds moisture), and soap.",
   "lastUpdated": "2026-01-27"
 }
+

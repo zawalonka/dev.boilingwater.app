@@ -1,0 +1,47 @@
+{
+  "atomicNumber": 68,
+  "symbol": "Er",
+  "name": "Erbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "valenceElectrons": 3,
+  "oxidationStates": [
+    3
+  ],
+  "standardUsed": "iupac",
+  "nist": {
+    "atomicMass": 167.259,
+    "electronegativity": 1.24,
+    "ionizationEnergy": 589.3,
+    "atomicRadius": 226,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.8,
+    "specificHeatCapacity": 0.168,
+    "meltingPoint": 1529,
+    "boilingPoint": 2868,
+    "density": 9.066,
+    "thermalConductivity": 14.3,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  "iupac": {
+    "atomicMass": 167.259,
+    "electronegativity": 1.24,
+    "ionizationEnergy": 589.3,
+    "atomicRadius": 226,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.8,
+    "specificHeatCapacity": 0.168,
+    "meltingPoint": 1529,
+    "boilingPoint": 2868,
+    "density": 9.066,
+    "thermalConductivity": 14.3,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": [],
+    "notes": "Element of the lanthanide group"
+  },
+  "lastUpdated": "2026-01-27"
+}
