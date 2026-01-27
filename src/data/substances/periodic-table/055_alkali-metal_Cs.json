@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 55,
+  "symbol": "Cs",
+  "name": "Cesium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s-block",
+  "valenceElectrons": 1,
+  "oxidationStates": [1],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 132.90545196,
+    "electronegativity": 0.79,
+    "ionizationEnergy": 375.7,
+    "atomicRadius": 265,
+    "electronAffinity": 45.5,
+    "standardMolarEntropy": 85.23,
+    "specificHeatCapacity": 0.242
+  },
+  
+  "iupac": {
+    "atomicMass": 132.90545196,
+    "electronegativity": 0.79,
+    "ionizationEnergy": 375.7,
+    "atomicRadius": 265,
+    "electronAffinity": 45.5,
+    "standardMolarEntropy": 85.23,
+    "specificHeatCapacity": 0.242
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 28.44,
+    "boilingPoint": 671,
+    "density": 1.93,
+    "thermalConductivity": 35.9,
+    "appearance": "silvery-gold soft metal",
+    "uses": ["atomic clocks", "photoelectric cells", "drilling fluids", "catalysts"],
+    "notes": "Named from Latin 'caesius' (sky blue) - blue spectral lines. Most reactive metal - explodes violently with water! Melts at 28°C (warm day). Cesium atomic clock is most accurate timekeeper - loses 1 second per 100 million years. Only non-radioactive element more reactive than francium."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

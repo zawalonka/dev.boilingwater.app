@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 92,
+  "symbol": "U",
+  "name": "Uranium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 6,
+  "oxidationStates": [3, 4, 5, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 238.02891,
+    "electronegativity": 1.38,
+    "ionizationEnergy": 597.6,
+    "atomicRadius": 175,
+    "electronAffinity": 50.9,
+    "standardMolarEntropy": 50.21,
+    "specificHeatCapacity": 0.116
+  },
+  
+  "iupac": {
+    "atomicMass": 238.02891,
+    "electronegativity": 1.38,
+    "ionizationEnergy": 597.6,
+    "atomicRadius": 175,
+    "electronAffinity": 50.9,
+    "standardMolarEntropy": 50.21,
+    "specificHeatCapacity": 0.116
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1135,
+    "boilingPoint": 4131,
+    "density": 19.05,
+    "thermalConductivity": 27.5,
+    "appearance": "silvery-gray dense metal",
+    "uses": ["nuclear power", "nuclear weapons", "naval propulsion", "depleted uranium ammunition"],
+    "notes": "Named after planet Uranus. Heaviest naturally occurring element. Fuel for nuclear power (U-235) and weapons. Depleted uranium used in armor-piercing rounds and tank armor (very dense). U-238 half-life: 4.5 billion years (age of Earth). Slightly radioactive - safe to handle briefly."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

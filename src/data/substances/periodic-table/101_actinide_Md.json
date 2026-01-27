@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 101,
+  "symbol": "Md",
+  "name": "Mendelevium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 15,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 258,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 635,
+    "atomicRadius": 173,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 258,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 635,
+    "atomicRadius": 173,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 827,
+    "boilingPoint": 0,
+    "density": 10.3,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Dmitri Mendeleev (created periodic table). First element synthesized atom-by-atom - created 17 atoms initially! Md-258 half-life: 51 days. Never accumulated in weighable amounts. Produced by bombarding einsteinium with alpha particles. Research only."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 112,
+  "symbol": "Cn",
+  "name": "Copernicium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 12,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 285,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 122,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 285,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 122,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "meltingPoint": 0,
+    "boilingPoint": 357,
+    "density": 23.7,
+    "thermalConductivity": 0,
+    "appearance": "metallic/gaseous (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Nicolaus Copernicus (heliocentric solar system). Predicted to be GAS at room temperature (not metal!) - relativistic effects make it volatile like noble gas. Produced by bombarding lead with zinc. Cn-285 half-life: 29 seconds. Research only."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

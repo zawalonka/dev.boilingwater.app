@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 63,
+  "symbol": "Eu",
+  "name": "Europium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 9,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 151.964,
+    "electronegativity": 1.2,
+    "ionizationEnergy": 547.1,
+    "atomicRadius": 180,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 77.8,
+    "specificHeatCapacity": 0.182
+  },
+  
+  "iupac": {
+    "atomicMass": 151.964,
+    "electronegativity": 1.2,
+    "ionizationEnergy": 547.1,
+    "atomicRadius": 180,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 77.8,
+    "specificHeatCapacity": 0.182
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 822,
+    "boilingPoint": 1596,
+    "density": 5.264,
+    "thermalConductivity": 13.9,
+    "appearance": "silvery-white metal",
+    "uses": ["TV screens (red phosphor)", "euro banknotes (anti-counterfeit)", "lasers", "nuclear reactors"],
+    "notes": "Named after Europe. Most reactive lanthanide. Red and blue phosphor in CRT TVs and fluorescent lights. Europium-doped euro banknotes glow under UV (anti-counterfeiting). Excellent neutron absorber - used in nuclear control rods."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

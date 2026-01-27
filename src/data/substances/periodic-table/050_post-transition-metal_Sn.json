@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 50,
+  "symbol": "Sn",
+  "name": "Tin",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 4,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 118.710,
+    "electronegativity": 1.96,
+    "ionizationEnergy": 708.6,
+    "atomicRadius": 140,
+    "electronAffinity": 107,
+    "standardMolarEntropy": 51.18,
+    "specificHeatCapacity": 0.228
+  },
+  
+  "iupac": {
+    "atomicMass": 118.710,
+    "electronegativity": 1.96,
+    "ionizationEnergy": 708.6,
+    "atomicRadius": 140,
+    "electronAffinity": 107,
+    "standardMolarEntropy": 51.18,
+    "specificHeatCapacity": 0.228
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 231.93,
+    "boilingPoint": 2602,
+    "density": 7.287,
+    "thermalConductivity": 66.8,
+    "appearance": "silvery-white lustrous metal",
+    "uses": ["solder", "tin cans (steel coated with tin)", "bronze (copper-tin alloy)", "pewter"],
+    "notes": "Symbol Sn from Latin 'stannum'. Bronze Age named for bronze (copper + tin alloy). Tin cans are steel coated with thin tin layer (prevents rust). Tin cries - pure tin makes audible 'cry' when bent. Below 13°C, transforms to gray brittle powder ('tin pest')."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

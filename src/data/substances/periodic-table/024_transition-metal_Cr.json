@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 24,
+  "symbol": "Cr",
+  "name": "Chromium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 6,
+  "oxidationStates": [2, 3, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 51.9961,
+    "electronegativity": 1.66,
+    "ionizationEnergy": 652.9,
+    "atomicRadius": 128,
+    "electronAffinity": 64.3,
+    "standardMolarEntropy": 23.77,
+    "specificHeatCapacity": 0.449
+  },
+  
+  "iupac": {
+    "atomicMass": 51.9961,
+    "electronegativity": 1.66,
+    "ionizationEnergy": 652.9,
+    "atomicRadius": 128,
+    "electronAffinity": 64.3,
+    "standardMolarEntropy": 23.77,
+    "specificHeatCapacity": 0.449
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1907,
+    "boilingPoint": 2671,
+    "density": 7.19,
+    "thermalConductivity": 93.9,
+    "appearance": "silvery, lustrous, hard metal",
+    "uses": ["chrome plating", "stainless steel (10-20% Cr)", "pigments", "leather tanning"],
+    "notes": "Named from Greek 'chroma' (color) - chromium compounds are brilliantly colored. Chrome plating creates shiny protective coating on metal (car bumpers, faucets). Chromium makes steel 'stainless' - resists rust and corrosion."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

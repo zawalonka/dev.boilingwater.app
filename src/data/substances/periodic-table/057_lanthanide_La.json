@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 57,
+  "symbol": "La",
+  "name": "Lanthanum",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 3,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 138.90547,
+    "electronegativity": 1.10,
+    "ionizationEnergy": 538.1,
+    "atomicRadius": 187,
+    "electronAffinity": 48,
+    "standardMolarEntropy": 56.9,
+    "specificHeatCapacity": 0.195
+  },
+  
+  "iupac": {
+    "atomicMass": 138.90547,
+    "electronegativity": 1.10,
+    "ionizationEnergy": 538.1,
+    "atomicRadius": 187,
+    "electronAffinity": 48,
+    "standardMolarEntropy": 56.9,
+    "specificHeatCapacity": 0.195
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 920,
+    "boilingPoint": 3464,
+    "density": 6.162,
+    "thermalConductivity": 13.4,
+    "appearance": "silvery-white soft metal",
+    "uses": ["camera lenses", "hydrogen storage", "lighter flints", "catalysts"],
+    "notes": "Named from Greek 'lanthanein' (to lie hidden). First of lanthanides. Lanthanum oxide used in high-refractive-index camera lenses (reduces aberration). Misch metal (50% Ce, 25% La) creates sparks in lighter flints. Absorbs hydrogen gas - potential storage material."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

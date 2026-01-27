@@ -1,0 +1,60 @@
+{
+  "compoundId": "methane",
+  "phase": "gas",
+  "phaseName": "methane gas",
+  "density": {
+    "value": 0.000657,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Lighter than air (air is ~1.2 kg/m³); methane rises when released"
+  },
+  "idealGasLaw": {
+    "molarMass": 16.043,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Behaves as ideal gas at normal conditions"
+  },
+  "specificHeat": {
+    "value": 2.22,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "note": "Cp at constant pressure; high heat capacity for a gas"
+  },
+  "thermalConductivity": {
+    "value": 0.0336,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor conductor"
+  },
+  "antoineCoefficients": {
+    "A": 6.69561,
+    "B": 405.420,
+    "C": 267.777,
+    "TminC": -183,
+    "TmaxC": -161,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Insulator"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 5.0,
+    "upperExplosiveLimit": 15.0,
+    "unit": "% by volume in air",
+    "autoignitionTemp": 537,
+    "note": "Extremely flammable; methane-air mixtures are highly explosive; odorless (ethyl mercaptan added for safety detection)"
+  },
+  "solubilityInWater": {
+    "value": 0.022,
+    "unit": "g/L",
+    "temperature": 25,
+    "note": "Very poorly soluble in water"
+  },
+  "reference": "methane/info.json"
+}

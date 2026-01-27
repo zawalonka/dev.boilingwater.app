@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 97,
+  "symbol": "Bk",
+  "name": "Berkelium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 11,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 247,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 601,
+    "atomicRadius": 170,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 247,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 601,
+    "atomicRadius": 170,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 986,
+    "boilingPoint": 2627,
+    "density": 14.78,
+    "thermalConductivity": 10,
+    "appearance": "silvery metal (radioactive)",
+    "uses": ["research only"],
+    "notes": "Named after Berkeley, California (Lawrence Berkeley Lab). Extremely rare - only milligrams produced. Created by bombarding americium with alpha particles. No practical uses beyond research. Bk-247 half-life: 1380 years. Very difficult and expensive to produce."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 85,
+  "symbol": "At",
+  "name": "Astatine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [-1, 1, 3, 5],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 210,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 920,
+    "atomicRadius": 127,
+    "electronAffinity": 270,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.09
+  },
+  
+  "iupac": {
+    "atomicMass": 210,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 920,
+    "atomicRadius": 127,
+    "electronAffinity": 270,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.09
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 302,
+    "boilingPoint": 337,
+    "density": 7.0,
+    "thermalConductivity": 1.7,
+    "appearance": "metallic (probably dark, radioactive)",
+    "uses": ["cancer treatment (research)", "tracer studies"],
+    "notes": "Named from Greek 'astatos' (unstable). Rarest naturally occurring element - less than 30g exists on Earth at any moment! All isotopes radioactive with short half-lives. Appearance unknown - never been seen in bulk (decays too fast). At-211 being researched for targeted alpha therapy (cancer treatment)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

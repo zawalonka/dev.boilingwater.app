@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 77,
+  "symbol": "Ir",
+  "name": "Iridium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 9,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 192.217,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 880.0,
+    "atomicRadius": 136,
+    "electronAffinity": 151,
+    "standardMolarEntropy": 35.5,
+    "specificHeatCapacity": 0.131
+  },
+  
+  "iupac": {
+    "atomicMass": 192.217,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 880.0,
+    "atomicRadius": 136,
+    "electronAffinity": 151,
+    "standardMolarEntropy": 35.5,
+    "specificHeatCapacity": 0.131
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 2446,
+    "boilingPoint": 4428,
+    "density": 22.56,
+    "thermalConductivity": 147,
+    "appearance": "silvery-white very hard metal",
+    "uses": ["spark plugs", "crucibles", "mass standard", "cancer treatment"],
+    "notes": "Named after Greek 'iris' (rainbow) - iridium salts are colorful. Second densest element (22.56 g/cm³). Most corrosion-resistant metal known - resists ALL acids. Iridium layer in Earth's crust marks dinosaur extinction (asteroid impact). Standard kilogram alloy was Pt-Ir (until 2019)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

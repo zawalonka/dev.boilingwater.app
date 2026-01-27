@@ -1,0 +1,60 @@
+{
+  "compoundId": "propane",
+  "phase": "gas",
+  "phaseName": "propane gas",
+  "density": {
+    "value": 0.00181,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Heavier than air (air is ~1.2 kg/m³); propane sinks to low areas"
+  },
+  "idealGasLaw": {
+    "molarMass": 44.097,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Behaves as ideal gas at normal conditions"
+  },
+  "specificHeat": {
+    "value": 1.67,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.0181,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor conductor"
+  },
+  "antoineCoefficients": {
+    "A": 6.82973,
+    "B": 803.997,
+    "C": 246.99,
+    "TminC": -73,
+    "TmaxC": -42,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Insulator"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 2.1,
+    "upperExplosiveLimit": 9.5,
+    "unit": "% by volume in air",
+    "autoignitionTemp": 450,
+    "note": "Extremely flammable; propane-air mixtures are explosive; mercaptan added for odor detection"
+  },
+  "solubilityInWater": {
+    "value": 0.062,
+    "unit": "g/L",
+    "temperature": 25,
+    "note": "Very poorly soluble in water"
+  },
+  "reference": "propane/info.json"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "propane",
+  "type": "compound",
+  "name": "Propane",
+  "aliases": ["LPG (Liquefied Petroleum Gas)", "C₃H₈", "Bottled Gas"],
+  "chemicalFormula": "C₃H₈",
+  "explicitSmiles": "CCC",
+  "molarMass": 44.097,
+  "deltaHf": -103.85,
+  "deltaGf": -23.4,
+  
+  "elements": [
+    {
+      "symbol": "C",
+      "atomicNumber": 6,
+      "count": 3,
+      "reference": "periodic-table/006_nonmetal_C.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 8,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -187.7,
+    "boilingPoint": -42.1,
+    "triplePoint": {
+      "temperature": -187.7,
+      "pressure": 1.7e-9
+    },
+    "criticalPoint": {
+      "temperature": 96.7,
+      "pressure": 42.48,
+      "density": 0.217
+    }
+  },
+  
+  "states": ["gas", "liquid"],
+  "commonUses": ["BBQ grill fuel", "heating", "cooking", "camping stoves", "forklifts", "hot air balloons"],
+  "safetyNotes": "Highly flammable; heavier than air (sinks); asphyxiant; odorless (mercaptan added); explosive 2.1-9.5% in air; stored under pressure as liquid",
+  "educationalNotes": "Boiling point -42.1°C - propane is normally a gas, but easy to liquefy with modest pressure (stored in tanks as liquid, vaporizes when released). Heavier than air, so leaks accumulate in low spots. Common BBQ fuel because it's easy to transport as liquid under pressure.",
+  "lastUpdated": "2026-01-27"
+}

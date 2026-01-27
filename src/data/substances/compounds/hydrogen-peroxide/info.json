@@ -1,0 +1,47 @@
+{
+  "id": "hydrogen-peroxide",
+  "type": "compound",
+  "name": "Hydrogen Peroxide",
+  "aliases": ["Peroxide", "Dihydrogen Dioxide", "Oxidanyl"],
+  "chemicalFormula": "H₂O₂",
+  "explicitSmiles": "OO",
+  "molarMass": 34.0147,
+  "deltaHf": -187.78,
+  "deltaGf": -120.35,
+  
+  "elements": [
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 2,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "count": 2,
+      "reference": "periodic-table/008_nonmetal_O.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -0.43,
+    "boilingPoint": 150.2,
+    "decompositionNote": "Decomposes exothermically above ~150°C into water + oxygen; pure H₂O₂ is rarely heated to boiling",
+    "triplePoint": {
+      "temperature": -0.43,
+      "pressure": 0.0012
+    },
+    "criticalPoint": {
+      "temperature": null,
+      "pressure": null,
+      "note": "Critical point not precisely measured due to decomposition"
+    }
+  },
+  
+  "states": ["liquid", "gas"],
+  "commonUses": ["disinfectant", "bleaching agent", "wound cleaner", "hair bleaching", "rocket propellant (high concentration)"],
+  "safetyNotes": "Household 3% solution is safe for skin contact; higher concentrations (>30%) are corrosive and explosive; decomposes into water and oxygen gas (foaming when applied to cuts)",
+  "educationalNotes": "Boiling point 150°C - much higher than water! This is surprising given H₂O₂ is so similar to H₂O. Decomposes at high heat into 2H₂O₂ → 2H₂O + O₂ (this is why it foams on wounds - catalase enzyme speeds decomposition, releasing oxygen bubbles). Store in dark containers - light accelerates decomposition.",
+  "lastUpdated": "2026-01-27"
+}

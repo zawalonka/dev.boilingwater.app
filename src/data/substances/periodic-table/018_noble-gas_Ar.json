@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 18,
+  "symbol": "Ar",
+  "name": "Argon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "valenceElectrons": 8,
+  "oxidationStates": [0],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 39.948,
+    "electronegativity": null,
+    "ionizationEnergy": 1520.6,
+    "atomicRadius": 71,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 154.84,
+    "specificHeatCapacity": 0.520,
+    "meltingPoint": 83.80,
+    "boilingPoint": 87.30,
+    "density": 0.0017837,
+    "thermalConductivity": 0.0177,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 39.95,
+    "electronegativity": null,
+    "ionizationEnergy": 1520.6,
+    "atomicRadius": 71,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 154.84,
+    "specificHeatCapacity": 0.520,
+    "meltingPoint": 83.80,
+    "boilingPoint": 87.30,
+    "density": 0.0017837,
+    "thermalConductivity": 0.0177,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless gas; lavender/blue glow in discharge tubes",
+    "uses": ["welding shield gas", "light bulbs", "cryosurgery", "preserving historical documents"],
+    "notes": "Third most abundant gas in Earth's atmosphere (0.93%); inert; used to create inert atmosphere for welding"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

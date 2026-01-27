@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 2,
+  "symbol": "He",
+  "name": "Helium",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [0],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 4.002602,
+    "electronegativity": null,
+    "ionizationEnergy": 2372.3,
+    "atomicRadius": 31,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 126.15,
+    "specificHeatCapacity": 5.193,
+    "meltingPoint": 0.95,
+    "boilingPoint": 4.22,
+    "density": 0.0001785,
+    "thermalConductivity": 0.1513,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 4.0026,
+    "electronegativity": null,
+    "ionizationEnergy": 2372.3,
+    "atomicRadius": 31,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 126.15,
+    "specificHeatCapacity": 5.193,
+    "meltingPoint": 0.95,
+    "boilingPoint": 4.22,
+    "density": 0.0001785,
+    "thermalConductivity": 0.1513,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "appearance": "colorless gas",
+    "uses": ["balloons", "cryogenics", "breathing mixtures", "MRI coolant"],
+    "notes": "Second most abundant element in universe; extremely low boiling point; chemically inert"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

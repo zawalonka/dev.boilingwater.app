@@ -1,0 +1,64 @@
+{
+  "compoundId": "ammonia",
+  "phase": "liquid",
+  "phaseName": "liquid ammonia",
+  "density": {
+    "value": 0.682,
+    "unit": "kg/L",
+    "temperature": -33,
+    "pressure": 1.0,
+    "note": "Liquid ammonia at boiling point; requires refrigeration or pressure to maintain liquid state"
+  },
+  "specificHeat": {
+    "value": 4.70,
+    "unit": "J/(g·°C)",
+    "temperature": -33,
+    "source": "measured",
+    "note": "Higher than water; excellent heat capacity"
+  },
+  "thermalConductivity": {
+    "value": 0.493,
+    "unit": "W/(m·K)",
+    "temperature": -33,
+    "note": "Decent thermal conductor for a liquid"
+  },
+  "latentHeatOfVaporization": {
+    "value": 1371,
+    "unit": "kJ/kg",
+    "note": "High heat of vaporization; used as refrigerant because it absorbs heat when evaporating"
+  },
+  "latentHeatOfFusion": {
+    "value": 332.17,
+    "unit": "kJ/kg",
+    "note": "Energy required to melt frozen ammonia"
+  },
+  "compressibility": {
+    "value": 0.0022,
+    "unit": "1/Pa",
+    "note": "More compressible than water"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00246,
+    "unit": "1/K",
+    "note": "Expands significantly with temperature"
+  },
+  "viscosity": {
+    "value": 0.254,
+    "unit": "mPa·s",
+    "temperature": -33,
+    "note": "Less viscous than water"
+  },
+  "surfaceTension": {
+    "value": 23.4,
+    "unit": "mN/m",
+    "temperature": -33,
+    "note": "Lower surface tension than water"
+  },
+  "electricalConductivity": {
+    "value": 0.0000001,
+    "unit": "S/m",
+    "temperature": -33,
+    "note": "Very poor conductor; liquid ammonia is nearly an insulator"
+  },
+  "reference": "ammonia/info.json"
+}

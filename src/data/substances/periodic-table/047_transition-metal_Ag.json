@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 47,
+  "symbol": "Ag",
+  "name": "Silver",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 1,
+  "oxidationStates": [3, 2, 1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 107.8682,
+    "electronegativity": 1.93,
+    "ionizationEnergy": 731.0,
+    "atomicRadius": 144,
+    "electronAffinity": 125.6,
+    "standardMolarEntropy": 42.55,
+    "specificHeatCapacity": 0.235,
+    "meltingPoint": 1234.93,
+    "boilingPoint": 2435,
+    "density": 10.501,
+    "thermalConductivity": 429,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 107.868,
+    "electronegativity": 1.93,
+    "ionizationEnergy": 731.0,
+    "atomicRadius": 144,
+    "electronAffinity": 125.6,
+    "standardMolarEntropy": 42.55,
+    "specificHeatCapacity": 0.235,
+    "meltingPoint": 1234.93,
+    "boilingPoint": 2435,
+    "density": 10.501,
+    "thermalConductivity": 429,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "lustrous white metallic",
+    "uses": ["jewelry", "coins", "photography", "electronics", "antibacterial agent"],
+    "notes": "Highest electrical and thermal conductivity of all metals; highly reflective; antimicrobial properties; precious metal used for currency since ancient times"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

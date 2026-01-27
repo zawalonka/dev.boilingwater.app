@@ -1,0 +1,66 @@
+{
+  "compoundId": "ammonia",
+  "phase": "gas",
+  "phaseName": "ammonia gas",
+  "density": {
+    "value": 0.000771,
+    "unit": "kg/L",
+    "temperature": 20,
+    "pressure": 1.0,
+    "note": "Lighter than air; rises when released"
+  },
+  "idealGasLaw": {
+    "molarMass": 17.03,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Ammonia gas follows ideal gas law reasonably well"
+  },
+  "specificHeat": {
+    "value": 2.09,
+    "unit": "J/(g·°C)",
+    "temperature": 20,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.0249,
+    "unit": "W/(m·K)",
+    "temperature": 20,
+    "note": "Poor thermal conductor as expected for gases"
+  },
+  "antoineCoefficients": {
+    "A": 7.36050,
+    "B": 926.132,
+    "C": 240.17,
+    "TminC": -68,
+    "TmaxC": -33,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "High vapor pressure; easily vaporizes"
+  },
+  "viscosity": {
+    "value": 0.0102,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Similar viscosity to air"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 20,
+    "note": "Essentially non-conductive as pure gas"
+  },
+  "solubilityInWater": {
+    "value": 482,
+    "unit": "g/L",
+    "temperature": 20,
+    "note": "Extremely soluble in water; forms NH₄OH (ammonium hydroxide) solution"
+  },
+  "odor": {
+    "threshold": 5,
+    "unit": "ppm",
+    "description": "sharp, pungent, suffocating",
+    "note": "Characteristic smell of cleaning products; detectable at very low concentrations"
+  },
+  "reference": "ammonia/info.json"
+}

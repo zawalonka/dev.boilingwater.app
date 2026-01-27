@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 14,
+  "symbol": "Si",
+  "name": "Silicon",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "valenceElectrons": 4,
+  "oxidationStates": [4, 3, 2, 1, -1, -2, -3, -4],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 28.0855,
+    "electronegativity": 1.90,
+    "ionizationEnergy": 786.5,
+    "atomicRadius": 111,
+    "electronAffinity": 133.6,
+    "standardMolarEntropy": 18.83,
+    "specificHeatCapacity": 0.705,
+    "meltingPoint": 1687,
+    "boilingPoint": 3538,
+    "density": 2.3296,
+    "thermalConductivity": 149,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 28.085,
+    "electronegativity": 1.90,
+    "ionizationEnergy": 786.5,
+    "atomicRadius": 111,
+    "electronAffinity": 133.6,
+    "standardMolarEntropy": 18.83,
+    "specificHeatCapacity": 0.705,
+    "meltingPoint": 1687,
+    "boilingPoint": 3538,
+    "density": 2.3296,
+    "thermalConductivity": 149,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dark gray crystalline solid with metallic luster",
+    "uses": ["computer chips", "solar cells", "glass", "semiconductors", "silicone polymers"],
+    "notes": "Second most abundant element in Earth's crust; basis of modern electronics; forms sand and quartz (SiO₂)"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

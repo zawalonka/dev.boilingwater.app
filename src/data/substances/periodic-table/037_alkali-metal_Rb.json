@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 37,
+  "symbol": "Rb",
+  "name": "Rubidium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s-block",
+  "valenceElectrons": 1,
+  "oxidationStates": [1],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 85.4678,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 403.0,
+    "atomicRadius": 248,
+    "electronAffinity": 46.9,
+    "standardMolarEntropy": 76.78,
+    "specificHeatCapacity": 0.363
+  },
+  
+  "iupac": {
+    "atomicMass": 85.4678,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 403.0,
+    "atomicRadius": 248,
+    "electronAffinity": 46.9,
+    "standardMolarEntropy": 76.78,
+    "specificHeatCapacity": 0.363
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 39.31,
+    "boilingPoint": 688,
+    "density": 1.532,
+    "thermalConductivity": 58.2,
+    "appearance": "silvery-white soft metal",
+    "uses": ["atomic clocks", "photocells", "specialty glass", "research"],
+    "notes": "Named from Latin 'rubidus' (deepest red) - produces red spectral lines. Extremely reactive alkali metal - ignites spontaneously in air! Melts at 39°C (body temperature). Used in atomic clocks (rubidium frequency standards)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

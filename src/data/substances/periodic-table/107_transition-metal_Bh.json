@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 107,
+  "symbol": "Bh",
+  "name": "Bohrium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [7],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 270,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 128,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 270,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 128,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 37.1,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Niels Bohr (quantum mechanics pioneer). Produced by bombarding bismuth with chromium. Bh-274 half-life: 54 seconds. Chemistry similar to rhenium. Relativistic effects alter expected properties significantly. Research only - too unstable for applications."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

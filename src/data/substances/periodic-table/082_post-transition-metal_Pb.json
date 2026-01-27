@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 82,
+  "symbol": "Pb",
+  "name": "Lead",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 4,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 207.2,
+    "electronegativity": 2.33,
+    "ionizationEnergy": 715.6,
+    "atomicRadius": 180,
+    "electronAffinity": 35.1,
+    "standardMolarEntropy": 64.81,
+    "specificHeatCapacity": 0.129
+  },
+  
+  "iupac": {
+    "atomicMass": 207.2,
+    "electronegativity": 2.33,
+    "ionizationEnergy": 715.6,
+    "atomicRadius": 180,
+    "electronAffinity": 35.1,
+    "standardMolarEntropy": 64.81,
+    "specificHeatCapacity": 0.129
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 327.46,
+    "boilingPoint": 1749,
+    "density": 11.34,
+    "thermalConductivity": 35.3,
+    "appearance": "bluish-white lustrous metal (tarnishes gray)",
+    "uses": ["lead-acid batteries", "radiation shielding", "ammunition", "fishing weights"],
+    "notes": "Symbol Pb from Latin 'plumbum'. Used for 6000+ years - Roman water pipes were lead (Latin plumbum → plumbing). Toxic - banned in gasoline, paint, solder. Absorbs X-rays/gamma rays - radiation shielding. Lead-acid car batteries. Dense, soft, corrosion-resistant."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

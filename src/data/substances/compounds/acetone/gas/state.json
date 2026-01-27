@@ -1,0 +1,45 @@
+{
+  "compoundId": "acetone",
+  "phase": "gas",
+  "phaseName": "acetone vapor",
+  "density": {
+    "value": 0.00238,
+    "unit": "kg/L",
+    "temperature": 100,
+    "pressure": 1.0,
+    "note": "Acetone vapor is heavier than air (sinks); use Ideal Gas Law for other T/P"
+  },
+  "idealGasLaw": {
+    "molarMass": 58.08,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Acetone vapor behaves as ideal gas at low pressures"
+  },
+  "specificHeat": {
+    "value": 1.29,
+    "unit": "J/(g·°C)",
+    "temperature": 100,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.0110,
+    "unit": "W/(m·K)",
+    "temperature": 100,
+    "note": "Very poor conductor as a gas"
+  },
+  "antoineCoefficients": null,
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 100,
+    "note": "Essentially an insulator as vapor"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 2.5,
+    "upperExplosiveLimit": 12.8,
+    "unit": "% by volume in air",
+    "note": "Acetone vapor-air mixtures are highly explosive; extreme fire hazard"
+  },
+  "reference": "acetone/info.json"
+}

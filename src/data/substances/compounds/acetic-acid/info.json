@@ -1,0 +1,52 @@
+{
+  "id": "acetic-acid",
+  "type": "compound",
+  "name": "Acetic Acid",
+  "aliases": ["Ethanoic Acid", "Vinegar (dilute solution)", "Glacial Acetic Acid (pure)"],
+  "chemicalFormula": "CH₃COOH",
+  "explicitSmiles": "CC(=O)O",
+  "molarMass": 60.052,
+  "deltaHf": -484.5,
+  "deltaGf": -389.9,
+  
+  "elements": [
+    {
+      "symbol": "C",
+      "atomicNumber": 6,
+      "count": 2,
+      "reference": "periodic-table/006_nonmetal_C.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 4,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "count": 2,
+      "reference": "periodic-table/008_nonmetal_O.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": 16.6,
+    "boilingPoint": 118.1,
+    "triplePoint": {
+      "temperature": 16.55,
+      "pressure": 0.0013
+    },
+    "criticalPoint": {
+      "temperature": 321.3,
+      "pressure": 57.86,
+      "density": 0.351
+    }
+  },
+  
+  "states": ["solid", "liquid", "gas"],
+  "commonUses": ["food preservation (vinegar)", "cleaning agent", "chemical manufacturing", "pH adjustment", "laboratory reagent"],
+  "safetyNotes": "Pure acetic acid is corrosive; burns skin; strong odor; household vinegar is diluted to ~5% and safe for consumption",
+  "educationalNotes": "Freezes at 16.6°C - you can sometimes see ice crystals in stored vinegar! Pure acetic acid is called 'glacial' because it forms ice-like crystals. Boils at 118°C, well above water.",
+  "lastUpdated": "2026-01-27"
+}

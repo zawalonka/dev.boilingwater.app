@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 13,
+  "symbol": "Al",
+  "name": "Aluminum",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 3,
+  "oxidationStates": [3, 2, 1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 26.9815386,
+    "electronegativity": 1.61,
+    "ionizationEnergy": 577.5,
+    "atomicRadius": 143,
+    "electronAffinity": 42.5,
+    "standardMolarEntropy": 28.33,
+    "specificHeatCapacity": 0.897,
+    "meltingPoint": 933.47,
+    "boilingPoint": 2792,
+    "density": 2.70,
+    "thermalConductivity": 237,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 26.982,
+    "electronegativity": 1.61,
+    "ionizationEnergy": 577.5,
+    "atomicRadius": 143,
+    "electronAffinity": 42.5,
+    "standardMolarEntropy": 28.33,
+    "specificHeatCapacity": 0.897,
+    "meltingPoint": 933.47,
+    "boilingPoint": 2792,
+    "density": 2.70,
+    "thermalConductivity": 237,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "silvery-white metal",
+    "uses": ["beverage cans", "foil", "aircraft", "power lines", "construction"],
+    "notes": "Most abundant metal in Earth's crust; lightweight; excellent conductor; forms protective oxide layer"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

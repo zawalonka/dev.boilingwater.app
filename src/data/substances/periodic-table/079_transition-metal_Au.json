@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 79,
+  "symbol": "Au",
+  "name": "Gold",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 1,
+  "oxidationStates": [5, 4, 3, 2, 1, -1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 196.966569,
+    "electronegativity": 2.54,
+    "ionizationEnergy": 890.1,
+    "atomicRadius": 144,
+    "electronAffinity": 222.8,
+    "standardMolarEntropy": 47.40,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 1337.33,
+    "boilingPoint": 3129,
+    "density": 19.282,
+    "thermalConductivity": 318,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 196.967,
+    "electronegativity": 2.54,
+    "ionizationEnergy": 890.1,
+    "atomicRadius": 144,
+    "electronAffinity": 222.8,
+    "standardMolarEntropy": 47.40,
+    "specificHeatCapacity": 0.129,
+    "meltingPoint": 1337.33,
+    "boilingPoint": 3129,
+    "density": 19.282,
+    "thermalConductivity": 318,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "metallic yellow",
+    "uses": ["jewelry", "currency", "electronics", "dentistry", "medical implants"],
+    "notes": "One of the least reactive metals; highly malleable and ductile; excellent conductor; does not tarnish or corrode; valued throughout human history"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

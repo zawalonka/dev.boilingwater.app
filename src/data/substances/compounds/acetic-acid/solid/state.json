@@ -1,0 +1,31 @@
+{
+  "compoundId": "acetic-acid",
+  "phase": "solid",
+  "phaseName": "glacial acetic acid (frozen)",
+  "density": {
+    "value": 1.266,
+    "unit": "kg/L",
+    "temperature": 15,
+    "pressure": 1.0,
+    "note": "Frozen acetic acid forms transparent ice-like crystals"
+  },
+  "specificHeat": {
+    "value": 1.22,
+    "unit": "J/(g·°C)",
+    "temperature": 0,
+    "source": "measured",
+    "note": "Heat capacity of frozen acetic acid"
+  },
+  "thermalConductivity": {
+    "value": 0.16,
+    "unit": "W/(m·K)",
+    "temperature": 0,
+    "note": "Estimated for crystalline solid"
+  },
+  "latentHeatOfFusion": {
+    "value": 192,
+    "unit": "kJ/kg",
+    "note": "Energy to melt frozen acetic acid at 16.6°C"
+  },
+  "reference": "acetic-acid/info.json"
+}

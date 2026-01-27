@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 86,
+  "symbol": "Rn",
+  "name": "Radon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 8,
+  "oxidationStates": [0],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 222,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 1037.0,
+    "atomicRadius": 120,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 176.2,
+    "specificHeatCapacity": 0.094
+  },
+  
+  "iupac": {
+    "atomicMass": 222,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 1037.0,
+    "atomicRadius": 120,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 176.2,
+    "specificHeatCapacity": 0.094
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "meltingPoint": -71,
+    "boilingPoint": -61.7,
+    "density": 0.00973,
+    "thermalConductivity": 0.00361,
+    "appearance": "colorless, odorless gas (radioactive)",
+    "uses": ["earthquake prediction (research)", "radiation therapy (historical)"],
+    "notes": "Named from radium (which decays to radon). Only noble gas that's radioactive. Seeps from ground (uranium/radium decay in rocks). Second leading cause of lung cancer after smoking! Accumulates in basements. Radon-222 half-life: 3.8 days. Heaviest known gas."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

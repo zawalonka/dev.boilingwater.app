@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 118,
+  "symbol": "Og",
+  "name": "Oganesson",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 18,
+  "oxidationStates": [0, 2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 294,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 152,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 294,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 152,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 325,
+    "boilingPoint": 450,
+    "density": 4.95,
+    "thermalConductivity": 0,
+    "appearance": "SOLID at room temperature (not gas!)",
+    "uses": ["research only"],
+    "notes": "Named after Yuri Oganessian (Russian nuclear physicist). HEAVIEST ELEMENT EVER CREATED - completes Period 7! Predicted to be SOLID at room temperature (not gas like other noble gases) and REACTIVE (not inert)! Relativistic effects dominate. Produced by bombarding californium with calcium. Og-294 half-life: 0.7 milliseconds. Only a few atoms ever made. Research only. Historic achievement in nuclear physics!"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

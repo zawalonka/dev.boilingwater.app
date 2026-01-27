@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 39,
+  "symbol": "Y",
+  "name": "Yttrium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 3,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 88.90584,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 600.0,
+    "atomicRadius": 180,
+    "electronAffinity": 29.6,
+    "standardMolarEntropy": 44.43,
+    "specificHeatCapacity": 0.298
+  },
+  
+  "iupac": {
+    "atomicMass": 88.90584,
+    "electronegativity": 1.22,
+    "ionizationEnergy": 600.0,
+    "atomicRadius": 180,
+    "electronAffinity": 29.6,
+    "standardMolarEntropy": 44.43,
+    "specificHeatCapacity": 0.298
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1526,
+    "boilingPoint": 3345,
+    "density": 4.472,
+    "thermalConductivity": 17.2,
+    "appearance": "silvery-white metal",
+    "uses": ["LED and display phosphors", "superconductors", "cancer treatment", "aluminum alloys"],
+    "notes": "Named after Ytterby, Sweden (4 elements named after this village!). YAG (yttrium aluminum garnet) lasers used in surgery and manufacturing. Red phosphor in old CRT TVs and modern white LEDs. Yttrium-90 treats liver cancer via radiation."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

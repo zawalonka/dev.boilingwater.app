@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 43,
+  "symbol": "Tc",
+  "name": "Technetium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [4, 7],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 98,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 702,
+    "atomicRadius": 136,
+    "electronAffinity": 53,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.21
+  },
+  
+  "iupac": {
+    "atomicMass": 98,
+    "electronegativity": 1.9,
+    "ionizationEnergy": 702,
+    "atomicRadius": 136,
+    "electronAffinity": 53,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.21
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 2157,
+    "boilingPoint": 4265,
+    "density": 11.0,
+    "thermalConductivity": 50.6,
+    "appearance": "silvery-gray metal",
+    "uses": ["medical imaging", "superconductors", "corrosion inhibitor"],
+    "notes": "Named from Greek 'technetos' (artificial) - first element produced artificially. All isotopes are radioactive. Tc-99m (metastable) is most widely used medical radiotracer - used in 80% of nuclear medicine procedures to image heart, bones, organs."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 26,
+  "symbol": "Fe",
+  "name": "Iron",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [6, 5, 4, 3, 2, 1, -1, -2],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 55.845,
+    "electronegativity": 1.83,
+    "ionizationEnergy": 762.5,
+    "atomicRadius": 124,
+    "electronAffinity": 15.7,
+    "standardMolarEntropy": 27.28,
+    "specificHeatCapacity": 0.449,
+    "meltingPoint": 1811,
+    "boilingPoint": 3134,
+    "density": 7.874,
+    "thermalConductivity": 80.4,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 55.845,
+    "electronegativity": 1.83,
+    "ionizationEnergy": 762.5,
+    "atomicRadius": 124,
+    "electronAffinity": 15.7,
+    "standardMolarEntropy": 27.28,
+    "specificHeatCapacity": 0.449,
+    "meltingPoint": 1811,
+    "boilingPoint": 3134,
+    "density": 7.874,
+    "thermalConductivity": 80.4,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "lustrous metallic gray",
+    "uses": ["steel", "hemoglobin", "magnets", "construction", "tools"],
+    "notes": "Most common element on Earth by mass; essential for life (hemoglobin carries oxygen); core of Earth is mostly iron; rusts when exposed to moisture"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

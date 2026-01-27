@@ -1,72 +1,187 @@
 ﻿# Project TODO  Periodic-Table-Driven Substance Architecture
 
-##  Completed (This Session)
-- [x] Renamed luidLoader.js  substanceLoader.js (future-proof for solids/gases/mixtures)
+##  Completed (Session: 2026-01-27)
+- [x] Created ALL 118 periodic table elements with exhaustive detail (H through Og)
+  - [x] Elements 1-96 (H through Cm): Complete with NIST/IUPAC data, physical properties, educational notes
+  - [x] Elements 97-103 (Bk through Lr): Actinides with research applications
+  - [x] Elements 104-118 (Rf through Og): Superheavy transactinides with synthesis details
+- [x] Created 10 household compounds with full thermodynamic phase data:
+  - [x] H2O (ice, water, steam) - Water
+  - [x] Saltwater-3pct (aqueous solution)
+  - [x] Ethanol (liquid, gas)
+  - [x] Ammonia (liquid, gas)
+  - [x] Acetone (liquid, gas)
+  - [x] Acetic acid (solid, liquid, gas)
+  - [x] Hydrogen peroxide (liquid, gas)
+  - [x] Methane (liquid, gas)
+  - [x] Propane (liquid, gas)
+  - [x] Isopropyl alcohol (liquid, gas)
+  - [x] Glycerin (liquid)
+  - [x] Sucrose (solid, liquid)
+- [x] Updated substanceLoader.js getAvailableSubstances() with all 12 compounds
+- [x] Fixed tutorial completion gating bug (activeExperiment === 'boiling-water')
+- [x] Tagged and released v0.1.1
+- [x] Created CHANGELOG.md with versioning notes
+
+##  Completed (Previous Sessions)
+- [x] Created 6 core element JSON files (H, C, N, O, Na, Cl) with dual NIST/IUPAC data
+- [x] Created H2O compound: info.json + 3 phase states (ice, water, steam)
+- [x] Created saltwater-3pct mixture: info.json + liquid state with electrolyte properties
+- [x] Refactored substanceLoader.js to load compounds and phase states dynamically
+- [x] Integrated loader with physics engine (all substance values from JSON, no hardcoded constants)
+- [x] Removed legacy src/data/fluids/ folder
+- [x] Renamed fluidLoader.js → substanceLoader.js (future-proof for solids/gases/mixtures)
 - [x] Added compatibility aliases for backward compatibility
 - [x] Updated all imports in GameScene to use new loader API
 - [x] Updated documentation refs across copilot-instructions.md, REFACTORING_SUMMARY.md, etc.
 - [x] Deleted duplicate TODO_NEXT_SESSION.md
-
-##  Completed (Previous Sessions)
-- [x] Effects system fully implemented (steam, flame glow, water stream)  all opt-in per theme
+- [x] Effects system fully implemented (steam, flame glow, water stream) – all opt-in per theme
 - [x] Theme system locked down and extensible (workshop JSON structure with level filtering)
 - [x] Level 1 workshop system working (pre-alpha-kitchen-1, pre-alpha-kitchen-2, alpha-kitchen)
 - [x] Level 1 experiments structured (boiling-water, altitude-effect, different-fluids)
 
 ---
 
-## CURRENT SPRINT: Periodic-Table-Driven Substance Architecture
+## CURRENT SPRINT: Expand Substance Library
 
-### Priority 1: Build Data Structure for Periodic Table + Compounds
-**Status:** Planning  Implementation
+### Priority 1: Complete Periodic Table (All 118 Elements)
+**Status:** ✅ COMPLETE (118/118 elements created)
 
-#### 1.1 Create Element (Periodic Table) JSON Files
+#### 1.1 Create Remaining Element JSON Files
 **Location:** `src/data/substances/periodic-table/`
 **Filename:** `{atomicNumber:03d}_{elementCategory}_{symbol}.json`
-- Examples: `001_nonmetal_H.json`, `008_nonmetal_O.json`, `017_halogen_Cl.json`
 
-**Content Specification:**
-```json
-{
-  "atomicNumber": 1,
-  "symbol": "H",
-  "name": "Hydrogen",
-  "elementCategory": "nonmetal",
-  "chemicalBlock": "s",
-  "valenceElectrons": 1,
-  "oxidationStates": [1, -1],
-  "standardUsed": "iupac",
-  
-  "nist": {
-    "atomicMass": 1.00794,
-    "electronegativity": 2.20,
-    "ionizationEnergy": 1312.0,
-    "atomicRadius": 37,
-    "electronAffinity": 72.8,
-    "standardMolarEntropy": 130.57,
-    "specificHeatCapacity": 14.3,
-    "source": "NIST Chemistry WebBook 2024"
-  },
-  
-  "iupac": {
-    "atomicMass": 1.008,
-    "electronegativity": 2.20,
-    "ionizationEnergy": 1312.0,
-    "atomicRadius": 37,
-    "electronAffinity": 72.8,
-    "standardMolarEntropy": 130.57,
-    "specificHeatCapacity": 14.3,
-    "source": "IUPAC Periodic Table 2024"
-  },
-  
-  "lastUpdated": "2026-01-27"
-}
-```
-**Units:** atomicMass (u), electronegativity (Pauling), ionizationEnergy (kJ/mol), atomicRadius (pm), electronAffinity (kJ/mol), entropy (J/(mol·K)), specificHeat (J/(g·°C))
+**Completed Elements (118/118):**
+- [x] Period 1 (2): H, He
+- [x] Period 2 (8): Li, Be, B, C, N, O, F, Ne
+- [x] Period 3 (8): Na, Mg, Al, Si, P, S, Cl, Ar
+- [x] Period 4 (18): K, Ca, Sc, Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr
+- [x] Period 5 (18): Rb, Sr, Y, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te, I, Xe
+- [x] Period 6 (32): Cs, Ba, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Hf, Ta, W, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn
+- [x] Period 7 (32): Fr, Ra, Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr, Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Nh, Fl, Mc, Lv, Ts, Og
 
-- [ ] Create 6 core elements: `001_nonmetal_H.json`, `008_nonmetal_O.json`, `006_nonmetal_C.json`, `007_nonmetal_N.json`, `011_metal_Na.json`, `017_halogen_Cl.json`
+**Detail Level:** All 118 elements include:
+- NIST & IUPAC atomic mass, electronegativity, ionization energy, atomic radius, electron affinity, molar entropy, specific heat
+- Physical properties (melting/boiling points, density, thermal conductivity, phase, appearance)
+- Real-world uses and applications
+- Comprehensive educational notes covering discovery, etymology, significance
+- For radioactive elements: half-lives, decay products, applications in medicine/industry
 
-#### 1.2 Create Compound: Water (H₂O) — Pure Liquid Reference
+---
+
+### Priority 2: Add Common Household Chemical Compounds
+**Status:** ✅ COMPLETE (12/12 compounds with full phase data)
+
+#### 2.1 Pure Household Chemicals
+**Rationale:** Educational value – students recognize these from daily life
+
+**Compounds Completed (12/12):**
+
+1. **H₂O (Water)** - Ice, Liquid, Gas phases
+   - Triple point, critical point, Antoine coefficients
+   - All phase states with complete thermodynamic properties
+   
+2. **Saltwater (3% NaCl)** - Aqueous solution
+   - Electrolyte properties, colligative effects
+   - Boiling point elevation, freezing point depression
+   
+3. **Ethanol (C₂H₅OH)** - Liquid, Gas phases
+   - Alcoholic beverages, fuel, sanitizer
+   - Full phase transition data
+   
+4. **Ammonia (NH₃)** - Liquid, Gas phases
+   - Cleaning product, fertilizer, industrial chemical
+   - Vapor pressure, latent heat of vaporization
+   
+5. **Acetone (CH₃COCH₃)** - Liquid, Gas phases
+   - Nail polish remover, solvent
+   - Flammability, volatility data
+   
+6. **Acetic Acid (CH₃COOH)** - Solid, Liquid, Gas phases
+   - Vinegar (5% solution), industrial chemical
+   - All phase transitions with complete data
+   
+7. **Hydrogen Peroxide (H₂O₂)** - Liquid, Gas phases
+   - Disinfectant, bleach, industrial oxidizer
+   - Decomposition to water and oxygen
+   
+8. **Methane (CH₄)** - Liquid, Gas phases
+   - Natural gas, biogas
+   - Cryogenic properties (liquefied natural gas)
+   
+9. **Propane (C₃H₈)** - Liquid, Gas phases
+   - Cooking gas, barbecue fuel, heating
+   - High flammability, pressure data
+   
+10. **Isopropyl Alcohol (C₃H₈O)** - Liquid, Gas phases
+    - Rubbing alcohol, sanitizer, solvent
+    - Flammable, vapor pressure data
+    
+11. **Glycerin (C₃H₈O₃)** - Liquid phase
+    - Skin moisturizer, food additive, viscous liquid
+    - High boiling point (290°C)
+    
+12. **Sucrose (C₁₂H₂₂O₁₁)** - Solid, Liquid phases
+    - Table sugar, food sweetener
+    - Melting at 186°C, caramelization at higher temps
+
+   - Phases: liquid (most common), gas
+   - Boiling point: 78.37°C (lower than water)
+
+2. **Acetic Acid (Vinegar 5%)** - CH₃COOH
+   - Use: cooking, cleaning
+   - Phases: liquid (aqueous solution), pure liquid, gas
+   - Boiling point: 118°C (higher than water)
+
+3. **Ammonia (Cleaning Solution)** - NH₃
+   - Use: cleaning products, fertilizer
+   - Phases: gas (at room temp), aqueous solution (ammonia water)
+   - Boiling point: -33°C (very low!)
+
+4. **Hydrogen Peroxide** - H₂O₂
+   - Use: disinfectant, bleach alternative
+   - Phases: liquid (aqueous 3% solution), pure liquid
+   - Boiling point: 150°C (decomposes)
+
+5. **Methane (Natural Gas)** - CH₄
+   - Use: cooking fuel, heating
+   - Phases: gas (standard), liquid (compressed)
+   - Boiling point: -161°C (cryogenic)
+
+6. **Propane (Grill Gas)** - C₃H₈
+   - Use: BBQ grills, portable stoves, heating
+   - Phases: gas (at room temp), liquid (compressed in tanks)
+   - Boiling point: -42°C
+
+7. **Acetone (Nail Polish Remover)** - C₃H₆O
+   - Use: solvent, cleaning
+   - Phases: liquid, gas
+   - Boiling point: 56°C (very volatile)
+
+8. **Isopropyl Alcohol (Rubbing Alcohol)** - C₃H₇OH
+   - Use: disinfectant, cleaning electronics
+   - Phases: liquid, gas
+   - Boiling point: 82.5°C
+
+9. **Glycerin/Glycerol** - C₃H₈O₃
+   - Use: soaps, lotions, food sweetener
+   - Phases: liquid (viscous)
+   - Boiling point: 290°C (very high, thick liquid)
+
+10. **Sucrose (Table Sugar)** - C₁₂H₂₂O₁₁
+    - Use: sweetener, preservative
+    - Phases: solid (crystals), aqueous solution
+    - Melting point: 186°C (caramelizes), no boiling point (decomposes)
+
+**Implementation Plan:**
+- [ ] Create info.json for each compound with element references
+- [ ] Create phase state files (liquid/gas as appropriate)
+- [ ] Add Antoine coefficients for vapor pressure calculations
+- [ ] Include safety/educational notes for each compound
+
+---
+
+### Priority 3: Extend substanceLoader.js (Optional Advanced Feature)
 **Location:** `src/data/substances/compounds/h2o/`
 **Files:** `info.json`, `solid/state.json`, `liquid/state.json`, `gas/state.json`
 
@@ -266,174 +381,13 @@
 }
 ```
 
-- [ ] Create all 4 files: `h2o/info.json`, `h2o/solid/state.json`, `h2o/liquid/state.json`, `h2o/gas/state.json`
-
-#### 1.3 Create Compound: Saltwater (3% NaCl by mass) — Electrolyte Reference
-**Location:** `src/data/substances/compounds/saltwater-3pct/`
-**Files:** `info.json`, `liquid/state.json`
-
-**saltwater-3pct/info.json Content:**
-```json
-{
-  "id": "saltwater-3pct",
-  "type": "mixture",
-  "name": "Saltwater (3% NaCl by mass)",
-  "aliases": ["Brackish Water", "Salt Solution", "Saline"],
-  "description": "Homogeneous aqueous solution of sodium chloride",
-  "concentration": {
-    "solute": "NaCl",
-    "soluteSmiles": "[Na+].[Cl-]",
-    "percentByMass": 3.0,
-    "molarConcentration": 0.513
-  },
-  
-  "components": [
-    {
-      "id": "h2o",
-      "name": "Water",
-      "smiles": "O",
-      "role": "solvent",
-      "massFraction": 0.97,
-      "reference": "compounds/h2o/info.json"
-    },
-    {
-      "id": "nacl",
-      "name": "Sodium Chloride",
-      "smiles": "[Na+].[Cl-]",
-      "role": "solute",
-      "massFraction": 0.03,
-      "reference": "compounds/nacl/info.json"
-    }
-  ],
-  
-  "effectOfDissolution": {
-    "boilingPointElevation": 0.16,
-    "meltingPointDepression": -0.10,
-    "osmioticPressure": "increases with concentration"
-  },
-  
-  "phaseTransitions": {
-    "meltingPoint": -0.10,
-    "boilingPoint": 100.16,
-    "triplePoint": {
-      "temperature": -0.05,
-      "pressure": 0.006,
-      "note": "Approximation; actual value depends on solute concentration"
-    },
-    "criticalPoint": {
-      "temperature": 374.0,
-      "pressure": 220.7,
-      "note": "Nearly identical to pure water; dissolved ions have minimal effect"
-    }
-  },
-  
-  "phases": {
-    "liquid": "saltwater"
-  },
-  "states": ["liquid"],
-  "note": "At standard conditions, saltwater only exists as liquid. Freezing/boiling involves phase separation.",
-  "lastUpdated": "2026-01-27"
-}
-```
-
-**saltwater-3pct/liquid/state.json (Enhanced with Electrolyte Properties):**
-```json
-{
-  "compoundId": "saltwater-3pct",
-  "phase": "liquid",
-  "phaseName": "saltwater",
-  "density": {
-    "value": 1.0212,
-    "unit": "kg/L",
-    "temperature": 20,
-    "pressure": 1.0,
-    "volumetricExpansionCoefficient": 0.000207,
-    "note": "3% salt increases density by ~2.1% compared to pure water"
-  },
-  "specificHeat": {
-    "value": 3.93,
-    "unit": "J/(g·°C)",
-    "temperature": 20,
-    "source": "measured",
-    "note": "Lower than pure water (~4.186 J/g°C); dissolved ions reduce specific heat"
-  },
-  "thermalConductivity": {
-    "value": 0.61,
-    "unit": "W/(m·K)",
-    "temperature": 20,
-    "note": "Slightly higher than pure water; salt ions conduct heat"
-  },
-  "latentHeatOfVaporization": {
-    "value": 2412,
-    "unit": "kJ/kg",
-    "note": "Higher than pure water (~2257 kJ/kg); dissolved salt requires more energy to vaporize"
-  },
-  "compressibility": {
-    "value": 0.000440,
-    "unit": "1/Pa",
-    "note": "Slightly less compressible than pure water due to dissolved ions"
-  },
-  "antoineCoefficients": {
-    "A": 8.08386,
-    "B": 1750.286,
-    "C": 235.0,
-    "TminC": 0,
-    "TmaxC": 110,
-    "formula": "log10(Pvap) = A - B/(C + T)",
-    "unit": "Pressure in mmHg, Temperature in °C",
-    "note": "Modified Antoine curve; salt **lowers** vapor pressure (Raoult's Law). Boiling point elevated by ~0.16°C at 3% concentration."
-  },
-  "ionicStrength": {
-    "value": 0.513,
-    "unit": "mol/L",
-    "formula": "I = 0.5 × Σ(ci × zi²)",
-    "note": "Na⁺ and Cl⁻ each contribute; used in advanced activity coefficient models"
-  },
-  "electricalConductivity": {
-    "value": 5.0,
-    "unit": "S/m",
-    "temperature": 20,
-    "range": [4.8, 5.2],
-    "note": "3% NaCl makes water an electrolyte. Pure water: ~0.0005 S/m. Salt dissociates into conducting ions (Na⁺ and Cl⁻).",
-    "applicationUse": "Sensors, electrolysis simulations, conductivity probes, safety (risk of electrical hazards). 10,000x more conductive than pure water!"
-  },
-  "vanThoffFactor": {
-    "value": 1.9,
-    "formula": "i = number of particles per solute molecule",
-    "theoretical": 2.0,
-    "actual": 1.9,
-    "note": "NaCl ideally dissociates into 2 ions (Na⁺ + Cl⁻), but real solutions show i=1.9 due to ion-pairing and electrostatic effects.",
-    "applicationUse": "Calculate colligative properties: ΔTb = i × Kb × m (boiling point elevation), ΔTf = i × Kf × m (freezing point depression), osmotic pressure = i × M × R × T"
-  },
-  "saturationPoint": {
-    "value": 357,
-    "unit": "g/L",
-    "temperature": 25,
-    "solute": "NaCl",
-    "molarConcentration": 6.1,
-    "note": "Maximum concentration of NaCl that can dissolve in water at 25°C. Beyond this, crystals precipitate.",
-    "currentConcentration": 30,
-    "currentConcentrationUnit": "g/L",
-    "percentOfSaturation": 8.4,
-    "applicationUse": "If player evaporates water or adds more salt, track when crystallization begins. Spawn NaCl(s) at bottom of container when saturation is exceeded."
-  },
-  "reference": "saltwater-3pct/info.json"
-}
-```
-
-- [ ] Create files: `saltwater-3pct/info.json`, `saltwater-3pct/liquid/state.json`
-
-#### 1.4 Create Additional Mixture Templates (Optional for Phase 2)
-- [ ] Tap-water (mixed minerals)
-- [ ] Saltwater-35pct (seawater equivalent)
-- [ ] Alcohol-water mixtures
-
 ---
 
-### Priority 2: Extend substanceLoader.js to Assemble from Periodic Table
-**Status:** Not started
+### Priority 3: Extend substanceLoader.js (Optional Advanced Feature)
+**Status:** Deferred (using hybrid shortcut approach)
+**Note:** Elements are referenced in compounds but not dynamically loaded. Phase state files contain all needed values directly (precomputed shortcut). This is sufficient for current gameplay.
 
-#### 2.1 Add Element Loading
+#### 3.1 Add Element Loading (Future Enhancement)
 - [ ] loadElement(elementId)  loads from periodic-table/{elementId}.json
 - [ ] Add caching to avoid re-reading
 

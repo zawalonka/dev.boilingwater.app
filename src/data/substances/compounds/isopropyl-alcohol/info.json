@@ -1,0 +1,52 @@
+{
+  "id": "isopropyl-alcohol",
+  "type": "compound",
+  "name": "Isopropyl Alcohol",
+  "aliases": ["2-Propanol", "Isopropanol", "Rubbing Alcohol", "IPA"],
+  "chemicalFormula": "C₃H₈O",
+  "explicitSmiles": "CC(C)O",
+  "molarMass": 60.096,
+  "deltaHf": -318.1,
+  "deltaGf": -173.6,
+  
+  "elements": [
+    {
+      "symbol": "C",
+      "atomicNumber": 6,
+      "count": 3,
+      "reference": "periodic-table/006_nonmetal_C.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 8,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "count": 1,
+      "reference": "periodic-table/008_nonmetal_O.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -89.5,
+    "boilingPoint": 82.5,
+    "triplePoint": {
+      "temperature": -89.5,
+      "pressure": 0.0004
+    },
+    "criticalPoint": {
+      "temperature": 235.2,
+      "pressure": 47.6,
+      "density": 0.273
+    }
+  },
+  
+  "states": ["liquid", "gas"],
+  "commonUses": ["disinfectant", "sanitizer", "cleaning electronics", "solvent", "antifreeze"],
+  "safetyNotes": "Flammable; do not ingest (toxic); use in ventilated areas; 70% solution is most effective disinfectant (more than 90%)",
+  "educationalNotes": "Boiling point 82.5°C - evaporates quickly, creating cooling sensation on skin. Household 'rubbing alcohol' is 70% isopropanol, 30% water. The 70% solution is actually MORE effective at killing bacteria than 99% because water slows evaporation, allowing longer contact time.",
+  "lastUpdated": "2026-01-27"
+}

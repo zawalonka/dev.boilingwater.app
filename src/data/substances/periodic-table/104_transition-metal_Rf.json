@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 104,
+  "symbol": "Rf",
+  "name": "Rutherfordium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 4,
+  "oxidationStates": [4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 267,
+    "electronegativity": 0,
+    "ionizationEnergy": 580,
+    "atomicRadius": 150,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 267,
+    "electronegativity": 0,
+    "ionizationEnergy": 580,
+    "atomicRadius": 150,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 2100,
+    "boilingPoint": 5500,
+    "density": 23.2,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Ernest Rutherford (nuclear physics pioneer). First transactinide element - begins superheavy elements. Naming controversy between American (rutherfordium) and Soviet (kurchatovium) teams. Rf-267 half-life: 1.3 hours. Produced few atoms at a time. Behaves like hafnium chemically."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

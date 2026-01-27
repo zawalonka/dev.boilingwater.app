@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 69,
+  "symbol": "Tm",
+  "name": "Thulium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 15,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 168.93422,
+    "electronegativity": 1.25,
+    "ionizationEnergy": 596.7,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 74.01,
+    "specificHeatCapacity": 0.160
+  },
+  
+  "iupac": {
+    "atomicMass": 168.93422,
+    "electronegativity": 1.25,
+    "ionizationEnergy": 596.7,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 74.01,
+    "specificHeatCapacity": 0.160
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1545,
+    "boilingPoint": 1950,
+    "density": 9.32,
+    "thermalConductivity": 16.9,
+    "appearance": "silvery-gray metal",
+    "uses": ["portable X-ray devices", "lasers", "euro banknotes (anti-counterfeit)"],
+    "notes": "Named after Thule (ancient name for Scandinavia). Rarest and most expensive stable lanthanide. Thulium-170 used in portable X-ray devices. Tm:YAG lasers for medical applications. Blue fluorescence under UV - used in euro banknote security."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

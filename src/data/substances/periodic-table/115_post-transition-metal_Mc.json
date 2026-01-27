@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 115,
+  "symbol": "Mc",
+  "name": "Moscovium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 15,
+  "oxidationStates": [1, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 290,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 162,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 290,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 162,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 670,
+    "boilingPoint": 1400,
+    "density": 13.5,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Moscow Oblast, Russia (Dubna research center). Produced by bombarding americium with calcium. Mc-290 half-life: 220 milliseconds. Expected to behave like bismuth. Confirmed by multiple labs (2012-2015). Research only - extremely short-lived."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

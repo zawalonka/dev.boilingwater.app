@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 76,
+  "symbol": "Os",
+  "name": "Osmium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 8,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 190.23,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 840.0,
+    "atomicRadius": 135,
+    "electronAffinity": 106.1,
+    "standardMolarEntropy": 32.64,
+    "specificHeatCapacity": 0.130
+  },
+  
+  "iupac": {
+    "atomicMass": 190.23,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 840.0,
+    "atomicRadius": 135,
+    "electronAffinity": 106.1,
+    "standardMolarEntropy": 32.64,
+    "specificHeatCapacity": 0.130
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 3033,
+    "boilingPoint": 5012,
+    "density": 22.59,
+    "thermalConductivity": 87.6,
+    "appearance": "bluish-white lustrous metal",
+    "uses": ["fountain pen nibs", "electrical contacts", "alloys", "fingerprint detection"],
+    "notes": "Named from Greek 'osme' (smell) - OsO₄ has terrible odor. DENSEST naturally occurring element (22.59 g/cm³) - edges out iridium. Extremely hard and brittle. Osmium tetroxide used to stain biological samples for electron microscopy. Platinum-osmium alloys for pen nibs."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

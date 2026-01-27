@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 116,
+  "symbol": "Lv",
+  "name": "Livermorium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 16,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 293,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 175,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 293,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 175,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 708.5,
+    "boilingPoint": 1085,
+    "density": 12.9,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Lawrence Livermore National Laboratory, California. Produced by bombarding curium with calcium. Lv-293 half-life: 61 milliseconds. Expected to behave like polonium but semiconductor, not metal! Relativistic effects again. Research only."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 54,
+  "symbol": "Xe",
+  "name": "Xenon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 8,
+  "oxidationStates": [0],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 131.293,
+    "electronegativity": 2.6,
+    "ionizationEnergy": 1170.4,
+    "atomicRadius": 108,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 169.685,
+    "specificHeatCapacity": 0.158
+  },
+  
+  "iupac": {
+    "atomicMass": 131.293,
+    "electronegativity": 2.6,
+    "ionizationEnergy": 1170.4,
+    "atomicRadius": 108,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 169.685,
+    "specificHeatCapacity": 0.158
+  },
+  
+  "physicalProperties": {
+    "phase": "gas",
+    "meltingPoint": -111.75,
+    "boilingPoint": -108.04,
+    "density": 0.005887,
+    "thermalConductivity": 0.00565,
+    "appearance": "colorless, odorless gas",
+    "uses": ["flash lamps", "ion engines", "medical imaging", "anesthesia", "car headlights"],
+    "notes": "Named from Greek 'xenos' (stranger). Noble gas but NOT completely inert - forms compounds with fluorine and oxygen! Brilliant white light when electrified - used in camera flash, arc lamps. Xenon ion propulsion used in spacecraft. General anesthetic."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

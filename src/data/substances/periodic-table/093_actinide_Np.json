@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 93,
+  "symbol": "Np",
+  "name": "Neptunium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [3, 4, 5, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 237,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 604.5,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.120
+  },
+  
+  "iupac": {
+    "atomicMass": 237,
+    "electronegativity": 1.36,
+    "ionizationEnergy": 604.5,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.120
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 644,
+    "boilingPoint": 3902,
+    "density": 20.45,
+    "thermalConductivity": 6.3,
+    "appearance": "silvery metal (radioactive)",
+    "uses": ["neutron detection", "plutonium production precursor"],
+    "notes": "Named after planet Neptune. First transuranium element (beyond uranium). Produced in nuclear reactors - forms when U-238 captures neutron. Decays to plutonium. Np-237 half-life: 2.14 million years. Used in neutron detection instruments."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

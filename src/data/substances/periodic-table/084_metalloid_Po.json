@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 84,
+  "symbol": "Po",
+  "name": "Polonium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 6,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 209,
+    "electronegativity": 2.0,
+    "ionizationEnergy": 812.1,
+    "atomicRadius": 190,
+    "electronAffinity": 183.3,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.125
+  },
+  
+  "iupac": {
+    "atomicMass": 209,
+    "electronegativity": 2.0,
+    "ionizationEnergy": 812.1,
+    "atomicRadius": 190,
+    "electronAffinity": 183.3,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.125
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 254,
+    "boilingPoint": 962,
+    "density": 9.196,
+    "thermalConductivity": 0.2,
+    "appearance": "silvery metal (radioactive)",
+    "uses": ["anti-static brushes", "spacecraft heaters", "nuclear batteries"],
+    "notes": "Named after Poland (Marie Curie's homeland). Extremely radioactive - Po-210 emits alpha particles. Glows blue from air ionization. One gram releases 140 watts of heat! Used in thermoelectric power for spacecraft. Toxic - one microgram is lethal dose."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 30,
+  "symbol": "Zn",
+  "name": "Zinc",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "valenceElectrons": 2,
+  "oxidationStates": [2, 1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 65.38,
+    "electronegativity": 1.65,
+    "ionizationEnergy": 906.4,
+    "atomicRadius": 134,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.388,
+    "meltingPoint": 692.68,
+    "boilingPoint": 1180,
+    "density": 7.134,
+    "thermalConductivity": 116,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 65.38,
+    "electronegativity": 1.65,
+    "ionizationEnergy": 906.4,
+    "atomicRadius": 134,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.388,
+    "meltingPoint": 692.68,
+    "boilingPoint": 1180,
+    "density": 7.134,
+    "thermalConductivity": 116,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "bluish-white lustrous metal",
+    "uses": ["galvanizing steel", "brass alloys", "die casting", "immune function", "wound healing"],
+    "notes": "Essential trace element for life; used to coat iron to prevent rust (galvanization); component of brass; important for enzyme function"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

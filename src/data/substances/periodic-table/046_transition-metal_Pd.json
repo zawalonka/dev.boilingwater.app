@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 46,
+  "symbol": "Pd",
+  "name": "Palladium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 106.42,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 804.4,
+    "atomicRadius": 137,
+    "electronAffinity": 54.24,
+    "standardMolarEntropy": 37.82,
+    "specificHeatCapacity": 0.244
+  },
+  
+  "iupac": {
+    "atomicMass": 106.42,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 804.4,
+    "atomicRadius": 137,
+    "electronAffinity": 54.24,
+    "standardMolarEntropy": 37.82,
+    "specificHeatCapacity": 0.244
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1554.9,
+    "boilingPoint": 2963,
+    "density": 12.023,
+    "thermalConductivity": 71.8,
+    "appearance": "silvery-white lustrous metal",
+    "uses": ["catalytic converters", "electronics", "jewelry", "hydrogen storage", "dentistry"],
+    "notes": "Named after asteroid Pallas (discovered same year). Absorbs 900× its volume of hydrogen - used in hydrogen purification and fuel cells. Critical for catalytic converters. White gold jewelry contains palladium. Low melting point for platinum-group metal."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

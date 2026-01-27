@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 78,
+  "symbol": "Pt",
+  "name": "Platinum",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [2, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 195.084,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 870.0,
+    "atomicRadius": 139,
+    "electronAffinity": 205.3,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.133
+  },
+  
+  "iupac": {
+    "atomicMass": 195.084,
+    "electronegativity": 2.28,
+    "ionizationEnergy": 870.0,
+    "atomicRadius": 139,
+    "electronAffinity": 205.3,
+    "standardMolarEntropy": 41.63,
+    "specificHeatCapacity": 0.133
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1768.3,
+    "boilingPoint": 3825,
+    "density": 21.45,
+    "thermalConductivity": 71.6,
+    "appearance": "silvery-white lustrous metal",
+    "uses": ["catalytic converters", "jewelry", "chemotherapy", "laboratory equipment", "fuel cells"],
+    "notes": "Named from Spanish 'platina' (little silver). Extremely non-reactive - doesn't corrode or tarnish. 50% of platinum goes into catalytic converters. Cisplatin is platinum-based chemotherapy drug. Rarer than gold - about 30× more expensive. Used in standard meter bar (until 1960)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

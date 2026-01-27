@@ -1,0 +1,84 @@
+{
+  "compoundId": "acetone",
+  "phase": "liquid",
+  "phaseName": "liquid acetone",
+  "density": {
+    "value": 0.784,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Less dense than water; acetone floats on water initially before dissolving"
+  },
+  "specificHeat": {
+    "value": 2.17,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "About half of water's heat capacity"
+  },
+  "thermalConductivity": {
+    "value": 0.161,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfVaporization": {
+    "value": 518,
+    "unit": "kJ/kg",
+    "note": "Much lower than water (2257 kJ/kg); evaporates very easily, creating strong cooling sensation on skin"
+  },
+  "latentHeatOfFusion": {
+    "value": 98,
+    "unit": "kJ/kg",
+    "note": "Energy needed to melt frozen acetone"
+  },
+  "compressibility": {
+    "value": 0.00127,
+    "unit": "1/Pa",
+    "note": "More compressible than water"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00143,
+    "unit": "1/K",
+    "note": "Expands significantly with temperature"
+  },
+  "antoineCoefficients": {
+    "A": 7.11714,
+    "B": 1210.595,
+    "C": 229.664,
+    "TminC": -9,
+    "TmaxC": 56,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Very high vapor pressure at room temperature; this is why acetone evaporates so quickly"
+  },
+  "viscosity": {
+    "value": 0.306,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Thin, runny liquid; about 1/3 the viscosity of water"
+  },
+  "surfaceTension": {
+    "value": 23.46,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Much lower than water (72 mN/m); spreads and penetrates easily"
+  },
+  "electricalConductivity": {
+    "value": 6e-9,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Very poor conductor; essentially an insulator"
+  },
+  "flammability": {
+    "flashPoint": -20,
+    "autoignitionTemp": 465,
+    "unit": "°C",
+    "note": "Extremely flammable; vapors can ignite well below room temperature"
+  },
+  "solubilityInWater": {
+    "miscibility": "complete",
+    "note": "Fully miscible with water in all proportions; also dissolves many organic compounds"
+  },
+  "reference": "acetone/info.json"
+}

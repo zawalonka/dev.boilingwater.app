@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 90,
+  "symbol": "Th",
+  "name": "Thorium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 4,
+  "oxidationStates": [4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 232.0377,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 587.0,
+    "atomicRadius": 180,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 51.8,
+    "specificHeatCapacity": 0.113
+  },
+  
+  "iupac": {
+    "atomicMass": 232.0377,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 587.0,
+    "atomicRadius": 180,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 51.8,
+    "specificHeatCapacity": 0.113
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1750,
+    "boilingPoint": 4788,
+    "density": 11.78,
+    "thermalConductivity": 54.0,
+    "appearance": "silvery-white metal",
+    "uses": ["gas mantles (lanterns)", "nuclear reactors (future)", "welding electrodes", "high-end optics"],
+    "notes": "Named after Thor (Norse god). More abundant than uranium - potential nuclear fuel. Thorium molten salt reactors can't melt down. Gas mantles (camping lanterns) use thorium - glow brilliantly. Th-232 half-life: 14 billion years (older than Earth!). Weakly radioactive."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

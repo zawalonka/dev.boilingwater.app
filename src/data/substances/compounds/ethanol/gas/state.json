@@ -1,0 +1,45 @@
+{
+  "compoundId": "ethanol",
+  "phase": "gas",
+  "phaseName": "ethanol vapor",
+  "density": {
+    "value": 0.00188,
+    "unit": "kg/L",
+    "temperature": 100,
+    "pressure": 1.0,
+    "note": "Use Ideal Gas Law for other temperatures/pressures"
+  },
+  "idealGasLaw": {
+    "molarMass": 46.07,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Ethanol vapor behaves as ideal gas at low pressures"
+  },
+  "specificHeat": {
+    "value": 1.43,
+    "unit": "J/(g·°C)",
+    "temperature": 100,
+    "note": "Cp at constant pressure; lower than liquid ethanol"
+  },
+  "thermalConductivity": {
+    "value": 0.0152,
+    "unit": "W/(m·K)",
+    "temperature": 100,
+    "note": "Very poor conductor as a gas"
+  },
+  "antoineCoefficients": null,
+  "electricalConductivity": {
+    "value": 1e-10,
+    "unit": "S/m",
+    "temperature": 100,
+    "note": "Essentially an insulator as a gas"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 3.3,
+    "upperExplosiveLimit": 19.0,
+    "unit": "% by volume in air",
+    "note": "Ethanol vapor-air mixtures are explosive in this range; extreme fire hazard"
+  },
+  "reference": "ethanol/info.json"
+}

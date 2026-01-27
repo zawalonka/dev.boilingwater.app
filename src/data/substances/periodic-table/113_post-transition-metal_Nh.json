@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 113,
+  "symbol": "Nh",
+  "name": "Nihonium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 13,
+  "oxidationStates": [1, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 286,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 136,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 286,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 136,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 700,
+    "boilingPoint": 1400,
+    "density": 16.0,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Nihon (Japan) - first element discovered in Asia! RIKEN laboratory, Japan. Produced by bombarding bismuth with zinc. Nh-286 half-life: 20 seconds. Expected chemistry similar to thallium. Historic moment for Asian science. Research only."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

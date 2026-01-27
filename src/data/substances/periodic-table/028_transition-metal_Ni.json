@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 28,
+  "symbol": "Ni",
+  "name": "Nickel",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 58.6934,
+    "electronegativity": 1.91,
+    "ionizationEnergy": 737.1,
+    "atomicRadius": 124,
+    "electronAffinity": 112,
+    "standardMolarEntropy": 29.87,
+    "specificHeatCapacity": 0.444
+  },
+  
+  "iupac": {
+    "atomicMass": 58.6934,
+    "electronegativity": 1.91,
+    "ionizationEnergy": 737.1,
+    "atomicRadius": 124,
+    "electronAffinity": 112,
+    "standardMolarEntropy": 29.87,
+    "specificHeatCapacity": 0.444
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1455,
+    "boilingPoint": 2913,
+    "density": 8.912,
+    "thermalConductivity": 90.9,
+    "appearance": "silvery-white lustrous metal",
+    "uses": ["stainless steel", "coins", "rechargeable batteries", "electroplating", "catalysts"],
+    "notes": "Named from German 'kupfernickel' (devil's copper) - looked like copper ore but yielded no copper. Makes up 8% of stainless steel. U.S. nickel coin is actually 75% copper, 25% nickel. Critical component in rechargeable NiMH and Li-ion batteries."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

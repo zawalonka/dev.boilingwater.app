@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 89,
+  "symbol": "Ac",
+  "name": "Actinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 3,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 227,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 499,
+    "atomicRadius": 188,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 56.5,
+    "specificHeatCapacity": 0.120
+  },
+  
+  "iupac": {
+    "atomicMass": 227,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 499,
+    "atomicRadius": 188,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 56.5,
+    "specificHeatCapacity": 0.120
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1050,
+    "boilingPoint": 3200,
+    "density": 10.07,
+    "thermalConductivity": 12,
+    "appearance": "silvery-white metal (radioactive)",
+    "uses": ["neutron sources", "radiation therapy (research)"],
+    "notes": "Named from Greek 'aktinos' (ray). First actinide - gives name to series. Glows blue in dark. Extremely rare - about 150mg in Earth's crust. Ac-225 being researched for targeted alpha therapy (kills cancer cells). Decays to francium and radium."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

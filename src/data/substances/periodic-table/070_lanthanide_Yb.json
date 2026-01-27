@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 70,
+  "symbol": "Yb",
+  "name": "Ytterbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 16,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 173.045,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 603.4,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 59.9,
+    "specificHeatCapacity": 0.155
+  },
+  
+  "iupac": {
+    "atomicMass": 173.045,
+    "electronegativity": 1.1,
+    "ionizationEnergy": 603.4,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 59.9,
+    "specificHeatCapacity": 0.155
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 819,
+    "boilingPoint": 1196,
+    "density": 6.90,
+    "thermalConductivity": 38.5,
+    "appearance": "silvery-white soft metal",
+    "uses": ["atomic clocks", "stress gauges", "lasers", "fiber optic amplifiers"],
+    "notes": "Named after Ytterby, Sweden. Ytterbium atomic clocks are most accurate clocks - measure time fluctuations due to relativity! Used as dopant in stainless steel for strength testing. Yb-doped lasers for cutting and welding."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

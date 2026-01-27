@@ -1,0 +1,44 @@
+{
+  "compoundId": "acetic-acid",
+  "phase": "gas",
+  "phaseName": "acetic acid vapor",
+  "density": {
+    "value": 0.00246,
+    "unit": "kg/L",
+    "temperature": 120,
+    "pressure": 1.0,
+    "note": "Heavier than air; use Ideal Gas Law for other T/P"
+  },
+  "idealGasLaw": {
+    "molarMass": 60.052,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Acetic acid vapor partially dimerizes (forms pairs of molecules)"
+  },
+  "specificHeat": {
+    "value": 1.60,
+    "unit": "J/(g·°C)",
+    "temperature": 120,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.0144,
+    "unit": "W/(m·K)",
+    "temperature": 120,
+    "note": "Poor conductor as gas"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 120,
+    "note": "Insulator as vapor"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 4.0,
+    "upperExplosiveLimit": 19.9,
+    "unit": "% by volume in air",
+    "note": "Vapor-air mixtures are flammable"
+  },
+  "reference": "acetic-acid/info.json"
+}

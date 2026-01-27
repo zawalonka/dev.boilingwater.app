@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 102,
+  "symbol": "No",
+  "name": "Nobelium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 16,
+  "oxidationStates": [2, 3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 259,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 642,
+    "atomicRadius": 176,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 259,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 642,
+    "atomicRadius": 176,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 827,
+    "boilingPoint": 0,
+    "density": 9.9,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Alfred Nobel. Naming controversy - Swedish and Russian teams both claimed discovery. Studies conducted on single atoms due to short half-life. No-259 half-life: 58 minutes. Produced few atoms at a time. Research only - no applications."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

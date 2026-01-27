@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 94,
+  "symbol": "Pu",
+  "name": "Plutonium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 8,
+  "oxidationStates": [3, 4, 5, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 244,
+    "electronegativity": 1.28,
+    "ionizationEnergy": 584.7,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 54.46,
+    "specificHeatCapacity": 0.130
+  },
+  
+  "iupac": {
+    "atomicMass": 244,
+    "electronegativity": 1.28,
+    "ionizationEnergy": 584.7,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 54.46,
+    "specificHeatCapacity": 0.130
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 640,
+    "boilingPoint": 3228,
+    "density": 19.816,
+    "thermalConductivity": 6.74,
+    "appearance": "silvery-white metal (radioactive)",
+    "uses": ["nuclear weapons", "spacecraft power (RTGs)", "pacemaker batteries (historical)"],
+    "notes": "Named after dwarf planet Pluto. Warm to touch - radioactive decay generates heat. Pu-239 used in nuclear weapons and reactors. Radioisotope thermoelectric generators (RTGs) power deep-space missions (Voyager, New Horizons). Extremely toxic. Pu-238 powered pacemakers 1970s-1980s. Trace amounts exist naturally."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

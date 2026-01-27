@@ -1,0 +1,47 @@
+{
+  "compoundId": "sucrose",
+  "phase": "liquid",
+  "phaseName": "molten sucrose (caramel)",
+  "density": {
+    "value": 1.56,
+    "unit": "kg/L",
+    "temperature": 190,
+    "pressure": 1.0,
+    "note": "Density of molten/caramelized sugar"
+  },
+  "specificHeat": {
+    "value": 2.1,
+    "unit": "J/(g·°C)",
+    "temperature": 190,
+    "source": "estimated",
+    "note": "Approximate value for caramelized sugar melt"
+  },
+  "thermalConductivity": {
+    "value": 0.3,
+    "unit": "W/(m·K)",
+    "temperature": 190,
+    "note": "Estimated for liquid caramel"
+  },
+  "decomposition": {
+    "temperature": 186,
+    "unit": "°C",
+    "note": "Sucrose begins decomposing (caramelizing) at melting point; breaks down into complex mixture of compounds"
+  },
+  "viscosity": {
+    "value": 5000,
+    "unit": "mPa·s",
+    "temperature": 190,
+    "note": "Extremely viscous; thick, sticky liquid (caramel consistency)"
+  },
+  "electricalConductivity": {
+    "value": 1e-9,
+    "unit": "S/m",
+    "temperature": 190,
+    "note": "Very poor conductor"
+  },
+  "caramelization": {
+    "stages": ["clear melt (160°C)", "light caramel (170°C)", "medium caramel (180°C)", "dark caramel (190°C)"],
+    "note": "As temperature increases, sucrose breaks down into hundreds of flavor compounds; color darkens, flavor becomes complex and bitter"
+  },
+  "reference": "sucrose/info.json"
+}

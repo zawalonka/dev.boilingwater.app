@@ -1,0 +1,44 @@
+{
+  "compoundId": "isopropyl-alcohol",
+  "phase": "gas",
+  "phaseName": "isopropyl alcohol vapor",
+  "density": {
+    "value": 0.00246,
+    "unit": "kg/L",
+    "temperature": 100,
+    "pressure": 1.0,
+    "note": "Heavier than air; use Ideal Gas Law for other T/P"
+  },
+  "idealGasLaw": {
+    "molarMass": 60.096,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "Behaves as ideal gas at low pressures"
+  },
+  "specificHeat": {
+    "value": 1.67,
+    "unit": "J/(g·°C)",
+    "temperature": 100,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.0143,
+    "unit": "W/(m·K)",
+    "temperature": 100,
+    "note": "Poor conductor as gas"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 100,
+    "note": "Insulator as vapor"
+  },
+  "flammability": {
+    "lowerExplosiveLimit": 2.0,
+    "upperExplosiveLimit": 12.7,
+    "unit": "% by volume in air",
+    "note": "Vapor-air mixtures are highly flammable"
+  },
+  "reference": "isopropyl-alcohol/info.json"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "ammonia",
+  "type": "compound",
+  "name": "Ammonia",
+  "aliases": ["Ammonium Hydroxide (aqueous)", "NH3", "Azane"],
+  "chemicalFormula": "NH₃",
+  "explicitSmiles": "N",
+  "molarMass": 17.03,
+  "deltaHf": -45.94,
+  "deltaGf": -16.45,
+  
+  "elements": [
+    {
+      "symbol": "N",
+      "atomicNumber": 7,
+      "count": 1,
+      "reference": "periodic-table/007_nonmetal_N.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 3,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -77.73,
+    "boilingPoint": -33.34,
+    "triplePoint": {
+      "temperature": -77.65,
+      "pressure": 6.076
+    },
+    "criticalPoint": {
+      "temperature": 132.25,
+      "pressure": 113.53,
+      "density": 0.235
+    }
+  },
+  
+  "states": ["gas", "liquid"],
+  "commonUses": ["cleaning products", "fertilizer", "refrigerant", "smelling salts", "manufacturing"],
+  "safetyNotes": "Toxic gas; corrosive to eyes/skin/lungs; strong pungent odor; household cleaners typically 5-10% ammonia solution",
+  "educationalNotes": "Boiling point is -33°C; exists as gas at room temperature but easily liquefied under pressure; highly soluble in water creating ammonium hydroxide (NH₄OH)",
+  "lastUpdated": "2026-01-27"
+}

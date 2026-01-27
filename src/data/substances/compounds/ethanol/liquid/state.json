@@ -1,0 +1,80 @@
+{
+  "compoundId": "ethanol",
+  "phase": "liquid",
+  "phaseName": "liquid ethanol",
+  "density": {
+    "value": 0.789,
+    "unit": "kg/L",
+    "temperature": 20,
+    "pressure": 1.0,
+    "note": "Ethanol is less dense than water; alcoholic drinks often float ingredients"
+  },
+  "specificHeat": {
+    "value": 2.44,
+    "unit": "J/(g·°C)",
+    "temperature": 20,
+    "source": "measured",
+    "note": "Lower than water (4.186 J/g°C); heats up and cools down faster"
+  },
+  "thermalConductivity": {
+    "value": 0.169,
+    "unit": "W/(m·K)",
+    "temperature": 20,
+    "note": "Poor thermal conductor compared to water (0.6 W/(m·K))"
+  },
+  "latentHeatOfVaporization": {
+    "value": 838,
+    "unit": "kJ/kg",
+    "note": "Much lower than water (2257 kJ/kg); evaporates easily, creating cooling effect"
+  },
+  "latentHeatOfFusion": {
+    "value": 109,
+    "unit": "kJ/kg",
+    "note": "Energy required to melt frozen ethanol at -114°C"
+  },
+  "compressibility": {
+    "value": 0.00111,
+    "unit": "1/Pa",
+    "note": "More compressible than water"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00110,
+    "unit": "1/K",
+    "note": "Expands significantly with temperature; much more than water"
+  },
+  "antoineCoefficients": {
+    "A": 8.04494,
+    "B": 1554.3,
+    "C": 222.65,
+    "TminC": -31,
+    "TmaxC": 79,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Predicts vapor pressure of ethanol; high vapor pressure = evaporates easily"
+  },
+  "viscosity": {
+    "value": 1.074,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Slightly more viscous than water (0.89 mPa·s)"
+  },
+  "surfaceTension": {
+    "value": 21.97,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Much lower than water (72 mN/m); forms flatter droplets"
+  },
+  "electricalConductivity": {
+    "value": 0.0000014,
+    "unit": "S/m",
+    "temperature": 20,
+    "note": "Very poor conductor; pure ethanol is nearly an insulator"
+  },
+  "flammability": {
+    "flashPoint": 13,
+    "autoignitionTemp": 363,
+    "unit": "°C",
+    "note": "Highly flammable; vapors can ignite at room temperature"
+  },
+  "reference": "ethanol/info.json"
+}

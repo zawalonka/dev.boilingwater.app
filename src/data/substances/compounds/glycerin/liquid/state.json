@@ -1,0 +1,85 @@
+{
+  "compoundId": "glycerin",
+  "phase": "liquid",
+  "phaseName": "liquid glycerin",
+  "density": {
+    "value": 1.261,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Denser than water; sinks"
+  },
+  "specificHeat": {
+    "value": 2.43,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "High specific heat capacity, similar to water"
+  },
+  "thermalConductivity": {
+    "value": 0.286,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfVaporization": {
+    "value": 974,
+    "unit": "kJ/kg",
+    "note": "Very high heat of vaporization due to strong hydrogen bonding"
+  },
+  "latentHeatOfFusion": {
+    "value": 198,
+    "unit": "kJ/kg",
+    "note": "Energy to melt at 17.8°C"
+  },
+  "compressibility": {
+    "value": 0.00021,
+    "unit": "1/Pa",
+    "note": "Slightly compressible"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00050,
+    "unit": "1/K",
+    "note": "Moderate thermal expansion"
+  },
+  "antoineCoefficients": {
+    "A": 7.2795,
+    "B": 2091.8,
+    "C": 178.5,
+    "TminC": 150,
+    "TmaxC": 290,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Very low vapor pressure at room temperature; essentially non-volatile"
+  },
+  "viscosity": {
+    "value": 1412,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Extremely viscous; 1400× more viscous than water; thick, syrupy consistency"
+  },
+  "surfaceTension": {
+    "value": 63.4,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "High surface tension, close to water (72 mN/m)"
+  },
+  "electricalConductivity": {
+    "value": 6.4e-7,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Very poor conductor"
+  },
+  "solubilityInWater": {
+    "miscibility": "complete",
+    "note": "Fully miscible with water; forms strong hydrogen bonds"
+  },
+  "hygroscopicity": {
+    "note": "Highly hygroscopic; absorbs moisture from air; used as humectant in cosmetics and food"
+  },
+  "sweetness": {
+    "relative": 0.6,
+    "note": "About 60% as sweet as sucrose; used as sweetener in foods"
+  },
+  "reference": "glycerin/info.json"
+}

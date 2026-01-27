@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 95,
+  "symbol": "Am",
+  "name": "Americium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 9,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 243,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 578,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 54.4,
+    "specificHeatCapacity": 0.062
+  },
+  
+  "iupac": {
+    "atomicMass": 243,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 578,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 54.4,
+    "specificHeatCapacity": 0.062
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1176,
+    "boilingPoint": 2011,
+    "density": 12.0,
+    "thermalConductivity": 10,
+    "appearance": "silvery-white metal (radioactive)",
+    "uses": ["smoke detectors", "industrial gauges", "neutron sources"],
+    "notes": "Named after Americas. Found in EVERY home - Am-241 in ionization smoke detectors (tiny amount - safe). Alpha particles ionize air, allowing current flow; smoke blocks current → alarm. Industrial gauges measure thickness. Glows in dark. Only synthetic element with widespread consumer use."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 58,
+  "symbol": "Ce",
+  "name": "Cerium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 4,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 140.116,
+    "electronegativity": 1.12,
+    "ionizationEnergy": 534.4,
+    "atomicRadius": 181,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 72.0,
+    "specificHeatCapacity": 0.192
+  },
+  
+  "iupac": {
+    "atomicMass": 140.116,
+    "electronegativity": 1.12,
+    "ionizationEnergy": 534.4,
+    "atomicRadius": 181,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 72.0,
+    "specificHeatCapacity": 0.192
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 798,
+    "boilingPoint": 3443,
+    "density": 6.770,
+    "thermalConductivity": 11.3,
+    "appearance": "silvery-white soft metal",
+    "uses": ["self-cleaning ovens", "catalytic converters", "lighter flints", "glass polishing"],
+    "notes": "Named after asteroid Ceres. Most abundant lanthanide. Ceria (CeO₂) is yellow - used in self-cleaning ovens (catalyzes oxidation of food spills at high temp). Essential in catalytic converters. Used to polish glass and gemstones. Pyrophoric - sparks when scraped."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

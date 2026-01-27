@@ -1,0 +1,83 @@
+{
+  "compoundId": "hydrogen-peroxide",
+  "phase": "liquid",
+  "phaseName": "liquid hydrogen peroxide",
+  "density": {
+    "value": 1.450,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Pure H₂O₂ is denser than water; household 3% solution is ~1.01 kg/L (close to water)"
+  },
+  "specificHeat": {
+    "value": 2.619,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "Similar to water, slightly higher"
+  },
+  "thermalConductivity": {
+    "value": 0.574,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Good conductor, similar to water"
+  },
+  "latentHeatOfVaporization": {
+    "value": 1371,
+    "unit": "kJ/kg",
+    "note": "High heat of vaporization, though less than water (2257 kJ/kg)"
+  },
+  "latentHeatOfFusion": {
+    "value": 365,
+    "unit": "kJ/kg",
+    "note": "Energy to melt at -0.43°C"
+  },
+  "compressibility": {
+    "value": 0.00051,
+    "unit": "1/Pa",
+    "note": "Slightly compressible"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00115,
+    "unit": "1/K",
+    "note": "Moderate thermal expansion"
+  },
+  "antoineCoefficients": {
+    "A": 8.07131,
+    "B": 2164.5,
+    "C": 263.3,
+    "TminC": 0,
+    "TmaxC": 150,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Lower vapor pressure than water at same temperature"
+  },
+  "viscosity": {
+    "value": 1.245,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Slightly more viscous than water"
+  },
+  "surfaceTension": {
+    "value": 76.1,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Higher than water (72 mN/m)"
+  },
+  "electricalConductivity": {
+    "value": 5e-7,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Very poor conductor when pure; slight autodissociation"
+  },
+  "decomposition": {
+    "catalysts": ["light", "heat", "metal ions", "catalase enzyme"],
+    "reaction": "2H₂O₂ → 2H₂O + O₂",
+    "note": "Decomposes exothermically; stored in dark bottles with stabilizers"
+  },
+  "solubilityInWater": {
+    "miscibility": "complete",
+    "note": "Fully miscible; forms hydrogen bonds with water"
+  },
+  "reference": "hydrogen-peroxide/info.json"
+}

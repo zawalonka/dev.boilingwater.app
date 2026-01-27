@@ -1,0 +1,87 @@
+{
+  "compoundId": "isopropyl-alcohol",
+  "phase": "liquid",
+  "phaseName": "liquid isopropyl alcohol",
+  "density": {
+    "value": 0.786,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Less dense than water; household 70% solution is ~0.87 kg/L"
+  },
+  "specificHeat": {
+    "value": 2.68,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "High specific heat, similar to water"
+  },
+  "thermalConductivity": {
+    "value": 0.135,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfVaporization": {
+    "value": 732,
+    "unit": "kJ/kg",
+    "note": "Moderate heat of vaporization; evaporates faster than water"
+  },
+  "latentHeatOfFusion": {
+    "value": 88,
+    "unit": "kJ/kg",
+    "note": "Energy to melt at -89.5°C"
+  },
+  "compressibility": {
+    "value": 0.00110,
+    "unit": "1/Pa",
+    "note": "Moderately compressible"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00107,
+    "unit": "1/K",
+    "note": "Moderate thermal expansion"
+  },
+  "antoineCoefficients": {
+    "A": 8.11778,
+    "B": 1580.92,
+    "C": 219.61,
+    "TminC": -26,
+    "TmaxC": 83,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C"
+  },
+  "viscosity": {
+    "value": 2.04,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Twice as viscous as water"
+  },
+  "surfaceTension": {
+    "value": 21.7,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Much lower than water (72 mN/m)"
+  },
+  "electricalConductivity": {
+    "value": 3.5e-9,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Very poor conductor; used for cleaning electronics"
+  },
+  "flammability": {
+    "flashPoint": 12,
+    "autoignitionTemp": 399,
+    "unit": "°C",
+    "note": "Highly flammable; flash point below room temperature"
+  },
+  "solubilityInWater": {
+    "miscibility": "complete",
+    "note": "Fully miscible with water"
+  },
+  "disinfectantEfficacy": {
+    "optimalConcentration": "70%",
+    "note": "70% isopropanol is more effective than 99% for disinfection; water slows evaporation, allowing longer contact time to denature proteins"
+  },
+  "reference": "isopropyl-alcohol/info.json"
+}

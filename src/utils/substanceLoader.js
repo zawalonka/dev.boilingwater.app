@@ -156,7 +156,20 @@ export function parseSubstanceProperties(substanceData) {
  */
 export function getAvailableSubstances() {
   // Hardcoded list; in future, could scan manifest or directory
-  return ['h2o', 'saltwater-3pct']
+  return [
+    'h2o',
+    'saltwater-3pct',
+    'ethanol',
+    'ammonia',
+    'acetone',
+    'acetic-acid',
+    'hydrogen-peroxide',
+    'methane',
+    'propane',
+    'isopropyl-alcohol',
+    'glycerin',
+    'sucrose'
+  ]
 }
 
 /**

@@ -1,0 +1,67 @@
+{
+  "compoundId": "methane",
+  "phase": "liquid",
+  "phaseName": "liquid methane (LNG)",
+  "density": {
+    "value": 0.422,
+    "unit": "kg/L",
+    "temperature": -161.5,
+    "pressure": 1.0,
+    "note": "Liquid methane (LNG) is less dense than water; floats on water"
+  },
+  "specificHeat": {
+    "value": 3.48,
+    "unit": "J/(g·°C)",
+    "temperature": -161.5,
+    "source": "measured",
+    "note": "High specific heat for a cryogenic liquid"
+  },
+  "thermalConductivity": {
+    "value": 0.186,
+    "unit": "W/(m·K)",
+    "temperature": -161.5,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfVaporization": {
+    "value": 510,
+    "unit": "kJ/kg",
+    "note": "Energy to vaporize liquid methane at -161.5°C"
+  },
+  "latentHeatOfFusion": {
+    "value": 58.6,
+    "unit": "kJ/kg",
+    "note": "Energy to melt frozen methane at -182.5°C"
+  },
+  "compressibility": {
+    "value": 0.0023,
+    "unit": "1/Pa",
+    "note": "Moderately compressible as cryogenic liquid"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00356,
+    "unit": "1/K",
+    "note": "Significant thermal expansion"
+  },
+  "viscosity": {
+    "value": 0.112,
+    "unit": "mPa·s",
+    "temperature": -161.5,
+    "note": "Very thin, runny liquid"
+  },
+  "surfaceTension": {
+    "value": 13.2,
+    "unit": "mN/m",
+    "temperature": -161.5,
+    "note": "Low surface tension"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": -161.5,
+    "note": "Insulator as liquid"
+  },
+  "flammability": {
+    "note": "Liquid methane (LNG) vaporizes rapidly when spilled; resulting vapor is extremely flammable"
+  },
+  "reference": "methane/info.json"
+}

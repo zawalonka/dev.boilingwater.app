@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 59,
+  "symbol": "Pr",
+  "name": "Praseodymium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 5,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 140.90766,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 527.0,
+    "atomicRadius": 182,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.2,
+    "specificHeatCapacity": 0.193
+  },
+  
+  "iupac": {
+    "atomicMass": 140.90766,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 527.0,
+    "atomicRadius": 182,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 73.2,
+    "specificHeatCapacity": 0.193
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 931,
+    "boilingPoint": 3520,
+    "density": 6.77,
+    "thermalConductivity": 12.5,
+    "appearance": "silvery-white soft metal",
+    "uses": ["welding goggles", "lighter flints", "yellow glass pigment", "permanent magnets"],
+    "notes": "Named from Greek 'prasios didymos' (green twin). Praseodymium oxide is yellow-green - used to color glass and ceramics. Didymium glass (Pr+Nd) filters sodium's yellow light - used in welding goggles. Component of misch metal (lighter flints)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

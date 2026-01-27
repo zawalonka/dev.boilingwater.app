@@ -1,0 +1,42 @@
+{
+  "compoundId": "hydrogen-peroxide",
+  "phase": "gas",
+  "phaseName": "hydrogen peroxide vapor",
+  "density": {
+    "value": 0.00139,
+    "unit": "kg/L",
+    "temperature": 150,
+    "pressure": 1.0,
+    "note": "Heavier than air; use Ideal Gas Law for other T/P"
+  },
+  "idealGasLaw": {
+    "molarMass": 34.0147,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "H₂O₂ vapor decomposes at high temperatures; rarely exists as pure vapor"
+  },
+  "specificHeat": {
+    "value": 1.89,
+    "unit": "J/(g·°C)",
+    "temperature": 150,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.026,
+    "unit": "W/(m·K)",
+    "temperature": 150,
+    "note": "Poor conductor as gas"
+  },
+  "decomposition": {
+    "note": "H₂O₂ vapor is unstable; decomposes readily above 150°C into water vapor and oxygen gas",
+    "reaction": "2H₂O₂(g) → 2H₂O(g) + O₂(g)"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 150,
+    "note": "Insulator as vapor"
+  },
+  "reference": "hydrogen-peroxide/info.json"
+}

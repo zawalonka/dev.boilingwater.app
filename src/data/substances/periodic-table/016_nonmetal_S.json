@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 16,
+  "symbol": "S",
+  "name": "Sulfur",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [6, 5, 4, 3, 2, 1, -1, -2],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 32.065,
+    "electronegativity": 2.58,
+    "ionizationEnergy": 999.6,
+    "atomicRadius": 105,
+    "electronAffinity": 200.0,
+    "standardMolarEntropy": 32.05,
+    "specificHeatCapacity": 0.708,
+    "meltingPoint": 388.36,
+    "boilingPoint": 717.75,
+    "density": 2.067,
+    "thermalConductivity": 0.205,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 32.06,
+    "electronegativity": 2.58,
+    "ionizationEnergy": 999.6,
+    "atomicRadius": 105,
+    "electronAffinity": 200.0,
+    "standardMolarEntropy": 32.05,
+    "specificHeatCapacity": 0.708,
+    "meltingPoint": 388.36,
+    "boilingPoint": 717.75,
+    "density": 2.067,
+    "thermalConductivity": 0.205,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "bright yellow crystalline solid",
+    "uses": ["sulfuric acid production", "fertilizers", "vulcanizing rubber", "gunpowder", "medicine"],
+    "notes": "Bright yellow; essential for life (amino acids); rotten egg smell comes from H₂S; tenth most abundant element in universe"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

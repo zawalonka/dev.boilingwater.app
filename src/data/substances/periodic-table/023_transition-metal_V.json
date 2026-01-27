@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 23,
+  "symbol": "V",
+  "name": "Vanadium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 5,
+  "oxidationStates": [2, 3, 4, 5],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 50.9415,
+    "electronegativity": 1.63,
+    "ionizationEnergy": 650.9,
+    "atomicRadius": 134,
+    "electronAffinity": 50.6,
+    "standardMolarEntropy": 28.9,
+    "specificHeatCapacity": 0.489
+  },
+  
+  "iupac": {
+    "atomicMass": 50.9415,
+    "electronegativity": 1.63,
+    "ionizationEnergy": 650.9,
+    "atomicRadius": 134,
+    "electronAffinity": 50.6,
+    "standardMolarEntropy": 28.9,
+    "specificHeatCapacity": 0.489
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1910,
+    "boilingPoint": 3407,
+    "density": 6.0,
+    "thermalConductivity": 30.7,
+    "appearance": "silvery-grey metal",
+    "uses": ["steel alloys (high-speed tools)", "vanadium redox batteries", "catalysts", "superconducting magnets"],
+    "notes": "Named after Vanadis (Norse goddess of beauty) due to its many colorful compounds. 80% of vanadium is used in steel alloys - makes steel much harder and more resistant to shock. Vanadium pentoxide (V₂O₅) is a brilliant orange catalyst."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,73 @@
+{
+  "compoundId": "propane",
+  "phase": "liquid",
+  "phaseName": "liquid propane (LPG)",
+  "density": {
+    "value": 0.493,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 8.5,
+    "note": "Liquid propane at room temperature requires ~8.5 atm pressure (typical tank pressure); less dense than water"
+  },
+  "specificHeat": {
+    "value": 2.52,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "High specific heat capacity"
+  },
+  "thermalConductivity": {
+    "value": 0.102,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfVaporization": {
+    "value": 426,
+    "unit": "kJ/kg",
+    "note": "Energy to vaporize liquid propane"
+  },
+  "latentHeatOfFusion": {
+    "value": 79.9,
+    "unit": "kJ/kg",
+    "note": "Energy to melt frozen propane at -187.7°C"
+  },
+  "compressibility": {
+    "value": 0.0021,
+    "unit": "1/Pa",
+    "note": "Moderately compressible"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00270,
+    "unit": "1/K",
+    "note": "Significant thermal expansion (why tanks must not be overfilled)"
+  },
+  "viscosity": {
+    "value": 0.092,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Very thin liquid"
+  },
+  "surfaceTension": {
+    "value": 8.2,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Low surface tension"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Insulator as liquid"
+  },
+  "flammability": {
+    "note": "Liquid propane vaporizes rapidly when released from pressure; vapor is extremely flammable"
+  },
+  "vaporPressure": {
+    "value": 8.5,
+    "unit": "atm",
+    "temperature": 25,
+    "note": "High vapor pressure at room temperature; stored under pressure"
+  },
+  "reference": "propane/info.json"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "methane",
+  "type": "compound",
+  "name": "Methane",
+  "aliases": ["Natural Gas (primary component)", "Marsh Gas", "CH₄"],
+  "chemicalFormula": "CH₄",
+  "explicitSmiles": "C",
+  "molarMass": 16.043,
+  "deltaHf": -74.87,
+  "deltaGf": -50.72,
+  
+  "elements": [
+    {
+      "symbol": "C",
+      "atomicNumber": 6,
+      "count": 1,
+      "reference": "periodic-table/006_nonmetal_C.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 4,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -182.5,
+    "boilingPoint": -161.5,
+    "triplePoint": {
+      "temperature": -182.5,
+      "pressure": 0.117
+    },
+    "criticalPoint": {
+      "temperature": -82.6,
+      "pressure": 45.96,
+      "density": 0.162
+    }
+  },
+  
+  "states": ["gas", "liquid"],
+  "commonUses": ["home heating", "cooking fuel", "electricity generation", "hydrogen production", "chemical feedstock"],
+  "safetyNotes": "Highly flammable; odorless (mercaptan added for leak detection); lighter than air (rises); asphyxiant in confined spaces; explosive when 5-15% in air",
+  "educationalNotes": "Boiling point -161.5°C - methane is a gas at all normal Earth temperatures! Must be cooled to -161.5°C or compressed to liquefy. Simplest hydrocarbon (one carbon atom). Main component of natural gas (~95%). Major greenhouse gas (25× more potent than CO₂ over 100 years).",
+  "lastUpdated": "2026-01-27"
+}

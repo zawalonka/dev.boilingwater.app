@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 110,
+  "symbol": "Ds",
+  "name": "Darmstadtium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 281,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 128,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 281,
+    "electronegativity": 0,
+    "ionizationEnergy": 0,
+    "atomicRadius": 128,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 0,
+    "boilingPoint": 0,
+    "density": 34.8,
+    "thermalConductivity": 0,
+    "appearance": "metallic (predicted)",
+    "uses": ["research only"],
+    "notes": "Named after Darmstadt, Germany (GSI research center). Produced by bombarding lead with nickel. Ds-281 half-life: 11 seconds. Expected to behave like platinum but relativistic effects may alter properties. Research only - no practical applications."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

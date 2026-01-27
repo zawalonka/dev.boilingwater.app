@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 44,
+  "symbol": "Ru",
+  "name": "Ruthenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 8,
+  "oxidationStates": [3, 4],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 101.07,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 710.2,
+    "atomicRadius": 134,
+    "electronAffinity": 101.3,
+    "standardMolarEntropy": 28.53,
+    "specificHeatCapacity": 0.238
+  },
+  
+  "iupac": {
+    "atomicMass": 101.07,
+    "electronegativity": 2.2,
+    "ionizationEnergy": 710.2,
+    "atomicRadius": 134,
+    "electronAffinity": 101.3,
+    "standardMolarEntropy": 28.53,
+    "specificHeatCapacity": 0.238
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 2334,
+    "boilingPoint": 4150,
+    "density": 12.45,
+    "thermalConductivity": 117,
+    "appearance": "silvery-white hard metal",
+    "uses": ["electrical contacts", "platinum alloys", "chip resistors", "catalysts"],
+    "notes": "Named from Latin 'Ruthenia' (Russia). Rare platinum-group metal. Hardens platinum and palladium for jewelry and electrical contacts. Ruthenium-based catalysts convert solar energy to electricity (dye-sensitized solar cells)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

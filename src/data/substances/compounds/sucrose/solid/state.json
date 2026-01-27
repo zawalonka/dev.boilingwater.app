@@ -1,0 +1,55 @@
+{
+  "compoundId": "sucrose",
+  "phase": "solid",
+  "phaseName": "crystalline sucrose (table sugar)",
+  "density": {
+    "value": 1.587,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Denser than water; sugar crystals sink"
+  },
+  "specificHeat": {
+    "value": 1.244,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "Specific heat of crystalline sugar"
+  },
+  "thermalConductivity": {
+    "value": 0.087,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Poor thermal conductor"
+  },
+  "latentHeatOfFusion": {
+    "value": null,
+    "note": "Sucrose does not have a true latent heat of fusion; decomposes while melting (caramelization)"
+  },
+  "solubilityInWater": {
+    "value": 2000,
+    "unit": "g/L",
+    "temperature": 25,
+    "note": "Extremely soluble; solubility increases dramatically with temperature"
+  },
+  "solubilityTemperatureDependence": {
+    "0C": 1797,
+    "20C": 2038,
+    "50C": 2597,
+    "100C": 4870,
+    "unit": "g/L",
+    "note": "Solubility nearly triples from 0°C to 100°C"
+  },
+  "electricalConductivity": {
+    "value": 1e-12,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Insulator as solid"
+  },
+  "hygroscopicity": {
+    "relativeHumidity": 85,
+    "unit": "%",
+    "note": "Sucrose absorbs moisture at >85% RH; pure sugar is not very hygroscopic"
+  },
+  "reference": "sucrose/info.json"
+}

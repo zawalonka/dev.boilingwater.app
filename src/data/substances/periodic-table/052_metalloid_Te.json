@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 52,
+  "symbol": "Te",
+  "name": "Tellurium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 6,
+  "oxidationStates": [-2, 2, 4, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 127.60,
+    "electronegativity": 2.1,
+    "ionizationEnergy": 869.3,
+    "atomicRadius": 138,
+    "electronAffinity": 190.2,
+    "standardMolarEntropy": 49.5,
+    "specificHeatCapacity": 0.202
+  },
+  
+  "iupac": {
+    "atomicMass": 127.60,
+    "electronegativity": 2.1,
+    "ionizationEnergy": 869.3,
+    "atomicRadius": 138,
+    "electronAffinity": 190.2,
+    "standardMolarEntropy": 49.5,
+    "specificHeatCapacity": 0.202
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 449.51,
+    "boilingPoint": 988,
+    "density": 6.24,
+    "thermalConductivity": 1.97,
+    "appearance": "silvery-white lustrous metalloid",
+    "uses": ["solar panels", "rewritable CDs/DVDs", "thermoelectric devices", "catalysts"],
+    "notes": "Named from Latin 'tellus' (earth). Rare element - Earth's crust has more gold than tellurium. Cadmium telluride solar panels are cost-effective solar technology. Used in phase-change memory (rewritable CDs). Exposure causes garlic breath odor (even months later)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

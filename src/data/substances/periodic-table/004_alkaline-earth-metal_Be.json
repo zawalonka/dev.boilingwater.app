@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 4,
+  "symbol": "Be",
+  "name": "Beryllium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [2],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 9.012182,
+    "electronegativity": 1.57,
+    "ionizationEnergy": 899.5,
+    "atomicRadius": 112,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 9.50,
+    "specificHeatCapacity": 1.825,
+    "meltingPoint": 1560,
+    "boilingPoint": 2742,
+    "density": 1.85,
+    "thermalConductivity": 200,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 9.0122,
+    "electronegativity": 1.57,
+    "ionizationEnergy": 899.5,
+    "atomicRadius": 112,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 9.50,
+    "specificHeatCapacity": 1.825,
+    "meltingPoint": 1560,
+    "boilingPoint": 2742,
+    "density": 1.85,
+    "thermalConductivity": 200,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "gray metallic",
+    "uses": ["aerospace alloys", "X-ray windows", "nuclear reactors", "electronics"],
+    "notes": "Extremely toxic; lightweight and strong; high melting point; resistant to oxidation"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

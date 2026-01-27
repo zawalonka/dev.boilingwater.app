@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 35,
+  "symbol": "Br",
+  "name": "Bromine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [-1, 1, 3, 5, 7],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 79.904,
+    "electronegativity": 2.96,
+    "ionizationEnergy": 1139.9,
+    "atomicRadius": 120,
+    "electronAffinity": 324.6,
+    "standardMolarEntropy": 152.23,
+    "specificHeatCapacity": 0.474
+  },
+  
+  "iupac": {
+    "atomicMass": 79.904,
+    "electronegativity": 2.96,
+    "ionizationEnergy": 1139.9,
+    "atomicRadius": 120,
+    "electronAffinity": 324.6,
+    "standardMolarEntropy": 152.23,
+    "specificHeatCapacity": 0.474
+  },
+  
+  "physicalProperties": {
+    "phase": "liquid",
+    "meltingPoint": -7.2,
+    "boilingPoint": 58.8,
+    "density": 3.1028,
+    "thermalConductivity": 0.122,
+    "appearance": "red-brown fuming liquid",
+    "uses": ["flame retardants", "water purification", "photography", "pharmaceuticals", "dyes"],
+    "notes": "One of only TWO elements that are liquid at room temperature (the other is mercury). Named from Greek 'bromos' (stench) - smells terrible and irritates mucous membranes. Forms toxic red-brown vapors. Essential trace element."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

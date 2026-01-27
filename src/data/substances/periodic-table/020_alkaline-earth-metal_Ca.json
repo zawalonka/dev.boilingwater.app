@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 20,
+  "symbol": "Ca",
+  "name": "Calcium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [2, 1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 40.078,
+    "electronegativity": 1.00,
+    "ionizationEnergy": 589.8,
+    "atomicRadius": 197,
+    "electronAffinity": 2.37,
+    "standardMolarEntropy": 41.42,
+    "specificHeatCapacity": 0.647,
+    "meltingPoint": 1115,
+    "boilingPoint": 1757,
+    "density": 1.54,
+    "thermalConductivity": 201,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 40.078,
+    "electronegativity": 1.00,
+    "ionizationEnergy": 589.8,
+    "atomicRadius": 197,
+    "electronAffinity": 2.37,
+    "standardMolarEntropy": 41.42,
+    "specificHeatCapacity": 0.647,
+    "meltingPoint": 1115,
+    "boilingPoint": 1757,
+    "density": 1.54,
+    "thermalConductivity": 201,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "dull gray-white metal",
+    "uses": ["bones and teeth", "concrete", "plaster", "dietary supplements", "reducing agent"],
+    "notes": "Fifth most abundant element in Earth's crust; essential for life (bones, teeth, cell signaling); reacts slowly with water"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

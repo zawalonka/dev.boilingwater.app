@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 87,
+  "symbol": "Fr",
+  "name": "Francium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s-block",
+  "valenceElectrons": 1,
+  "oxidationStates": [1],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 223,
+    "electronegativity": 0.7,
+    "ionizationEnergy": 380,
+    "atomicRadius": 348,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 223,
+    "electronegativity": 0.7,
+    "ionizationEnergy": 380,
+    "atomicRadius": 348,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 27,
+    "boilingPoint": 677,
+    "density": 1.87,
+    "thermalConductivity": 15,
+    "appearance": "metallic (predicted, never seen in bulk)",
+    "uses": ["research only"],
+    "notes": "Named after France. Most unstable of first 103 elements - Fr-223 half-life only 22 minutes! Less than 30g exists on Earth at any moment. Would be most reactive element - explodes instantly with water. Never been seen in bulk due to extreme radioactivity. Largest atomic radius of any element."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

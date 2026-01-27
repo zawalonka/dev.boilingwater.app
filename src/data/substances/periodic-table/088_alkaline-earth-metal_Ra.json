@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 88,
+  "symbol": "Ra",
+  "name": "Radium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s-block",
+  "valenceElectrons": 2,
+  "oxidationStates": [2],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 226,
+    "electronegativity": 0.9,
+    "ionizationEnergy": 509.3,
+    "atomicRadius": 283,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 71,
+    "specificHeatCapacity": 0.092
+  },
+  
+  "iupac": {
+    "atomicMass": 226,
+    "electronegativity": 0.9,
+    "ionizationEnergy": 509.3,
+    "atomicRadius": 283,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 71,
+    "specificHeatCapacity": 0.092
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 700,
+    "boilingPoint": 1737,
+    "density": 5.5,
+    "thermalConductivity": 18.6,
+    "appearance": "silvery-white metal (radioactive)",
+    "uses": ["historical cancer treatment", "luminous paint (banned)"],
+    "notes": "Named from Latin 'radius' (ray). Discovered by Marie and Pierre Curie (1898). Glows blue-green in dark from air ionization. Used in luminous watch dials (killed workers - 'Radium Girls'). Cancer treatment (now replaced by safer isotopes). Decays to radon gas. Ra-226 half-life: 1600 years."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

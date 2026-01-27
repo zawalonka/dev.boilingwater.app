@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 15,
+  "symbol": "P",
+  "name": "Phosphorus",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [5, 4, 3, 2, 1, -1, -2, -3],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 30.973762,
+    "electronegativity": 2.19,
+    "ionizationEnergy": 1011.8,
+    "atomicRadius": 107,
+    "electronAffinity": 72.0,
+    "standardMolarEntropy": 41.09,
+    "specificHeatCapacity": 0.769,
+    "meltingPoint": 317.3,
+    "boilingPoint": 550,
+    "density": 1.823,
+    "thermalConductivity": 0.236,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 30.974,
+    "electronegativity": 2.19,
+    "ionizationEnergy": 1011.8,
+    "atomicRadius": 107,
+    "electronAffinity": 72.0,
+    "standardMolarEntropy": 41.09,
+    "specificHeatCapacity": 0.769,
+    "meltingPoint": 317.3,
+    "boilingPoint": 550,
+    "density": 1.823,
+    "thermalConductivity": 0.236,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "white (or red/black allotropes)",
+    "uses": ["fertilizers", "detergents", "matches", "DNA/RNA", "bones and teeth"],
+    "notes": "Essential for life; exists as multiple allotropes; white phosphorus is highly reactive and toxic; red phosphorus used in match heads"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

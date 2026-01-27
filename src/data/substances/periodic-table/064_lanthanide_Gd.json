@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 64,
+  "symbol": "Gd",
+  "name": "Gadolinium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 157.25,
+    "electronegativity": 1.20,
+    "ionizationEnergy": 593.4,
+    "atomicRadius": 180,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 68.07,
+    "specificHeatCapacity": 0.236
+  },
+  
+  "iupac": {
+    "atomicMass": 157.25,
+    "electronegativity": 1.20,
+    "ionizationEnergy": 593.4,
+    "atomicRadius": 180,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 68.07,
+    "specificHeatCapacity": 0.236
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1313,
+    "boilingPoint": 3273,
+    "density": 7.90,
+    "thermalConductivity": 10.6,
+    "appearance": "silvery-white metal",
+    "uses": ["MRI contrast agent", "neutron radiography", "microwave applications", "computer memory"],
+    "notes": "Named after gadolinite mineral. Gadolinium contrast agents (injected) improve MRI image clarity - used in millions of scans annually. Strongest neutron absorber - used in nuclear reactors and shielding. Ferromagnetic at room temperature (unusual for lanthanides)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

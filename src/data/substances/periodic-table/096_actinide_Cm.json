@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 96,
+  "symbol": "Cm",
+  "name": "Curium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 10,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 247,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 581,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "iupac": {
+    "atomicMass": 247,
+    "electronegativity": 1.3,
+    "ionizationEnergy": 581,
+    "atomicRadius": 175,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.0
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1345,
+    "boilingPoint": 3110,
+    "density": 13.51,
+    "thermalConductivity": 0,
+    "appearance": "silvery metal (radioactive, glows purple)",
+    "uses": ["alpha particle sources", "radioisotope thermoelectric generators", "space missions"],
+    "notes": "Named after Marie and Pierre Curie. Glows purple/red in dark from radioactive decay. So radioactive it boils water! Cm-244 used in RTGs for some space missions and remote power. Produced in nuclear reactors by bombarding plutonium with neutrons."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

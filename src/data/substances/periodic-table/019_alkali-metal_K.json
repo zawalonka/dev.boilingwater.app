@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 19,
+  "symbol": "K",
+  "name": "Potassium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 39.0983,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 418.8,
+    "atomicRadius": 227,
+    "electronAffinity": 48.4,
+    "standardMolarEntropy": 64.18,
+    "specificHeatCapacity": 0.757,
+    "meltingPoint": 336.53,
+    "boilingPoint": 1032,
+    "density": 0.862,
+    "thermalConductivity": 102.5,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 39.098,
+    "electronegativity": 0.82,
+    "ionizationEnergy": 418.8,
+    "atomicRadius": 227,
+    "electronAffinity": 48.4,
+    "standardMolarEntropy": 64.18,
+    "specificHeatCapacity": 0.757,
+    "meltingPoint": 336.53,
+    "boilingPoint": 1032,
+    "density": 0.862,
+    "thermalConductivity": 102.5,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "soft silvery-white metal",
+    "uses": ["fertilizers", "soap", "nerve function", "muscle contraction", "fireworks (purple color)"],
+    "notes": "Extremely reactive with water; essential electrolyte for life; softer than sodium; stored in oil; burns with violet flame"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

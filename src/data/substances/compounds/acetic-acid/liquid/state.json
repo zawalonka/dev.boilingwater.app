@@ -1,0 +1,87 @@
+{
+  "compoundId": "acetic-acid",
+  "phase": "liquid",
+  "phaseName": "liquid acetic acid",
+  "density": {
+    "value": 1.049,
+    "unit": "kg/L",
+    "temperature": 25,
+    "pressure": 1.0,
+    "note": "Denser than water; household vinegar (~5% acetic acid) is slightly denser than pure water"
+  },
+  "specificHeat": {
+    "value": 2.04,
+    "unit": "J/(g·°C)",
+    "temperature": 25,
+    "source": "measured",
+    "note": "About half of water's heat capacity"
+  },
+  "thermalConductivity": {
+    "value": 0.159,
+    "unit": "W/(m·K)",
+    "temperature": 25,
+    "note": "Similar to most organic liquids"
+  },
+  "latentHeatOfVaporization": {
+    "value": 402,
+    "unit": "kJ/kg",
+    "note": "Much lower than water (2257 kJ/kg)"
+  },
+  "latentHeatOfFusion": {
+    "value": 192,
+    "unit": "kJ/kg",
+    "note": "Energy to melt at 16.6°C"
+  },
+  "compressibility": {
+    "value": 0.00091,
+    "unit": "1/Pa",
+    "note": "Slightly compressible"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.00107,
+    "unit": "1/K",
+    "note": "Moderate thermal expansion"
+  },
+  "antoineCoefficients": {
+    "A": 7.38782,
+    "B": 1533.313,
+    "C": 222.309,
+    "TminC": 17,
+    "TmaxC": 118,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C"
+  },
+  "viscosity": {
+    "value": 1.155,
+    "unit": "mPa·s",
+    "temperature": 25,
+    "note": "Slightly more viscous than water"
+  },
+  "surfaceTension": {
+    "value": 27.1,
+    "unit": "mN/m",
+    "temperature": 25,
+    "note": "Lower than water (72 mN/m)"
+  },
+  "electricalConductivity": {
+    "value": 0.0006,
+    "unit": "S/m",
+    "temperature": 25,
+    "note": "Weak acid; slight conductivity from ionization"
+  },
+  "acidity": {
+    "pKa": 4.76,
+    "note": "Weak acid; vinegar's sourness comes from H⁺ ions"
+  },
+  "flammability": {
+    "flashPoint": 39,
+    "autoignitionTemp": 427,
+    "unit": "°C",
+    "note": "Flammable liquid; vapors can ignite"
+  },
+  "solubilityInWater": {
+    "miscibility": "complete",
+    "note": "Fully miscible; household vinegar is ~5% acetic acid, 95% water"
+  },
+  "reference": "acetic-acid/info.json"
+}

@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 61,
+  "symbol": "Pm",
+  "name": "Promethium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 145,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 540,
+    "atomicRadius": 183,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.185
+  },
+  
+  "iupac": {
+    "atomicMass": 145,
+    "electronegativity": 1.13,
+    "ionizationEnergy": 540,
+    "atomicRadius": 183,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 0,
+    "specificHeatCapacity": 0.185
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1042,
+    "boilingPoint": 3000,
+    "density": 7.26,
+    "thermalConductivity": 15,
+    "appearance": "metallic (radioactive)",
+    "uses": ["luminous paint (historical)", "nuclear batteries", "thickness gauges"],
+    "notes": "Named after Prometheus (Greek mythology - stole fire from gods). Only radioactive lanthanide - no stable isotopes. Glows in dark due to radiation. Used in luminous paint for watches (until replaced by tritium). Nuclear battery applications. Extremely rare - only ~500g exists on Earth."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

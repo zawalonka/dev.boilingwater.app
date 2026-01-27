@@ -1,0 +1,52 @@
+{
+  "id": "ethanol",
+  "type": "compound",
+  "name": "Ethanol",
+  "aliases": ["Ethyl Alcohol", "Grain Alcohol", "Drinking Alcohol", "EtOH"],
+  "chemicalFormula": "C₂H₅OH",
+  "explicitSmiles": "CCO",
+  "molarMass": 46.07,
+  "deltaHf": -277.69,
+  "deltaGf": -174.78,
+  
+  "elements": [
+    {
+      "symbol": "C",
+      "atomicNumber": 6,
+      "count": 2,
+      "reference": "periodic-table/006_nonmetal_C.json"
+    },
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 6,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "count": 1,
+      "reference": "periodic-table/008_nonmetal_O.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": -114.14,
+    "boilingPoint": 78.37,
+    "triplePoint": {
+      "temperature": -123.15,
+      "pressure": 0.00043
+    },
+    "criticalPoint": {
+      "temperature": 240.85,
+      "pressure": 61.48,
+      "density": 0.276
+    }
+  },
+  
+  "states": ["liquid", "gas"],
+  "commonUses": ["alcoholic beverages", "hand sanitizer", "fuel", "solvent", "disinfectant"],
+  "safetyNotes": "Flammable; intoxicating at low doses; toxic in large quantities; metabolized by liver",
+  "educationalNotes": "Boiling point significantly lower than water (78°C vs 100°C); this is why alcohol evaporates quickly and why distillation can separate alcohol from water",
+  "lastUpdated": "2026-01-27"
+}

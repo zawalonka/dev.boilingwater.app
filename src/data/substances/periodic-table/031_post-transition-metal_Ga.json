@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 31,
+  "symbol": "Ga",
+  "name": "Gallium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 3,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 69.723,
+    "electronegativity": 1.81,
+    "ionizationEnergy": 578.8,
+    "atomicRadius": 122,
+    "electronAffinity": 41,
+    "standardMolarEntropy": 40.83,
+    "specificHeatCapacity": 0.371
+  },
+  
+  "iupac": {
+    "atomicMass": 69.723,
+    "electronegativity": 1.81,
+    "ionizationEnergy": 578.8,
+    "atomicRadius": 122,
+    "electronAffinity": 41,
+    "standardMolarEntropy": 40.83,
+    "specificHeatCapacity": 0.371
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 29.76,
+    "boilingPoint": 2204,
+    "density": 5.91,
+    "thermalConductivity": 40.6,
+    "appearance": "silvery-white soft metal",
+    "uses": ["LEDs", "semiconductors", "solar panels", "thermometers (high-temp)"],
+    "notes": "Melts at 29.76°C - will melt in your hand! But boils at 2204°C - widest liquid range of any element. Used in gallium arsenide (GaAs) semiconductors for LEDs and solar cells. Named after Gaul (France)."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

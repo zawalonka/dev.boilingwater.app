@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 25,
+  "symbol": "Mn",
+  "name": "Manganese",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d-block",
+  "valenceElectrons": 7,
+  "oxidationStates": [2, 3, 4, 6, 7],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 54.938044,
+    "electronegativity": 1.55,
+    "ionizationEnergy": 717.3,
+    "atomicRadius": 127,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.01,
+    "specificHeatCapacity": 0.479
+  },
+  
+  "iupac": {
+    "atomicMass": 54.938044,
+    "electronegativity": 1.55,
+    "ionizationEnergy": 717.3,
+    "atomicRadius": 127,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.01,
+    "specificHeatCapacity": 0.479
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1246,
+    "boilingPoint": 2061,
+    "density": 7.3,
+    "thermalConductivity": 7.81,
+    "appearance": "silvery-grey metal",
+    "uses": ["steel alloys (increases strength)", "aluminum alloy (beverage cans)", "dry cell batteries", "permanganate disinfectants"],
+    "notes": "Essential trace element for life. Makes steel harder and more durable - almost all steel contains manganese. Aluminum cans contain ~1% Mn to prevent cracking. KMnO₄ (potassium permanganate) is purple and used as disinfectant."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

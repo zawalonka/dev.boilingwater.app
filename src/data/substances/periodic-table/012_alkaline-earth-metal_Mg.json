@@ -1,0 +1,49 @@
+{
+  "atomicNumber": 12,
+  "symbol": "Mg",
+  "name": "Magnesium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 2,
+  "oxidationStates": [2, 1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 24.3050,
+    "electronegativity": 1.31,
+    "ionizationEnergy": 737.7,
+    "atomicRadius": 160,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.68,
+    "specificHeatCapacity": 1.023,
+    "meltingPoint": 923,
+    "boilingPoint": 1363,
+    "density": 1.738,
+    "thermalConductivity": 156,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 24.305,
+    "electronegativity": 1.31,
+    "ionizationEnergy": 737.7,
+    "atomicRadius": 160,
+    "electronAffinity": 0,
+    "standardMolarEntropy": 32.68,
+    "specificHeatCapacity": 1.023,
+    "meltingPoint": 923,
+    "boilingPoint": 1363,
+    "density": 1.738,
+    "thermalConductivity": 156,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "appearance": "shiny gray solid",
+    "uses": ["lightweight alloys", "fireworks", "magnesium supplements", "flares"],
+    "notes": "Eighth most abundant element in Earth's crust; burns with brilliant white light; essential for life (chlorophyll)"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

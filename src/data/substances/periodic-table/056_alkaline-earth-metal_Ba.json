@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 56,
+  "symbol": "Ba",
+  "name": "Barium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s-block",
+  "valenceElectrons": 2,
+  "oxidationStates": [2],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 137.327,
+    "electronegativity": 0.89,
+    "ionizationEnergy": 502.9,
+    "atomicRadius": 222,
+    "electronAffinity": 13.95,
+    "standardMolarEntropy": 62.42,
+    "specificHeatCapacity": 0.204
+  },
+  
+  "iupac": {
+    "atomicMass": 137.327,
+    "electronegativity": 0.89,
+    "ionizationEnergy": 502.9,
+    "atomicRadius": 222,
+    "electronAffinity": 13.95,
+    "standardMolarEntropy": 62.42,
+    "specificHeatCapacity": 0.204
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 727,
+    "boilingPoint": 1845,
+    "density": 3.51,
+    "thermalConductivity": 18.4,
+    "appearance": "silvery-white metal",
+    "uses": ["fireworks (green color)", "X-ray imaging", "drilling fluids", "vacuum tubes"],
+    "notes": "Named from Greek 'barys' (heavy). Produces brilliant green color in fireworks. Barium sulfate is opaque to X-rays - swallowed to image digestive system ('barium meal'). Barium metal is toxic, but BaSO₄ is so insoluble it passes through safely."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

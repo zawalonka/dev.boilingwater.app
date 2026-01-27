@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 67,
+  "symbol": "Ho",
+  "name": "Holmium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 13,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 164.93033,
+    "electronegativity": 1.23,
+    "ionizationEnergy": 581.0,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75.3,
+    "specificHeatCapacity": 0.165
+  },
+  
+  "iupac": {
+    "atomicMass": 164.93033,
+    "electronegativity": 1.23,
+    "ionizationEnergy": 581.0,
+    "atomicRadius": 176,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 75.3,
+    "specificHeatCapacity": 0.165
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1474,
+    "boilingPoint": 2700,
+    "density": 8.79,
+    "thermalConductivity": 16.2,
+    "appearance": "silvery-white metal",
+    "uses": ["lasers (medical)", "magnets", "nuclear reactors", "calibration standards"],
+    "notes": "Named after Stockholm (Latin: Holmia). Highest magnetic moment of any element - used in powerful magnets. Ho:YAG lasers used in kidney stone treatment and dentistry. Yellow or red glass coloring. Excellent neutron absorber."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

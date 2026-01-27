@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 71,
+  "symbol": "Lu",
+  "name": "Lutetium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f-block",
+  "valenceElectrons": 17,
+  "oxidationStates": [3],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 174.9668,
+    "electronegativity": 1.27,
+    "ionizationEnergy": 523.5,
+    "atomicRadius": 174,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 50.96,
+    "specificHeatCapacity": 0.154
+  },
+  
+  "iupac": {
+    "atomicMass": 174.9668,
+    "electronegativity": 1.27,
+    "ionizationEnergy": 523.5,
+    "atomicRadius": 174,
+    "electronAffinity": 50,
+    "standardMolarEntropy": 50.96,
+    "specificHeatCapacity": 0.154
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 1663,
+    "boilingPoint": 3402,
+    "density": 9.841,
+    "thermalConductivity": 16.4,
+    "appearance": "silvery-white metal",
+    "uses": ["PET scan detectors", "catalysts", "research"],
+    "notes": "Named after Lutetia (ancient name for Paris). Last and densest lanthanide. Hardest and highest melting point of lanthanides. Lutetium oxyorthosilicate (LSO) scintillators used in PET scanners - detect cancer. Very expensive and rare."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

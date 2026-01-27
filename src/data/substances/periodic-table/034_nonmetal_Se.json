@@ -1,0 +1,43 @@
+{
+  "atomicNumber": 34,
+  "symbol": "Se",
+  "name": "Selenium",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p-block",
+  "valenceElectrons": 6,
+  "oxidationStates": [-2, 2, 4, 6],
+  "standardUsed": "both",
+  
+  "nist": {
+    "atomicMass": 78.971,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 941.0,
+    "atomicRadius": 120,
+    "electronAffinity": 195,
+    "standardMolarEntropy": 42.442,
+    "specificHeatCapacity": 0.321
+  },
+  
+  "iupac": {
+    "atomicMass": 78.971,
+    "electronegativity": 2.55,
+    "ionizationEnergy": 941.0,
+    "atomicRadius": 120,
+    "electronAffinity": 195,
+    "standardMolarEntropy": 42.442,
+    "specificHeatCapacity": 0.321
+  },
+  
+  "physicalProperties": {
+    "phase": "solid",
+    "meltingPoint": 221,
+    "boilingPoint": 685,
+    "density": 4.809,
+    "thermalConductivity": 0.52,
+    "appearance": "gray (metallic form), red (amorphous)",
+    "uses": ["photocopiers", "solar cells", "glass coloring", "dandruff shampoo", "dietary supplements"],
+    "notes": "Named from Greek 'selene' (moon). Photoconductor - conducts electricity when exposed to light (used in photocopiers and light meters). Essential nutrient for humans - found in Brazil nuts. Too much or too little causes health problems."
+  },
+  
+  "lastUpdated": "2026-01-27"
+}
