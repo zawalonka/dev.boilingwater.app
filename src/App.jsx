@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import GameScene from './components/GameScene'
-import { initializeTheme, getThemesByLevel, preloadThemeImages } from './utils/themeLoader'
-import { LEVELS, EXPERIMENTS } from './constants/themes'
+import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages } from './utils/themeLoader'
+import { LEVELS, EXPERIMENTS } from './constants/workshops'
 import './styles/App.css'
 
 function App() {
   const [gameStage, setGameStage] = useState(0)
   const [userLocation, setUserLocation] = useState(null)
-  const [themeLoaded, setThemeLoaded] = useState(false)
+  const [workshopLoaded, setWorkshopLoaded] = useState(false)
   const [activeView, setActiveView] = useState('game')  // game | about | docs | submit-issue | submit-theme
   const [gameInstanceKey, setGameInstanceKey] = useState(0)
   const [activeLevel, setActiveLevel] = useState(1)  // Numeric level (1, 2, 3...)
   const [activeExperiment, setActiveExperiment] = useState('boiling-water')  // Experiment ID within level
-  const [activeThemeId, setActiveThemeId] = useState('alpha')
-  const [availableThemes, setAvailableThemes] = useState([{ id: 'alpha', name: 'Alpha Theme' }])
-  const [activeThemeData, setActiveThemeData] = useState(null)
+  const [activeWorkshopId, setActiveWorkshopId] = useState('pre-alpha-kitchen-1')
+  const [availableWorkshops, setAvailableWorkshops] = useState([{ id: 'pre-alpha-kitchen-1', name: 'Pre Alpha Kitchen 1' }])
+  const [activeWorkshopData, setActiveWorkshopData] = useState(null)
   const [hasBoiledBefore, setHasBoiledBefore] = useState(false)  // Track if user has boiled water once
   const [showSelectors, setShowSelectors] = useState(false)  // Show level/theme selectors
 
@@ -23,34 +23,34 @@ function App() {
   useEffect(() => {
     async function bootTheme() {
       try {
-        const levelThemes = await getThemesByLevel(activeLevel)
-        setAvailableThemes(levelThemes)
-        const processed = await initializeTheme(activeThemeId, { apply: true })
-        // Preload all theme images to prevent lag
-        await preloadThemeImages(processed)
-        setActiveThemeData(processed)
-        setThemeLoaded(true)
+        const levelWorkshops = await getWorkshopsByLevel(activeLevel)
+        setAvailableWorkshops(levelWorkshops)
+        const processed = await initializeWorkshop(activeWorkshopId, { apply: true })
+        // Preload all workshop images to prevent lag
+        await preloadWorkshopImages(processed)
+        setActiveWorkshopData(processed)
+        setWorkshopLoaded(true)
       } catch (error) {
         console.error('Failed to load theme:', error)
-        setThemeLoaded(true)
+        setWorkshopLoaded(true)
       }
     }
     bootTheme()
   }, [])
 
   // Theme change handler
-  const handleThemeChange = async (themeId) => {
+  const handleWorkshopChange = async (workshopId) => {
     try {
-      const processed = await initializeTheme(themeId, { apply: true })
-      // Preload new theme images immediately
-      await preloadThemeImages(processed)
-      setActiveThemeId(themeId)
-      setActiveThemeData(processed)
+      const processed = await initializeWorkshop(workshopId, { apply: true })
+      // Preload new workshop images immediately
+      await preloadWorkshopImages(processed)
+      setActiveWorkshopId(workshopId)
+      setActiveWorkshopData(processed)
       // Reset game completely: stage back to 0, force GameScene re-mount
       setGameStage(0)
       setGameInstanceKey((k) => k + 1)
     } catch (error) {
-      console.error('Failed to change theme:', error)
+      console.error('Failed to change workshop:', error)
     }
   }
 
@@ -58,16 +58,16 @@ function App() {
   // optionalNextExperimentId lets callers override the default first experiment for that level
   const handleLevelChange = async (levelId, optionalNextExperimentId = null) => {
     try {
-      const levelThemes = await getThemesByLevel(levelId)
-      setAvailableThemes(levelThemes)
+      const levelWorkshops = await getWorkshopsByLevel(levelId)
+      setAvailableWorkshops(levelWorkshops)
       setActiveLevel(levelId)
       
       // Switch to the first theme of the new level
-      const firstTheme = levelThemes && levelThemes.length > 0 ? levelThemes[0] : { id: 'alpha' }
-      const processed = await initializeTheme(firstTheme.id, { apply: true })
-      await preloadThemeImages(processed)
-      setActiveThemeId(firstTheme.id)
-      setActiveThemeData(processed)
+      const firstWorkshop = levelWorkshops && levelWorkshops.length > 0 ? levelWorkshops[0] : { id: 'pre-alpha-kitchen-1' }
+      const processed = await initializeWorkshop(firstWorkshop.id, { apply: true })
+      await preloadWorkshopImages(processed)
+      setActiveWorkshopId(firstWorkshop.id)
+      setActiveWorkshopData(processed)
       
       // Reset game and set default experiment for this level
       const sortedExperiments = (EXPERIMENTS[levelId] || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0))
@@ -172,7 +172,7 @@ function App() {
           <h2>Project Docs (Concise)</h2>
           <p><strong>Core idea:</strong> Teach thermodynamics through interactive play. Heating uses power → temperature rise via specific heat; boiling uses latent heat; cooling uses Newton&apos;s Law of Cooling with altitude-adjusted boiling points.</p>
           <p><strong>Data-first design:</strong> Fluids live in JSON (specific heat, latent heat, boiling point, cooling coefficient). Themes live in JSON (colors, images, layout). Add a file → get a new fluid or visual style.</p>
-          <p><strong>Key files:</strong> Fluid data in <a href="/src/data/fluids">src/data/fluids</a>, theme files in <a href="/public/assets/themes">public/assets/themes</a>, physics in <a href="/src/utils/physics.js">src/utils/physics.js</a>, theme loader in <a href="/src/utils/themeLoader.js">src/utils/themeLoader.js</a>.</p>
+          <p><strong>Key files:</strong> Fluid data in <a href="/src/data/fluids">src/data/fluids</a>, theme files in <a href="/public/assets/workshops">public/assets/workshops</a>, physics in <a href="/src/utils/physics.js">src/utils/physics.js</a>, theme loader in <a href="/src/utils/themeLoader.js">src/utils/themeLoader.js</a>.</p>
           <p><strong>What&apos;s next:</strong> More fluids (ethanol, oils), periodic table content, UI selectors for fluids, richer lesson stages, and additional themed environments.</p>
         </div>
       )
@@ -191,8 +191,8 @@ function App() {
     if (activeView === 'submit-theme') {
       return (
         <div className="info-page">
-          <h2>Submit a Theme or Environment</h2>
-          <p>Themes are JSON files stored with images in <code>public/assets/themes/&lt;themeId&gt;/</code>. Layout (pot, flame, water stream) lives in the <code>layout</code> section so placement can change per environment.</p>
+          <h2>Submit a Workshop or Environment</h2>
+          <p>Workshops are JSON files stored with images in <code>public/assets/workshops/&lt;workshopId&gt;/</code>. Layout (pot, flame, water stream) lives in the <code>layout</code> section so placement can change per environment.</p>
           <p><strong>Minimum required fields:</strong> colors (header_background, button_primary, panel_background, etc.), images (background, pot_empty, pot_full, flame), metadata (id, name, author), and layout (pot start/size, flame position, water stream ranges).</p>
           <p><strong>How to share:</strong> Send the JSON plus your images. Keep background at 1280×800 pixels, use transparent PNGs for pot and flame, and reuse the existing placement unless your layout truly changes.</p>
         </div>
@@ -207,9 +207,9 @@ function App() {
           stage={gameStage}
           location={userLocation}
           onStageChange={setGameStage}
-          themeLayout={activeThemeData?.layout}
-          themeImages={activeThemeData?.images}
-          themeEffects={activeThemeData?.effects}
+          themeLayout={activeWorkshopData?.layout}
+          themeImages={activeWorkshopData?.images}
+          themeEffects={activeWorkshopData?.effects}
           activeLevel={activeLevel}
           activeExperiment={activeExperiment}
           showSelectors={showSelectors}
@@ -226,18 +226,18 @@ function App() {
 
   return (
     <div className="app">
-      {themeLoaded && (
+      {workshopLoaded && (
         <>
           <Header
             onNavigate={handleNavigate}
             onReload={handleReload}
-            onThemeChange={handleThemeChange}
+            onThemeChange={handleWorkshopChange}
             onLevelChange={handleLevelChange}
             onExperimentChange={handleExperimentChange}
-            activeThemeId={activeThemeId}
+            activeThemeId={activeWorkshopId}
             activeLevel={activeLevel}
             activeExperiment={activeExperiment}
-            availableThemes={availableThemes}
+            availableThemes={availableWorkshops}
             availableLevels={LEVELS}
             availableExperiments={(EXPERIMENTS[activeLevel] || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0))}
             activeView={activeView}

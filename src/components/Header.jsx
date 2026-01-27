@@ -15,7 +15,7 @@
 import { useState } from 'react'
 import '../styles/Header.css'
 import { getDefaultTemperatureUnit } from '../utils/unitUtils'
-import { EXPERIMENTS } from '../constants/themes'
+import { EXPERIMENTS } from '../constants/workshops'
 
 /**
  * Header Function Component
@@ -24,14 +24,14 @@ import { EXPERIMENTS } from '../constants/themes'
  * - onMenuClick: Optional callback function to notify parent when menu is toggled
  * - onNavigate: Navigate to a given view (game, about, docs, issue, theme)
  * - onReload: Reload the current level/game view
- * - onThemeChange: Change the active theme id
+ * - onThemeChange: Change the active workshop id
  * - onLevelChange: Change the active level id
  * - onExperimentChange: Change the active experiment id
  * - onSkipTutorial: Skip the tutorial and reveal level selectors
  * - activeThemeId: Currently selected theme id
  * - activeLevel: Currently selected level (numeric: 0, 1, 2...)
  * - activeExperiment: Currently selected experiment id
- * - availableThemes: Array of theme ids to choose from (filtered by level)
+ * - availableThemes: Array of workshop ids to choose from (filtered by level)
  * - availableLevels: Array of level objects with id, name, order
  * - availableExperiments: Array of experiment objects for current level
  * - activeView: Current active view (game, about, docs, submit-issue, submit-theme)

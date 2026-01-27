@@ -62,10 +62,10 @@ Each theme is a JSON file defining colors, images, typography, and metadata.
   },
   
   "images": {
-    "background": "/assets/themes/classic/background.png",
-    "pot_empty": "/assets/themes/classic/pot-empty.png",
-    "pot_full": "/assets/themes/classic/pot-full.png",
-    "flame": "/assets/themes/classic/flame.png"
+    "background": "/assets/workshops/classic/background.png",
+    "pot_empty": "/assets/workshops/classic/pot-empty.png",
+    "pot_full": "/assets/workshops/classic/pot-full.png",
+    "flame": "/assets/workshops/classic/flame.png"
   },
   
   "typography": {

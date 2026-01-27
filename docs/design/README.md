@@ -11,7 +11,7 @@ Original theme artwork created during initial development:
 - `Full Pot.png` - Full pot sprite  
 - `Flame.png` - Flame/burner sprite
 
-**Status:** Archived. Current themes use modernized assets in `public/assets/themes/`.
+**Status:** Archived. Current themes use modernized assets in `public/assets/workshops/`.
 
 ### `layout-sketches/`
 Design sketches and layout reference materials:
@@ -26,4 +26,4 @@ These assets are no longer used in production. They're kept here for:
 - Understanding early design decisions
 - Potential inspiration for future themes
 
-Current theme assets are located in `public/assets/themes/`.
+Current theme assets are located in `public/assets/workshops/`.

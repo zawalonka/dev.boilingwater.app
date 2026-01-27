@@ -1,8 +1,10 @@
 {
-  "id": "alpha",
-  "name": "Alpha Theme",
+  "id": "pre-alpha-kitchen-1",
+  "name": "Pre Alpha Kitchen 1",
   "scope": "workshop",
   "workshopId": null,
+  "minLevel": 1,
+  "maxLevel": 1,
   "parentTheme": null,
   "description": "Warm, inviting baseline theme for pre-alpha (same visuals as classic).",
   "_notes": {
@@ -63,10 +65,10 @@
     "error_border": "#f44336"
   },
   "images": {
-    "background": "/assets/themes/alpha/background.jpg",
-    "pot_empty": "/assets/themes/alpha/pot-empty.png",
-    "pot_full": "/assets/themes/alpha/pot-full.png",
-    "flame": "/assets/themes/alpha/flame.png"
+    "background": "/assets/workshops/pre-alpha-kitchen-1/background.jpg",
+    "pot_empty": "/assets/workshops/pre-alpha-kitchen-1/pot-empty.png",
+    "pot_full": "/assets/workshops/pre-alpha-kitchen-1/pot-full.png",
+    "flame": "/assets/workshops/pre-alpha-kitchen-1/flame.png"
   },
   "layout": {
     "scene": { "width": 1280, "height": 800 },

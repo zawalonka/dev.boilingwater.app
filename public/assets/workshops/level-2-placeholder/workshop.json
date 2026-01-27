@@ -1,6 +1,7 @@
 {
   "id": "level-2-placeholder",
   "name": "Level 2 Placeholder",
+  "minLevel": 2,
   "levelId": "level-2",
   "description": "Placeholder theme for Level 2 - Coming soon!",
   "_notes": {
@@ -10,8 +11,16 @@
   },
   "colors": {
     "header_background": "rgba(100, 100, 100, 0.85)",
+    "scope": "workshop",
     "header_text": "white",
     "header_accent": "#888888",
+    "metadata": {
+      "author": "BoilingWater Team",
+      "version": "1.0.0",
+      "createdDate": "2026-01-26",
+      "updatedDate": "2026-01-26",
+      "tags": ["placeholder", "level-2"]
+    },
     "badge_background": "rgba(150, 150, 150, 0.9)",
     "badge_text": "white",
     "button_primary": "#888888",
@@ -56,10 +65,10 @@
     "error_text": "#663333"
   },
   "images": {
-    "background": "/assets/themes/alpha/background.jpg",
-    "pot_empty": "/assets/themes/alpha/pot-empty.png",
-    "pot_full": "/assets/themes/alpha/pot-full.png",
-    "flame": "/assets/themes/alpha/flame.png"
+    "background": "/assets/workshops/pre-alpha-kitchen-1/background.jpg",
+    "pot_empty": "/assets/workshops/pre-alpha-kitchen-1/pot-empty.png",
+    "pot_full": "/assets/workshops/pre-alpha-kitchen-1/pot-full.png",
+    "flame": "/assets/workshops/pre-alpha-kitchen-1/flame.png"
   },
   "layout": {
     "scene": {

@@ -14,8 +14,8 @@
 - [ ] Generate SVG versions of theme images from ComfyUI workflows
 - [ ] Store ComfyUI workflow .json files in GitHub (for reproducibility/sharing)
 - [ ] Replace PNG pot/flame images with SVG equivalents in:
-  - `public/assets/themes/alpha/`
-  - `public/assets/themes/alpha-alt/`
+  - `public/assets/workshops/alpha/`
+  - `public/assets/workshops/alpha-alt/`
 - [ ] Update theme.json image paths to reference `.svg` instead of `.png`
 - [ ] Test SVG rendering in GameScene (check if CSS transforms/filters work better)
 
@@ -37,7 +37,7 @@
   - `src/data/fluids/` – Where should custom fluids live?
   - Add validation to accept arbitrary fluid properties
 - [ ] Review data structure for custom themes:
-  - `public/assets/themes/<id>/theme.json` – Document required vs. optional fields
+  - `public/assets/workshops/<id>/theme.json` – Document required vs. optional fields
   - Ensure new themes can override only specific colors (inheritance working?)
   - Test theme inheritance chain (alpha → alpha-alt → custom)
 - [ ] Review physics equations:

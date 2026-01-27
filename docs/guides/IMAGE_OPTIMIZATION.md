@@ -41,7 +41,7 @@ node scripts/optimize-images.js
 ```
 
 This will:
-- Scan all theme folders in `public/assets/themes/`
+- Scan all theme folders in `public/assets/workshops/`
 - Compress all PNGs with maximum compression
 - Replace originals with optimized versions
 - Display before/after sizes

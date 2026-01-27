@@ -41,7 +41,7 @@ When validating JSON structures, allow flexible field locations unless there's a
 
 **Files to check:**
 - [`src/utils/themeLoader.js`](src/utils/themeLoader.js) - Validation logic
-- Theme JSON files in `public/assets/themes/`
+- Theme JSON files in `public/assets/workshops/`
 
 ### Effects Bleed Between Themes (steam/flame persists)
 **Date Observed:** 2026-01-25  
@@ -65,7 +65,7 @@ When validating JSON structures, allow flexible field locations unless there's a
 **Files to check:**
 - [src/utils/themeLoader.js](src/utils/themeLoader.js) - effects loading/normalization
 - [src/components/GameScene.jsx](src/components/GameScene.jsx) - steam/flame glow gating
-- [public/assets/themes/*/effects.json](public/assets/themes) - per-theme VFX opt-in
+- [public/assets/workshops/*/effects.json](public/assets/workshops) - per-theme VFX opt-in
 
 ---
 

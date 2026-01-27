@@ -6,7 +6,7 @@
  * 
  * HIERARCHY:
  * ├── Level (e.g., "Boil Water", "Pressure Cooker")
- *     ├── Theme 1 (e.g., "Alpha", "Alpha-Alt")
+ *     ├── Theme 1 (e.g., "Pre Alpha Kitchen 1", "Alpha Kitchen")
  *     ├── Theme 2
  *     └── ...
  * 
@@ -54,19 +54,19 @@ export const EXPERIMENTS = {
       order: 2
     },
     {
-      id: 'pressure-effects',
-      name: 'Pressure Effects on Boiling',
+      id: 'different-fluids',
+      name: 'Different Fluids',
       level: 1,
-      description: 'See how pressure affects boiling point',
+      description: 'Explore how different fluids behave when heated',
       requiresLocation: false,
       isTutorial: false,
       order: 3
     },
     {
-      id: 'boiling-substances',
-      name: 'Boiling Different Substances',
+      id: 'lvl-1-4plus-tbd',
+      name: '4+ TBD',
       level: 1,
-      description: 'Explore how different liquids behave when heated',
+      description: 'Placeholder for Level 1 (future experiments)',
       requiresLocation: false,
       isTutorial: false,
       order: 4
@@ -76,10 +76,10 @@ export const EXPERIMENTS = {
   // LEVEL 2: ADVANCED
   2: [
     {
-      id: 'advanced-thermodynamics',
-      name: 'Advanced Thermodynamics',
+      id: 'lvl-2-tbd',
+      name: 'Lvl 2 TBD',
       level: 2,
-      description: 'Deep dive into heat transfer and phase transitions',
+      description: 'Placeholder for Level 2 experiments',
       requiresLocation: false,
       isTutorial: false,
       order: 1
@@ -97,7 +97,7 @@ export const LEVELS = [
   },
   {
     id: 2,
-    name: 'Level 2',
+    name: 'Lvl 2 TBD',
     description: 'Advanced experiments (coming soon)',
     order: 2
   },
@@ -144,7 +144,7 @@ export const IMAGE_SPECS = {
 }
 
 // Base theme configuration
-export const THEME_CONFIG = {
+export const WORKSHOP_CONFIG = {
   // All themes must have these required properties
   requiredFields: [
     'id',
@@ -176,10 +176,10 @@ export const THEME_CONFIG = {
   ],
   
   // Default theme to load if no theme specified
-  defaultTheme: 'alpha',
+  defaultTheme: 'pre-alpha-kitchen-1',
   
   // Themes directory relative to src/data/
-  themesDirectory: 'themes'
+  themesDirectory: 'workshops'
 }
 
 // Color palette categories (helps organize theme colors)
@@ -233,7 +233,7 @@ export const THEME_SCOPE = {
 /**
  * Standard metadata fields for all themes
  */
-export const THEME_METADATA_TEMPLATE = {
+export const WORKSHOP_METADATA_TEMPLATE = {
   id: '',                    // Internal identifier (e.g., 'classic', 'dark', 'workshop_1')
   name: '',                  // Display name (e.g., 'Classic Kitchen')
   description: '',           // What makes this theme unique
@@ -251,19 +251,28 @@ export const THEME_METADATA_TEMPLATE = {
 /**
  * Available themes list
  * This is a manifest of all themes that can be loaded.
- * Populated dynamically from theme JSON files in src/data/themes/
+ * Populated dynamically from theme JSON files in public/assets/workshops/
  */
-export const AVAILABLE_THEMES = {
-  'alpha': {
-    name: 'Alpha Theme',
+export const AVAILABLE_WORKSHOPS = {
+  'pre-alpha-kitchen-1': {
+    name: 'Pre Alpha Kitchen 1',
     scope: 'workshop',
-    description: 'Warm, inviting baseline theme for pre-alpha'
+    description: 'Warm, inviting baseline for pre-alpha (Level 1 only)'
   },
-  'alpha-alt': {
-    name: 'Alpha Theme Alt',
+  'pre-alpha-kitchen-2': {
+    name: 'Pre Alpha Kitchen 2',
     scope: 'workshop',
-    description: 'Cool blue/teal alternate for pre-alpha'
+    description: 'Cool blue/teal alternate for pre-alpha (Level 1 only)'
+  },
+  'alpha-kitchen': {
+    name: 'Alpha Kitchen',
+    scope: 'workshop',
+    description: 'Alpha-stage kitchen environment (Level 1 only)'
+  },
+  'level-2-placeholder': {
+    name: 'Level 2 Placeholder',
+    scope: 'workshop',
+    description: 'Placeholder for Level 2+ (uses Pre Alpha 1 assets)'
   }
-  // Additional themes will be registered here dynamically
-  // or loaded from a themes manifest JSON file
+  // Additional workshops will be registered here dynamically
 }

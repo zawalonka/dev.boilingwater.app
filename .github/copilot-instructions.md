@@ -71,7 +71,7 @@ An educational physics game teaching thermodynamics through interactive water bo
 **Theme System:**
 - `src/utils/themeLoader.js` - Theme loading, validation, CSS application
 - `src/constants/themes.js` - Theme configuration metadata
-- `public/assets/themes/*/` - Theme JSON files and per-theme assets
+- `public/assets/workshops/*/` - Theme JSON files and per-theme assets
   - Each theme must have `theme.json`
   - Each theme must have `background.jpg` (1280×800 pixels, JPG preferred)
 
@@ -148,7 +148,7 @@ See [`GOTCHAS.md`](../GOTCHAS.md) for complete list. Key issues:
 ## 🚧 COMMON TASKS - QUICK REFERENCE
 
 ### Adding a New Theme
-1. Create `theme.json` in `public/assets/themes/your-theme/`
+1. Create `theme.json` in `public/assets/workshops/your-theme/`
 2. Add background image (1280×800, JPG preferred)
 3. Theme auto-discovered on app load
 4. See: `docs/guides/THEME_QUICK_START.md`

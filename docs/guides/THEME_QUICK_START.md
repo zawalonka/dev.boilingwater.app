@@ -6,8 +6,8 @@
 
 ### 1. Create Theme Folder & File
 
-Create folder: `public/assets/themes/[yourThemeName]/`
-Create file: `public/assets/themes/[yourThemeName]/theme.json`
+Create folder: `public/assets/workshops/[yourThemeName]/`
+Create file: `public/assets/workshops/[yourThemeName]/theme.json`
 
 ```json
 {
@@ -28,10 +28,10 @@ Create file: `public/assets/themes/[yourThemeName]/theme.json`
   },
   
   "images": {
-    "background": "/assets/themes/your-theme/background.png",
-    "pot_empty": "/assets/themes/your-theme/pot-empty.png",
-    "pot_full": "/assets/themes/your-theme/pot-full.png",
-    "flame": "/assets/themes/your-theme/flame.png"
+    "background": "/assets/workshops/your-theme/background.png",
+    "pot_empty": "/assets/workshops/your-theme/pot-empty.png",
+    "pot_full": "/assets/workshops/your-theme/pot-full.png",
+    "flame": "/assets/workshops/your-theme/flame.png"
   },
   
   "metadata": {
@@ -44,7 +44,7 @@ Create file: `public/assets/themes/[yourThemeName]/theme.json`
 
 ### 2. Create Asset Folder
 
-Create: `public/assets/images/themes/your-theme/`
+Create: `public/assets/workshops/your-theme/`
 
 Place your 4 images here:
 - **background.png** (MUST be exactly **1280×800 pixels**, no stretching)
@@ -182,7 +182,7 @@ img.save('output.png')
 ❌ **Mistake:** Theme doesn't load
 ```
 ✓ Fix: Check browser console (F12) for error messages
-✓ Fix: Verify JSON file is in src/data/themes/[id].json
+✓ Fix: Verify JSON file is in public/assets/workshops/[id]/theme.json
 ✓ Fix: Make sure all required fields are present
 ```
 
@@ -192,10 +192,10 @@ img.save('output.png')
 
 Before deploying your theme:
 
-- [ ] JSON file created: `public/assets/themes/[id]/theme.json`
+- [ ] JSON file created: `public/assets/workshops/[id]/theme.json`
 - [ ] All required JSON fields present (id, name, colors, images, metadata)
 - [ ] Background image: exactly **1280×800 pixels**
-- [ ] Background file exists: `public/assets/themes/[id]/background.png`
+- [ ] Background file exists: `public/assets/workshops/[id]/background.png`
 - [ ] Pot empty image exists and is transparent PNG
 - [ ] Pot full image exists, same size as pot empty
 - [ ] Flame image exists (~60×100 pixels)
@@ -220,7 +220,7 @@ Use these tools to generate color schemes:
 ## Need Help?
 
 1. **Read full docs:** `THEME_SYSTEM.md` in repo root
-2. **Check classic theme:** `src/data/themes/classic.json` as reference
+2. **Check alpha theme:** `public/assets/workshops/alpha/theme.json` as reference
 3. **Look at error messages:** `npm run build` will tell you what's wrong
 4. **Inspect with DevTools:** F12 → Console tab shows theme loading info
 

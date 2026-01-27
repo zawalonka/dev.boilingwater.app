@@ -10,10 +10,10 @@
  *   const available = getAvailableThemes()
  */
 
-import { AVAILABLE_THEMES, THEME_CONFIG, THEME_METADATA_TEMPLATE } from '../constants/themes'
+import { AVAILABLE_WORKSHOPS, WORKSHOP_CONFIG, WORKSHOP_METADATA_TEMPLATE } from '../constants/workshops'
 
 /**
- * Dynamically loads a theme JSON file from public/assets/themes/
+ * Dynamically loads a theme JSON file from public/assets/workshops/
  * 
  * @param {string} themeId - The theme identifier (e.g., 'alpha', 'alpha-alt')
  * @returns {Promise<Object>} The loaded theme configuration object
@@ -30,16 +30,21 @@ export async function loadTheme(themeId) {
     if (base.startsWith('/')) {
       base = base.slice(1)
     }
-    const themeUrl = new URL(`${base}assets/themes/${themeId}/theme.json`, window.location.href).toString()
-    const res = await fetch(themeUrl)
+    // Prefer workshop.json; fallback to theme.json for backward compatibility
+    const workshopUrl = new URL(`${base}assets/workshops/${themeId}/workshop.json`, window.location.href).toString()
+    let res = await fetch(workshopUrl)
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status} loading ${themeUrl}`)
+      const themeUrl = new URL(`${base}assets/workshops/${themeId}/theme.json`, window.location.href).toString()
+      res = await fetch(themeUrl)
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} loading ${workshopUrl} or ${themeUrl}`)
+      }
     }
     const themeData = await res.json()
 
     // Optional: load theme effects from effects.json if present (non-blocking)
     try {
-      const effectsUrl = new URL(`${base}assets/themes/${themeId}/effects.json`, window.location.href).toString()
+      const effectsUrl = new URL(`${base}assets/workshops/${themeId}/effects.json`, window.location.href).toString()
       const effectsRes = await fetch(effectsUrl)
       if (effectsRes.ok) {
         themeData.effects = await effectsRes.json()
@@ -68,7 +73,7 @@ export async function loadTheme(themeId) {
  */
 export function validateThemeData(themeData) {
   // Check all required top-level fields
-  for (const field of THEME_CONFIG.requiredFields) {
+  for (const field of WORKSHOP_CONFIG.requiredFields) {
     if (!(field in themeData)) {
       throw new Error(`Missing required field: '${field}'`)
     }
@@ -81,7 +86,7 @@ export function validateThemeData(themeData) {
 
   // Validate that all required colors are defined
   if (themeData.colors && typeof themeData.colors === 'object') {
-    for (const color of THEME_CONFIG.requiredColors) {
+    for (const color of WORKSHOP_CONFIG.requiredColors) {
       if (!(color in themeData.colors)) {
         console.warn(`Theme warning: Missing color '${color}'. This may cause styling issues.`)
       }
@@ -92,16 +97,16 @@ export function validateThemeData(themeData) {
 
   // Validate that all required images are defined
   if (themeData.images && typeof themeData.images === 'object') {
-    for (const image of THEME_CONFIG.requiredImages) {
+    for (const image of WORKSHOP_CONFIG.requiredImages) {
       if (!(image in themeData.images)) {
         console.warn(`Theme warning: Missing image '${image}'. This may cause rendering issues.`)
       }
     }
-    // Normalize relative image paths to absolute /assets/themes/... if provided as relative
+    // Normalize relative image paths to absolute /assets/workshops/... if provided as relative
     Object.entries(themeData.images).forEach(([key, value]) => {
       if (typeof value === 'string' && value.startsWith('./')) {
         // Resolve relative to theme folder
-        themeData.images[key] = value.replace('./', `/assets/themes/${themeData.id}/`)
+        themeData.images[key] = value.replace('./', `/assets/workshops/${themeData.id}/`)
       }
     })
   } else {
@@ -154,7 +159,7 @@ export function processTheme(themeData, parentTheme = null) {
     id: themeData.id,
     name: themeData.name,
     metadata: {
-      ...THEME_METADATA_TEMPLATE,
+      ...WORKSHOP_METADATA_TEMPLATE,
       ...themeData.metadata
     },
     colors: {
@@ -276,7 +281,7 @@ export async function preloadThemeImages(themeData) {
  */
 export async function getAvailableThemes() {
   try {
-    return Object.entries(AVAILABLE_THEMES).map(([id, meta]) => ({ id, name: meta.name }))
+    return Object.entries(AVAILABLE_WORKSHOPS).map(([id, meta]) => ({ id, name: meta.name }))
   } catch (error) {
     console.error('Failed to get available themes:', error)
     return [{ id: THEME_CONFIG.defaultTheme, name: 'Alpha Theme' }]  // Fallback
@@ -301,9 +306,12 @@ export async function getThemesByLevel(levelId) {
   for (const theme of available) {
     try {
       const themeData = await loadTheme(theme.id)
-      // Check if theme belongs to this level (or has no level specified, for backwards compat)
-      if (!themeData.levelId || themeData.levelId === levelId) {
-        themesData.push({ id: theme.id, name: theme.name, levelId: themeData.levelId })
+      // Filter by minLevel/maxLevel if specified in theme
+      const minLevel = themeData.minLevel || 1
+      const maxLevel = themeData.maxLevel || 999
+      
+      if (levelId >= minLevel && levelId <= maxLevel) {
+        themesData.push({ id: theme.id, name: theme.name, minLevel, maxLevel })
       }
     } catch (error) {
       console.warn(`Could not load theme ${theme.id}:`, error.message)
@@ -388,9 +396,9 @@ export async function getLevelTheme(workshopId, levelId) {
 
   // Fallback to default theme
   console.warn(
-    `No theme found for workshop '${workshopId}', level '${levelId}'. Using default.`
+    `No workshop found for workshop '${workshopId}', level '${levelId}'. Using default.`
   )
-  return await loadTheme(THEME_CONFIG.defaultTheme)
+  return await loadTheme(WORKSHOP_CONFIG.defaultTheme)
 }
 
 /**
@@ -446,4 +454,13 @@ export async function initializeTheme(themeId, options = {}) {
   }
 }
 
-export const DEFAULT_THEME = THEME_CONFIG.defaultTheme
+export const DEFAULT_THEME = WORKSHOP_CONFIG.defaultTheme
+
+// Workshop-first API aliases (use these going forward)
+export async function loadWorkshop(workshopId) { return loadTheme(workshopId) }
+export function validateWorkshopData(data) { return validateThemeData(data) }
+export function processWorkshop(data, parent = null) { return processTheme(data, parent) }
+export async function preloadWorkshopImages(data) { return preloadThemeImages(data) }
+export async function getAvailableWorkshops() { return getAvailableThemes() }
+export async function getWorkshopsByLevel(level) { return getThemesByLevel(level) }
+export async function initializeWorkshop(id, options = {}) { return initializeTheme(id, options) }
