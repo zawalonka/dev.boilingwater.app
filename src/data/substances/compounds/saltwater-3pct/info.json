@@ -1,0 +1,60 @@
+{
+  "id": "saltwater-3pct",
+  "type": "mixture",
+  "name": "Saltwater (3% NaCl by mass)",
+  "aliases": ["Brackish Water", "Salt Solution", "Saline"],
+  "description": "Homogeneous aqueous solution of sodium chloride",
+  "concentration": {
+    "solute": "NaCl",
+    "soluteSmiles": "[Na+].[Cl-]",
+    "percentByMass": 3.0,
+    "molarConcentration": 0.513
+  },
+  
+  "components": [
+    {
+      "id": "h2o",
+      "name": "Water",
+      "smiles": "O",
+      "role": "solvent",
+      "massFraction": 0.97,
+      "reference": "compounds/h2o/info.json"
+    },
+    {
+      "id": "nacl",
+      "name": "Sodium Chloride",
+      "smiles": "[Na+].[Cl-]",
+      "role": "solute",
+      "massFraction": 0.03,
+      "reference": "compounds/nacl/info.json"
+    }
+  ],
+  
+  "effectOfDissolution": {
+    "boilingPointElevation": 0.16,
+    "meltingPointDepression": -0.10,
+    "osmioticPressure": "increases with concentration"
+  },
+  
+  "phaseTransitions": {
+    "meltingPoint": -0.10,
+    "boilingPoint": 100.16,
+    "triplePoint": {
+      "temperature": -0.05,
+      "pressure": 0.006,
+      "note": "Approximation; actual value depends on solute concentration"
+    },
+    "criticalPoint": {
+      "temperature": 374.0,
+      "pressure": 220.7,
+      "note": "Nearly identical to pure water; dissolved ions have minimal effect"
+    }
+  },
+  
+  "phases": {
+    "liquid": "saltwater"
+  },
+  "states": ["liquid"],
+  "note": "At standard conditions, saltwater only exists as liquid. Freezing/boiling involves phase separation.",
+  "lastUpdated": "2026-01-27"
+}

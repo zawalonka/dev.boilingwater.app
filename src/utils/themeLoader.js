@@ -2,7 +2,7 @@
  * Theme Loader Utility
  * 
  * Dynamically loads and manages theme configurations at runtime.
- * Similar to fluidLoader, but for theme system.
+ * Similar to substanceLoader, but for the theme system.
  * 
  * Usage:
  *   const themeData = await loadTheme('classic')

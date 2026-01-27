@@ -9,31 +9,15 @@
   - Documentation updated in GOTCHAS.md
 - [x] Theme system locked down and extensible
 
-## Priority 1: ComfyUI Workflows & SVG Conversion
-- [ ] Create ComfyUI workflows for all transparent images (pot-empty, pot-full, flame)
-- [ ] Generate SVG versions of theme images from ComfyUI workflows
-- [ ] Store ComfyUI workflow .json files in GitHub (for reproducibility/sharing)
-- [ ] Replace PNG pot/flame images with SVG equivalents in:
-  - `public/assets/workshops/alpha/`
-  - `public/assets/workshops/alpha-alt/`
-- [ ] Update theme.json image paths to reference `.svg` instead of `.png`
-- [ ] Test SVG rendering in GameScene (check if CSS transforms/filters work better)
+## Priority 1: Fix Level 2 Workshop Dropdown
+- [ ] Debug why Level 2 shows blank workshop dropdown on selection
+- [ ] Verify `getWorkshopsByLevel(2)` returns Level 2 Placeholder correctly
+- [ ] Test workshop filtering logic and cache behavior
+- [ ] Confirm all required fields present in level-2-placeholder/workshop.json
 
-## Priority 2: Background Images (SVG)
-- [ ] Create ComfyUI workflow for kitchen/workshop background
-- [ ] Generate SVG backgrounds for both alpha themes (1280x800)
-- [ ] Test if SVG backgrounds can replace JPG (may need raster fallback)
-- [ ] Document ComfyUI workflow in GitHub (link in THEME_SYSTEM.md)
-
-## Priority 3: CSS Clip-Path Exploration
-- [ ] Investigate CSS clip-path for pot animation (instead of image swaps)
-- [ ] Test clip-path performance vs. image switching
-- [ ] Evaluate SVG mask vs. CSS clip-path for flame effect
-- [ ] Document findings in THEME_SYSTEM.md
-
-## Priority 4: Extensibility Audit
+## Priority 2: Extensibility Audit
 - [ ] Review data structure for custom materials:
-  - `src/utils/fluidLoader.js` – Can users add custom fluids? (JSON structure)
+  - `src/utils/substanceLoader.js` – Can users add custom fluids? (JSON structure)
   - `src/data/fluids/` – Where should custom fluids live?
   - Add validation to accept arbitrary fluid properties
 - [ ] Review data structure for custom themes:
@@ -49,11 +33,8 @@
   - Custom theme JSON
   - Custom images (with size/format requirements)
 
-## Priority 5: Documentation
+## Priority 3: Documentation
 - [ ] Update THEME_SYSTEM.md with:
-  - SVG image format guidelines
-  - ComfyUI workflow link/instructions
-  - CSS clip-path examples (if implemented)
 - [ ] Create FLUID_CUSTOM_GUIDE.md for custom fluid creation
 - [ ] Create EXTENSIBILITY_GUIDE.md for modders/theme creators
 - [ ] Document all extensible data formats (fluids, themes, physics params)

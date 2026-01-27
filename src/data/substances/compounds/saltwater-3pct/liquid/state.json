@@ -1,0 +1,81 @@
+{
+  "compoundId": "saltwater-3pct",
+  "phase": "liquid",
+  "phaseName": "saltwater",
+  "density": {
+    "value": 1.0212,
+    "unit": "kg/L",
+    "temperature": 20,
+    "pressure": 1.0,
+    "volumetricExpansionCoefficient": 0.000207,
+    "note": "3% salt increases density by ~2.1% compared to pure water"
+  },
+  "specificHeat": {
+    "value": 3.93,
+    "unit": "J/(g·°C)",
+    "temperature": 20,
+    "source": "measured",
+    "note": "Lower than pure water (~4.186 J/g°C); dissolved ions reduce specific heat"
+  },
+  "thermalConductivity": {
+    "value": 0.61,
+    "unit": "W/(m·K)",
+    "temperature": 20,
+    "note": "Slightly higher than pure water; salt ions conduct heat"
+  },
+  "latentHeatOfVaporization": {
+    "value": 2412,
+    "unit": "kJ/kg",
+    "note": "Higher than pure water (~2257 kJ/kg); dissolved salt requires more energy to vaporize"
+  },
+  "compressibility": {
+    "value": 0.000440,
+    "unit": "1/Pa",
+    "note": "Slightly less compressible than pure water due to dissolved ions"
+  },
+  "antoineCoefficients": {
+    "A": 8.08386,
+    "B": 1750.286,
+    "C": 235.0,
+    "TminC": 0,
+    "TmaxC": 110,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Modified Antoine curve; salt **lowers** vapor pressure (Raoult's Law). Boiling point elevated by ~0.16°C at 3% concentration."
+  },
+  "ionicStrength": {
+    "value": 0.513,
+    "unit": "mol/L",
+    "formula": "I = 0.5 × Σ(ci × zi²)",
+    "note": "Na⁺ and Cl⁻ each contribute; used in advanced activity coefficient models"
+  },
+  "electricalConductivity": {
+    "value": 5.0,
+    "unit": "S/m",
+    "temperature": 20,
+    "range": [4.8, 5.2],
+    "note": "3% NaCl makes water an electrolyte. Pure water: ~0.0005 S/m. Salt dissociates into conducting ions (Na⁺ and Cl⁻).",
+    "applicationUse": "Sensors, electrolysis simulations, conductivity probes, safety (risk of electrical hazards). 10,000x more conductive than pure water!"
+  },
+  "vanThoffFactor": {
+    "value": 1.9,
+    "formula": "i = number of particles per solute molecule",
+    "theoretical": 2.0,
+    "actual": 1.9,
+    "note": "NaCl ideally dissociates into 2 ions (Na⁺ + Cl⁻), but real solutions show i=1.9 due to ion-pairing and electrostatic effects.",
+    "applicationUse": "Calculate colligative properties: ΔTb = i × Kb × m (boiling point elevation), ΔTf = i × Kf × m (freezing point depression), osmotic pressure = i × M × R × T"
+  },
+  "saturationPoint": {
+    "value": 357,
+    "unit": "g/L",
+    "temperature": 25,
+    "solute": "NaCl",
+    "molarConcentration": 6.1,
+    "note": "Maximum concentration of NaCl that can dissolve in water at 25°C. Beyond this, crystals precipitate.",
+    "currentConcentration": 30,
+    "currentConcentrationUnit": "g/L",
+    "percentOfSaturation": 8.4,
+    "applicationUse": "If player evaporates water or adds more salt, track when crystallization begins. Spawn NaCl(s) at bottom of container when saturation is exceeded."
+  },
+  "reference": "saltwater-3pct/info.json"
+}

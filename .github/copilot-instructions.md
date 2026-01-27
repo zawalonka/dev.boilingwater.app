@@ -84,7 +84,7 @@ An educational physics game teaching thermodynamics through interactive water bo
 src/
 ├── App.jsx, main.jsx
 ├── components/ (GameScene, Header, KitchenScene)
-├── utils/ (physics.js, themeLoader.js, fluidLoader.js)
+├── utils/ (physics.js, themeLoader.js, substanceLoader.js)
 ├── constants/ (physics.js, themes.js)
 ├── data/fluids/ (h2o.json, water.json, ice.json, steam.json)
 └── styles/ (index.css, App.css, GameScene.css, Header.css, KitchenScene.css)
@@ -271,7 +271,7 @@ git push origin main    # Production (ONLY after dev verification)
 **Architecture/Planning:**
 - `docs/planning/BoilingWater_Full_Documentation.md` - Complete project vision
 - `docs/architecture/REFACTORING_SUMMARY.md` - Major architectural decisions
-- `docs/planning/TODO_NEXT_SESSION.md` - Current work plan
+- `docs/planning/TODO.md` - Current work plan
 
 **Assets/Images:**
 - `docs/guides/IMAGE_OPTIMIZATION.md` - Asset optimization strategy
@@ -323,7 +323,7 @@ Now I'll commit with a message explaining the changes...
 
 ## 🎯 CURRENT DEVELOPMENT FOCUS
 
-See `docs/planning/TODO_NEXT_SESSION.md` for current work items.
+See `docs/planning/TODO.md` for current work items.
 
 Recent work: Level/experiment system refactor, location display, altitude integration, ESM configuration.
 

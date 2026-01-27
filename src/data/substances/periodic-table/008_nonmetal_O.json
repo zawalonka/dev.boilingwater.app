@@ -1,0 +1,34 @@
+{
+  "atomicNumber": 8,
+  "symbol": "O",
+  "name": "Oxygen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 6,
+  "oxidationStates": [-2, -1, 1, 2],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 15.9994,
+    "electronegativity": 3.44,
+    "ionizationEnergy": 1314.0,
+    "atomicRadius": 60,
+    "electronAffinity": 141.0,
+    "standardMolarEntropy": 205.15,
+    "specificHeatCapacity": 20.9,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 15.999,
+    "electronegativity": 3.44,
+    "ionizationEnergy": 1314.0,
+    "atomicRadius": 60,
+    "electronAffinity": 141.0,
+    "standardMolarEntropy": 205.15,
+    "specificHeatCapacity": 20.9,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

@@ -1,0 +1,53 @@
+{
+  "compoundId": "h2o",
+  "phase": "liquid",
+  "phaseName": "water",
+  "density": {
+    "value": 1.0,
+    "unit": "kg/L",
+    "temperature": 20,
+    "pressure": 1.0,
+    "maxDensityTemperature": 3.98,
+    "volumetricExpansionCoefficient": 0.000207,
+    "note": "Dynamic: use expansion coefficient to calculate density at other T"
+  },
+  "specificHeat": {
+    "value": 4.186,
+    "unit": "J/(g·°C)",
+    "temperature": 20,
+    "source": "measured"
+  },
+  "thermalConductivity": {
+    "value": 0.6,
+    "unit": "W/(m·K)",
+    "temperature": 20
+  },
+  "latentHeatOfVaporization": {
+    "value": 2257,
+    "unit": "kJ/kg",
+    "note": "Energy required to boil water to steam at 100°C"
+  },
+  "compressibility": {
+    "value": 0.000450,
+    "unit": "1/Pa",
+    "note": "How much density changes under pressure (use for high-altitude inverse)"
+  },
+  "antoineCoefficients": {
+    "A": 8.07131,
+    "B": 1730.63,
+    "C": 233.426,
+    "TminC": 1,
+    "TmaxC": 100,
+    "formula": "log10(Pvap) = A - B/(C + T)",
+    "unit": "Pressure in mmHg, Temperature in °C",
+    "note": "Predicts vapor pressure of liquid water (used for boiling at altitude)"
+  },
+  "electricalConductivity": {
+    "value": 0.00055,
+    "unit": "S/m",
+    "temperature": 20,
+    "note": "Pure water is a poor conductor",
+    "applicationUse": "Shows baseline; any dissolved ions dramatically increase conductivity"
+  },
+  "reference": "h2o/info.json"
+}

@@ -1,0 +1,34 @@
+{
+  "atomicNumber": 1,
+  "symbol": "H",
+  "name": "Hydrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "s",
+  "valenceElectrons": 1,
+  "oxidationStates": [1, -1],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 1.00794,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 1312.0,
+    "atomicRadius": 37,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 130.57,
+    "specificHeatCapacity": 14.3,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 1.008,
+    "electronegativity": 2.20,
+    "ionizationEnergy": 1312.0,
+    "atomicRadius": 37,
+    "electronAffinity": 72.8,
+    "standardMolarEntropy": 130.57,
+    "specificHeatCapacity": 14.3,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}

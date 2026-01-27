@@ -1,0 +1,43 @@
+{
+  "id": "h2o",
+  "type": "compound",
+  "name": "Water",
+  "aliases": ["Oxidane", "Hydrogen Oxide"],
+  "chemicalFormula": "H₂O",
+  "explicitSmiles": "O",
+  "molarMass": 18.015,
+  "deltaHf": -285.83,
+  "deltaGf": -237.13,
+  
+  "elements": [
+    {
+      "symbol": "H",
+      "atomicNumber": 1,
+      "count": 2,
+      "reference": "periodic-table/001_nonmetal_H.json"
+    },
+    {
+      "symbol": "O",
+      "atomicNumber": 8,
+      "count": 1,
+      "reference": "periodic-table/008_nonmetal_O.json"
+    }
+  ],
+  
+  "phaseTransitions": {
+    "meltingPoint": 0,
+    "boilingPoint": 100,
+    "triplePoint": {
+      "temperature": 0.01,
+      "pressure": 0.00603
+    },
+    "criticalPoint": {
+      "temperature": 373.95,
+      "pressure": 220.64,
+      "density": 0.322
+    }
+  },
+  
+  "states": ["solid", "liquid", "gas"],
+  "lastUpdated": "2026-01-27"
+}

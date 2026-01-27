@@ -1,0 +1,39 @@
+{
+  "compoundId": "h2o",
+  "phase": "gas",
+  "phaseName": "steam",
+  "density": {
+    "value": 0.000597,
+    "unit": "kg/L",
+    "temperature": 100,
+    "pressure": 1.0,
+    "note": "Dynamic: use Ideal Gas Law (PV=nRT) to calculate density at other T/P"
+  },
+  "idealGasLaw": {
+    "molarMass": 18.015,
+    "unit": "g/mol",
+    "formula": "ρ = (P × M) / (R × T)",
+    "gasConstant": 8.314,
+    "note": "For any T/P, calculate density dynamically instead of storing table"
+  },
+  "specificHeat": {
+    "value": 2.0,
+    "unit": "J/(g·°C)",
+    "temperature": 100,
+    "note": "Cp at constant pressure"
+  },
+  "thermalConductivity": {
+    "value": 0.024,
+    "unit": "W/(m·K)",
+    "temperature": 100
+  },
+  "antoineCoefficients": null,
+  "electricalConductivity": {
+    "value": 0.00001,
+    "unit": "S/m",
+    "temperature": 100,
+    "note": "Steam as a gas has negligible conductivity; no dissolved ions"
+  },
+  "note": "Antoine equation is for liquid vapor pressure. Steam is a gas and follows gas laws.",
+  "reference": "h2o/info.json"
+}

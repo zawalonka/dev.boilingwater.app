@@ -1,0 +1,45 @@
+{
+  "compoundId": "h2o",
+  "phase": "solid",
+  "phaseName": "ice",
+  "density": {
+    "value": 0.917,
+    "unit": "kg/L",
+    "temperature": 0,
+    "pressure": 1.0,
+    "note": "Ice is less dense than liquid water (anomaly)"
+  },
+  "specificHeat": {
+    "value": 2.05,
+    "unit": "J/(g·°C)",
+    "temperature": 0,
+    "source": "measured"
+  },
+  "thermalConductivity": {
+    "value": 2.24,
+    "unit": "W/(m·K)",
+    "temperature": 0
+  },
+  "latentHeatOfFusion": {
+    "value": 334,
+    "unit": "kJ/kg",
+    "note": "Energy required to melt ice to water at 0°C"
+  },
+  "volumetricExpansionCoefficient": {
+    "value": 0.000050,
+    "unit": "1/K",
+    "note": "Ice expands when frozen; 9% larger volume than liquid water"
+  },
+  "compressibility": {
+    "value": 0.000011,
+    "unit": "1/Pa"
+  },
+  "electricalConductivity": {
+    "value": 0.00055,
+    "unit": "S/m",
+    "temperature": 20,
+    "note": "Pure water is a poor conductor. Distilled water even lower (~0.0001 S/m).",
+    "applicationUse": "Shows baseline; compare to saltwater (5.0 S/m) to understand electrolytes"
+  },
+  "reference": "h2o/info.json"
+}

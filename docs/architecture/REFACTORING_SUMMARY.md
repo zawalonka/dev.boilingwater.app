@@ -38,7 +38,7 @@ export const WATER_CONSTANTS = {
 ```
 src/data/fluids/water.json    ← Specific to H₂O
 src/constants/physics.js       ← Universal constants only
-src/utils/fluidLoader.js       ← Dynamic fluid loading
+src/utils/substanceLoader.js   ← Dynamic fluid loading
 ```
 
 ### 3. **Realistic Cooling Model**
@@ -132,7 +132,7 @@ const boilingPoint = calculateBoilingPoint(altitude)
 const boilingPoint = fluidProps ? calculateBoilingPoint(altitude, fluidProps) : 100
 ```
 
-### 6. **New Utility: fluidLoader.js**
+### 6. **New Utility: substanceLoader.js**
 
 ```javascript
 // Load a fluid by ID
@@ -168,7 +168,7 @@ validateFluidData(fluidData)  // Throws if missing required properties
 | File | Change | Impact |
 |------|--------|--------|
 | `src/data/fluids/water.json` | NEW | Fluid properties storage |
-| `src/utils/fluidLoader.js` | NEW | Fluid loading utility |
+| `src/utils/substanceLoader.js` | NEW | Fluid loading utility |
 | `src/constants/physics.js` | REFACTORED | Removed WATER_CONSTANTS, kept ATMOSPHERE/UNIVERSAL |
 | `src/utils/physics.js` | UPDATED | All functions accept fluidProps, Newton's Law added |
 | `src/components/GameScene.jsx` | UPDATED | Loads fluid on mount, passes to physics functions |

@@ -21,7 +21,7 @@ import {
   simulateTimeStep,       // Runs one time step of physics (heating/cooling/boiling)
   formatTemperature       // Formats temperature numbers for display (e.g., 98.5°C)
 } from '../utils/physics'
-import { loadFluid, parseFluidProperties, DEFAULT_FLUID } from '../utils/fluidLoader'
+import { loadSubstance, parseSubstanceProperties, DEFAULT_SUBSTANCE } from '../utils/substanceLoader'
 import { GAME_CONFIG } from '../constants/physics'
 import '../styles/GameScene.css'
 
@@ -235,16 +235,16 @@ function GameScene({ stage, location, onStageChange, themeLayout, themeImages, t
 
   // ============================================================================
   // ============================================================================
-  // EFFECT 1: Load fluid properties (runs once on component load)
+  // EFFECT 1: Load substance properties (runs once on component load)
   // ============================================================================
 
   useEffect(() => {
-    // Load the current fluid's properties from JSON
-    // For now, we always load water, but this makes it easy to add fluid selection later
+    // Load the current substance's properties from JSON
+    // For now, we always load water, but this makes it easy to add selection later
     async function initializeFluid() {
       try {
-        const fluidData = await loadFluid(DEFAULT_FLUID)  // 'water'
-        const props = parseFluidProperties(fluidData)
+        const substanceData = await loadSubstance(DEFAULT_SUBSTANCE)  // 'water'
+        const props = parseSubstanceProperties(substanceData)
         setFluidProps(props)
         // Debug log: useful for verifying fluid properties loaded correctly
         console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)

@@ -1,45 +1,45 @@
 /**
- * FLUID LOADER UTILITY
+ * SUBSTANCE LOADER UTILITY
  * 
- * Dynamically loads fluid property definitions from JSON files.
- * This allows easy extension to different fluids (water, ethanol, oils, etc.)
- * without modifying core game code.
+ * Dynamically loads substance property definitions from JSON files.
+ * This allows extension to liquids, solids, gases, and mixtures without
+ * modifying core game code.
  * 
- * To add a new fluid:
+ * To add a new substance:
  * 1. Create a new JSON file in src/data/fluids/ (e.g., ethanol.json)
  * 2. Follow the same structure as water.json
- * 3. Import and use: const ethanol = await loadFluid('ethanol')
+ * 3. Import and use: const ethanol = await loadSubstance('ethanol')
  */
 
 /**
- * Load a fluid's properties from its JSON definition
+ * Load a substance's properties from its JSON definition
  * 
- * @param {string} fluidId - The fluid identifier (e.g., 'water', 'ethanol')
- * @returns {Promise<Object>} Fluid properties object
- * @throws {Error} If fluid file not found or invalid JSON
+ * @param {string} substanceId - The substance identifier (e.g., 'water', 'ethanol')
+ * @returns {Promise<Object>} Substance properties object
+ * @throws {Error} If substance file not found or invalid JSON
  */
-export async function loadFluid(fluidId) {
+export async function loadSubstance(substanceId) {
   try {
     // Dynamic import of the JSON file
-    const fluidData = await import(`../data/fluids/${fluidId}.json`);
+    const substanceData = await import(`../data/fluids/${substanceId}.json`)
     
     // Validate required properties exist
-    validateFluidData(fluidData.default || fluidData);
+    validateSubstanceData(substanceData.default || substanceData)
     
-    return fluidData.default || fluidData;
+    return substanceData.default || substanceData
   } catch (error) {
-    console.error(`Failed to load fluid "${fluidId}":`, error);
-    throw new Error(`Fluid "${fluidId}" not found or invalid. Check src/data/fluids/${fluidId}.json`);
+    console.error(`Failed to load substance "${substanceId}":`, error)
+    throw new Error(`Substance "${substanceId}" not found or invalid. Check src/data/fluids/${substanceId}.json`)
   }
 }
 
 /**
- * Validate that a fluid definition contains all required properties
+ * Validate that a substance definition contains all required properties
  * 
- * @param {Object} fluidData - The fluid data to validate
+ * @param {Object} substanceData - The substance data to validate
  * @throws {Error} If required properties are missing
  */
-function validateFluidData(fluidData) {
+function validateSubstanceData(substanceData) {
   const required = [
     'id',
     'name',
@@ -51,9 +51,9 @@ function validateFluidData(fluidData) {
   ];
   
   for (const path of required) {
-    const value = getNestedProperty(fluidData, path);
+    const value = getNestedProperty(substanceData, path)
     if (value === undefined || value === null) {
-      throw new Error(`Missing required property: ${path}`);
+      throw new Error(`Missing required property: ${path}`)
     }
   }
 }
@@ -70,20 +70,20 @@ function getNestedProperty(obj, path) {
 }
 
 /**
- * Convert fluid JSON format to a simplified object for physics calculations
+ * Convert substance JSON format to a simplified object for physics calculations
  * Extracts numeric values from the structured format
  * 
- * @param {Object} fluidData - Raw fluid data from JSON
+ * @param {Object} substanceData - Raw substance data from JSON
  * @returns {Object} Simplified fluid properties for physics engine
  */
-export function parseFluidProperties(fluidData) {
-  const props = fluidData.properties;
+export function parseSubstanceProperties(substanceData) {
+  const props = substanceData.properties
   
   return {
     // Identification
-    id: fluidData.id,
-    name: fluidData.name,
-    formula: fluidData.chemicalFormula,
+    id: substanceData.id,
+    name: substanceData.name,
+    formula: substanceData.chemicalFormula,
     
     // Thermodynamic properties (extract numeric values)
     specificHeat: props.specificHeatLiquid.value,        // J/(g·°C)
@@ -97,7 +97,7 @@ export function parseFluidProperties(fluidData) {
     freezingPoint: props.freezingPoint?.value || 0,      // °C
     
     // Cooling model
-    coolingCoefficient: fluidData.coolingModel.heatTransferCoefficient, // 1/s
+    coolingCoefficient: substanceData.coolingModel.heatTransferCoefficient, // 1/s
     
     // Optional properties
     molecularMass: props.molecularMass?.value,
@@ -105,28 +105,34 @@ export function parseFluidProperties(fluidData) {
     viscosity: props.viscosity?.value,
     
     // Visual properties (for rendering)
-    visual: fluidData.visualProperties,
+    visual: substanceData.visualProperties,
     
     // Metadata
-    metadata: fluidData.metadata
-  };
+    metadata: substanceData.metadata
+  }
 }
 
 /**
- * List all available fluids in the fluids directory
+ * List all available substances in the fluids directory
  * 
- * @returns {Array<string>} Array of fluid IDs
+ * @returns {Array<string>} Array of substance IDs
  */
-export function getAvailableFluids() {
+export function getAvailableSubstances() {
   // In a real implementation, this would scan the directory
   // For now, we'll return a hardcoded list that can be expanded
-  return ['water'];
+  return ['water']
   
   // Future: Add scanning logic or manifest file
   // return ['water', 'ethanol', 'saltwater', 'vegetable-oil', 'glycerin'];
 }
 
 /**
- * Default fluid (water) - used as fallback
+ * Default substance (water) - used as fallback
  */
-export const DEFAULT_FLUID = 'water';
+export const DEFAULT_SUBSTANCE = 'water'
+
+// Compatibility exports (legacy naming)
+export const loadFluid = loadSubstance
+export const parseFluidProperties = parseSubstanceProperties
+export const getAvailableFluids = getAvailableSubstances
+export const DEFAULT_FLUID = DEFAULT_SUBSTANCE

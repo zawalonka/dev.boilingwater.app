@@ -1,0 +1,121 @@
+{
+  "id": "pre-alpha-kitchen-2",
+  "name": "Pre Alpha Kitchen 2",
+  "scope": "workshop",
+  "workshopId": null,
+  "minLevel": 1,
+  "maxLevel": 1,
+  "parentTheme": "pre-alpha-kitchen-1",
+  "description": "Cool blue/teal alt palette for pre-alpha, same layout/assets as alpha.",
+  "_notes": {
+    "layout": "Shares alpha layout; positions are percentages against layout.scene (1280x800). Background must match layout.scene size.",
+    "images": "Background as optimized JPG (no transparency). UI elements (pot, flame) as PNG for transparency. May inherit parent images if omitted.",
+    "colors": "Overrides palette only. Values map to CSS vars --theme-*; gradients allowed where currently used.",
+    "parentTheme": "Inherits alpha where fields are missing; only override palette unless layout truly changes."
+  },
+  "colors": {
+    "header_background": "rgba(20, 28, 45, 0.9)",
+    "header_text": "#e9f2ff",
+    "header_accent": "#3cb8ff",
+    "badge_background": "rgba(0, 123, 255, 0.9)",
+    "badge_text": "white",
+    "button_primary": "#1ca7ec",
+    "button_primary_text": "white",
+    "button_hover": "#178dcc",
+    "button_hover_text": "white",
+    "button_active": "#0f6a9c",
+    "button_active_text": "white",
+    "button_disabled": "#9fb6c7",
+    "button_disabled_text": "#4c5d6a",
+    "button_secondary": "#00c2a8",
+    "button_secondary_text": "white",
+    "button_secondary_hover": "#00a48d",
+    "panel_background": "rgba(14, 22, 35, 0.92)",
+    "panel_text": "#d9e7f5",
+    "panel_border": "#25405c",
+    "panel_accent": "#3cb8ff",
+    "status_background": "linear-gradient(135deg, rgba(30, 60, 110, 0.9), rgba(20, 110, 130, 0.9))",
+    "status_border": "#3cb8ff",
+    "status_text": "#e6f5ff",
+    "status_divider": "rgba(255, 255, 255, 0.2)",
+    "status_chip": "rgba(255, 255, 255, 0.1)",
+    "status_label": "#9cd7ff",
+    "status_value": "#fff8d1",
+    "status_boiling": "#ff9a7a",
+    "burner_background": "#2a2f3a",
+    "burner_grate": "#151922",
+    "knob_rim": "#c8d8e8",
+    "knob_center": "#e4f2ff",
+    "knob_border": "#27486a",
+    "knob_pointer": "#00c2a8",
+    "sink_background": "linear-gradient(135deg, #5cc1ff 0%, #2a85c7 100%)",
+    "sink_border": "#1f5c8a",
+    "water_color": "#5fd1ff",
+    "water_highlight": "#b5f0ff",
+    "water_deep": "#2b7da8",
+    "flame_glow": "#ff7043",
+    "warning_background": "rgba(255, 193, 7, 0.2)",
+    "warning_text": "#ffe08a",
+    "warning_border": "#ffc107",
+    "success_background": "rgba(0, 194, 168, 0.2)",
+    "success_text": "#a4f4e7",
+    "success_border": "#00c2a8",
+    "error_background": "rgba(244, 67, 54, 0.2)",
+    "error_text": "#ffd7d3",
+    "error_border": "#f44336"
+  },
+  "images": {
+    "background": "/assets/workshops/pre-alpha-kitchen-2/background.jpg",
+    "pot_empty": "/assets/workshops/pre-alpha-kitchen-2/pot-empty.png",
+    "pot_full": "/assets/workshops/pre-alpha-kitchen-2/pot-full.png",
+    "flame": "/assets/workshops/pre-alpha-kitchen-2/flame.png"
+  },
+  "layout": {
+    "scene": { "width": 1280, "height": 800 },
+    "pot": {
+      "start": { "xPercent": 75, "yPercent": 45 },
+      "sizePercent": 36,
+      "dragBounds": { "minX": 8, "maxX": 92, "minY": 8, "maxY": 92 }
+    },
+    "flame": {
+      "xPercent": 62.6,
+      "yPercent": 53.4,
+      "activationRadius": 6.25,
+      "sizePercentByHeat": [35, 37, 40, 45],
+      "minSizePxByHeat": [180, 200, 220, 240]
+    },
+    "burnerKnob": {
+      "xPercent": 66.5,
+      "yPercent": 67.8,
+      "sizePercent": 5
+    },
+    "waterStream": {
+      "xRange": [26, 30],
+      "yRange": [44, 72],
+      "start": { "xPercent": 28.8, "yPercent": 44.0 },
+      "end": { "xPercent": 27.8, "yPercent": 70.7 },
+      "widthPercent": 2
+    }
+  },
+  "typography": {
+    "font_family_primary": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    "font_family_mono": "'Courier New', Courier, monospace",
+    "heading_size": "2.5rem",
+    "heading_weight": "700",
+    "body_size": "1rem",
+    "body_weight": "400",
+    "button_size": "0.875rem",
+    "button_weight": "500",
+    "label_size": "0.75rem",
+    "label_weight": "600"
+  },
+  "metadata": {
+    "author": "BoilingWater Team",
+    "version": "1.0.0",
+    "createdDate": "2026-01-24",
+    "updatedDate": "2026-01-24",
+    "tags": ["alpha", "alternate", "cool", "blue"],
+    "targetAudience": "educational",
+    "suitableFor": ["elementary", "middle-school", "high-school"]
+  }
+}

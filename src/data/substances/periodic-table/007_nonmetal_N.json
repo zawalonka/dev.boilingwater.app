@@ -1,0 +1,34 @@
+{
+  "atomicNumber": 7,
+  "symbol": "N",
+  "name": "Nitrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "valenceElectrons": 5,
+  "oxidationStates": [-3, -2, -1, 1, 2, 3, 4, 5],
+  "standardUsed": "iupac",
+  
+  "nist": {
+    "atomicMass": 14.0067,
+    "electronegativity": 3.04,
+    "ionizationEnergy": 1402.3,
+    "atomicRadius": 65,
+    "electronAffinity": 7.0,
+    "standardMolarEntropy": 191.61,
+    "specificHeatCapacity": 20.8,
+    "source": "NIST Chemistry WebBook 2024"
+  },
+  
+  "iupac": {
+    "atomicMass": 14.007,
+    "electronegativity": 3.04,
+    "ionizationEnergy": 1402.3,
+    "atomicRadius": 65,
+    "electronAffinity": 7.0,
+    "standardMolarEntropy": 191.61,
+    "specificHeatCapacity": 20.8,
+    "source": "IUPAC Periodic Table 2024"
+  },
+  
+  "lastUpdated": "2026-01-27"
+}
