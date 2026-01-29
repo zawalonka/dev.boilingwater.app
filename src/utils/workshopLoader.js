@@ -67,7 +67,7 @@ export function validateWorkshopData(workshopData) {
   if (workshopData.images && typeof workshopData.images === 'object') {
     for (const image of WORKSHOP_CONFIG.requiredImages) {
       if (!(image in workshopData.images)) {
-        console.warn(`Workshop warning: Missing image '${image}'. This may cause rendering issues.`)
+        throw new Error(`Missing required image '${image}' in workshop '${workshopData.id}'`)
       }
     }
     Object.entries(workshopData.images).forEach(([key, value]) => {

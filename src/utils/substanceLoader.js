@@ -1,3 +1,5 @@
+import { ATMOSPHERE } from '../constants/physics'
+
 /**
  * SUBSTANCE LOADER UTILITY
  * 
@@ -177,6 +179,24 @@ export function parseSubstanceProperties(substanceData) {
   // Handle nested structure: { value: 1.0, unit: 'kg/L' } OR flat { density: 1.0 }
   const extractValue = (obj) => obj?.value !== undefined ? obj.value : obj
   
+  const boilingPointSeaLevel = Number.isFinite(compound.phaseTransitions?.boilingPoint)
+    ? compound.phaseTransitions.boilingPoint
+    : null
+
+  const heatOfVaporization = extractValue(phaseState.latentHeatOfVaporization)
+
+  const components = Array.isArray(compound.components) ? compound.components : []
+  const nonVolatileMassFraction = components.reduce((sum, component) => {
+    if (!component || typeof component.massFraction !== 'number') return sum
+    const role = component.role || 'component'
+    const isVolatile = component.isVolatile === true || role === 'solvent' || role === 'volatile'
+    return sum + (isVolatile ? 0 : component.massFraction)
+  }, 0)
+  const clampedNonVolatile = Math.min(Math.max(nonVolatileMassFraction, 0), 1)
+  const volatileMassFraction = Math.max(0, 1 - clampedNonVolatile)
+
+  const canBoil = Number.isFinite(boilingPointSeaLevel) && Number.isFinite(heatOfVaporization)
+
   return {
     // Identification (from compound metadata)
     id: compound.id,
@@ -185,7 +205,7 @@ export function parseSubstanceProperties(substanceData) {
     currentPhase: currentPhase,
     
     // Phase transition temperatures (from compound info.json)
-    boilingPointSeaLevel: compound.phaseTransitions?.boilingPoint || 100,
+    boilingPointSeaLevel: boilingPointSeaLevel,
     meltingPoint: compound.phaseTransitions?.meltingPoint || 0,
     triplePoint: compound.phaseTransitions?.triplePoint,
     criticalPoint: compound.phaseTransitions?.criticalPoint,
@@ -193,24 +213,32 @@ export function parseSubstanceProperties(substanceData) {
     // Altitude lapse rate (linear approximation for boiling point)
     // Formula: ΔTb = altitude × lapse_rate (°C per meter)
     // For water: ~0.00333°C/meter (roughly 1°C per 300m)
-    altitudeLapseRate: 0.00333,  // Will be substance-specific in future
+    altitudeLapseRate: Number.isFinite(compound.phaseTransitions?.altitudeLapseRate)
+      ? compound.phaseTransitions.altitudeLapseRate
+      : ATMOSPHERE.TEMP_LAPSE_RATE,  // Default atmospheric lapse rate
     
     // Thermodynamic properties (extracted from phase state.json)
     specificHeat: extractValue(phaseState.specificHeat),  // J/(g·°C)
-    heatOfVaporization: extractValue(phaseState.latentHeatOfVaporization),  // kJ/kg
+    heatOfVaporization: heatOfVaporization,  // kJ/kg
     heatOfFusion: extractValue(phaseState.latentHeatOfFusion),  // kJ/kg
     density: extractValue(phaseState.density),  // kg/L
     thermalConductivity: extractValue(phaseState.thermalConductivity),  // W/(m·K)
     
     // Cooling model: Default coefficient (0.0015 for water)
     // In future, can be loaded from phase state per substance
-    coolingCoefficient: 0.0015,  // 1/s (default for water-like fluids)
+    coolingCoefficient: extractValue(phaseState.coolingCoefficient) ?? 0.0015,  // 1/s (default for water-like fluids)
     
     // Optional advanced properties for chemistry students
     molarMass: compound.molarMass,
     electricalConductivity: extractValue(phaseState.electricalConductivity),  // S/m
     vanThoffFactor: extractValue(phaseState.vanThoffFactor),  // i (dimensionless)
     saturationPoint: extractValue(phaseState.saturationPoint),  // g/L
+
+    // Mixture/phase behavior
+    components: components,
+    canBoil: canBoil,
+    nonVolatileMassFraction: clampedNonVolatile,
+    volatileMassFraction: volatileMassFraction,
     
     // Antoine coefficients (if available for vapor pressure calculations)
     antoineCoefficients: phaseState.antoineCoefficients,

@@ -56,10 +56,11 @@ const DEFAULT_LAYOUT = {
 
 function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange }) {
   const layout = workshopLayout || DEFAULT_LAYOUT
-  const backgroundImage = workshopImages?.background || '/assets/images/game/background.png'
-  const potEmptyImage = workshopImages?.pot_empty || '/assets/images/game/pot-empty.png'
-  const potFullImage = workshopImages?.pot_full || '/assets/images/game/pot-full.png'
-  const flameImage = workshopImages?.flame || '/assets/images/game/flame.png'
+  const backgroundImage = workshopImages?.background || null
+  const potEmptyImage = workshopImages?.pot_empty || null
+  const potFullImage = workshopImages?.pot_full || null
+  const flameImage = workshopImages?.flame || null
+  const hasRequiredImages = Boolean(backgroundImage && potEmptyImage && potFullImage && flameImage)
   // Workshop-driven optional visual effects (steam, flame glow)
   // Default: effects DISABLED unless workshop provides effects.json
   // This ensures simple workshops have no VFX overhead; only showcase workshops (like alpha) enable them
@@ -98,12 +99,18 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // How much water is currently in the pot, in kilograms (0 = empty, typically 1.0kg = full)
   const [waterInPot, setWaterInPot] = useState(0)
 
+  // Non-volatile residue mass (kg) remaining after evaporation (e.g., salt in saltwater)
+  const [residueMass, setResidueMass] = useState(0)
+
   // Current temperature of the water in Celsius (starts at room temperature)
   const [temperature, setTemperature] = useState(GAME_CONFIG.ROOM_TEMPERATURE)
 
   // Fluid properties (loaded from JSON, defaults to water)
   // Contains specific heat, heat of vaporization, cooling coefficient, etc.
   const [fluidProps, setFluidProps] = useState(null)
+
+  // Track fluid loading errors instead of falling back to hardcoded defaults
+  const [fluidLoadError, setFluidLoadError] = useState(null)
 
   // Burner heat setting: 0=off, 1=low, 2=med, 3=high
   // Controls the output power of the gas burner
@@ -245,11 +252,15 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   const altitude = location?.altitude || 0
 
   // Pre-calculate what temperature fluid will boil at for this altitude
-  // At sea level (0m): 100°C for water
-  // At Denver (1609m): ~95°C for water
-  // At Mount Everest base camp (5364m): ~68°C for water
   // Note: This is recalculated only when altitude or fluidProps changes
-  const boilingPoint = fluidProps ? calculateBoilingPoint(altitude, fluidProps) : 100
+  const boilingPoint = fluidProps ? calculateBoilingPoint(altitude, fluidProps) : null
+  const canBoil = Boolean(fluidProps?.canBoil) && Number.isFinite(boilingPoint)
+  const boilingPointSeaLevel = Number.isFinite(fluidProps?.boilingPointSeaLevel)
+    ? fluidProps.boilingPointSeaLevel
+    : null
+
+  const fluidName = fluidProps?.name || 'Fluid'
+  const liquidMass = Math.max(0, waterInPot - residueMass)
 
   // ============================================================================
   // ============================================================================
@@ -264,21 +275,14 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         const substanceData = await loadSubstance(DEFAULT_SUBSTANCE)  // 'water'
         const props = parseSubstanceProperties(substanceData)
         setFluidProps(props)
+        setFluidLoadError(null)
+        setResidueMass(0)
         // Debug log: useful for verifying fluid properties loaded correctly
         console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
       } catch (error) {
         console.error('Failed to load fluid properties:', error)
-        // Set a fallback with basic water properties
-        setFluidProps({
-          id: 'water',
-          name: 'Water',
-          formula: 'H₂O',
-          specificHeat: 4.186,
-          heatOfVaporization: 2257,
-          boilingPointSeaLevel: 100,
-          altitudeLapseRate: 0.00333,
-          coolingCoefficient: 0.0015
-        })
+        setFluidProps(null)
+        setFluidLoadError(error)
       }
     }
     initializeFluid()
@@ -321,7 +325,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     // It runs continuously while there's water in the pot
     // Heat is only applied when the pot is over the flame
     // Now uses Newton's Law of Cooling for realistic temperature decay
-    if (waterInPot <= 0 || !fluidProps) return  // Wait for fluid props to load
+    if (liquidMass <= 0 || !fluidProps) return  // Wait for fluid props to load
 
     // Define the heat activation area around the flame (workshop-driven)
     const flameX = layout.flame.xPercent
@@ -377,7 +381,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         {
           waterMass: waterInPot,         // How much fluid (kg)
           temperature: temperature,      // Current temperature (°C)
-          altitude: altitude             // Current altitude (meters)
+          altitude: altitude,            // Current altitude (meters)
+          residueMass: residueMass       // Non-volatile residue (kg)
         },
         heatInputWatts,                   // How much heat to apply (Watts)
         deltaTime,                        // How much time this step represents (seconds)
@@ -410,7 +415,11 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       }
       
       // Stop boiling if temperature drops below boiling point (pot removed from heat)
-      if (newState.temperature < boilingPoint && isBoiling) {
+      if (canBoil && newState.temperature < boilingPoint && isBoiling) {
+        setIsBoiling(false)
+      }
+
+      if (!canBoil && isBoiling) {
         setIsBoiling(false)
       }
     }, GAME_CONFIG.TIME_STEP)  // Repeat every TIME_STEP milliseconds
@@ -422,7 +431,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, temperature, altitude, boilingPoint, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning])  // Re-run if any of these change
+  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning])  // Re-run if any of these change
 
   // ============================================================================
   // POT DRAGGING HANDLERS: Three functions handle the drag lifecycle
@@ -510,9 +519,12 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       newXPercent <= layout.waterStream.xRange[1] &&
       newYPercent >= layout.waterStream.yRange[0] &&
       newYPercent <= layout.waterStream.yRange[1]
-    if (inWaterStream && waterInPot < 0.1) {  // Refill if nearly empty (< 0.1kg)
+    if (inWaterStream && liquidMass < 0.1) {  // Refill if nearly empty (< 0.1kg)
       // Auto-fill with the default water amount (1.0 kg)
-      setWaterInPot(GAME_CONFIG.DEFAULT_WATER_MASS)
+      const fillMass = GAME_CONFIG.DEFAULT_WATER_MASS
+      const nonVolatileFraction = fluidProps?.nonVolatileMassFraction ?? 0
+      setWaterInPot(fillMass)
+      setResidueMass(fillMass * nonVolatileFraction)
       // Reset temperature to room temp when filling with fresh water
       setTemperature(GAME_CONFIG.ROOM_TEMPERATURE)
       // Reset boiling state
@@ -800,14 +812,14 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // Q = m * c * ΔT  (energy needed)
   // Time = Q / Power (in seconds)
   const calculateExpectedBoilTime = () => {
-    if (!fluidProps || waterInPot === 0 || temperature >= boilingPoint) return null
-    const heatPowers = [0, 400, 1700, 2500]  // Watts per burner setting
-    const powerWatts = heatPowers[burnerHeat] || 0
+    if (!fluidProps || !canBoil || liquidMass === 0 || temperature >= boilingPoint) return null
+    const powerWatts = wattageSteps[burnerHeat] || 0
     if (powerWatts === 0) return null
     
-    const specificHeat = fluidProps.specificHeat * 1000  // Convert kJ to J
+    if (!Number.isFinite(fluidProps.specificHeat)) return null
+    const specificHeat = fluidProps.specificHeat * 1000  // Convert J/g to J/kg
     const tempDelta = boilingPoint - temperature
-    const energyNeeded = waterInPot * specificHeat * tempDelta  // Joules
+    const energyNeeded = liquidMass * specificHeat * tempDelta  // Joules
     const timeSeconds = energyNeeded / powerWatts  // Seconds
     return timeSeconds
   }
@@ -826,15 +838,16 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // (Energy needed: Q = mcΔT = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 Joules)
   // (Time = Energy / Power in Watts, but accounting for altitude pressure effects)
   const calculateIdealBoilTime = (heatLevel, boilPointTarget) => {
-    const heatLevels = [0, 400, 1700, 2500]  // watts
-    const watts = heatLevels[heatLevel] || heatLevels[2]  // default to medium if invalid
+    const watts = wattageSteps[heatLevel] || wattageSteps[2]  // default to medium if invalid
     
     if (watts === 0) return null  // Can't boil without heat
+    if (!fluidProps || !canBoil || !Number.isFinite(boilPointTarget)) return null
     
-    // Energy to heat water from room temp (20°C) to boiling point
+    // Energy to heat fluid from room temp (20°C) to boiling point
     const roomTemp = GAME_CONFIG.ROOM_TEMPERATURE
     const waterMass = GAME_CONFIG.DEFAULT_WATER_MASS * 1000  // grams
-    const specificHeat = fluidProps?.specificHeat || 4.186  // J/(g·°C)
+    if (!Number.isFinite(fluidProps.specificHeat)) return null
+    const specificHeat = fluidProps.specificHeat  // J/(g·°C)
     const tempDifference = boilPointTarget - roomTemp
     
     const energyNeeded = waterMass * specificHeat * tempDifference  // Joules
@@ -860,17 +873,39 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       <div className="info-screen">
         <div className="info-content">
           <h2>🎓 How Boiling Works</h2>
-          <p>You just boiled water! Here's what happened:</p>
+          <p>You just boiled {fluidName.toLowerCase()}! Here's what happened:</p>
           <ul>
-            <li><strong>Heat Transfer:</strong> The burner transferred thermal energy to the water molecules</li>
+            <li><strong>Heat Transfer:</strong> The burner transferred thermal energy to the fluid molecules</li>
             <li><strong>Temperature Rise:</strong> As molecules gained energy, they moved faster, increasing temperature</li>
-            <li><strong>Phase Change:</strong> At 100°C (sea level), molecules gained enough energy to escape as vapor</li>
+            <li><strong>Phase Change:</strong> At {boilingPointSeaLevel !== null ? `${formatTemperature(boilingPointSeaLevel)}°C` : 'its boiling point'} (sea level), molecules gained enough energy to escape as vapor</li>
             <li><strong>Boiling Point:</strong> This temperature depends on atmospheric pressure—it changes with altitude!</li>
           </ul>
           <p className="fun-fact">🏔️ <strong>Fun Fact:</strong> At the top of Mount Everest, water boils at only 68°C (154°F) because of the lower air pressure!</p>
           <button className="action-button next-stage-button" onClick={handleNextStage}>
             Continue Exploring →
           </button>
+        </div>
+      </div>
+    )
+  }
+
+  if (!hasRequiredImages) {
+    return (
+      <div className="info-screen">
+        <div className="info-content">
+          <h2>⚠️ Workshop Assets Missing</h2>
+          <p>This workshop must provide all required images (background, pot, flame). Add them in the workshop JSON before running the scene.</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (fluidLoadError) {
+    return (
+      <div className="info-screen">
+        <div className="info-content">
+          <h2>⚠️ Substance Data Load Failed</h2>
+          <p>{fluidLoadError.message || 'Unable to load substance properties from data files.'}</p>
         </div>
       </div>
     )
@@ -1026,7 +1061,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         */}
         <div
           ref={potRef}
-          className={`pot-draggable ${isDragging ? 'dragging' : ''} ${waterInPot > 0 ? 'filled' : 'empty'}`}
+          className={`pot-draggable ${isDragging ? 'dragging' : ''} ${liquidMass > 0 ? 'filled' : 'empty'}`}
           style={{
             left: `${potPosition.x}%`,      // Current X position (updated while dragging)
             top: `${potPosition.y}%`,       // Current Y position (updated while dragging)
@@ -1041,12 +1076,12 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         >
           {/* 
             Show the appropriate pot image based on whether it has water
-            - pot-empty.png: when waterInPot === 0
-            - pot-full.png: when waterInPot > 0
+            - pot-empty.png: when liquidMass === 0
+            - pot-full.png: when liquidMass > 0
           */}
           <img
-            src={waterInPot > 0 ? potFullImage : potEmptyImage}
-            alt={waterInPot > 0 ? 'Full Pot' : 'Empty Pot'}
+            src={liquidMass > 0 ? potFullImage : potEmptyImage}
+            alt={liquidMass > 0 ? 'Full Pot' : 'Empty Pot'}
             className="pot-image"
             draggable={false}  // Disable browser's native drag for images
           />
@@ -1083,29 +1118,41 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
             </div>
             
             {/* Temperature display */}
-            {waterInPot > 0 && (
+            {liquidMass > 0 && (
               <div className="status-item">
                 <span className="label">Temp:</span>
                 <span className="value">{formatTemperature(temperature)}°C</span>
               </div>
             )}
             
-            {/* Water status */}
+            {/* Substance status */}
             <div className="status-item">
-              <span className="label">Water:</span>
-              <span className="value">{waterInPot > 0 ? waterInPot.toFixed(2) + 'kg' : 'Empty'}</span>
+              <span className="label">Substance:</span>
+              <span className="value">{fluidName}</span>
             </div>
+
+            <div className="status-item">
+              <span className="label">Liquid:</span>
+              <span className="value">{liquidMass > 0 ? liquidMass.toFixed(2) + 'kg' : 'Empty'}</span>
+            </div>
+
+            {residueMass > 0 && (
+              <div className="status-item">
+                <span className="label">Residue:</span>
+                <span className="value">{Math.round(residueMass * 1000)}g</span>
+              </div>
+            )}
             
             {/* Boiling point info */}
-            {waterInPot > 0 && (
+            {liquidMass > 0 && (
               <div className="status-item">
                 <span className="label">Boils at:</span>
-                <span className="value">{formatTemperature(boilingPoint)}°C</span>
+                <span className="value">{canBoil ? `${formatTemperature(boilingPoint)}°C` : 'N/A'}</span>
               </div>
             )}
             
             {/* Timer controls - prominent display with start/stop/reset (Advanced Mode Only) */}
-            {waterInPot > 0 && isAdvancedModeAvailable && (
+            {liquidMass > 0 && isAdvancedModeAvailable && (
               <div className="timer-controls">
                 <div className="timer-display">
                   <span className="timer-label">Timer:</span>
@@ -1131,7 +1178,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
             )}
             
             {/* Expected time to boil (environmental estimate) */}
-            {waterInPot > 0 && expectedBoilTime !== null && !isBoiling && (
+            {liquidMass > 0 && expectedBoilTime !== null && !isBoiling && (
               <div className="status-item" title="Estimated time to reach boiling point at current burner setting">
                 <span className="label">Est. Time:</span>
                 <span className="value">{formatTime(expectedBoilTime)}</span>
@@ -1140,7 +1187,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
             
             
             {/* Game controls - speed controls (Tutorial/Exp 1 only) */}
-            {waterInPot > 0 && activeExperiment === 'boiling-water' && (
+            {liquidMass > 0 && activeExperiment === 'boiling-water' && (
               <button 
                 className="action-button speed-button status-button"
                 onClick={handleSpeedUp}
@@ -1150,7 +1197,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
             )}
             
             {/* Advanced speed controls with arrows (Advanced Mode Only) */}
-            {waterInPot > 0 && isAdvancedModeAvailable && (
+            {liquidMass > 0 && isAdvancedModeAvailable && (
               <div className="speed-controls-advanced">
                 <button 
                   className="speed-arrow"
@@ -1171,43 +1218,55 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
             )}
             
             {/* Heating status with progress */}
-            {waterInPot > 0 && burnerHeat > 0 && isPotOverFlame && temperature < boilingPoint && (
-              <p className="status-text" title="Wait for water to boil, or speed up time with the speed controls above">
+            {liquidMass > 0 && burnerHeat > 0 && isPotOverFlame && canBoil && temperature < boilingPoint && (
+              <p className="status-text" title="Wait for the fluid to boil, or speed up time with the speed controls above">
                 🔥 Heating: {formatTemperature(temperature)}°C → {formatTemperature(boilingPoint)}°C
+              </p>
+            )}
+
+            {liquidMass > 0 && burnerHeat > 0 && isPotOverFlame && !canBoil && (
+              <p className="status-text" title="This substance has no boiling data, so it won't boil">
+                🔥 Heating: {formatTemperature(temperature)}°C (no boiling point data)
               </p>
             )}
             
             {/* Cooling - pot is off the flame */}
-            {waterInPot > 0 && burnerHeat > 0 && !isPotOverFlame && temperature > GAME_CONFIG.ROOM_TEMPERATURE && (
-              <p className="status-text" title="Position pot over flame to heat water">
+            {liquidMass > 0 && burnerHeat > 0 && !isPotOverFlame && temperature > GAME_CONFIG.ROOM_TEMPERATURE && (
+              <p className="status-text" title="Position pot over flame to heat the fluid">
                 ❄️ Cooling: {formatTemperature(temperature)}°C → {GAME_CONFIG.ROOM_TEMPERATURE}°C (place pot over flame)
               </p>
             )}
             
             {/* Waiting to heat */}
-            {waterInPot > 0 && burnerHeat === 0 && temperature < boilingPoint && (
+            {liquidMass > 0 && burnerHeat === 0 && (!canBoil || temperature < boilingPoint) && (
               <p className="status-text">
-                💤 Turn on burner to heat water
+                💤 Turn on burner to heat the fluid
               </p>
             )}
             
             {/* Boiling status with water level */}
-            {waterInPot > 0 && isBoiling && temperature >= boilingPoint && (
+            {liquidMass > 0 && isBoiling && canBoil && temperature >= boilingPoint && (
               <p className="status-text boiling">
-                💨 Boiling at {formatTemperature(temperature)}°C! ({Math.round(waterInPot * 1000)}g remaining)
+                💨 Boiling at {formatTemperature(temperature)}°C! ({Math.round(liquidMass * 1000)}g remaining)
               </p>
             )}
             
             {/* Water boiled off - can refill */}
-            {waterInPot <= 0.1 && waterInPot > 0 && (
+            {liquidMass <= 0.1 && liquidMass > 0 && (
               <p className="status-text warning">
                 ⚠️ Almost dry! Drag pot to tap to refill
               </p>
             )}
             
             {/* Empty pot hint */}
-            {waterInPot === 0 && (
+            {liquidMass === 0 && residueMass === 0 && (
               <p className="hint-text">💧 Drag pot to water tap to fill</p>
+            )}
+
+            {liquidMass === 0 && residueMass > 0 && (
+              <p className="status-text warning">
+                🧪 Residue remaining: {Math.round(residueMass * 1000)}g
+              </p>
             )}
             
             {/* Location/Altitude display in status panel (enabled when selectors unlocked or experiment needs it) */}
@@ -1341,7 +1400,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           <div className="boil-stats-overlay">
             <div className="boil-stats-modal">
               <h2>🎉 Congratulations!</h2>
-              <p className="modal-subtitle">You've successfully boiled water!</p>
+              <p className="modal-subtitle">You've successfully boiled {fluidName.toLowerCase()}!</p>
               
               <div className="stats-grid">
                 <div className="stat-item">
@@ -1385,7 +1444,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         {/* Educational message for altitude-based experiments */}
         {showHook && isLocationBasedExperiment && altitude !== 0 && (
           <div className="hook-message">
-            <p>💧 Your water boiled at {formatTemperature(boilingPoint)}°C (not 100°C!) ❗</p>
+            <p>
+              💧 Your {fluidName.toLowerCase()} boiled at {formatTemperature(boilingPoint)}°C
+              {boilingPointSeaLevel !== null ? ` (not ${formatTemperature(boilingPointSeaLevel)}°C!)` : '!'}
+            </p>
             <button 
               className="action-button learn-more"
               onClick={handleLearnMore}
@@ -1401,7 +1463,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         */}
         {showHook && activeLevel !== 'level-1' && altitude === 0 && (
           <div className="hook-message">
-            <p>💧 Your water boiled at exactly {formatTemperature(boilingPoint)}°C!</p>
+            <p>💧 Your {fluidName.toLowerCase()} boiled at exactly {formatTemperature(boilingPoint)}°C!</p>
             <button 
               className="action-button learn-more"
               onClick={handleLearnMore}

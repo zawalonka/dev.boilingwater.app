@@ -20,11 +20,18 @@ import { ATMOSPHERE, UNIVERSAL, GAME_CONFIG } from '../constants/physics'
  * @returns {number} Boiling point in Celsius (100 at sea level for water, ~95 at Denver, ~68 at Everest)
  */
 export function calculateBoilingPoint(altitude, fluidProps) {
+  if (!fluidProps || !Number.isFinite(fluidProps.boilingPointSeaLevel)) {
+    return null
+  }
+
   // Safety check: treat null/undefined/negative as sea level
   if (!altitude || altitude < 0) altitude = 0
   
   // Linear approximation using fluid-specific lapse rate
-  const temperatureDrop = altitude * fluidProps.altitudeLapseRate
+  const lapseRate = Number.isFinite(fluidProps.altitudeLapseRate)
+    ? fluidProps.altitudeLapseRate
+    : ATMOSPHERE.TEMP_LAPSE_RATE
+  const temperatureDrop = altitude * lapseRate
   
   // Start from fluid's standard boiling point and subtract elevation effect
   const boilingPoint = fluidProps.boilingPointSeaLevel - temperatureDrop
@@ -149,15 +156,25 @@ export function calculateHeatingEnergy(mass, tempStart, tempEnd, fluidProps) {
  *   - steamGenerated: mass of fluid converted to vapor (kg)
  */
 export function applyHeatEnergy(mass, currentTemp, energyJoules, boilingPoint, fluidProps) {
+  if (!Number.isFinite(fluidProps?.specificHeat) || mass <= 0) {
+    return {
+      newTemp: currentTemp,
+      energyToVaporization: 0,
+      steamGenerated: 0
+    }
+  }
+
   const massGrams = mass * 1000
   
   // CASE 1: Apply energy as sensible heat (temperature increase)
   // ΔT = Q / (mc)
   const tempIncrease = energyJoules / (massGrams * fluidProps.specificHeat)
   const potentialNewTemp = currentTemp + tempIncrease
+
+  const canBoil = Number.isFinite(boilingPoint) && Number.isFinite(fluidProps?.heatOfVaporization) && fluidProps.heatOfVaporization > 0
   
   // If heating doesn't reach boiling point, we're done—just update temperature
-  if (potentialNewTemp < boilingPoint) {
+  if (!canBoil || potentialNewTemp < boilingPoint) {
     return {
       newTemp: potentialNewTemp,
       energyToVaporization: 0,
@@ -282,14 +299,21 @@ export function formatTemperature(temp, precision = 1) {
  */
 export function simulateTimeStep(state, heatInputWatts, deltaTime, fluidProps) {
   const { waterMass, temperature, altitude } = state
+  const residueMass = Number.isFinite(state.residueMass) ? state.residueMass : 0
+  const evaporableMass = Math.max(0, waterMass - residueMass)
   
   // Safety check: if fluid is completely gone, mark it and return early
-  if (waterMass <= 0) {
-    return { ...state, allEvaporated: true }
+  if (waterMass <= 0 || evaporableMass <= 0) {
+    return { ...state, allEvaporated: evaporableMass <= 0 }
+  }
+
+  if (!fluidProps) {
+    return { ...state }
   }
   
   // Calculate what the boiling point is at this altitude
   const boilingPoint = calculateBoilingPoint(altitude, fluidProps)
+  const canBoil = Boolean(fluidProps.canBoil) && Number.isFinite(boilingPoint)
   
   // HEATING PHASE: Apply heat energy from burner
   let currentTemp = temperature
@@ -320,12 +344,17 @@ export function simulateTimeStep(state, heatInputWatts, deltaTime, fluidProps) {
   }
   
   // Return updated game state with all new values
+  const steamGenerated = canBoil
+    ? Math.min(result.steamGenerated, evaporableMass)
+    : 0
+  const nextWaterMass = Math.max(waterMass - steamGenerated, residueMass)
+
   return {
     ...state,
     temperature: currentTemp,
-    waterMass: waterMass - result.steamGenerated,
+    waterMass: nextWaterMass,
     energyToVaporization: result.energyToVaporization,
-    steamGenerated: result.steamGenerated,
-    isBoiling: currentTemp >= boilingPoint && result.steamGenerated > 0
+    steamGenerated: steamGenerated,
+    isBoiling: canBoil && currentTemp >= boilingPoint && steamGenerated > 0
   }
 }
