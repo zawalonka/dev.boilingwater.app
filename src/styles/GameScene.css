@@ -1235,3 +1235,52 @@
   color: var(--workshop-option-text, #ffffff);
 }
 
+/* ========================================================================
+   ALTITUDE CONTROL (For Exp 3+ experiments)
+   ======================================================================== */
+.altitude-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 8px;
+}
+
+.altitude-control label {
+  font-weight: bold;
+  color: var(--workshop-status-label, #b0d4ff);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.altitude-input {
+  padding: 6px 10px;
+  background: var(--workshop-dropdown-background, #1a3a4a);
+  color: var(--workshop-dropdown-text, #ffffff);
+  border: 1px solid var(--workshop-dropdown-border, rgba(100, 180, 255, 0.4));
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.altitude-input:hover {
+  border-color: var(--workshop-dropdown-hover, rgba(100, 180, 255, 0.8));
+  background: var(--workshop-dropdown-hover-bg, #244555);
+}
+
+.altitude-input:focus {
+  outline: none;
+  border-color: var(--workshop-dropdown-focus, #64b4ff);
+  box-shadow: 0 0 6px rgba(100, 180, 255, 0.4);
+}
+
+.altitude-control .location-button {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}

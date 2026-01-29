@@ -2,6 +2,7 @@
   "compoundId": "sucrose",
   "phase": "liquid",
   "phaseName": "molten sucrose (caramel)",
+  "canBoil": false,
   "density": {
     "value": 1.56,
     "unit": "kg/L",

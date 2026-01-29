@@ -120,7 +120,74 @@ async function loadPhaseState(compoundId, phase) {
       case 'h2o-gas':
         data = await import('../data/substances/compounds/pure/water-h2o/gas/state.json')
         break
-      // Add more substances/phases as needed
+      // saltwater phases (liquid only - does not have gas phase)
+      case 'saltwater-3pct-liquid':
+        data = await import('../data/substances/compounds/solutions/saltwater-3pct-nacl/liquid/state.json')
+        break
+      // ethanol phases
+      case 'ethanol-liquid':
+        data = await import('../data/substances/compounds/pure/ethanol-c2h5oh/liquid/state.json')
+        break
+      case 'ethanol-gas':
+        data = await import('../data/substances/compounds/pure/ethanol-c2h5oh/gas/state.json')
+        break
+      // ammonia phases
+      case 'ammonia-liquid':
+        data = await import('../data/substances/compounds/pure/ammonia-nh3/liquid/state.json')
+        break
+      case 'ammonia-gas':
+        data = await import('../data/substances/compounds/pure/ammonia-nh3/gas/state.json')
+        break
+      // acetone phases
+      case 'acetone-liquid':
+        data = await import('../data/substances/compounds/pure/acetone-c3h6o/liquid/state.json')
+        break
+      case 'acetone-gas':
+        data = await import('../data/substances/compounds/pure/acetone-c3h6o/gas/state.json')
+        break
+      // acetic-acid phases
+      case 'acetic-acid-liquid':
+        data = await import('../data/substances/compounds/pure/acetic-acid-ch3cooh/liquid/state.json')
+        break
+      case 'acetic-acid-gas':
+        data = await import('../data/substances/compounds/pure/acetic-acid-ch3cooh/gas/state.json')
+        break
+      // hydrogen-peroxide phases
+      case 'hydrogen-peroxide-liquid':
+        data = await import('../data/substances/compounds/pure/hydrogen-peroxide-h2o2/liquid/state.json')
+        break
+      case 'hydrogen-peroxide-gas':
+        data = await import('../data/substances/compounds/pure/hydrogen-peroxide-h2o2/gas/state.json')
+        break
+      // methane phases
+      case 'methane-liquid':
+        data = await import('../data/substances/compounds/pure/methane-ch4/liquid/state.json')
+        break
+      case 'methane-gas':
+        data = await import('../data/substances/compounds/pure/methane-ch4/gas/state.json')
+        break
+      // propane phases
+      case 'propane-liquid':
+        data = await import('../data/substances/compounds/pure/propane-c3h8/liquid/state.json')
+        break
+      case 'propane-gas':
+        data = await import('../data/substances/compounds/pure/propane-c3h8/gas/state.json')
+        break
+      // isopropyl-alcohol phases
+      case 'isopropyl-alcohol-liquid':
+        data = await import('../data/substances/compounds/pure/isopropyl-alcohol-c3h8o/liquid/state.json')
+        break
+      case 'isopropyl-alcohol-gas':
+        data = await import('../data/substances/compounds/pure/isopropyl-alcohol-c3h8o/gas/state.json')
+        break
+      // glycerin phases (liquid only - does not have gas phase)
+      case 'glycerin-liquid':
+        data = await import('../data/substances/compounds/pure/glycerin-c3h8o3/liquid/state.json')
+        break
+      // sucrose phases (liquid only - does not have gas phase)
+      case 'sucrose-liquid':
+        data = await import('../data/substances/compounds/pure/sucrose-c12h22o11/liquid/state.json')
+        break
       default:
         throw new Error(`Phase "${phase}" for compound "${compoundId}" not mapped in loader`)
     }

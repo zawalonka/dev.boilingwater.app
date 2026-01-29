@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GameScene Component
  * 
  * This is the main interactive game environment for the Boiling Water educational app.
@@ -190,6 +190,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // Manual altitude input (in meters) as fallback
   const [manualAltitude, setManualAltitude] = useState('')
+  // Editable altitude input for different-fluids experiment
+  const [editableAltitude, setEditableAltitude] = useState(null)
   // Track if user has confirmed any location/altitude to avoid reopening popup
   const [hasSetLocation, setHasSetLocation] = useState(false)
 
@@ -213,6 +215,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   
   // Check if current experiment requires location setup
   const isLocationBasedExperiment = activeExperiment === 'altitude-effect'
+  const isLocationPopupAllowed = isLocationBasedExperiment || activeExperiment === 'different-fluids'
   // Altitude controls should be available once selectors are unlocked or when the experiment requires it
   const showAltitudeControls = showSelectors || isLocationBasedExperiment
   
@@ -255,7 +258,9 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // Get the user's altitude in meters (defaults to 0 if location data not available)
   // Higher altitude = lower atmospheric pressure = lower boiling point
-  const altitude = location?.altitude || 0
+  const altitude = (activeExperiment === 'different-fluids' && editableAltitude !== null)
+    ? editableAltitude
+    : (location?.altitude || 0)
 
   // Pre-calculate what temperature fluid will boil at for this altitude
   // Note: This is recalculated only when altitude or fluidProps changes
@@ -581,7 +586,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // ============================================================================
 
   /**
-   * Cycle through time speed options: 1x → 2x → 4x → 8x → 1x (Basic Mode)
+  * Cycle through time speed options: 1x → 2x → 4x → 8x → 1x (Basic Mode)
    */
   const handleSpeedUp = () => {
     setTimeSpeed(current => {
@@ -621,7 +626,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   }
 
   /**
-   * Cycle through burner heat settings: off → low → med → high → off
+  * Cycle through burner heat settings: off → low → med → high → off
    * 0=off, 1=low (400W), 2=med (1700W), 3=high (2500W)
    */
   const handleBurnerKnob = () => {
@@ -1189,14 +1194,14 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                     onClick={handleTimerToggle}
                     title={isTimerRunning ? "Pause timer" : "Start timer"}
                   >
-                    {isTimerRunning ? '⏸' : '▶'}
+                      {isTimerRunning ? '⏸' : '▶'}
                   </button>
                   <button 
                     className="timer-button"
                     onClick={handleTimerReset}
                     title="Reset timer to zero"
                   >
-                    ↻
+                      ↻
                   </button>
                 </div>
               </div>
@@ -1313,30 +1318,49 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                 🧪 Residue remaining: {Math.round(residueMass * 1000)}g
               </p>
             )}
-            
-            {/* Location/Altitude display in status panel (enabled when selectors unlocked or experiment needs it) */}
-            {showAltitudeControls && (altitude !== null && altitude !== undefined) && (
-              <div className="status-item location-status">
+
+            {/* Altitude control (from Exp 3 onward) - bottom of panel */}
+            {activeExperiment === 'different-fluids' && (
+              <div className="altitude-control">
+                <label htmlFor="altitude-input">Altitude (m):</label>
+                <input
+                  id="altitude-input"
+                  type="number"
+                  value={editableAltitude !== null ? editableAltitude : altitude}
+                  onChange={(e) => setEditableAltitude(e.target.value ? parseInt(e.target.value, 10) : null)}
+                  className="altitude-input"
+                  title="Set altitude in meters to see how it affects boiling point"
+                  placeholder="0"
+                  min="0"
+                  max="10000"
+                />
                 {locationName ? (
-                  <>
-                    <span className="label">📍 Location:</span>
-                    <span className="value">{locationName} <span className="altitude-value">({Math.round(altitude)}m)</span></span>
-                  </>
+                  <button 
+                    className="action-button location-button"
+                    onClick={() => {
+                      setEditableAltitude(null)
+                      setShowLocationPopup(true)
+                    }}
+                    title="Change location"
+                  >
+                    📍 {locationName}
+                  </button>
                 ) : (
-                  <>
-                    <span className="label">📍 Altitude:</span>
-                    <span className="value">{Math.round(altitude)}m</span>
-                  </>
+                  <button 
+                    className="action-button location-button"
+                    onClick={() => {
+                      setEditableAltitude(null)
+                      setShowLocationPopup(true)
+                    }}
+                    title="Set your location"
+                  >
+                    📍 Set Location
+                  </button>
                 )}
-                <button 
-                  className="location-change-btn"
-                  onClick={handleResetLocation}
-                  title="Change location"
-                >
-                  ✏️
-                </button>
               </div>
             )}
+            
+            {/* Location/Altitude display in status panel (enabled when selectors unlocked or experiment needs it) */}
           </div>
         </div>
 
@@ -1345,7 +1369,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           Modal that appears when user enters an altitude-based experiment
           User must select a location or altitude to proceed
         */}
-        {showLocationPopup && isLocationBasedExperiment && (
+        {showLocationPopup && isLocationPopupAllowed && (
           <div className="location-panel">
             <h3>📍 Set Your Location</h3>
             <p className="location-subtitle">
@@ -1523,3 +1547,5 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 }
 
 export default GameScene
+
+
