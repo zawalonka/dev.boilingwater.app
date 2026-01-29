@@ -53,11 +53,11 @@ An educational physics game teaching thermodynamics through interactive water bo
 - `src/constants/workshops.js` - Workshop configuration metadata
 - `public/assets/workshops/*/` - Workshop JSON files and per-workshop assets
 ├── App.jsx, main.jsx
-├── components/ (GameScene, Header, KitchenScene)
+├── components/ (GameScene, Header)
 ├── utils/ (physics.js, workshopLoader.js, substanceLoader.js)
 ├── constants/ (physics.js, workshops.js)
 ├── data/fluids/ (h2o.json, water.json, ice.json, steam.json)
-└── styles/ (index.css, App.css, GameScene.css, Header.css, KitchenScene.css)
+└── styles/ (index.css, App.css, GameScene.css, Header.css)
 
 public/assets/
 ├── images/
