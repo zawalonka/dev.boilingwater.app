@@ -8,6 +8,22 @@ Versioning standard is evolving organically as the project matures.
 
 ---
 
+## [0.1.2] - 2026-01-29
+
+### Changed
+- Updated copilot-instructions.md to reflect current project state (substances architecture, 118 periodic table elements, workshop system)
+- Fixed outdated comments in src/constants/physics.js (fluids → substances)
+- Code cleanup: verified all imports, exports, and cross-references are consistent
+- Validated periodic table element references in compound definitions
+
+### Code Quality
+- All 118 periodic table elements properly structured and referenced
+- All 12 compound definitions with correct phase states
+- Workshop system validation and inheritance working correctly
+- Physics engine imports and usage consistent across components
+
+---
+
 ## [0.1.1] - 2026-01-27
 
 ### Fixed
