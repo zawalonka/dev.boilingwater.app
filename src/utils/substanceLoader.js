@@ -1,54 +1,100 @@
-import { ATMOSPHERE } from '../constants/physics'
-
 /**
- * SUBSTANCE LOADER UTILITY
+ * SUBSTANCE LOADER
  * 
- * Loads substance property definitions from the new periodic-table-driven architecture:
- * - Elements: src/data/substances/periodic-table/{id}.json
- * - Compounds: src/data/substances/compounds/{id}/info.json + {phase}/state.json
- * - Mixtures: src/data/substances/compounds/{id}/info.json + {phase}/state.json
+ * Loads substance definitions from the filesystem:
+ * - Compound metadata from: src/data/substances/compounds/{id}/info.json
+ * - Phase properties from: src/data/substances/compounds/{id}/{phase}/state.json
  * 
- * The physics engine consumes the assembled fluidProps object with ALL values
- * loaded from JSON (no hardcoded substance values in physics.js).
+ * ARCHITECTURE:
+ * - substanceCatalog.js: Maps logical IDs to file paths
+ * - substanceLoader.js: Loads files and merges them (THIS FILE)
+ * - substanceParser.js: Extracts physics-ready values
+ * 
+ * FUTURE SUPPORT FOR:
+ * - Solids (ice, dry ice, salt crystals, etc.)
+ * - Gases (steam, nitrogen, methane, etc.)
+ * - Plasmas (ionized gases, lightning arcs)
+ * - All 118 periodic table elements
  * 
  * To add a new substance:
- * 1. Create compound info: src/data/substances/compounds/{id}/info.json
- * 2. Create phase states: src/data/substances/compounds/{id}/{phase}/state.json (solid/liquid/gas)
- * 3. Reference elements in compounds that exist in periodic-table/
- * 4. Use: const props = await loadSubstancePhase('h2o', 'liquid')
+ * 1. Add entry to SUBSTANCE_CATALOG in substanceCatalog.js
+ * 2. Create JSON files: compound/info.json and compound/{phase}/state.json
+ * 3. Add mappings in loadCompound() and loadPhaseState() below
  */
 
-// Catalog maps logical ids to categorized folder paths and labels
-export const SUBSTANCE_CATALOG = {
-  h2o: { path: 'pure/water-h2o', category: 'pure', displayName: 'Water', chemicalName: 'H2O' },
-  'saltwater-3pct': { path: 'solutions/saltwater-3pct-nacl', category: 'solution', displayName: 'Saltwater (3% NaCl)', chemicalName: 'NaCl in H2O' },
-  ethanol: { path: 'pure/ethanol-c2h5oh', category: 'pure', displayName: 'Ethanol', chemicalName: 'C2H5OH' },
-  ammonia: { path: 'pure/ammonia-nh3', category: 'pure', displayName: 'Ammonia', chemicalName: 'NH3' },
-  acetone: { path: 'pure/acetone-c3h6o', category: 'pure', displayName: 'Acetone', chemicalName: 'C3H6O' },
-  'acetic-acid': { path: 'pure/acetic-acid-ch3cooh', category: 'pure', displayName: 'Acetic Acid', chemicalName: 'CH3COOH' },
-  'hydrogen-peroxide': { path: 'pure/hydrogen-peroxide-h2o2', category: 'pure', displayName: 'Hydrogen Peroxide', chemicalName: 'H2O2' },
-  methane: { path: 'pure/methane-ch4', category: 'pure', displayName: 'Methane', chemicalName: 'CH4' },
-  propane: { path: 'pure/propane-c3h8', category: 'pure', displayName: 'Propane', chemicalName: 'C3H8' },
-  'isopropyl-alcohol': { path: 'pure/isopropyl-alcohol-c3h8o', category: 'pure', displayName: 'Isopropyl Alcohol', chemicalName: 'C3H8O' },
-  glycerin: { path: 'pure/glycerin-c3h8o3', category: 'pure', displayName: 'Glycerin', chemicalName: 'C3H8O3' },
-  sucrose: { path: 'pure/sucrose-c12h22o11', category: 'pure', displayName: 'Sucrose', chemicalName: 'C12H22O11' }
-}
+import { getAvailableSubstances } from './substanceCatalog'
+import { parseSubstanceProperties } from './substanceParser'
 
-function resolveCompoundPath(compoundId) {
-  const entry = SUBSTANCE_CATALOG[compoundId]
-  return entry?.path || compoundId
+/**
+ * Load a periodic table element's data
+ * Elements are stored in: src/data/substances/periodic-table/{id}.json
+ * 
+ * @param {string} symbol - Element symbol (e.g., 'H', 'O', 'N')
+ * @returns {Promise<Object>} Element data with thermodynamic properties
+ * @throws {Error} If element file not found
+ */
+async function loadElement(symbol) {
+  try {
+    let data
+    // Map element symbols to their files
+    // Format: XXX_Symbol_category.json (e.g., 001_H_nonmetal.json)
+    switch (symbol) {
+      case 'H':
+        data = await import('../data/substances/periodic-table/001_H_nonmetal.json')
+        break
+      case 'He':
+        data = await import('../data/substances/periodic-table/002_He_noble-gas.json')
+        break
+      case 'N':
+        data = await import('../data/substances/periodic-table/007_N_nonmetal.json')
+        break
+      case 'O':
+        data = await import('../data/substances/periodic-table/008_O_nonmetal.json')
+        break
+      case 'F':
+        data = await import('../data/substances/periodic-table/009_F_halogen.json')
+        break
+      case 'Ne':
+        data = await import('../data/substances/periodic-table/010_Ne_noble-gas.json')
+        break
+      case 'Cl':
+        data = await import('../data/substances/periodic-table/017_Cl_halogen.json')
+        break
+      case 'Ar':
+        data = await import('../data/substances/periodic-table/018_Ar_noble-gas.json')
+        break
+      default:
+        throw new Error(`Element "${symbol}" not mapped in loader yet. Add to loadElement() switch statement.`)
+    }
+    return data.default || data
+  } catch (error) {
+    console.error(`Failed to load element "${symbol}":`, error)
+    throw new Error(`Element "${symbol}" not found. Check periodic-table/ folder.`)
+  }
 }
 
 /**
  * Load a compound's complete metadata (info.json)
+ * Contains: molar mass, boiling/melting points, color, elements, etc.
  * 
- * @param {string} compoundId - The compound identifier (e.g., 'h2o', 'saltwater-3pct')
- * @returns {Promise<Object>} Compound metadata including elements and phase transitions
+ * CURRENT PHASE-INDEPENDENT PROPERTIES:
+ * - id, name, chemicalFormula, molarMass
+ * - electronegativity, state symbol
+ * - phaseTransitions: { boilingPoint, meltingPoint, triplePoint, criticalPoint, altitudeLapseRate }
+ * - components (for solutions)
+ * - elements (which periodic table elements compose it)
+ * - metadata (author, date, source)
+ * 
+ * @param {string} compoundId - The compound identifier (e.g., 'h2o', 'ethanol')
+ * @returns {Promise<Object>} Compound metadata
  * @throws {Error} If compound file not found or invalid JSON
  */
 async function loadCompound(compoundId) {
   try {
     let data
+    // Map compound IDs to their info.json file paths
+    // This switch statement grows as we add more substances
+    // Future optimization: dynamically construct path from SUBSTANCE_CATALOG
     switch (compoundId) {
       case 'h2o':
         data = await import('../data/substances/compounds/pure/water-h2o/info.json')
@@ -98,19 +144,30 @@ async function loadCompound(compoundId) {
 
 /**
  * Load a specific phase state for a substance (solid/liquid/gas)
- * Pulls all thermodynamic data from the phase file
+ * Contains: thermodynamic properties, Antoine coefficients, etc.
+ * 
+ * PHASE-SPECIFIC PROPERTIES:
+ * - density, specificHeat, thermalConductivity
+ * - latentHeatOfVaporization, latentHeatOfFusion
+ * - antoineCoefficients (for vapor pressure/boiling point calculations)
+ * - compressibility, volumetricExpansionCoefficient
+ * - electricalConductivity, refractiveIndex, color
+ * - entropy, saturation point (for advanced chemistry)
  * 
  * @param {string} compoundId - The compound identifier (e.g., 'h2o')
  * @param {string} phase - The phase ('solid', 'liquid', or 'gas')
- * @returns {Promise<Object>} Phase state data with all properties
+ * @returns {Promise<Object>} Phase state data with all thermodynamic properties
  * @throws {Error} If phase file not found or invalid JSON
  */
 async function loadPhaseState(compoundId, phase) {
   try {
     let data
     const key = `${compoundId}-${phase}`
+    // Map compound + phase to their state.json files
+    // This switch statement grows as we add more substances
+    // Future optimization: dynamically construct path from SUBSTANCE_CATALOG
     switch (key) {
-      // h2o phases
+      // h2o phases (3 states)
       case 'h2o-solid':
         data = await import('../data/substances/compounds/pure/water-h2o/solid/state.json')
         break
@@ -120,71 +177,71 @@ async function loadPhaseState(compoundId, phase) {
       case 'h2o-gas':
         data = await import('../data/substances/compounds/pure/water-h2o/gas/state.json')
         break
-      // saltwater phases (liquid only - does not have gas phase)
+      // saltwater phases (liquid only)
       case 'saltwater-3pct-liquid':
         data = await import('../data/substances/compounds/solutions/saltwater-3pct-nacl/liquid/state.json')
         break
-      // ethanol phases
+      // ethanol phases (2 states)
       case 'ethanol-liquid':
         data = await import('../data/substances/compounds/pure/ethanol-c2h5oh/liquid/state.json')
         break
       case 'ethanol-gas':
         data = await import('../data/substances/compounds/pure/ethanol-c2h5oh/gas/state.json')
         break
-      // ammonia phases
+      // ammonia phases (2 states)
       case 'ammonia-liquid':
         data = await import('../data/substances/compounds/pure/ammonia-nh3/liquid/state.json')
         break
       case 'ammonia-gas':
         data = await import('../data/substances/compounds/pure/ammonia-nh3/gas/state.json')
         break
-      // acetone phases
+      // acetone phases (2 states)
       case 'acetone-liquid':
         data = await import('../data/substances/compounds/pure/acetone-c3h6o/liquid/state.json')
         break
       case 'acetone-gas':
         data = await import('../data/substances/compounds/pure/acetone-c3h6o/gas/state.json')
         break
-      // acetic-acid phases
+      // acetic-acid phases (2 states)
       case 'acetic-acid-liquid':
         data = await import('../data/substances/compounds/pure/acetic-acid-ch3cooh/liquid/state.json')
         break
       case 'acetic-acid-gas':
         data = await import('../data/substances/compounds/pure/acetic-acid-ch3cooh/gas/state.json')
         break
-      // hydrogen-peroxide phases
+      // hydrogen-peroxide phases (2 states)
       case 'hydrogen-peroxide-liquid':
         data = await import('../data/substances/compounds/pure/hydrogen-peroxide-h2o2/liquid/state.json')
         break
       case 'hydrogen-peroxide-gas':
         data = await import('../data/substances/compounds/pure/hydrogen-peroxide-h2o2/gas/state.json')
         break
-      // methane phases
+      // methane phases (2 states)
       case 'methane-liquid':
         data = await import('../data/substances/compounds/pure/methane-ch4/liquid/state.json')
         break
       case 'methane-gas':
         data = await import('../data/substances/compounds/pure/methane-ch4/gas/state.json')
         break
-      // propane phases
+      // propane phases (2 states)
       case 'propane-liquid':
         data = await import('../data/substances/compounds/pure/propane-c3h8/liquid/state.json')
         break
       case 'propane-gas':
         data = await import('../data/substances/compounds/pure/propane-c3h8/gas/state.json')
         break
-      // isopropyl-alcohol phases
+      // isopropyl-alcohol phases (2 states)
       case 'isopropyl-alcohol-liquid':
         data = await import('../data/substances/compounds/pure/isopropyl-alcohol-c3h8o/liquid/state.json')
         break
       case 'isopropyl-alcohol-gas':
         data = await import('../data/substances/compounds/pure/isopropyl-alcohol-c3h8o/gas/state.json')
         break
-      // glycerin phases (liquid only - does not have gas phase)
+      // glycerin phases (liquid only)
       case 'glycerin-liquid':
         data = await import('../data/substances/compounds/pure/glycerin-c3h8o3/liquid/state.json')
         break
-      // sucrose phases (liquid only - does not have gas phase)
+      // sucrose phases (liquid only)
       case 'sucrose-liquid':
         data = await import('../data/substances/compounds/pure/sucrose-c12h22o11/liquid/state.json')
         break
@@ -194,29 +251,73 @@ async function loadPhaseState(compoundId, phase) {
     return data.default || data
   } catch (error) {
     console.error(`Failed to load phase "${phase}" for compound "${compoundId}":`, error)
-    throw new Error(`Phase "${phase}" not found for "${compoundId}". Check switch statement in substanceLoader.js`)
+    throw new Error(`Phase "${phase}" not found for "${compoundId}". Check loadPhaseState() switch statement.`)
   }
 }
 
 /**
  * Load a complete substance definition (compound + specific phase)
- * Returns the raw JSON data structure; use parseSubstanceProperties() to extract physics values
+ * Returns the merged raw JSON data; use parseSubstanceProperties() to extract physics values
  * 
- * @param {string} substanceId - The compound identifier (e.g., 'h2o')
+ * WHAT THIS DOES:
+ * 1. Loads compound metadata (constant across all phases) OR element data
+ * 2. Loads phase-specific properties (if compound)
+ * 3. Merges them into a single object
+ * 4. Returns raw data (NOT parsed yet)
+ * 
+ * SUPPORTS:
+ * - Elements: loadSubstance('H', 'gas') - loads from periodic table
+ * - Compounds: loadSubstance('h2o', 'liquid') - loads compound + phase
+ * 
+ * USE WITH PARSER:
+ * ```js
+ * const rawData = await loadSubstance('O', 'gas')  // Element
+ * const physicsProps = parseSubstanceProperties(rawData)
+ * // Now pass physicsProps to physics engine
+ * ```
+ * 
+ * @param {string} substanceId - The substance identifier (e.g., 'h2o' or 'H')
  * @param {string} phase - The phase to load ('liquid' by default, can be 'solid' or 'gas')
- * @returns {Promise<Object>} Complete substance data with compound metadata and phase properties
+ * @returns {Promise<Object>} Complete substance data with metadata and phase properties
  * @throws {Error} If substance or phase not found
  */
 export async function loadSubstance(substanceId, phase = 'liquid') {
   try {
-    const compound = await loadCompound(substanceId)
-    const phaseState = await loadPhaseState(substanceId, phase)
+    // Check if this is an element (single capital letter or 1-2 letter symbol)
+    const isElement = /^[A-Z][a-z]?$/.test(substanceId)
     
-    // Merge compound metadata with phase-specific properties
-    return {
-      ...compound,
-      phaseState,
-      currentPhase: phase
+    if (isElement) {
+      // Load element directly (contains all phase data in one file)
+      const element = await loadElement(substanceId)
+      return {
+        ...element,
+        currentPhase: phase,
+        isElement: true,
+        // Elements store boiling/melting in nist/iupac objects
+        phaseTransitions: {
+          boilingPoint: element.nist?.boilingPoint || element.iupac?.boilingPoint,
+          meltingPoint: element.nist?.meltingPoint || element.iupac?.meltingPoint
+        },
+        // Create a phaseState object for parser compatibility
+        phaseState: {
+          specificHeat: { value: element.nist?.specificHeatCapacity || element.iupac?.specificHeatCapacity },
+          density: { value: element.nist?.density || element.iupac?.density },
+          thermalConductivity: { value: element.nist?.thermalConductivity || element.iupac?.thermalConductivity }
+        }
+      }
+    } else {
+      // Load compound + phase state
+      const compound = await loadCompound(substanceId)
+      const phaseState = await loadPhaseState(substanceId, phase)
+
+      // Merge compound metadata with phase-specific properties
+      // phaseState overwrites any duplicate keys (phase-specific takes priority)
+      return {
+        ...compound,
+        phaseState,
+        currentPhase: phase,
+        isElement: false
+      }
     }
   } catch (error) {
     console.error(`Failed to load substance "${substanceId}" phase "${phase}":`, error)
@@ -225,122 +326,29 @@ export async function loadSubstance(substanceId, phase = 'liquid') {
 }
 
 /**
- * Extract physics-engine-ready values from loaded substance data
- * All thermodynamic values come from the JSON files (NO hardcoded values in physics.js)
+ * Load and parse a substance in one step
  * 
- * STRUCTURE:
- * - Identification: id, name, formula from compound info.json
- * - Boiling point data: from compound info.json phaseTransitions
- * - Thermodynamic data: from phase state.json (density, specific heat, latent heat, etc.)
- * - Cooling model: Default cooling coefficient (can be overridden per phase in future)
+ * Convenience function that combines:
+ * 1. loadSubstance() - Load raw JSON
+ * 2. parseSubstanceProperties() - Extract physics-ready values
  * 
- * @param {Object} substanceData - Complete substance data from loadSubstance()
- * @returns {Object} Simplified object ready for physics calculations
+ * This is typically what physics engine and GameScene should call.
+ * 
+ * @param {string} substanceId - The compound identifier (e.g., 'h2o')
+ * @param {string} phase - The phase ('liquid' by default)
+ * @returns {Promise<Object>} Physics-ready substance properties
  */
-export function parseSubstanceProperties(substanceData) {
-  const compound = substanceData  // Merge happened in loadSubstance
-  const phaseState = substanceData.phaseState
-  const currentPhase = substanceData.currentPhase
-  
-  // Extract phase-specific numeric values (density, specific heat, etc.)
-  // Handle nested structure: { value: 1.0, unit: 'kg/L' } OR flat { density: 1.0 }
-  const extractValue = (obj) => obj?.value !== undefined ? obj.value : obj
-  
-  const boilingPointSeaLevel = Number.isFinite(compound.phaseTransitions?.boilingPoint)
-    ? compound.phaseTransitions.boilingPoint
-    : null
-
-  const heatOfVaporization = extractValue(phaseState.latentHeatOfVaporization)
-
-  const components = Array.isArray(compound.components) ? compound.components : []
-  const nonVolatileMassFraction = components.reduce((sum, component) => {
-    if (!component || typeof component.massFraction !== 'number') return sum
-    const role = component.role || 'component'
-    const isVolatile = component.isVolatile === true || role === 'solvent' || role === 'volatile'
-    return sum + (isVolatile ? 0 : component.massFraction)
-  }, 0)
-  const clampedNonVolatile = Math.min(Math.max(nonVolatileMassFraction, 0), 1)
-  const volatileMassFraction = Math.max(0, 1 - clampedNonVolatile)
-
-  const canBoil = Number.isFinite(boilingPointSeaLevel) && Number.isFinite(heatOfVaporization)
-
-  return {
-    // Identification (from compound metadata)
-    id: compound.id,
-    name: compound.name,
-    formula: compound.chemicalFormula,
-    currentPhase: currentPhase,
-    
-    // Phase transition temperatures (from compound info.json)
-    boilingPointSeaLevel: boilingPointSeaLevel,
-    meltingPoint: compound.phaseTransitions?.meltingPoint || 0,
-    triplePoint: compound.phaseTransitions?.triplePoint,
-    criticalPoint: compound.phaseTransitions?.criticalPoint,
-    
-    // Altitude lapse rate (linear approximation for boiling point)
-    // Formula: ΔTb = altitude × lapse_rate (°C per meter)
-    // For water: ~0.00333°C/meter (roughly 1°C per 300m)
-    altitudeLapseRate: Number.isFinite(compound.phaseTransitions?.altitudeLapseRate)
-      ? compound.phaseTransitions.altitudeLapseRate
-      : ATMOSPHERE.TEMP_LAPSE_RATE,  // Default atmospheric lapse rate
-    
-    // Thermodynamic properties (extracted from phase state.json)
-    specificHeat: extractValue(phaseState.specificHeat),  // J/(g·°C)
-    heatOfVaporization: heatOfVaporization,  // kJ/kg
-    heatOfFusion: extractValue(phaseState.latentHeatOfFusion),  // kJ/kg
-    density: extractValue(phaseState.density),  // kg/L
-    thermalConductivity: extractValue(phaseState.thermalConductivity),  // W/(m·K)
-    
-    // Cooling model: Default coefficient (0.0015 for water)
-    // In future, can be loaded from phase state per substance
-    coolingCoefficient: extractValue(phaseState.coolingCoefficient) ?? 0.0015,  // 1/s (default for water-like fluids)
-    
-    // Optional advanced properties for chemistry students
-    molarMass: compound.molarMass,
-    electricalConductivity: extractValue(phaseState.electricalConductivity),  // S/m
-    vanThoffFactor: extractValue(phaseState.vanThoffFactor),  // i (dimensionless)
-    saturationPoint: extractValue(phaseState.saturationPoint),  // g/L
-
-    // Mixture/phase behavior
-    components: components,
-    canBoil: canBoil,
-    nonVolatileMassFraction: clampedNonVolatile,
-    volatileMassFraction: volatileMassFraction,
-    
-    // Antoine coefficients (if available for vapor pressure calculations)
-    antoineCoefficients: phaseState.antoineCoefficients,
-    
-    // Compressibility (for altitude/pressure effects)
-    compressibility: extractValue(phaseState.compressibility),  // 1/Pa
-    volumetricExpansionCoefficient: extractValue(phaseState.volumetricExpansionCoefficient),  // 1/K
-    
-    // Metadata
-    metadata: compound.metadata,
-    lastUpdated: compound.lastUpdated
-  }
+export async function loadSubstancePhase(substanceId, phase = 'liquid') {
+  const rawData = await loadSubstance(substanceId, phase)
+  return parseSubstanceProperties(rawData)
 }
 
-/**
- * List all available compounds
- * Returns compound IDs that can be loaded
- * 
- * @returns {Array<string>} Array of compound IDs
- */
-export function getAvailableSubstances() {
-  return Object.keys(SUBSTANCE_CATALOG)
-}
+// Re-export from catalog for convenience
+export { getAvailableSubstances } from './substanceCatalog'
 
-/**
- * Default substance for game startup
- * Used if no explicit substance selection is made
- */
+// Re-export from parser for convenience  
+export { parseSubstanceProperties } from './substanceParser'
+
+// Default substance constant
 export const DEFAULT_SUBSTANCE = 'h2o'
 
-/**
- * Backward compatibility: Legacy function names
- * These maintain the old API for gradual migration
- */
-export const loadFluid = loadSubstance
-export const parseFluidProperties = parseSubstanceProperties
-export const getAvailableFluids = getAvailableSubstances
-export const DEFAULT_FLUID = DEFAULT_SUBSTANCE

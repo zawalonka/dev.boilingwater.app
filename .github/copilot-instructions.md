@@ -40,6 +40,7 @@ An educational physics game teaching thermodynamics through interactive water bo
 
 - **Game window:** Fixed 1280×800px (never scale)
 - **Physics:** Real equations only (Newton's Law of Cooling, etc.)
+- **Physics limits:** Do **not** clamp or cap physics outputs based on Earth norms. Allow extreme values (negative altitudes, very high altitudes, space/mars scenarios) as long as the equations can compute them. Only guard against NaN/undefined inputs.
 - **Workshop JSONs:** Small files (<10KB)
 
 ## 📁 FILE LOCATIONS & STRUCTURE
@@ -198,6 +199,9 @@ git push dev main       # Testing repo (ALWAYS FIRST)
 **Workshop System Work:**
 - [WORKSHOP_QUICK_START.md](../docs/guides/WORKSHOP_QUICK_START.md) - Quick guide for creating new workshops
 - [GOTCHAS.md](../GOTCHAS.md) → Theme Validation section (themes must be flexible with name field location)
+
+**Room Environment & Atmospheric System Work:**
+- [ROOM_ENVIRONMENT_SYSTEM.md](../docs/planning/ROOM_ENVIRONMENT_SYSTEM.md) - Detailed plan for dynamic room AC, scrubber, experiment scorecard (future feature, pre-implementation planning phase)
 
 **Physics/Gameplay Work:**
 - [WATER_STATES_ARCHITECTURE.md](../docs/architecture/WATER_STATES_ARCHITECTURE.md) - Phase change system (ice/water/steam)

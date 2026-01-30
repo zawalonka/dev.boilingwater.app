@@ -1,6 +1,7 @@
 {
   "id": "level-2-placeholder",
   "name": "Level 2 Placeholder",
+  "scope": "workshop",
   "minLevel": 2,
   "levelId": "level-2",
   "description": "Placeholder workshop for Level 2 - Coming soon!",
@@ -11,16 +12,8 @@
   },
   "colors": {
     "header_background": "rgba(100, 100, 100, 0.85)",
-    "scope": "workshop",
     "header_text": "white",
     "header_accent": "#888888",
-    "metadata": {
-      "author": "BoilingWater Team",
-      "version": "1.0.0",
-      "createdDate": "2026-01-26",
-      "updatedDate": "2026-01-26",
-      "tags": ["placeholder", "level-2"]
-    },
     "badge_background": "rgba(150, 150, 150, 0.9)",
     "badge_text": "white",
     "button_primary": "#888888",

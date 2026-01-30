@@ -826,7 +826,18 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // Check if pot is in the water stream area to show the pouring effect
   // Only show if workshop has explicitly enabled waterStream effect
-  const showWaterStream = effects.waterStream.enabled &&
+  // SPECIAL CASE: If substance boils at or below ambient temperature (20°C),
+  // show upward steam instead of downward water stream
+  const AMBIENT_TEMP = 20  // Room temperature (°C)
+  const boilsAtAmbient = fluidProps && Number.isFinite(boilingPoint) && boilingPoint <= AMBIENT_TEMP
+  
+  const showWaterStream = !boilsAtAmbient && effects.waterStream.enabled &&
+    potPosition.x >= layout.waterStream.xRange[0] &&
+    potPosition.x <= layout.waterStream.xRange[1] &&
+    potPosition.y >= layout.waterStream.yRange[0] &&
+    potPosition.y <= layout.waterStream.yRange[1]
+  
+  const showAmbientSteam = boilsAtAmbient && effects.waterStream.enabled &&
     potPosition.x >= layout.waterStream.xRange[0] &&
     potPosition.x <= layout.waterStream.xRange[1] &&
     potPosition.y >= layout.waterStream.yRange[0] &&
@@ -973,6 +984,27 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               top: `${waterStreamStartY}%`,
               width: `${layout.waterStream.widthPercent}%`,
               height: `${waterStreamHeight}%`
+            }}
+          />
+        )}
+        
+        {/* 
+          ========== AMBIENT-BOILING STEAM (For low-boiling substances) ==========
+          Upward steam effect for substances that boil at or below 20°C (room temp)
+          Examples: Hydrogen (-252°C), Oxygen (-183°C), Nitrogen (-196°C)
+          Shows colored steam rising instead of downward water stream
+        */}
+        {showAmbientSteam && fluidProps && (
+          <div 
+            className="ambient-boil-steam"
+            style={{
+              left: `${waterStreamStartX}%`,
+              top: `${waterStreamStartY}%`,
+              width: `${layout.waterStream.widthPercent}%`,
+              height: `${waterStreamHeight}%`,
+              // Use substance-specific color from catalog if available
+              backgroundColor: fluidProps.color?.gas || 'rgba(200, 230, 255, 0.4)',
+              opacity: 0.6
             }}
           />
         )}

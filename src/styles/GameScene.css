@@ -104,6 +104,38 @@
 }
 
 /* ========================================================================
+   AMBIENT-BOILING STEAM (Upward Steam for Low-Boiling-Point Substances)
+   ======================================================================== */
+/* Shows colored gas rising for substances that boil at/below room temperature */
+/* Examples: Hydrogen, Oxygen, Nitrogen (all have negative boiling points) */
+.ambient-boil-steam {
+  position: absolute;
+  /* Background color set inline from substance catalog (element-specific) */
+  border-radius: 50%;            /* Circular puffs of gas */
+  box-shadow: 0 0 15px currentColor;  /* Glow effect matching substance color */
+  z-index: 100;                  /* Above background, below pot */
+  animation: steamRise 2s ease-out infinite;
+  pointer-events: none;          /* Don't block interaction */
+  filter: blur(8px);             /* Soft, gaseous appearance */
+}
+
+/* Animate upward drift with fade (steam rises and dissipates) */
+@keyframes steamRise {
+  0% { 
+    opacity: 0.6; 
+    transform: translateY(0%) scaleX(1) scaleY(1); 
+  }
+  50% { 
+    opacity: 0.4; 
+    transform: translateY(-30%) scaleX(1.3) scaleY(1.2); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-60%) scaleX(1.6) scaleY(1.4); 
+  }
+}
+
+/* ========================================================================
    STOVE BURNER & FLAME (Center)
    ======================================================================== */
 /* The stove burner is the heat source—positioned at center bottom (50% X, 71% Y) */

@@ -1,6 +1,55 @@
 import { ATMOSPHERE, UNIVERSAL, GAME_CONFIG } from '../constants/physics'
 
 /**
+ * Solve Antoine equation for boiling point at given pressure
+ * 
+ * Antoine equation: log10(Pvap) = A - B/(C + T)
+ * Solved for T: T = B/(A - log10(Pvap)) - C
+ * 
+ * PHYSICS: The Antoine equation is an empirical formula that predicts the vapor pressure
+ * of a liquid as a function of temperature. When vapor pressure equals atmospheric pressure,
+ * the liquid boils. This equation is accurate to ±0.5°C across typical pressure ranges.
+ * 
+ * @param {number} pressurePa - Atmospheric pressure in Pascals
+ * @param {object} antoineCoeffs - { A, B, C, TminC, TmaxC } from substance JSON
+ * @returns {number} Temperature in °C where vapor pressure equals atmospheric pressure
+ */
+function solveAntoineEquation(pressurePa, antoineCoeffs) {
+  if (!antoineCoeffs) return null
+  
+  const { A, B, C, TminC, TmaxC } = antoineCoeffs
+  if (!A || !B || !C) return null
+  
+  // Convert pressure from Pa to mmHg (Antoine coefficients use mmHg)
+  // 1 Pa = 1/133.322 mmHg
+  // 1 mmHg = 133.322 Pa (exactly)
+  const pressureMmHg = pressurePa / 133.322
+  
+  // Rearrange Antoine equation: log10(Pvap) = A - B/(C + T)
+  // → A - log10(Pvap) = B/(C + T)
+  // → (C + T) = B / (A - log10(Pvap))
+  // → T = B / (A - log10(Pvap)) - C
+  
+  const logP = Math.log10(pressureMmHg)
+  const denominator = A - logP
+  
+  // Prevent division by zero
+  if (Math.abs(denominator) < 1e-10) return null
+  
+  const boilingPoint = (B / denominator) - C
+  
+  // Validate against valid temperature range if specified
+  if (Number.isFinite(TminC) && boilingPoint < TminC) {
+    return TminC
+  }
+  if (Number.isFinite(TmaxC) && boilingPoint > TmaxC) {
+    return TmaxC
+  }
+  
+  return boilingPoint
+}
+
+/**
  * Calculate boiling point based on altitude
  * Now accepts fluid properties for different substances
  * 
@@ -10,13 +59,20 @@ import { ATMOSPHERE, UNIVERSAL, GAME_CONFIG } from '../constants/physics'
  * Real-world example: At Denver (1600m), water boils at ~95°C instead of 100°C.
  * At Mount Everest (8848m), water boils at ~68°C.
  * 
- * We use a simplified linear model:
- * - Atmospheric pressure decreases exponentially with altitude (barometric formula)
- * - But boiling point changes roughly linearly: ~1°C per 300 meters
- * - This is an approximation; real Clausius-Clapeyron equation is more complex
+ * ALGORITHM:
+ * 1. Calculate atmospheric pressure at given altitude (barometric formula)
+ * 2. Use Antoine equation (if available) to find temperature where vapor pressure equals atmospheric pressure
+ * 3. Fall back to linear approximation if Antoine coefficients not available
+ * 
+ * Accuracy:
+ * - Antoine equation: ±0.5°C (empirical, substance-specific)
+ * - Linear model: ±2°C (approximation, works for Earth altitudes)
  * 
  * @param {number} altitude - Altitude in meters above sea level (0 = sea level, 5000 = Denver)
- * @param {object} fluidProps - Fluid properties object containing boilingPointSeaLevel and altitudeLapseRate
+ * @param {object} fluidProps - Fluid properties object containing:
+ *   - boilingPointSeaLevel: °C at sea level
+ *   - antoineCoefficients: {A, B, C, TminC, TmaxC} for accurate calculation
+ *   - altitudeLapseRate: °C/meter fallback rate
  * @returns {number} Boiling point in Celsius (100 at sea level for water, ~95 at Denver, ~68 at Everest)
  */
 export function calculateBoilingPoint(altitude, fluidProps) {
@@ -24,10 +80,22 @@ export function calculateBoilingPoint(altitude, fluidProps) {
     return null
   }
 
-  // Safety check: treat null/undefined/negative as sea level
-  if (!altitude || altitude < 0) altitude = 0
+  // Safety check: treat null/undefined as sea level
+  if (altitude === null || altitude === undefined || Number.isNaN(altitude)) altitude = 0
   
-  // Linear approximation using fluid-specific lapse rate
+  // Calculate atmospheric pressure at altitude
+  const atmosphericPressure = calculatePressure(altitude)
+  
+  // PRIORITY 1: Use Antoine equation if available (highly accurate, ±0.5°C)
+  if (fluidProps.antoineCoefficients) {
+    const antoineBoilingPoint = solveAntoineEquation(atmosphericPressure, fluidProps.antoineCoefficients)
+    if (Number.isFinite(antoineBoilingPoint)) {
+      return antoineBoilingPoint
+    }
+  }
+  
+  // PRIORITY 2: Fall back to linear lapse rate approximation (±2°C)
+  // Used for substances without Antoine coefficients
   const lapseRate = Number.isFinite(fluidProps.altitudeLapseRate)
     ? fluidProps.altitudeLapseRate
     : ATMOSPHERE.TEMP_LAPSE_RATE
@@ -36,9 +104,7 @@ export function calculateBoilingPoint(altitude, fluidProps) {
   // Start from fluid's standard boiling point and subtract elevation effect
   const boilingPoint = fluidProps.boilingPointSeaLevel - temperatureDrop
   
-  // Safety minimum: if user enters extreme altitude, don't let boiling point go below 50°C
-  // (physically unrealistic for Earth conditions, but prevents nonsensical game states)
-  return Math.max(boilingPoint, 50)
+  return boilingPoint
 }
 
 /**
@@ -67,8 +133,8 @@ export function calculateBoilingPoint(altitude, fluidProps) {
  * @returns {number} Atmospheric pressure in Pascals
  */
 export function calculatePressure(altitude) {
-  // Safety check: treat null/undefined/negative as sea level
-  if (!altitude || altitude < 0) altitude = 0
+  // Safety check: treat null/undefined as sea level
+  if (altitude === null || altitude === undefined || Number.isNaN(altitude)) altitude = 0
   
   // Barometric formula constants
   // (We redefine them here to make the physics formula visible and educational)
