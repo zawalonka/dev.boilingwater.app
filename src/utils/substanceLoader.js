@@ -16,6 +16,9 @@ import {
   elementMetadata
 } from '../generated/substanceCatalog'
 
+// Preloadable map for compound phase state files (Vite will bundle these JSON files)
+const phaseStateLoaders = import.meta.glob('../data/substances/compounds/**/state.json')
+
 // ============================================================================
 // RE-EXPORTS
 // ============================================================================
@@ -157,7 +160,11 @@ export async function loadSubstance(substanceId, phase = 'liquid') {
         }
         
         const phaseStatePath = `../data/substances/compounds/${metadata.folderPath}/${phase}/state.json`
-        const phaseState = await import(/* @vite-ignore */ phaseStatePath)
+        const phaseStateLoader = phaseStateLoaders[phaseStatePath]
+        if (!phaseStateLoader) {
+          throw new Error(`No phase state loader found for ${phaseStatePath}`)
+        }
+        const phaseState = await phaseStateLoader()
         const phaseStateData = phaseState.default || phaseState
         
         return {

@@ -34,9 +34,8 @@
 ## 🚀 BACKLOG: Planned Features
 
 ### High Priority
-1. **Unit Conversion System** (50% complete)
-   - ✅ Conversion functions, localStorage, locale detection
-   - ❌ Wire UI, add more units, update all displays
+1. **Unit Conversion System**
+   - Wire UI, add more units, update all displays
 
 2. **Room Environment & Atmospheric System** (Design complete)
    - Dynamic room temperature with PID-controlled AC
@@ -120,80 +119,3 @@
    - AI Analysis: ~$10-20/month (weekly batch processing)
    - Total: <$30/month for full analytics pipeline
 
----
-
-## ✅ COMPLETED: Recent Milestones
-
-### Session 5 (2026-01-29) - Zero Hardcoding Achievement
-**Commit:** `23133ee`
-
-**Major Achievement:** Filesystem-based substance discovery
-- Created `scripts/generateSubstanceCatalog.js` - scans 12 compounds + 118 elements
-- Generates `src/generated/substanceCatalog.js` with lazy imports (198KB + 130 chunks)
-- Deleted hardcoded `src/utils/substanceCatalog.js`
-- Rewrote `substanceLoader.js` - completely generic, zero hardcoding
-- Fixed element loading (isElement flag, natural phase)
-- Fixed compound loading (info.json + phase state.json)
-- **Result:** Drop JSON file → automatically discovered
-
-**Other Completions:**
-- Element loading infrastructure (H through Og)
-- Compound phase state loading
-- Ambient-boiling visual (upward steam for BP ≤ 20°C)
-- Antoine equation (±0.5°C accuracy)
-- Level 2 workshop dropdown fix
-- Unified dropdown styling (2-color system)
-
-**Commits:** 23133ee, 09221fd, 5ee85e3, eb03ed7
-
-### Previous Sessions
-- ✅ Control panel extraction (GameScene: 1552 → 1158 lines)
-- ✅ 3-file substance architecture (catalog, loader, parser)
-- ✅ Newton's Law of Cooling implementation
-- ✅ Workshop system (4 workshops with dynamic switching)
-
----
-
-## 📊 PROJECT STATUS DASHBOARD
-
-| System | Status | Details |
-|--------|--------|---------|
-| **Core Gameplay** | ✅ **Stable** | Pot dragging, heating, accurate physics |
-| **Substance System** | ✅ **Zero Hardcoding** | Auto-discovery (12 compounds + 118 elements) |
-| **Physics Engine** | ✅ **Accurate** | Antoine equation, Newton's cooling |
-| **Workshop System** | ✅ **Working** | 4 workshops, dynamic switching |
-| **UI/UX** | ✅ **Polished** | Unified dropdowns, proper contrast |
-| **Critical Bugs** | 🔴 **2 Found** | Pause bug (CRITICAL), saltwater BP (HIGH) |
-| **Visual Polish** | 🟡 **Minor Issues** | Flame scaling (LOW priority) |
-| **Advanced Features** | 🔲 **Planned** | Room environment, scorecards, saves |
-
-### Build Health
-- **Main Bundle:** 198KB (gzipped: 63.59KB)
-- **Lazy Chunks:** 130+ separate files (code splitting working)
-- **Build Time:** ~650ms
-- **Zero Hardcoding:** ✅ Achieved
-
----
-
-## 📦 DELIVERABLES TRACKING
-
-### Delivered
-- [x] Core thermodynamics simulation
-- [x] Workshop theming system
-- [x] Substance loading (zero hardcoding)
-- [x] Element support (all 118)
-- [x] Compound support (12+)
-- [x] Antoine vapor pressure
-- [x] Altitude effects
-- [x] Level/experiment system
-
-### In Progress
-- [ ] Bug fixes (Level 3 pause, saltwater BP)
-- [ ] Runtime testing
-
-### Planned
-- [ ] Unit conversion UI
-- [ ] Room environment system
-- [ ] Experiment scorecards
-- [ ] Save system
-- [ ] Documentation
