@@ -281,8 +281,11 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // Load available fluids for dropdown (Level 3+)
   useEffect(() => {
-    const fluids = getAvailableSubstances()
-    setAvailableFluids(fluids)
+    async function loadFluids() {
+      const fluids = await getAvailableSubstances()
+      setAvailableFluids(fluids)
+    }
+    loadFluids()
   }, [])
 
   // Load the current substance's properties from JSON

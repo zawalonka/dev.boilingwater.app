@@ -8,9 +8,10 @@
   "license": "(GPL-3.0 AND CC-BY-NC-ND-4.0)",
   "homepage": "https://boilingwater.app",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "generate-catalog": "node scripts/generateSubstanceCatalog.js",
+    "dev": "npm run generate-catalog && vite",
+    "build": "npm run generate-catalog && vite build",
+    "preview": "npm run generate-catalog && vite preview",
     "lint": "eslint src --ext js,jsx",
     "format": "prettier --write \"src/**/*.{js,jsx,css,md}\""
   },
@@ -23,6 +24,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "glob": "^13.0.0",
     "prettier": "^3.1.1",
     "sharp": "^0.34.5",
     "vite": "^5.0.8"

@@ -8,6 +8,10 @@ dist/
 build/
 *.local
 
+# Auto-generated files (regenerated on every build)
+/src/generated/*.js
+!/src/generated/.gitkeep
+
 # Environment variables
 .env
 .env.local
