@@ -29,9 +29,9 @@ export { parseProps as parseSubstanceProperties }
 
 /**
  * Default substance to load on startup
- * Using 'h2o' (water) as default
+ * Using 'water' as default
  */
-export const DEFAULT_SUBSTANCE = 'h2o'
+export const DEFAULT_SUBSTANCE = 'water'
 
 // ============================================================================
 // DISCOVERY FUNCTIONS
@@ -64,6 +64,46 @@ export function getSubstanceMetadata(substanceId) {
 // ============================================================================
 // LOADING FUNCTIONS
 // ============================================================================
+
+/**
+ * Load substance info only (no phase state files)
+ * Useful for quick metadata checks like phase at ambient temperature
+ * @param {string} substanceId - Element symbol or compound ID
+ * @returns {Promise<Object>} Substance info data with element flag when applicable
+ */
+export async function loadSubstanceInfo(substanceId) {
+  try {
+    if (elementLoaders[substanceId]) {
+      const loader = elementLoaders[substanceId]
+      const data = await loader()
+      const elementData = data.default || data
+
+      return {
+        ...elementData,
+        isElement: true,
+        currentPhase: elementData.physicalProperties?.phase || null
+      }
+    }
+
+    if (compoundLoaders[substanceId]) {
+      const loader = compoundLoaders[substanceId]
+      const info = await loader()
+      const infoData = info.default || info
+
+      return {
+        ...infoData,
+        isElement: false,
+        currentPhase: null,
+        phaseState: null
+      }
+    }
+
+    throw new Error(`Substance "${substanceId}" not found in catalog`)
+  } catch (error) {
+    console.error(`Failed to load substance info for "${substanceId}":`, error)
+    throw error
+  }
+}
 
 /**
  * Load a substance (element or compound) from generated catalog

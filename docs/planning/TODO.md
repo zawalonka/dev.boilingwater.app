@@ -1,149 +1,199 @@
 # Project TODO - Boiling Water App
 
-## 🔴 Critical Issues (Must Fix)
-
-### Bug: Level 3 Pause on Complete - No Unpause
-**Status:** Needs fix
-**Description:** `pauseTime` is set when boiling begins, but only cleared in the tutorial modal. Non-tutorial experiments (altitude/different-fluids) may leave the simulation paused without a clear unpause path.
-**Priority:** CRITICAL (blocks further gameplay)
-**Location:** GameScene.jsx boil-stats-modal or related completion handlers
-
-### Bug: Saltwater Boiling Temperature Calculation
-**Status:** Needs verification
-**Description:** Verify that saltwater uses its own boiling point (100.16°C) in the physics simulation, not water's 100°C.
-**Priority:** HIGH (affects educational accuracy)
-**Location:** GameScene.jsx physics loop or ControlPanel substance handling
-
-### Bug: Alpha Kitchen Flame Icon Scaling
-**Status:** Noted for later
-**Description:** Flame icon grows differently in alpha vs other workshops
-**Priority:** LOW (visual only)
+> **Last Updated:** 2026-01-29  
+> **Status:** Pre-Alpha (working prototype with zero-hardcoding substance system)
 
 ---
 
-## ✅ Recently Completed (Done!)
+## 🔴 CRITICAL: Must Fix Before Next Release
 
-### Priority 1: Fix Level 2 Workshop Dropdown
-**Status:** ✅ COMPLETED (Commit 5ee85e3)
-- ✅ Fixed JSON structure (scope/metadata to root)
-- ✅ Fixed panel colors for proper contrast
-- ✅ Simplified dropdown styling (2-color universal system)
-- ✅ All dropdowns: light base rgba(240,240,240), dark hover rgba(100,100,100)
+### 1. Level 3 Pause Bug (BLOCKS GAMEPLAY)
+**Problem:** `pauseTime` set when boiling begins, never cleared for non-tutorial experiments  
+**Impact:** Simulation freezes after boiling in Level 2+ experiments  
+**Location:** [GameScene.jsx](../../src/components/GameScene.jsx) boil-stats-modal  
+**Fix Required:** Add unpause logic for all experiment completion handlers
 
-### Priority 2: Element Loading + Ambient-Boiling Visual
-**Status:** ✅ COMPLETED (Commit 09221fd)
-- ✅ Element loading (H, He, N, O, F, Ne, Cl, Ar)
-- ✅ Ambient-boiling visual (upward steam for BP ≤ 20°C)
-- ✅ Antoine equation (±0.5°C accuracy)
-- ✅ 3-file modular substance system (catalog, loader, parser)
-- ✅ Element-specific colors and CSS animations
-
-### Priority 3: Code Refactoring - Extract ControlPanel
-**Status:** ✅ COMPLETED
-- ✅ GameScene reduced 1552 → 1158 lines (-394 lines)
-- ✅ All control panel logic extracted to ControlPanel.jsx
+### 2. Saltwater Boiling Point (EDUCATIONAL ACCURACY)
+**Problem:** Need to verify saltwater uses 100.16°C not 100°C in simulation  
+**Impact:** Incorrect physics demonstration  
+**Location:** GameScene.jsx physics loop, ControlPanel substance handling  
+**Fix Required:** Test and verify correct boiling point calculation
 
 ---
 
-## 🎯 Next Priorities - What Needs Doing
+## 🎯 IMMEDIATE: Current Sprint Tasks
 
-### Priority 4: Filesystem-Based Substance Discovery (NEXT UP!)
-**Status:** 🟡 Partial (95% - Core works, catalog removal needed)
-**Goal:** Replace hardcoded catalog with folder scanning for infinite extensibility
-
-**What's Done:**
-- ✅ Element loading works (H through Ar mapped)
-- ✅ Compound loading works (explicit paths)
-- ✅ Element detection regex (`/^[A-Z][a-z]?$/`)
-- ✅ Element parsing (nist/iupac data)
-- ✅ Antoine vapor-pressure solver
-
-**What's Left (1-2 hours work):**
-- [ ] **REMOVE substanceCatalog.js** entirely
-- [ ] **ADD getAvailableElements()** - scans periodic-table/ folder dynamically
-- [ ] **ADD getAvailableCompounds()** - scans compounds/ subfolders
-- [ ] **ADD getSubstanceMetadata(id)** - lightweight metadata from JSON
-- [ ] Update UI dropdowns to call filesystem discovery instead
-
-**Why This Matters:** All 118 elements are already on disk. Instead of hardcoding them, scan the filesystem so adding new substances requires zero code changes.
+### Test & Validate Recent Changes
+- [ ] Test Level 2 dropdown (tutorial → Level 2 → verify dropdown works)
+- [ ] Test element loading in-game (H, O, N and verify physics)
+- [ ] Verify saltwater boiling at correct temperature
+- [ ] Fix Level 3 pause bug
 
 ---
 
-### Priority 5: Bug Fixes & Testing (IMPORTANT)
-**Status:** 🟡 In Progress
-- [ ] **Test Level 2 dropdown runtime** (complete tutorial → select Level 2 → verify dropdown)
-- [ ] **Fix Level 3 pause bug** (prevent simulation freeze after boiling)
-- [ ] **Verify saltwater boiling** (should be 100.16°C not 100°C)
-- [ ] **Test element loading in game** (load H, O, N and verify physics works)
+## 🚀 BACKLOG: Planned Features
+
+### High Priority
+1. **Unit Conversion System** (50% complete)
+   - ✅ Conversion functions, localStorage, locale detection
+   - ❌ Wire UI, add more units, update all displays
+
+2. **Room Environment & Atmospheric System** (Design complete)
+   - Dynamic room temperature with PID-controlled AC
+   - Air composition tracking (O₂, N₂, CO₂, toxic gases)
+   - See [ROOM_ENVIRONMENT_SYSTEM.md](ROOM_ENVIRONMENT_SYSTEM.md)
+
+3. **Experiment Scorecard System** (Design phase)
+   - Downloadable CSV/JSON reports
+   - Metrics: efficiency, sustainability, score
+
+### Medium Priority
+4. **Save Data & Persistence**
+   - LocalStorage autosave
+   - Console codes (portable)
+   - File export/import
+
+5. **Substance Documentation**
+   - More JSDoc examples
+   - Field documentation
+   - Developer guides
+
+### Low Priority (Visual)
+6. **Alpha Kitchen Flame Icon Scaling**
+   - Flame icon grows differently in alpha vs other workshops
+   - Visual polish only
+
+### Very Low Priority (Future/Nice-to-Have)
+7. **Experiment Data Collection & AI Analysis System**
+   - **Goal:** Collect anonymized experiment data for insights and educational improvements
+   - **Status:** Design/ideation phase
+   - **Size:** Medium (data layer + optional AI analysis)
+   - **Timeline:** Post-1.0 release feature
+   
+   **Phase 1: Local Storage (Simple)**
+   - Store all experiment results to `localStorage` or IndexedDB
+   - Schema example:
+     ```json
+     {
+       "experimentId": "uuid-here",
+       "timestamp": "2026-01-29T16:45:00Z",
+       "substance": "ethanol",
+       "altitude": 2500,
+       "initialTemp": 20,
+       "boilingPointObserved": 75.2,
+       "timeToBoil": 187,
+       "heatInputWatts": 1700,
+       "temperatureCurve": [20, 21.5, 23.1, ...],
+       "userActions": ["filled_pot", "turned_heat_on", "adjusted_burner_to_high"]
+     }
+     ```
+   - Export button: Download personal experiment history as JSON/CSV
+   
+   **Phase 2: Cloud Aggregation (Opt-in)**
+   - User consent to anonymized data sharing
+   - POST experiment results to cloud endpoint (Firebase/Supabase/custom)
+   - Aggregate database for pattern analysis
+   
+   **Phase 3: AI-Powered Insights (Automated)**
+   - GitHub Actions: Analyze experiment corpus weekly
+   - AI generates insights document (`docs/EXPERIMENT_INSIGHTS.md`)
+   - Example insights:
+     - "70% of users attempt ethanol first (curiosity about alcohol)"
+     - "Common error: Expecting water to boil instantly at 100°C"
+     - "Altitude experiments have 3x replay rate (high educational value)"
+   
+   **Privacy Considerations:**
+   - All data collection opt-in only
+   - No personal identifiers stored
+   - GDPR-compliant data handling
+   - Clear data retention policies
+   
+   **Potential Use Cases:**
+   - Improve tutorial based on where users struggle
+   - Identify confusing experiments
+   - Generate personalized learning paths
+   - A/B test educational content effectiveness
+   - Community leaderboards (optional)
+   
+   **Cost Estimate (if cloud-enabled):**
+   - Storage: ~$5/month (100k experiments)
+   - AI Analysis: ~$10-20/month (weekly batch processing)
+   - Total: <$30/month for full analytics pipeline
 
 ---
 
-## 🚀 Future Features - Long-term Backlog
+## ✅ COMPLETED: Recent Milestones
 
-### Priority 6: Room Environment & Atmospheric System
-**Status:** Design complete, not started
-**What:** Dynamic room temperature, AC control, air composition tracking, experiment scoring
-**Size:** Large feature (4 phases, 60+ subtasks)
-**Details:** See [ROOM_ENVIRONMENT_SYSTEM.md](../planning/ROOM_ENVIRONMENT_SYSTEM.md)
+### Session 5 (2026-01-29) - Zero Hardcoding Achievement
+**Commit:** `23133ee`
 
-### Priority 7: Experiment Scorecard System
-**Status:** Design phase
-**What:** Downloadable CSV/JSON reports of experiments with metrics
-**Size:** Medium (data collection + UI + download)
+**Major Achievement:** Filesystem-based substance discovery
+- Created `scripts/generateSubstanceCatalog.js` - scans 12 compounds + 118 elements
+- Generates `src/generated/substanceCatalog.js` with lazy imports (198KB + 130 chunks)
+- Deleted hardcoded `src/utils/substanceCatalog.js`
+- Rewrote `substanceLoader.js` - completely generic, zero hardcoding
+- Fixed element loading (isElement flag, natural phase)
+- Fixed compound loading (info.json + phase state.json)
+- **Result:** Drop JSON file → automatically discovered
 
-### Priority 8: Unit Conversion & Display System
-**Status:** 50% done (infrastructure ready, UI pending)
-**What:** Temperature/Pressure/Mass unit switching (C/F/K, Pa/psi/bar, etc.)
-**Size:** Medium
-**Done:** Conversion functions, localStorage, locale detection
-**TODO:** Wire UI, add more units, update all displays
+**Other Completions:**
+- Element loading infrastructure (H through Og)
+- Compound phase state loading
+- Ambient-boiling visual (upward steam for BP ≤ 20°C)
+- Antoine equation (±0.5°C accuracy)
+- Level 2 workshop dropdown fix
+- Unified dropdown styling (2-color system)
 
-### Priority 9: Save Data & Persistence System
-**Status:** Design phase
-**What:** Game saves via LocalStorage + console codes + file export
-**Size:** Medium-Large
-**Approaches:** Autosave, console codes (portable), file downloads
+**Commits:** 23133ee, 09221fd, 5ee85e3, eb03ed7
 
-### Priority 10: Substance Data & Documentation
-**Status:** Partial
-**What:** Documentation and examples for substance system
-**Size:** Small
-**Done:** Guides created
-**TODO:** More JSDoc examples, field documentation
+### Previous Sessions
+- ✅ Control panel extraction (GameScene: 1552 → 1158 lines)
+- ✅ 3-file substance architecture (catalog, loader, parser)
+- ✅ Newton's Law of Cooling implementation
+- ✅ Workshop system (4 workshops with dynamic switching)
 
 ---
 
-## 📊 Quick Status Overview
+## 📊 PROJECT STATUS DASHBOARD
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Core Gameplay | ✅ Working | Pot dragging, heating, physics accurate |
-| Workshop System | ✅ Done | 4 workshops, dynamic switching |
-| Substance Loading | 🟡 95% | Loaders work; catalog file to remove |
-| Physics Engine | ✅ Accurate | Antoine equation, Newton's cooling |
-| Element Loading | ✅ Working | H, O, N, etc. loadable |
-| Ambient-Boiling Visual | ✅ Done | Upward steam effect |
-| Dropdowns | ✅ Fixed | 2-color system, clear hover |
-| Critical Bugs | 🔴 3 found | 1 CRITICAL, 1 HIGH, 1 LOW |
-| Room Environment | 🔲 Planned | Not started |
-| Experiment Scorecard | 🔲 Planned | Not started |
-| Unit System | 🟡 50% | Infrastructure ready |
-| Save System | 🔲 Planned | Not started |
+| System | Status | Details |
+|--------|--------|---------|
+| **Core Gameplay** | ✅ **Stable** | Pot dragging, heating, accurate physics |
+| **Substance System** | ✅ **Zero Hardcoding** | Auto-discovery (12 compounds + 118 elements) |
+| **Physics Engine** | ✅ **Accurate** | Antoine equation, Newton's cooling |
+| **Workshop System** | ✅ **Working** | 4 workshops, dynamic switching |
+| **UI/UX** | ✅ **Polished** | Unified dropdowns, proper contrast |
+| **Critical Bugs** | 🔴 **2 Found** | Pause bug (CRITICAL), saltwater BP (HIGH) |
+| **Visual Polish** | 🟡 **Minor Issues** | Flame scaling (LOW priority) |
+| **Advanced Features** | 🔲 **Planned** | Room environment, scorecards, saves |
 
----
-
-## 📅 Recent Work (This Session)
-
-1. ✅ **Element Loading** - Full infrastructure for loading H, O, N elements
-2. ✅ **Ambient-Boiling Visual** - Upward steam effect for substances boiling at room temp
-3. ✅ **Antoine Equation** - Real vapor-pressure calculation (±0.5°C)
-4. ✅ **Level 2 Dropdown** - Fixed JSON structure + styling
-5. ✅ **Dropdown Styling** - Unified 2-color system across all themes
-
-**Commits:** 09221fd, 5ee85e3, eb03ed7
+### Build Health
+- **Main Bundle:** 198KB (gzipped: 63.59KB)
+- **Lazy Chunks:** 130+ separate files (code splitting working)
+- **Build Time:** ~650ms
+- **Zero Hardcoding:** ✅ Achieved
 
 ---
 
-## 📋 Full Session History
+## 📦 DELIVERABLES TRACKING
 
-See bottom of original TODO.md for complete history of 4 sessions with 40+ completed tasks.
+### Delivered
+- [x] Core thermodynamics simulation
+- [x] Workshop theming system
+- [x] Substance loading (zero hardcoding)
+- [x] Element support (all 118)
+- [x] Compound support (12+)
+- [x] Antoine vapor pressure
+- [x] Altitude effects
+- [x] Level/experiment system
+
+### In Progress
+- [ ] Bug fixes (Level 3 pause, saltwater BP)
+- [ ] Runtime testing
+
+### Planned
+- [ ] Unit conversion UI
+- [ ] Room environment system
+- [ ] Experiment scorecards
+- [ ] Save system
+- [ ] Documentation

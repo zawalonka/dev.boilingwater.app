@@ -129,7 +129,9 @@ export function parseSubstanceProperties(substanceData) {
     ? compound.phaseTransitions.boilingPoint
     : null
 
-  const meltingPoint = compound.phaseTransitions?.meltingPoint || null
+  const meltingPoint = Number.isFinite(compound.phaseTransitions?.meltingPoint)
+    ? compound.phaseTransitions.meltingPoint
+    : null
   const triplePoint = compound.phaseTransitions?.triplePoint || null
   const criticalPoint = compound.phaseTransitions?.criticalPoint || null
 

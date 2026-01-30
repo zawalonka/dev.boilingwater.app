@@ -204,7 +204,7 @@ git push dev main       # Testing repo (ALWAYS FIRST)
 - [ROOM_ENVIRONMENT_SYSTEM.md](../docs/planning/ROOM_ENVIRONMENT_SYSTEM.md) - Detailed plan for dynamic room AC, scrubber, experiment scorecard (future feature, pre-implementation planning phase)
 
 **Physics/Gameplay Work:**
-- [WATER_STATES_ARCHITECTURE.md](../docs/architecture/WATER_STATES_ARCHITECTURE.md) - Phase change system (ice/water/steam)
+- [ANTOINE_AND_REFACTOR.md](../docs/architecture/ANTOINE_AND_REFACTOR.md) - Antoine equation + refactor notes
 - [CODEBASE_DOCUMENTATION.md](../docs/architecture/CODEBASE_DOCUMENTATION.md) → Physics Engine section
 - `src/utils/physics.js`, `src/utils/substanceLoader.js`, `src/data/substances/**/*.json`
 - [REFACTORING_SUMMARY.md](../docs/architecture/REFACTORING_SUMMARY.md) - Major architectural decisions

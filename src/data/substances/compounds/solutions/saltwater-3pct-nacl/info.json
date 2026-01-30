@@ -16,7 +16,7 @@
   },
   "components": [
     {
-      "id": "h2o",
+      "id": "water",
       "name": "Water",
       "smiles": "O",
       "role": "solvent",

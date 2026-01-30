@@ -21,7 +21,7 @@ import {
   simulateTimeStep,       // Runs one time step of physics (heating/cooling/boiling)
   formatTemperature       // Formats temperature numbers for display (e.g., 98.5°C)
 } from '../utils/physics'
-import { loadSubstance, parseSubstanceProperties, DEFAULT_SUBSTANCE, getAvailableSubstances } from '../utils/substanceLoader'
+import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUBSTANCE, getAvailableSubstances } from '../utils/substanceLoader'
 import { GAME_CONFIG } from '../constants/physics'
 import ControlPanel from './ControlPanel'
 import '../styles/GameScene.css'
@@ -283,7 +283,35 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   useEffect(() => {
     async function loadFluids() {
       const fluids = await getAvailableSubstances()
-      setAvailableFluids(fluids)
+      const ambientTemperature = GAME_CONFIG.ROOM_TEMPERATURE
+
+      const fluidCandidates = await Promise.all(
+        fluids.all.map(async (substanceId) => {
+          try {
+            const info = await loadSubstanceInfo(substanceId)
+            const props = parseSubstanceProperties(info)
+
+            const meltingPoint = props?.meltingPoint
+            const boilingPoint = props?.boilingPointSeaLevel
+
+            if (
+              Number.isFinite(meltingPoint) &&
+              Number.isFinite(boilingPoint) &&
+              ambientTemperature > meltingPoint &&
+              ambientTemperature < boilingPoint
+            ) {
+              return substanceId
+            }
+          } catch (error) {
+            return null
+          }
+
+          return null
+        })
+      )
+
+      const filteredFluids = fluidCandidates.filter(Boolean)
+      setAvailableFluids(filteredFluids)
     }
     loadFluids()
   }, [])

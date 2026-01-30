@@ -119,15 +119,13 @@ function ControlPanel({
           )}
           
           {/* Boiling point info */}
-          {liquidMass > 0 && (
-            <div className="status-item">
-              <span className="label">Boils at:</span>
-              <span className="value">{canBoil ? `${formatTemperature(boilingPoint)}°C` : 'N/A'}</span>
-            </div>
-          )}
+          <div className="status-item">
+            <span className="label">Boils at:</span>
+            <span className="value">{canBoil ? `${formatTemperature(boilingPoint)}°C` : 'N/A'}</span>
+          </div>
           
           {/* Timer controls - prominent display with start/stop/reset (Advanced Mode Only) */}
-          {liquidMass > 0 && isAdvancedModeAvailable && (
+          {isAdvancedModeAvailable && (
             <div className="timer-controls">
               <div className="timer-display">
                 <span className="timer-label">Timer:</span>
@@ -160,8 +158,8 @@ function ControlPanel({
             </div>
           )}
           
-          {/* Fluid selector (for different-fluids experiment) */}
-          {activeExperiment === 'different-fluids' && availableFluids.length > 0 && (
+          {/* Fluid selector (Exp 3+: different-fluids and beyond) */}
+          {activeExperiment !== 'boiling-water' && activeExperiment !== 'altitude-effect' && availableFluids.length > 0 && (
             <div className="fluid-selector">
               <label htmlFor="fluid-select">Fluid:</label>
               <select 
@@ -191,7 +189,7 @@ function ControlPanel({
           )}
           
           {/* Advanced speed controls with arrows (Advanced Mode Only) */}
-          {liquidMass > 0 && isAdvancedModeAvailable && (
+          {isAdvancedModeAvailable && (
             <div className="speed-controls-advanced">
               <button 
                 className="speed-arrow"
@@ -263,8 +261,8 @@ function ControlPanel({
             </p>
           )}
 
-          {/* Altitude control (from Exp 3 onward) - bottom of panel */}
-          {activeExperiment === 'different-fluids' && (
+          {/* Altitude control (Exp 2+: altitude-effect and beyond) - bottom of panel */}
+          {activeExperiment !== 'boiling-water' && (
             <div className="altitude-control">
               <label htmlFor="altitude-input">Altitude (m):</label>
               <input
