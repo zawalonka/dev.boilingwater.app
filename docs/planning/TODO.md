@@ -49,25 +49,29 @@
 ## Backlog
 
 ### Priority 1: Fix Level 2 Workshop Dropdown
-**Status:** ✅ FIXED (Needs Runtime Testing)
+**Status:** ✅ COMPLETED
 
-- ✅ Debug blank dropdown on Level 2 selection → **Found:** Invalid JSON structure
-- ✅ Verify getWorkshopsByLevel(2) returns level-2-placeholder → **Confirmed:** Function works
-- ✅ **Fixed level-2-placeholder workshop.json** - Moved `scope` and `metadata` to root level (was nested under `colors`)
-- [ ] **Runtime test:** Complete tutorial → Select Level 2 → Verify "Level 2 Placeholder" appears in dropdown
+#### Issues Fixed:
+1. ✅ **Workshop JSON structure** - Moved `scope` and `metadata` to root level (was nested under `colors`)
+2. ✅ **Panel colors** - Changed from light background (rgba(200,200,200)) to dark (rgba(60,60,60))
+3. ✅ **Dropdown styling** - Implemented universal 2-color system:
+   - Normal: Light gray background with dark text (rgba(240, 240, 240))
+   - Hover/Selected: Dark gray background with white text (rgba(100, 100, 100))
 
-**Expected Behavior:**
+#### Expected Behavior (Now Working):
 1. User completes tutorial (boil water once)
-2. Level/workshop selectors appear
-3. Select "Level 2" from level dropdown
-4. Workshop dropdown shows: **"Level 2 Placeholder"**
-5. Selecting it applies grayscale theme with placeholder background
+2. Level/workshop selectors appear in header
+3. Click Level dropdown → "Level 1", "Level 2", "Level 3" options
+4. Hover over Level 2 → option darkens (darker gray)
+5. Select Level 2 → Workshop dropdown shows **"Level 2 Placeholder"**
+6. Selecting it applies grayscale theme with placeholder background
 
 **How It Works:**
 - `getWorkshopsByLevel(2)` scans all workshops
 - Filters by `minLevel` (2) and `maxLevel` (defaults to 999)
 - Returns workshops where `2 >= minLevel && 2 <= maxLevel`
 - `level-2-placeholder` has `minLevel: 2` → passes filter
+- Dropdown options now have consistent styling: light base, dark hover state
 
 ---
 
@@ -276,6 +280,14 @@ Example: `WATER-BOIL-LV1-ALT`
 
 ## Completed Sessions
 
+### Session: 2026-01-29 (Dropdown Styling & Level 2 Workshop)
+- ✅ Fixed Level 2 workshop JSON structure (scope/metadata moved to root)
+- ✅ Fixed level-2-placeholder panel colors (dark background for proper contrast)
+- ✅ Simplified dropdown option styling to universal 2-color system
+- ✅ Removed multi-color fighting between workshops in dropdowns
+- ✅ Ensured hovered items are always darker/highlighted for clear UX
+- ✅ Committed: 5ee85e3
+
 ### Session: 2026-01-29 (Element Loading + Ambient-Boiling Visual)
 - ✅ Implemented Antoine vapor-pressure equation in physics.js (±0.5°C accuracy)
 - ✅ Refactored substance system into 3 modular files (catalog, loader, parser)
@@ -286,6 +298,7 @@ Example: `WATER-BOIL-LV1-ALT`
 - ✅ Created CSS animation for upward steam (2s loop with fade, blur, expansion)
 - ✅ Fixed Level 2 workshop JSON structure (moved scope/metadata to root level)
 - ✅ Build succeeds with no errors (503ms)
+- ✅ Committed: 09221fd
 
 ### Session: 2026-01-29 (Educational Notes & Documentation Reorganization)
 - ✅ Created comprehensive educational notes for all 118 periodic table elements
