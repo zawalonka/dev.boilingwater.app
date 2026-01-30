@@ -333,6 +333,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         setResidueMass(0)
         // Debug log: useful for verifying fluid properties loaded correctly
         console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
+        console.log(`   Boiling point (sea level): ${props.boilingPointSeaLevel}°C`)
+        console.log(`   Raw JSON boilingPoint: ${substanceData.phaseTransitions?.boilingPoint}°C`)
       } catch (error) {
         console.error('Failed to load fluid properties:', error)
         setFluidProps(null)

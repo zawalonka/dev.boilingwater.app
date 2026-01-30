@@ -41,8 +41,8 @@
     "TmaxC": 100,
     "formula": "log10(Pvap) = A - B/(C + T)",
     "unit": "Pressure in mmHg, Temperature in °C",
-    "source": "Based on pure water coefficients from NIST Chemistry WebBook (Bridgeman and Aldrich, 1964). Boiling point elevation (declared as 0.51°C in info.json) is calculated using the van't Hoff factor for electrolytes: ΔTb = i·Kb·m = 1.9 × 0.512 °C/m × 0.528 m ≈ 0.514°C",
-    "note": "Uses pure water's experimentally-verified Antoine equation. Salt lowers vapor pressure (Raoult's Law) and increases boiling point via colligative property (van't Hoff factor i=1.9 for NaCl). Boiling point at sea level: 100.51°C (100°C water + 0.51°C elevation from dissolved salt)."
+    "source": "Based on pure water coefficients from NIST Chemistry WebBook (Bridgeman and Aldrich, 1964). Boiling point elevation (declared as 0.515°C in info.json) is calculated using the van't Hoff factor for electrolytes: ΔTb = i·Kb·m = 1.9 × 0.512 °C/m × 0.5291 m ≈ 0.5147°C. Precise NaCl molar mass: 58.443 g/mol",
+    "note": "Uses pure water's experimentally-verified Antoine equation. Salt lowers vapor pressure (Raoult's Law) and increases boiling point via colligative property (van't Hoff factor i=1.9 for NaCl). Boiling point at sea level: 100.515°C (100°C water + 0.515°C elevation from dissolved salt)."
   },
   "ionicStrength": {
     "value": 0.513,

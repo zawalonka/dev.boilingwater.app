@@ -16,11 +16,12 @@
 ### 2. Saltwater Boiling Point - Van't Hoff Factor (CRITICAL ACCURACY)
 **Problem:** Declared boiling point elevation (0.16°C) is WRONG - doesn't account for van't Hoff factor  
 **Root Cause:** Treated NaCl like sugar (i=1) instead of electrolyte (i=1.9)  
-**Correct Value:** Should be ~0.51-0.52°C (100.51-100.52°C total), not 100.16°C  
-**Calculation:** ΔTb = i·Kb·m = 1.9 × 0.512 × 0.528 = 0.514°C  
+**Correct Value:** Should be ~0.515°C (100.515°C total), using precise NaCl molar mass 58.443 g/mol  
+**Calculation:** ΔTb = i·Kb·m = 1.9 × 0.512 × 0.5291 = 0.5147°C  
+**Molality:** (30g / 58.443 g/mol) / 0.970 kg = 0.5291 m  
 **Impact:** Incorrect physics education - students learn wrong effect of dissolved salt  
 **Location:** `src/data/substances/compounds/solutions/saltwater-3pct-nacl/info.json`  
-**Fix Required:** Update boilingPointElevation from 0.16 to 0.51
+**Fix Required:** Update boilingPointElevation from 0.16 to 0.515 ✅ FIXED
 
 ---
 

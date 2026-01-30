@@ -138,7 +138,7 @@ function ControlPanel({
           {/* Boiling point info */}
           <div className="status-item">
             <span className="label">Boils at:</span>
-            <span className="value">{canBoil ? `${formatTemperature(boilingPoint)}°C` : 'N/A'}</span>
+            <span className="value">{canBoil ? `${formatTemperature(boilingPoint, 2)}°C` : 'N/A'}</span>
           </div>
           
           {/* Timer controls - prominent display with start/stop/reset (Advanced Mode Only) */}
@@ -236,7 +236,7 @@ function ControlPanel({
           {/* Heating status with progress */}
           {liquidMass > 0 && burnerHeat > 0 && isPotOverFlame && canBoil && temperature < boilingPoint && (
             <p className="status-text" title="Wait for the fluid to boil, or speed up time with the speed controls above">
-              🔥 Heating: {formatTemperature(temperature)}°C → {formatTemperature(boilingPoint)}°C
+              🔥 Heating: {formatTemperature(temperature, 2)}°C → {formatTemperature(boilingPoint, 2)}°C
             </p>
           )}
 

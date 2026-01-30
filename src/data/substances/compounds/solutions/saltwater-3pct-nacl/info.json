@@ -33,17 +33,19 @@
     }
   ],
   "effectOfDissolution": {
-    "boilingPointElevation": 0.51,
-    "boilingPointElevationSource": "van't Hoff factor calculation: ΔTb = i·Kb·m = 1.9 × 0.512 °C/m × 0.528 m ≈ 0.514°C",
+    "boilingPointElevation": 0.515,
+    "boilingPointElevationSource": "van't Hoff factor calculation: ΔTb = i·Kb·m = 1.9 × 0.512 °C/m × 0.5291 m ≈ 0.5147°C. NaCl molar mass = 58.443 g/mol (Na: 22.990, Cl: 35.453). Molality = (30g / 58.443) / 0.970 kg = 0.5291 m",
     "vanHoffFactor": 1.9,
-    "molality": 0.528,
+    "molality": 0.5291,
+    "molarMassNaCl": 58.443,
     "ebullioscopicConstant": 0.512,
-    "meltingPointDepression": -0.98,
+    "cryoscopicConstant": 1.86,
+    "meltingPointDepression": -1.87,
     "osmioticPressure": "increases with concentration"
   },
   "phaseTransitions": {
-    "meltingPoint": -0.98,
-    "boilingPoint": 100.51,
+    "meltingPoint": -1.87,
+    "boilingPoint": 100.515,
     "triplePoint": {
       "temperature": -0.05,
       "pressure": 0.006,
@@ -63,5 +65,5 @@
   ],
   "note": "At standard conditions, saltwater only exists as liquid. Freezing/boiling involves phase separation.",
   "lastUpdated": "2026-01-27",
-  "educationalNotes": "Demonstrates colligative properties - dissolved salt raises boiling point (+0.51°C for 3% NaCl via van't Hoff factor i=1.9) and lowers freezing point (-1.88°C). This is why ocean water (≈3.5% salt) doesn't freeze as easily as freshwater and why we add salt to icy roads in winter! Saltwater conducts electricity (electrolyte) while pure water doesn't - dissolved Na⁺ and Cl⁻ ions carry charge. Osmosis: cells in saltwater shrivel as water leaves to dilute the salty solution outside. KEY: NaCl dissociates into 2 ions, so i≈1.9 (not 1), making salt's effect on boiling/freezing points almost twice as strong as non-electrolytes like sugar!"
+  "educationalNotes": "Demonstrates colligative properties - dissolved salt raises boiling point (+0.515°C for 3% NaCl via van't Hoff factor i=1.9) and lowers freezing point (-1.87°C). This is why ocean water (≈3.5% salt) doesn't freeze as easily as freshwater and why we add salt to icy roads in winter! Saltwater conducts electricity (electrolyte) while pure water doesn't - dissolved Na⁺ and Cl⁻ ions carry charge. Osmosis: cells in saltwater shrivel as water leaves to dilute the salty solution outside. KEY: NaCl dissociates into 2 ions, so i≈1.9 (not 1), making salt's effect on boiling/freezing points almost twice as strong as non-electrolytes like sugar!"
 }
