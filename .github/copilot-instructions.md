@@ -205,29 +205,22 @@ git push dev main       # Testing repo (ALWAYS FIRST)
 - ✅ Specify remote explicitly (dev or origin)
 - ❌ Never push directly to production
 
-### Task-Specific Documents
+### On-Demand Documentation (Load When Needed)
 
-**Workshop System Work:**
-- [WORKSHOP_QUICK_START.md](../docs/guides/WORKSHOP_QUICK_START.md) - Quick guide for creating new workshops
-- [GOTCHAS.md](../GOTCHAS.md) → Theme Validation section (themes must be flexible with name field location)
+These docs are NOT in default context. Reference them only for specific tasks:
 
-**Room Environment & Atmospheric System Work:**
-- [ROOM_ENVIRONMENT_SYSTEM.md](../docs/planning/ROOM_ENVIRONMENT_SYSTEM.md) - Detailed plan for dynamic room AC, scrubber, experiment scorecard (future feature, pre-implementation planning phase)
+| Task | Document |
+|------|----------|
+| Workshop/theme work | [WORKSHOP_QUICK_START.md](../docs/guides/WORKSHOP_QUICK_START.md) |
+| Adding substances | [SUBSTANCE_FILE_TEMPLATE.md](../docs/guides/SUBSTANCE_FILE_TEMPLATE.md) |
+| Substance system | [SUBSTANCE_SYSTEM_GUIDE.md](../docs/guides/SUBSTANCE_SYSTEM_GUIDE.md) |
+| Future room system | [ROOM_ENVIRONMENT_SYSTEM.md](../docs/planning/ROOM_ENVIRONMENT_SYSTEM.md) |
+| Historical decisions | [COMPLETED_TODOS.md](../docs/planning/COMPLETED_TODOS.md) |
 
-**Physics/Gameplay Work:**
-- [ANTOINE_AND_REFACTOR.md](../docs/architecture/ANTOINE_AND_REFACTOR.md) - Antoine equation + refactor notes
-- [CODEBASE_DOCUMENTATION.md](../docs/architecture/CODEBASE_DOCUMENTATION.md) → Physics Engine section
-- `src/utils/physics.js`, `src/utils/substanceLoader.js`, `src/data/substances/**/*.json`
-- [REFACTORING_SUMMARY.md](../docs/architecture/REFACTORING_SUMMARY.md) - Major architectural decisions
-- [TODO.md](../docs/planning/TODO.md) - Current work plan
-- `scripts/optimize-images.js` - Image processing automation
-
-**Substance System Work:**
-- [SUBSTANCE_SYSTEM_GUIDE.md](../docs/guides/SUBSTANCE_SYSTEM_GUIDE.md) - Substance system architecture and usage
-- [SUBSTANCE_FILE_TEMPLATE.md](../docs/guides/SUBSTANCE_FILE_TEMPLATE.md) - JSON templates for new substances
-- All 118 periodic table elements in `src/data/substances/periodic-table/` (001_H_nonmetal.json through 118_Og_nonmetal.json)
-- 12+ household compounds in `src/data/substances/compounds/` with full thermodynamic data
-- Use `substanceLoader.getAvailableSubstances()` to load and access substances
+**Physics/Gameplay - Read code directly:**
+- `src/utils/physics.js` - ISA model, Antoine equation, dynamic Kb
+- `src/utils/substanceLoader.js` - Substance loading API
+- `src/utils/substanceParser.js` - JSON to physics format
 
 ---
 

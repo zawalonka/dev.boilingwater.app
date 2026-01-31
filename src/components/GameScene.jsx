@@ -144,6 +144,9 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // Burner heat setting (0-3) when boiling was achieved (for ideal time calculation)
   const [burnerHeatWhenBoiled, setBurnerHeatWhenBoiled] = useState(0)
 
+  // Snapshot of experiment stats captured at the moment of boiling
+  const [boilStats, setBoilStats] = useState(null)
+
   // Should we pause time flow while popup is visible?
   const [pauseTime, setPauseTime] = useState(false)
   const [showNextLevelButton, setShowNextLevelButton] = useState(false)
@@ -466,12 +469,26 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         setPauseTime(true)   // Pause time while popup is visible
         setShowNextLevelButton(Boolean(getNextProgression()))
         // Calculate time it took to boil (from when pot was placed over flame)
-        if (timePotOnFlame !== null) {
-          const elapsedBoilTime = timePotOnFlame + deltaTime
-          setBoilTime(elapsedBoilTime)
-        }
+        const elapsedBoilTime = timePotOnFlame !== null ? timePotOnFlame + deltaTime : 0
+        setBoilTime(elapsedBoilTime)
         // Capture the burner heat setting when boiling is achieved
         setBurnerHeatWhenBoiled(burnerHeat)
+        
+        // Capture snapshot of all experiment stats at moment of boiling
+        setBoilStats({
+          temperature: newState.temperature,
+          boilingPoint: boilingPoint,
+          boilingPointSeaLevel: fluidProps?.boilingPointSeaLevel ?? null,
+          altitude: altitude,
+          locationName: locationName,
+          fluidName: fluidProps?.name || 'Fluid',
+          fluidId: activeFluid,
+          timeToBoil: elapsedBoilTime,
+          burnerHeat: burnerHeat,
+          experiment: activeExperiment,
+          level: activeLevel
+        })
+        
         onWaterBoiled?.()    // Notify parent that water has boiled
       }
       
@@ -510,6 +527,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setTemperature(GAME_CONFIG.ROOM_TEMPERATURE)
     setIsBoiling(false)
     setShowHook(false)
+    setBoilStats(null)
   }
 
   /**
@@ -770,6 +788,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setShowHook(false)
     setPauseTime(false)
     setShowNextLevelButton(false)
+    setBoilStats(null)
 
     if (progression.type === 'experiment') {
       onExperimentChange?.(progression.id)
@@ -1343,54 +1362,153 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
         {/* 
           ========== EDUCATIONAL HOOK ==========
-          Shows a message about boiling points at different altitudes
-          Appears when water starts boiling
+          Shows experiment-specific results when boiling is achieved
+          Always pauses simulation while visible
         */}
 
-        {/* 
-          If at altitude (not at sea level) and water is boiling:
-          Show message that water boiled at a different temperature than 100°C
-        */}
-
-        {/* Scorecard Popup - Centered modal with stats and explanation */}
-        {showHook && (
+        {/* Scorecard Popup - Centered modal with experiment-specific stats */}
+        {showHook && boilStats && (
           <div className="boil-stats-overlay">
             <div className="boil-stats-modal">
-              <h2>📋 Scorecard</h2>
-              <p className="modal-subtitle">You just boiled {fluidName.toLowerCase()}!</p>
+              {/* EXPERIMENT 1: Tutorial - Basic Boiling */}
+              {boilStats.experiment === 'boiling-water' && (
+                <>
+                  <h2>🎉 You Boiled Water!</h2>
+                  <p className="modal-subtitle">Great job completing the tutorial!</p>
 
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <span className="stat-label">Final Temperature:</span>
-                  <span className="stat-value">{formatTemperature(temperature)}°C</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-label">Boiling Point:</span>
-                  <span className="stat-value">{formatTemperature(boilingPoint)}°C</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-label">Actual Time:</span>
-                  <span className="stat-value">{formatTime(boilTime)}</span>
-                </div>
-                {burnerHeatWhenBoiled > 0 && (
-                  <div className="stat-item">
-                    <span className="stat-label">Ideal Time (Max Heat):</span>
-                    <span className="stat-value">{formatTime(calculateIdealBoilTime(3, boilingPoint))}</span>
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-label">Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPoint)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Time to Boil:</span>
+                      <span className="stat-value">{formatTime(boilStats.timeToBoil)}</span>
+                    </div>
                   </div>
-                )}
-              </div>
 
-              <div className="info-content">
-                <h3>🎓 How Boiling Works</h3>
-                <p>You just boiled {fluidName.toLowerCase()}! Here's what happened:</p>
-                <ul>
-                  <li><strong>Heat Transfer:</strong> The burner transferred thermal energy to the fluid molecules</li>
-                  <li><strong>Temperature Rise:</strong> As molecules gained energy, they moved faster, increasing temperature</li>
-                  <li><strong>Phase Change:</strong> At {boilingPointSeaLevel !== null ? `${formatTemperature(boilingPointSeaLevel)}°C` : 'its boiling point'} (sea level), molecules gained enough energy to escape as vapor</li>
-                  <li><strong>Boiling Point:</strong> This temperature depends on atmospheric pressure—it changes with altitude!</li>
-                </ul>
-                <p className="fun-fact">🏔️ <strong>Fun Fact:</strong> At the top of Mount Everest, water boils at only 68°C (154°F) because of the lower air pressure!</p>
-              </div>
+                  <div className="info-content">
+                    <h3>🎓 What You Learned</h3>
+                    <ul>
+                      <li><strong>Heat Transfer:</strong> The burner transferred thermal energy to the water molecules</li>
+                      <li><strong>Temperature Rise:</strong> As molecules gained energy, they moved faster, increasing temperature</li>
+                      <li><strong>Boiling Point:</strong> At {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C (sea level), water molecules gain enough energy to escape as vapor</li>
+                    </ul>
+                    <p className="fun-fact">🏔️ <strong>Next Up:</strong> Try the Altitude experiment to see how location changes the boiling point!</p>
+                  </div>
+                </>
+              )}
+
+              {/* EXPERIMENT 2: Altitude Effect */}
+              {boilStats.experiment === 'altitude-effect' && (
+                <>
+                  <h2>📍 Altitude Experiment Complete!</h2>
+                  <p className="modal-subtitle">
+                    You boiled water at {boilStats.locationName || `${boilStats.altitude.toLocaleString()}m altitude`}
+                  </p>
+
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-label">Your Altitude:</span>
+                      <span className="stat-value">{boilStats.altitude.toLocaleString()} m</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Boiling Point Here:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPoint)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Sea Level Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Difference:</span>
+                      <span className="stat-value">
+                        {formatTemperature((boilStats.boilingPointSeaLevel ?? 100) - boilStats.boilingPoint)}°C lower
+                      </span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Time to Boil:</span>
+                      <span className="stat-value">{formatTime(boilStats.timeToBoil)}</span>
+                    </div>
+                  </div>
+
+                  <div className="info-content">
+                    <h3>🎓 Why Does Altitude Matter?</h3>
+                    <ul>
+                      <li><strong>Lower Pressure:</strong> At higher altitudes, there's less air pushing down on the water</li>
+                      <li><strong>Easier Escape:</strong> Water molecules need less energy to escape as vapor</li>
+                      <li><strong>Result:</strong> Water boils at a lower temperature ({formatTemperature(boilStats.boilingPoint)}°C vs {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C)</li>
+                    </ul>
+                    <p className="fun-fact">🏔️ <strong>Fun Fact:</strong> At the top of Mount Everest (8,849m), water boils at only ~68°C!</p>
+                  </div>
+                </>
+              )}
+
+              {/* EXPERIMENT 3: Different Fluids */}
+              {boilStats.experiment === 'different-fluids' && (
+                <>
+                  <h2>🧪 {boilStats.fluidName} Boiled!</h2>
+                  <p className="modal-subtitle">You successfully boiled {boilStats.fluidName.toLowerCase()}</p>
+
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-label">Substance:</span>
+                      <span className="stat-value">{boilStats.fluidName}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPoint)}°C</span>
+                    </div>
+                    {boilStats.altitude > 0 && (
+                      <div className="stat-item">
+                        <span className="stat-label">Altitude:</span>
+                        <span className="stat-value">{boilStats.altitude.toLocaleString()} m</span>
+                      </div>
+                    )}
+                    <div className="stat-item">
+                      <span className="stat-label">Sea Level Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPointSeaLevel)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Time to Boil:</span>
+                      <span className="stat-value">{formatTime(boilStats.timeToBoil)}</span>
+                    </div>
+                  </div>
+
+                  <div className="info-content">
+                    <h3>🎓 Why Different Boiling Points?</h3>
+                    <ul>
+                      <li><strong>Molecular Bonds:</strong> Different substances have different intermolecular forces</li>
+                      <li><strong>Stronger Bonds = Higher BP:</strong> Water (100°C) has strong hydrogen bonds</li>
+                      <li><strong>Weaker Bonds = Lower BP:</strong> Acetone (56°C) and ethanol (78°C) have weaker bonds</li>
+                    </ul>
+                    <p className="fun-fact">💡 <strong>Try This:</strong> Compare how long it takes to boil different substances with the same heat setting!</p>
+                  </div>
+                </>
+              )}
+
+              {/* FALLBACK: Unknown experiment - show generic stats */}
+              {!['boiling-water', 'altitude-effect', 'different-fluids'].includes(boilStats.experiment) && (
+                <>
+                  <h2>📋 Experiment Complete!</h2>
+                  <p className="modal-subtitle">You boiled {boilStats.fluidName.toLowerCase()}!</p>
+
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-label">Substance:</span>
+                      <span className="stat-value">{boilStats.fluidName}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPoint)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Time to Boil:</span>
+                      <span className="stat-value">{formatTime(boilStats.timeToBoil)}</span>
+                    </div>
+                  </div>
+                </>
+              )}
 
               <button
                 className="action-button continue-button"

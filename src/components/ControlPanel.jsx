@@ -315,23 +315,13 @@ function ControlPanel({
           {/* Altitude control (Exp 2+: altitude-effect and beyond) - bottom of panel */}
           {activeExperiment !== 'boiling-water' && (
             <div className="altitude-control">
-              <label htmlFor="altitude-input">Altitude (m):</label>
-              <input
-                id="altitude-input"
-                type="number"
-                value={editableAltitude !== null ? editableAltitude : altitude}
-                onChange={(e) => setEditableAltitude(e.target.value ? parseInt(e.target.value, 10) : null)}
-                className="altitude-input"
-                title="Set altitude in meters to see how it affects boiling point"
-                placeholder="0"
-                min="0"
-                max="10000"
-              />
+              <span className="altitude-display">
+                Altitude: {altitude.toLocaleString()}m
+              </span>
               {locationName ? (
                 <button 
                   className="action-button location-button"
                   onClick={() => {
-                    setEditableAltitude(null)
                     setShowLocationPopup(true)
                   }}
                   title="Change location"
@@ -342,7 +332,6 @@ function ControlPanel({
                 <button 
                   className="action-button location-button"
                   onClick={() => {
-                    setEditableAltitude(null)
                     setShowLocationPopup(true)
                   }}
                   title="Set your location"

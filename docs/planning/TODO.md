@@ -2,19 +2,7 @@
 
 > **Last Updated:** 2026-01-31  
 > **Status:** Pre-Alpha (working prototype with zero-hardcoding substance system)
-
----
-
-## 🔴 CRITICAL: Must Fix Before Next Release
-
-### 1. Level 3 Pause Bug (BLOCKS GAMEPLAY)
-**Problem:** `pauseTime` set when boiling begins, never cleared for non-tutorial experiments  
-**Impact:** Simulation freezes after boiling in Level 2+ experiments  
-**Location:** [GameScene.jsx](../../src/components/GameScene.jsx) boil-stats-modal  
-**Fix Required:** Add unpause logic for all experiment completion handlers
-
-### 2. Saltwater Boiling Point - Van't Hoff Factor ✅ FIXED
-**Status:** Fixed - boilingPointElevation corrected to 0.515°C
+> **Completed items:** See [COMPLETED_TODOS.md](COMPLETED_TODOS.md)
 
 ---
 
@@ -23,8 +11,8 @@
 ### Test & Validate Recent Changes
 - [ ] Test Level 2 dropdown (tutorial → Level 2 → verify dropdown works)
 - [ ] Test element loading in-game (H, O, N and verify physics)
-- [ ] Verify saltwater boiling at correct temperature
-- [ ] Fix Level 3 pause bug
+- [ ] Verify saltwater boiling at correct temperature (100.51°C at sea level, ~66.7°C at 10km)
+- [ ] Test experiment-specific popups (L1E1-Tutorial, L1E2-Altitude, L1E3-Different Fluids)
 
 ### Add Antoine TminC/TmaxC Notes to Remaining JSON Files
 **Priority:** Low (delegate to less expensive AI)  
@@ -44,7 +32,13 @@
 - [ ] `compounds/pure/hydrogen-peroxide-h2o2/liquid/state.json`
 - [ ] `compounds/pure/acetic-acid-ch3cooh/liquid/state.json`
 
-**What to add:** Add `TminC_note` and `TmaxC_note` fields explaining that these are empirically verified range boundaries, not hard limits. The equation works outside this range but accuracy may degrade.
+**What to add:** Add `TminC_note` and `TmaxC_note` fields explaining that these are empirically verified range boundaries, not hard limits.
+
+### Add Regression Guardrails
+- [ ] Add physics guardrail checklist to DEVELOPMENT.md
+  - No artificial clamps without physics justification
+  - No static values for temperature-dependent properties
+  - Dynamic calculation preferred over pre-computed constants
 
 ---
 
@@ -81,58 +75,7 @@
 
 ### Very Low Priority (Future/Nice-to-Have)
 7. **Experiment Data Collection & AI Analysis System**
-   - **Goal:** Collect anonymized experiment data for insights and educational improvements
-   - **Status:** Design/ideation phase
-   - **Size:** Medium (data layer + optional AI analysis)
-   - **Timeline:** Post-1.0 release feature
-   
-   **Phase 1: Local Storage (Simple)**
-   - Store all experiment results to `localStorage` or IndexedDB
-   - Schema example:
-     ```json
-     {
-       "experimentId": "uuid-here",
-       "timestamp": "2026-01-29T16:45:00Z",
-       "substance": "ethanol",
-       "altitude": 2500,
-       "initialTemp": 20,
-       "boilingPointObserved": 75.2,
-       "timeToBoil": 187,
-       "heatInputWatts": 1700,
-       "temperatureCurve": [20, 21.5, 23.1, ...],
-       "userActions": ["filled_pot", "turned_heat_on", "adjusted_burner_to_high"]
-     }
-     ```
-   - Export button: Download personal experiment history as JSON/CSV
-   
-   **Phase 2: Cloud Aggregation (Opt-in)**
-   - User consent to anonymized data sharing
-   - POST experiment results to cloud endpoint (Firebase/Supabase/custom)
-   - Aggregate database for pattern analysis
-   
-   **Phase 3: AI-Powered Insights (Automated)**
-   - GitHub Actions: Analyze experiment corpus weekly
-   - AI generates insights document (`docs/EXPERIMENT_INSIGHTS.md`)
-   - Example insights:
-     - "70% of users attempt ethanol first (curiosity about alcohol)"
-     - "Common error: Expecting water to boil instantly at 100°C"
-     - "Altitude experiments have 3x replay rate (high educational value)"
-   
-   **Privacy Considerations:**
-   - All data collection opt-in only
-   - No personal identifiers stored
-   - GDPR-compliant data handling
-   - Clear data retention policies
-   
-   **Potential Use Cases:**
-   - Improve tutorial based on where users struggle
-   - Identify confusing experiments
-   - Generate personalized learning paths
-   - A/B test educational content effectiveness
-   - Community leaderboards (optional)
-   
-   **Cost Estimate (if cloud-enabled):**
-   - Storage: ~$5/month (100k experiments)
-   - AI Analysis: ~$10-20/month (weekly batch processing)
-   - Total: <$30/month for full analytics pipeline
+   - See [COMPLETED_TODOS.md](COMPLETED_TODOS.md) for full design notes
+   - Local storage → Cloud aggregation → AI insights pipeline
+   - Post-1.0 release feature
 
