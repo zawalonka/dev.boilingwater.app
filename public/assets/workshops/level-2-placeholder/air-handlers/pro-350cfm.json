@@ -1,0 +1,35 @@
+{
+  "id": "pro-350cfm",
+  "name": "AHU 350 CFM",
+  "description": "Professional air handler with HEPA filtration",
+  
+  "flowCharacteristics": {
+    "maxFlowRateCFM": 350,
+    "maxFlowRateM3PerHour": 595
+  },
+  
+  "filtrationEfficiency": {
+    "CO2": 0.95,
+    "H2O": 0.90,
+    "NH3": 0.98,
+    "CH4": 0.90,
+    "C2H5OH": 0.95,
+    "toxic_generic": 0.92
+  },
+  
+  "targetComposition": {
+    "N2": 0.78,
+    "O2": 0.21,
+    "Ar": 0.0093,
+    "CO2": 0.0004,
+    "H2O": 0.005
+  },
+  
+  "operatingModes": {
+    "off": { "flowPercent": 0 },
+    "low": { "flowPercent": 25 },
+    "medium": { "flowPercent": 50 },
+    "high": { "flowPercent": 100 },
+    "turbo": { "flowPercent": 120 }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "basic-1500w",
+  "name": "AC 1.5kW",
+  "description": "Basic kitchen/lab AC with simple PID temperature control",
+  
+  "thermalCharacteristics": {
+    "coolingMaxWatts": 1500,
+    "heatingMaxWatts": 800,
+    "responseTimeSeconds": 8,
+    "deadbandDegrees": 1.0
+  },
+  
+  "pidTuning": {
+    "Kp": 50,
+    "Ki": 2,
+    "Kd": 10,
+    "integralWindupLimit": 100
+  },
+  
+  "constraints": {
+    "minSetpointC": 15,
+    "maxSetpointC": 28,
+    "maxRateOfChangePerSec": 1
+  }
+}

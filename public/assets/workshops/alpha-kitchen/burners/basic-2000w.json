@@ -1,0 +1,19 @@
+{
+  "id": "basic-2000w",
+  "name": "Basic 2kW Burner",
+  "description": "Standard kitchen burner with 4 heat settings",
+  
+  "thermalCharacteristics": {
+    "maxWatts": 2000,
+    "minWatts": 0,
+    "efficiencyPercent": 85
+  },
+  
+  "wattageSteps": [0, 500, 1000, 2000],
+  "controlType": "knob",
+  
+  "constraints": {
+    "warmupTimeSeconds": 2,
+    "cooldownTimeSeconds": 5
+  }
+}

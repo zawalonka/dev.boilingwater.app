@@ -35,6 +35,33 @@ export async function loadWorkshop(workshopId) {
       console.info(`No effects.json for workshop '${workshopId}' (optional): ${effectsError.message}`)
     }
 
+    // Optional: load room.json if present (non-blocking)
+    try {
+      const roomUrl = new URL(`${base}assets/workshops/${workshopId}/room.json`, window.location.href).toString()
+      const roomRes = await fetch(roomUrl)
+      if (roomRes.ok) {
+        workshopData.room = await roomRes.json()
+        console.log(`✓ Loaded room config for '${workshopId}' from room.json`)
+        
+        // Load the default burner configuration
+        const defaultBurnerId = workshopData.room.defaults?.burner
+        if (defaultBurnerId) {
+          try {
+            const burnerUrl = new URL(`${base}assets/workshops/${workshopId}/burners/${defaultBurnerId}.json`, window.location.href).toString()
+            const burnerRes = await fetch(burnerUrl)
+            if (burnerRes.ok) {
+              workshopData.burner = await burnerRes.json()
+              console.log(`✓ Loaded burner '${defaultBurnerId}' for '${workshopId}'`)
+            }
+          } catch (burnerError) {
+            console.warn(`Failed to load burner '${defaultBurnerId}': ${burnerError.message}`)
+          }
+        }
+      }
+    } catch (roomError) {
+      console.info(`No room.json for workshop '${workshopId}' (optional): ${roomError.message}`)
+    }
+
     validateWorkshopData(workshopData)
     console.log(`✓ Loaded workshop: "${workshopData.name}" (${workshopId})`)
     return workshopData
@@ -102,6 +129,35 @@ export function processWorkshop(workshopData, parentWorkshop = null) {
     }
   }
 
+  // Extract burner wattage steps from new burner JSON or fallback to legacy workshop.json
+  const getBurnerConfig = () => {
+    // New system: burner loaded from burners/{id}.json
+    if (workshopData.burner) {
+      return {
+        wattageSteps: workshopData.burner.wattageSteps || [0, 500, 1000, 2000],
+        controlType: workshopData.burner.controlType || 'knob',
+        maxWatts: workshopData.burner.thermalCharacteristics?.maxWatts || 2000,
+        efficiencyPercent: workshopData.burner.thermalCharacteristics?.efficiencyPercent || 85
+      }
+    }
+    // Legacy fallback: burnerControls in workshop.json
+    if (workshopData.burnerControls?.wattageSteps) {
+      return {
+        wattageSteps: workshopData.burnerControls.wattageSteps,
+        controlType: workshopData.burnerControls.wattageSteps.length > 5 ? 'buttons' : 'knob',
+        maxWatts: Math.max(...workshopData.burnerControls.wattageSteps),
+        efficiencyPercent: 85
+      }
+    }
+    // Default
+    return {
+      wattageSteps: [0, 500, 1000, 2000],
+      controlType: 'knob',
+      maxWatts: 2000,
+      efficiencyPercent: 85
+    }
+  }
+
   const inherited = parentWorkshop ? JSON.parse(JSON.stringify(parentWorkshop)) : {}
 
   return {
@@ -127,7 +183,9 @@ export function processWorkshop(workshopData, parentWorkshop = null) {
       ...inherited.layout,
       ...workshopData.layout
     },
-    effects: normalizeEffects(workshopData.effects)
+    effects: normalizeEffects(workshopData.effects),
+    burnerConfig: getBurnerConfig(),
+    room: workshopData.room || null
   }
 }
 

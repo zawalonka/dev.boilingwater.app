@@ -210,6 +210,7 @@ function App() {
           workshopLayout={activeWorkshopData?.layout}
           workshopImages={activeWorkshopData?.images}
           workshopEffects={activeWorkshopData?.effects}
+          burnerConfig={activeWorkshopData?.burnerConfig}
           activeLevel={activeLevel}
           activeExperiment={activeExperiment}
           showSelectors={showSelectors}

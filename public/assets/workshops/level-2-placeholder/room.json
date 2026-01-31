@@ -1,0 +1,30 @@
+{
+  "room": {
+    "volumeM3": 30,
+    "initialTempC": 20,
+    "leakRatePaPerSecond": 10,
+    "heatCapacityJPerC": 36000
+  },
+  
+  "atmosphere": {
+    "N2": 0.78,
+    "O2": 0.21,
+    "Ar": 0.0093,
+    "CO2": 0.0004,
+    "H2O": 0.01
+  },
+  
+  "pressureMode": "sealevel",
+  "pressureModeNote": "sealevel=101325Pa always, location=use player altitude, custom=use initialPressurePa",
+  
+  "availableBurners": ["basic-2000w", "pro-5000w"],
+  "availableAcUnits": ["basic-1500w", "pro-3000w"],
+  "availableAirHandlers": ["basic-150cfm", "pro-350cfm"],
+  
+  "defaults": {
+    "burner": "basic-2000w",
+    "acUnit": "basic-1500w",
+    "airHandler": "basic-150cfm",
+    "airHandlerMode": "medium"
+  }
+}

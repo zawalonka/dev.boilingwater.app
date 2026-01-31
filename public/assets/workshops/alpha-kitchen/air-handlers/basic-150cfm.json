@@ -1,0 +1,34 @@
+{
+  "id": "basic-150cfm",
+  "name": "AHU 150 CFM",
+  "description": "Basic air handler for small kitchens/labs",
+  
+  "flowCharacteristics": {
+    "maxFlowRateCFM": 150,
+    "maxFlowRateM3PerHour": 255
+  },
+  
+  "filtrationEfficiency": {
+    "CO2": 0.80,
+    "H2O": 0.70,
+    "NH3": 0.85,
+    "CH4": 0.75,
+    "C2H5OH": 0.80,
+    "toxic_generic": 0.75
+  },
+  
+  "targetComposition": {
+    "N2": 0.78,
+    "O2": 0.21,
+    "Ar": 0.0093,
+    "CO2": 0.0004,
+    "H2O": 0.01
+  },
+  
+  "operatingModes": {
+    "off": { "flowPercent": 0 },
+    "low": { "flowPercent": 25 },
+    "medium": { "flowPercent": 50 },
+    "high": { "flowPercent": 100 }
+  }
+}

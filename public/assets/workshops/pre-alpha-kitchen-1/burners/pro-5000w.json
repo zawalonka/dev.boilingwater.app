@@ -1,0 +1,19 @@
+{
+  "id": "pro-5000w",
+  "name": "Pro 5kW Burner",
+  "description": "Professional burner with 9 precise heat settings",
+  
+  "thermalCharacteristics": {
+    "maxWatts": 5000,
+    "minWatts": 0,
+    "efficiencyPercent": 92
+  },
+  
+  "wattageSteps": [0, 500, 1000, 1500, 2000, 2500, 3000, 4000, 5000],
+  "controlType": "buttons",
+  
+  "constraints": {
+    "warmupTimeSeconds": 1,
+    "cooldownTimeSeconds": 3
+  }
+}

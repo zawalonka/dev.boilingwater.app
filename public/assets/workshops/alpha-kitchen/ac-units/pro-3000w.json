@@ -1,0 +1,25 @@
+{
+  "id": "pro-3000w",
+  "name": "AC 3kW Pro",
+  "description": "Professional-grade AC with tighter PID control and wider range",
+  
+  "thermalCharacteristics": {
+    "coolingMaxWatts": 3000,
+    "heatingMaxWatts": 1500,
+    "responseTimeSeconds": 4,
+    "deadbandDegrees": 0.5
+  },
+  
+  "pidTuning": {
+    "Kp": 80,
+    "Ki": 4,
+    "Kd": 15,
+    "integralWindupLimit": 150
+  },
+  
+  "constraints": {
+    "minSetpointC": 10,
+    "maxSetpointC": 35,
+    "maxRateOfChangePerSec": 2
+  }
+}

@@ -56,7 +56,7 @@ const DEFAULT_LAYOUT = {
   }
 }
 
-function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange }) {
+function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, burnerConfig, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange }) {
   const layout = workshopLayout || DEFAULT_LAYOUT
   const backgroundImage = workshopImages?.background || null
   const potEmptyImage = workshopImages?.pot_empty || null
@@ -165,12 +165,17 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   const potStartPos = layout.pot.start || layout.pot.empty || { xPercent: 50, yPercent: 50 }
   const [potPosition, setPotPosition] = useState({ x: potStartPos.xPercent, y: potStartPos.yPercent })
 
-  // Resolve heat steps (supports both knob 4-step and button 9-step layouts)
+  // Resolve heat steps from burner config (new system) or legacy workshopLayout (fallback)
   const wattageSteps = useMemo(() => {
+    // New system: burnerConfig from room.json + burners/{id}.json
+    if (burnerConfig?.wattageSteps && Array.isArray(burnerConfig.wattageSteps) && burnerConfig.wattageSteps.length > 0) {
+      return burnerConfig.wattageSteps
+    }
+    // Legacy fallback: burnerControls in workshop.json
     const customSteps = workshopLayout?.burnerControls?.wattageSteps
     if (customSteps && Array.isArray(customSteps) && customSteps.length > 0) return customSteps
     return [0, 400, 1700, 2500]
-  }, [workshopLayout])
+  }, [burnerConfig, workshopLayout])
   const maxHeatIndex = wattageSteps.length - 1
 
   // Is the user currently dragging the pot? (true = dragging, false = not dragging)
