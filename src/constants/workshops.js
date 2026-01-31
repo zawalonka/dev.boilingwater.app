@@ -63,12 +63,13 @@ export const EXPERIMENTS = {
       order: 3
     },
     {
-      id: 'lvl-1-4plus-tbd',
-      name: '4+ TBD',
+      id: 'dangerous-liquids',
+      name: 'Dangerous Liquids',
       level: 1,
-      description: 'Placeholder for Level 1 (future experiments)',
-      requiresLocation: false,
+      description: 'Work with hazardous substances - room ventilation is critical!',
+      requiresLocation: true,
       isTutorial: false,
+      unlocksRoomControls: true,
       order: 4
     }
   ],

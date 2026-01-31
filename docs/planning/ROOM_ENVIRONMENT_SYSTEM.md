@@ -78,8 +78,8 @@ Each workshop has its own equipment. Initially all workshops share identical con
     "H2O": 0.01
   },
   
-  "pressureMode": "sealevel",
-  "pressureModeNote": "sealevel=101325Pa always, location=use player altitude, custom=use initialPressurePa",
+  "pressureMode": "location",
+  "pressureModeNote": "Code overrides to sealevel for L1E1 tutorial",
   
   "availableBurners": ["basic-2000w", "pro-5000w"],
   "availableAcUnits": ["basic-1500w", "pro-3000w"],
@@ -94,10 +94,24 @@ Each workshop has its own equipment. Initially all workshops share identical con
 }
 ```
 
-### Pressure Mode Logic
+### Pressure Mode Logic (Runtime)
+The `pressureMode` in room.json is the **default** for the workshop. Code overrides based on experiment:
+
+| Experiment | Effective Mode | Behavior |
+|------------|----------------|----------|
+| L1E1 (Tutorial) | `sealevel` | Always 101325 Pa (code override) |
+| L1E2+ | `location` | Use player's altitude selection |
+| Planetary labs | `custom` | Use room.initialPressurePa |
+
+**Implementation:** In physics calculation, check `activeExperiment`:
+```javascript
+const effectivePressureMode = activeExperiment === 'boiling-water' ? 'sealevel' : room.pressureMode
+```
+
+### Pressure Mode Values
 | Mode | Behavior | Use Case |
 |------|----------|----------|
-| `"sealevel"` | Always 101325 Pa | L1E1 Tutorial |
+| `"sealevel"` | Always 101325 Pa | Tutorial (forced via code) |
 | `"location"` | Use player's altitude selection | L1E2+ |
 | `"custom"` | Use `room.initialPressurePa` | Planetary labs |
 
@@ -401,12 +415,14 @@ Lower room pressure → Lower boiling point → Faster boil
 
 ## 🎮 EXPERIMENT UNLOCK PROGRESSION
 
-| Experiment | Unlocks | pressureMode |
-|------------|---------|--------------|
-| L1E1 (Tutorial) | Basic controls | `"sealevel"` |
-| L1E2 (Altitude) | Location selector | `"location"` |
-| L1E3 (Fluids) | Fluid dropdown | `"location"` |
-| **L1E4 (Room Control)** | **AC + Air Handler dropdowns** | `"location"` |
+| Experiment | Unlocks | pressureMode | Flag |
+|------------|---------|--------------|------|
+| L1E1 (Tutorial) | Basic controls | `"sealevel"` | `isTutorial: true` |
+| L1E2 (Altitude) | Location selector | `"location"` | `requiresLocation: true` |
+| L1E3 (Fluids) | Fluid dropdown | `"location"` | - |
+| **L1E4 (Dangerous Liquids)** | **AC + Air Handler dropdowns** | `"location"` | `unlocksRoomControls: true` |
+
+**Implementation:** Check experiment flags in `EXPERIMENTS` constant (src/constants/workshops.js).
 
 ---
 
