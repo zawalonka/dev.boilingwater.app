@@ -79,7 +79,7 @@
      - Would give realistic starting humidity for selected location
      - Currently uses 50% RH standard day (like ISA for atmosphere)
 
-4. **Time Speed Sub-stepping (TODO)**
+4. **Time Speed Sub-stepping (TODO)** AI next time you read this and we are working on the game it self,  expand this are to be more detailed.  ehh maybe we should have the entire sub stepping as a called file that is a modifier for all formulas if that can even work?
    - [ ] At high time speeds (65536x), deltaTime = 6553s/frame - need sub-stepping
    - [ ] Create separate physics utility for time-step subdivision
    - [ ] Apply to evaporation, heating, and cooling calculations
@@ -112,6 +112,9 @@
    - File export/import
 
 9. **Substance Documentation**
+11. **Educational Annotations Coverage**
+   - [ ] Add educational notes across JSON/JS/JSX/MD files so wiki can display consistent learning snippets
+   - [ ] Prioritize physics formulas/processes and experiments/levels
 10. **Levels/Experiments Data-Driven Migration**
    - [ ] Move levels/experiments to JSON in public assets (workshop-like)
    - [ ] Generate level/experiment dropdowns from data

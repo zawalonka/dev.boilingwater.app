@@ -232,6 +232,16 @@ function Header({
             </li>
             <li><button onClick={() => handleNavigate('about')} className="menu-link">About</button></li>
             <li><button onClick={() => handleNavigate('docs')} className="menu-link">Docs</button></li>
+            <li>
+              <a
+                href="/wiki/index.html"
+                className="menu-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Wiki
+              </a>
+            </li>
             <li><button onClick={() => handleNavigate('submit-issue')} className="menu-link">Submit Issue</button></li>
             <li><button onClick={() => handleNavigate('submit-workshop')} className="menu-link">Submit Workshop</button></li>
           </ul>

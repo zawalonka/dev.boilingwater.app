@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>boilingPoint/calculateBoilingPoint</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">boilingPoint/calculateBoilingPoint</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">boilingPoint/calculateBoilingPoint</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Process</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>calculateBoilingPoint</li><li>calculateBoilingPointAtPressure</li><li>calculatePressureISA</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">2 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>boilingPoint/calculateBoilingPoint</h1>
+    <p class="subtitle">Process</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <h3>CALCULATE BOILING POINT</h3>
+<p>This process answers the question:</p>
+<p>&quot;At what temperature will this liquid boil at this altitude?&quot;</p>
+<p>FORMULA CHAIN:</p>
+<p>1. ISA Atmosphere   → altitude (m) → pressure (Pa)</p>
+<p>2. Antoine Equation → pressure (Pa) → base boiling point (°C)</p>
+<p>3. Dynamic Kb       → base BP → temperature-dependent Kb</p>
+<p>4. Ebullioscopy     → Kb, molality, van&#39;t Hoff → elevation (°C)</p>
+<p>5. Final BP = base BP + elevation</p>
+<p>SEE STUB FILES IN THIS FOLDER:</p>
+<p>_isaAtmosphere.js   - Altitude to pressure conversion</p>
+<p>_antoineEquation.js - Pressure to temperature conversion</p>
+<p>_dynamicKb.js       - Temperature-dependent ebullioscopic constant</p>
+<p>_ebullioscopy.js    - Boiling point elevation for mixtures</p>
+<p>INPUT:</p>
+<p>altitude (meters above sea level)</p>
+<p>fluidProps (substance properties from JSON)</p>
+<p>OUTPUT:</p>
+<p>{ temperature, isExtrapolated, verifiedRange, baseBoilingPoint, elevation }</p>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\processes\boilingPoint\calculateBoilingPoint.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * CALCULATE BOILING POINT
+ * =======================
+ * 
+ * This process answers the question:
+ * &quot;At what temperature will this liquid boil at this altitude?&quot;
+ * 
+ * FORMULA CHAIN:
+ * 1. ISA Atmosphere   → altitude (m) → pressure (Pa)
+ * 2. Antoine Equation → pressure (Pa) → base boiling point (°C)
+ * 3. Dynamic Kb       → base BP → temperature-dependent Kb
+ * 4. Ebullioscopy     → Kb, molality, van&#39;t Hoff → elevation (°C)
+ * 5. Final BP = base BP + elevation
+ * 
+ * SEE STUB FILES IN THIS FOLDER:
+ *   _isaAtmosphere.js   - Altitude to pressure conversion
+ *   _antoineEquation.js - Pressure to temperature conversion
+ *   _dynamicKb.js       - Temperature-dependent ebullioscopic constant
+ *   _ebullioscopy.js    - Boiling point elevation for mixtures
+ * 
+ * INPUT:
+ *   altitude (meters above sea level)
+ *   fluidProps (substance properties from JSON)
+ * 
+ * OUTPUT:
+ *   { temperature, isExtrapolated, verifiedRange, baseBoilingPoint, elevation }
+ */
+
+import { ATMOSPHERE } from &#39;../../../../constants/physics.js&#39;
+
+// Import formulas through stubs (for traceability)
+import { calculatePressureISA } from &#39;./_isaAtmosphere.js&#39;
+import { solveAntoineForTemperature } from &#39;./_antoineEquation.js&#39;
+import { calculateDynamicKb } from &#39;./_dynamicKb.js&#39;
+import { calculateBoilingPointElevation } from &#39;./_ebullioscopy.js&#39;
+
+/**
+ * Calculate the boiling point of a fluid at a given altitude
+ * 
+ * @param {number} altitude - Altitude in meters above sea level
+ * @param {object} fluidProps - Fluid properties containing:
+ *   - boilingPointSeaLevel: °C at sea level (required)
+ *   - antoineCoefficients: {A, B, C, TminC, TmaxC} (optional, for accuracy)
+ *   - vanHoffFactor: i factor for electrolytes (optional)
+ *   - molality: mol solute / kg solvent (optional)
+ *   - altitudeLapseRate: °C/m fallback rate (optional)
+ * @returns {object} { temperature, isExtrapolated, verifiedRange, baseBoilingPoint, elevation }
+ */
+export function calculateBoilingPoint(altitude, fluidProps) {
+  if (!fluidProps || !Number.isFinite(fluidProps.boilingPointSeaLevel)) {
+    return null
+  }
+  
+  // Safety: treat invalid altitude as sea level
+  if (altitude === null || altitude === undefined || Number.isNaN(altitude)) {
+    altitude = 0
+  }
+  
+  // STEP 1: Calculate atmospheric pressure at altitude (ISA model)
+  const atmosphericPressure = calculatePressureISA(altitude)
+  
+  // STEP 2: Use Antoine equation if available (highly accurate, ±0.5°C)
+  if (fluidProps.antoineCoefficients) {
+    const antoineResult = solveAntoineForTemperature(
+      atmosphericPressure, 
+      fluidProps.antoineCoefficients
+    )
+    
+    if (antoineResult &amp;&amp; Number.isFinite(antoineResult.temperature)) {
+      // STEP 3 &amp; 4: Calculate dynamic boiling point elevation
+      const elevation = calculateDynamicElevation(antoineResult.temperature, fluidProps)
+      const finalTemp = antoineResult.temperature + elevation
+      
+      return {
+        temperature: finalTemp,
+        isExtrapolated: antoineResult.isExtrapolated,
+        verifiedRange: antoineResult.verifiedRange,
+        baseBoilingPoint: antoineResult.temperature,
+        elevation: elevation
+      }
+    }
+  }
+  
+  // FALLBACK: Linear lapse rate approximation (±2°C accuracy)
+  // Used for substances without Antoine coefficients
+  const lapseRate = Number.isFinite(fluidProps.altitudeLapseRate)
+    ? fluidProps.altitudeLapseRate
+    : ATMOSPHERE.TEMP_LAPSE_RATE
+  
+  const temperatureDrop = altitude * lapseRate
+  const baseBoilingPoint = fluidProps.boilingPointSeaLevel - temperatureDrop
+  
+  // Calculate dynamic elevation for fallback path
+  const elevation = calculateDynamicElevation(baseBoilingPoint, fluidProps)
+  const finalTemp = baseBoilingPoint + elevation
+  
+  return {
+    temperature: finalTemp,
+    isExtrapolated: false,  // Can&#39;t determine without Antoine range
+    verifiedRange: { min: null, max: null },
+    baseBoilingPoint: baseBoilingPoint,
+    elevation: elevation
+  }
+}
+
+/**
+ * Helper: Calculate dynamic boiling point elevation for mixtures
+ * Uses dynamic Kb at actual boiling temperature
+ * 
+ * @param {number} baseBoilingPointC - Base boiling point of pure solvent (°C)
+ * @param {object} fluidProps - Fluid properties with vanHoffFactor and molality
+ * @returns {number} Boiling point elevation in °C
+ */
+function calculateDynamicElevation(baseBoilingPointC, fluidProps) {
+  if (!fluidProps) return 0
+  
+  const { vanHoffFactor, molality } = fluidProps
+  
+  // If we have dynamic parameters, use them
+  if (Number.isFinite(vanHoffFactor) &amp;&amp; Number.isFinite(molality)) {
+    // Calculate Kb at actual boiling temperature
+    // TODO: Get solvent molar mass and ΔHvap from JSON for non-water solvents
+    const Kb = calculateDynamicKb(baseBoilingPointC)
+    return calculateBoilingPointElevation(vanHoffFactor, Kb, molality)
+  }
+  
+  // Legacy fallback: use pre-computed boilingPointElevation if available
+  return Number.isFinite(fluidProps.boilingPointElevation) 
+    ? fluidProps.boilingPointElevation 
+    : 0
+}
+
+/**
+ * Calculate the boiling point of a fluid at a given pressure
+ * 
+ * This is useful when you have direct pressure measurements (e.g., room pressure)
+ * rather than deriving pressure from altitude.
+ * 
+ * @param {number} pressurePa - Atmospheric pressure in Pascals
+ * @param {object} fluidProps - Fluid properties (same as calculateBoilingPoint)
+ * @returns {object} { temperature, isExtrapolated, verifiedRange, baseBoilingPoint, elevation }
+ */
+export function calculateBoilingPointAtPressure(pressurePa, fluidProps) {
+  if (!fluidProps || !Number.isFinite(fluidProps.boilingPointSeaLevel)) {
+    return null
+  }
+  
+  // Safety: treat invalid pressure as sea level
+  if (!Number.isFinite(pressurePa) || pressurePa &lt;= 0) {
+    pressurePa = ATMOSPHERE.SEA_LEVEL_PRESSURE
+  }
+  
+  // Use Antoine equation if available (highly accurate, ±0.5°C)
+  if (fluidProps.antoineCoefficients) {
+    const antoineResult = solveAntoineForTemperature(
+      pressurePa, 
+      fluidProps.antoineCoefficients
+    )
+    
+    if (antoineResult &amp;&amp; Number.isFinite(antoineResult.temperature)) {
+      const elevation = calculateDynamicElevation(antoineResult.temperature, fluidProps)
+      const finalTemp = antoineResult.temperature + elevation
+      
+      return {
+        temperature: finalTemp,
+        isExtrapolated: antoineResult.isExtrapolated,
+        verifiedRange: antoineResult.verifiedRange,
+        baseBoilingPoint: antoineResult.temperature,
+        elevation: elevation
+      }
+    }
+  }
+  
+  // FALLBACK: Estimate based on pressure ratio
+  // This is less accurate but works for substances without Antoine coefficients
+  const pressureRatio = pressurePa / ATMOSPHERE.SEA_LEVEL_PRESSURE
+  // Rough approximation: ~3°C drop per 10% pressure reduction
+  const temperatureDrop = (1 - pressureRatio) * 30
+  const baseBoilingPoint = fluidProps.boilingPointSeaLevel - temperatureDrop
+  
+  const elevation = calculateDynamicElevation(baseBoilingPoint, fluidProps)
+  const finalTemp = baseBoilingPoint + elevation
+  
+  return {
+    temperature: finalTemp,
+    isExtrapolated: false,
+    verifiedRange: { min: null, max: null },
+    baseBoilingPoint: baseBoilingPoint,
+    elevation: elevation
+  }
+}
+
+// Also export the pressure function for direct use
+export { calculatePressureISA as calculatePressure }
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

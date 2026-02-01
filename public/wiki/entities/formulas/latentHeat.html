@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>latentHeat</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">latentHeat</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">latentHeat</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>LATENT_HEAT_VALUES</li><li>calculateFusionEnergy</li><li>calculateMeltedMass</li><li>calculateVaporizationEnergy</li><li>calculateVaporizedMass</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Processes</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/heating/_latentHeat.html">heating/_latentHeat</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">1 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>latentHeat</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>LATENT HEAT (Phase Change Energy)</p>
+<p>==================================</p>
+<p>When a substance changes phase (solid↔liquid or liquid↔gas), energy</p>
+<p>is absorbed or released WITHOUT changing temperature. This energy</p>
+<p>is called latent heat.</p>
+<p>EQUATIONS:</p>
+<p>Fusion (melting/freezing):     Q = m × Lf</p>
+<p>Vaporization (boiling/condensing): Q = m × Lv</p>
+<pre class="code">Where:
+Q  = energy (Joules)
+m  = mass (kilograms)
+Lf = latent heat of fusion (J/kg)
+Lv = latent heat of vaporization (J/kg)</pre>
+<p>PHYSICAL MEANING:</p>
+<p>During phase change, all added energy goes into breaking molecular bonds</p>
+<p>(or forming them) rather than increasing kinetic energy (temperature).</p>
+<p>WATER VALUES:</p>
+<pre class="code">Lf = 334,000 J/kg (334 kJ/kg) - to melt ice
+Lv = 2,257,000 J/kg (2,257 kJ/kg) - to boil water</pre>
+<p>Note: Lv is ~6.75× larger than Lf! Boiling takes much more energy than melting.</p>
+<p>EXAMPLE - BOILING WATER:</p>
+<p>To convert 1 kg of 100°C water to 100°C steam:</p>
+<pre class="code">Q = 1 kg × 2,257,000 J/kg = 2,257,000 J</pre>
+<p>With a 1000W stove: 2,257,000 J ÷ 1000 W = 2,257 seconds ≈ 37.6 minutes!</p>
+<p>This is why watched pots seem to take forever once they hit boiling.</p>
+<p>OTHER SUBSTANCES (Lv in kJ/kg):</p>
+<p>Ethanol:   838 (much less than water - evaporates easily)</p>
+<p>Acetone:   518</p>
+<p>Ammonia:  1,369</p>
+<p>Mercury:    295</p>
+<pre class="code">@see https://en.wikipedia.org/wiki/Latent_heat</pre>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\latentHeat.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * LATENT HEAT (Phase Change Energy)
+ * ==================================
+ * 
+ * When a substance changes phase (solid↔liquid or liquid↔gas), energy
+ * is absorbed or released WITHOUT changing temperature. This energy
+ * is called latent heat.
+ * 
+ * EQUATIONS:
+ *   Fusion (melting/freezing):     Q = m × Lf
+ *   Vaporization (boiling/condensing): Q = m × Lv
+ * 
+ * Where:
+ *   Q  = energy (Joules)
+ *   m  = mass (kilograms)
+ *   Lf = latent heat of fusion (J/kg)
+ *   Lv = latent heat of vaporization (J/kg)
+ * 
+ * PHYSICAL MEANING:
+ * During phase change, all added energy goes into breaking molecular bonds
+ * (or forming them) rather than increasing kinetic energy (temperature).
+ * 
+ * WATER VALUES:
+ *   Lf = 334,000 J/kg (334 kJ/kg) - to melt ice
+ *   Lv = 2,257,000 J/kg (2,257 kJ/kg) - to boil water
+ * 
+ * Note: Lv is ~6.75× larger than Lf! Boiling takes much more energy than melting.
+ * 
+ * EXAMPLE - BOILING WATER:
+ * To convert 1 kg of 100°C water to 100°C steam:
+ *   Q = 1 kg × 2,257,000 J/kg = 2,257,000 J
+ *   With a 1000W stove: 2,257,000 J ÷ 1000 W = 2,257 seconds ≈ 37.6 minutes!
+ * 
+ * This is why watched pots seem to take forever once they hit boiling.
+ * 
+ * OTHER SUBSTANCES (Lv in kJ/kg):
+ *   Ethanol:   838 (much less than water - evaporates easily)
+ *   Acetone:   518
+ *   Ammonia:  1,369
+ *   Mercury:    295
+ * 
+ * @see https://en.wikipedia.org/wiki/Latent_heat
+ */
+
+/**
+ * Calculate energy needed to vaporize a given mass
+ * 
+ * @param {number} massKg - Mass to vaporize in kilograms
+ * @param {number} heatOfVapKJ - Latent heat of vaporization in kJ/kg
+ * @returns {number} Energy required in Joules
+ */
+export function calculateVaporizationEnergy(massKg, heatOfVapKJ) {
+  // Convert kJ/kg to J/kg
+  const heatOfVapJ = heatOfVapKJ * 1000
+  return massKg * heatOfVapJ
+}
+
+/**
+ * Calculate mass that can be vaporized with given energy
+ * 
+ * @param {number} energyJ - Available energy in Joules
+ * @param {number} heatOfVapKJ - Latent heat of vaporization in kJ/kg
+ * @returns {number} Mass that can be vaporized in kilograms
+ */
+export function calculateVaporizedMass(energyJ, heatOfVapKJ) {
+  if (heatOfVapKJ &lt;= 0) return 0
+  
+  // Convert kJ/kg to J/kg
+  const heatOfVapJ = heatOfVapKJ * 1000
+  return energyJ / heatOfVapJ
+}
+
+/**
+ * Calculate energy needed to melt a given mass
+ * 
+ * @param {number} massKg - Mass to melt in kilograms
+ * @param {number} heatOfFusionKJ - Latent heat of fusion in kJ/kg
+ * @returns {number} Energy required in Joules
+ */
+export function calculateFusionEnergy(massKg, heatOfFusionKJ) {
+  const heatOfFusionJ = heatOfFusionKJ * 1000
+  return massKg * heatOfFusionJ
+}
+
+/**
+ * Calculate mass that can be melted with given energy
+ * 
+ * @param {number} energyJ - Available energy in Joules
+ * @param {number} heatOfFusionKJ - Latent heat of fusion in kJ/kg
+ * @returns {number} Mass that can be melted in kilograms
+ */
+export function calculateMeltedMass(energyJ, heatOfFusionKJ) {
+  if (heatOfFusionKJ &lt;= 0) return 0
+  
+  const heatOfFusionJ = heatOfFusionKJ * 1000
+  return energyJ / heatOfFusionJ
+}
+
+/**
+ * Reference latent heat values
+ */
+export const LATENT_HEAT_VALUES = {
+  // Heat of vaporization (kJ/kg)
+  vaporization: {
+    water: 2257,
+    ethanol: 838,
+    methanol: 1100,
+    acetone: 518,
+    ammonia: 1369,
+    benzene: 394,
+    mercury: 295,
+  },
+  // Heat of fusion (kJ/kg)
+  fusion: {
+    water: 334,
+    ethanol: 108,
+    ammonia: 332,
+    benzene: 127,
+    mercury: 11.3,
+  }
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

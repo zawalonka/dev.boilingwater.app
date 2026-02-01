@@ -7,27 +7,29 @@
 
 ## ✅ Phase 0: Bootstrap (Required First)
 1. **Create wiki Copilot instructions + folder structure**
-   - [ ] Add wiki-specific Copilot instructions file (separate from game rules)
-   - [ ] Define wiki folder layout (source, generator, output)
-   - [ ] Ensure wiki tools/scripts never touch gameplay code
+   - [x] Add wiki-specific Copilot instructions file (separate from game rules)
+   - [x] Define wiki folder layout (source, generator, output)
+   - [x] Ensure wiki tools/scripts never touch gameplay code
 
 ## Phase 1: Core Generator
 2. **Static site generator (build-time)**
-   - [ ] Build script (Node) to generate HTML from repo data
-   - [ ] Incremental rebuilds by changed files
-   - [ ] Force-rebuild flag
+   - [x] Build script (Node) to generate HTML from repo data
+   - [x] Incremental rebuilds via hash cache (global inputs)
+   - [x] Force-rebuild flag
+   - [ ] Changed-files-only optimization (skip when unrelated files changed)
 
 3. **Entity model + relationships**
-   - [ ] Elements, compounds, solutions, phases
-   - [ ] Formulas and processes
-   - [ ] Levels and experiments (from current constants)
-   - [ ] Parent/child graphs with cross-links
+   - [x] Elements, compounds, solutions
+   - [x] Levels and experiments (from current constants)
+   - [x] Parent/child graphs with cross-links (elements ↔ compounds, compounds ↔ solutions)
+   - [x] Phases (solid/liquid/gas state files)
+   - [x] Formulas and processes (extraction + usage mapping)
 
 4. **Page types**
-   - [ ] Index (overview + counts)
-   - [ ] Entity detail pages (parsed JSON + readable layout)
-   - [ ] Relationship pages (parents/children)
-   - [ ] Usage pages (formulas → processes → game callsites)
+   - [x] Index (overview + counts)
+   - [x] Entity detail pages (parsed JSON + readable layout)
+   - [x] Relationship sections (parents/children on entity pages)
+   - [x] Usage pages (formulas → processes → game callsites)
 
 ## Phase 2: UX & Validation
 5. **Readable layout & learning focus**

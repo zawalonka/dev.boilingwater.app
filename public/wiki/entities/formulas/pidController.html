@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>pidController</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">pidController</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">pidController</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>PID_PRESETS</li><li>applyDeadband</li><li>calculatePidOutput</li><li>createPidState</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Processes</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/roomControl/_pidController.html">roomControl/_pidController</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">4 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>pidController</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <h3>PID CONTROLLER</h3>
+<p>A Proportional-Integral-Derivative controller is a control loop mechanism</p>
+<p>that continuously calculates an error value and applies a correction.</p>
+<p>While not a physics formula per se, it&#39;s a fundamental algorithm in</p>
+<p>engineering control systems and follows mathematical principles.</p>
+<p>EQUATION:</p>
+<p>u(t) = Kp × e(t) + Ki × ∫e(t)dt + Kd × de(t)/dt</p>
+<pre class="code">Where:</pre>
+<p>u(t) = control output (0 to 1, or -1 to +1 for bidirectional)</p>
+<p>e(t) = error = setpoint - measured value</p>
+<pre class="code">Kp   = proportional gain (immediate response)
+Ki   = integral gain (accumulated error correction)
+Kd   = derivative gain (rate of change damping)</pre>
+<p>DISCRETE FORM (for simulation):</p>
+<pre class="code">P = Kp × error
+I = Ki × Σ(error × Δt)  [with anti-windup limits]
+D = Kd × (error - previousError) / Δt
+output = P + I + D</pre>
+<p>TUNING:</p>
+<p>High Kp: Fast response, may overshoot</p>
+<p>High Ki: Eliminates steady-state error, may oscillate</p>
+<p>High Kd: Reduces overshoot, sensitive to noise</p>
+<p>ANTI-WINDUP:</p>
+<p>When the system can&#39;t respond fast enough (actuator saturated),</p>
+<p>the integral term can &quot;wind up&quot; to huge values. We clamp it.</p>
+<p>AC/HVAC EXAMPLE:</p>
+<pre class="code">setpoint = 20°C (desired room temp)
+measured = 25°C (current room temp)
+error = 20 - 25 = -5°C (room too hot)</pre>
+<p>PID output = -0.7 (70% cooling power)</p>
+<p>AC runs at 70% of max cooling watts</p>
+<pre class="code">@see https://en.wikipedia.org/wiki/PID_controller</pre>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\pidController.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * PID CONTROLLER
+ * ==============
+ * 
+ * A Proportional-Integral-Derivative controller is a control loop mechanism
+ * that continuously calculates an error value and applies a correction.
+ * 
+ * While not a physics formula per se, it&#39;s a fundamental algorithm in
+ * engineering control systems and follows mathematical principles.
+ * 
+ * EQUATION:
+ *   u(t) = Kp × e(t) + Ki × ∫e(t)dt + Kd × de(t)/dt
+ * 
+ * Where:
+ *   u(t) = control output (0 to 1, or -1 to +1 for bidirectional)
+ *   e(t) = error = setpoint - measured value
+ *   Kp   = proportional gain (immediate response)
+ *   Ki   = integral gain (accumulated error correction)
+ *   Kd   = derivative gain (rate of change damping)
+ * 
+ * DISCRETE FORM (for simulation):
+ *   P = Kp × error
+ *   I = Ki × Σ(error × Δt)  [with anti-windup limits]
+ *   D = Kd × (error - previousError) / Δt
+ *   output = P + I + D
+ * 
+ * TUNING:
+ *   High Kp: Fast response, may overshoot
+ *   High Ki: Eliminates steady-state error, may oscillate
+ *   High Kd: Reduces overshoot, sensitive to noise
+ * 
+ * ANTI-WINDUP:
+ *   When the system can&#39;t respond fast enough (actuator saturated),
+ *   the integral term can &quot;wind up&quot; to huge values. We clamp it.
+ * 
+ * AC/HVAC EXAMPLE:
+ *   setpoint = 20°C (desired room temp)
+ *   measured = 25°C (current room temp)
+ *   error = 20 - 25 = -5°C (room too hot)
+ *   PID output = -0.7 (70% cooling power)
+ *   AC runs at 70% of max cooling watts
+ * 
+ * @see https://en.wikipedia.org/wiki/PID_controller
+ */
+
+/**
+ * Create initial PID state
+ * @returns {object} Fresh PID state
+ */
+export function createPidState() {
+  return {
+    integral: 0,
+    previousError: 0,
+    lastUpdate: Date.now()
+  }
+}
+
+/**
+ * Calculate PID output for one timestep
+ * 
+ * @param {number} setpoint - Target value
+ * @param {number} measured - Current measured value
+ * @param {object} pidState - Current PID state { integral, previousError }
+ * @param {object} gains - PID gains { Kp, Ki, Kd, integralWindupLimit }
+ * @param {number} deltaTime - Time step in seconds
+ * @returns {object} { output: -1 to +1, updatedState }
+ */
+export function calculatePidOutput(setpoint, measured, pidState, gains, deltaTime) {
+  const { Kp = 50, Ki = 2, Kd = 10, integralWindupLimit = 100 } = gains
+  
+  // Error: positive = below setpoint, negative = above setpoint
+  const error = setpoint - measured
+  
+  // Proportional term: immediate response to error
+  const P = error * Kp
+  
+  // Integral term: accumulated error (with anti-windup)
+  const newIntegral = Math.max(
+    -integralWindupLimit,
+    Math.min(integralWindupLimit, pidState.integral + error * deltaTime)
+  )
+  const I = newIntegral * Ki
+  
+  // Derivative term: rate of change (damping)
+  const D = deltaTime &gt; 0 
+    ? ((error - pidState.previousError) / deltaTime) * Kd 
+    : 0
+  
+  // Total output, normalized to -1 to +1 range
+  // The /100 scaling factor assumes typical temperature errors of ~10°C max
+  const rawOutput = (P + I + D) / 100
+  const output = Math.max(-1, Math.min(1, rawOutput))
+  
+  return {
+    output,
+    error,
+    terms: { P, I, D },
+    updatedState: {
+      integral: newIntegral,
+      previousError: error,
+      lastUpdate: Date.now()
+    }
+  }
+}
+
+/**
+ * Apply deadband (hysteresis) to PID output
+ * Prevents hunting when close to setpoint
+ * 
+ * @param {number} output - PID output (-1 to +1)
+ * @param {number} error - Current error value
+ * @param {number} deadband - Deadband range (e.g., 0.5°C)
+ * @returns {number} Output with deadband applied (0 if within deadband)
+ */
+export function applyDeadband(output, error, deadband) {
+  if (Math.abs(error) &lt; deadband) {
+    return 0
+  }
+  return output
+}
+
+/**
+ * Typical PID tuning values for reference
+ */
+export const PID_PRESETS = {
+  // Conservative: slow, stable, no overshoot
+  conservative: { Kp: 30, Ki: 1, Kd: 15, integralWindupLimit: 50 },
+  
+  // Balanced: good for HVAC
+  balanced: { Kp: 50, Ki: 2, Kd: 10, integralWindupLimit: 100 },
+  
+  // Aggressive: fast response, may overshoot
+  aggressive: { Kp: 80, Ki: 4, Kd: 5, integralWindupLimit: 150 },
+  
+  // Critical damping: minimal overshoot
+  criticallyDamped: { Kp: 40, Ki: 1, Kd: 20, integralWindupLimit: 80 }
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

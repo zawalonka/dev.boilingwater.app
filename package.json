@@ -9,8 +9,11 @@
   "homepage": "https://boilingwater.app",
   "scripts": {
     "generate-catalog": "node scripts/generateSubstanceCatalog.js",
-    "dev": "npm run generate-catalog && vite",
-    "build": "npm run generate-catalog && vite build",
+    "wiki:build": "node wiki/src/index.js",
+    "wiki:build:force": "node wiki/src/index.js --force",
+    "wiki:sync": "node wiki/src/sync.js",
+    "dev": "npm run generate-catalog && npm run wiki:build && npm run wiki:sync && vite",
+    "build": "npm run generate-catalog && npm run wiki:build && npm run wiki:sync && vite build",
     "preview": "npm run generate-catalog && vite preview",
     "lint": "eslint src --ext js,jsx",
     "format": "prettier --write \"src/**/*.{js,jsx,css,md}\""

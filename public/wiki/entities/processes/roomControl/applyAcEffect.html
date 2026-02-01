@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>roomControl/applyAcEffect</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">roomControl/applyAcEffect</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">roomControl/applyAcEffect</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Process</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>applyAcEffect</li><li>calculateRoomAirMass</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">2 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>roomControl/applyAcEffect</h1>
+    <p class="subtitle">Process</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <h3>APPLY AC EFFECT</h3>
+<p>This process answers the question:</p>
+<p>&quot;How does the AC change room temperature this timestep?&quot;</p>
+<p>FORMULA CHAIN:</p>
+<p>1. PID Controller → Calculate power level (0-100%) based on error</p>
+<p>2. Power × Max Watts → Actual heating/cooling watts</p>
+<p>3. Heat Capacity (Q=mcΔT) → Convert watts to temperature change</p>
+<p>SEE STUB FILES IN THIS FOLDER:</p>
+<p>_pidController.js - Control algorithm for power level</p>
+<p>_heatCapacity.js  - Physics for temperature change</p>
+<p>AC UNIT JSON PROVIDES (SI units):</p>
+<p>- coolingMaxWatts: Maximum cooling power (W)</p>
+<p>- heatingMaxWatts: Maximum heating power (W)</p>
+<p>- responseTimeSeconds: How fast AC responds</p>
+<p>- deadbandDegrees: Don&#39;t activate within this range of setpoint</p>
+<p>- pidTuning: { Kp, Ki, Kd, integralWindupLimit }</p>
+<p>INPUT:</p>
+<p>roomTemp (°C), setpoint (°C), acUnit config, pidState, deltaTime</p>
+<p>OUTPUT:</p>
+<p>{ newTemp, powerPercent, heatOutputWatts, updatedPidState }</p>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\processes\roomControl\applyAcEffect.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * APPLY AC EFFECT
+ * ===============
+ * 
+ * This process answers the question:
+ * &quot;How does the AC change room temperature this timestep?&quot;
+ * 
+ * FORMULA CHAIN:
+ * 1. PID Controller → Calculate power level (0-100%) based on error
+ * 2. Power × Max Watts → Actual heating/cooling watts
+ * 3. Heat Capacity (Q=mcΔT) → Convert watts to temperature change
+ * 
+ * SEE STUB FILES IN THIS FOLDER:
+ *   _pidController.js - Control algorithm for power level
+ *   _heatCapacity.js  - Physics for temperature change
+ * 
+ * AC UNIT JSON PROVIDES (SI units):
+ *   - coolingMaxWatts: Maximum cooling power (W)
+ *   - heatingMaxWatts: Maximum heating power (W)
+ *   - responseTimeSeconds: How fast AC responds
+ *   - deadbandDegrees: Don&#39;t activate within this range of setpoint
+ *   - pidTuning: { Kp, Ki, Kd, integralWindupLimit }
+ * 
+ * INPUT:
+ *   roomTemp (°C), setpoint (°C), acUnit config, pidState, deltaTime
+ * 
+ * OUTPUT:
+ *   { newTemp, powerPercent, heatOutputWatts, updatedPidState }
+ */
+
+// Import through stubs
+import { calculatePidOutput, applyDeadband } from &#39;./_pidController.js&#39;
+import { calculateTempChange } from &#39;./_heatCapacity.js&#39;
+
+// Air has specific heat of ~1.006 kJ/(kg·K) and density of ~1.2 kg/m³
+// For 30m³ room: mass = 36 kg, heat capacity = 36 × 1006 = 36,216 J/°C
+const AIR_SPECIFIC_HEAT = 1.006  // kJ/(kg·K) = J/(g·K)
+const AIR_DENSITY = 1.2  // kg/m³ at 20°C
+
+/**
+ * Calculate room air mass from volume
+ * @param {number} volumeM3 - Room volume (m³)
+ * @returns {number} Air mass in kg
+ */
+export function calculateRoomAirMass(volumeM3) {
+  return volumeM3 * AIR_DENSITY
+}
+
+/**
+ * Apply AC heating/cooling effect to room temperature
+ * 
+ * @param {number} roomTemp - Current room temperature (°C)
+ * @param {number} setpoint - AC target temperature (°C)
+ * @param {object} acUnit - AC unit config from workshop JSON
+ * @param {object} pidState - Current PID state
+ * @param {number} deltaTime - Time step (seconds)
+ * @param {number} roomVolumeM3 - Room volume (m³), default 30
+ * @returns {object} { newTemp, powerPercent, heatOutputWatts, updatedPidState, status }
+ */
+export function applyAcEffect(roomTemp, setpoint, acUnit, pidState, deltaTime, roomVolumeM3 = 30) {
+  // No AC configured
+  if (!acUnit || !acUnit.thermalCharacteristics) {
+    return {
+      newTemp: roomTemp,
+      powerPercent: 0,
+      heatOutputWatts: 0,
+      updatedPidState: pidState,
+      status: &#39;No AC&#39;
+    }
+  }
+  
+  const { coolingMaxWatts, heatingMaxWatts, deadbandDegrees = 0.5 } = acUnit.thermalCharacteristics
+  const pidGains = acUnit.pidTuning || { Kp: 50, Ki: 2, Kd: 10, integralWindupLimit: 100 }
+  
+  // STEP 1: PID calculates power level
+  const pidResult = calculatePidOutput(setpoint, roomTemp, pidState, pidGains, deltaTime)
+  
+  // STEP 2: Apply deadband
+  const output = applyDeadband(pidResult.output, pidResult.error, deadbandDegrees)
+  
+  // STEP 3: Map output to watts
+  // output &gt; 0 means heating needed, output &lt; 0 means cooling needed
+  let heatOutputWatts = 0
+  if (output &gt; 0) {
+    heatOutputWatts = output * heatingMaxWatts
+  } else if (output &lt; 0) {
+    heatOutputWatts = output * coolingMaxWatts  // Negative watts = cooling
+  }
+  
+  // STEP 4: Apply response time lag (AC doesn&#39;t instantly reach full power)
+  const responseTime = acUnit.thermalCharacteristics.responseTimeSeconds || 5
+  const responseFactor = Math.min(1, deltaTime / responseTime)
+  heatOutputWatts = heatOutputWatts * responseFactor + (1 - responseFactor) * (pidState.lastHeatOutput || 0)
+  
+  // STEP 5: Apply heat capacity physics (Q = mcΔT → ΔT = Q/(mc))
+  // Energy = Power × time
+  const energyJoules = heatOutputWatts * deltaTime
+  const roomAirMassKg = calculateRoomAirMass(roomVolumeM3)
+  
+  // Use physics formula for temperature change
+  // Note: Air specific heat is in J/(g·K), so we need mass in grams
+  const tempChange = calculateTempChange(roomAirMassKg, AIR_SPECIFIC_HEAT, energyJoules)
+  
+  // STEP 6: Apply rate constraints (max °C/s the room can change)
+  const maxRatePerSec = acUnit.constraints?.maxRateOfChangePerSec || 1
+  const constrainedTempChange = Math.max(
+    -maxRatePerSec * deltaTime,
+    Math.min(maxRatePerSec * deltaTime, tempChange)
+  )
+  
+  // Calculate power percentage for display
+  const maxWatts = Math.max(coolingMaxWatts, heatingMaxWatts)
+  const powerPercent = maxWatts &gt; 0 ? (Math.abs(heatOutputWatts) / maxWatts) * 100 : 0
+  
+  return {
+    newTemp: roomTemp + constrainedTempChange,
+    powerPercent: Math.round(powerPercent),
+    heatOutputWatts,
+    updatedPidState: {
+      ...pidResult.updatedState,
+      lastHeatOutput: heatOutputWatts
+    },
+    status: getAcStatus(heatOutputWatts, powerPercent)
+  }
+}
+
+/**
+ * Generate status text for UI
+ */
+function getAcStatus(watts, percent) {
+  if (Math.abs(watts) &lt; 10) return &#39;Idle&#39;
+  const mode = watts &gt; 0 ? &#39;Heating&#39; : &#39;Cooling&#39;
+  return `${mode} ${percent}%`
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

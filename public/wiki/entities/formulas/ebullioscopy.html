@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ebullioscopy</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">ebullioscopy</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ebullioscopy</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>COMMON_SOLUTES</li><li>calculateBoilingPointElevation</li><li>massPercentToMolality</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Processes</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/boilingPoint/_ebullioscopy.html">boilingPoint/_ebullioscopy</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">2 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ebullioscopy</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>EBULLIOSCOPY (BOILING POINT ELEVATION)</p>
+<p>=======================================</p>
+<p>Ebullioscopy is the study of how dissolved solutes raise the boiling</p>
+<p>point of a solvent. It&#39;s one of the four colligative properties</p>
+<p>(properties that depend on particle count, not identity).</p>
+<p>EQUATION:</p>
+<p>ΔTb = i × Kb × m</p>
+<pre class="code">Where:</pre>
+<p>ΔTb = boiling point elevation (°C)</p>
+<pre class="code">i   = van&#39;t Hoff factor (number of particles per formula unit)
+Kb  = ebullioscopic constant (°C·kg/mol) - see dynamicKb.js
+m   = molality (mol solute / kg solvent)</pre>
+<p>VAN&#39;T HOFF FACTOR (i):</p>
+<p>Non-electrolytes: i = 1 (sugar, ethanol)</p>
+<p>NaCl: i ≈ 1.9 (ideally 2, but ion pairing reduces it)</p>
+<p>CaCl₂: i ≈ 2.7 (ideally 3)</p>
+<p>Strong acids: i ≈ 2 (HCl) or 3 (H₂SO₄)</p>
+<p>EXAMPLE - 3% SALTWATER:</p>
+<p>Molality: 0.513 mol/kg</p>
+<p>Van&#39;t Hoff: i = 1.9 (NaCl in water)</p>
+<p>Kb at 100°C: 0.512 °C·kg/mol</p>
+<p>ΔTb = 1.9 × 0.512 × 0.513 = 0.50°C</p>
+<p>At 10km altitude (Kb = 0.423):</p>
+<p>ΔTb = 1.9 × 0.423 × 0.513 = 0.41°C</p>
+<p>See how the elevation is SMALLER at altitude? That&#39;s the dynamic Kb effect!</p>
+<pre class="code">@see dynamicKb.js for temperature-dependent Kb calculation
+@see https://en.wikipedia.org/wiki/Boiling-point_elevation</pre>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\ebullioscopy.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * EBULLIOSCOPY (BOILING POINT ELEVATION)
+ * =======================================
+ * 
+ * Ebullioscopy is the study of how dissolved solutes raise the boiling
+ * point of a solvent. It&#39;s one of the four colligative properties
+ * (properties that depend on particle count, not identity).
+ * 
+ * EQUATION:
+ *   ΔTb = i × Kb × m
+ * 
+ * Where:
+ *   ΔTb = boiling point elevation (°C)
+ *   i   = van&#39;t Hoff factor (number of particles per formula unit)
+ *   Kb  = ebullioscopic constant (°C·kg/mol) - see dynamicKb.js
+ *   m   = molality (mol solute / kg solvent)
+ * 
+ * VAN&#39;T HOFF FACTOR (i):
+ *   Non-electrolytes: i = 1 (sugar, ethanol)
+ *   NaCl: i ≈ 1.9 (ideally 2, but ion pairing reduces it)
+ *   CaCl₂: i ≈ 2.7 (ideally 3)
+ *   Strong acids: i ≈ 2 (HCl) or 3 (H₂SO₄)
+ * 
+ * EXAMPLE - 3% SALTWATER:
+ *   Molality: 0.513 mol/kg
+ *   Van&#39;t Hoff: i = 1.9 (NaCl in water)
+ *   Kb at 100°C: 0.512 °C·kg/mol
+ *   ΔTb = 1.9 × 0.512 × 0.513 = 0.50°C
+ *   
+ *   At 10km altitude (Kb = 0.423):
+ *   ΔTb = 1.9 × 0.423 × 0.513 = 0.41°C
+ *   
+ * See how the elevation is SMALLER at altitude? That&#39;s the dynamic Kb effect!
+ * 
+ * @see dynamicKb.js for temperature-dependent Kb calculation
+ * @see https://en.wikipedia.org/wiki/Boiling-point_elevation
+ */
+
+/**
+ * Calculate boiling point elevation for a solution
+ * 
+ * @param {number} vanHoffFactor - i, number of particles per formula unit
+ * @param {number} Kb - Ebullioscopic constant in °C·kg/mol
+ * @param {number} molality - Molality in mol/kg
+ * @returns {number} Boiling point elevation in °C
+ */
+export function calculateBoilingPointElevation(vanHoffFactor, Kb, molality) {
+  // Validate inputs
+  if (!Number.isFinite(vanHoffFactor) || 
+      !Number.isFinite(Kb) || 
+      !Number.isFinite(molality)) {
+    return 0
+  }
+  
+  // ΔTb = i × Kb × m
+  const elevation = vanHoffFactor * Kb * molality
+  
+  return elevation
+}
+
+/**
+ * Calculate molality from mass percent concentration
+ * Useful for converting &quot;3% saltwater&quot; to molality
+ * 
+ * @param {number} massPercent - Mass percent of solute (e.g., 3 for 3%)
+ * @param {number} soluteMolarMass - Molar mass of solute in g/mol (58.44 for NaCl)
+ * @returns {number} Molality in mol/kg
+ */
+export function massPercentToMolality(massPercent, soluteMolarMass) {
+  if (!Number.isFinite(massPercent) || !Number.isFinite(soluteMolarMass)) {
+    return 0
+  }
+  
+  // In 100g of solution:
+  //   Solute mass = massPercent grams
+  //   Solvent mass = (100 - massPercent) grams = (100 - massPercent)/1000 kg
+  //   Moles of solute = massPercent / soluteMolarMass
+  //   Molality = moles / kg solvent
+  
+  const soluteMass = massPercent  // grams per 100g solution
+  const solventMass = (100 - massPercent) / 1000  // kg per 100g solution
+  const moles = soluteMass / soluteMolarMass
+  
+  return moles / solventMass
+}
+
+/**
+ * Common solute data for reference
+ */
+export const COMMON_SOLUTES = {
+  NaCl: { molarMass: 58.44, vanHoffFactor: 1.9 },
+  KCl: { molarMass: 74.55, vanHoffFactor: 1.85 },
+  CaCl2: { molarMass: 110.98, vanHoffFactor: 2.7 },
+  sucrose: { molarMass: 342.3, vanHoffFactor: 1.0 },
+  glucose: { molarMass: 180.16, vanHoffFactor: 1.0 },
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

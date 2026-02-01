@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>temperatureConversion</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">temperatureConversion</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">temperatureConversion</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>celsiusToFahrenheit</li><li>celsiusToKelvin</li><li>fahrenheitToCelsius</li><li>fahrenheitToKelvin</li><li>formatTemperature</li><li>kelvinToCelsius</li><li>kelvinToFahrenheit</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">4 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>temperatureConversion</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <h3>TEMPERATURE CONVERSION</h3>
+<p>Temperature can be expressed in different scales. The three most common are:</p>
+<p>CELSIUS (°C):</p>
+<p>- Water freezes at 0°C, boils at 100°C (at sea level)</p>
+<p>- Used worldwide for everyday temperatures</p>
+<p>- Named after Anders Celsius (1701-1744)</p>
+<p>FAHRENHEIT (°F):</p>
+<p>- Water freezes at 32°F, boils at 212°F</p>
+<p>- Used in USA for everyday temperatures</p>
+<p>- Named after Daniel Fahrenheit (1686-1736)</p>
+<p>KELVIN (K):</p>
+<p>- Absolute zero is 0 K (-273.15°C)</p>
+<p>- Water freezes at 273.15 K, boils at 373.15 K</p>
+<p>- Used in scientific calculations (thermodynamics)</p>
+<p>- Named after Lord Kelvin (1824-1907)</p>
+<p>- Note: No degree symbol for Kelvin (just &quot;K&quot;, not &quot;°K&quot;)</p>
+<p>CONVERSION FORMULAS:</p>
+<p>°C to °F: °F = (°C × 9/5) + 32</p>
+<p>°F to °C: °C = (°F - 32) × 5/9</p>
+<p>°C to K:  K = °C + 273.15</p>
+<p>K to °C:  °C = K - 273.15</p>
+<p>HELPFUL REFERENCE POINTS:</p>
+<p>-40°   = -40°C = -40°F (the only point where they&#39;re equal!)</p>
+<p>0°C    = 32°F = 273.15 K (freezing water)</p>
+<p>20°C   = 68°F (comfortable room temperature)</p>
+<p>37°C   = 98.6°F (human body temperature)</p>
+<p>100°C  = 212°F = 373.15 K (boiling water at sea level)</p>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\temperatureConversion.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * TEMPERATURE CONVERSION
+ * ======================
+ * 
+ * Temperature can be expressed in different scales. The three most common are:
+ * 
+ * CELSIUS (°C):
+ *   - Water freezes at 0°C, boils at 100°C (at sea level)
+ *   - Used worldwide for everyday temperatures
+ *   - Named after Anders Celsius (1701-1744)
+ * 
+ * FAHRENHEIT (°F):
+ *   - Water freezes at 32°F, boils at 212°F
+ *   - Used in USA for everyday temperatures
+ *   - Named after Daniel Fahrenheit (1686-1736)
+ * 
+ * KELVIN (K):
+ *   - Absolute zero is 0 K (-273.15°C)
+ *   - Water freezes at 273.15 K, boils at 373.15 K
+ *   - Used in scientific calculations (thermodynamics)
+ *   - Named after Lord Kelvin (1824-1907)
+ *   - Note: No degree symbol for Kelvin (just &quot;K&quot;, not &quot;°K&quot;)
+ * 
+ * CONVERSION FORMULAS:
+ *   °C to °F: °F = (°C × 9/5) + 32
+ *   °F to °C: °C = (°F - 32) × 5/9
+ *   °C to K:  K = °C + 273.15
+ *   K to °C:  °C = K - 273.15
+ * 
+ * HELPFUL REFERENCE POINTS:
+ *   -40°   = -40°C = -40°F (the only point where they&#39;re equal!)
+ *   0°C    = 32°F = 273.15 K (freezing water)
+ *   20°C   = 68°F (comfortable room temperature)
+ *   37°C   = 98.6°F (human body temperature)
+ *   100°C  = 212°F = 373.15 K (boiling water at sea level)
+ */
+
+// Offset between Celsius and Kelvin
+const KELVIN_OFFSET = 273.15
+
+/**
+ * Convert Celsius to Fahrenheit
+ * Formula: °F = (°C × 9/5) + 32
+ * 
+ * @param {number} celsius - Temperature in Celsius
+ * @returns {number} Temperature in Fahrenheit
+ */
+export function celsiusToFahrenheit(celsius) {
+  return (celsius * 9/5) + 32
+}
+
+/**
+ * Convert Fahrenheit to Celsius
+ * Formula: °C = (°F - 32) × 5/9
+ * 
+ * @param {number} fahrenheit - Temperature in Fahrenheit
+ * @returns {number} Temperature in Celsius
+ */
+export function fahrenheitToCelsius(fahrenheit) {
+  return (fahrenheit - 32) * 5/9
+}
+
+/**
+ * Convert Celsius to Kelvin
+ * Formula: K = °C + 273.15
+ * 
+ * @param {number} celsius - Temperature in Celsius
+ * @returns {number} Temperature in Kelvin
+ */
+export function celsiusToKelvin(celsius) {
+  return celsius + KELVIN_OFFSET
+}
+
+/**
+ * Convert Kelvin to Celsius
+ * Formula: °C = K - 273.15
+ * 
+ * @param {number} kelvin - Temperature in Kelvin
+ * @returns {number} Temperature in Celsius
+ */
+export function kelvinToCelsius(kelvin) {
+  return kelvin - KELVIN_OFFSET
+}
+
+/**
+ * Convert Fahrenheit to Kelvin
+ * 
+ * @param {number} fahrenheit - Temperature in Fahrenheit
+ * @returns {number} Temperature in Kelvin
+ */
+export function fahrenheitToKelvin(fahrenheit) {
+  return celsiusToKelvin(fahrenheitToCelsius(fahrenheit))
+}
+
+/**
+ * Convert Kelvin to Fahrenheit
+ * 
+ * @param {number} kelvin - Temperature in Kelvin
+ * @returns {number} Temperature in Fahrenheit
+ */
+export function kelvinToFahrenheit(kelvin) {
+  return celsiusToFahrenheit(kelvinToCelsius(kelvin))
+}
+
+/**
+ * Format temperature with specified decimal precision
+ * Used for display in UI
+ * 
+ * @param {number} temp - Temperature value to format
+ * @param {number} precision - Number of decimal places (default: 1)
+ * @returns {string} Formatted temperature string
+ */
+export function formatTemperature(temp, precision = 1) {
+  if (!Number.isFinite(temp)) return &#39;--&#39;
+  return temp.toFixed(precision)
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

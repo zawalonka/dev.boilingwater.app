@@ -1,0 +1,999 @@
+import fs from 'fs/promises'
+import path from 'path'
+import crypto from 'crypto'
+import { fileURLToPath, pathToFileURL } from 'url'
+import { globSync } from 'glob'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const repoRoot = path.resolve(__dirname, '..', '..')
+const wikiRoot = path.resolve(repoRoot, 'wiki')
+const distRoot = path.join(wikiRoot, 'dist')
+const cacheDir = path.join(wikiRoot, '.cache')
+const cacheFile = path.join(cacheDir, 'build.json')
+
+const basePath = process.env.WIKI_BASE_PATH || '/wiki'
+
+const inputGlobs = [
+  'src/data/substances/periodic-table/*.json',
+  'src/data/substances/compounds/pure/*/info.json',
+  'src/data/substances/compounds/solutions/*/info.json',
+  'src/data/substances/compounds/**/state.json',
+  'src/constants/workshops.js',
+  'src/utils/physics/**/*.{js,jsx}',
+  'src/**/*.{js,jsx}'
+]
+
+const rawArgs = process.argv.slice(2)
+const force = rawArgs.includes('--force')
+const changedFiles = []
+
+for (let i = 0; i < rawArgs.length; i += 1) {
+  const arg = rawArgs[i]
+  if (arg === '--changed' && rawArgs[i + 1]) {
+    changedFiles.push(...rawArgs[i + 1].split(',').map((value) => value.trim()).filter(Boolean))
+    i += 1
+  } else if (arg.startsWith('--changed=')) {
+    changedFiles.push(...arg.slice('--changed='.length).split(',').map((value) => value.trim()).filter(Boolean))
+  }
+}
+
+const toAbsolute = (filePath) => path.isAbsolute(filePath)
+  ? filePath
+  : path.resolve(repoRoot, filePath)
+
+const relevantRoots = [
+  path.resolve(repoRoot, 'src/data/substances'),
+  path.resolve(repoRoot, 'src/constants/workshops.js'),
+  path.resolve(repoRoot, 'src/utils/physics')
+]
+
+const isRelevantChange = (filePath) => {
+  const absolutePath = toAbsolute(filePath)
+  return relevantRoots.some((root) => absolutePath.startsWith(root))
+}
+
+const getInputFiles = () => {
+  const files = new Set()
+  for (const pattern of inputGlobs) {
+    for (const file of globSync(pattern, { cwd: repoRoot, absolute: true })) {
+      files.add(file)
+    }
+  }
+  return Array.from(files).sort()
+}
+
+const hashFiles = async (files) => {
+  const hash = crypto.createHash('sha256')
+  for (const file of files) {
+    const content = await fs.readFile(file)
+    hash.update(file)
+    hash.update(content)
+  }
+  return hash.digest('hex')
+}
+
+const readCache = async () => {
+  try {
+    const raw = await fs.readFile(cacheFile, 'utf-8')
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+const writeCache = async (data) => {
+  await fs.mkdir(cacheDir, { recursive: true })
+  await fs.writeFile(cacheFile, JSON.stringify(data, null, 2), 'utf-8')
+}
+
+const escapeHtml = (value) => value
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;')
+
+const withBase = (href) => {
+  if (!basePath) return href
+  const trimmedBase = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath
+  const trimmedHref = href.startsWith('/') ? href.slice(1) : href
+  return `${trimmedBase}/${trimmedHref}`
+}
+
+const page = ({ title, content }) => `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${escapeHtml(title)}</title>
+  <link rel="stylesheet" href="${withBase('assets/styles.css')}" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="${withBase('index.html')}">Main page</a>
+            <a href="${withBase('entities/elements/index.html')}">Elements</a>
+            <a href="${withBase('entities/compounds/index.html')}">Compounds</a>
+            <a href="${withBase('entities/solutions/index.html')}">Solutions</a>
+            <a href="${withBase('entities/phases/index.html')}">Phases</a>
+            <a href="${withBase('entities/levels/index.html')}">Levels</a>
+            <a href="${withBase('entities/experiments/index.html')}">Experiments</a>
+            <a href="${withBase('entities/formulas/index.html')}">Formulas</a>
+            <a href="${withBase('entities/processes/index.html')}">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">${escapeHtml(title)}</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          ${content}
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>`
+
+const writePage = async (relativePath, html) => {
+  const fullPath = path.join(distRoot, relativePath)
+  await fs.mkdir(path.dirname(fullPath), { recursive: true })
+  await fs.writeFile(fullPath, html, 'utf-8')
+}
+
+const renderJson = (data) => `<pre class="code">${escapeHtml(JSON.stringify(data, null, 2))}</pre>`
+
+const renderList = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`
+
+const renderFileList = (items) => {
+  if (!items.length) return '<p>None found.</p>'
+  return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+}
+
+const renderParagraphs = (value) => {
+  const text = String(value || '').trim()
+  if (!text) return ''
+  const parts = text.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)
+  return parts.map((part) => `<p>${escapeHtml(part)}</p>`).join('')
+}
+
+const renderEducationalSection = (value, useDocParser = false) => {
+  const body = useDocParser ? parseDocBlockToHtml(value) : renderParagraphs(value)
+  if (!body) return ''
+  return `
+    <section class="section">
+      <h2>Educational notes</h2>
+      ${body}
+    </section>
+  `
+}
+
+const buildElements = async () => {
+  const files = globSync('src/data/substances/periodic-table/*.json', { cwd: repoRoot, absolute: true })
+  const elements = []
+  for (const file of files) {
+    const raw = await fs.readFile(file, 'utf-8')
+    const data = JSON.parse(raw)
+    const slug = path.basename(file, '.json')
+    elements.push({ slug, data })
+  }
+  return elements.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const buildCompounds = async (type) => {
+  const files = globSync(`src/data/substances/compounds/${type}/*/info.json`, { cwd: repoRoot, absolute: true })
+  const compounds = []
+  for (const file of files) {
+    const raw = await fs.readFile(file, 'utf-8')
+    const data = JSON.parse(raw)
+    const id = data.id || path.basename(path.dirname(file))
+    compounds.push({ id, data, file })
+  }
+  return compounds.sort((a, b) => a.id.localeCompare(b.id))
+}
+
+const buildPhases = async () => {
+  const files = globSync('src/data/substances/compounds/**/state.json', { cwd: repoRoot, absolute: true })
+  const phases = []
+  for (const file of files) {
+    const raw = await fs.readFile(file, 'utf-8')
+    const data = JSON.parse(raw)
+    const phase = data.phase || path.basename(path.dirname(file))
+    const compoundId = data.compoundId || path.basename(path.dirname(path.dirname(file)))
+    const slug = `${compoundId}-${phase}`
+    phases.push({ slug, compoundId, phase, data, file })
+  }
+  return phases.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const extractDocSummary = (content) => {
+  const match = content.match(/\/\*\*([\s\S]*?)\*\//)
+  if (!match) return ''
+  const lines = match[1]
+    .split('\n')
+    .map((line) => line.replace(/^\s*\*\s?/, '').trim())
+    .filter(Boolean)
+  return lines[0] || ''
+}
+
+const extractDocBlock = (content) => {
+  const match = content.match(/\/\*\*([\s\S]*?)\*\//)
+  if (!match) return ''
+  return match[1]
+    .split('\n')
+    .map((line) => line.replace(/^\s*\*\s?/, '').trim())
+    .filter(Boolean)
+    .join('\n')
+}
+
+const parseDocBlockToHtml = (text) => {
+  if (!text) return ''
+  const lines = text.split('\n')
+  const result = []
+  let inCodeBlock = false
+  let codeLines = []
+  let pendingHeading = null
+
+  for (const line of lines) {
+    // Headings (lines of === or ---)
+    if (/^=+$/.test(line) && pendingHeading) {
+      result.push(`<h3>${escapeHtml(pendingHeading)}</h3>`)
+      pendingHeading = null
+      continue
+    }
+    if (/^-+$/.test(line) && pendingHeading) {
+      result.push(`<h4>${escapeHtml(pendingHeading)}</h4>`)
+      pendingHeading = null
+      continue
+    }
+    // Flush pending heading as paragraph if not followed by underline
+    if (pendingHeading) {
+      result.push(`<p>${escapeHtml(pendingHeading)}</p>`)
+      pendingHeading = null
+    }
+    // Code-like lines (formulas, equations)
+    if (/^\s*(\w+\s*=|log|T\s*=|P\s*=|Where:|@see)/.test(line)) {
+      if (!inCodeBlock) {
+        inCodeBlock = true
+        codeLines = []
+      }
+      codeLines.push(line)
+      continue
+    }
+    // End code block if we were in one
+    if (inCodeBlock && line.trim()) {
+      result.push(`<pre class="code">${escapeHtml(codeLines.join('\n'))}</pre>`)
+      inCodeBlock = false
+      codeLines = []
+    }
+    // Check if this could be a heading (ALL CAPS line)
+    if (/^[A-Z][A-Z\s]+:?$/.test(line.trim())) {
+      pendingHeading = line.trim()
+      continue
+    }
+    // Regular paragraphs
+    if (line.trim()) {
+      result.push(`<p>${escapeHtml(line)}</p>`)
+    }
+  }
+  // Flush pending heading
+  if (pendingHeading) {
+    result.push(`<p>${escapeHtml(pendingHeading)}</p>`)
+  }
+  // Flush remaining code block
+  if (inCodeBlock && codeLines.length) {
+    result.push(`<pre class="code">${escapeHtml(codeLines.join('\n'))}</pre>`)
+  }
+  return result.join('\n')
+}
+
+const parseExports = (content) => {
+  const names = new Set()
+  const functionRegex = /export\s+function\s+(\w+)/g
+  const constRegex = /export\s+const\s+(\w+)/g
+  const classRegex = /export\s+class\s+(\w+)/g
+  const namedRegex = /export\s*\{([^}]+)\}/g
+
+  for (const regex of [functionRegex, constRegex, classRegex]) {
+    let match
+    while ((match = regex.exec(content)) !== null) {
+      names.add(match[1])
+    }
+  }
+
+  let namedMatch
+  while ((namedMatch = namedRegex.exec(content)) !== null) {
+    const parts = namedMatch[1].split(',')
+    for (const part of parts) {
+      const cleaned = part.split('as')[0].trim()
+      if (cleaned) names.add(cleaned)
+    }
+  }
+
+  return Array.from(names).sort()
+}
+
+const buildFormulas = async () => {
+  const files = globSync('src/utils/physics/formulas/*.js', { cwd: repoRoot, absolute: true })
+  const formulas = []
+  for (const file of files) {
+    const content = await fs.readFile(file, 'utf-8')
+    const slug = path.basename(file, '.js')
+    formulas.push({
+      slug,
+      file,
+      summary: extractDocSummary(content),
+      docBlock: extractDocBlock(content),
+      exports: parseExports(content),
+      content
+    })
+  }
+  return formulas.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const buildProcesses = async () => {
+  const files = globSync('src/utils/physics/processes/**/*.js', { cwd: repoRoot, absolute: true })
+  const processes = []
+  for (const file of files) {
+    const content = await fs.readFile(file, 'utf-8')
+    const relative = path.relative(path.join(repoRoot, 'src/utils/physics/processes'), file)
+    const slug = relative.replace(/\\/g, '/').replace(/\.js$/, '')
+    processes.push({
+      slug,
+      file,
+      summary: extractDocSummary(content),
+      docBlock: extractDocBlock(content),
+      exports: parseExports(content),
+      content,
+      isStub: path.basename(file).startsWith('_')
+    })
+  }
+  return processes.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const buildUsageMap = async (symbols) => {
+  const files = globSync('src/**/*.{js,jsx}', {
+    cwd: repoRoot,
+    absolute: true,
+    ignore: ['src/utils/physics/formulas/**', 'src/utils/physics/processes/**']
+  })
+  const usage = new Map()
+  for (const symbol of symbols) usage.set(symbol, new Set())
+
+  for (const file of files) {
+    const content = await fs.readFile(file, 'utf-8')
+    for (const symbol of symbols) {
+      const regex = new RegExp(`\\b${symbol}\\b`, 'g')
+      if (regex.test(content)) {
+        usage.get(symbol).add(path.relative(repoRoot, file))
+      }
+    }
+  }
+
+  return usage
+}
+
+const linkTo = (href, label) => `<a href="${withBase(href)}">${escapeHtml(label)}</a>`
+
+const renderEntityHeader = (title, subtitle) => `
+  <div class="entity-header">
+    <h1>${escapeHtml(title)}</h1>
+    ${subtitle ? `<p class="subtitle">${escapeHtml(subtitle)}</p>` : ''}
+  </div>
+`
+
+const renderInfobox = (title, rows) => {
+  const renderedRows = rows
+    .filter((row) => row && row.value)
+    .map((row) => `
+      <div class="infobox-row">
+        <div class="infobox-label">${escapeHtml(row.label)}</div>
+        <div class="infobox-value">${row.value}</div>
+      </div>
+    `)
+    .join('')
+
+  if (!renderedRows) return ''
+
+  return `
+    <aside class="infobox">
+      <div class="infobox-title">${escapeHtml(title)}</div>
+      ${renderedRows}
+    </aside>
+  `
+}
+
+const renderLinkList = (items) => items.length ? renderList(items) : '<p>None found.</p>'
+
+const getOrderedSibling = (items, current, direction = 1) => {
+  const sorted = [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  const index = sorted.findIndex((item) => item.id === current.id || item.id === current)
+  if (index === -1) return null
+  return sorted[index + direction] || null
+}
+
+const buildLevelsAndExperiments = async () => {
+  const moduleUrl = pathToFileURL(path.join(repoRoot, 'src/constants/workshops.js')).href
+  const { LEVELS, EXPERIMENTS } = await import(moduleUrl)
+  const levels = Array.isArray(LEVELS) ? LEVELS : []
+  const experiments = []
+
+  Object.entries(EXPERIMENTS || {}).forEach(([levelId, items]) => {
+    for (const item of items) {
+      experiments.push({ ...item, levelId: Number(levelId) })
+    }
+  })
+
+  return { levels, experiments }
+}
+
+const build = async () => {
+  const inputFiles = getInputFiles()
+
+  if (!force && changedFiles.length > 0) {
+    const hasRelevantChanges = changedFiles.some(isRelevantChange)
+    if (!hasRelevantChanges) {
+      console.log('Wiki: no relevant changes detected; skipping build.')
+      return
+    }
+  }
+
+  const newHash = await hashFiles(inputFiles)
+  const previous = await readCache()
+  if (!force && previous?.hash === newHash) {
+    console.log('Wiki: no changes detected; skipping build.')
+    return
+  }
+
+  const elements = await buildElements()
+  const compounds = await buildCompounds('pure')
+  const solutions = await buildCompounds('solutions')
+  const phases = await buildPhases()
+  const { levels, experiments } = await buildLevelsAndExperiments()
+  const formulas = await buildFormulas()
+  const processes = await buildProcesses()
+
+  const elementChildren = new Map()
+  const compoundChildren = new Map()
+  const phasesByCompound = new Map()
+
+  for (const phase of phases) {
+    if (!phasesByCompound.has(phase.compoundId)) phasesByCompound.set(phase.compoundId, [])
+    phasesByCompound.get(phase.compoundId).push(phase)
+  }
+
+  for (const compound of compounds) {
+    const list = compound.data.elements || []
+    for (const item of list) {
+      const ref = item.reference || ''
+      const slug = path.basename(ref, '.json')
+      if (!elementChildren.has(slug)) elementChildren.set(slug, [])
+      elementChildren.get(slug).push(compound)
+    }
+  }
+
+  for (const solution of solutions) {
+    const components = solution.data.components || []
+    for (const component of components) {
+      const ref = component.reference || ''
+      const id = path.basename(path.dirname(ref))
+      if (!compoundChildren.has(id)) compoundChildren.set(id, [])
+      compoundChildren.get(id).push(solution)
+    }
+  }
+
+  const formulaToProcesses = new Map()
+  const processToFormulas = new Map()
+
+  for (const process of processes) {
+    const matches = Array.from(process.content.matchAll(/from\s+['"][^'"]*formulas\/([^'"]+)['"]/g))
+    const formulaNames = matches.map((match) => path.basename(match[1], '.js'))
+    const unique = Array.from(new Set(formulaNames))
+    processToFormulas.set(process.slug, unique)
+    for (const name of unique) {
+      if (!formulaToProcesses.has(name)) formulaToProcesses.set(name, [])
+      formulaToProcesses.get(name).push(process)
+    }
+  }
+
+  const formulaSymbols = formulas.flatMap((formula) => formula.exports)
+  const processSymbols = processes.flatMap((process) => process.exports)
+
+  const formulaUsage = await buildUsageMap(formulaSymbols)
+  const processUsage = await buildUsageMap(processSymbols)
+
+  const styles = `
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      background: #f8f9fa;
+      color: #202122;
+    }
+    body { margin: 0; }
+    .wiki-layout {
+      display: block;
+      min-height: 100vh;
+      background: #f8f9fa;
+    }
+    .wiki-main {
+      display: flex;
+      flex-direction: column;
+    }
+    .wiki-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid #a2a9b1;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .wiki-topbar-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #202122;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .wiki-menu summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+    }
+    .wiki-menu summary::-webkit-details-marker { display: none; }
+    .wiki-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #a2a9b1;
+      min-width: 200px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    .wiki-menu-links a { color: #0645ad; text-decoration: none; }
+    .wiki-menu-links a:hover { text-decoration: underline; }
+    .wiki-menu-divider { height: 1px; background: #c8ccd1; margin: 4px 0; }
+    .wiki-content { padding: 24px 32px 48px; }
+    .wiki-article { max-width: 980px; }
+    .wiki-article h1, .wiki-article h2, .wiki-article h3 {
+      font-family: "Linux Libertine", "Georgia", serif;
+      font-weight: 600;
+      color: #202122;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #c8ccd1;
+    }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .portal-box {
+      background: #ffffff;
+      border: 1px solid #a2a9b1;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .infobox {
+      float: right;
+      width: 280px;
+      margin: 0 0 16px 16px;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      font-size: 13px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .infobox-title {
+      background: #eaecf0;
+      padding: 8px 10px;
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 1px solid #a2a9b1;
+    }
+    .infobox-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 6px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #c8ccd1;
+      align-items: start;
+    }
+    .infobox-row:last-child { border-bottom: none; }
+    .infobox-label { font-weight: 600; color: #54595d; }
+    .infobox-value {
+      color: #202122;
+      min-width: 0;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .code {
+      background: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .subtitle { color: #54595d; margin-top: -8px; }
+    .entity-header { margin-bottom: 16px; }
+    @media (max-width: 900px) {
+      .wiki-sidebar { display: none; }
+      .wiki-content { padding: 20px; }
+      .infobox { float: none; width: auto; margin: 0 0 16px 0; }
+    }
+  `
+
+  await fs.mkdir(path.join(distRoot, 'assets'), { recursive: true })
+  await fs.writeFile(path.join(distRoot, 'assets/styles.css'), styles.trim(), 'utf-8')
+
+  const indexContent = `
+    <section class="section">
+      <h1>Boilingwater Wiki</h1>
+      <p>Static knowledge base generated from in-repo data.</p>
+    </section>
+    <section class="section">
+      <div class="portal-grid">
+        <div class="portal-box">
+          <h3>Substances</h3>
+          ${renderList([
+            linkTo('entities/elements/index.html', `Elements (${elements.length})`),
+            linkTo('entities/compounds/index.html', `Compounds (${compounds.length})`),
+            linkTo('entities/solutions/index.html', `Solutions (${solutions.length})`),
+            linkTo('entities/phases/index.html', `Phases (${phases.length})`)
+          ])}
+        </div>
+        <div class="portal-box">
+          <h3>Experiments</h3>
+          ${renderList([
+            linkTo('entities/levels/index.html', `Levels (${levels.length})`),
+            linkTo('entities/experiments/index.html', `Experiments (${experiments.length})`)
+          ])}
+        </div>
+        <div class="portal-box">
+          <h3>Physics</h3>
+          ${renderList([
+            linkTo('entities/formulas/index.html', `Formulas (${formulas.length})`),
+            linkTo('entities/processes/index.html', `Processes (${processes.length})`)
+          ])}
+        </div>
+      </div>
+    </section>
+  `
+
+  await writePage('index.html', page({ title: 'Boilingwater Wiki', content: indexContent }))
+
+  const elementLinks = elements.map((element) => linkTo(`entities/elements/${element.slug}.html`, element.slug))
+  await writePage('entities/elements/index.html', page({
+    title: 'Elements',
+    content: `<section class="section">${renderEntityHeader('Elements')} ${renderList(elementLinks)}</section>`
+  }))
+
+  for (const element of elements) {
+    const children = (elementChildren.get(element.slug) || [])
+      .map((compound) => linkTo(`entities/compounds/${compound.id}.html`, compound.data.name || compound.id))
+
+    const elementIndex = elements.indexOf(element)
+    const prevElement = elements[elementIndex - 1]
+    const nextElement = elements[elementIndex + 1]
+
+    const displayName = element.data.name || element.slug
+    const displaySymbol = element.data.symbol || element.slug
+
+    const infobox = renderInfobox(displayName, [
+      { label: 'Symbol', value: escapeHtml(displaySymbol) },
+      { label: 'Atomic #', value: element.data.atomicNumber ? String(element.data.atomicNumber) : '' },
+      { label: 'Category', value: element.data.elementCategory ? escapeHtml(element.data.elementCategory) : '' },
+      { label: 'Predecessor', value: prevElement ? linkTo(`entities/elements/${prevElement.slug}.html`, prevElement.data.name || prevElement.slug) : '' },
+      { label: 'Successor', value: nextElement ? linkTo(`entities/elements/${nextElement.slug}.html`, nextElement.data.name || nextElement.slug) : '' },
+      { label: 'Compounds', value: children.length ? renderLinkList(children) : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(displayName, `Element · ${displaySymbol}`)}
+      </section>
+      ${renderEducationalSection(element.data.educationalNotes)}
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(element.data)}
+      </section>
+    `
+    await writePage(`entities/elements/${element.slug}.html`, page({ title: displayName, content }))
+  }
+
+  const compoundLinks = compounds.map((compound) => linkTo(`entities/compounds/${compound.id}.html`, compound.id))
+  await writePage('entities/compounds/index.html', page({
+    title: 'Compounds',
+    content: `<section class="section">${renderEntityHeader('Compounds')} ${renderList(compoundLinks)}</section>`
+  }))
+
+  for (const compound of compounds) {
+    const elementsLinks = (compound.data.elements || []).map((item) => {
+      const slug = path.basename(item.reference || '', '.json')
+      return linkTo(`entities/elements/${slug}.html`, item.symbol || slug)
+    })
+    const solutionsUsing = (compoundChildren.get(compound.id) || [])
+      .map((solution) => linkTo(`entities/solutions/${solution.id}.html`, solution.data.name || solution.id))
+    const compoundPhases = (phasesByCompound.get(compound.id) || [])
+      .map((phase) => linkTo(`entities/phases/${phase.slug}.html`, phase.phase))
+
+    const displayName = compound.data.name || compound.id
+
+    const infobox = renderInfobox(displayName, [
+      { label: 'Type', value: 'Compound' },
+      { label: 'Formula', value: compound.data.chemicalFormula ? escapeHtml(compound.data.chemicalFormula) : '' },
+      { label: 'Elements', value: elementsLinks.length ? renderLinkList(elementsLinks) : '' },
+      { label: 'Solutions', value: solutionsUsing.length ? renderLinkList(solutionsUsing) : '' },
+      { label: 'Phases', value: compoundPhases.length ? renderLinkList(compoundPhases) : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(displayName, 'Compound')}
+      </section>
+      ${renderEducationalSection(compound.data.educationalNotes)}
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(compound.data)}
+      </section>
+    `
+    await writePage(`entities/compounds/${compound.id}.html`, page({ title: displayName, content }))
+  }
+
+  const solutionLinks = solutions.map((solution) => linkTo(`entities/solutions/${solution.id}.html`, solution.id))
+  await writePage('entities/solutions/index.html', page({
+    title: 'Solutions',
+    content: `<section class="section">${renderEntityHeader('Solutions')} ${renderList(solutionLinks)}</section>`
+  }))
+
+  for (const solution of solutions) {
+    const componentLinks = (solution.data.components || []).map((component) => {
+      // Try to find compound by component.id first, then by folder name from reference
+      const folderId = path.basename(path.dirname(component.reference || ''))
+      const compoundByComponentId = compounds.find((c) => c.id === component.id)
+      const compoundByFolderId = compounds.find((c) => c.id === folderId)
+      const compound = compoundByComponentId || compoundByFolderId
+      
+      if (compound) {
+        return linkTo(`entities/compounds/${compound.id}.html`, component.name || compound.data.name || compound.id)
+      }
+      // No link for non-existent compounds
+      return escapeHtml(component.name || component.id || folderId)
+    })
+    const solutionPhases = (phasesByCompound.get(solution.id) || [])
+      .map((phase) => linkTo(`entities/phases/${phase.slug}.html`, phase.phase))
+
+    const displayName = solution.data.name || solution.id
+
+    const infobox = renderInfobox(displayName, [
+      { label: 'Type', value: 'Solution' },
+      { label: 'Components', value: componentLinks.length ? renderLinkList(componentLinks) : '' },
+      { label: 'Phases', value: solutionPhases.length ? renderLinkList(solutionPhases) : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(displayName, 'Solution')}
+      </section>
+      ${renderEducationalSection(solution.data.educationalNotes)}
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(solution.data)}
+      </section>
+    `
+    await writePage(`entities/solutions/${solution.id}.html`, page({ title: displayName, content }))
+  }
+
+  const phaseLinks = phases.map((phase) => linkTo(`entities/phases/${phase.slug}.html`, phase.slug))
+  await writePage('entities/phases/index.html', page({
+    title: 'Phases',
+    content: `<section class="section">${renderEntityHeader('Phases')} ${renderList(phaseLinks)}</section>`
+  }))
+
+  for (const phase of phases) {
+    const compoundData = [...compounds, ...solutions].find((c) => c.id === phase.compoundId)
+    const compoundName = compoundData?.data?.name || phase.compoundId
+    const phaseName = phase.data.phaseName || phase.phase
+    // Use phaseName only if it's different from phase AND compound name, otherwise use phase
+    const hasUniquePhaseName = phaseName !== phase.phase && phaseName.toLowerCase() !== compoundName.toLowerCase()
+    const stateLabel = hasUniquePhaseName ? phaseName : phase.phase
+    const displayName = `${compoundName} (${stateLabel})`
+
+    const infobox = renderInfobox(displayName, [
+      { label: 'Compound', value: linkTo(`entities/compounds/${phase.compoundId}.html`, compoundName) },
+      { label: 'State', value: escapeHtml(phase.phase) },
+      { label: 'Name', value: hasUniquePhaseName ? escapeHtml(phaseName) : '' }
+    ])
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(displayName, 'Phase')}
+      </section>
+      ${renderEducationalSection(phase.data.educationalNotes)}
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(phase.data)}
+      </section>
+    `
+    await writePage(`entities/phases/${phase.slug}.html`, page({ title: displayName, content }))
+  }
+
+  const levelLinks = levels.map((level) => linkTo(`entities/levels/${level.id}.html`, `${level.name || level.id}`))
+  await writePage('entities/levels/index.html', page({
+    title: 'Levels',
+    content: `<section class="section">${renderEntityHeader('Levels')} ${renderList(levelLinks)}</section>`
+  }))
+
+  for (const level of levels) {
+    const predecessor = getOrderedSibling(levels, level, -1)
+    const successor = getOrderedSibling(levels, level, 1)
+    const levelExperiments = experiments
+      .filter((experiment) => Number(experiment.level) === Number(level.id))
+      .map((experiment) => linkTo(`entities/experiments/${experiment.id}.html`, experiment.name || experiment.id))
+
+    const infobox = renderInfobox(level.name || `Level ${level.id}`, [
+      { label: 'Type', value: 'Level' },
+      { label: 'Predecessor', value: predecessor ? linkTo(`entities/levels/${predecessor.id}.html`, predecessor.name || predecessor.id) : '' },
+      { label: 'Successor', value: successor ? linkTo(`entities/levels/${successor.id}.html`, successor.name || successor.id) : '' },
+      { label: 'Children', value: renderLinkList(levelExperiments) }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(level.name || `Level ${level.id}`, 'Level')}
+        <h3>Children (experiments)</h3>
+        ${levelExperiments.length ? renderList(levelExperiments) : '<p>No experiments listed.</p>'}
+      </section>
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(level)}
+      </section>
+    `
+    await writePage(`entities/levels/${level.id}.html`, page({ title: level.name || `Level ${level.id}`, content }))
+  }
+
+  const experimentLinks = experiments.map((experiment) => linkTo(`entities/experiments/${experiment.id}.html`, experiment.name || experiment.id))
+  await writePage('entities/experiments/index.html', page({
+    title: 'Experiments',
+    content: `<section class="section">${renderEntityHeader('Experiments')} ${renderList(experimentLinks)}</section>`
+  }))
+
+  for (const experiment of experiments) {
+    const siblings = experiments.filter((item) => Number(item.level) === Number(experiment.level))
+    const predecessor = getOrderedSibling(siblings, experiment, -1)
+    const successor = getOrderedSibling(siblings, experiment, 1)
+
+    const infobox = renderInfobox(experiment.name || experiment.id, [
+      { label: 'Type', value: 'Experiment' },
+      { label: 'Parent', value: linkTo(`entities/levels/${experiment.level}.html`, `Level ${experiment.level}`) },
+      { label: 'Predecessor', value: predecessor ? linkTo(`entities/experiments/${predecessor.id}.html`, predecessor.name || predecessor.id) : '' },
+      { label: 'Successor', value: successor ? linkTo(`entities/experiments/${successor.id}.html`, successor.name || successor.id) : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(experiment.name || experiment.id, 'Experiment')}
+        <h3>Parent (level)</h3>
+        <p>${linkTo(`entities/levels/${experiment.level}.html`, `Level ${experiment.level}`)}</p>
+      </section>
+      <section class="section">
+        <h2>Raw data</h2>
+        ${renderJson(experiment)}
+      </section>
+    `
+    await writePage(`entities/experiments/${experiment.id}.html`, page({ title: experiment.name || experiment.id, content }))
+  }
+
+  const formulaLinks = formulas.map((formula) => linkTo(`entities/formulas/${formula.slug}.html`, formula.slug))
+  await writePage('entities/formulas/index.html', page({
+    title: 'Formulas',
+    content: `<section class="section">${renderEntityHeader('Formulas')} ${renderList(formulaLinks)}</section>`
+  }))
+
+  for (const formula of formulas) {
+    const usedByProcesses = (formulaToProcesses.get(formula.slug) || [])
+      .map((process) => linkTo(`entities/processes/${process.slug}.html`, process.slug))
+    const referencedIn = formula.exports
+      .flatMap((name) => Array.from(formulaUsage.get(name) || []))
+    const uniqueReferences = Array.from(new Set(referencedIn)).sort()
+
+    const infobox = renderInfobox(formula.slug, [
+      { label: 'Type', value: 'Formula' },
+      { label: 'Exports', value: formula.exports.length ? renderList(formula.exports.map((item) => escapeHtml(item))) : '' },
+      { label: 'Processes', value: usedByProcesses.length ? renderLinkList(usedByProcesses) : '' },
+      { label: 'Used in', value: uniqueReferences.length ? `${uniqueReferences.length} file(s)` : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(formula.slug, 'Formula')}
+      </section>
+      ${renderEducationalSection(formula.docBlock, true)}
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>${escapeHtml(path.relative(repoRoot, formula.file))}</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">${escapeHtml(formula.content)}</pre>
+        </details>
+      </section>
+    `
+    await writePage(`entities/formulas/${formula.slug}.html`, page({ title: formula.slug, content }))
+  }
+
+  const processLinks = processes.map((process) => linkTo(`entities/processes/${process.slug}.html`, process.slug))
+  await writePage('entities/processes/index.html', page({
+    title: 'Processes',
+    content: `<section class="section">${renderEntityHeader('Processes')} ${renderList(processLinks)}</section>`
+  }))
+
+  for (const process of processes) {
+    const usesFormulas = (processToFormulas.get(process.slug) || [])
+      .map((formula) => linkTo(`entities/formulas/${formula}.html`, formula))
+    const referencedIn = process.exports
+      .flatMap((name) => Array.from(processUsage.get(name) || []))
+    const uniqueReferences = Array.from(new Set(referencedIn)).sort()
+
+    const infobox = renderInfobox(process.slug, [
+      { label: 'Type', value: process.isStub ? 'Process (Stub)' : 'Process' },
+      { label: 'Formulas', value: usesFormulas.length ? renderLinkList(usesFormulas) : '' },
+      { label: 'Exports', value: process.exports.length ? renderList(process.exports.map((item) => escapeHtml(item))) : '' },
+      { label: 'Used in', value: uniqueReferences.length ? `${uniqueReferences.length} file(s)` : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(process.slug, process.isStub ? 'Process (Stub)' : 'Process')}
+      </section>
+      ${renderEducationalSection(process.docBlock, true)}
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>${escapeHtml(path.relative(repoRoot, process.file))}</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">${escapeHtml(process.content)}</pre>
+        </details>
+      </section>
+    `
+    await writePage(`entities/processes/${process.slug}.html`, page({ title: process.slug, content }))
+  }
+
+  await writeCache({
+    hash: newHash,
+    builtAt: new Date().toISOString(),
+    inputs: inputFiles
+  })
+
+  console.log('Wiki: build complete.')
+}
+
+build().catch((error) => {
+  console.error('Wiki: build failed', error)
+  process.exitCode = 1
+})

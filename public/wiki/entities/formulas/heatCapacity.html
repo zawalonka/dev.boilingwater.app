@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>heatCapacity</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">heatCapacity</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">heatCapacity</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>SPECIFIC_HEAT_VALUES</li><li>calculateHeatEnergy</li><li>calculateHeatingTime</li><li>calculateTempChange</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Processes</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/heating/_heatCapacity.html">heating/_heatCapacity</a></li><li><a href="/wiki/entities/processes/roomControl/_heatCapacity.html">roomControl/_heatCapacity</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">1 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>heatCapacity</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>HEAT CAPACITY (Q = mcΔT)</p>
+<p>========================</p>
+<p>The heat capacity equation describes how much thermal energy is needed</p>
+<p>to change the temperature of a substance. It&#39;s one of the most fundamental</p>
+<p>equations in thermodynamics.</p>
+<p>EQUATION:</p>
+<pre class="code">Q = m × c × ΔT
+Where:
+Q  = heat energy (Joules)
+m  = mass (kilograms or grams, must match c units)
+c  = specific heat capacity (J/(g·°C) or J/(kg·°C))</pre>
+<p>ΔT = temperature change (°C or K, they&#39;re equivalent for differences)</p>
+<p>REARRANGED FORMS:</p>
+<p>ΔT = Q / (m × c)     Find temperature change from energy</p>
+<pre class="code">m = Q / (c × ΔT)     Find mass that can be heated
+c = Q / (m × ΔT)     Find specific heat experimentally</pre>
+<p>SPECIFIC HEAT VALUES (J/(g·°C)):</p>
+<p>Water:    4.186  (exceptionally high - why water is great for cooling!)</p>
+<p>Ethanol:  2.44   (lower - heats/cools faster than water)</p>
+<p>Acetone:  2.13   (even lower)</p>
+<p>Ice:      2.09   (solid water has lower specific heat)</p>
+<p>Aluminum: 0.897  (metals are generally low)</p>
+<p>Copper:   0.385  (very low - heats quickly)</p>
+<p>REAL-WORLD EXAMPLE:</p>
+<p>Heating 1 liter of water (1 kg) from 20°C to 100°C:</p>
+<p>ΔT = 80°C</p>
+<pre class="code">Q = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 J</pre>
+<p>With a 1000W kettle: time = 334,880 J ÷ 1000 W = 335 seconds ≈ 5.6 minutes</p>
+<pre class="code">@see https://en.wikipedia.org/wiki/Specific_heat_capacity</pre>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\heatCapacity.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * HEAT CAPACITY (Q = mcΔT)
+ * ========================
+ * 
+ * The heat capacity equation describes how much thermal energy is needed
+ * to change the temperature of a substance. It&#39;s one of the most fundamental
+ * equations in thermodynamics.
+ * 
+ * EQUATION:
+ *   Q = m × c × ΔT
+ * 
+ * Where:
+ *   Q  = heat energy (Joules)
+ *   m  = mass (kilograms or grams, must match c units)
+ *   c  = specific heat capacity (J/(g·°C) or J/(kg·°C))
+ *   ΔT = temperature change (°C or K, they&#39;re equivalent for differences)
+ * 
+ * REARRANGED FORMS:
+ *   ΔT = Q / (m × c)     Find temperature change from energy
+ *   m = Q / (c × ΔT)     Find mass that can be heated
+ *   c = Q / (m × ΔT)     Find specific heat experimentally
+ * 
+ * SPECIFIC HEAT VALUES (J/(g·°C)):
+ *   Water:    4.186  (exceptionally high - why water is great for cooling!)
+ *   Ethanol:  2.44   (lower - heats/cools faster than water)
+ *   Acetone:  2.13   (even lower)
+ *   Ice:      2.09   (solid water has lower specific heat)
+ *   Aluminum: 0.897  (metals are generally low)
+ *   Copper:   0.385  (very low - heats quickly)
+ * 
+ * REAL-WORLD EXAMPLE:
+ * Heating 1 liter of water (1 kg) from 20°C to 100°C:
+ *   ΔT = 80°C
+ *   Q = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 J
+ *   With a 1000W kettle: time = 334,880 J ÷ 1000 W = 335 seconds ≈ 5.6 minutes
+ * 
+ * @see https://en.wikipedia.org/wiki/Specific_heat_capacity
+ */
+
+/**
+ * Calculate energy needed to heat a substance by a given temperature change
+ * 
+ * @param {number} massKg - Mass in kilograms
+ * @param {number} specificHeat - Specific heat capacity in J/(g·°C)
+ * @param {number} tempChange - Temperature change in °C (can be negative for cooling)
+ * @returns {number} Energy in Joules (positive = heat added, negative = heat removed)
+ */
+export function calculateHeatEnergy(massKg, specificHeat, tempChange) {
+  // Convert kg to g to match typical specificHeat units (J/(g·°C))
+  const massG = massKg * 1000
+  
+  // Q = mcΔT
+  return massG * specificHeat * tempChange
+}
+
+/**
+ * Calculate temperature change from applied heat energy
+ * 
+ * @param {number} massKg - Mass in kilograms
+ * @param {number} specificHeat - Specific heat capacity in J/(g·°C)
+ * @param {number} energyJ - Energy in Joules
+ * @returns {number} Temperature change in °C
+ */
+export function calculateTempChange(massKg, specificHeat, energyJ) {
+  // Convert kg to g
+  const massG = massKg * 1000
+  
+  // ΔT = Q / (mc)
+  if (massG &lt;= 0 || specificHeat &lt;= 0) return 0
+  return energyJ / (massG * specificHeat)
+}
+
+/**
+ * Calculate how long a heater takes to heat a substance
+ * 
+ * @param {number} massKg - Mass in kilograms
+ * @param {number} specificHeat - Specific heat capacity in J/(g·°C)
+ * @param {number} tempStart - Starting temperature (°C)
+ * @param {number} tempEnd - Target temperature (°C)
+ * @param {number} powerWatts - Heater power in Watts
+ * @returns {number} Time in seconds
+ */
+export function calculateHeatingTime(massKg, specificHeat, tempStart, tempEnd, powerWatts) {
+  if (powerWatts &lt;= 0) return Infinity
+  
+  const energyNeeded = calculateHeatEnergy(massKg, specificHeat, tempEnd - tempStart)
+  
+  // time = energy / power
+  return Math.abs(energyNeeded) / powerWatts
+}
+
+/**
+ * Reference specific heat values (J/(g·°C))
+ */
+export const SPECIFIC_HEAT_VALUES = {
+  water: 4.186,
+  ice: 2.09,
+  steam: 2.01,
+  ethanol: 2.44,
+  methanol: 2.53,
+  acetone: 2.13,
+  glycerol: 2.43,
+  ammonia_liquid: 4.70,
+  aluminum: 0.897,
+  copper: 0.385,
+  iron: 0.449,
+  air: 1.006,
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

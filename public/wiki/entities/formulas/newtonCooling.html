@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>newtonCooling</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">newtonCooling</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">newtonCooling</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>CONVECTIVE_HEAT_TRANSFER</li><li>applyCoolingStep</li><li>calculateEffectiveCoolingCoeff</li><li>temperatureAtTime</li><li>timeToCool</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Processes</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/simulation/_newtonCooling.html">simulation/_newtonCooling</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">1 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>newtonCooling</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>NEWTON&#39;S LAW OF COOLING</p>
+<p>========================</p>
+<p>Newton&#39;s Law of Cooling describes how the temperature of an object</p>
+<p>changes over time as it equilibrates with its surroundings. It applies</p>
+<p>to both cooling (hot object in cool room) and heating (cold object in warm room).</p>
+<p>EQUATION:</p>
+<p>dT/dt = -k × (T - Tambient)</p>
+<pre class="code">Where:</pre>
+<p>dT/dt    = rate of temperature change (°C/s)</p>
+<pre class="code">k        = heat transfer coefficient (1/s)
+T        = current temperature (°C)
+Tambient = ambient/room temperature (°C)</pre>
+<p>SOLUTION (for constant Tambient):</p>
+<p>T(t) = Tambient + (T0 - Tambient) × e^(-kt)</p>
+<p>PHYSICAL MEANING:</p>
+<p>- Hot objects cool FASTER when the temperature difference is larger</p>
+<p>- As the object approaches room temperature, cooling slows exponentially</p>
+<p>- A pot of water at 100°C cools much faster than one at 30°C</p>
+<p>THE HEAT TRANSFER COEFFICIENT (k):</p>
+<p>This is NOT a simple constant! It depends on:</p>
+<p>- Convection: still air vs. moving air vs. liquid</p>
+<p>- Container: insulated vs. metal vs. glass</p>
+<p>- Surface area: large pot vs. small pot</p>
+<p>- Fluid properties: specific heat, thermal conductivity</p>
+<p>PHYSICS-BASED k CALCULATION:</p>
+<pre class="code">k_eff = (h × A) / (m × c)
+Where:
+h = convective heat transfer coefficient (W/(m²·K))</pre>
+<p>- Still air: ~5-25 W/(m²·K)</p>
+<p>- Moving air: ~10-200 W/(m²·K)</p>
+<p>- Water: ~500-10,000 W/(m²·K)</p>
+<pre class="code">A = surface area of container (m²)
+m = mass of fluid (kg)
+c = specific heat of fluid (J/(kg·K))</pre>
+<p>For a typical pot in still air:</p>
+<p>h ≈ 10 W/(m²·K), A ≈ 0.03 m², so h×A ≈ 0.3 W/K</p>
+<p>For 1 kg water (c = 4186 J/(kg·K)):</p>
+<p>k_eff ≈ 0.3 / 4186 ≈ 0.000072 /s</p>
+<pre class="code">@see https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling</pre>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\newtonCooling.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * NEWTON&#39;S LAW OF COOLING
+ * ========================
+ * 
+ * Newton&#39;s Law of Cooling describes how the temperature of an object
+ * changes over time as it equilibrates with its surroundings. It applies
+ * to both cooling (hot object in cool room) and heating (cold object in warm room).
+ * 
+ * EQUATION:
+ *   dT/dt = -k × (T - Tambient)
+ * 
+ * Where:
+ *   dT/dt    = rate of temperature change (°C/s)
+ *   k        = heat transfer coefficient (1/s)
+ *   T        = current temperature (°C)
+ *   Tambient = ambient/room temperature (°C)
+ * 
+ * SOLUTION (for constant Tambient):
+ *   T(t) = Tambient + (T0 - Tambient) × e^(-kt)
+ * 
+ * PHYSICAL MEANING:
+ * - Hot objects cool FASTER when the temperature difference is larger
+ * - As the object approaches room temperature, cooling slows exponentially
+ * - A pot of water at 100°C cools much faster than one at 30°C
+ * 
+ * THE HEAT TRANSFER COEFFICIENT (k):
+ * This is NOT a simple constant! It depends on:
+ *   - Convection: still air vs. moving air vs. liquid
+ *   - Container: insulated vs. metal vs. glass
+ *   - Surface area: large pot vs. small pot
+ *   - Fluid properties: specific heat, thermal conductivity
+ * 
+ * PHYSICS-BASED k CALCULATION:
+ *   k_eff = (h × A) / (m × c)
+ * 
+ * Where:
+ *   h = convective heat transfer coefficient (W/(m²·K))
+ *       - Still air: ~5-25 W/(m²·K)
+ *       - Moving air: ~10-200 W/(m²·K)
+ *       - Water: ~500-10,000 W/(m²·K)
+ *   A = surface area of container (m²)
+ *   m = mass of fluid (kg)
+ *   c = specific heat of fluid (J/(kg·K))
+ * 
+ * For a typical pot in still air:
+ *   h ≈ 10 W/(m²·K), A ≈ 0.03 m², so h×A ≈ 0.3 W/K
+ *   For 1 kg water (c = 4186 J/(kg·K)):
+ *   k_eff ≈ 0.3 / 4186 ≈ 0.000072 /s
+ * 
+ * @see https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling
+ */
+
+/**
+ * Calculate the effective cooling coefficient based on physical properties
+ * 
+ * @param {number} convectiveHeatTransfer - h × A in Watts per °C (typically 0.2-0.5 for pot in still air)
+ * @param {number} massKg - Mass of fluid in kilograms
+ * @param {number} specificHeat - Specific heat capacity in J/(g·°C)
+ * @returns {number} Effective cooling coefficient in 1/s
+ */
+export function calculateEffectiveCoolingCoeff(convectiveHeatTransfer, massKg, specificHeat) {
+  // Convert specific heat from J/(g·°C) to J/(kg·°C)
+  const specificHeatJPerKgC = specificHeat * 1000
+  
+  // Thermal mass = m × c (total heat capacity in J/°C)
+  const thermalMass = massKg * specificHeatJPerKgC
+  
+  // k_eff = (h × A) / (m × c)
+  if (thermalMass &lt;= 0) return 0.0015  // Fallback default
+  
+  return convectiveHeatTransfer / thermalMass
+}
+
+/**
+ * Apply Newton&#39;s Law of Cooling for a discrete time step
+ * 
+ * @param {number} currentTemp - Current temperature (°C)
+ * @param {number} ambientTemp - Ambient/room temperature (°C)
+ * @param {number} coolingCoeff - Cooling coefficient k (1/s)
+ * @param {number} deltaTime - Time step in seconds
+ * @returns {number} New temperature after cooling/heating (°C)
+ */
+export function applyCoolingStep(currentTemp, ambientTemp, coolingCoeff, deltaTime) {
+  // dT/dt = -k(T - Tambient)
+  // For discrete step: ΔT = -k × (T - Tambient) × Δt
+  const tempDifference = currentTemp - ambientTemp
+  const tempChange = coolingCoeff * tempDifference * deltaTime
+  let newTemp = currentTemp - tempChange
+  
+  // Clamp to ambient (don&#39;t overshoot in either direction)
+  if (tempDifference &gt; 0) {
+    // Was cooling - don&#39;t go below ambient
+    newTemp = Math.max(newTemp, ambientTemp)
+  } else if (tempDifference &lt; 0) {
+    // Was warming - don&#39;t go above ambient
+    newTemp = Math.min(newTemp, ambientTemp)
+  }
+  
+  return newTemp
+}
+
+/**
+ * Calculate temperature at time t using the analytical solution
+ * (Useful for &quot;what temperature will it be in X minutes?&quot; questions)
+ * 
+ * @param {number} initialTemp - Starting temperature (°C)
+ * @param {number} ambientTemp - Ambient temperature (°C)
+ * @param {number} coolingCoeff - Cooling coefficient k (1/s)
+ * @param {number} time - Time elapsed in seconds
+ * @returns {number} Temperature at time t (°C)
+ */
+export function temperatureAtTime(initialTemp, ambientTemp, coolingCoeff, time) {
+  // T(t) = Tambient + (T0 - Tambient) × e^(-kt)
+  const tempDiff = initialTemp - ambientTemp
+  return ambientTemp + tempDiff * Math.exp(-coolingCoeff * time)
+}
+
+/**
+ * Calculate time to reach a target temperature
+ * 
+ * @param {number} initialTemp - Starting temperature (°C)
+ * @param {number} targetTemp - Target temperature (°C)
+ * @param {number} ambientTemp - Ambient temperature (°C)
+ * @param {number} coolingCoeff - Cooling coefficient k (1/s)
+ * @returns {number} Time in seconds (Infinity if target can&#39;t be reached)
+ */
+export function timeToCool(initialTemp, targetTemp, ambientTemp, coolingCoeff) {
+  // From T(t) = Tambient + (T0 - Tambient) × e^(-kt)
+  // Solve for t: t = -ln((Ttarget - Tambient)/(T0 - Tambient)) / k
+  
+  const initialDiff = initialTemp - ambientTemp
+  const targetDiff = targetTemp - ambientTemp
+  
+  // Can&#39;t reach target if it&#39;s on the wrong side of ambient
+  if (initialDiff * targetDiff &lt; 0) return Infinity
+  
+  // Can&#39;t reach target if we&#39;re already there or past it
+  if (Math.abs(targetDiff) &gt;= Math.abs(initialDiff)) return 0
+  
+  const ratio = targetDiff / initialDiff
+  if (ratio &lt;= 0 || coolingCoeff &lt;= 0) return Infinity
+  
+  return -Math.log(ratio) / coolingCoeff
+}
+
+/**
+ * Typical convective heat transfer values (h × A) for common scenarios
+ * Units: W/°C (Watts per degree temperature difference)
+ */
+export const CONVECTIVE_HEAT_TRANSFER = {
+  potInStillAir: 0.3,      // Typical pot on counter in still room
+  potWithLid: 0.15,        // Pot with lid (reduced surface area)
+  cupInStillAir: 0.1,      // Coffee cup
+  largeStockpot: 0.5,      // Large pot with more surface area
+  potWithFan: 0.8,         // Active cooling with fan
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

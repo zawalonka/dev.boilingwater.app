@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>diffusion</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">diffusion</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">diffusion</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Formula</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li>AIR_DIFFUSION_VOLUME</li><li>AIR_MOLAR_MASS</li><li>calculateDiffusionCoefficient</li><li>calculateDiffusionInAir</li><li>calculateDiffusionVolumeSum</li><li>diffusionCm2ToM2</li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value">1 file(s)</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>diffusion</h1>
+    <p class="subtitle">Formula</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>DIFFUSION COEFFICIENT CALCULATION</p>
+<p>Uses the Fuller-Schettler-Giddings equation to calculate binary gas-phase</p>
+<p>diffusion coefficients from molecular properties.</p>
+<p>This is the scientifically accurate method - no empirical &quot;fudge factors&quot;.</p>
+<p>All inputs come from substance data (atomic diffusion volumes, molar mass).</p>
+<p>PHYSICS:</p>
+<p>The Fuller-Schettler-Giddings correlation (1966) predicts diffusion coefficients</p>
+<p>with typical accuracy of ±5-10% for most gas pairs.</p>
+<p>EQUATION:</p>
+<pre class="code">D_AB = (0.00143 × T^1.75) / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)
+Where:
+D_AB = Binary diffusion coefficient (cm²/s)
+T = Temperature (K)
+P = Pressure (atm)
+M_AB = 2 / (1/M_A + 1/M_B) = reduced molar mass</pre>
+<p>Σv_A, Σv_B = Sum of atomic diffusion volumes for each species</p>
+<p>REFERENCES:</p>
+<p>Fuller, E.N., Schettler, P.D., Giddings, J.C. (1966). Ind. Eng. Chem. 58(5), 18-27.</p>
+<p>Reid, Prausnitz, Poling (1987). The Properties of Gases and Liquids, 4th ed.</p>
+<p>@module physics/formulas/diffusion</p>
+    </section>
+  
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\formulas\diffusion.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * DIFFUSION COEFFICIENT CALCULATION
+ * 
+ * Uses the Fuller-Schettler-Giddings equation to calculate binary gas-phase
+ * diffusion coefficients from molecular properties.
+ * 
+ * This is the scientifically accurate method - no empirical &quot;fudge factors&quot;.
+ * All inputs come from substance data (atomic diffusion volumes, molar mass).
+ * 
+ * PHYSICS:
+ * The Fuller-Schettler-Giddings correlation (1966) predicts diffusion coefficients
+ * with typical accuracy of ±5-10% for most gas pairs.
+ * 
+ * EQUATION:
+ *   D_AB = (0.00143 × T^1.75) / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)
+ * 
+ * Where:
+ *   D_AB = Binary diffusion coefficient (cm²/s)
+ *   T = Temperature (K)
+ *   P = Pressure (atm)
+ *   M_AB = 2 / (1/M_A + 1/M_B) = reduced molar mass
+ *   Σv_A, Σv_B = Sum of atomic diffusion volumes for each species
+ * 
+ * REFERENCES:
+ * Fuller, E.N., Schettler, P.D., Giddings, J.C. (1966). Ind. Eng. Chem. 58(5), 18-27.
+ * Reid, Prausnitz, Poling (1987). The Properties of Gases and Liquids, 4th ed.
+ * 
+ * @module physics/formulas/diffusion
+ */
+
+/**
+ * Air diffusion volume (Σv for air)
+ * This is a special value for the air mixture, from Fuller (1966)
+ * Air is ~78% N₂ + 21% O₂ + 1% Ar
+ */
+export const AIR_DIFFUSION_VOLUME = 19.7  // Fuller (1966) tabulated value for air
+
+/**
+ * Air average molar mass (g/mol)
+ * Standard dry air composition weighted average
+ */
+export const AIR_MOLAR_MASS = 28.97  // g/mol
+
+/**
+ * Calculate the sum of atomic diffusion volumes for a compound
+ * 
+ * @param {Array} elements - Array of {symbol, count, diffusionVolume} from compound
+ * @returns {number} Sum of atomic diffusion volumes (Σv)
+ * 
+ * @example
+ * // For ethanol C₂H₅OH:
+ * calculateDiffusionVolumeSum([
+ *   { symbol: &#39;C&#39;, count: 2, diffusionVolume: 15.9 },
+ *   { symbol: &#39;H&#39;, count: 6, diffusionVolume: 2.31 },
+ *   { symbol: &#39;O&#39;, count: 1, diffusionVolume: 6.11 }
+ * ])
+ * // Returns: 2×15.9 + 6×2.31 + 1×6.11 = 51.77
+ */
+export function calculateDiffusionVolumeSum(elements) {
+  if (!Array.isArray(elements) || elements.length === 0) {
+    return null
+  }
+  
+  let sum = 0
+  for (const element of elements) {
+    const count = element.count || 1
+    const diffusionVolume = element.diffusionVolume || element.atomicDiffusionVolume
+    
+    if (typeof diffusionVolume !== &#39;number&#39;) {
+      console.warn(`Missing diffusion volume for ${element.symbol}`)
+      return null
+    }
+    
+    sum += count * diffusionVolume
+  }
+  
+  return sum
+}
+
+/**
+ * Calculate binary diffusion coefficient using Fuller-Schettler-Giddings equation
+ * 
+ * @param {object} params - Calculation parameters
+ * @param {number} params.temperatureK - Temperature in Kelvin
+ * @param {number} params.pressureAtm - Pressure in atmospheres (1 atm = 101325 Pa)
+ * @param {number} params.molarMassA - Molar mass of species A (g/mol)
+ * @param {number} params.molarMassB - Molar mass of species B (g/mol), default: air
+ * @param {number} params.diffusionVolumeA - Sum of atomic diffusion volumes for A
+ * @param {number} params.diffusionVolumeB - Sum of atomic diffusion volumes for B, default: air
+ * @returns {number} Binary diffusion coefficient D_AB in cm²/s
+ * 
+ * @example
+ * // Ethanol in air at 25°C, 1 atm
+ * calculateDiffusionCoefficient({
+ *   temperatureK: 298.15,
+ *   pressureAtm: 1.0,
+ *   molarMassA: 46.07,     // ethanol
+ *   diffusionVolumeA: 51.77 // ethanol Σv
+ * })
+ * // Returns ~0.11 cm²/s (literature value: 0.102-0.119 cm²/s)
+ */
+export function calculateDiffusionCoefficient({
+  temperatureK,
+  pressureAtm,
+  molarMassA,
+  molarMassB = AIR_MOLAR_MASS,
+  diffusionVolumeA,
+  diffusionVolumeB = AIR_DIFFUSION_VOLUME
+}) {
+  // Input validation
+  if (temperatureK &lt;= 0 || pressureAtm &lt;= 0 || molarMassA &lt;= 0 || molarMassB &lt;= 0) {
+    return 0
+  }
+  if (!diffusionVolumeA || diffusionVolumeA &lt;= 0 || !diffusionVolumeB || diffusionVolumeB &lt;= 0) {
+    return 0
+  }
+  
+  // Reduced molar mass: M_AB = 2 / (1/M_A + 1/M_B)
+  const M_AB = 2 / (1/molarMassA + 1/molarMassB)
+  
+  // Fuller-Schettler-Giddings equation
+  // D_AB = 0.00143 × T^1.75 / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)
+  const numerator = 0.00143 * Math.pow(temperatureK, 1.75)
+  const denominator = pressureAtm * Math.sqrt(M_AB) * 
+    Math.pow(Math.pow(diffusionVolumeA, 1/3) + Math.pow(diffusionVolumeB, 1/3), 2)
+  
+  return numerator / denominator  // cm²/s
+}
+
+/**
+ * Convert diffusion coefficient from cm²/s to m²/s
+ * @param {number} D_cm2s - Diffusion coefficient in cm²/s
+ * @returns {number} Diffusion coefficient in m²/s
+ */
+export function diffusionCm2ToM2(D_cm2s) {
+  return D_cm2s * 1e-4  // 1 cm² = 10⁻⁴ m²
+}
+
+/**
+ * Calculate diffusion coefficient for a substance in air at given conditions
+ * 
+ * This is a convenience function that combines molar mass and diffusion volume
+ * calculations for the common case of vapor diffusing through air.
+ * 
+ * @param {object} params - Parameters
+ * @param {number} params.temperatureC - Temperature in Celsius
+ * @param {number} params.pressurePa - Pressure in Pascals
+ * @param {number} params.molarMass - Substance molar mass (g/mol)
+ * @param {number} params.diffusionVolumeSum - Σv for the substance
+ * @returns {number} Diffusion coefficient in m²/s
+ */
+export function calculateDiffusionInAir({
+  temperatureC,
+  pressurePa,
+  molarMass,
+  diffusionVolumeSum
+}) {
+  const temperatureK = temperatureC + 273.15
+  const pressureAtm = pressurePa / 101325
+  
+  const D_cm2s = calculateDiffusionCoefficient({
+    temperatureK,
+    pressureAtm,
+    molarMassA: molarMass,
+    diffusionVolumeA: diffusionVolumeSum
+  })
+  
+  return diffusionCm2ToM2(D_cm2s)  // m²/s
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
