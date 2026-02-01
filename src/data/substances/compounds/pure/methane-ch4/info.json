@@ -42,7 +42,12 @@
   "commonUses": ["home heating", "cooking fuel", "electricity generation", "hydrogen production", "chemical feedstock"],
   "safetyNotes": "Highly flammable; odorless (mercaptan added for leak detection); lighter than air (rises); asphyxiant in confined spaces; explosive when 5-15% in air",
   "educationalNotes": "Boiling point -161.5°C - methane is a gas at all normal Earth temperatures! Must be cooled to -161.5°C or compressed to liquefy. Simplest hydrocarbon (one carbon atom). Main component of natural gas (~95%). Major greenhouse gas (25× more potent than CO₂ over 100 years).",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "explosive",
+    "reason": "Explosive/asphyxiant - requires ventilation to prevent buildup"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

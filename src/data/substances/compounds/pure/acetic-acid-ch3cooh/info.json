@@ -48,7 +48,12 @@
   "commonUses": ["food preservation (vinegar)", "cleaning agent", "chemical manufacturing", "pH adjustment", "laboratory reagent"],
   "safetyNotes": "Pure acetic acid is corrosive; burns skin; strong odor; household vinegar is diluted to ~5% and safe for consumption",
   "educationalNotes": "Freezes at 16.6°C - you can sometimes see ice crystals in stored vinegar! Pure acetic acid is called 'glacial' because it forms ice-like crystals. Boils at 118°C, well above water.",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "corrosive",
+    "reason": "Corrosive vapors - requires ventilation"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

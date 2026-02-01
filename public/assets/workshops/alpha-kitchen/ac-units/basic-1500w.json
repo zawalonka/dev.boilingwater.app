@@ -10,6 +10,12 @@
     "deadbandDegrees": 0.5
   },
   
+  "airflowCharacteristics": {
+    "baseCFM": 150,
+    "baseM3PerHour": 255,
+    "note": "Typical window AC airflow. Air handler augments this when connected."
+  },
+  
   "pidTuning": {
     "Kp": 50,
     "Ki": 2,

@@ -48,7 +48,12 @@
   "commonUses": ["nail polish remover", "paint thinner", "solvent", "cleaning electronics", "manufacturing"],
   "safetyNotes": "Highly flammable; vapors heavier than air; irritates eyes and respiratory system; absorbed through skin",
   "educationalNotes": "Boiling point 56°C - evaporates very rapidly at room temperature; this is why nail polish dries so quickly and why acetone feels cold on skin (evaporative cooling)",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "flammable",
+    "reason": "Highly flammable vapors - requires ventilation"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

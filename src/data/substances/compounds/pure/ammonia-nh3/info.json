@@ -42,7 +42,14 @@
   "commonUses": ["cleaning products", "fertilizer", "refrigerant", "smelling salts", "manufacturing"],
   "safetyNotes": "Toxic gas; corrosive to eyes/skin/lungs; strong pungent odor; household cleaners typically 5-10% ammonia solution",
   "educationalNotes": "Boiling point is -33°C; exists as gas at room temperature but easily liquefied under pressure; highly soluble in water creating ammonium hydroxide (NH₄OH)",
-  "lastUpdated": "2026-01-27"
+  
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "toxic",
+    "reason": "Toxic gas - requires ventilation and proper air handling to use safely"
+  },
+  
+  "lastUpdated": "2026-01-31"
 }
 
 

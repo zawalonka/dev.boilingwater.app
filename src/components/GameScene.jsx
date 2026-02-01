@@ -353,10 +353,12 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // ============================================================================
   // ============================================================================
-  // EFFECT 1: Load substance properties (runs once on component load)
+  // EFFECT 1: Load substance properties (runs once on component load, or when room controls change)
   // ============================================================================
 
   // Load available fluids for dropdown (Level 3+)
+  // L1E3: Only safe fluids (no requiresRoomControls flag)
+  // L1E4+: All fluids (room controls available for hazardous materials)
   useEffect(() => {
     async function loadFluids() {
       const fluids = await getAvailableSubstances()
@@ -370,6 +372,14 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
             const meltingPoint = props?.meltingPoint
             const boilingPoint = props?.boilingPointSeaLevel
+            
+            // Check if substance requires room controls (hazardous materials)
+            const needsRoomControls = info?.gameFlags?.requiresRoomControls || false
+            
+            // Filter out dangerous substances if room controls not enabled
+            if (needsRoomControls && !roomControlsEnabled) {
+              return null  // Skip hazardous materials in L1E3
+            }
 
             if (
               Number.isFinite(meltingPoint) &&
@@ -391,7 +401,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       setAvailableFluids(filteredFluids)
     }
     loadFluids()
-  }, [])
+  }, [roomControlsEnabled])  // Re-filter when room controls unlock (L1E3 → L1E4)
 
   useEffect(() => {
     setShowNextLevelButton(false)
@@ -579,7 +589,17 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           timeToBoil: elapsedBoilTime,
           burnerHeat: burnerHeat,
           experiment: activeExperiment,
-          level: activeLevel
+          level: activeLevel,
+          // Room environment data (L1E4+)
+          roomData: roomControlsEnabled ? {
+            initialComposition: roomState?.initialComposition || null,
+            finalComposition: roomState?.composition || null,
+            initialTemperature: roomState?.initialTemperature || null,
+            finalTemperature: roomState?.temperature || null,
+            energyTotals: roomState?.energyTotals || null,
+            exposureEvents: roomState?.exposureEvents || [],
+            alerts: roomAlerts || []
+          } : null
         })
         
         onWaterBoiled?.()    // Notify parent that water has boiled
@@ -1628,8 +1648,112 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                 </>
               )}
 
+              {/* L1E4: Dangerous Liquids - Room Environment Scorecard */}
+              {boilStats.experiment === 'dangerous-liquids' && (
+                <>
+                  <h2>⚠️ Hazardous Material Handled!</h2>
+                  <p className="modal-subtitle">
+                    You boiled {boilStats.fluidName} in a controlled environment
+                  </p>
+
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-label">Substance:</span>
+                      <span className="stat-value">{boilStats.fluidName}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Boiling Point:</span>
+                      <span className="stat-value">{formatTemperature(boilStats.boilingPoint)}°C</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Time to Boil:</span>
+                      <span className="stat-value">{formatTime(boilStats.timeToBoil)}</span>
+                    </div>
+                  </div>
+
+                  {/* Room Environment Section */}
+                  {boilStats.roomData && (
+                    <>
+                      <h3>🏠 Room Environment</h3>
+                      <div className="stats-grid">
+                        <div className="stat-item">
+                          <span className="stat-label">Room Temp Change:</span>
+                          <span className="stat-value">
+                            {formatTemperature(boilStats.roomData.initialTemperature)}°C → {formatTemperature(boilStats.roomData.finalTemperature)}°C
+                          </span>
+                        </div>
+                        {boilStats.roomData.energyTotals && (
+                          <>
+                            <div className="stat-item">
+                              <span className="stat-label">AC Cooling Used:</span>
+                              <span className="stat-value">
+                                {(boilStats.roomData.energyTotals.acCoolingJoules / 1000).toFixed(1)} kJ
+                              </span>
+                            </div>
+                            <div className="stat-item">
+                              <span className="stat-label">Air Handler Energy:</span>
+                              <span className="stat-value">
+                                {(boilStats.roomData.energyTotals.airHandlerJoules / 1000).toFixed(1)} kJ
+                              </span>
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Composition Changes */}
+                      <h3>🌬️ Air Composition</h3>
+                      <div className="composition-comparison">
+                        <div className="comp-column">
+                          <strong>Before:</strong>
+                          <ul className="comp-list">
+                            {Object.entries(boilStats.roomData.initialComposition || {}).slice(0, 5).map(([gas, fraction]) => (
+                              <li key={gas}>{gas}: {(fraction * 100).toFixed(2)}%</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="comp-column">
+                          <strong>After:</strong>
+                          <ul className="comp-list">
+                            {Object.entries(boilStats.roomData.finalComposition || {}).slice(0, 5).map(([gas, fraction]) => (
+                              <li key={gas}>{gas}: {(fraction * 100).toFixed(2)}%</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* Exposure Events / Consequences */}
+                      {boilStats.roomData.exposureEvents?.length > 0 && (
+                        <>
+                          <h3>⚠️ Exposure Report</h3>
+                          {boilStats.roomData.exposureEvents.map((event, idx) => (
+                            <div key={idx} className={`exposure-event severity-${event.severity}`}>
+                              <strong>{event.name}</strong>
+                              <p>Peak: {event.peakPPM.toFixed(0)} ppm | Duration: {formatTime(event.durationSec)}</p>
+                              <p className="consequence">{event.consequence}</p>
+                              {event.isProtected && (
+                                <p className="protected-note">✓ Air handler provided protection</p>
+                              )}
+                            </div>
+                          ))}
+                        </>
+                      )}
+
+                      {/* Safety Tips */}
+                      <div className="info-content">
+                        <h3>🎓 Lab Safety</h3>
+                        <ul>
+                          <li><strong>Ventilation:</strong> Always use proper ventilation with hazardous materials</li>
+                          <li><strong>Filters Matter:</strong> Standard filters don't stop toxic gases - use activated carbon</li>
+                          <li><strong>Monitor Air:</strong> Watch for composition changes - rising vapor displaces oxygen</li>
+                        </ul>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+
               {/* FALLBACK: Unknown experiment - show generic stats */}
-              {!['boiling-water', 'altitude-effect', 'different-fluids'].includes(boilStats.experiment) && (
+              {!['boiling-water', 'altitude-effect', 'different-fluids', 'dangerous-liquids'].includes(boilStats.experiment) && (
                 <>
                   <h2>📋 Experiment Complete!</h2>
                   <p className="modal-subtitle">You boiled {boilStats.fluidName.toLowerCase()}!</p>

@@ -8,8 +8,12 @@
     "heatingMaxWatts": 1500,
     "responseTimeSeconds": 4,
     "deadbandDegrees": 0.5
-  },
-  
+  },  
+  "airflowCharacteristics": {
+    "baseCFM": 350,
+    "baseM3PerHour": 595,
+    "note": "Professional mini-split airflow. Air handler augments this when connected."
+  },  
   "pidTuning": {
     "Kp": 80,
     "Ki": 4,

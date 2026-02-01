@@ -1,20 +1,36 @@
 {
   "id": "basic-150cfm",
   "name": "AHU 150 CFM",
-  "description": "Basic air handler for small kitchens/labs",
+  "description": "Basic air handler with standard filter. Augments AC airflow and provides basic air cleaning.",
   
   "flowCharacteristics": {
     "maxFlowRateCFM": 150,
-    "maxFlowRateM3PerHour": 255
+    "maxFlowRateM3PerHour": 255,
+    "augmentsAcAirflow": true,
+    "note": "When connected in-line with AC, adds to total system airflow"
+  },
+  
+  "filterType": {
+    "name": "Standard Pleated",
+    "mervRating": 8,
+    "description": "Basic household filter. Captures dust, pollen, some mold spores. NOT effective against toxic gases.",
+    "limitations": [
+      "Does NOT filter toxic gases (NH3, volatile organics)",
+      "Does NOT filter CO, CO2, or other small molecules",
+      "Requires activated carbon or HEPA upgrade for hazardous materials"
+    ]
   },
   
   "filtrationEfficiency": {
-    "CO2": 0.80,
-    "H2O": 0.70,
-    "NH3": 0.85,
-    "CH4": 0.75,
-    "C2H5OH": 0.80,
-    "toxic_generic": 0.75
+    "particulate": 0.90,
+    "CO2": 0.00,
+    "H2O": 0.30,
+    "NH3": 0.05,
+    "CH4": 0.00,
+    "C2H5OH": 0.10,
+    "acetone": 0.10,
+    "toxic_gas": 0.05,
+    "note": "Standard filter only removes particulates. Gases pass through."
   },
   
   "targetComposition": {

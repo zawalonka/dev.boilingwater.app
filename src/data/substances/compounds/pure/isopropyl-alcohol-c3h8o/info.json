@@ -48,7 +48,12 @@
   "commonUses": ["disinfectant", "sanitizer", "cleaning electronics", "solvent", "antifreeze"],
   "safetyNotes": "Flammable; do not ingest (toxic); use in ventilated areas; 70% solution is most effective disinfectant (more than 90%)",
   "educationalNotes": "Boiling point 82.5°C - evaporates quickly, creating cooling sensation on skin. Household 'rubbing alcohol' is 70% isopropanol, 30% water. The 70% solution is actually MORE effective at killing bacteria than 99% because water slows evaporation, allowing longer contact time.",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "flammable",
+    "reason": "Flammable vapors - requires ventilation"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

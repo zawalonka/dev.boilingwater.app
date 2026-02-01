@@ -43,7 +43,12 @@
   "commonUses": ["disinfectant", "bleaching agent", "wound cleaner", "hair bleaching", "rocket propellant (high concentration)"],
   "safetyNotes": "Household 3% solution is safe for skin contact; higher concentrations (>30%) are corrosive and explosive; decomposes into water and oxygen gas (foaming when applied to cuts)",
   "educationalNotes": "Boiling point 150°C - much higher than water! This is surprising given H₂O₂ is so similar to H₂O. Decomposes at high heat into 2H₂O₂ → 2H₂O + O₂ (this is why it foams on wounds - catalase enzyme speeds decomposition, releasing oxygen bubbles). Store in dark containers - light accelerates decomposition.",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "oxidizer",
+    "reason": "Strong oxidizer - decomposes and can be dangerous"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

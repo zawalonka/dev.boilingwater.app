@@ -42,7 +42,12 @@
   "commonUses": ["BBQ grill fuel", "heating", "cooking", "camping stoves", "forklifts", "hot air balloons"],
   "safetyNotes": "Highly flammable; heavier than air (sinks); asphyxiant; odorless (mercaptan added); explosive 2.1-9.5% in air; stored under pressure as liquid",
   "educationalNotes": "Boiling point -42.1°C - propane is normally a gas, but easy to liquefy with modest pressure (stored in tanks as liquid, vaporizes when released). Heavier than air, so leaks accumulate in low spots. Common BBQ fuel because it's easy to transport as liquid under pressure.",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "explosive",
+    "reason": "Explosive/asphyxiant - heavier than air, sinks and accumulates"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

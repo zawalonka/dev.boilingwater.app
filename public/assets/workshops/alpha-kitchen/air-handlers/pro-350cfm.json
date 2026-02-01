@@ -1,20 +1,37 @@
 {
   "id": "pro-350cfm",
-  "name": "AHU 350 CFM",
-  "description": "Professional air handler with HEPA filtration",
+  "name": "AHU 350 CFM Pro",
+  "description": "Professional air handler with HEPA + Activated Carbon filtration. Safe for hazardous materials.",
   
   "flowCharacteristics": {
     "maxFlowRateCFM": 350,
-    "maxFlowRateM3PerHour": 595
+    "maxFlowRateM3PerHour": 595,
+    "augmentsAcAirflow": true,
+    "note": "When connected in-line with AC, adds to total system airflow"
+  },
+  
+  "filterType": {
+    "name": "HEPA + Activated Carbon",
+    "mervRating": 17,
+    "description": "Hospital-grade HEPA filter combined with activated carbon for gas adsorption. Effective against toxic vapors.",
+    "capabilities": [
+      "Removes 99.97% of particulates ≥0.3 microns",
+      "Activated carbon adsorbs volatile organic compounds (VOCs)",
+      "Effective against ammonia, acetone, ethanol vapors",
+      "Suitable for laboratory and hazardous material handling"
+    ]
   },
   
   "filtrationEfficiency": {
-    "CO2": 0.95,
-    "H2O": 0.90,
-    "NH3": 0.98,
-    "CH4": 0.90,
-    "C2H5OH": 0.95,
-    "toxic_generic": 0.92
+    "particulate": 0.9997,
+    "CO2": 0.10,
+    "H2O": 0.60,
+    "NH3": 0.85,
+    "CH4": 0.40,
+    "C2H5OH": 0.80,
+    "acetone": 0.85,
+    "toxic_gas": 0.80,
+    "note": "HEPA captures particulates, activated carbon adsorbs gases. CO2 requires scrubber (not just filter)."
   },
   
   "targetComposition": {

@@ -48,7 +48,12 @@
   "commonUses": ["alcoholic beverages", "hand sanitizer", "fuel", "solvent", "disinfectant"],
   "safetyNotes": "Flammable; intoxicating at low doses; toxic in large quantities; metabolized by liver",
   "educationalNotes": "Boiling point significantly lower than water (78°C vs 100°C); this is why alcohol evaporates quickly and why distillation can separate alcohol from water",
-  "lastUpdated": "2026-01-27"
+  "gameFlags": {
+    "requiresRoomControls": true,
+    "hazardLevel": "flammable",
+    "reason": "Flammable vapors - requires ventilation"
+  },
+  "lastUpdated": "2026-01-31"
 }
 
 

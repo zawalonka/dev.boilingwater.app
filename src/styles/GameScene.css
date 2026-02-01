@@ -1046,6 +1046,91 @@
   font-style: italic;
 }
 
+/* ========================================================================
+   L1E4 DANGEROUS LIQUIDS SCORECARD
+   ======================================================================== */
+
+/* Composition comparison side-by-side */
+.composition-comparison {
+  display: flex;
+  gap: 30px;
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.comp-column {
+  flex: 1;
+}
+
+.comp-column strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--workshop-panel-text, #333);
+}
+
+.comp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.comp-list li {
+  padding: 3px 0;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+}
+
+/* Exposure event cards */
+.exposure-event {
+  margin: 10px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #999;
+}
+
+.exposure-event strong {
+  font-size: 1.1rem;
+}
+
+.exposure-event p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.exposure-event .consequence {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.exposure-event .protected-note {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Severity-based colors */
+.exposure-event.severity-none {
+  background: rgba(46, 204, 113, 0.15);
+  border-left-color: #27ae60;
+}
+
+.exposure-event.severity-warning {
+  background: rgba(241, 196, 15, 0.2);
+  border-left-color: #f1c40f;
+}
+
+.exposure-event.severity-danger {
+  background: rgba(230, 126, 34, 0.2);
+  border-left-color: #e67e22;
+}
+
+.exposure-event.severity-critical {
+  background: rgba(231, 76, 60, 0.25);
+  border-left-color: #e74c3c;
+}
+
 .next-stage-button {
   margin-top: 30px;
   width: 100%;

@@ -67,6 +67,22 @@ export function createRoomState(roomConfig, altitude = 0) {
     compositionLog: [],
     alerts: [],
     
+    // Energy tracking for scorecard
+    energyTotals: {
+      acHeatingJoules: 0,
+      acCoolingJoules: 0,
+      airHandlerJoules: 0,  // Based on flow rate and time
+      burnerWasteJoules: 0
+    },
+    
+    // Initial state snapshot for before/after comparison
+    initialComposition: { ...atmosphere },
+    initialTemperature: room.initialTempC || 20,
+    initialPressure: initialPressure,
+    
+    // Exposure tracking for health consequences
+    exposureEvents: [],  // { substanceId, concentration, durationSec, severity }
+    
     // Timestamps
     startTime: Date.now(),
     lastUpdate: Date.now()
@@ -116,6 +132,118 @@ export function addVaporToRoom(roomState, substanceId, massEvaporatedKg, molarMa
 }
 
 /**
+ * Toxic exposure thresholds and health consequences
+ * Based on OSHA PEL (Permissible Exposure Limits) and IDLH (Immediately Dangerous to Life or Health)
+ */
+const TOXIC_THRESHOLDS = {
+  NH3: {  // Ammonia
+    name: 'Ammonia',
+    safePPM: 25,       // OSHA PEL: 25 ppm
+    warningPPM: 50,    // Noticeable irritation
+    dangerPPM: 300,    // IDLH: 300 ppm
+    consequences: {
+      warning: 'Eye and respiratory irritation. Headache developing.',
+      danger: 'Severe respiratory distress! Immediate evacuation required.',
+      critical: 'Life-threatening exposure. Pulmonary edema risk.'
+    }
+  },
+  acetone: {
+    name: 'Acetone',
+    safePPM: 250,      // OSHA PEL: 250 ppm
+    warningPPM: 500,
+    dangerPPM: 2500,   // IDLH: 2500 ppm
+    consequences: {
+      warning: 'Mild dizziness and headache. Eyes watering.',
+      danger: 'Significant CNS depression. Confusion and weakness.',
+      critical: 'Loss of consciousness possible. Evacuate immediately.'
+    }
+  },
+  C2H5OH: {  // Ethanol
+    name: 'Ethanol',
+    safePPM: 1000,     // OSHA PEL: 1000 ppm
+    warningPPM: 2000,
+    dangerPPM: 3300,   // IDLH: 3300 ppm
+    consequences: {
+      warning: 'Feeling lightheaded. Sweet smell noticeable.',
+      danger: 'Intoxication symptoms. Impaired judgment.',
+      critical: 'Severe intoxication. Risk of unconsciousness.'
+    }
+  },
+  CH4: {  // Methane (asphyxiant, not directly toxic)
+    name: 'Methane',
+    safePPM: 10000,    // 1% - starts displacing oxygen
+    warningPPM: 50000, // 5% - LEL (Lower Explosive Limit)
+    dangerPPM: 150000, // 15% - UEL (Upper Explosive Limit)
+    consequences: {
+      warning: 'Oxygen being displaced. Ventilate immediately.',
+      danger: 'EXPLOSIVE ATMOSPHERE! No sparks or flames!',
+      critical: 'Asphyxiation risk. Explosive mixture present.'
+    }
+  }
+}
+
+/**
+ * Track toxic exposure based on current room composition
+ * @param {object} roomState - Current room state
+ * @param {object} airHandler - Air handler config (for filter effectiveness)
+ * @param {number} deltaTime - Time step (seconds)
+ * @returns {object} Updated room state with exposure events
+ */
+function trackExposure(roomState, airHandler, deltaTime) {
+  const exposureEvents = [...(roomState.exposureEvents || [])]
+  const composition = roomState.composition
+  
+  // Check each toxic substance
+  for (const [substanceId, thresholds] of Object.entries(TOXIC_THRESHOLDS)) {
+    const fraction = composition[substanceId] || 0
+    const ppm = fraction * 1000000  // Convert fraction to ppm
+    
+    if (ppm > thresholds.safePPM) {
+      // Determine severity
+      let severity = 'warning'
+      let consequence = thresholds.consequences.warning
+      if (ppm > thresholds.dangerPPM) {
+        severity = 'critical'
+        consequence = thresholds.consequences.critical
+      } else if (ppm > thresholds.warningPPM) {
+        severity = 'danger'
+        consequence = thresholds.consequences.danger
+      }
+      
+      // Check if filter would protect (pro air handler with activated carbon)
+      const filterEfficiency = airHandler?.filtrationEfficiency?.[substanceId] || 0
+      const isProtected = filterEfficiency > 0.5 && roomState.airHandlerMode !== 'off'
+      
+      // Add or update exposure event
+      const existingIdx = exposureEvents.findIndex(e => e.substanceId === substanceId)
+      if (existingIdx >= 0) {
+        exposureEvents[existingIdx].durationSec += deltaTime
+        exposureEvents[existingIdx].peakPPM = Math.max(exposureEvents[existingIdx].peakPPM, ppm)
+        exposureEvents[existingIdx].severity = severity
+        exposureEvents[existingIdx].consequence = consequence
+        exposureEvents[existingIdx].isProtected = isProtected
+      } else {
+        exposureEvents.push({
+          substanceId,
+          name: thresholds.name,
+          startTime: Date.now() - roomState.startTime,
+          durationSec: deltaTime,
+          peakPPM: ppm,
+          severity,
+          consequence,
+          isProtected
+        })
+      }
+    }
+  }
+  
+  return {
+    ...roomState,
+    exposureEvents
+  }
+}
+
+/**
  * Apply heat to room from external source (burner waste heat, etc.)
  * @param {object} roomState - Current room state
  * @param {number} heatWatts - Heat input (positive = heating, negative = cooling)
@@ -152,6 +280,36 @@ export function applyHeatToRoom(roomState, heatWatts, deltaTime, source = 'unkno
 }
 
 /**
+ * Calculate combined system airflow (AC + Air Handler)
+ * AC has its own base CFM. Air handler augments when connected and running.
+ * @param {object} acUnit - AC unit config
+ * @param {object} airHandler - Air handler config  
+ * @param {string} airHandlerMode - Current air handler mode
+ * @returns {object} { totalCFM, totalM3PerHour, acContribution, ahContribution }
+ */
+function calculateCombinedAirflow(acUnit, airHandler, airHandlerMode) {
+  // AC base airflow (always running when AC is on)
+  const acCFM = acUnit?.airflowCharacteristics?.baseCFM || 150
+  const acM3h = acUnit?.airflowCharacteristics?.baseM3PerHour || 255
+  
+  // Air handler augments when running
+  let ahCFM = 0
+  let ahM3h = 0
+  if (airHandler && airHandlerMode !== 'off') {
+    const flowPercent = airHandler.operatingModes?.[airHandlerMode]?.flowPercent || 0
+    ahCFM = (airHandler.flowCharacteristics?.maxFlowRateCFM || 0) * (flowPercent / 100)
+    ahM3h = (airHandler.flowCharacteristics?.maxFlowRateM3PerHour || 0) * (flowPercent / 100)
+  }
+  
+  return {
+    totalCFM: acCFM + ahCFM,
+    totalM3PerHour: acM3h + ahM3h,
+    acContribution: acCFM,
+    ahContribution: ahCFM
+  }
+}
+
+/**
  * Simulate one timestep of room environment
  * @param {object} roomState - Current room state
  * @param {object} acUnit - AC unit config (from JSON)
@@ -163,6 +321,9 @@ export function applyHeatToRoom(roomState, heatWatts, deltaTime, source = 'unkno
 export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, options = {}) {
   let state = { ...roomState }
   
+  // Calculate combined airflow for this timestep
+  const airflow = calculateCombinedAirflow(acUnit, airHandler, state.airHandlerMode)
+  
   // 1. Apply external heat (burner waste heat radiating into room)
   if (options.externalHeat) {
     const wasteHeatFraction = 0.1  // 10% of burner heat goes to room
@@ -170,20 +331,34 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
     state = applyHeatToRoom(state, roomHeat, deltaTime, 'burner_waste')
   }
   
-  // 2. Apply AC control
+  // 2. Apply AC control (effectiveness scales with airflow)
+  // More airflow = faster air exchange = AC works better
+  const airflowEffectiveness = Math.min(1.5, airflow.totalCFM / 150)  // 150 CFM = baseline
   const acResult = applyAcControl(
     state.temperature,
     state.acSetpoint,
     acUnit,
     state.acPidState,
-    deltaTime,
-    state.volumeM3  // Room volume in m³ (physics calculates air mass internally)
+    deltaTime * airflowEffectiveness,  // Effective time step scaled by airflow
+    state.volumeM3
   )
+  
+  // Track AC energy usage
+  const acJoules = Math.abs(acResult.heatOutput) * deltaTime
+  const updatedEnergyTotals = { ...state.energyTotals }
+  if (acResult.heatOutput > 0) {
+    updatedEnergyTotals.acHeatingJoules += acJoules
+  } else if (acResult.heatOutput < 0) {
+    updatedEnergyTotals.acCoolingJoules += acJoules
+  }
+  
   state = {
     ...state,
     temperature: acResult.newTemp,
     acPidState: acResult.updatedPidState,
-    acHeatOutput: acResult.heatOutput
+    acHeatOutput: acResult.heatOutput,
+    currentAirflow: airflow,
+    energyTotals: updatedEnergyTotals
   }
   
   // Log AC heat
@@ -206,13 +381,23 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
     state.airHandlerMode,
     state.targetComposition  // Original atmosphere to restore to
   )
+  
+  // Track air handler energy (based on CFM and typical fan power ~0.5W per CFM)
+  const ahPowerWatts = airflow.ahContribution * 0.5
   state = {
     ...state,
     composition: scrubberResult.newComposition,
-    scrubberActivity: scrubberResult.activity || 0
+    scrubberActivity: scrubberResult.activity || 0,
+    energyTotals: {
+      ...state.energyTotals,
+      airHandlerJoules: state.energyTotals.airHandlerJoules + (ahPowerWatts * deltaTime)
+    }
   }
   
-  // 5. Room pressure leak (slow return toward ambient)
+  // 5. Check for toxic exposure and track consequences
+  state = trackExposure(state, airHandler, deltaTime)
+  
+  // 6. Room pressure leak (slow return toward ambient)
   const ambientPressure = 101325  // TODO: Use location altitude
   const pressureDiff = state.pressure - ambientPressure
   const leakRate = state.leakRatePaPerSecond || 10
@@ -222,10 +407,10 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
     pressure: state.pressure - pressureChange
   }
   
-  // 6. Check for safety alerts
+  // 7. Check for safety alerts
   const newAlerts = checkCompositionAlerts(state.composition)
   
-  // 7. Log composition periodically (every 10 seconds of sim time)
+  // 8. Log composition periodically (every 10 seconds of sim time)
   const simTime = Date.now() - state.startTime
   const lastLogTime = state.compositionLog.length > 0 
     ? state.compositionLog[state.compositionLog.length - 1].timestamp 
