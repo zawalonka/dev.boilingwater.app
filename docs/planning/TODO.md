@@ -8,7 +8,23 @@
 
 ## 🎯 IMMEDIATE: Current Sprint Tasks
 
-### Room Environment System - Phase 1 ✅ COMPLETE
+### 🚨 ACCESSIBILITY OVERHAUL — CRITICAL (40-50 hours, 6-8 hours quick wins)
+**Status:** NOT STARTED — High priority, blocks quality release  
+**Issue:** App is completely inaccessible to keyboard and screen reader users (game unplayable)  
+**See:** [ACCESSIBILITY_TODO.md](ACCESSIBILITY_TODO.md) for detailed breakdown
+
+**Quick Wins (6-8 hours, biggest impact):**
+- [ ] Form labels with `<label for="">` associations (location, altitude, substance)
+- [ ] Status updates in `aria-live="polite"` regions
+- [ ] Location modal converted to `<dialog>` with focus trap
+- [ ] Icon buttons with `aria-label` attributes
+- [ ] Color contrast fixes (4.5:1 on critical text)
+
+**Full scope:** Phases 1-4 in dedicated TODO file (forms → keyboard navigation → semantic HTML → testing)
+
+---
+
+### Room Environment System - Phase 1 ✅ COMPLETE → MOVED TO COMPLETED_TODOS
 **Infrastructure Complete ✅:**
 - [x] `src/utils/roomEnvironment.js` - Room state management
 - [x] `src/utils/acUnitHandler.js` - PID-controlled AC (now uses physics module)

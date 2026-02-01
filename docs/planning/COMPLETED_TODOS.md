@@ -5,6 +5,40 @@
 
 ---
 
+## February 2026
+
+### 2026-02-01: Room Environment System - Phase 1 ✅ COMPLETE
+**See:** [ROOM_ENVIRONMENT_SYSTEM.md](ROOM_ENVIRONMENT_SYSTEM.md) for full design doc  
+**Status:** Phase 1 (foundation) fully implemented; Phase 2 (scorecard UI) pending
+
+**Implementation Summary:**
+- ✅ Room state management (`src/utils/roomEnvironment.js`)
+- ✅ AC PID controller (`src/utils/acUnitHandler.js`)
+- ✅ Air handler/scrubber (`src/utils/airHandlerScrubber.js`)
+- ✅ React hook (`src/hooks/useRoomEnvironment.js`)
+- ✅ Room UI panel (`src/components/RoomControls.jsx`)
+- ✅ Per-workshop equipment JSON (room.json, burners/, ac-units/, air-handlers/)
+- ✅ Equipment selection dropdowns (reloads scene on selection)
+- ✅ Progressive unlock (L1E4+ only)
+- ✅ Vapor release → Room composition (boiling adds vapor to air)
+- ✅ Heat/composition logging (data collected in state)
+- ✅ Room simulation runs independently (before pot filled)
+- ✅ Pressure feedback loop (room pressure affects boiling point)
+- ✅ Room pressure uses altitude via ISA model (not hardcoded sea level)
+
+**Physics Module Refactor (supporting Phase 1):**
+- ✅ Split physics.js into modular structure (formulas/, processes/)
+- ✅ 10 individual formula files in formulas/
+- ✅ 4 process orchestrators with visible stubs
+- ✅ PID controller for AC/equipment
+- ✅ Gas exchange model for room air mixing
+- ✅ AC/air handlers now use physics formulas
+- ✅ Dynamic boiling point calculation accounting for room pressure
+
+**Next Phase:** Room Environment Phase 2 (Scorecard system, data visualization, experiment completion UI)
+
+---
+
 ## January 2026
 
 ### 2026-01-31: Dynamic Boiling Point System (Major Refactor)
