@@ -226,7 +226,11 @@ function ControlPanel({
           
           {/* Advanced speed controls with arrows (Advanced Mode Only) */}
           {isAdvancedModeAvailable && (
-            <div className="speed-controls-advanced">
+            <>
+              <div className="speed-warning">
+                ⚠️ High speeds (256x+) produce inaccurate physics. Results are experimental.
+              </div>
+              <div className="speed-controls-advanced">
               <button 
                 className="speed-arrow"
                 onClick={handleSpeedHalve}
@@ -249,7 +253,8 @@ function ControlPanel({
               >
                 ▶
               </button>
-            </div>
+              </div>
+            </>
           )}
           
           {/* Heating status with progress */}
