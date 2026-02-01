@@ -153,6 +153,7 @@ export function parseSubstanceProperties(substanceData) {
   const density = extractValue(phaseState?.density)  // kg/L
   const thermalConductivity = extractValue(phaseState?.thermalConductivity)  // W/(m·K)
   const coolingCoefficient = extractValue(phaseState?.coolingCoefficient) ?? 0.0015  // 1/s
+  const evaporationCoefficient = extractValue(phaseState?.evaporationCoefficient)  // Hertz-Knudsen α (0.01-1.0)
 
   // ===== ALTITUDE & PRESSURE EFFECTS =====
   const altitudeLapseRate = Number.isFinite(compound.phaseTransitions?.altitudeLapseRate)
@@ -209,6 +210,7 @@ export function parseSubstanceProperties(substanceData) {
     density,  // kg/L
     thermalConductivity,  // W/(m·K)
     coolingCoefficient,  // 1/s
+    evaporationCoefficient,  // Hertz-Knudsen α (0.01-1.0)
 
     // ADVANCED THERMODYNAMICS (phase-specific, optional)
     compressibility: extractValue(phaseState?.compressibility),  // 1/Pa

@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Energy to vaporize liquid methane at -161.5°C"
   },
+  "evaporationCoefficient": {
+    "value": 0.8,
+    "note": "Hertz-Knudsen α coefficient. High value - nonpolar, weak van der Waals forces only. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 58.6,
     "unit": "kJ/kg",

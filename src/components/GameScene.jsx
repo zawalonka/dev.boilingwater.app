@@ -24,8 +24,7 @@ import {
   // Evaporation physics (pre-boiling)
   solveAntoineForPressure,         // Get vapor pressure at current temperature
   simulateEvaporationStep,         // Calculate evaporation rate and cooling
-  estimatePotSurfaceArea,          // Estimate liquid surface area
-  getEvaporationCoefficient        // Get empirical evaporation coefficient
+  estimatePotSurfaceArea           // Estimate liquid surface area
 } from '../utils/physics'
 import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUBSTANCE, getAvailableSubstances } from '../utils/substanceLoader'
 import { GAME_CONFIG } from '../constants/physics'
@@ -583,7 +582,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               specificHeatJgC: fluidProps.specificHeat || 4.186,     // J/(g·°C)
               surfaceAreaM2: estimatePotSurfaceArea(0.2),            // 20cm pot
               partialPressurePa: partialPressure,
-              alpha: getEvaporationCoefficient(activeFluid, fluidProps?.chemicalFormula),
+              alpha: fluidProps.evaporationCoefficient ?? 0.2,  // From substance JSON, fallback 0.2
               deltaTimeS: deltaTime
             })
             

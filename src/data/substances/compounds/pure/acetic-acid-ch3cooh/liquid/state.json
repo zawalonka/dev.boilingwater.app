@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Much lower than water (2257 kJ/kg)"
   },
+  "evaporationCoefficient": {
+    "value": 0.2,
+    "note": "Hertz-Knudsen α coefficient. Lower due to dimerization (acetic acid forms hydrogen-bonded pairs). Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 192,
     "unit": "kJ/kg",

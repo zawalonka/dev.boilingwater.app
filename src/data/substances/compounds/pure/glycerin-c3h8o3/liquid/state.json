@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Very high heat of vaporization due to strong hydrogen bonding"
   },
+  "evaporationCoefficient": {
+    "value": 0.02,
+    "note": "Hertz-Knudsen α coefficient. Very low due to strong hydrogen bonding, high viscosity, and low vapor pressure. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 198,
     "unit": "kJ/kg",

@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Energy to vaporize liquid propane"
   },
+  "evaporationCoefficient": {
+    "value": 0.7,
+    "note": "Hertz-Knudsen α coefficient. High value - nonpolar hydrocarbon with weak intermolecular forces. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 79.9,
     "unit": "kJ/kg",

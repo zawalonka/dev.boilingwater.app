@@ -154,6 +154,8 @@ export {
 } from './formulas/gasExchange.js'
 
 // Evaporation - pre-boiling mass transfer and evaporative cooling
+// NOTE: Evaporation coefficients are now in substance JSON files (evaporationCoefficient field)
+// Use fluidProps.evaporationCoefficient ?? DEFAULT_EVAPORATION_COEFFICIENT
 export {
   calculateEvaporationFlux,
   calculateNetEvaporationFlux,
@@ -162,6 +164,5 @@ export {
   estimatePotSurfaceArea,
   calculatePartialPressure,
   simulateEvaporationStep,
-  getEvaporationCoefficient,
-  EVAPORATION_COEFFICIENTS
+  DEFAULT_EVAPORATION_COEFFICIENT
 } from './formulas/evaporation.js'

@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "High heat of vaporization, though less than water (2257 kJ/kg)"
   },
+  "evaporationCoefficient": {
+    "value": 0.05,
+    "note": "Hertz-Knudsen α coefficient. Low due to strong hydrogen bonding similar to water. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 365,
     "unit": "kJ/kg",

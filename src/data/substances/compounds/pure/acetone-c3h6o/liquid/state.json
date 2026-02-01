@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Much lower than water (2257 kJ/kg); evaporates very easily, creating strong cooling sensation on skin"
   },
+  "evaporationCoefficient": {
+    "value": 0.5,
+    "note": "Hertz-Knudsen α coefficient. High value - very volatile, weak intermolecular forces. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 98,
     "unit": "kJ/kg",

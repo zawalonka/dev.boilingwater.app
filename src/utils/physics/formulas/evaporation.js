@@ -45,13 +45,16 @@
 const R_GAS = 8.314  // J/(mol·K) - Universal gas constant
 
 /**
- * Evaporation coefficients (α) for common substances
- * These are empirical values from literature.
- * Water has a surprisingly low coefficient due to hydrogen bonding.
+ * @deprecated LEGACY - Evaporation coefficients are now in substance JSON files
+ * Location: src/data/substances/compounds/{type}/{id}/liquid/state.json
+ * Field: evaporationCoefficient.value
+ * 
+ * This table is kept ONLY as a fallback reference. Do not use directly.
+ * Always read from fluidProps.evaporationCoefficient instead.
  * 
  * Values typically range 0.01-1.0. Lower = more resistance to evaporation.
  */
-export const EVAPORATION_COEFFICIENTS = {
+const LEGACY_EVAPORATION_COEFFICIENTS = {
   H2O: 0.04,         // Water - low due to hydrogen bonds (Eames 1997)
   C2H5OH: 0.3,       // Ethanol - moderate
   C3H6O: 0.5,        // Acetone - high (very volatile)
@@ -61,6 +64,9 @@ export const EVAPORATION_COEFFICIENTS = {
   CH3COOH: 0.2,      // Acetic acid - lower due to dimerization
   default: 0.2       // Conservative default
 }
+
+// Default evaporation coefficient when not specified in substance data
+export const DEFAULT_EVAPORATION_COEFFICIENT = 0.2
 
 /**
  * Calculate evaporation rate using Hertz-Knudsen equation
@@ -256,42 +262,7 @@ export function simulateEvaporationStep({
   }
 }
 
-/**
- * Normalize chemical formula for lookup
- * Converts Unicode subscripts to ASCII digits (H₂O → H2O)
- * 
- * @param {string} formula - Chemical formula (may have Unicode subscripts)
- * @returns {string} Normalized formula with ASCII digits
- */
-function normalizeFormula(formula) {
-  if (!formula) return null
-  const subscriptMap = {
-    '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4',
-    '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9'
-  }
-  return formula.replace(/[₀-₉]/g, char => subscriptMap[char] || char)
-}
-
-/**
- * Get evaporation coefficient for a substance
- * 
- * @param {string} substanceId - Substance identifier (e.g., 'ethanol')
- * @param {string} chemicalFormula - Chemical formula (e.g., 'C₂H₅OH')
- * @returns {number} Evaporation coefficient (0-1)
- */
-export function getEvaporationCoefficient(substanceId, chemicalFormula = null) {
-  // First try normalized chemical formula (most accurate)
-  if (chemicalFormula) {
-    const normalizedFormula = normalizeFormula(chemicalFormula)
-    if (EVAPORATION_COEFFICIENTS[normalizedFormula]) {
-      return EVAPORATION_COEFFICIENTS[normalizedFormula]
-    }
-  }
-  
-  // Fallback to substance ID (shouldn't match, but try anyway)
-  if (EVAPORATION_COEFFICIENTS[substanceId]) {
-    return EVAPORATION_COEFFICIENTS[substanceId]
-  }
-  
-  return EVAPORATION_COEFFICIENTS.default
-}
+// NOTE: getEvaporationCoefficient() function REMOVED
+// Evaporation coefficients are now loaded from substance JSON files.
+// Use: fluidProps.evaporationCoefficient ?? DEFAULT_EVAPORATION_COEFFICIENT
+// The legacy lookup table (LEGACY_EVAPORATION_COEFFICIENTS) is kept only as reference.

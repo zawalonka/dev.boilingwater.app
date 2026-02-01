@@ -28,6 +28,10 @@
     "unit": "kJ/kg",
     "note": "Higher than pure water (~2257 kJ/kg); dissolved salt requires more energy to vaporize"
   },
+  "evaporationCoefficient": {
+    "value": 0.035,
+    "note": "Hertz-Knudsen α coefficient. Slightly lower than pure water (0.04) due to dissolved ions reducing surface activity. Range 0.01-1.0."
+  },
   "compressibility": {
     "value": 0.000440,
     "unit": "1/Pa",

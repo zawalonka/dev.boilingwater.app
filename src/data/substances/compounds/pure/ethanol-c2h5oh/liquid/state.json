@@ -27,6 +27,10 @@
     "unit": "kJ/kg",
     "note": "Much lower than water (2257 kJ/kg); evaporates easily, creating cooling effect"
   },
+  "evaporationCoefficient": {
+    "value": 0.3,
+    "note": "Hertz-Knudsen α coefficient. Moderate value - evaporates readily but hydrogen bonding provides some resistance. Range 0.01-1.0."
+  },
   "latentHeatOfFusion": {
     "value": 109,
     "unit": "kJ/kg",
