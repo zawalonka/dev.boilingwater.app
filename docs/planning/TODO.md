@@ -61,16 +61,40 @@
    - [ ] End-of-experiment modal
    - Note: `getExperimentData()` in hook is ready but unused
 
-2. **Room Environment Phase 3: UI Enhancements**
+2. **Pre-Boiling Evaporation (MISSING FEATURE)**
+   - **Gap Found:** Vapor is ONLY tracked when `isBoiling === true`
+   - Volatile substances (acetone, ethanol, ammonia) evaporate at room temp
+   - Physics: Use Antoine equation to calculate partial pressure → evap rate
+   - Formula: `evapRate = f(vaporPressure, surfaceArea, airflow)`
+   - Implementation:
+     - [ ] Add `calculateEvaporationRate(temp, vaporPressure, surfaceArea)` to physics
+     - [ ] Call `addVapor()` every timestep when pot has liquid (not just boiling)
+     - [ ] Vapor amount = evapRate × deltaTime
+   - Affects: L1E4 scorecard, exposure tracking, safety lessons
+
+3. **Decomposition Behavior (NOT IMPLEMENTED)**
+   - **Current:** Substances with `boilingPoint: null` just heat indefinitely
+   - **Should:** When `temp ≥ decompositionPoint`:
+     - [ ] Trigger fire/smoke visual effects
+     - [ ] Release decomposition products into room (acrolein from glycerin, CO2 from sucrose)
+     - [ ] Track exposure to toxic decomposition products
+     - [ ] Show experiment failure modal with safety lesson
+   - Affected substances: glycerin, sucrose, hydrogen-peroxide
+   - Implementation:
+     - [ ] Add `decompositionProducts[]` to substance JSON
+     - [ ] Add `checkDecomposition()` in physics loop
+     - [ ] Add decomposition visual effects to workshop effects.json
+
+4. **Room Environment Phase 3: UI Enhancements**
    - [x] Room Controls panel (done)
    - [ ] Live heat/composition graphs
    - [x] Room alerts/warnings (done)
 
-3. **Unit Conversion System**
+5. **Unit Conversion System**
    - Wire UI, add more units, update all displays
 
 ### Medium Priority
-4. **Save Data & Persistence**
+6. **Save Data & Persistence**
    - LocalStorage autosave
    - Console codes (portable)
    - File export/import
