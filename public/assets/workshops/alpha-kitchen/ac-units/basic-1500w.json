@@ -5,9 +5,9 @@
   
   "thermalCharacteristics": {
     "coolingMaxWatts": 1500,
-    "heatingMaxWatts": 800,
+    "heatingMaxWatts": 1500,
     "responseTimeSeconds": 8,
-    "deadbandDegrees": 1.0
+    "deadbandDegrees": 0.5
   },
   
   "pidTuning": {

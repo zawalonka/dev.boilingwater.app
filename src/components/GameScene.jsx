@@ -25,6 +25,8 @@ import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUB
 import { GAME_CONFIG } from '../constants/physics'
 import { LEVELS, EXPERIMENTS } from '../constants/workshops'
 import ControlPanel from './ControlPanel'
+import RoomControls from './RoomControls'
+import { useRoomEnvironment } from '../hooks/useRoomEnvironment'
 import '../styles/GameScene.css'
 
 // Default layout values (used if workshop layout not provided)
@@ -56,7 +58,7 @@ const DEFAULT_LAYOUT = {
   }
 }
 
-function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, burnerConfig, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange }) {
+function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, burnerConfig, roomConfig, acUnitConfig, airHandlerConfig, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange, onEquipmentChange }) {
   const layout = workshopLayout || DEFAULT_LAYOUT
   const backgroundImage = workshopImages?.background || null
   const potEmptyImage = workshopImages?.pot_empty || null
@@ -224,13 +226,21 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // DERIVED STATE: Post-Tutorial Status
   // ============================================================================
 
+  // Find current experiment object (needed for order check and room controls)
+  const currentExperimentObj = useMemo(() => {
+    const experiments = EXPERIMENTS[activeLevel] || []
+    return experiments.find(exp => exp.id === activeExperiment) || null
+  }, [activeLevel, activeExperiment])
+
   // Advanced mode is available after completing tutorial OR skipping it
   // showSelectors indicates tutorial has been passed/skipped (selectors only appear then)
   const isAdvancedModeAvailable = showSelectors && (hasBoiledBefore || activeLevel !== 0)
   
-  // Check if current experiment requires location setup
+  // Check if current experiment requires location setup (order >= 2 means past tutorial)
+  const currentExperimentOrder = currentExperimentObj?.order ?? 1
   const isLocationBasedExperiment = activeExperiment === 'altitude-effect'
-  const isLocationPopupAllowed = isLocationBasedExperiment || activeExperiment === 'different-fluids'
+  // Location popup allowed for any experiment past tutorial (order >= 2) or any level > 1
+  const isLocationPopupAllowed = activeLevel > 1 || currentExperimentOrder >= 2
   // Altitude controls should be available once selectors are unlocked or when the experiment requires it
   const showAltitudeControls = showSelectors || isLocationBasedExperiment
   
@@ -253,6 +263,25 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       setBurnerHeat(maxHeatIndex)
     }
   }, [maxHeatIndex, burnerHeat])
+
+  // ============================================================================
+  // ROOM ENVIRONMENT: Temperature, pressure, composition tracking (L1E4+)
+  // ============================================================================
+  
+  // Room controls are enabled when the experiment has unlocksRoomControls flag
+  const roomControlsEnabled = Boolean(currentExperimentObj?.unlocksRoomControls)
+  
+  // Initialize room environment hook (manages room temp, pressure, composition)
+  const {
+    roomState,
+    summary: roomSummary,
+    alerts: roomAlerts,
+    updateRoom,
+    addVapor,
+    setAcSetpoint,
+    setAirHandlerMode,
+    resetRoom
+  } = useRoomEnvironment(roomConfig, acUnitConfig, airHandlerConfig)
 
   // ============================================================================
   // REFERENCES: Direct access to DOM elements (not state, just object references)
@@ -291,6 +320,15 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   const fluidName = fluidProps?.name || 'Fluid'
   const liquidMass = Math.max(0, waterInPot - residueMass)
+
+  // ============================================================================
+  // AMBIENT TEMPERATURE: For cooling/heating equilibration
+  // Before L1E4: Fixed at 20°C
+  // At L1E4+: Uses room environment temperature (affected by AC)
+  // ============================================================================
+  const ambientTemperature = roomControlsEnabled && roomSummary?.temperature != null
+    ? roomSummary.temperature
+    : GAME_CONFIG.ROOM_TEMPERATURE
 
   // ============================================================================
   // ============================================================================
@@ -448,6 +486,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       // - Heat being applied (Watts, 0 for natural cooling)
       // - Time elapsed in this step (seconds × speed multiplier)
       // - Fluid properties (specific heat, cooling coefficient, etc.)
+      // - Ambient temperature for equilibration
       // And returns new temperature, fluid mass, and whether it's boiling
       const newState = simulateTimeStep(
         {
@@ -458,12 +497,29 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         },
         heatInputWatts,                   // How much heat to apply (Watts)
         deltaTime,                        // How much time this step represents (seconds)
-        fluidProps                        // Fluid properties (specific heat, cooling, etc.)
+        fluidProps,                       // Fluid properties (specific heat, cooling, etc.)
+        ambientTemperature                // Room temperature for equilibration
       )
 
       // Update all the values returned from the physics simulation
       setTemperature(newState.temperature)      // Water is now hotter or cooler
       setWaterInPot(newState.waterMass)        // Water mass decreases if boiling (evaporation)
+      
+      // Room environment: Track burner heat and vapor release
+      // The main room simulation (AC, air handler) runs in a separate effect
+      // Here we only add external heat sources and vapor from boiling
+      if (roomControlsEnabled && roomConfig) {
+        // Track burner heat (waste heat radiating into room)
+        if (heatInputWatts > 0) {
+          updateRoom(deltaTime, 'experiment_burner', heatInputWatts)
+        }
+        
+        // If water is evaporating, add vapor to room
+        if (newState.isBoiling && newState.waterMass < waterInPot) {
+          const evaporatedMass = waterInPot - newState.waterMass
+          addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015)
+        }
+      }
       
       // Track elapsed time only if timer is running
       if (isTimerRunning) {
@@ -521,6 +577,31 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime])  // Re-run if any of these change
 
   // ============================================================================
+  // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
+  // ============================================================================
+
+  useEffect(() => {
+    // This effect handles room environment simulation (temperature regulation, air handling)
+    // It runs independently of whether there's liquid in the pot
+    // Only active when room controls are enabled (L1E4+)
+    if (!roomControlsEnabled || !roomConfig) return
+    
+    const roomSimRef = setInterval(() => {
+      // Skip if time is paused
+      if (pauseTime) return
+      
+      // Calculate timestep (same as main simulation)
+      const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+      
+      // Update room environment (AC maintains temperature, air handler cleans air)
+      // Pass 0 for heat since we're not tracking burner heat here (that happens in main sim)
+      updateRoom(deltaTime, null, 0)
+    }, GAME_CONFIG.TIME_STEP)
+    
+    return () => clearInterval(roomSimRef)
+  }, [roomControlsEnabled, roomConfig, timeSpeed, pauseTime, updateRoom])
+
+  // ============================================================================
   // POT DRAGGING HANDLERS: Three functions handle the drag lifecycle
   // ============================================================================
 
@@ -533,7 +614,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setActiveFluid(newFluid)
     // Reset pot state when switching fluids
     setWaterInPot(0)
-    setTemperature(GAME_CONFIG.ROOM_TEMPERATURE)
+    setTemperature(ambientTemperature)  // Start at current room temperature
     setIsBoiling(false)
     setShowHook(false)
     setBoilStats(null)
@@ -627,8 +708,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       const nonVolatileFraction = fluidProps?.nonVolatileMassFraction ?? 0
       setWaterInPot(fillMass)
       setResidueMass(fillMass * nonVolatileFraction)
-      // Reset temperature to room temp when filling with fresh water
-      setTemperature(GAME_CONFIG.ROOM_TEMPERATURE)
+      // Reset temperature to current room/ambient temp when filling with fresh fluid
+      setTemperature(ambientTemperature)
       // Reset boiling state
       setIsBoiling(false)
       // Reset burner heat tracking
@@ -983,10 +1064,9 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
   // Check if pot is in the water stream area to show the pouring effect
   // Only show if workshop has explicitly enabled waterStream effect
-  // SPECIAL CASE: If substance boils at or below ambient temperature (20°C),
+  // SPECIAL CASE: If substance boils at or below ambient temperature,
   // show upward steam instead of downward water stream
-  const AMBIENT_TEMP = 20  // Room temperature (°C)
-  const boilsAtAmbient = fluidProps && Number.isFinite(boilingPoint) && boilingPoint <= AMBIENT_TEMP
+  const boilsAtAmbient = fluidProps && Number.isFinite(boilingPoint) && boilingPoint <= ambientTemperature
   
   const showWaterStream = !boilsAtAmbient && effects.waterStream.enabled &&
     potPosition.x >= layout.waterStream.xRange[0] &&
@@ -1042,12 +1122,11 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     if (watts === 0) return null  // Can't boil without heat
     if (!fluidProps || !canBoil || !Number.isFinite(boilPointTarget)) return null
     
-    // Energy to heat fluid from room temp (20°C) to boiling point
-    const roomTemp = GAME_CONFIG.ROOM_TEMPERATURE
+    // Energy to heat fluid from current ambient temp to boiling point
     const waterMass = GAME_CONFIG.DEFAULT_WATER_MASS * 1000  // grams
     if (!Number.isFinite(fluidProps.specificHeat)) return null
     const specificHeat = fluidProps.specificHeat  // J/(g·°C)
-    const tempDifference = boilPointTarget - roomTemp
+    const tempDifference = boilPointTarget - ambientTemperature
     
     const energyNeeded = waterMass * specificHeat * tempDifference  // Joules
     const timeSeconds = energyNeeded / watts
@@ -1317,6 +1396,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           isPotOverFlame={isPotOverFlame}
           expectedBoilTime={expectedBoilTime}
           formatTemperature={formatTemperature}
+          ambientTemperature={ambientTemperature}
           
           // Extrapolation warning data
           isBoilingPointExtrapolated={isBoilingPointExtrapolated}
@@ -1368,6 +1448,27 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           setLocationName={setLocationName}
           setIsLoadingLocation={setIsLoadingLocation}
           setHasSetLocation={setHasSetLocation}
+        />
+
+        {/* 
+          ========== ROOM CONTROLS ==========
+          AC and air handler controls, room state display
+          Only visible for experiments with unlocksRoomControls flag (L1E4+)
+        */}
+        <RoomControls
+          enabled={roomControlsEnabled}
+          summary={roomSummary}
+          alerts={roomAlerts}
+          acUnit={acUnitConfig}
+          airHandler={airHandlerConfig}
+          availableAcUnits={roomConfig?.availableAcUnits}
+          availableAirHandlers={roomConfig?.availableAirHandlers}
+          selectedAcUnitId={acUnitConfig?.id || roomConfig?.defaults?.acUnit}
+          selectedAirHandlerId={airHandlerConfig?.id || roomConfig?.defaults?.airHandler}
+          onAcSetpointChange={setAcSetpoint}
+          onAirHandlerModeChange={setAirHandlerMode}
+          onAcUnitChange={(id) => onEquipmentChange?.('ac-units', id)}
+          onAirHandlerChange={(id) => onEquipmentChange?.('air-handlers', id)}
         />
 
         {/* 

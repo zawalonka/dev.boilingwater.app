@@ -8,6 +8,22 @@
 
 ## 🎯 IMMEDIATE: Current Sprint Tasks
 
+### Room Environment System - Phase 1 (In Progress)
+**Infrastructure Complete ✅:**
+- [x] `src/utils/roomEnvironment.js` - Room state management
+- [x] `src/utils/acUnitHandler.js` - PID-controlled AC
+- [x] `src/utils/airHandlerScrubber.js` - Auto-PID scrubber
+- [x] `src/hooks/useRoomEnvironment.js` - React hook
+- [x] `src/components/RoomControls.jsx` - UI panel
+- [x] Per-workshop JSON files (room.json, burners/, ac-units/, air-handlers/)
+- [x] Equipment selection dropdowns (reloads scene)
+- [x] Progressive unlock (L1E4+ only)
+
+**Remaining Phase 1:**
+- [ ] Vapor release → Room composition (boiling adds vapor to air)
+- [ ] Pressure feedback loop (room pressure affects boiling point)
+- [ ] Heat/composition logging for scorecard
+
 ### Test & Validate Recent Changes
 - [ ] Test Level 2 dropdown (tutorial → Level 2 → verify dropdown works)
 - [ ] Test element loading in-game (H, O, N and verify physics)
@@ -15,43 +31,27 @@
 - [ ] Test experiment-specific popups (L1E1-Tutorial, L1E2-Altitude, L1E3-Different Fluids)
 
 ### ~~Add Antoine TminC/TmaxC Notes to Remaining JSON Files~~ ✅ DONE
-Added `TminC_note` and `TmaxC_note` fields to all remaining Antoine coefficient blocks in:
-- `compounds/pure/ethanol-c2h5oh/liquid/state.json`
-- `compounds/pure/acetone-c3h6o/liquid/state.json`
-- `compounds/pure/ammonia-nh3/liquid/state.json`
-- `compounds/pure/ammonia-nh3/gas/state.json`
-- `compounds/pure/methane-ch4/liquid/state.json`
-- `compounds/pure/methane-ch4/gas/state.json`
-- `compounds/pure/propane-c3h8/liquid/state.json`
-- `compounds/pure/propane-c3h8/gas/state.json`
-- `compounds/pure/glycerin-c3h8o3/liquid/state.json`
-- `compounds/pure/isopropyl-alcohol-c3h8o/liquid/state.json`
-- `compounds/pure/hydrogen-peroxide-h2o2/liquid/state.json`
-- `compounds/pure/acetic-acid-ch3cooh/liquid/state.json`
 
 ### ~~Add Regression Guardrails~~ ✅ DONE
-Added to copilot-instructions.md:
-- No artificial clamps without physics justification
-- No static values for temperature-dependent properties
-- Dynamic calculation preferred over pre-computed constants
-- TminC/TmaxC are range markers, not limits
 
 ---
 
 ## 🚀 BACKLOG: Planned Features
 
 ### High Priority
-1. **Unit Conversion System**
+1. **Room Environment Phase 2: Scorecard System**
+   - [ ] Create `ExperimentScorecard.jsx` component
+   - [ ] "Finish Experiment" button
+   - [ ] Scorecard download (CSV/JSON)
+   - [ ] End-of-experiment modal
+
+2. **Room Environment Phase 3: UI Enhancements**
+   - [x] Room Controls panel (done)
+   - [ ] Live heat/composition graphs
+   - [x] Room alerts/warnings (done)
+
+3. **Unit Conversion System**
    - Wire UI, add more units, update all displays
-
-2. **Room Environment & Atmospheric System** (Design complete)
-   - Dynamic room temperature with PID-controlled AC
-   - Air composition tracking (O₂, N₂, CO₂, toxic gases)
-   - See [ROOM_ENVIRONMENT_SYSTEM.md](ROOM_ENVIRONMENT_SYSTEM.md)
-
-3. **Experiment Scorecard System** (Design phase)
-   - Downloadable CSV/JSON reports
-   - Metrics: efficiency, sustainability, score
 
 ### Medium Priority
 4. **Save Data & Persistence**

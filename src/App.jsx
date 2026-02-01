@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import GameScene from './components/GameScene'
-import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages } from './utils/workshopLoader'
+import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from './utils/workshopLoader'
 import { LEVELS, EXPERIMENTS } from './constants/workshops'
 import './styles/App.css'
 
@@ -86,6 +86,41 @@ function App() {
     setGameStage(0)
     setGameInstanceKey((k) => k + 1)
     // Location popup will be triggered in GameScene if this is Exp 2+
+  }
+
+  // Equipment change handler - reloads scene with new equipment
+  const handleEquipmentChange = async (equipmentType, equipmentId) => {
+    if (!activeWorkshopData || !activeWorkshopId) return
+    
+    try {
+      const newEquipment = await loadEquipment(activeWorkshopId, equipmentType, equipmentId)
+      if (!newEquipment) {
+        console.warn(`Could not load ${equipmentType}/${equipmentId}`)
+        return
+      }
+      
+      // Update workshop data with new equipment
+      const updatedWorkshopData = { ...activeWorkshopData }
+      if (equipmentType === 'ac-units') {
+        updatedWorkshopData.acUnit = newEquipment
+      } else if (equipmentType === 'air-handlers') {
+        updatedWorkshopData.airHandler = newEquipment
+      } else if (equipmentType === 'burners') {
+        updatedWorkshopData.burnerConfig = {
+          wattageSteps: newEquipment.wattageSteps || [0, 500, 1000, 2000],
+          controlType: newEquipment.controlType || 'knob',
+          maxWatts: newEquipment.thermalCharacteristics?.maxWatts || 2000,
+          efficiencyPercent: newEquipment.thermalCharacteristics?.efficiencyPercent || 85
+        }
+      }
+      
+      setActiveWorkshopData(updatedWorkshopData)
+      // Reset game to apply new equipment
+      setGameStage(0)
+      setGameInstanceKey((k) => k + 1)
+    } catch (error) {
+      console.error(`Failed to change ${equipmentType}:`, error)
+    }
   }
 
   // Location will be requested when entering stage 2 (altitude-based lessons)
@@ -211,6 +246,9 @@ function App() {
           workshopImages={activeWorkshopData?.images}
           workshopEffects={activeWorkshopData?.effects}
           burnerConfig={activeWorkshopData?.burnerConfig}
+          roomConfig={activeWorkshopData?.room}
+          acUnitConfig={activeWorkshopData?.acUnit}
+          airHandlerConfig={activeWorkshopData?.airHandler}
           activeLevel={activeLevel}
           activeExperiment={activeExperiment}
           showSelectors={showSelectors}
@@ -219,6 +257,7 @@ function App() {
           onLevelChange={handleLevelChange}
           onExperimentChange={handleExperimentChange}
           onLocationChange={handleLocationChange}
+          onEquipmentChange={handleEquipmentChange}
           hasBoiledBefore={hasBoiledBefore}
         />
       </div>

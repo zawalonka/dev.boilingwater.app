@@ -1,0 +1,108 @@
+/**
+ * APPLY HEAT ENERGY
+ * =================
+ * 
+ * This process answers the question:
+ * "If I apply X Joules of heat, what happens to this liquid?"
+ * 
+ * FORMULA CHAIN:
+ * 1. Heat Capacity (Q=mcΔT) → Calculate temperature change from energy
+ * 2. IF temperature reaches boiling point:
+ *    - Heat Capacity → Calculate energy to reach boiling
+ *    - Latent Heat → Convert remaining energy to vapor
+ * 
+ * SEE STUB FILES IN THIS FOLDER:
+ *   _heatCapacity.js - Temperature change calculations
+ *   _latentHeat.js   - Phase change energy calculations
+ * 
+ * BEHAVIOR:
+ * - Below boiling: All energy → temperature increase
+ * - At boiling: Energy splits between reaching BP and vaporizing
+ * - Temperature never exceeds boiling point (energy goes to phase change)
+ * 
+ * INPUT:
+ *   mass (kg), currentTemp (°C), energyJoules, boilingPoint (°C), fluidProps
+ * 
+ * OUTPUT:
+ *   { newTemp, energyToVaporization, steamGenerated }
+ */
+
+// Import formulas through stubs
+import { calculateHeatEnergy, calculateTempChange } from './_heatCapacity.js'
+import { calculateVaporizedMass } from './_latentHeat.js'
+
+/**
+ * Apply heat energy to a fluid and determine new state
+ * 
+ * @param {number} massKg - Mass of fluid in kilograms
+ * @param {number} currentTemp - Current fluid temperature (°C)
+ * @param {number} energyJoules - Heat energy applied (Joules)
+ * @param {number} boilingPoint - Boiling point at current conditions (°C)
+ * @param {object} fluidProps - Fluid properties containing:
+ *   - specificHeat: J/(g·°C)
+ *   - heatOfVaporization: kJ/kg
+ * @returns {object} { newTemp, energyToVaporization, steamGenerated }
+ */
+export function applyHeatEnergy(massKg, currentTemp, energyJoules, boilingPoint, fluidProps) {
+  // Safety checks
+  if (!Number.isFinite(fluidProps?.specificHeat) || massKg <= 0) {
+    return {
+      newTemp: currentTemp,
+      energyToVaporization: 0,
+      steamGenerated: 0
+    }
+  }
+  
+  // STEP 1: Calculate potential temperature increase (Q = mcΔT → ΔT = Q/mc)
+  const tempIncrease = calculateTempChange(massKg, fluidProps.specificHeat, energyJoules)
+  const potentialNewTemp = currentTemp + tempIncrease
+  
+  // Check if substance can boil
+  const canBoil = Number.isFinite(boilingPoint) && 
+                  Number.isFinite(fluidProps?.heatOfVaporization) && 
+                  fluidProps.heatOfVaporization > 0
+  
+  // CASE 1: Heating doesn't reach boiling point → just increase temperature
+  if (!canBoil || potentialNewTemp < boilingPoint) {
+    return {
+      newTemp: potentialNewTemp,
+      energyToVaporization: 0,
+      steamGenerated: 0
+    }
+  }
+  
+  // CASE 2: Reaches or exceeds boiling point → split energy
+  
+  // Step A: Energy needed to reach boiling point
+  const energyToBoiling = calculateHeatEnergy(
+    massKg, 
+    fluidProps.specificHeat, 
+    boilingPoint - currentTemp
+  )
+  
+  // Step B: Remaining energy goes to vaporization
+  const remainingEnergy = energyJoules - energyToBoiling
+  
+  // Step C: Convert remaining energy to vapor mass
+  const steamGenerated = calculateVaporizedMass(remainingEnergy, fluidProps.heatOfVaporization)
+  
+  return {
+    newTemp: boilingPoint,  // Temperature stays at boiling point
+    energyToVaporization: remainingEnergy,
+    steamGenerated: Math.max(0, steamGenerated)
+  }
+}
+
+/**
+ * Calculate energy needed to heat a substance from one temp to another
+ * (Re-exported for convenience - this is the same as the formula)
+ * 
+ * @param {number} massKg - Mass in kilograms
+ * @param {number} tempStart - Starting temperature (°C)
+ * @param {number} tempEnd - Ending temperature (°C)
+ * @param {object} fluidProps - Fluid properties with specificHeat
+ * @returns {number} Energy in Joules
+ */
+export function calculateHeatingEnergy(massKg, tempStart, tempEnd, fluidProps) {
+  return calculateHeatEnergy(massKg, fluidProps.specificHeat, tempEnd - tempStart)
+}

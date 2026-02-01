@@ -57,6 +57,36 @@ export async function loadWorkshop(workshopId) {
             console.warn(`Failed to load burner '${defaultBurnerId}': ${burnerError.message}`)
           }
         }
+
+        // Load the default AC unit configuration
+        const defaultAcId = workshopData.room.defaults?.acUnit
+        if (defaultAcId) {
+          try {
+            const acUrl = new URL(`${base}assets/workshops/${workshopId}/ac-units/${defaultAcId}.json`, window.location.href).toString()
+            const acRes = await fetch(acUrl)
+            if (acRes.ok) {
+              workshopData.acUnit = await acRes.json()
+              console.log(`✓ Loaded AC unit '${defaultAcId}' for '${workshopId}'`)
+            }
+          } catch (acError) {
+            console.warn(`Failed to load AC unit '${defaultAcId}': ${acError.message}`)
+          }
+        }
+
+        // Load the default air handler configuration
+        const defaultAirHandlerId = workshopData.room.defaults?.airHandler
+        if (defaultAirHandlerId) {
+          try {
+            const ahUrl = new URL(`${base}assets/workshops/${workshopId}/air-handlers/${defaultAirHandlerId}.json`, window.location.href).toString()
+            const ahRes = await fetch(ahUrl)
+            if (ahRes.ok) {
+              workshopData.airHandler = await ahRes.json()
+              console.log(`✓ Loaded air handler '${defaultAirHandlerId}' for '${workshopId}'`)
+            }
+          } catch (ahError) {
+            console.warn(`Failed to load air handler '${defaultAirHandlerId}': ${ahError.message}`)
+          }
+        }
       }
     } catch (roomError) {
       console.info(`No room.json for workshop '${workshopId}' (optional): ${roomError.message}`)
@@ -67,6 +97,39 @@ export async function loadWorkshop(workshopId) {
     return workshopData
   } catch (error) {
     throw new Error(`Failed to load workshop '${workshopId}': ${error.message}`)
+  }
+}
+
+/**
+ * Load a specific piece of equipment from a workshop
+ * @param {string} workshopId - The workshop to load from
+ * @param {'ac-units' | 'air-handlers' | 'burners'} equipmentType - Type of equipment
+ * @param {string} equipmentId - The equipment ID (filename without .json)
+ * @returns {Promise<object|null>} The equipment config or null if not found
+ */
+export async function loadEquipment(workshopId, equipmentType, equipmentId) {
+  if (!workshopId || !equipmentType || !equipmentId) return null
+  
+  try {
+    let base = import.meta.env?.BASE_URL || '/'
+    if (base.startsWith('/')) base = base.slice(1)
+    
+    const equipmentUrl = new URL(
+      `${base}assets/workshops/${workshopId}/${equipmentType}/${equipmentId}.json`,
+      window.location.href
+    ).toString()
+    
+    const res = await fetch(equipmentUrl)
+    if (res.ok) {
+      const config = await res.json()
+      console.log(`✓ Loaded ${equipmentType} '${equipmentId}' from workshop '${workshopId}'`)
+      return config
+    }
+    console.warn(`Equipment not found: ${equipmentType}/${equipmentId} in ${workshopId}`)
+    return null
+  } catch (error) {
+    console.warn(`Failed to load ${equipmentType}/${equipmentId}: ${error.message}`)
+    return null
   }
 }
 
@@ -185,7 +248,9 @@ export function processWorkshop(workshopData, parentWorkshop = null) {
     },
     effects: normalizeEffects(workshopData.effects),
     burnerConfig: getBurnerConfig(),
-    room: workshopData.room || null
+    room: workshopData.room || null,
+    acUnit: workshopData.acUnit || null,
+    airHandler: workshopData.airHandler || null
   }
 }
 

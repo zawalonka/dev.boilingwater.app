@@ -25,6 +25,7 @@ function ControlPanel({
   isPotOverFlame,
   expectedBoilTime,
   formatTemperature,
+  ambientTemperature,
   
   // Extrapolation warning data
   isBoilingPointExtrapolated,
@@ -110,7 +111,7 @@ function ControlPanel({
           {/* Ambient/Room temperature */}
           <div className="status-item">
             <span className="label">Ambient:</span>
-            <span className="value">{GAME_CONFIG.ROOM_TEMPERATURE}°C</span>
+            <span className="value">{formatTemperature(ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE)}°C</span>
           </div>
           
           {/* Temperature display */}
@@ -265,9 +266,9 @@ function ControlPanel({
           )}
           
           {/* Cooling - pot is off the flame */}
-          {liquidMass > 0 && burnerHeat > 0 && !isPotOverFlame && temperature > GAME_CONFIG.ROOM_TEMPERATURE && (
+          {liquidMass > 0 && burnerHeat > 0 && !isPotOverFlame && temperature > (ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE) && (
             <p className="status-text" title="Position pot over flame to heat the fluid">
-              ❄️ Cooling: {formatTemperature(temperature)}°C → {GAME_CONFIG.ROOM_TEMPERATURE}°C (place pot over flame)
+              ❄️ Cooling: {formatTemperature(temperature)}°C → {formatTemperature(ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE)}°C (place pot over flame)
             </p>
           )}
           
