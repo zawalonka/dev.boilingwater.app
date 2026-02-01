@@ -7,15 +7,39 @@
 
 import { applyAcControl, createPidState } from './acUnitHandler'
 import { applyScrubber, checkCompositionAlerts, EARTH_ATMOSPHERE } from './airHandlerScrubber'
+import { calculatePressure } from './physics/index.js'
+
+/**
+ * Calculate initial room pressure based on pressureMode and altitude
+ * @param {object} roomConfig - Room config from room.json
+ * @param {number} altitude - Altitude in meters
+ * @returns {number} Pressure in Pa
+ */
+function getInitialPressure(roomConfig, altitude) {
+  const pressureMode = roomConfig?.pressureMode || 'location'
+  
+  switch (pressureMode) {
+    case 'sealevel':
+      return 101325
+    case 'custom':
+      return roomConfig?.room?.initialPressurePa || 101325
+    case 'location':
+    default:
+      // Use ISA model to calculate pressure from altitude
+      return calculatePressure(altitude || 0)
+  }
+}
 
 /**
  * Create initial room state from room.json config
  * @param {object} roomConfig - Room config from room.json
+ * @param {number} altitude - Altitude in meters (for pressureMode 'location')
  * @returns {object} Initial room state
  */
-export function createRoomState(roomConfig) {
+export function createRoomState(roomConfig, altitude = 0) {
   const room = roomConfig?.room || {}
   const atmosphere = roomConfig?.atmosphere || EARTH_ATMOSPHERE
+  const initialPressure = getInitialPressure(roomConfig, altitude)
   
   return {
     // Physical properties
@@ -25,7 +49,7 @@ export function createRoomState(roomConfig) {
     
     // Current state
     temperature: room.initialTempC || 20,
-    pressure: 101325,  // Pa, will be set based on altitude/pressureMode
+    pressure: initialPressure,
     composition: { ...atmosphere },
     
     // AC state

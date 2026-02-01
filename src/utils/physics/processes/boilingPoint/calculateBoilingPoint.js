@@ -130,5 +130,65 @@ function calculateDynamicElevation(baseBoilingPointC, fluidProps) {
     : 0
 }
 
+/**
+ * Calculate the boiling point of a fluid at a given pressure
+ * 
+ * This is useful when you have direct pressure measurements (e.g., room pressure)
+ * rather than deriving pressure from altitude.
+ * 
+ * @param {number} pressurePa - Atmospheric pressure in Pascals
+ * @param {object} fluidProps - Fluid properties (same as calculateBoilingPoint)
+ * @returns {object} { temperature, isExtrapolated, verifiedRange, baseBoilingPoint, elevation }
+ */
+export function calculateBoilingPointAtPressure(pressurePa, fluidProps) {
+  if (!fluidProps || !Number.isFinite(fluidProps.boilingPointSeaLevel)) {
+    return null
+  }
+  
+  // Safety: treat invalid pressure as sea level
+  if (!Number.isFinite(pressurePa) || pressurePa <= 0) {
+    pressurePa = ATMOSPHERE.SEA_LEVEL_PRESSURE
+  }
+  
+  // Use Antoine equation if available (highly accurate, ±0.5°C)
+  if (fluidProps.antoineCoefficients) {
+    const antoineResult = solveAntoineForTemperature(
+      pressurePa, 
+      fluidProps.antoineCoefficients
+    )
+    
+    if (antoineResult && Number.isFinite(antoineResult.temperature)) {
+      const elevation = calculateDynamicElevation(antoineResult.temperature, fluidProps)
+      const finalTemp = antoineResult.temperature + elevation
+      
+      return {
+        temperature: finalTemp,
+        isExtrapolated: antoineResult.isExtrapolated,
+        verifiedRange: antoineResult.verifiedRange,
+        baseBoilingPoint: antoineResult.temperature,
+        elevation: elevation
+      }
+    }
+  }
+  
+  // FALLBACK: Estimate based on pressure ratio
+  // This is less accurate but works for substances without Antoine coefficients
+  const pressureRatio = pressurePa / ATMOSPHERE.SEA_LEVEL_PRESSURE
+  // Rough approximation: ~3°C drop per 10% pressure reduction
+  const temperatureDrop = (1 - pressureRatio) * 30
+  const baseBoilingPoint = fluidProps.boilingPointSeaLevel - temperatureDrop
+  
+  const elevation = calculateDynamicElevation(baseBoilingPoint, fluidProps)
+  const finalTemp = baseBoilingPoint + elevation
+  
+  return {
+    temperature: finalTemp,
+    isExtrapolated: false,
+    verifiedRange: { min: null, max: null },
+    baseBoilingPoint: baseBoilingPoint,
+    elevation: elevation
+  }
+}
+
 // Also export the pressure function for direct use
 export { calculatePressureISA as calculatePressure }

@@ -17,9 +17,10 @@
 
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { 
-  calculateBoilingPoint,  // Calculates fluid's boiling point based on altitude
-  simulateTimeStep,       // Runs one time step of physics (heating/cooling/boiling)
-  formatTemperature       // Formats temperature numbers for display (e.g., 98.5°C)
+  calculateBoilingPoint,           // Calculates fluid's boiling point based on altitude
+  calculateBoilingPointAtPressure, // Calculates fluid's boiling point based on pressure (for room feedback)
+  simulateTimeStep,                // Runs one time step of physics (heating/cooling/boiling)
+  formatTemperature                // Formats temperature numbers for display (e.g., 98.5°C)
 } from '../utils/physics'
 import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUBSTANCE, getAvailableSubstances } from '../utils/substanceLoader'
 import { GAME_CONFIG } from '../constants/physics'
@@ -133,6 +134,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // Has the water reached its boiling point? (true once boiling starts)
   const [isBoiling, setIsBoiling] = useState(false)
 
+  // Has the boil popup been shown for this experiment? (prevents re-triggering)
+  // Only resets on fluid/level change, not on temperature fluctuation
+  const [hasShownBoilPopup, setHasShownBoilPopup] = useState(false)
+
   // Should we display the educational message about boiling points?
   // (This appears when water starts boiling)
   const [showHook, setShowHook] = useState(false)
@@ -238,18 +243,20 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   
   // Check if current experiment requires location setup (order >= 2 means past tutorial)
   const currentExperimentOrder = currentExperimentObj?.order ?? 1
-  const isLocationBasedExperiment = activeExperiment === 'altitude-effect'
+  // L1E2 (altitude-effect) is THE altitude experiment - it prompts for location
+  // All other experiments after L1E2 just use whatever altitude was previously set
+  const isAltitudeExperiment = activeExperiment === 'altitude-effect'
   // Location popup allowed for any experiment past tutorial (order >= 2) or any level > 1
   const isLocationPopupAllowed = activeLevel > 1 || currentExperimentOrder >= 2
-  // Altitude controls should be available once selectors are unlocked or when the experiment requires it
-  const showAltitudeControls = showSelectors || isLocationBasedExperiment
+  // Altitude controls should be available once selectors are unlocked or for altitude experiment
+  const showAltitudeControls = showSelectors || isAltitudeExperiment
   
-  // Trigger location popup when entering Exp 2+ (altitude-effect)
+  // Trigger location popup ONLY for altitude-effect experiment (L1E2) if location not yet set
   useEffect(() => {
-    if (isLocationBasedExperiment && !hasSetLocation && !showLocationPopup) {
+    if (isAltitudeExperiment && !hasSetLocation && !showLocationPopup) {
       setShowLocationPopup(true)
     }
-  }, [activeExperiment, isLocationBasedExperiment, hasSetLocation, showLocationPopup])
+  }, [activeExperiment, isAltitudeExperiment, hasSetLocation, showLocationPopup])
 
   // Reset pot position when layout changes
   useEffect(() => {
@@ -265,6 +272,16 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   }, [maxHeatIndex, burnerHeat])
 
   // ============================================================================
+  // LOCATION & ALTITUDE: Affects boiling point (must be before room environment)
+  // ============================================================================
+
+  // Get the user's altitude in meters (defaults to 0 if location data not available)
+  // Higher altitude = lower atmospheric pressure = lower boiling point
+  const altitude = (activeExperiment === 'different-fluids' && editableAltitude !== null)
+    ? editableAltitude
+    : (location?.altitude || 0)
+
+  // ============================================================================
   // ROOM ENVIRONMENT: Temperature, pressure, composition tracking (L1E4+)
   // ============================================================================
   
@@ -272,6 +289,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   const roomControlsEnabled = Boolean(currentExperimentObj?.unlocksRoomControls)
   
   // Initialize room environment hook (manages room temp, pressure, composition)
+  // Pass altitude so room pressure uses ISA calculation based on player's location
   const {
     roomState,
     summary: roomSummary,
@@ -281,7 +299,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setAcSetpoint,
     setAirHandlerMode,
     resetRoom
-  } = useRoomEnvironment(roomConfig, acUnitConfig, airHandlerConfig)
+  } = useRoomEnvironment(roomConfig, acUnitConfig, airHandlerConfig, altitude)
 
   // ============================================================================
   // REFERENCES: Direct access to DOM elements (not state, just object references)
@@ -296,20 +314,23 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
   // Stores reference to the heating simulation interval so we can stop it later
   const simulationRef = useRef(null)
 
-  // ============================================================================
-  // LOCATION & ALTITUDE: Affects boiling point
-  // ============================================================================
-
-  // Get the user's altitude in meters (defaults to 0 if location data not available)
-  // Higher altitude = lower atmospheric pressure = lower boiling point
-  const altitude = (activeExperiment === 'different-fluids' && editableAltitude !== null)
-    ? editableAltitude
-    : (location?.altitude || 0)
-
-  // Pre-calculate what temperature fluid will boil at for this altitude
-  // Note: This is recalculated only when altitude or fluidProps changes
-  // calculateBoilingPoint now returns { temperature, isExtrapolated, verifiedRange }
-  const boilingPointResult = fluidProps ? calculateBoilingPoint(altitude, fluidProps) : null
+  // Pre-calculate what temperature fluid will boil at
+  // PRESSURE FEEDBACK LOOP:
+  // - Before L1E4: Use altitude to derive pressure (standard behavior)
+  // - At L1E4+ (room controls enabled): Use room pressure directly
+  //   This creates a feedback loop: boiling → vapor release → pressure rise → BP shift
+  const boilingPointResult = useMemo(() => {
+    if (!fluidProps) return null
+    
+    // When room controls are enabled, use room pressure for feedback loop
+    if (roomControlsEnabled && roomSummary?.pressure) {
+      return calculateBoilingPointAtPressure(roomSummary.pressure, fluidProps)
+    }
+    
+    // Standard: derive pressure from altitude
+    return calculateBoilingPoint(altitude, fluidProps)
+  }, [fluidProps, altitude, roomControlsEnabled, roomSummary?.pressure])
+  
   const boilingPoint = boilingPointResult?.temperature ?? null
   const isBoilingPointExtrapolated = boilingPointResult?.isExtrapolated ?? false
   const boilingPointVerifiedRange = boilingPointResult?.verifiedRange ?? { min: null, max: null }
@@ -465,8 +486,13 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         heatInputWatts = heatLevels[burnerHeat] || 0
         
         // Track when pot is first placed over flame with heat on
+        // Initialize to 0 if just started, otherwise accumulate time
         if (timePotOnFlame === null) {
           setTimePotOnFlame(0)
+        } else {
+          // Accumulate time while heating (deltaTime calculated below, use TIME_STEP for now)
+          const dt = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+          setTimePotOnFlame(prev => (prev ?? 0) + dt)
         }
       } else if (timePotOnFlame !== null) {
         // Reset if pot is removed from flame or heat is turned off
@@ -528,8 +554,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
 
       // Check if water just started boiling
       // We only show "boiling" if it wasn't boiling before but is now boiling
-      if (newState.isBoiling && !isBoiling) {
+      // hasShownBoilPopup prevents re-triggering if temp fluctuates around boiling point
+      if (newState.isBoiling && !isBoiling && !hasShownBoilPopup) {
         setIsBoiling(true)   // Mark as boiling
+        setHasShownBoilPopup(true)  // Prevent re-triggering
         setShowHook(true)    // Show the educational message
         setPauseTime(true)   // Pause time while popup is visible
         setShowNextLevelButton(Boolean(getNextProgression()))
@@ -574,7 +602,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime])  // Re-run if any of these change
+  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime])  // Re-run if any of these change
 
   // ============================================================================
   // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
@@ -616,6 +644,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setWaterInPot(0)
     setTemperature(ambientTemperature)  // Start at current room temperature
     setIsBoiling(false)
+    setHasShownBoilPopup(false)  // Allow popup to trigger again for new fluid
     setShowHook(false)
     setBoilStats(null)
   }
@@ -712,6 +741,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       setTemperature(ambientTemperature)
       // Reset boiling state
       setIsBoiling(false)
+      setHasShownBoilPopup(false)  // Allow popup to trigger for fresh fill
       // Reset burner heat tracking
       setBurnerHeatWhenBoiled(0)
     }

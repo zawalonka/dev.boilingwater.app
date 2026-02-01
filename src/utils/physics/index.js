@@ -43,6 +43,7 @@
 
 export { 
   calculateBoilingPoint,
+  calculateBoilingPointAtPressure,
   calculatePressure 
 } from './processes/boilingPoint/calculateBoilingPoint.js'
 

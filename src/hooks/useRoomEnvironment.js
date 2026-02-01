@@ -13,17 +13,18 @@ import { createRoomState, simulateRoomStep, getRoomSummary } from '../utils/room
  * @param {object} roomConfig - Room config from workshop (room.json)
  * @param {object} acUnit - AC unit config (from JSON)
  * @param {object} airHandler - Air handler config
+ * @param {number} altitude - Altitude in meters (for pressureMode 'location')
  * @returns {object} Room state and control functions
  */
-export function useRoomEnvironment(roomConfig, acUnit, airHandler) {
-  const [roomState, setRoomState] = useState(() => createRoomState(roomConfig))
+export function useRoomEnvironment(roomConfig, acUnit, airHandler, altitude = 0) {
+  const [roomState, setRoomState] = useState(() => createRoomState(roomConfig, altitude))
   
-  // Reset room state when config changes
+  // Reset room state when config or altitude changes
   useEffect(() => {
     if (roomConfig) {
-      setRoomState(createRoomState(roomConfig))
+      setRoomState(createRoomState(roomConfig, altitude))
     }
-  }, [roomConfig])
+  }, [roomConfig, altitude])
 
   /**
    * Update room simulation for one timestep
@@ -83,9 +84,9 @@ export function useRoomEnvironment(roomConfig, acUnit, airHandler) {
    * Reset room to initial state
    */
   const resetRoom = useCallback(() => {
-    setRoomState(createRoomState(roomConfig))
+    setRoomState(createRoomState(roomConfig, altitude))
     lastUpdateRef.current = Date.now()
-  }, [roomConfig])
+  }, [roomConfig, altitude])
 
   /**
    * Get experiment data for scorecard
