@@ -12,6 +12,28 @@ Thanks for your interest in contributing!
 - Check existing issues and discussions to avoid duplicates.
 - For major changes, open an issue first to discuss scope and approach.
 
+### ⚠️ Important: AI-Assisted Development Workflow
+
+**This codebase is developed primarily through rapid AI-assisted coding sessions.** Before investing significant time in a pull request, please consider:
+
+**Open an Issue First (Strongly Recommended):**
+- Discuss the change with the maintainer before implementing
+- The maintainer can address most issues quickly with AI assistance
+- This avoids duplicate work and ensures changes align with project direction
+
+**Risk of Manual Contributions:**
+- Manual code changes may be overwritten in future AI coding sessions
+- The AI may regenerate sections without awareness of manual edits
+- Your excellent contributions could be lost unintentionally
+
+**Best Approach:**
+1. Open a GitHub Issue describing the problem or feature
+2. Wait for maintainer response and discussion
+3. If maintainer approves external PR → proceed with implementation
+4. If maintainer prefers to handle → they'll address it with AI assistance
+
+**This isn't a rejection of contributions** — it's protecting your time and ensuring changes are preserved in the AI-assisted workflow. Issue reports and feature requests are always welcome!
+
 ## Development Setup (Quick)
 1. Install dependencies
    - `npm install`

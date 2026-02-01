@@ -1,16 +1,16 @@
 # Project TODO - Boiling Water App
 
-> **Last Updated:** 2026-01-31  
+> **Last Updated:** 2026-02-01  
 > **Status:** Pre-Alpha (working prototype with zero-hardcoding substance system)
 > **Completed items:** See [COMPLETED_TODOS.md](COMPLETED_TODOS.md)
 
 ---
 
-## 🎯 IMMEDIATE: Current Sprint Tasks
+## 🚨 CRITICAL PATH (Blocks Release)
 
-### 🚨 ACCESSIBILITY OVERHAUL — CRITICAL (40-50 hours, 6-8 hours quick wins)
-**Status:** NOT STARTED — High priority, blocks quality release  
-**Issue:** App is completely inaccessible to keyboard and screen reader users (game unplayable)  
+### 1. ACCESSIBILITY OVERHAUL (40-50 hours, 6-8 hours quick wins)
+**Status:** NOT STARTED — Blocks quality release  
+**Issue:** App completely inaccessible to keyboard and screen reader users (game unplayable)  
 **See:** [ACCESSIBILITY_TODO.md](ACCESSIBILITY_TODO.md) for detailed breakdown
 
 **Quick Wins (6-8 hours, biggest impact):**
@@ -22,52 +22,113 @@
 
 **Full scope:** Phases 1-4 in dedicated TODO file (forms → keyboard navigation → semantic HTML → testing)
 
+**Dependencies:** None - can start immediately  
+**Unlocks:** Localization (needs final UI strings), quality release
+
 ---
 
-### Room Environment System - Phase 1 ✅ COMPLETE → MOVED TO COMPLETED_TODOS
-**Infrastructure Complete ✅:**
-- [x] `src/utils/roomEnvironment.js` - Room state management
-- [x] `src/utils/acUnitHandler.js` - PID-controlled AC (now uses physics module)
-- [x] `src/utils/airHandlerScrubber.js` - Auto-PID scrubber (now uses physics module)
-- [x] `src/hooks/useRoomEnvironment.js` - React hook
-- [x] `src/components/RoomControls.jsx` - UI panel
-- [x] Per-workshop JSON files (room.json, burners/, ac-units/, air-handlers/)
-- [x] Equipment selection dropdowns (reloads scene)
-- [x] Progressive unlock (L1E4+ only)
-- [x] Vapor release → Room composition (boiling adds vapor to air)
-- [x] Heat/composition logging (data collected, scorecard not built)
-- [x] Room simulation runs independently (before pot is filled)
-- [x] Pressure feedback loop (room pressure affects boiling point at L1E4+)
-- [x] Room pressure uses altitude via ISA model (not hardcoded sea level)
+## ⚡ HIGH PRIORITY (Post-Accessibility)
 
-### Physics Module Refactor ✅ COMPLETE
-- [x] Split physics.js into modular structure
-- [x] `formulas/` - Individual named equations (10 files)
-- [x] `processes/` - Orchestrators with visible stubs (4 folders)
-- [x] `pidController.js` - Control algorithm for AC/equipment
-- [x] `gasExchange.js` - Room air mixing physics
-- [x] AC/Air handlers now use physics formulas (PID → power level → Q=mcΔT)
-- [x] `calculateBoilingPointAtPressure()` for room pressure feedback
+### 2. LOCALIZATION / INTERNATIONALIZATION (i18n)
+**Status:** PLANNING — Depends on accessibility completion  
+**Goal:** Drop-in localization files for multi-language support (Spanish first)
 
-### Bug Fixes This Session ✅
-- [x] Scorecard popup infinite loop - Added `hasShownBoilPopup` flag
-- [x] In-game timer wrong values - Fixed `timePotOnFlame` accumulation
-- [x] L1E4 defaulting to 100°C - Room pressure now uses ISA model with altitude
-- [x] Location popup logic - Only triggers for L1E2 (altitude experiment)
-- [x] Variable ordering - `altitude` now defined before `useRoomEnvironment`
+**Why After Accessibility:**
+- Accessibility will ADD new strings (aria-labels, keyboard hints, screen reader text)
+- Better to localize once with complete string set
 
-### ⚠️ Known Physics Bugs (PRIORITY FIX)
-**Burner Heating Logic Incorrect**
-- **Issue:** Burner only affects room temperature when pot is positioned directly over it. Should act like a mini-heater and warm the room regardless of pot location or heating status.
-- **Current Behavior:** `burnerWatts` only transfers heat to pot; room temperature unaffected unless pot is heated.
-- **Expected Behavior:** Burner should:
-  - Always add heat to room air when powered (e.g., 10% of burner power dissipates to room)
-  - Not depend on pot position or liquid mass
-  - Provide baseline warmth that affects boiling point through room pressure feedback
-- **Files to Fix:** `src/components/GameScene.jsx` (heat loop), `src/utils/physics.js` (room heating calc)
-- **Impact:** Room temperature stays at ambient; should slowly rise when burner is on
+**Key Decisions:**
+- [ ] **File structure:** Single JSON per language (start) vs. split by section (if >500 keys)
+- [ ] **File location:** `public/locales/{lang}.json` (recommended for drop-in extensibility)
 
-### Test & Validate (Untested)
+**Implementation Tasks:**
+- [ ] Create localization architecture doc (file format, key naming conventions)
+- [ ] Add language picker to Header.jsx (game title bar)
+- [ ] Add language picker to wiki header
+- [ ] Create base English localization file (`public/locales/en.json`)
+- [ ] Create Spanish localization template (`public/locales/es.json`)
+- [ ] Implement `useLocalization()` hook or context provider
+- [ ] Replace hardcoded strings with localization keys
+- [ ] Add locale persistence (localStorage)
+- [ ] Document translation workflow for contributors
+
+**Scope:** Game UI, wiki content, substance descriptions, errors/alerts, experiment instructions
+
+**Dependencies:** Accessibility Phase 1 (complete UI strings)  
+**Unlocks:** International audience, educational reach
+
+---
+
+### 3. Known Physics Bugs (PRIORITY FIX)
+
+**Burner Heating Logic Incorrect:**
+- **Issue:** Burner only heats room when pot is over it; should act like mini-heater regardless
+- **Expected:** 10% of burner power dissipates to room air continuously when powered
+- **Files:** `src/components/GameScene.jsx`, `src/utils/physics.js`
+- [ ] Add room heating calculation (independent of pot position)
+
+**Dependencies:** None  
+**Unlocks:** Realistic room temperature feedback, accurate boiling point shifts
+
+---
+
+### 4. Time Speed Sub-stepping (Performance Critical)
+
+**Problem:** At extreme speeds (65536x), deltaTime = 6553s per frame → physics diverges
+
+**Solution:**
+- [ ] Create `src/utils/physics/timeSubstepper.js` — Subdivision utility
+- [ ] Export `withSubstepping(formula, maxSubsteps, threshold)` — Higher-order function wrapper
+- [ ] Apply to: heating, cooling, evaporation, pressure feedback
+- [ ] Test at 1x (imperceptible), 256x (stable), 65536x (no divergence)
+
+**Dependencies:** None  
+**Unlocks:** Reliable speed acceleration, removes unreliability warning
+
+---
+
+## 🚀 HIGH PRIORITY (Content & Features)
+
+### 5. Room Environment Phase 2: Scorecard System
+- [ ] Create `ExperimentScorecard.jsx` component
+- [ ] "Finish Experiment" button
+- [ ] Scorecard download (CSV/JSON)
+- [ ] End-of-experiment modal
+- Note: `getExperimentData()` ready but unused
+
+**Dependencies:** None (infrastructure complete)  
+**Unlocks:** Experiment data collection, player feedback loop
+
+---
+
+### 6. Wiki: Static Knowledge Site (Build-Generated)
+- [ ] See detailed checklist in [wiki/TODO.md](../../wiki/TODO.md)
+
+**Dependencies:** None  
+**Unlocks:** Educational content discovery, SEO
+
+---
+
+### 7. Decomposition Behavior (NOT IMPLEMENTED)
+- **Current:** Substances with `boilingPoint: null` heat indefinitely
+- **Should:** When `temp ≥ decompositionPoint`:
+  - [ ] Trigger fire/smoke visual effects
+  - [ ] Release decomposition products into room (acrolein, CO2)
+  - [ ] Track exposure to toxic products
+  - [ ] Show experiment failure modal with safety lesson
+- Affected: glycerin, sucrose, hydrogen-peroxide
+- [ ] Add `decompositionProducts[]` to substance JSON
+- [ ] Add `checkDecomposition()` in physics loop
+- [ ] Add decomposition visual effects to workshop effects.json
+
+**Dependencies:** None  
+**Unlocks:** Realistic hazard simulation, educational safety lessons
+
+---
+
+## 📋 MEDIUM PRIORITY (Quality & Polish)
+
+### 8. Test & Validate (Untested Features)
 - [ ] Test L1E1 → L1E2 → L1E3 → L1E4 progression flow
 - [ ] Verify altitude persists across experiments
 - [ ] Verify L1E4 room pressure matches altitude
@@ -78,122 +139,89 @@
 
 ---
 
-## 🚀 BACKLOG: Planned Features
-
-### High Priority
-1. **Room Environment Phase 2: Scorecard System**
-   - [ ] Create `ExperimentScorecard.jsx` component
-   - [ ] "Finish Experiment" button
-   - [ ] Scorecard download (CSV/JSON)
-   - [ ] End-of-experiment modal
-   - Note: `getExperimentData()` in hook is ready but unused
-
-2. **Wiki: Static Knowledge Site (Build-Generated)**
-   - [ ] See detailed checklist in [wiki/TODO.md](wiki/TODO.md)
-
-3. **Pre-Boiling Evaporation ✅ COMPLETE**
-   - [x] Hertz-Knudsen equation implemented (fallback only)
-   - [x] **Mass transfer model (preferred)** - Fuller-Schettler-Giddings + boundary layer
-   - [x] Evaporative cooling (can cool below ambient!)
-   - [x] Diffusion volumes added to all 118 elements via script
-   - [x] Diffusion volume sum calculated at load time (no pre-calculation)
-   - [x] Accounts for room saturation (reduces net evaporation)
-   - [x] Vapor added to room composition every timestep
-   - [x] Room humidity now affects water evaporation rate
-   - **Evaporation rates now match real-world** (~5 g/hr for water, ~28 g/hr for ethanol)
-   - **Future:** Gather real weather data from location for humidity/temp
-     - API source TBD (OpenWeatherMap, NOAA, etc.)
-     - Would give realistic starting humidity for selected location
-     - Currently uses 50% RH standard day (like ISA for atmosphere)
-
-4. **Time Speed Sub-stepping (Performance Critical)**
-   
-   **Problem:** At extreme time speeds (65536x), deltaTime = 6553 seconds per frame. Physics equations break down:
-   - Newton's cooling diverges (unstable)
-   - Evaporation rates become unrealistic
-   - Antoine equation integration error compounds
-   
-   **Solution Architecture:**
-   - [ ] Create `src/utils/physics/timeSubstepper.js` — Subdivision utility that wraps physics calculations
-   - [ ] Export `withSubstepping(formula, maxSubsteps, tolerance)` — Higher-order function
-   - [ ] Each formula automatically subdivides if deltaTime > threshold
-   - Example:
-     ```javascript
-     const stableHeating = withSubstepping(
-       (temp, watts, mass, dt) => temp + (watts / (mass * heatCapacity)) * dt,
-       maxSubsteps: 100,
-       threshold: 10  // seconds per substep
-     )
-     ```
-   
-   **Implementation Plan:**
-   - [ ] Analyze each formula for stability threshold (where does it diverge?)
-   - [ ] Implement adaptive substep count: `substeps = ceil(deltaTime / threshold)`
-   - [ ] Apply to: heating (Q=mcΔT), cooling (Newton's law), evaporation (mass transfer), pressure feedback
-   - [ ] Profile performance: does subdivision add overhead vs. UI framerate impact?
-   - [ ] Document thresholds per formula in code comments
-   
-   **Testing:**
-   - [ ] Test at 1x speed (should be imperceptible—same results as no substepping)
-   - [ ] Test at 256x speed (should remain stable)
-   - [ ] Test at 65536x speed (should not diverge or overflow)
-   - [ ] Benchmark: measure frame time impact of different substep counts
-
-5. **Decomposition Behavior (NOT IMPLEMENTED)**
-   - **Current:** Substances with `boilingPoint: null` just heat indefinitely
-   - **Should:** When `temp ≥ decompositionPoint`:
-     - [ ] Trigger fire/smoke visual effects
-     - [ ] Release decomposition products into room (acrolein from glycerin, CO2 from sucrose)
-     - [ ] Track exposure to toxic decomposition products
-     - [ ] Show experiment failure modal with safety lesson
-   - Affected substances: glycerin, sucrose, hydrogen-peroxide
-   - Implementation:
-     - [ ] Add `decompositionProducts[]` to substance JSON
-     - [ ] Add `checkDecomposition()` in physics loop
-     - [ ] Add decomposition visual effects to workshop effects.json
-
-6. **Room Environment Phase 3: UI Enhancements**
-   - [x] Room Controls panel (done)
-   - [ ] Live heat/composition graphs
-   - [x] Room alerts/warnings (done)
-
-7. **Unit Conversion System**
-   - Wire UI, add more units, update all displays
-
-### Medium Priority
-8. **Save Data & Persistence**
-   - LocalStorage autosave
-   - Console codes (portable)
-   - File export/import
-
-9. **Substance Documentation**
-11. **Educational Annotations Coverage**
-   - [ ] Add educational notes across JSON/JS/JSX/MD files so wiki can display consistent learning snippets
-   - [ ] Prioritize physics formulas/processes and experiments/levels
-10. **Levels/Experiments Data-Driven Migration**
-   - [ ] Move levels/experiments to JSON in public assets (workshop-like)
-   - [ ] Generate level/experiment dropdowns from data
-   - [ ] Define ordering/metadata for custom community experiments
-   - More JSDoc examples
-   - Field documentation
-   - Developer guides
-
-### Low Priority (Visual)
-6. **Alpha Kitchen Flame Icon Scaling**
-   - Flame icon grows differently in alpha vs other workshops
-   - Visual polish only
-
-### Very Low Priority (Future/Nice-to-Have)
-7. **Experiment Data Collection & AI Analysis System**
-   - See [COMPLETED_TODOS.md](COMPLETED_TODOS.md) for full design notes
-   - Local storage → Cloud aggregation → AI insights pipeline
-   - Post-1.0 release feature
+### 9. Room Environment Phase 3: UI Enhancements
+- [x] Room Controls panel (done)
+- [ ] Live heat/composition graphs
+- [x] Room alerts/warnings (done)
 
 ---
 
-## 🚨 REVIEW: License Compliance
+### 10. Unit Conversion System
+- Wire UI, add more units, update all displays
 
-- [ ] Review all ComfyUI-related extensions, nodes, and workflows for license compatibility before use or distribution. 
-    - Already checked: "Make background transparent" workflow (see master license dependency log for details and limitations).
-- [ ] Update LICENSE_DEPENDENCY_LOG.md whenever a new workflow, extension, or third-party dependency is added or checked for license compatibility.
+---
+
+### 11. Save Data & Persistence
+- LocalStorage autosave
+- Console codes (portable)
+- File export/import
+
+---
+
+### 12. Substance Documentation
+- More JSDoc examples
+- Field documentation
+- Developer guides
+
+---
+
+### 13. Educational Annotations Coverage
+- [ ] Add educational notes across JSON/JS/JSX/MD files for wiki display
+- [ ] Prioritize physics formulas/processes and experiments/levels
+
+---
+
+### 14. Levels/Experiments Data-Driven Migration
+- [ ] Move levels/experiments to JSON in public assets (workshop-like)
+- [ ] Generate level/experiment dropdowns from data
+- [ ] Define ordering/metadata for custom community experiments
+
+---
+
+## 🎨 LOW PRIORITY (Visual Polish)
+
+### 15. Alpha Kitchen Flame Icon Scaling
+- Flame icon grows differently in alpha vs other workshops
+- Visual polish only
+
+---
+
+## 🔮 VERY LOW PRIORITY (Future/Nice-to-Have)
+
+### 16. Experiment Data Collection & AI Analysis System
+- See [COMPLETED_TODOS.md](COMPLETED_TODOS.md) for full design notes
+- Local storage → Cloud aggregation → AI insights pipeline
+- Post-1.0 release feature
+
+---
+
+## 🚨 ONGOING: License Compliance
+
+- [ ] Review all ComfyUI-related extensions, nodes, and workflows before use/distribution
+- [ ] Update LICENSE_DEPENDENCY_LOG.md whenever new workflow/extension/dependency added
+- Already checked: "Make background transparent" workflow (see master log)
+
+---
+
+## ✅ RECENTLY COMPLETED (This Session)
+
+**Room Environment System - Phase 1:**
+- [x] Room state management, PID controller, air handler
+- [x] Per-workshop equipment JSON
+- [x] Progressive unlock (L1E4+)
+- [x] Vapor release → room composition
+- [x] Pressure feedback loop
+- See [COMPLETED_TODOS.md](COMPLETED_TODOS.md) for full details
+
+**Physics Module Refactor:**
+- [x] Split physics.js into modular structure (formulas/, processes/)
+- [x] PID controller, gas exchange model
+- [x] Dynamic boiling point with room pressure feedback
+
+**Bug Fixes:**
+- [x] Scorecard popup infinite loop
+- [x] In-game timer wrong values
+- [x] L1E4 defaulting to 100°C
+- [x] Location popup logic
+- [x] Variable ordering issues
 
