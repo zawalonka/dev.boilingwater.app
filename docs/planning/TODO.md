@@ -188,7 +188,27 @@
 
 ## 🔮 VERY LOW PRIORITY (Future/Nice-to-Have)
 
-### 16. Experiment Data Collection & AI Analysis System
+### 16. Search Engine Optimization (SEO)
+**Status:** PLANNING — After accessibility + stable core features  
+**Goal:** Improve discoverability, organic traffic, educational reach
+
+**When to Tackle:** Good milestone after accessibility complete + v1.0 feature-stable
+
+**Potential Improvements:**
+- [ ] Structured data (Schema.org markup for educational content)
+- [ ] Meta descriptions per page (game, wiki, experiments)
+- [ ] Open Graph tags for social sharing
+- [ ] Wiki page titles and H1 optimization
+- [ ] Image alt text across game and wiki
+- [ ] Sitemap generation (wiki + core pages)
+- [ ] Robot.txt and crawl optimization
+- [ ] Performance metrics (Core Web Vitals)
+- [ ] Keyword research (thermodynamics education, physics simulation)
+- [ ] Link-building strategy (educational content partnerships)
+
+---
+
+### 17. Experiment Data Collection & AI Analysis System
 - See [COMPLETED_TODOS.md](COMPLETED_TODOS.md) for full design notes
 - Local storage → Cloud aggregation → AI insights pipeline
 - Post-1.0 release feature
