@@ -79,6 +79,12 @@ ReactDOM.createRoot(document.getElementById(&#39;root&#39;)).render(
     &lt;App /&gt;
   &lt;/React.StrictMode&gt;
 )
+
+if (import.meta.env.PROD &amp;&amp; &#39;serviceWorker&#39; in navigator) {
+  window.addEventListener(&#39;load&#39;, () =&gt; {
+    navigator.serviceWorker.register(&#39;./sw.js&#39;)
+  })
+}
 </pre>
         </details>
       </section>
