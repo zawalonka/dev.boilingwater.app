@@ -116,34 +116,6 @@ export const GAME_RESOLUTION = {
   height: 800
 }
 
-// Image specifications for workshop assets
-export const IMAGE_SPECS = {
-  background: {
-    width: 1280,
-    height: 800,
-    format: 'PNG',
-    description: 'Main game scene background'
-  },
-  pot_empty: {
-    width: null,  // Aspect ratio should match original
-    height: null,
-    format: 'PNG',
-    description: 'Empty pot sprite (transparent background)'
-  },
-  pot_full: {
-    width: null,
-    height: null,
-    format: 'PNG',
-    description: 'Full pot with water sprite (transparent background)'
-  },
-  flame: {
-    width: null,
-    height: null,
-    format: 'PNG',
-    description: 'Flame animation sprite (transparent background)'
-  }
-}
-
 // Base workshop configuration
 export const WORKSHOP_CONFIG = {
   // All workshops must have these required properties

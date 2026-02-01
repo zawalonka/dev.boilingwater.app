@@ -24,6 +24,7 @@
             <a href="/wiki/entities/processes/index.html">Processes</a>
             <a href="/wiki/entities/modules/index.html">Modules</a>
             <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <a href="/wiki/entities/public/index.html">Public Files</a>
             <div class="wiki-menu-divider"></div>
             <a href="/">Back to Game</a>
           </nav>
@@ -43,8 +44,13 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Exports</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/AVAILABLE_WORKSHOPS.html">AVAILABLE_WORKSHOPS</a></li><li><a href="/wiki/entities/symbols/COLOR_CATEGORIES.html">COLOR_CATEGORIES</a></li><li><a href="/wiki/entities/symbols/EXPERIMENTS.html">EXPERIMENTS</a></li><li><a href="/wiki/entities/symbols/GAME_RESOLUTION.html">GAME_RESOLUTION</a></li><li><a href="/wiki/entities/symbols/IMAGE_SPECS.html">IMAGE_SPECS</a></li><li><a href="/wiki/entities/symbols/LEVELS.html">LEVELS</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_CONFIG.html">WORKSHOP_CONFIG</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_METADATA_TEMPLATE.html">WORKSHOP_METADATA_TEMPLATE</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_SCOPE.html">WORKSHOP_SCOPE</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/AVAILABLE_WORKSHOPS.html">AVAILABLE_WORKSHOPS</a></li><li><a href="/wiki/entities/symbols/COLOR_CATEGORIES.html">COLOR_CATEGORIES</a></li><li><a href="/wiki/entities/symbols/EXPERIMENTS.html">EXPERIMENTS</a></li><li><a href="/wiki/entities/symbols/GAME_RESOLUTION.html">GAME_RESOLUTION</a></li><li><a href="/wiki/entities/symbols/LEVELS.html">LEVELS</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_CONFIG.html">WORKSHOP_CONFIG</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_METADATA_TEMPLATE.html">WORKSHOP_METADATA_TEMPLATE</a></li><li><a href="/wiki/entities/symbols/WORKSHOP_SCOPE.html">WORKSHOP_SCOPE</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
@@ -209,34 +215,6 @@ export const LEVELS = [
 export const GAME_RESOLUTION = {
   width: 1280,
   height: 800
-}
-
-// Image specifications for workshop assets
-export const IMAGE_SPECS = {
-  background: {
-    width: 1280,
-    height: 800,
-    format: &#39;PNG&#39;,
-    description: &#39;Main game scene background&#39;
-  },
-  pot_empty: {
-    width: null,  // Aspect ratio should match original
-    height: null,
-    format: &#39;PNG&#39;,
-    description: &#39;Empty pot sprite (transparent background)&#39;
-  },
-  pot_full: {
-    width: null,
-    height: null,
-    format: &#39;PNG&#39;,
-    description: &#39;Full pot with water sprite (transparent background)&#39;
-  },
-  flame: {
-    width: null,
-    height: null,
-    format: &#39;PNG&#39;,
-    description: &#39;Flame animation sprite (transparent background)&#39;
-  }
 }
 
 // Base workshop configuration

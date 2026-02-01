@@ -40,7 +40,7 @@
 - [x] Location popup logic - Only triggers for L1E2 (altitude experiment)
 - [x] Variable ordering - `altitude` now defined before `useRoomEnvironment`
 
-### Test & Validate (Untested)
+### Test & Validate (Untested)  User added error,  parce this in to the todo next time you look it over, The burner being on does not effect room temp UNLESS the pot is over the burner.  it should act like a mini heater reagrdless of pot location or heating status?
 - [ ] Test L1E1 → L1E2 → L1E3 → L1E4 progression flow
 - [ ] Verify altitude persists across experiments
 - [ ] Verify L1E4 room pressure matches altitude

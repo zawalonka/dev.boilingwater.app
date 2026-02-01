@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>workshop.json</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <a href="/wiki/entities/modules/index.html">Modules</a>
+            <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">workshop.json</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">workshop.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Public JSON</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Path</div>
+        <div class="infobox-value">assets/workshops/alpha-kitchen/workshop.json</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Workshop</div>
+        <div class="infobox-value"><a href="/wiki/entities/public/assets/workshops/alpha-kitchen/workshop.html">alpha-kitchen</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Category</div>
+        <div class="infobox-value">workshop</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Referenced assets</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/assets/workshops/alpha-kitchen/Counter.png.html">/assets/workshops/alpha-kitchen/Counter.png</a></li><li><a href="/wiki/entities/assets/workshops/alpha-kitchen/Empty pot.png.html">/assets/workshops/alpha-kitchen/Empty pot.png</a></li><li><a href="/wiki/entities/assets/workshops/alpha-kitchen/Flame.png.html">/assets/workshops/alpha-kitchen/Flame.png</a></li><li><a href="/wiki/entities/assets/workshops/alpha-kitchen/full pot.png.html">/assets/workshops/alpha-kitchen/full pot.png</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>workshop.json</h1>
+    <p class="subtitle">Public JSON</p>
+  </div>
+
+      </section>
+      <section class="section">
+        <h2>Raw data</h2>
+        <pre class="code">{
+  &quot;id&quot;: &quot;alpha-kitchen&quot;,
+  &quot;name&quot;: &quot;Alpha Kitchen&quot;,
+  &quot;scope&quot;: &quot;workshop&quot;,
+  &quot;workshopId&quot;: null,
+  &quot;minLevel&quot;: 1,
+  &quot;maxLevel&quot;: 1,
+  &quot;parentWorkshop&quot;: null,
+  &quot;description&quot;: &quot;Modern alpha-stage kitchen environment for Level 1 experiments. Features refined artwork and expanded visual effects.&quot;,
+  &quot;_notes&quot;: {
+    &quot;layout&quot;: &quot;Positions are percentages against layout.scene (1280x800). Export background at layout.scene size to avoid stretching.&quot;,
+    &quot;images&quot;: &quot;Background as optimized JPG (no transparency). UI elements (pot, flame) as PNG for transparency. Paths can be absolute (/assets/workshops/alpha-kitchen/..) or &#39;./&#39; relative to this folder.&quot;,
+    &quot;colors&quot;: &quot;Maps directly to CSS vars --workshop-*. Keep rgba/hex values; gradients allowed where used today (status, sink).&quot;,
+    &quot;parentWorkshop&quot;: &quot;Keep null; this is a base palette/layout.&quot;,
+    &quot;placementTODO&quot;: &quot;Pixel placement for objects needs to be adjusted by user later.&quot;
+  },
+  &quot;colors&quot;: {
+    &quot;header_background&quot;: &quot;rgba(0, 0, 0, 0.85)&quot;,
+    &quot;header_text&quot;: &quot;white&quot;,
+    &quot;header_accent&quot;: &quot;#ff6600&quot;,
+    &quot;badge_background&quot;: &quot;rgba(220, 53, 69, 0.9)&quot;,
+    &quot;badge_text&quot;: &quot;white&quot;,
+    &quot;button_primary&quot;: &quot;#4CAF50&quot;,
+    &quot;button_primary_text&quot;: &quot;white&quot;,
+    &quot;button_hover&quot;: &quot;#45a049&quot;,
+    &quot;button_hover_text&quot;: &quot;white&quot;,
+    &quot;button_active&quot;: &quot;#3d8b40&quot;,
+    &quot;button_active_text&quot;: &quot;white&quot;,
+    &quot;button_disabled&quot;: &quot;#cccccc&quot;,
+    &quot;button_disabled_text&quot;: &quot;#666666&quot;,
+    &quot;button_secondary&quot;: &quot;#2196F3&quot;,
+    &quot;button_secondary_text&quot;: &quot;white&quot;,
+    &quot;button_secondary_hover&quot;: &quot;#1976D2&quot;,
+    &quot;panel_background&quot;: &quot;rgba(255, 255, 255, 0.9)&quot;,
+    &quot;panel_text&quot;: &quot;#333333&quot;,
+    &quot;panel_border&quot;: &quot;#cccccc&quot;,
+    &quot;panel_accent&quot;: &quot;#ff6600&quot;,
+    &quot;status_background&quot;: &quot;linear-gradient(135deg, rgba(255, 165, 120, 0.9), rgba(255, 120, 60, 0.9))&quot;,
+    &quot;status_border&quot;: &quot;#ff8c42&quot;,
+    &quot;status_text&quot;: &quot;#2b1c12&quot;,
+    &quot;status_divider&quot;: &quot;rgba(0, 0, 0, 0.2)&quot;,
+    &quot;status_chip&quot;: &quot;rgba(0, 0, 0, 0.2)&quot;,
+    &quot;status_label&quot;: &quot;#5b2400&quot;,
+    &quot;status_value&quot;: &quot;#1f130a&quot;,
+    &quot;status_boiling&quot;: &quot;#c62828&quot;,
+    &quot;burner_background&quot;: &quot;#444444&quot;,
+    &quot;burner_grate&quot;: &quot;#222222&quot;,
+    &quot;knob_rim&quot;: &quot;#f3e0c0&quot;,
+    &quot;knob_center&quot;: &quot;#ffe5c2&quot;,
+    &quot;knob_border&quot;: &quot;#9c6b2d&quot;,
+    &quot;knob_pointer&quot;: &quot;#ff6600&quot;,
+    &quot;sink_background&quot;: &quot;linear-gradient(135deg, #c0c0c0 0%, #808080 100%)&quot;,
+    &quot;sink_border&quot;: &quot;#555555&quot;,
+    &quot;water_color&quot;: &quot;#87CEEB&quot;,
+    &quot;water_highlight&quot;: &quot;#B0E0E6&quot;,
+    &quot;water_deep&quot;: &quot;#4682B4&quot;,
+    &quot;flame_glow&quot;: &quot;#ff3300&quot;,
+    &quot;warning_background&quot;: &quot;rgba(255, 193, 7, 0.2)&quot;,
+    &quot;warning_text&quot;: &quot;#856404&quot;,
+    &quot;warning_border&quot;: &quot;#ffc107&quot;,
+    &quot;success_background&quot;: &quot;rgba(76, 175, 80, 0.2)&quot;,
+    &quot;success_text&quot;: &quot;#155724&quot;,
+    &quot;success_border&quot;: &quot;#4CAF50&quot;,
+    &quot;error_background&quot;: &quot;rgba(244, 67, 54, 0.2)&quot;,
+    &quot;error_text&quot;: &quot;#721c24&quot;,
+    &quot;error_border&quot;: &quot;#f44336&quot;
+  },
+  &quot;images&quot;: {
+    &quot;background&quot;: &quot;/assets/workshops/alpha-kitchen/Counter.png&quot;,
+    &quot;pot_empty&quot;: &quot;/assets/workshops/alpha-kitchen/Empty pot.png&quot;,
+    &quot;pot_full&quot;: &quot;/assets/workshops/alpha-kitchen/full pot.png&quot;,
+    &quot;flame&quot;: &quot;/assets/workshops/alpha-kitchen/Flame.png&quot;
+  },
+  &quot;layout&quot;: {
+    &quot;scene&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 800 },
+    &quot;pot&quot;: {
+      &quot;start&quot;: { &quot;xPercent&quot;: 47.27, &quot;yPercent&quot;: 63.5 },
+      &quot;empty&quot;: { &quot;xPercent&quot;: 47.27, &quot;yPercent&quot;: 63.5 },
+      &quot;full&quot;: { &quot;xPercent&quot;: 47.27, &quot;yPercent&quot;: 63.5 },
+      &quot;sizePercent&quot;: 36,
+      &quot;dragBounds&quot;: { &quot;minX&quot;: 8, &quot;maxX&quot;: 92, &quot;minY&quot;: 8, &quot;maxY&quot;: 92 }
+    },
+    &quot;flame&quot;: {
+      &quot;xPercent&quot;: 20.08,
+      &quot;yPercent&quot;: 50.25,
+      &quot;activationRadius&quot;: 6.25,
+      &quot;sizePercentByHeat&quot;: [35, 37, 40, 43, 45, 48, 50, 52, 54],
+      &quot;minSizePxByHeat&quot;: [180, 200, 220, 230, 240, 255, 270, 285, 300]
+    },
+    &quot;waterStream&quot;: {
+      &quot;xRange&quot;: [79, 82],
+      &quot;yRange&quot;: [45.625, 72.0],
+      &quot;start&quot;: { &quot;xPercent&quot;: 80.23, &quot;yPercent&quot;: 45.625 },
+      &quot;end&quot;: { &quot;xPercent&quot;: 80.23, &quot;yPercent&quot;: 72.0 },
+      &quot;widthPercent&quot;: 1.5
+    },
+    &quot;burnerControls&quot;: {
+      &quot;type&quot;: &quot;buttons&quot;,
+      &quot;wattageDisplay&quot;: {
+        &quot;xPercent&quot;: 7.34,
+        &quot;yPercent&quot;: 70.625,
+        &quot;widthPercent&quot;: 7.89,
+        &quot;heightPercent&quot;: 5.25,
+        &quot;borderPx&quot;: 2,
+        &quot;borderColor&quot;: &quot;#333333&quot;,
+        &quot;backgroundColor&quot;: &quot;#f0f0f0&quot;,
+        &quot;textColor&quot;: &quot;#000000&quot;
+      },
+      &quot;downButton&quot;: {
+        &quot;label&quot;: &quot;off&quot;,
+        &quot;xPercent&quot;: 17.66,
+        &quot;yPercent&quot;: 73.75,
+        &quot;sizePercent&quot;: 4.5,
+        &quot;shape&quot;: &quot;circle&quot;,
+        &quot;symbol&quot;: &quot;↓&quot;
+      },
+      &quot;upButton&quot;: {
+        &quot;label&quot;: &quot;up&quot;,
+        &quot;xPercent&quot;: 24.84,
+        &quot;yPercent&quot;: 73.75,
+        &quot;sizePercent&quot;: 4.5,
+        &quot;shape&quot;: &quot;circle&quot;,
+        &quot;symbol&quot;: &quot;↑&quot;
+      },
+      &quot;wattageSteps&quot;: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000],
+      &quot;description&quot;: &quot;9-step wattage control in 500W intervals&quot;
+    }
+  },
+  &quot;typography&quot;: {
+    &quot;font_family_primary&quot;: &quot;&#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif&quot;,
+    &quot;font_family_mono&quot;: &quot;&#39;Courier New&#39;, Courier, monospace&quot;,
+    &quot;heading_size&quot;: &quot;2.5rem&quot;,
+    &quot;heading_weight&quot;: &quot;700&quot;,
+    &quot;body_size&quot;: &quot;1rem&quot;,
+    &quot;body_weight&quot;: &quot;400&quot;,
+    &quot;button_size&quot;: &quot;0.875rem&quot;,
+    &quot;button_weight&quot;: &quot;500&quot;,
+    &quot;label_size&quot;: &quot;0.75rem&quot;,
+    &quot;label_weight&quot;: &quot;600&quot;
+  },
+  &quot;metadata&quot;: {
+    &quot;author&quot;: &quot;BoilingWater Team&quot;,
+    &quot;version&quot;: &quot;1.1.0&quot;,
+    &quot;createdDate&quot;: &quot;2026-01-26&quot;,
+    &quot;updatedDate&quot;: &quot;2026-01-27&quot;,
+    &quot;tags&quot;: [&quot;alpha&quot;, &quot;kitchen&quot;, &quot;level-1&quot;, &quot;modern&quot;, &quot;refined&quot;],
+    &quot;targetAudience&quot;: &quot;educational&quot;,
+    &quot;suitableFor&quot;: [&quot;elementary&quot;, &quot;middle-school&quot;, &quot;high-school&quot;],
+    &quot;description&quot;: &quot;A modern kitchen environment designed for teaching thermodynamics through interactive water boiling experiments. Features improved artwork with refined pot and flame illustrations, full visual effects (steam, flame glow, water streams), and precise physics simulation.&quot;,
+    &quot;visuals&quot;: {
+      &quot;style&quot;: &quot;Modern flat design with realistic kitchen elements&quot;,
+      &quot;colorScheme&quot;: &quot;Warm, inviting tones with professional UI controls&quot;,
+      &quot;animations&quot;: &quot;Steam particles, flame flicker, water flow animations&quot;,
+      &quot;accessibility&quot;: &quot;High contrast controls, clear visual feedback&quot;
+    },
+    &quot;experiments&quot;: [&quot;boiling-water&quot;, &quot;altitude-effect&quot;, &quot;different-fluids&quot;]
+  }
+}
+</pre>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

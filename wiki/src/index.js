@@ -126,6 +126,7 @@ const page = ({ title, content }) => `<!doctype html>
             <a href="${withBase('entities/processes/index.html')}">Processes</a>
             <a href="${withBase('entities/modules/index.html')}">Modules</a>
             <a href="${withBase('entities/symbols/index.html')}">Symbols</a>
+            <a href="${withBase('entities/public/index.html')}">Public Files</a>
             <div class="wiki-menu-divider"></div>
             <a href="/">Back to Game</a>
           </nav>
@@ -151,6 +152,38 @@ const writePage = async (relativePath, html) => {
 const renderJson = (data) => `<pre class="code">${escapeHtml(JSON.stringify(data, null, 2))}</pre>`
 
 const renderList = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`
+
+const renderAssetTree = (assets) => {
+  if (!assets.length) return '<p>No assets referenced.</p>'
+
+  const groups = new Map()
+  for (const asset of assets) {
+    const parts = asset.assetPath.split('/').filter(Boolean)
+    const group = parts[0] || 'root'
+    const subgroup = parts[1] || null
+    if (!groups.has(group)) groups.set(group, new Map())
+    const subMap = groups.get(group)
+    const key = subgroup || '__root__'
+    if (!subMap.has(key)) subMap.set(key, [])
+    subMap.get(key).push(asset)
+  }
+
+  const sections = []
+  for (const [group, subMap] of groups) {
+    const rows = []
+    for (const [sub, items] of subMap) {
+      const links = items.map((asset) => linkTo(`entities/assets/${asset.assetPath}.html`, asset.publicPath))
+      if (sub === '__root__') {
+        rows.push(renderList(links))
+      } else {
+        rows.push(`<h4>${escapeHtml(sub)}</h4>${renderList(links)}`)
+      }
+    }
+    sections.push(`<section class="section"><h3>${escapeHtml(group)}</h3>${rows.join('')}</section>`)
+  }
+
+  return sections.join('')
+}
 
 const renderPeriodicTable = (elements) => {
   const byAtomic = new Map()
@@ -462,45 +495,157 @@ const parseImports = (content) => {
 }
 
 const buildModules = async () => {
-  // Key game files to create wiki pages for
-  const modulePatterns = [
-    'src/App.jsx',
-    'src/main.jsx',
-    'src/components/*.jsx',
-    'src/utils/*.js',
-    'src/utils/physics/index.js',
-    'src/constants/*.js',
-    'src/hooks/*.js'
-  ]
-  
   const files = new Set()
-  for (const pattern of modulePatterns) {
-    for (const file of globSync(pattern, { cwd: repoRoot, absolute: true })) {
-      // Exclude formulas and processes (they have their own pages)
-      if (!file.includes('physics/formulas') && !file.includes('physics/processes')) {
-        files.add(file)
-      }
+  const patterns = [
+    'src/**/*.{js,jsx,ts,tsx,css,md,json}'
+  ]
+
+  for (const pattern of patterns) {
+    for (const file of globSync(pattern, {
+      cwd: repoRoot,
+      absolute: true,
+      ignore: [
+        'src/generated/**',
+        'src/utils/physics/formulas/**',
+        'src/utils/physics/processes/**'
+      ]
+    })) {
+      files.add(file)
     }
   }
-  
+
   const modules = []
   for (const file of files) {
     const content = await fs.readFile(file, 'utf-8')
     const relative = path.relative(path.join(repoRoot, 'src'), file)
-    const slug = relative.replace(/\\/g, '/').replace(/\.(js|jsx)$/, '')
+    const slug = relative.replace(/\\/g, '/').replace(/\.(js|jsx|ts|tsx|css|md|json)$/, '')
+    const isCode = /\.(js|jsx|ts|tsx)$/.test(file)
     modules.push({
       slug,
       file,
       filename: path.basename(file),
-      summary: extractDocSummary(content),
-      docBlock: extractDocBlock(content),
-      exports: parseExports(content),
-      imports: parseImports(content),
+      summary: isCode ? extractDocSummary(content) : '',
+      docBlock: isCode ? extractDocBlock(content) : '',
+      exports: isCode ? parseExports(content) : [],
+      imports: isCode ? parseImports(content) : [],
       content,
-      isComponent: file.endsWith('.jsx')
+      isComponent: /\.(jsx|tsx)$/.test(file),
+      fileType: path.extname(file).replace('.', '').toLowerCase()
     })
   }
   return modules.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const buildPublicFiles = async () => {
+  const files = globSync('public/assets/workshops/**/*.json', {
+    cwd: repoRoot,
+    absolute: true,
+    ignore: ['public/wiki/**']
+  })
+
+  const publicFiles = []
+  for (const file of files) {
+    const content = await fs.readFile(file, 'utf-8')
+    const relative = path.relative(path.join(repoRoot, 'public'), file)
+    const slug = relative.replace(/\\/g, '/').replace(/\.json$/, '')
+    const parts = slug.split('/')
+    const workshopIndex = parts.indexOf('workshops')
+    const workshopId = workshopIndex >= 0 ? parts[workshopIndex + 1] : null
+    const category = workshopIndex >= 0 ? parts[workshopIndex + 2] || 'workshop' : 'public'
+    publicFiles.push({
+      slug,
+      file,
+      filename: path.basename(file),
+      content,
+      workshopId,
+      category
+    })
+  }
+
+  return publicFiles.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const buildAssets = async (modules, publicFiles) => {
+  const assetsMap = new Map()
+  const assetRegex = /(?:url\(|['"`])\s*(\/assets\/[^'"`)\s]+)(?:['"`]\s*\)?)/g
+  const publicFileMap = new Map(publicFiles.map((file) => [file.file, file]))
+
+  const addAsset = async (publicPath, source) => {
+    if (!publicPath || publicPath.includes('${')) return
+    const normalized = publicPath.split(/[?#]/)[0]
+    const assetPath = normalized.replace(/^\/?assets\//, '')
+    if (!assetPath) return
+    const filePath = path.join(repoRoot, 'public', 'assets', assetPath)
+    if (!assetsMap.has(normalized)) {
+      let stats = null
+      try {
+        stats = await fs.stat(filePath)
+      } catch {
+        stats = null
+      }
+      assetsMap.set(normalized, {
+        publicPath: normalized,
+        assetPath,
+        filePath,
+        exists: Boolean(stats),
+        size: stats?.size || 0,
+        references: new Set()
+      })
+    }
+    if (source) {
+      assetsMap.get(normalized).references.add(source)
+    }
+  }
+
+  const collectFromJson = async (value, sourceLabel, key) => {
+    if (typeof value === 'string') {
+      const trimmed = value.trim()
+      if (trimmed.includes('${')) return
+      if (trimmed.startsWith('/assets/')) {
+        await addAsset(trimmed, sourceLabel)
+      }
+      return
+    }
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        await collectFromJson(item, sourceLabel)
+      }
+      return
+    }
+    if (value && typeof value === 'object') {
+      for (const [childKey, item] of Object.entries(value)) {
+        if (childKey.startsWith('_')) continue
+        await collectFromJson(item, sourceLabel, childKey)
+      }
+    }
+  }
+
+  // Scan src module content
+  for (const mod of modules) {
+    if (!mod.content) continue
+    let match
+    while ((match = assetRegex.exec(mod.content)) !== null) {
+      const rawPublicPath = match[1]
+      await addAsset(rawPublicPath, mod)
+    }
+  }
+
+  // Scan public workshop JSON files (static asset paths)
+  for (const file of publicFiles) {
+    try {
+      const data = JSON.parse(file.content)
+      const sourceLabel = publicFileMap.get(file.file) || {
+        slug: path.relative(repoRoot, file.file).replace(/\\/g, '/'),
+        filename: file.filename,
+        type: 'public'
+      }
+      await collectFromJson(data, sourceLabel)
+    } catch {
+      // ignore JSON parse errors
+    }
+  }
+
+  return Array.from(assetsMap.values()).sort((a, b) => a.publicPath.localeCompare(b.publicPath))
 }
 
 /**
@@ -840,6 +985,8 @@ const build = async () => {
     return
   }
 
+  await fs.rm(distRoot, { recursive: true, force: true })
+
   const elements = await buildElements()
   const compounds = await buildCompounds('pure')
   const solutions = await buildCompounds('solutions')
@@ -848,6 +995,8 @@ const build = async () => {
   const formulas = await buildFormulas()
   const processes = await buildProcesses()
   const modules = await buildModules()
+  const publicFiles = await buildPublicFiles()
+  const assets = await buildAssets(modules, publicFiles)
   const symbols = await buildSymbols(formulas, processes, modules)
 
   const elementChildren = new Map()
@@ -909,6 +1058,24 @@ const build = async () => {
       slug: mod.slug,
       href: `entities/modules/${mod.slug}.html`,
       label: mod.filename
+    })
+  }
+  for (const pubFile of publicFiles) {
+    const relPath = path.relative(repoRoot, pubFile.file).replace(/\\/g, '/')
+    fileToWikiEntity.set(relPath, {
+      type: 'public',
+      slug: pubFile.slug,
+      href: `entities/public/${pubFile.slug}.html`,
+      label: pubFile.filename
+    })
+  }
+  for (const asset of assets) {
+    const assetKey = `public${asset.publicPath}`
+    fileToWikiEntity.set(assetKey, {
+      type: 'asset',
+      slug: asset.assetPath,
+      href: `entities/assets/${asset.assetPath}.html`,
+      label: asset.publicPath
     })
   }
 
@@ -1144,6 +1311,14 @@ const build = async () => {
   await fs.mkdir(path.join(distRoot, 'assets'), { recursive: true })
   await fs.writeFile(path.join(distRoot, 'assets/styles.css'), styles.trim(), 'utf-8')
 
+  const publicWorkshopIds = new Set(publicFiles.filter((file) => file.workshopId).map((file) => file.workshopId))
+  const publicCounts = {
+    workshops: publicWorkshopIds.size,
+    burners: publicFiles.filter((file) => file.category === 'burners').length,
+    acUnits: publicFiles.filter((file) => file.category === 'ac-units').length,
+    airHandlers: publicFiles.filter((file) => file.category === 'air-handlers').length
+  }
+
   const indexContent = `
     <section class="section">
       <h1>Boilingwater Wiki</h1>
@@ -1168,7 +1343,7 @@ const build = async () => {
           ])}
         </div>
         <div class="portal-box">
-          <h3>Physics</h3>
+          <h3>Utils</h3>
           ${renderList([
             linkTo('entities/formulas/index.html', `Formulas (${formulas.length})`),
             linkTo('entities/processes/index.html', `Processes (${processes.length})`),
@@ -1176,11 +1351,29 @@ const build = async () => {
             linkTo('entities/symbols/index.html', `Symbols (${symbols.length})`)
           ])}
         </div>
+        <div class="portal-box">
+          <h3>Public Files</h3>
+          ${renderList([
+            linkTo('entities/public/index.html', `Workshops (${publicCounts.workshops})`),
+            linkTo('entities/public/index.html', `Burners (${publicCounts.burners})`),
+            linkTo('entities/public/index.html', `AC Units (${publicCounts.acUnits})`),
+            linkTo('entities/public/index.html', `Air Handlers (${publicCounts.airHandlers})`)
+          ])}
+        </div>
       </div>
     </section>
   `
 
   await writePage('index.html', page({ title: 'Boilingwater Wiki', content: indexContent }))
+  await writePage('404.html', page({
+    title: 'Wiki: Not Found',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Page not found', 'The wiki page you requested does not exist.')}
+        <p>Try the <a href="${withBase('index.html')}">wiki home page</a> or use the menu to navigate.</p>
+      </section>
+    `
+  }))
 
   const elementsTable = renderPeriodicTable(elements)
   await writePage('entities/elements/index.html', page({
@@ -1599,6 +1792,7 @@ const build = async () => {
 
     const infobox = renderInfobox(mod.filename, [
       { label: 'Type', value: mod.isComponent ? 'React Component' : 'Module' },
+      { label: 'File type', value: mod.fileType ? escapeHtml(mod.fileType) : '' },
       { label: 'Exports', value: renderExportLinks(mod.exports) },
       { label: 'Imports', value: importsHtml || '' },
       { label: 'Imported by', value: importedBy.length ? renderLinkList(importedBy) : '' },
@@ -1621,6 +1815,155 @@ const build = async () => {
       </section>
     `
     await writePage(`entities/modules/${mod.slug}.html`, page({ title: mod.filename, content }))
+  }
+
+  const assetTree = renderAssetTree(assets)
+  await writePage('entities/assets/index.html', page({
+    title: 'Assets',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Assets', 'Public assets referenced by src')}
+      </section>
+      ${assetTree}
+    `
+  }))
+
+  for (const asset of assets) {
+    const referencedBy = Array.from(asset.references || []).map((ref) => {
+      if (ref.slug && ref.filename) {
+        const publicLink = ref.file
+          ? fileToWikiEntity.get(path.relative(repoRoot, ref.file).replace(/\\/g, '/'))
+          : null
+        if (publicLink) return linkTo(publicLink.href, publicLink.label)
+        return linkTo(`entities/modules/${ref.slug}.html`, ref.filename)
+      }
+      if (ref.slug) {
+        return escapeHtml(ref.slug)
+      }
+      return escapeHtml(String(ref))
+    })
+
+    const infobox = renderInfobox(asset.publicPath, [
+      { label: 'Type', value: 'Asset' },
+      { label: 'Public path', value: escapeHtml(asset.publicPath) },
+      { label: 'Exists', value: asset.exists ? 'Yes' : 'Missing' },
+      { label: 'Size', value: asset.exists ? `${asset.size} bytes` : '' },
+      { label: 'Referenced by', value: referencedBy.length ? renderLinkList(referencedBy) : '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(asset.publicPath, 'Asset')}
+      </section>
+      <section class="section">
+        <h2>Public link</h2>
+        <p><a href="${asset.publicPath}">${escapeHtml(asset.publicPath)}</a></p>
+      </section>
+    `
+    await writePage(`entities/assets/${asset.assetPath}.html`, page({ title: asset.publicPath, content }))
+  }
+
+  const publicByCategory = new Map()
+  for (const file of publicFiles) {
+    const key = file.category || 'public'
+    if (!publicByCategory.has(key)) publicByCategory.set(key, new Map())
+    const bucket = publicByCategory.get(key)
+    if (!bucket.has(file.slug)) {
+      bucket.set(file.slug, file)
+    }
+  }
+
+  const categoryOrder = ['workshop', 'burners', 'ac-units', 'air-handlers', 'room.json', 'effects.json', 'public']
+  const categoryLabels = {
+    workshop: 'Workshops',
+    burners: 'Burners',
+    'ac-units': 'AC Units',
+    'air-handlers': 'Air Handlers',
+    'room.json': 'Rooms',
+    'effects.json': 'Effects',
+    public: 'Other Public'
+  }
+
+  const publicSections = []
+  const getLinks = (items) => items
+    .sort((a, b) => (a.slug || '').localeCompare(b.slug || ''))
+    .map((file) => linkTo(`entities/public/${file.slug}.html`, file.filename))
+
+  for (const category of categoryOrder) {
+    const bucket = publicByCategory.get(category)
+    if (!bucket) continue
+    const items = Array.from(bucket.values())
+    const title = categoryLabels[category] || category
+    publicSections.push(`
+      <section class=\"section\">
+        <h2>${escapeHtml(title)} (${items.length})</h2>
+        ${items.length ? renderList(getLinks(items)) : '<p>None.</p>'}
+      </section>
+    `)
+  }
+
+  // Workshops count (distinct IDs)
+  const workshopIds = new Set(publicFiles.filter((f) => f.workshopId).map((f) => f.workshopId))
+  const workshopCount = workshopIds.size
+
+  // Assets grouped by workshop
+  const assetsByWorkshop = new Map()
+  for (const asset of assets) {
+    const parts = asset.assetPath.split('/').filter(Boolean)
+    if (parts[0] !== 'workshops') continue
+    const workshopId = parts[1] || 'unknown'
+    if (!assetsByWorkshop.has(workshopId)) assetsByWorkshop.set(workshopId, [])
+    assetsByWorkshop.get(workshopId).push(asset)
+  }
+
+  const assetSections = Array.from(assetsByWorkshop.entries()).map(([workshopId, list]) => {
+    const links = list.map((asset) => linkTo(`entities/assets/${asset.assetPath}.html`, asset.publicPath))
+    return `
+      <section class=\"section\">
+        <h2>Workshop Assets: ${escapeHtml(workshopId)} (${list.length})</h2>
+        ${renderList(links)}
+      </section>
+    `
+  })
+
+  await writePage('entities/public/index.html', page({
+    title: 'Public Files',
+    content: `
+      <section class=\"section\">
+        ${renderEntityHeader('Public Files', `Workshop count: ${workshopCount}`)}
+      </section>
+      ${publicSections.join('')}
+      ${assetSections.join('')}
+    `
+  }))
+
+  for (const file of publicFiles) {
+    const referencedAssets = assets
+      .filter((asset) => Array.from(asset.references || []).some((ref) => ref.slug === file.slug && ref.filename === file.filename))
+      .map((asset) => linkTo(`entities/assets/${asset.assetPath}.html`, asset.publicPath))
+
+    const workshopLabel = file.workshopId
+      ? linkTo(`entities/public/assets/workshops/${file.workshopId}/workshop.html`, file.workshopId)
+      : ''
+
+    const content = `
+      ${renderInfobox(file.filename, [
+        { label: 'Type', value: 'Public JSON' },
+        { label: 'Path', value: escapeHtml(file.slug + '.json') },
+        { label: 'Workshop', value: workshopLabel },
+        { label: 'Category', value: file.category ? escapeHtml(file.category) : '' },
+        { label: 'Referenced assets', value: referencedAssets.length ? renderLinkList(referencedAssets) : '' }
+      ])}
+      <section class=\"section\">
+        ${renderEntityHeader(file.filename, 'Public JSON')}
+      </section>
+      <section class=\"section\">
+        <h2>Raw data</h2>
+        <pre class=\"code\">${escapeHtml(file.content)}</pre>
+      </section>
+    `
+    await writePage(`entities/public/${file.slug}.html`, page({ title: file.filename, content }))
   }
 
   // Symbol index page

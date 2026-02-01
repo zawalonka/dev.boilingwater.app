@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>state.json</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <a href="/wiki/entities/modules/index.html">Modules</a>
+            <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">state.json</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">state.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">json</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>state.json</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\data\substances\compounds\pure\methane-ch4\liquid\state.json</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">{
+  &quot;compoundId&quot;: &quot;methane&quot;,
+  &quot;phase&quot;: &quot;liquid&quot;,
+  &quot;phaseName&quot;: &quot;liquid methane (LNG)&quot;,
+  &quot;density&quot;: {
+    &quot;value&quot;: 0.422,
+    &quot;unit&quot;: &quot;kg/L&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;pressure&quot;: 1.0,
+    &quot;note&quot;: &quot;Liquid methane (LNG) is less dense than water; floats on water&quot;
+  },
+  &quot;specificHeat&quot;: {
+    &quot;value&quot;: 3.48,
+    &quot;unit&quot;: &quot;J/(g·°C)&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;source&quot;: &quot;measured&quot;,
+    &quot;note&quot;: &quot;High specific heat for a cryogenic liquid&quot;
+  },
+  &quot;thermalConductivity&quot;: {
+    &quot;value&quot;: 0.186,
+    &quot;unit&quot;: &quot;W/(m·K)&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;note&quot;: &quot;Poor thermal conductor&quot;
+  },
+  &quot;latentHeatOfVaporization&quot;: {
+    &quot;value&quot;: 510,
+    &quot;unit&quot;: &quot;kJ/kg&quot;,
+    &quot;note&quot;: &quot;Energy to vaporize liquid methane at -161.5°C&quot;
+  },
+  &quot;evaporationCoefficient&quot;: {
+    &quot;value&quot;: 0.8,
+    &quot;note&quot;: &quot;Hertz-Knudsen α coefficient. High value - nonpolar, weak van der Waals forces only. Range 0.01-1.0.&quot;
+  },
+  &quot;latentHeatOfFusion&quot;: {
+    &quot;value&quot;: 58.6,
+    &quot;unit&quot;: &quot;kJ/kg&quot;,
+    &quot;note&quot;: &quot;Energy to melt frozen methane at -182.5°C&quot;
+  },
+  &quot;compressibility&quot;: {
+    &quot;value&quot;: 0.0023,
+    &quot;unit&quot;: &quot;1/Pa&quot;,
+    &quot;note&quot;: &quot;Moderately compressible as cryogenic liquid&quot;
+  },
+  &quot;volumetricExpansionCoefficient&quot;: {
+    &quot;value&quot;: 0.00356,
+    &quot;unit&quot;: &quot;1/K&quot;,
+    &quot;note&quot;: &quot;Significant thermal expansion&quot;
+  },
+  &quot;viscosity&quot;: {
+    &quot;value&quot;: 0.112,
+    &quot;unit&quot;: &quot;mPa·s&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;note&quot;: &quot;Very thin, runny liquid&quot;
+  },
+  &quot;surfaceTension&quot;: {
+    &quot;value&quot;: 13.2,
+    &quot;unit&quot;: &quot;mN/m&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;note&quot;: &quot;Low surface tension&quot;
+  },
+  &quot;electricalConductivity&quot;: {
+    &quot;value&quot;: 1e-12,
+    &quot;unit&quot;: &quot;S/m&quot;,
+    &quot;temperature&quot;: -161.5,
+    &quot;note&quot;: &quot;Insulator as liquid&quot;
+  },
+  &quot;antoineCoefficients&quot;: {
+    &quot;A&quot;: 7.2769,
+    &quot;B&quot;: 897.84,
+    &quot;C&quot;: 240.0,
+    &quot;TminC&quot;: -200,
+    &quot;TmaxC&quot;: -100,
+    &quot;TminC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MINIMUM: The Antoine coefficients were experimentally validated down to this temperature. Calculations below this are extrapolated (smooth curve continues, but accuracy may degrade).&quot;,
+    &quot;TmaxC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MAXIMUM: The Antoine coefficients were experimentally validated up to this temperature. Calculations above this are extrapolated (smooth curve continues, but accuracy may degrade).&quot;,
+    &quot;formula&quot;: &quot;log10(Pvap) = A - B/(C + T)&quot;,
+    &quot;unit&quot;: &quot;Pressure in mmHg, Temperature in °C&quot;,
+    &quot;source&quot;: &quot;Methane vapor pressure from liquefied natural gas (LNG) thermodynamic handbooks; valid for cryogenic liquid range.&quot;,
+    &quot;note&quot;: &quot;Methane only exists as liquid below -161.5°C at 1 atm. Critical for LNG vapor pressure modeling at extreme cold temperatures.&quot;
+  },
+  &quot;flammability&quot;: {
+    &quot;note&quot;: &quot;Liquid methane (LNG) vaporizes rapidly when spilled; resulting vapor is extremely flammable&quot;
+  },
+  &quot;reference&quot;: &quot;pure/methane-ch4/info.json&quot;
+}
+
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

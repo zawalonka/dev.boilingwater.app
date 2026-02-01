@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>state.json</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <a href="/wiki/entities/modules/index.html">Modules</a>
+            <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">state.json</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">state.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">json</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>state.json</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\data\substances\compounds\solutions\saltwater-3pct-nacl\liquid\state.json</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">{
+  &quot;compoundId&quot;: &quot;saltwater-3pct&quot;,
+  &quot;phase&quot;: &quot;liquid&quot;,
+  &quot;phaseName&quot;: &quot;saltwater&quot;,
+  &quot;density&quot;: {
+    &quot;value&quot;: 1.0212,
+    &quot;unit&quot;: &quot;kg/L&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;pressure&quot;: 1.0,
+    &quot;volumetricExpansionCoefficient&quot;: 0.000207,
+    &quot;note&quot;: &quot;3% salt increases density by ~2.1% compared to pure water&quot;
+  },
+  &quot;specificHeat&quot;: {
+    &quot;value&quot;: 3.93,
+    &quot;unit&quot;: &quot;J/(g·°C)&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;source&quot;: &quot;measured&quot;,
+    &quot;note&quot;: &quot;Lower than pure water (~4.186 J/g°C); dissolved ions reduce specific heat&quot;
+  },
+  &quot;thermalConductivity&quot;: {
+    &quot;value&quot;: 0.61,
+    &quot;unit&quot;: &quot;W/(m·K)&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;note&quot;: &quot;Slightly higher than pure water; salt ions conduct heat&quot;
+  },
+  &quot;latentHeatOfVaporization&quot;: {
+    &quot;value&quot;: 2412,
+    &quot;unit&quot;: &quot;kJ/kg&quot;,
+    &quot;note&quot;: &quot;Higher than pure water (~2257 kJ/kg); dissolved salt requires more energy to vaporize&quot;
+  },
+  &quot;evaporationCoefficient&quot;: {
+    &quot;value&quot;: 0.035,
+    &quot;note&quot;: &quot;Hertz-Knudsen α coefficient. Slightly lower than pure water (0.04) due to dissolved ions reducing surface activity. Range 0.01-1.0.&quot;
+  },
+  &quot;compressibility&quot;: {
+    &quot;value&quot;: 0.000440,
+    &quot;unit&quot;: &quot;1/Pa&quot;,
+    &quot;note&quot;: &quot;Slightly less compressible than pure water due to dissolved ions&quot;
+  },
+  &quot;antoineCoefficients&quot;: {
+    &quot;sets&quot;: [
+      {
+        &quot;name&quot;: &quot;low-temp&quot;,
+        &quot;A&quot;: 8.07131,
+        &quot;B&quot;: 1730.63,
+        &quot;C&quot;: 233.426,
+        &quot;TminC&quot;: 1,
+        &quot;TmaxC&quot;: 100,
+        &quot;source&quot;: &quot;Pure water coefficients from NIST Chemistry WebBook (Bridgeman and Aldrich, 1964)&quot;,
+        &quot;note&quot;: &quot;Standard range for ambient/boiling conditions. Use this set for T ≤ 100°C.&quot;
+      },
+      {
+        &quot;name&quot;: &quot;high-temp&quot;,
+        &quot;A&quot;: 8.14019,
+        &quot;B&quot;: 1810.94,
+        &quot;C&quot;: 244.485,
+        &quot;TminC&quot;: 99,
+        &quot;TmaxC&quot;: 374,
+        &quot;source&quot;: &quot;Pure water coefficients from Stull, 1947. Valid for pressurized liquid water up to critical point.&quot;,
+        &quot;note&quot;: &quot;High-temperature/high-pressure range. Use this set for T &gt; 100°C. Requires pressurized system to keep water liquid above 100°C.&quot;
+      }
+    ],
+    &quot;TminC&quot;: 1,
+    &quot;TmaxC&quot;: 374,
+    &quot;TminC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MINIMUM: The base water Antoine coefficients were experimentally validated down to this temperature. Calculations below this are extrapolated.&quot;,
+    &quot;TmaxC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MAXIMUM: 374°C is water&#39;s critical point — above this, liquid water cannot exist at any pressure. For solutions, this is the theoretical upper limit.&quot;,
+    &quot;formula&quot;: &quot;log10(Pvap) = A - B/(C + T)&quot;,
+    &quot;unit&quot;: &quot;Pressure in mmHg, Temperature in °C&quot;,
+    &quot;source&quot;: &quot;Based on pure water coefficients. Boiling point elevation calculated dynamically using van&#39;t Hoff factor: ΔTb = i·Kb·m. For 3% NaCl: i=1.9, m=0.5291 mol/kg, Kb calculated at runtime from Clausius-Clapeyron.&quot;,
+    &quot;note&quot;: &quot;Uses pure water&#39;s Antoine equation as base. Salt lowers vapor pressure (Raoult&#39;s Law) and increases boiling point via colligative property. The boiling point elevation (Kb) is calculated dynamically at the actual boiling temperature, not fixed at 0.512 °C·kg/mol.&quot;
+  },
+  &quot;boilingPointElevationCorrelation&quot;: {
+    &quot;method&quot;: &quot;MIT Seawater Library (Nayar et al., 2016; Sharqawy et al., 2010)&quot;,
+    &quot;validRange&quot;: {
+      &quot;temperatureC&quot;: [0, 200],
+      &quot;salinityGperKg&quot;: [0, 120]
+    },
+    &quot;extendedRange&quot;: {
+      &quot;temperatureC&quot;: [200, 374],
+      &quot;note&quot;: &quot;Extrapolated beyond 200°C. Colligative effect diminishes relative to pressure effects at extreme temperatures. Returns isExtrapolated: true.&quot;
+    },
+    &quot;source&quot;: &quot;https://web.mit.edu/seawater/&quot;,
+    &quot;citation&quot;: &quot;Nayar, K.G., Sharqawy, M.H., Banchik, L.D., and Lienhard, J.H. V, &#39;Thermophysical properties of seawater: A review and new correlations that include pressure dependence,&#39; Desalination, Vol. 390, pp.1-24, 2016.&quot;,
+    &quot;note&quot;: &quot;For temperatures above 200°C, the BPE correlation is extrapolated. The simulation will flag this with a warning but continue to compute values.&quot;
+  },
+  &quot;ionicStrength&quot;: {
+    &quot;value&quot;: 0.513,
+    &quot;unit&quot;: &quot;mol/L&quot;,
+    &quot;formula&quot;: &quot;I = 0.5 × Σ(ci × zi²)&quot;,
+    &quot;note&quot;: &quot;Na⁺ and Cl⁻ each contribute; used in advanced activity coefficient models&quot;
+  },
+  &quot;electricalConductivity&quot;: {
+    &quot;value&quot;: 5.0,
+    &quot;unit&quot;: &quot;S/m&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;range&quot;: [4.8, 5.2],
+    &quot;note&quot;: &quot;3% NaCl makes water an electrolyte. Pure water: ~0.0005 S/m. Salt dissociates into conducting ions (Na⁺ and Cl⁻).&quot;,
+    &quot;applicationUse&quot;: &quot;Sensors, electrolysis simulations, conductivity probes, safety (risk of electrical hazards). 10,000x more conductive than pure water!&quot;
+  },
+  &quot;vanThoffFactor&quot;: {
+    &quot;value&quot;: 1.9,
+    &quot;formula&quot;: &quot;i = number of particles per solute molecule&quot;,
+    &quot;theoretical&quot;: 2.0,
+    &quot;actual&quot;: 1.9,
+    &quot;note&quot;: &quot;NaCl ideally dissociates into 2 ions (Na⁺ + Cl⁻), but real solutions show i=1.9 due to ion-pairing and electrostatic effects.&quot;,
+    &quot;applicationUse&quot;: &quot;Calculate colligative properties: ΔTb = i × Kb × m (boiling point elevation), ΔTf = i × Kf × m (freezing point depression), osmotic pressure = i × M × R × T&quot;
+  },
+  &quot;saturationPoint&quot;: {
+    &quot;value&quot;: 357,
+    &quot;unit&quot;: &quot;g/L&quot;,
+    &quot;temperature&quot;: 25,
+    &quot;solute&quot;: &quot;NaCl&quot;,
+    &quot;molarConcentration&quot;: 6.1,
+    &quot;note&quot;: &quot;Maximum concentration of NaCl that can dissolve in water at 25°C. Beyond this, crystals precipitate.&quot;,
+    &quot;currentConcentration&quot;: 30,
+    &quot;currentConcentrationUnit&quot;: &quot;g/L&quot;,
+    &quot;percentOfSaturation&quot;: 8.4,
+    &quot;applicationUse&quot;: &quot;If player evaporates water or adds more salt, track when crystallization begins. Spawn NaCl(s) at bottom of container when saturation is exceeded.&quot;
+  },
+  &quot;reference&quot;: &quot;solutions/saltwater-3pct-nacl/info.json&quot;
+}
+
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

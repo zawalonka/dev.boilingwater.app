@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RoomControls.css</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <a href="/wiki/entities/modules/index.html">Modules</a>
+            <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">RoomControls.css</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">RoomControls.css</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">css</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>RoomControls.css</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section">
+        <h2>Source file</h2>
+        <p><code>src\styles\RoomControls.css</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="code">/**
+ * RoomControls Styles
+ * Floating panel on left side, smaller than control panel
+ */
+
+.room-controls {
+  position: fixed;
+  top: 70px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 950;
+  width: 220px;
+  font-size: 0.9rem;
+}
+
+.room-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.room-controls-title {
+  font-weight: 600;
+  color: #fff;
+  font-size: 13px;
+}
+
+.room-alert-badge {
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.room-alert-badge.warning {
+  background: #f39c12;
+  color: #000;
+}
+
+.room-alert-badge.critical {
+  background: #e74c3c;
+  color: #fff;
+  animation: pulse-alert 1s infinite;
+}
+
+@keyframes pulse-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Room Status Grid - Compact 2x2 */
+.room-status {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.room-stat {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.room-controls .stat-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+.room-controls .stat-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.room-controls .stat-value.warning {
+  color: #f39c12;
+}
+
+.room-controls .stat-value.critical {
+  color: #e74c3c;
+}
+
+/* Alerts - Compact */
+.room-alerts {
+  margin-bottom: 6px;
+}
+
+.room-alert {
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.room-alert.warning {
+  background: rgba(243, 156, 18, 0.2);
+  border-left: 3px solid #f39c12;
+  color: #f39c12;
+}
+
+.room-alert.critical {
+  background: rgba(231, 76, 60, 0.2);
+  border-left: 3px solid #e74c3c;
+  color: #e74c3c;
+}
+
+/* Control Groups - Compact */
+.room-control-group {
+  margin-bottom: 6px;
+}
+
+.room-control-group:last-child {
+  margin-bottom: 0;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+}
+
+.control-status {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* AC Setpoint Control - Compact */
+.ac-setpoint-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.setpoint-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.setpoint-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.setpoint-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.setpoint-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* AC Toggle - Same style as air handler toggle */
+.ac-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.ac-toggle.active {
+  background: rgba(33, 150, 243, 0.3);
+  border-color: rgba(33, 150, 243, 0.5);
+}
+
+/* Air Handler Toggle - Simple on/off */
+.air-handler-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.air-handler-toggle.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.5);
+}
+
+.toggle-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.toggle-status {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.toggle-status.on {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.toggle-status.off {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.air-handler-activity {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* Equipment Selection Dropdowns */
+.equipment-select {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.equipment-select:focus {
+  outline: none;
+  border-color: rgba(100, 180, 255, 0.5);
+}
+
+.equipment-select option {
+  background: #222;
+  color: #fff;
+}
+}
+</pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
