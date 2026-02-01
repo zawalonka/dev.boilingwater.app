@@ -228,7 +228,7 @@ function ControlPanel({
           {isAdvancedModeAvailable && (
             <>
               <div className="speed-warning">
-                ⚠️ High speeds (256x+) produce inaccurate physics. Results are experimental.
+                ⚠️ Speed acceleration is unreliable — results unverified
               </div>
               <div className="speed-controls-advanced">
               <button 
