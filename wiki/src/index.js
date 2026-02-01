@@ -125,6 +125,7 @@ const page = ({ title, content }) => `<!doctype html>
             <a href="${withBase('entities/formulas/index.html')}">Formulas</a>
             <a href="${withBase('entities/processes/index.html')}">Processes</a>
             <a href="${withBase('entities/modules/index.html')}">Modules</a>
+            <a href="${withBase('entities/symbols/index.html')}">Symbols</a>
             <div class="wiki-menu-divider"></div>
             <a href="/">Back to Game</a>
           </nav>
@@ -150,6 +151,95 @@ const writePage = async (relativePath, html) => {
 const renderJson = (data) => `<pre class="code">${escapeHtml(JSON.stringify(data, null, 2))}</pre>`
 
 const renderList = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`
+
+const renderPeriodicTable = (elements) => {
+  const byAtomic = new Map()
+  for (const element of elements) {
+    if (element.data.atomicNumber) {
+      byAtomic.set(element.data.atomicNumber, element)
+    }
+  }
+
+  const periods = [
+    [1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2],
+    [3, 4, null, null, null, null, null, null, null, null, null, null, 5, 6, 7, 8, 9, 10],
+    [11, 12, null, null, null, null, null, null, null, null, null, null, 13, 14, 15, 16, 17, 18],
+    [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+    [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54],
+    [55, 56, 57, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86],
+    [87, 88, 89, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+  ]
+
+  const lanthanides = [null, null, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, null]
+  const actinides = [null, null, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, null]
+
+  const groupLabels = Array.from({ length: 18 }, (_, i) => i + 1)
+
+  const renderCell = (atomicNumber) => {
+    if (!atomicNumber) return '<td class="pt-empty"></td>'
+    const element = byAtomic.get(atomicNumber)
+    if (!element) return '<td class="pt-empty"></td>'
+
+    const symbol = element.data.symbol || element.slug
+    const name = element.data.name || element.slug
+    const category = element.data.elementCategory || ''
+    const categoryClass = category
+      ? `cat-${category.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`
+      : ''
+
+    return `
+      <td class="pt-cell ${categoryClass}">
+        <a class="pt-link" href="${withBase(`entities/elements/${element.slug}.html`)}">
+          <div class="pt-atomic">${atomicNumber}</div>
+          <div class="pt-symbol">${escapeHtml(symbol)}</div>
+          <div class="pt-name">${escapeHtml(name)}</div>
+        </a>
+      </td>
+    `
+  }
+
+  const headerRow = `
+    <tr>
+      <th class="pt-corner"></th>
+      ${groupLabels.map((label) => `<th class="pt-group">${label}</th>`).join('')}
+    </tr>
+  `
+
+  const periodRows = periods.map((row, index) => `
+    <tr>
+      <th class="pt-period">${index + 1}</th>
+      ${row.map(renderCell).join('')}
+    </tr>
+  `)
+
+  const seriesRows = [
+    {
+      label: 'La–Lu',
+      row: lanthanides
+    },
+    {
+      label: 'Ac–Lr',
+      row: actinides
+    }
+  ].map(({ label, row }) => `
+    <tr class="pt-series">
+      <th class="pt-series-label">${label}</th>
+      ${row.map(renderCell).join('')}
+    </tr>
+  `)
+
+  return `
+    <div class="periodic-table-wrapper">
+      <table class="periodic-table">
+        <thead>${headerRow}</thead>
+        <tbody>
+          ${periodRows.join('')}
+          ${seriesRows.join('')}
+        </tbody>
+      </table>
+    </div>
+  `
+}
 
 const renderFileList = (items) => {
   if (!items.length) return '<p>None found.</p>'
@@ -299,6 +389,7 @@ const parseExports = (content) => {
   const constRegex = /export\s+const\s+(\w+)/g
   const classRegex = /export\s+class\s+(\w+)/g
   const namedRegex = /export\s*\{([^}]+)\}/g
+  const identifierRegex = /^[A-Za-z_$][\w$]*$/
 
   for (const regex of [functionRegex, constRegex, classRegex]) {
     let match
@@ -311,8 +402,10 @@ const parseExports = (content) => {
   while ((namedMatch = namedRegex.exec(content)) !== null) {
     const parts = namedMatch[1].split(',')
     for (const part of parts) {
-      const cleaned = part.split('as')[0].trim()
-      if (cleaned) names.add(cleaned)
+      const withoutBlockComments = part.replace(/\/\*.*?\*\//g, '')
+      const withoutLineComments = withoutBlockComments.replace(/\/\/.*$/g, '')
+      const cleaned = withoutLineComments.split('as')[0].trim()
+      if (identifierRegex.test(cleaned)) names.add(cleaned)
     }
   }
 
@@ -408,6 +501,235 @@ const buildModules = async () => {
     })
   }
   return modules.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+/**
+ * Parse which symbols a file imports from a given source
+ * e.g., import { calculateBoilingPoint, simulateTimeStep } from '../utils/physics'
+ */
+const parseImportedSymbols = (content) => {
+  const symbolImports = []
+  // Match: import { sym1, sym2 as alias } from '...'
+  const importRegex = /import\s*\{([^}]+)\}\s*from\s*['"]([^'"]+)['"]/g
+  let match
+  while ((match = importRegex.exec(content)) !== null) {
+    const symbols = match[1].split(',').map((s) => {
+      // Handle "name as alias" - we want the original name
+      const parts = s.trim().split(/\s+as\s+/)
+      return parts[0].trim()
+    }).filter(Boolean)
+    const source = match[2]
+    for (const symbol of symbols) {
+      symbolImports.push({ symbol, source })
+    }
+  }
+  return symbolImports
+}
+
+/**
+ * Find call sites for a symbol in file content
+ * Returns array of { line, context } objects
+ */
+const findCallSites = (content, symbolName) => {
+  const lines = content.split('\n')
+  const callSites = []
+  // Match symbol used as function call or property access
+  const regex = new RegExp(`\\b${symbolName}\\s*[\\(\\.]`, 'g')
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    if (regex.test(line)) {
+      callSites.push({
+        line: i + 1,
+        context: line.trim().slice(0, 100) // First 100 chars
+      })
+    }
+    regex.lastIndex = 0 // Reset regex state
+  }
+  return callSites
+}
+
+const findInternalUsages = (content, symbolName) => {
+  const lines = content.split('\n')
+  const usages = []
+  const regex = new RegExp(`\\b${symbolName}\\b`)
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('//') || trimmed.startsWith('/*') || trimmed.startsWith('*')) {
+      continue
+    }
+    if (!regex.test(line)) continue
+    if (trimmed.startsWith('export')) continue
+    usages.push({
+      line: i + 1,
+      context: trimmed.slice(0, 100)
+    })
+  }
+
+  return usages
+}
+
+const findReExportUsages = (content, symbolName) => {
+  const lines = content.split('\n')
+  const usages = []
+  const inlineRegex = new RegExp(`\\bexport\\b.*\\b${symbolName}\\b`)
+  const symbolRegex = new RegExp(`\\b${symbolName}\\b`)
+  let inExportBlock = false
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('//') || trimmed.startsWith('/*') || trimmed.startsWith('*')) {
+      continue
+    }
+
+    if (inlineRegex.test(line)) {
+      usages.push({
+        line: i + 1,
+        context: trimmed.slice(0, 100)
+      })
+      continue
+    }
+
+    if (/^export\s*\{/.test(trimmed)) {
+      inExportBlock = true
+    }
+
+    if (inExportBlock && symbolRegex.test(line)) {
+      usages.push({
+        line: i + 1,
+        context: trimmed.slice(0, 100)
+      })
+    }
+
+    if (inExportBlock && /}\s*from\s*['"].+['"];?/.test(trimmed)) {
+      inExportBlock = false
+    }
+  }
+
+  return usages
+}
+
+/**
+ * Build symbol registry from formulas, processes, and modules
+ */
+const buildSymbols = async (formulas, processes, modules) => {
+  const symbols = new Map() // symbolName -> { definition, reExports, importedBy, callSites, internalUsages, reExportUsages }
+  
+  // Helper to register a symbol
+  const registerSymbol = (name, file, entityType, entitySlug, isReExport = false) => {
+    if (!symbols.has(name)) {
+      symbols.set(name, {
+        name,
+        definition: null,
+        reExports: [],
+        importedBy: [],
+        callSites: [],
+        internalUsages: [],
+        reExportUsages: []
+      })
+    }
+    const sym = symbols.get(name)
+    if (isReExport) {
+      sym.reExports.push({ file, entityType, entitySlug })
+    } else if (!sym.definition) {
+      sym.definition = { file, entityType, entitySlug }
+    }
+  }
+  
+  // Register exports from formulas (these are definitions)
+  for (const formula of formulas) {
+    for (const exp of formula.exports) {
+      registerSymbol(exp, formula.file, 'formula', formula.slug, false)
+    }
+  }
+  
+  // Register exports from processes (these are definitions)
+  for (const process of processes) {
+    for (const exp of process.exports) {
+      registerSymbol(exp, process.file, 'process', process.slug, false)
+    }
+  }
+  
+  // Register exports from modules
+  // physics/index.js re-exports, others may define new symbols
+  for (const mod of modules) {
+    const isBarrelFile = mod.slug === 'utils/physics/index' || mod.filename === 'index.js'
+    for (const exp of mod.exports) {
+      // Check if this symbol already has a definition (it's a re-export)
+      const existing = symbols.get(exp)
+      const isReExport = isBarrelFile || (existing && existing.definition)
+      registerSymbol(exp, mod.file, 'module', mod.slug, isReExport)
+    }
+  }
+  
+  // Find who imports each symbol and call sites
+  const allFiles = globSync('src/**/*.{js,jsx}', {
+    cwd: repoRoot,
+    absolute: true,
+    ignore: ['src/generated/**']
+  })
+
+  const fileContentMap = new Map()
+  
+  for (const file of allFiles) {
+    const content = await fs.readFile(file, 'utf-8')
+    fileContentMap.set(file, content)
+    const relPath = path.relative(repoRoot, file).replace(/\\/g, '/')
+    const importedSymbols = parseImportedSymbols(content)
+    
+    for (const { symbol } of importedSymbols) {
+      if (symbols.has(symbol)) {
+        const sym = symbols.get(symbol)
+        // Don't add if this is the definition or re-export file
+        const isOwnFile = sym.definition?.file === file || 
+          sym.reExports.some((r) => r.file === file)
+        if (!isOwnFile) {
+          sym.importedBy.push({ file: relPath })
+          // Find call sites in this file
+          const sites = findCallSites(content, symbol)
+          for (const site of sites) {
+            sym.callSites.push({ file: relPath, ...site })
+          }
+        }
+      }
+    }
+  }
+
+  // Detect internal/default usages in definition files
+  for (const sym of symbols.values()) {
+    if (!sym.definition?.file) continue
+    const defContent = fileContentMap.get(sym.definition.file)
+    if (!defContent) continue
+    const internal = findInternalUsages(defContent, sym.name)
+    if (internal.length) {
+      sym.internalUsages.push(...internal)
+    }
+  }
+
+  // Detect re-export lines in re-export files
+  for (const sym of symbols.values()) {
+    for (const reExport of sym.reExports) {
+      const reContent = fileContentMap.get(reExport.file)
+      if (!reContent) continue
+      const reLines = findReExportUsages(reContent, sym.name)
+      if (reLines.length) {
+        sym.reExportUsages.push({
+          file: reExport.file,
+          entityType: reExport.entityType,
+          entitySlug: reExport.entitySlug,
+          lines: reLines
+        })
+      }
+    }
+  }
+  
+  // Convert to array and sort
+  return Array.from(symbols.values())
+    .filter((s) => s.definition) // Only symbols with a known definition
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 const buildUsageMap = async (symbols) => {
@@ -526,6 +848,7 @@ const build = async () => {
   const formulas = await buildFormulas()
   const processes = await buildProcesses()
   const modules = await buildModules()
+  const symbols = await buildSymbols(formulas, processes, modules)
 
   const elementChildren = new Map()
   const compoundChildren = new Map()
@@ -738,6 +1061,76 @@ const build = async () => {
       overflow-x: auto;
       font-size: 12px;
     }
+    .call-sites { list-style: none; padding: 0; }
+    .call-sites li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .call-sites li:last-child { border-bottom: none; }
+    .call-site-file { font-weight: 500; color: #3366cc; }
+    .call-site-context {
+      font-family: monospace;
+      font-size: 12px;
+      background: #f8f9fa;
+      padding: 4px 8px;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .external-import { color: #72777d; font-style: italic; }
+    .periodic-table-wrapper { overflow-x: hidden; }
+    .periodic-table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      background: #fff;
+      border: 1px solid #c8ccd1;
+    }
+    .periodic-table th,
+    .periodic-table td {
+      border: 1px solid #c8ccd1;
+      text-align: center;
+      vertical-align: middle;
+      padding: 2px;
+    }
+    .pt-group {
+      font-size: 11px;
+      font-weight: 600;
+      color: #54595d;
+      background: #f8f9fa;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .pt-period,
+    .pt-series-label,
+    .pt-corner {
+      font-size: 11px;
+      font-weight: 600;
+      color: #54595d;
+      background: #f8f9fa;
+      width: 44px;
+    }
+    .pt-cell { background: #ffffff; }
+    .pt-link { display: block; text-decoration: none; color: inherit; }
+    .pt-atomic { font-size: 9px; color: #54595d; }
+    .pt-symbol { font-size: 14px; font-weight: 700; }
+    .pt-name { font-size: 8px; color: #54595d; }
+    .pt-empty { background: #fafafa; }
+    .pt-series { background: #fcfcfc; }
+    .cat-alkali-metal { background: #ffe6e6; }
+    .cat-alkaline-earth-metal { background: #fff2cc; }
+    .cat-transition-metal { background: #e6f0ff; }
+    .cat-post-transition-metal { background: #e6f7ff; }
+    .cat-metalloid { background: #e6ffe6; }
+    .cat-nonmetal { background: #f0f0ff; }
+    .cat-halogen { background: #ffe6f2; }
+    .cat-noble-gas { background: #f2e6ff; }
+    .cat-lanthanide { background: #e6fff7; }
+    .cat-actinide { background: #fff0e6; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
     .subtitle { color: #54595d; margin-top: -8px; }
     .entity-header { margin-bottom: 16px; }
@@ -779,7 +1172,8 @@ const build = async () => {
           ${renderList([
             linkTo('entities/formulas/index.html', `Formulas (${formulas.length})`),
             linkTo('entities/processes/index.html', `Processes (${processes.length})`),
-            linkTo('entities/modules/index.html', `Modules (${modules.length})`)
+            linkTo('entities/modules/index.html', `Modules (${modules.length})`),
+            linkTo('entities/symbols/index.html', `Symbols (${symbols.length})`)
           ])}
         </div>
       </div>
@@ -788,10 +1182,16 @@ const build = async () => {
 
   await writePage('index.html', page({ title: 'Boilingwater Wiki', content: indexContent }))
 
-  const elementLinks = elements.map((element) => linkTo(`entities/elements/${element.slug}.html`, element.slug))
+  const elementsTable = renderPeriodicTable(elements)
   await writePage('entities/elements/index.html', page({
     title: 'Elements',
-    content: `<section class="section">${renderEntityHeader('Elements')} ${renderList(elementLinks)}</section>`
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Elements', 'Periodic Table')}
+        <p>Click any element to view detailed properties and data.</p>
+        ${elementsTable}
+      </section>
+    `
   }))
 
   for (const element of elements) {
@@ -920,18 +1320,28 @@ const build = async () => {
   }))
 
   for (const phase of phases) {
-    const compoundData = [...compounds, ...solutions].find((c) => c.id === phase.compoundId)
+    const compoundEntry = compounds.find((c) => c.id === phase.compoundId)
+    const solutionEntry = solutions.find((c) => c.id === phase.compoundId)
+    const compoundData = compoundEntry || solutionEntry
     const compoundName = compoundData?.data?.name || phase.compoundId
+    const compoundHref = compoundEntry
+      ? `entities/compounds/${phase.compoundId}.html`
+      : `entities/solutions/${phase.compoundId}.html`
     const phaseName = phase.data.phaseName || phase.phase
     // Use phaseName only if it's different from phase AND compound name, otherwise use phase
     const hasUniquePhaseName = phaseName !== phase.phase && phaseName.toLowerCase() !== compoundName.toLowerCase()
     const stateLabel = hasUniquePhaseName ? phaseName : phase.phase
     const displayName = `${compoundName} (${stateLabel})`
 
+    const relatedPhases = (phasesByCompound.get(phase.compoundId) || [])
+      .filter((item) => item.slug !== phase.slug)
+      .map((item) => linkTo(`entities/phases/${item.slug}.html`, item.phase))
+
     const infobox = renderInfobox(displayName, [
-      { label: 'Compound', value: linkTo(`entities/compounds/${phase.compoundId}.html`, compoundName) },
+      { label: compoundEntry ? 'Compound' : 'Solution', value: linkTo(compoundHref, compoundName) },
       { label: 'State', value: escapeHtml(phase.phase) },
-      { label: 'Name', value: hasUniquePhaseName ? escapeHtml(phaseName) : '' }
+      { label: 'Name', value: hasUniquePhaseName ? escapeHtml(phaseName) : '' },
+      { label: 'Other phases', value: relatedPhases.length ? renderLinkList(relatedPhases) : '' }
     ])
     const content = `
       ${infobox}
@@ -1015,6 +1425,24 @@ const build = async () => {
     await writePage(`entities/experiments/${experiment.id}.html`, page({ title: experiment.name || experiment.id, content }))
   }
 
+  // Build symbol name to page map for linking exports
+  const symbolPageMap = new Map()
+  for (const sym of symbols) {
+    symbolPageMap.set(sym.name, `entities/symbols/${sym.name}.html`)
+  }
+
+  // Helper to render exports as links to symbol pages
+  const renderExportLinks = (exports) => {
+    if (!exports.length) return ''
+    const items = exports.map((exp) => {
+      if (symbolPageMap.has(exp)) {
+        return linkTo(symbolPageMap.get(exp), exp)
+      }
+      return escapeHtml(exp)
+    })
+    return renderList(items)
+  }
+
   const formulaLinks = formulas.map((formula) => linkTo(`entities/formulas/${formula.slug}.html`, formula.slug))
   await writePage('entities/formulas/index.html', page({
     title: 'Formulas',
@@ -1031,7 +1459,7 @@ const build = async () => {
 
     const infobox = renderInfobox(formula.slug, [
       { label: 'Type', value: 'Formula' },
-      { label: 'Exports', value: formula.exports.length ? renderList(formula.exports.map((item) => escapeHtml(item))) : '' },
+      { label: 'Exports', value: renderExportLinks(formula.exports) },
       { label: 'Processes', value: usedByProcesses.length ? renderLinkList(usedByProcesses) : '' },
       { label: 'Used in', value: usedInHtml }
     ])
@@ -1071,7 +1499,7 @@ const build = async () => {
     const infobox = renderInfobox(process.slug, [
       { label: 'Type', value: process.isStub ? 'Process (Stub)' : 'Process' },
       { label: 'Formulas', value: usesFormulas.length ? renderLinkList(usesFormulas) : '' },
-      { label: 'Exports', value: process.exports.length ? renderList(process.exports.map((item) => escapeHtml(item))) : '' },
+      { label: 'Exports', value: renderExportLinks(process.exports) },
       { label: 'Used in', value: usedInHtml }
     ])
 
@@ -1171,7 +1599,7 @@ const build = async () => {
 
     const infobox = renderInfobox(mod.filename, [
       { label: 'Type', value: mod.isComponent ? 'React Component' : 'Module' },
-      { label: 'Exports', value: mod.exports.length ? renderList(mod.exports.map((item) => escapeHtml(item))) : '' },
+      { label: 'Exports', value: renderExportLinks(mod.exports) },
       { label: 'Imports', value: importsHtml || '' },
       { label: 'Imported by', value: importedBy.length ? renderLinkList(importedBy) : '' },
       { label: 'Used in', value: usedInHtml }
@@ -1193,6 +1621,143 @@ const build = async () => {
       </section>
     `
     await writePage(`entities/modules/${mod.slug}.html`, page({ title: mod.filename, content }))
+  }
+
+  // Symbol index page
+  const symbolLinks = symbols.map((sym) => linkTo(`entities/symbols/${sym.name}.html`, sym.name))
+  await writePage('entities/symbols/index.html', page({
+    title: 'Symbols',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Symbols', 'Exported functions and constants')}
+        <p>${linkTo('entities/reports/orphan-symbols.html', 'View orphan symbols report')}</p>
+        ${renderList(symbolLinks)}
+      </section>
+    `
+  }))
+
+  // Orphan symbols report (no re-exports, no imports, no call sites, no internal usage)
+  const orphanSymbols = symbols.filter((sym) =>
+    sym.reExports.length === 0 &&
+    sym.importedBy.length === 0 &&
+    sym.callSites.length === 0 &&
+    sym.internalUsages.length === 0 &&
+    sym.reExportUsages.length === 0
+  )
+
+  const orphanLinks = orphanSymbols.map((sym) => linkTo(`entities/symbols/${sym.name}.html`, sym.name))
+  await writePage('entities/reports/orphan-symbols.html', page({
+    title: 'Orphan Symbols',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Orphan Symbols', 'Symbols with no exports, re-exports, or usage')}
+        <p>Total: ${orphanSymbols.length}</p>
+        ${orphanLinks.length ? renderList(orphanLinks) : '<p>None found.</p>'}
+      </section>
+    `
+  }))
+
+  // Helper to pluralize entity type for URLs
+  const pluralizeEntityType = (type) => {
+    if (type === 'process') return 'processes'
+    return type + 's'
+  }
+
+  // Individual symbol pages
+  for (const sym of symbols) {
+    const defLink = sym.definition
+      ? linkTo(`entities/${pluralizeEntityType(sym.definition.entityType)}/${sym.definition.entitySlug}.html`, 
+          path.basename(sym.definition.file))
+      : 'Unknown'
+
+    const reExportLinks = sym.reExports.length
+      ? renderList(sym.reExports.map((r) => 
+          linkTo(`entities/${pluralizeEntityType(r.entityType)}/${r.entitySlug}.html`, path.basename(r.file))))
+      : ''
+
+    const importedByLinks = sym.importedBy.length
+      ? renderList(sym.importedBy.map((i) => {
+          const entity = fileToWikiEntity.get(i.file)
+          if (entity) {
+            return linkTo(entity.href, entity.label)
+          }
+          return escapeHtml(i.file)
+        }))
+      : ''
+
+    const callSitesList = sym.callSites.length
+      ? `<ul class="call-sites">${sym.callSites.slice(0, 20).map((site) => {
+          const entity = fileToWikiEntity.get(site.file)
+          const fileLabel = entity ? entity.label : path.basename(site.file)
+          const fileLink = entity
+            ? linkTo(entity.href, fileLabel)
+            : escapeHtml(fileLabel)
+          return `<li>
+            <span class="call-site-file">${fileLink}#L${site.line}</span>
+            <code class="call-site-context">${escapeHtml(site.context)}</code>
+          </li>`
+        }).join('')}${sym.callSites.length > 20 ? `<li>...and ${sym.callSites.length - 20} more</li>` : ''}</ul>`
+      : ''
+
+    const internalItems = []
+
+    if (sym.internalUsages.length) {
+      const defLabel = sym.definition ? path.basename(sym.definition.file) : 'Definition'
+      const defLink = sym.definition
+        ? linkTo(`entities/${pluralizeEntityType(sym.definition.entityType)}/${sym.definition.entitySlug}.html`, defLabel)
+        : escapeHtml(defLabel)
+
+      for (const site of sym.internalUsages.slice(0, 10)) {
+        internalItems.push(`
+          <li>
+            <span class=\"call-site-file\">${defLink}#L${site.line}</span>
+            <code class=\"call-site-context\">${escapeHtml(site.context)}</code>
+          </li>
+        `)
+      }
+      if (sym.internalUsages.length > 10) {
+        internalItems.push(`<li>...and ${sym.internalUsages.length - 10} more</li>`)
+      }
+    }
+
+    if (sym.reExportUsages.length) {
+      for (const re of sym.reExportUsages) {
+        const reLabel = path.basename(re.file)
+        const reLink = linkTo(`entities/${pluralizeEntityType(re.entityType)}/${re.entitySlug}.html`, reLabel)
+        for (const site of re.lines.slice(0, 5)) {
+          internalItems.push(`
+            <li>
+              <span class=\"call-site-file\">${reLink}#L${site.line}</span>
+              <code class=\"call-site-context\">${escapeHtml(site.context)} (re-export)</code>
+            </li>
+          `)
+        }
+      }
+    }
+
+    const internalUsageList = internalItems.length
+      ? `<ul class=\"call-sites\">${internalItems.join('')}</ul>`
+      : ''
+
+    const infobox = renderInfobox(sym.name, [
+      { label: 'Type', value: 'Symbol' },
+      { label: 'Defined in', value: defLink },
+      { label: 'Re-exported by', value: reExportLinks },
+      { label: 'Imported by', value: importedByLinks },
+      { label: 'Internal usage', value: internalUsageList || '' }
+    ])
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(sym.name, 'Exported Symbol')}
+      </section>
+      <section class="section">
+        <h2>${sym.callSites.length ? `Call Sites (${sym.callSites.length})` : `Internal Usage (${sym.internalUsages.length})`}</h2>
+        ${sym.callSites.length ? callSitesList : (internalUsageList || '<p>No usage found.</p>')}
+      </section>
+    `
+    await writePage(`entities/symbols/${sym.name}.html`, page({ title: sym.name, content }))
   }
 
   await writeCache({

@@ -35,34 +35,19 @@
 
 ---
 
-## 🚧 Known Issues
+## ✅ Known Issues (Resolved)
 
-### Exports are untraceable (one-way linking)
-**Status:** Open  
+### Exports are traceable via symbol pages
+**Status:** Resolved  
 **Severity:** Medium  
 
-**Problem:**  
-Currently, imports are fully linked (you can click through to the source module/formula/process). But exports are just plain text lists - you can't click on an export symbol to see where it's used.
+**Resolution:**  
+Implemented per-symbol pages under `/entities/symbols/` and linked exports throughout the wiki.
 
-**Current state:**
-- ✅ Imports → linked to source entity pages
-- ✅ "Used in" → shows which files reference this module's exports (aggregate)
-- ❌ Individual exports → no links, just text
-- ❌ Can't trace: "Where is `calculateBoilingPoint` actually called?"
-
-**Desired state:**
-- Each export symbol should link to a detail view showing:
-  - Which files import this symbol
-  - Line numbers where it's called
-  - Call context (what arguments, what result used for)
-
-**Implementation options:**
-1. **Symbol pages** - Create a wiki page per exported symbol (e.g., `/symbols/calculateBoilingPoint.html`)
-2. **Anchor links** - Link exports to search results or filtered usage list on same page
-3. **Inline expansion** - Click export to expand usage list inline
-
-**Files to modify:**
-- `wiki/src/index.js` - Add symbol tracking and page generation
+**Now available:**
+- ✅ Individual exports link to symbol pages
+- ✅ Symbol pages show definition, re-exports, imported-by list
+- ✅ Symbol pages list call sites with line numbers and context
 
 ---
 

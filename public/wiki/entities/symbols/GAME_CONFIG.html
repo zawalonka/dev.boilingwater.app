@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GAME_CONFIG</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰</summary>
+          <nav class="wiki-menu-links">
+            <a href="/wiki/index.html">Main page</a>
+            <a href="/wiki/entities/elements/index.html">Elements</a>
+            <a href="/wiki/entities/compounds/index.html">Compounds</a>
+            <a href="/wiki/entities/solutions/index.html">Solutions</a>
+            <a href="/wiki/entities/phases/index.html">Phases</a>
+            <a href="/wiki/entities/levels/index.html">Levels</a>
+            <a href="/wiki/entities/experiments/index.html">Experiments</a>
+            <a href="/wiki/entities/formulas/index.html">Formulas</a>
+            <a href="/wiki/entities/processes/index.html">Processes</a>
+            <a href="/wiki/entities/modules/index.html">Modules</a>
+            <a href="/wiki/entities/symbols/index.html">Symbols</a>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">Back to Game</a>
+          </nav>
+        </details>
+        <div class="wiki-topbar-title">GAME_CONFIG</div>
+      </header>
+      <main class="wiki-content">
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">GAME_CONFIG</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Symbol</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Defined in</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/constants/physics.html">physics.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulation/simulateTimeStep</a></li><li><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>GAME_CONFIG</h1>
+    <p class="subtitle">Exported Symbol</p>
+  </div>
+
+      </section>
+      <section class="section">
+        <h2>Call Sites (11)</h2>
+        <ul class="call-sites"><li>
+            <span class="call-site-file"><a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulation/simulateTimeStep</a>#L93</span>
+            <code class="call-site-context">const AMBIENT = Number.isFinite(ambientTemp) ? ambientTemp : (GAME_CONFIG.ROOM_TEMPERATURE || 20)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L116</span>
+            <code class="call-site-context">const [temperature, setTemperature] = useState(GAME_CONFIG.ROOM_TEMPERATURE)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L358</span>
+            <code class="call-site-context">: GAME_CONFIG.ROOM_TEMPERATURE</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L371</span>
+            <code class="call-site-context">const ambientTemperature = GAME_CONFIG.ROOM_TEMPERATURE</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L510</span>
+            <code class="call-site-context">const dt = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L523</span>
+            <code class="call-site-context">const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L675</span>
+            <code class="call-site-context">}, GAME_CONFIG.TIME_STEP)  // Repeat every TIME_STEP milliseconds</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L701</span>
+            <code class="call-site-context">const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L706</span>
+            <code class="call-site-context">}, GAME_CONFIG.TIME_STEP)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L815</span>
+            <code class="call-site-context">const fillMass = GAME_CONFIG.DEFAULT_WATER_MASS</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/components/GameScene.html">GameScene.jsx</a>#L1228</span>
+            <code class="call-site-context">const waterMass = GAME_CONFIG.DEFAULT_WATER_MASS * 1000  // grams</code>
+          </li></ul>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

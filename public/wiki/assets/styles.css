@@ -129,6 +129,76 @@
       overflow-x: auto;
       font-size: 12px;
     }
+    .call-sites { list-style: none; padding: 0; }
+    .call-sites li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .call-sites li:last-child { border-bottom: none; }
+    .call-site-file { font-weight: 500; color: #3366cc; }
+    .call-site-context {
+      font-family: monospace;
+      font-size: 12px;
+      background: #f8f9fa;
+      padding: 4px 8px;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .external-import { color: #72777d; font-style: italic; }
+    .periodic-table-wrapper { overflow-x: hidden; }
+    .periodic-table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      background: #fff;
+      border: 1px solid #c8ccd1;
+    }
+    .periodic-table th,
+    .periodic-table td {
+      border: 1px solid #c8ccd1;
+      text-align: center;
+      vertical-align: middle;
+      padding: 2px;
+    }
+    .pt-group {
+      font-size: 11px;
+      font-weight: 600;
+      color: #54595d;
+      background: #f8f9fa;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .pt-period,
+    .pt-series-label,
+    .pt-corner {
+      font-size: 11px;
+      font-weight: 600;
+      color: #54595d;
+      background: #f8f9fa;
+      width: 44px;
+    }
+    .pt-cell { background: #ffffff; }
+    .pt-link { display: block; text-decoration: none; color: inherit; }
+    .pt-atomic { font-size: 9px; color: #54595d; }
+    .pt-symbol { font-size: 14px; font-weight: 700; }
+    .pt-name { font-size: 8px; color: #54595d; }
+    .pt-empty { background: #fafafa; }
+    .pt-series { background: #fcfcfc; }
+    .cat-alkali-metal { background: #ffe6e6; }
+    .cat-alkaline-earth-metal { background: #fff2cc; }
+    .cat-transition-metal { background: #e6f0ff; }
+    .cat-post-transition-metal { background: #e6f7ff; }
+    .cat-metalloid { background: #e6ffe6; }
+    .cat-nonmetal { background: #f0f0ff; }
+    .cat-halogen { background: #ffe6f2; }
+    .cat-noble-gas { background: #f2e6ff; }
+    .cat-lanthanide { background: #e6fff7; }
+    .cat-actinide { background: #fff0e6; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
     .subtitle { color: #54595d; margin-top: -8px; }
     .entity-header { margin-bottom: 16px; }
