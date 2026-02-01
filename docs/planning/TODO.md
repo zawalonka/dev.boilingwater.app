@@ -56,7 +56,18 @@
 - [x] Location popup logic - Only triggers for L1E2 (altitude experiment)
 - [x] Variable ordering - `altitude` now defined before `useRoomEnvironment`
 
-### Test & Validate (Untested)  User added error,  parce this in to the todo next time you look it over, The burner being on does not effect room temp UNLESS the pot is over the burner.  it should act like a mini heater reagrdless of pot location or heating status?
+### ⚠️ Known Physics Bugs (PRIORITY FIX)
+**Burner Heating Logic Incorrect**
+- **Issue:** Burner only affects room temperature when pot is positioned directly over it. Should act like a mini-heater and warm the room regardless of pot location or heating status.
+- **Current Behavior:** `burnerWatts` only transfers heat to pot; room temperature unaffected unless pot is heated.
+- **Expected Behavior:** Burner should:
+  - Always add heat to room air when powered (e.g., 10% of burner power dissipates to room)
+  - Not depend on pot position or liquid mass
+  - Provide baseline warmth that affects boiling point through room pressure feedback
+- **Files to Fix:** `src/components/GameScene.jsx` (heat loop), `src/utils/physics.js` (room heating calc)
+- **Impact:** Room temperature stays at ambient; should slowly rise when burner is on
+
+### Test & Validate (Untested)
 - [ ] Test L1E1 → L1E2 → L1E3 → L1E4 progression flow
 - [ ] Verify altitude persists across experiments
 - [ ] Verify L1E4 room pressure matches altitude
@@ -95,10 +106,38 @@
      - Would give realistic starting humidity for selected location
      - Currently uses 50% RH standard day (like ISA for atmosphere)
 
-4. **Time Speed Sub-stepping (TODO)** AI next time you read this and we are working on the game it self,  expand this are to be more detailed.  ehh maybe we should have the entire sub stepping as a called file that is a modifier for all formulas if that can even work?
-   - [ ] At high time speeds (65536x), deltaTime = 6553s/frame - need sub-stepping
-   - [ ] Create separate physics utility for time-step subdivision
-   - [ ] Apply to evaporation, heating, and cooling calculations
+4. **Time Speed Sub-stepping (Performance Critical)**
+   
+   **Problem:** At extreme time speeds (65536x), deltaTime = 6553 seconds per frame. Physics equations break down:
+   - Newton's cooling diverges (unstable)
+   - Evaporation rates become unrealistic
+   - Antoine equation integration error compounds
+   
+   **Solution Architecture:**
+   - [ ] Create `src/utils/physics/timeSubstepper.js` — Subdivision utility that wraps physics calculations
+   - [ ] Export `withSubstepping(formula, maxSubsteps, tolerance)` — Higher-order function
+   - [ ] Each formula automatically subdivides if deltaTime > threshold
+   - Example:
+     ```javascript
+     const stableHeating = withSubstepping(
+       (temp, watts, mass, dt) => temp + (watts / (mass * heatCapacity)) * dt,
+       maxSubsteps: 100,
+       threshold: 10  // seconds per substep
+     )
+     ```
+   
+   **Implementation Plan:**
+   - [ ] Analyze each formula for stability threshold (where does it diverge?)
+   - [ ] Implement adaptive substep count: `substeps = ceil(deltaTime / threshold)`
+   - [ ] Apply to: heating (Q=mcΔT), cooling (Newton's law), evaporation (mass transfer), pressure feedback
+   - [ ] Profile performance: does subdivision add overhead vs. UI framerate impact?
+   - [ ] Document thresholds per formula in code comments
+   
+   **Testing:**
+   - [ ] Test at 1x speed (should be imperceptible—same results as no substepping)
+   - [ ] Test at 256x speed (should remain stable)
+   - [ ] Test at 65536x speed (should not diverge or overflow)
+   - [ ] Benchmark: measure frame time impact of different substep counts
 
 5. **Decomposition Behavior (NOT IMPLEMENTED)**
    - **Current:** Substances with `boilingPoint: null` just heat indefinitely
