@@ -223,3 +223,92 @@ export const loadUnitPreferences = () => {
   
   return createUnitPreferences()
 }
+
+// ============================================================================
+// HUMIDITY CONVERSIONS
+// ============================================================================
+
+/**
+ * Calculate saturation vapor pressure of water at a given temperature
+ * Uses the Tetens equation (accurate for 0-50°C range)
+ * 
+ * FORMULA: P_sat = 610.78 × exp(17.27 × T / (T + 237.3))
+ * 
+ * @param {number} tempC - Temperature in Celsius
+ * @returns {number} Saturation vapor pressure in Pa
+ */
+export const calculateSaturationVaporPressure = (tempC) => {
+  // Tetens equation (valid for 0-50°C, reasonable for -40 to 50°C)
+  return 610.78 * Math.exp((17.27 * tempC) / (tempC + 237.3))
+}
+
+/**
+ * Convert volume fraction (mole fraction) of H2O to relative humidity
+ * 
+ * PHYSICS:
+ * - Volume fraction × total pressure = partial pressure of H2O
+ * - RH = (partial pressure / saturation pressure) × 100%
+ * 
+ * @param {number} volumeFraction - H2O volume fraction (e.g., 0.0115 for 1.15%)
+ * @param {number} tempC - Temperature in Celsius (default 20°C)
+ * @param {number} totalPressurePa - Total atmospheric pressure (default 101325 Pa)
+ * @returns {number} Relative humidity as percentage (0-100+)
+ */
+export const volumeFractionToRH = (volumeFraction, tempC = 20, totalPressurePa = 101325) => {
+  const partialPressurePa = volumeFraction * totalPressurePa
+  const satPressurePa = calculateSaturationVaporPressure(tempC)
+  return (partialPressurePa / satPressurePa) * 100
+}
+
+/**
+ * Convert relative humidity to volume fraction (mole fraction)
+ * 
+ * @param {number} rhPercent - Relative humidity percentage (e.g., 50 for 50%)
+ * @param {number} tempC - Temperature in Celsius (default 20°C)
+ * @param {number} totalPressurePa - Total atmospheric pressure (default 101325 Pa)
+ * @returns {number} H2O volume fraction (e.g., 0.0115 for ~50% RH at 20°C)
+ */
+export const rhToVolumeFraction = (rhPercent, tempC = 20, totalPressurePa = 101325) => {
+  const satPressurePa = calculateSaturationVaporPressure(tempC)
+  const partialPressurePa = (rhPercent / 100) * satPressurePa
+  return partialPressurePa / totalPressurePa
+}
+
+/**
+ * Format humidity for display, showing both volume fraction and RH
+ * 
+ * @param {number} volumeFraction - H2O volume fraction
+ * @param {number} tempC - Temperature in Celsius
+ * @param {number} totalPressurePa - Total pressure in Pa
+ * @returns {string} Formatted string like "1.15% (50% RH)"
+ */
+export const formatHumidity = (volumeFraction, tempC = 20, totalPressurePa = 101325) => {
+  const volPercent = (volumeFraction * 100).toFixed(2)
+  const rh = volumeFractionToRH(volumeFraction, tempC, totalPressurePa)
+  return `${volPercent}% (${rh.toFixed(0)}% RH)`
+}
+
+/**
+ * REFERENCE: Is RH an SI unit?
+ * 
+ * NO - Relative Humidity is NOT an SI unit. It's a dimensionless ratio.
+ * 
+ * SI units for humidity:
+ * - Absolute humidity: kg/m³ (mass of water vapor per volume of air)
+ * - Specific humidity: kg/kg (mass of water vapor per mass of moist air)
+ * - Mixing ratio: kg/kg (mass of water vapor per mass of DRY air)
+ * - Partial pressure: Pa (pascals)
+ * - Volume/mole fraction: dimensionless (what we use: H2O as fraction of atmosphere)
+ * 
+ * RH is popular because:
+ * - Intuitive: 100% = air is saturated, condensation imminent
+ * - Temperature-relative: accounts for "how close to saturation"
+ * - Comfort-relevant: humans perceive RH, not absolute humidity
+ * 
+ * We use VOLUME FRACTION internally because:
+ * - Consistent with other atmospheric gases (N2, O2, CO2)
+ * - Works with ideal gas law directly
+ * - No temperature dependency in the stored value
+ * 
+ * We DISPLAY RH because users understand it better.
+ */

@@ -33,6 +33,7 @@ import { LEVELS, EXPERIMENTS } from '../constants/workshops'
 import ControlPanel from './ControlPanel'
 import RoomControls from './RoomControls'
 import { useRoomEnvironment } from '../hooks/useRoomEnvironment'
+import { getAtmosphereKey } from '../utils/roomEnvironment'
 import '../styles/GameScene.css'
 
 // Default layout values (used if workshop layout not provided)
@@ -565,9 +566,11 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           
           if (vaporPressure && vaporPressure > 0) {
             // Get partial pressure of this substance already in room air
+            // Use atmosphere key from chemical formula (e.g., 'H₂O' -> 'H2O')
+            const atmosphereKey = getAtmosphereKey(activeFluid, fluidProps)
             const roomComposition = roomState?.composition || {}
             const totalPressure = roomState?.pressure || 101325
-            const partialPressure = (roomComposition[activeFluid] || 0) * totalPressure
+            const partialPressure = (roomComposition[atmosphereKey] || 0) * totalPressure
             
             // Calculate evaporation using Hertz-Knudsen equation
             const evapResult = simulateEvaporationStep({
@@ -588,8 +591,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               setTemperature(prev => prev + evapResult.tempChangeC)
               setWaterInPot(evapResult.newMassKg)
               
-              // Add vapor to room air composition
-              addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015)
+              // Add vapor to room air composition (pass formula for atmosphere key)
+              addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
               
               // Debug: Log significant evaporation events
               if (evapResult.massEvaporatedKg > 1e-6) {
@@ -602,7 +605,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         // If water is boiling, add boiling-phase vapor to room
         if (newState.isBoiling && newState.waterMass < waterInPot) {
           const evaporatedMass = waterInPot - newState.waterMass
-          addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015)
+          addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
         }
       }
       

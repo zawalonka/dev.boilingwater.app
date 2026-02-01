@@ -46,15 +46,16 @@ export function useRoomEnvironment(roomConfig, acUnit, airHandler, altitude = 0)
 
   /**
    * Add vapor from boiling to room
-   * @param {string} substanceId - Substance ID (e.g., 'H2O', 'C2H5OH')
+   * @param {string} substanceId - Substance ID (e.g., 'water', 'ethanol')
    * @param {number} massKg - Mass evaporated (kg)
    * @param {number} molarMass - Molar mass (g/mol)
+   * @param {string} chemicalFormula - Chemical formula (e.g., 'H₂O', 'C₂H₅OH') for atmosphere key
    */
-  const addVapor = useCallback((substanceId, massKg, molarMass) => {
+  const addVapor = useCallback((substanceId, massKg, molarMass, chemicalFormula = null) => {
     if (!roomConfig || massKg <= 0) return
     
     setRoomState(prev => simulateRoomStep(prev, acUnit, airHandler, 0, {
-      vaporInput: { substanceId, massKg, molarMass: molarMass / 1000 }  // Convert g/mol to kg/mol
+      vaporInput: { substanceId, massKg, molarMass: molarMass / 1000, chemicalFormula }  // Convert g/mol to kg/mol
     }))
   }, [roomConfig, acUnit, airHandler])
 

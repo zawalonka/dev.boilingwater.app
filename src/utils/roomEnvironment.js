@@ -10,6 +10,52 @@ import { applyScrubber, checkCompositionAlerts, EARTH_ATMOSPHERE } from './airHa
 import { calculatePressure } from './physics/index.js'
 
 /**
+ * Convert Unicode subscript digits to ASCII
+ * Atmosphere composition uses ASCII formulas (H2O, C2H5OH)
+ * but substance files use Unicode subscripts (H₂O, C₂H₅OH)
+ * 
+ * @param {string} formula - Chemical formula with possible Unicode subscripts
+ * @returns {string} Formula with ASCII digits
+ */
+export function normalizeFormula(formula) {
+  if (!formula) return formula
+  
+  // Unicode subscript digits: ₀₁₂₃₄₅₆₇₈₉
+  const subscriptMap = {
+    '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4',
+    '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9'
+  }
+  
+  return formula.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, char => subscriptMap[char] || char)
+}
+
+/**
+ * Get the atmosphere key for a substance
+ * Uses the chemical formula from fluidProps, normalized to ASCII
+ * Falls back to hardcoded mapping for solutions and edge cases
+ * 
+ * @param {string} substanceId - Substance ID from catalog
+ * @param {object} fluidProps - Loaded fluid properties (optional, for formula lookup)
+ * @returns {string} Atmosphere key for room composition tracking
+ */
+export function getAtmosphereKey(substanceId, fluidProps = null) {
+  // If we have fluid props with a chemical formula, use it (normalized to ASCII)
+  if (fluidProps?.chemicalFormula) {
+    return normalizeFormula(fluidProps.chemicalFormula)
+  }
+  
+  // Fallback mapping for solutions and edge cases
+  // Solutions release their solvent's vapor
+  const SOLUTION_SOLVENT_MAP = {
+    'saltwater-3pct': 'H2O',
+    'saltwater-10pct': 'H2O',
+    'saltwater-26pct': 'H2O',
+  }
+  
+  return SOLUTION_SOLVENT_MAP[substanceId] || substanceId
+}
+
+/**
  * Calculate initial room pressure based on pressureMode and altitude
  * @param {object} roomConfig - Room config from room.json
  * @param {number} altitude - Altitude in meters
@@ -92,13 +138,17 @@ export function createRoomState(roomConfig, altitude = 0) {
 /**
  * Add vapor from boiling substance to room composition
  * @param {object} roomState - Current room state
- * @param {string} substanceId - Substance being vaporized (e.g., 'H2O', 'C2H5OH')
+ * @param {string} substanceId - Substance being vaporized (e.g., 'water', 'ethanol')
  * @param {number} massEvaporatedKg - Mass evaporated this timestep (kg)
  * @param {number} molarMassKgPerMol - Molar mass of substance (kg/mol)
+ * @param {string} chemicalFormula - Chemical formula (e.g., 'H₂O') for atmosphere key lookup
  * @returns {object} Updated room state
  */
-export function addVaporToRoom(roomState, substanceId, massEvaporatedKg, molarMassKgPerMol) {
+export function addVaporToRoom(roomState, substanceId, massEvaporatedKg, molarMassKgPerMol, chemicalFormula = null) {
   if (massEvaporatedKg <= 0) return roomState
+
+  // Map substance ID to atmosphere key using formula if available
+  const atmosphereKey = getAtmosphereKey(substanceId, chemicalFormula ? { chemicalFormula } : null)
 
   // Calculate moles added
   const molesAdded = massEvaporatedKg / molarMassKgPerMol
@@ -108,9 +158,9 @@ export function addVaporToRoom(roomState, substanceId, massEvaporatedKg, molarMa
   const tempK = roomState.temperature + 273.15
   const totalMolesApprox = (roomState.pressure * roomState.volumeM3) / (R * tempK)
   
-  // Update composition
+  // Update composition using atmosphere key (e.g., 'H2O' not 'water')
   const newComposition = { ...roomState.composition }
-  const currentFraction = newComposition[substanceId] || 0
+  const currentFraction = newComposition[atmosphereKey] || 0
   const addedFraction = molesAdded / (totalMolesApprox + molesAdded)
   
   // Normalize: reduce all existing fractions slightly, add new substance
@@ -118,7 +168,7 @@ export function addVaporToRoom(roomState, substanceId, massEvaporatedKg, molarMa
   for (const species of Object.keys(newComposition)) {
     newComposition[species] *= scaleFactor
   }
-  newComposition[substanceId] = (currentFraction * scaleFactor) + addedFraction
+  newComposition[atmosphereKey] = (currentFraction * scaleFactor) + addedFraction
   
   // Pressure increase from added moles (closed system)
   const newTotalMoles = totalMolesApprox + molesAdded
@@ -368,8 +418,8 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
   
   // 3. Apply vapor from boiling (if provided)
   if (options.vaporInput) {
-    const { substanceId, massKg, molarMass } = options.vaporInput
-    state = addVaporToRoom(state, substanceId, massKg, molarMass)
+    const { substanceId, massKg, molarMass, chemicalFormula } = options.vaporInput
+    state = addVaporToRoom(state, substanceId, massKg, molarMass, chemicalFormula)
   }
   
   // 4. Apply air handler/scrubber (uses automatic PID-like control)

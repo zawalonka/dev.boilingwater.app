@@ -68,6 +68,13 @@
    - [x] Integrated into GameScene physics loop (L1E4+ only)
    - [x] Accounts for room saturation (reduces net evaporation)
    - [x] Vapor added to room composition every timestep
+   - [x] Room humidity now affects water evaporation rate
+   - [x] Uses chemical formula from substance JSON (no hardcoding)
+   - [x] Added RH conversion utilities (`volumeFractionToRH`, `formatHumidity`)
+   - **Future:** Gather real weather data from location for humidity/temp
+     - API source TBD (OpenWeatherMap, NOAA, etc.)
+     - Would give realistic starting humidity for selected location
+     - Currently uses 50% RH standard day (like ISA for atmosphere)
 
 3. **Decomposition Behavior (NOT IMPLEMENTED)**
    - **Current:** Substances with `boilingPoint: null` just heat indefinitely
