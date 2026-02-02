@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ROOM_ENVIRONMENT_SYSTEM.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/planning/index.html">planning</a> <span class="breadcrumb-sep">›</span> <span>ROOM_ENVIRONMENT_SYSTEM.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ROOM_ENVIRONMENT_SYSTEM.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ROOM_ENVIRONMENT_SYSTEM.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ROOM_ENVIRONMENT_SYSTEM.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\planning\ROOM_ENVIRONMENT_SYSTEM.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Room Environment &amp; Atmospheric System
+
+&gt; **Status:** Phase 1 Implementation  
+&gt; **Scope:** Modular room state, AC/scrubber parts, closed-system physics, experiment scorecard
+&gt; **Target Integration:** L1E4+ (Room Control experiment unlocks AC/handler dropdowns)
+
+---
+
+## 📋 OVERVIEW
+
+Boiling Water will expand beyond fixed ambient conditions. Players will control room environments (AC, scrubbers), introduce substances, and observe how room state affects experiments. The room is a **closed system** where:
+
+- **Experiment → Room**: Boiling substances release vapor into room air (changes composition + pressure)
+- **Room → Experiment**: Room pressure affects boiling point (feedback loop)
+- **Equipment → Room**: AC controls temperature, air handlers filter/scrub composition
+
+**Key Features:**
+- Dynamic room temperature (PID-controlled AC)
+- Air composition tracking (O₂, N₂, CO₂, H₂O vapor, toxic gases, etc.)
+- Pressure feedback loop (vapor release → pressure rise → boiling point shift)
+- Endothermic/exothermic reactions affecting room heat
+- Heat/composition logging throughout experiment
+- End-of-experiment data sheet (downloadable CSV/JSON)
+- Finish Experiment button for non-quantitative experiment completion
+
+---
+
+## 📁 FILE STRUCTURE
+
+```
+public/assets/workshops/{workshop}/
+├── workshop.json           ← Theme/colors/images (no equipment)
+├── effects.json            ← Optional visual effects
+├── room.json               ← Room config + equipment references
+├── burners/
+│   ├── basic-2000w.json    ← Basic burner definition
+│   └── pro-5000w.json      ← Upgraded burner
+├── ac-units/
+│   ├── basic-1500w.json    ← AC unit definition
+│   └── pro-3000w.json      ← Upgraded AC unit
+└── air-handlers/
+    ├── basic-150cfm.json   ← Air handler definition
+    └── pro-350cfm.json     ← Upgraded air handler
+```
+
+Each workshop has its own equipment. Initially all workshops share identical configs, but can diverge later (alpha-kitchen may have better burner, etc.).
+
+**Note:** Burner wattageSteps currently in workshop.json will be migrated to burner JSON files.
+
+**Current Workshop Equipment:**
+| Workshop | Burner | Notes |
+|----------|--------|-------|
+| `alpha-kitchen` | `pro-5000w` | 9 heat settings, button controls |
+| `pre-alpha-kitchen-1` | `basic-2000w` | 4 heat settings, knob control |
+| `pre-alpha-kitchen-2` | `basic-2000w` | 4 heat settings, knob control |
+| `level-2-placeholder` | `basic-2000w` | 4 heat settings, knob control |
+
+---
+
+## 🏠 ROOM.JSON (Per Workshop)
+
+**Location:** `public/assets/workshops/{workshop}/room.json`
+
+```json
+{
+  &quot;room&quot;: {
+    &quot;volumeM3&quot;: 30,
+    &quot;initialTempC&quot;: 20,
+    &quot;leakRatePaPerSecond&quot;: 10,
+    &quot;heatCapacityJPerC&quot;: 36000
+  },
+  
+  &quot;atmosphere&quot;: {
+    &quot;N2&quot;: 0.78,
+    &quot;O2&quot;: 0.21,
+    &quot;Ar&quot;: 0.0093,
+    &quot;CO2&quot;: 0.0004,
+    &quot;H2O&quot;: 0.01
+  },
+  
+  &quot;pressureMode&quot;: &quot;location&quot;,
+  &quot;pressureModeNote&quot;: &quot;Code overrides to sealevel for L1E1 tutorial&quot;,
+  
+  &quot;availableBurners&quot;: [&quot;basic-2000w&quot;, &quot;pro-5000w&quot;],
+  &quot;availableAcUnits&quot;: [&quot;basic-1500w&quot;, &quot;pro-3000w&quot;],
+  &quot;availableAirHandlers&quot;: [&quot;basic-150cfm&quot;, &quot;pro-350cfm&quot;],
+  
+  &quot;defaults&quot;: {
+    &quot;burner&quot;: &quot;basic-2000w&quot;,
+    &quot;acUnit&quot;: &quot;basic-1500w&quot;,
+    &quot;airHandler&quot;: &quot;basic-150cfm&quot;,
+    &quot;airHandlerMode&quot;: &quot;medium&quot;
+  }
+}
+```
+
+### Pressure Mode Logic (Runtime)
+The `pressureMode` in room.json is the **default** for the workshop. Code overrides based on experiment:
+
+| Experiment | Effective Mode | Behavior |
+|------------|----------------|----------|
+| L1E1 (Tutorial) | `sealevel` | Always 101325 Pa (code override) |
+| L1E2+ | `location` | Use player&#39;s altitude selection |
+| Planetary labs | `custom` | Use room.initialPressurePa |
+
+**Implementation:** In physics calculation, check `activeExperiment`:
+```javascript
+const effectivePressureMode = activeExperiment === &#39;boiling-water&#39; ? &#39;sealevel&#39; : room.pressureMode
+```
+
+### Pressure Mode Values
+| Mode | Behavior | Use Case |
+|------|----------|----------|
+| `&quot;sealevel&quot;` | Always 101325 Pa | Tutorial (forced via code) |
+| `&quot;location&quot;` | Use player&#39;s altitude selection | L1E2+ |
+| `&quot;custom&quot;` | Use `room.initialPressurePa` | Planetary labs |
+
+---
+
+## 🏗️ DATA MODEL
+
+### Room Environment State
+```javascript
+{
+  // Physical space
+  roomVolume: 30,  // m³ (typical small lab)
+  
+  // Temperature control
+  roomTemperature: 20,  // °C (current)
+  acTargetTemperature: 20,  // °C (setpoint)
+  acPidState: {
+    proportional: 0,
+    integral: 0,
+    derivative: 0,
+    previousError: 0
+  },
+  
+  // Pressure (for future planetary labs)
+  roomPressure: 101325,  // Pa (standard atmosphere)
+  
+  // Air composition (by volume fraction or partial pressure)
+  composition: {
+    N2: 0.78,
+    O2: 0.21,
+    Ar: 0.01,
+    CO2: 0.0004,
+    H2O_vapor: 0.01,  // humidity
+    // Later: CH4, NH3, toxic gases, etc.
+  },
+  
+  // Scrubber/air handler target
+  scrubberTargetComposition: {
+    N2: 0.78,
+    O2: 0.21,
+    Ar: 0.01,
+    CO2: 0.0004,
+    H2O_vapor: 0.005  // target humidity
+  },
+  
+  // Historical tracking
+  heatLog: [
+    { timestamp: 0, source: &#39;experiment_burner&#39;, watts: 2000 },
+    { timestamp: 1, source: &#39;experiment_burner&#39;, watts: 2000 },
+    { timestamp: 2, source: &#39;ac_cooling&#39;, watts: -150 },
+    // Endothermic: { source: &#39;reaction_dissolution&#39;, watts: -300 }
+  ],
+  compositionLog: [
+    { timestamp: 0, composition: {...} },
+    { timestamp: 10, composition: {...} }
+  ],
+  
+  // Safety/alert tracking
+  alerts: [
+    { timestamp: 5, severity: &#39;warning&#39;, message: &#39;CO2 rising above 1%&#39; },
+    { timestamp: 12, severity: &#39;critical&#39;, message: &#39;Oxygen depleted below 18%&#39; }
+  ]
+}
+```
+
+---
+
+## � BURNER FILES (Per Workshop)
+
+### Burner Part File
+**Location:** `public/assets/workshops/{workshop}/burners/{name}.json`
+
+### Basic Burner: `basic-2000w.json`
+```json
+{
+  &quot;id&quot;: &quot;basic-2000w&quot;,
+  &quot;name&quot;: &quot;Basic 2kW Burner&quot;,
+  &quot;description&quot;: &quot;Standard kitchen burner with 4 heat settings&quot;,
+  
+  &quot;thermalCharacteristics&quot;: {
+    &quot;maxWatts&quot;: 2000,
+    &quot;minWatts&quot;: 0,
+    &quot;efficiencyPercent&quot;: 85
+  },
+  
+  &quot;wattageSteps&quot;: [0, 500, 1000, 2000],
+  
+  &quot;constraints&quot;: {
+    &quot;warmupTimeSeconds&quot;: 2,
+    &quot;cooldownTimeSeconds&quot;: 5
+  }
+}
+```
+
+### Upgraded Burner: `pro-5000w.json`
+```json
+{
+  &quot;id&quot;: &quot;pro-5000w&quot;,
+  &quot;name&quot;: &quot;Pro 5kW Burner&quot;,
+  &quot;description&quot;: &quot;Professional burner with 9 precise heat settings&quot;,
+  
+  &quot;thermalCharacteristics&quot;: {
+    &quot;maxWatts&quot;: 5000,
+    &quot;minWatts&quot;: 0,
+    &quot;efficiencyPercent&quot;: 92
+  },
+  
+  &quot;wattageSteps&quot;: [0, 500, 1000, 1500, 2000, 2500, 3000, 4000, 5000],
+  
+  &quot;constraints&quot;: {
+    &quot;warmupTimeSeconds&quot;: 1,
+    &quot;cooldownTimeSeconds&quot;: 3
+  }
+}
+```
+
+---
+
+## �🔧 AC UNIT FILES (Per Workshop)
+
+### AC Unit Part File
+**Location:** `public/assets/workshops/{workshop}/ac-units/{name}.json`
+
+### Basic AC Unit: `basic-1500w.json`
+```json
+{
+  &quot;id&quot;: &quot;basic-1500w&quot;,
+  &quot;name&quot;: &quot;AC 1.5kW&quot;,
+  &quot;description&quot;: &quot;Basic kitchen/lab AC with simple PID temperature control&quot;,
+  
+  &quot;thermalCharacteristics&quot;: {
+    &quot;coolingMaxWatts&quot;: 1500,
+    &quot;heatingMaxWatts&quot;: 800,
+    &quot;responseTimeSeconds&quot;: 8,
+    &quot;deadbandDegrees&quot;: 1.0
+  },
+  
+  &quot;pidTuning&quot;: {
+    &quot;Kp&quot;: 50,
+    &quot;Ki&quot;: 2,
+    &quot;Kd&quot;: 10,
+    &quot;integralWindupLimit&quot;: 100
+  },
+  
+  &quot;constraints&quot;: {
+    &quot;minSetpointC&quot;: 15,
+    &quot;maxSetpointC&quot;: 28,
+    &quot;maxRateOfChangePerSec&quot;: 1
+  }
+}
+```
+
+### Upgraded AC Unit: `pro-3000w.json`
+```json
+{
+  &quot;id&quot;: &quot;pro-3000w&quot;,
+  &quot;name&quot;: &quot;AC 3kW Pro&quot;,
+  &quot;description&quot;: &quot;Professional-grade AC with tighter PID control and wider range&quot;,
+  
+  &quot;thermalCharacteristics&quot;: {
+    &quot;coolingMaxWatts&quot;: 3000,
+    &quot;heatingMaxWatts&quot;: 1500,
+    &quot;responseTimeSeconds&quot;: 4,
+    &quot;deadbandDegrees&quot;: 0.5
+  },
+  
+  &quot;pidTuning&quot;: {
+    &quot;Kp&quot;: 80,
+    &quot;Ki&quot;: 4,
+    &quot;Kd&quot;: 15,
+    &quot;integralWindupLimit&quot;: 150
+  },
+  
+  &quot;constraints&quot;: {
+    &quot;minSetpointC&quot;: 10,
+    &quot;maxSetpointC&quot;: 35,
+    &quot;maxRateOfChangePerSec&quot;: 2
+  }
+}
+```
+
+---
+
+## 💨 AIR HANDLER FILES (Per Workshop)
+
+### Air Handler Part File
+**Location:** `public/assets/workshops/{workshop}/air-handlers/{name}.json`
+
+### Basic Air Handler: `basic-150cfm.json`
+```json
+{
+  &quot;id&quot;: &quot;basic-150cfm&quot;,
+  &quot;name&quot;: &quot;AHU 150 CFM&quot;,
+  &quot;description&quot;: &quot;Basic air handler for small kitchens/labs&quot;,
+  
+  &quot;flowCharacteristics&quot;: {
+    &quot;maxFlowRateCFM&quot;: 150,
+    &quot;maxFlowRateM3PerHour&quot;: 255
+  },
+  
+  &quot;filtrationEfficiency&quot;: {
+    &quot;CO2&quot;: 0.80,
+    &quot;H2O&quot;: 0.70,
+    &quot;NH3&quot;: 0.85,
+    &quot;CH4&quot;: 0.75,
+    &quot;C2H5OH&quot;: 0.80,
+    &quot;toxic_generic&quot;: 0.75
+  },
+  
+  &quot;targetComposition&quot;: {
+    &quot;N2&quot;: 0.78,
+    &quot;O2&quot;: 0.21,
+    &quot;Ar&quot;: 0.0093,
+    &quot;CO2&quot;: 0.0004,
+    &quot;H2O&quot;: 0.01
+  },
+  
+  &quot;operatingModes&quot;: {
+    &quot;off&quot;: { &quot;flowPercent&quot;: 0 },
+    &quot;low&quot;: { &quot;flowPercent&quot;: 25 },
+    &quot;medium&quot;: { &quot;flowPercent&quot;: 50 },
+    &quot;high&quot;: { &quot;flowPercent&quot;: 100 }
+  }
+}
+```
+
+### Upgraded Air Handler: `pro-350cfm.json`
+```json
+{
+  &quot;id&quot;: &quot;pro-350cfm&quot;,
+  &quot;name&quot;: &quot;AHU 350 CFM&quot;,
+  &quot;description&quot;: &quot;Professional air handler with HEPA filtration&quot;,
+  
+  &quot;flowCharacteristics&quot;: {
+    &quot;maxFlowRateCFM&quot;: 350,
+    &quot;maxFlowRateM3PerHour&quot;: 595
+  },
+  
+  &quot;filtrationEfficiency&quot;: {
+    &quot;CO2&quot;: 0.95,
+    &quot;H2O&quot;: 0.90,
+    &quot;NH3&quot;: 0.98,
+    &quot;CH4&quot;: 0.90,
+    &quot;C2H5OH&quot;: 0.95,
+    &quot;toxic_generic&quot;: 0.92
+  },
+  
+  &quot;targetComposition&quot;: {
+    &quot;N2&quot;: 0.78,
+    &quot;O2&quot;: 0.21,
+    &quot;Ar&quot;: 0.0093,
+    &quot;CO2&quot;: 0.0004,
+    &quot;H2O&quot;: 0.005
+  },
+  
+  &quot;operatingModes&quot;: {
+    &quot;off&quot;: { &quot;flowPercent&quot;: 0 },
+    &quot;low&quot;: { &quot;flowPercent&quot;: 25 },
+    &quot;medium&quot;: { &quot;flowPercent&quot;: 50 },
+    &quot;high&quot;: { &quot;flowPercent&quot;: 100 },
+    &quot;turbo&quot;: { &quot;flowPercent&quot;: 120 }
+  }
+}
+```
+
+---
+
+## 🔥 VAPOR RELEASE &amp; PRESSURE FEEDBACK
+
+### Closed System Physics
+When a substance boils, vapor is released into the room:
+
+```javascript
+// Mass evaporated (kg) → moles added to room
+molesAdded = massEvaporatedKg / molarMassKgPerMol
+
+// Update room composition
+composition[substanceId] += molesAdded / totalMolesInRoom
+
+// Update pressure (ideal gas law: P = nRT/V)
+newPressurePa = (totalMoles * R * tempK) / volumeM3
+```
+
+### Pressure Feedback Loop
+```
+Higher room pressure → Higher boiling point → Slower boil
+Lower room pressure → Lower boiling point → Faster boil
+```
+
+### Safety Alerts
+| Condition | Alert Level | Message |
+|-----------|-------------|---------|
+| O₂ &lt; 19.5% | Warning | &quot;Low oxygen&quot; |
+| O₂ &lt; 16% | Critical | &quot;Oxygen depletion - dangerous!&quot; |
+| CO₂ &gt; 1% | Warning | &quot;High CO₂&quot; |
+| NH₃ &gt; 25ppm | Critical | &quot;Toxic: Ammonia detected!&quot; |
+| Pressure &gt; 110kPa | Warning | &quot;Room overpressure&quot; |
+| Pressure &gt; 120kPa | Critical | &quot;Dangerous overpressure!&quot; |
+
+---
+
+## 🎮 EXPERIMENT UNLOCK PROGRESSION
+
+| Experiment | Unlocks | pressureMode | Flag |
+|------------|---------|--------------|------|
+| L1E1 (Tutorial) | Basic controls | `&quot;sealevel&quot;` | `isTutorial: true` |
+| L1E2 (Altitude) | Location selector | `&quot;location&quot;` | `requiresLocation: true` |
+| L1E3 (Fluids) | Fluid dropdown | `&quot;location&quot;` | - |
+| **L1E4 (Dangerous Liquids)** | **AC + Air Handler dropdowns** | `&quot;location&quot;` | `unlocksRoomControls: true` |
+
+**Implementation:** Check experiment flags in `EXPERIMENTS` constant (src/constants/workshops.js).
+
+---
+
+## 🏗️ RUNTIME STATE MODEL
+
+### Room Environment State (In-Memory)
+```javascript
+{
+  // Physical space
+  roomVolume: 30,  // m³ (from room.json)
+  
+  // Temperature control
+  roomTemperature: 20,  // °C (current)
+  acTargetTemperature: 20,  // °C (setpoint)
+  acPidState: {
+    proportional: 0,
+    integral: 0,
+    derivative: 0,
+    previousError: 0
+  },
+  
+  // Pressure (from room.json pressureMode)
+  roomPressure: 101325,  // Pa
+  
+  // Air composition (by volume fraction)
+  composition: {
+    N2: 0.78,
+    O2: 0.21,
+    Ar: 0.0093,
+    CO2: 0.0004,
+    H2O: 0.01,
+  },
+  
+  // Historical tracking
+  heatLog: [
+    { timestamp: 0, source: &#39;experiment_burner&#39;, watts: 2000 },
+    { timestamp: 2, source: &#39;ac_cooling&#39;, watts: -150 },
+  ],
+  compositionLog: [
+    { timestamp: 0, composition: {...} },
+    { timestamp: 10, composition: {...} }
+  ],
+  
+  // Safety/alert tracking
+  alerts: [
+    { timestamp: 5, severity: &#39;warning&#39;, message: &#39;CO2 rising above 1%&#39; },
+  ]
+}
+```
+
+---
+
+## 🔧 RUNTIME UTILITY FUNCTIONS
+
+### AC Controller
+**Location:** `src/utils/acUnitHandler.js`
+
+```javascript
+/**
+ * Apply PID-controlled AC heating/cooling to room temperature
+ * @param {number} roomTemp - Current room temperature (°C)
+ * @param {number} setpoint - AC target temperature (°C)
+ * @param {object} acUnit - AC unit configuration (from JSON)
+ * @param {object} pidState - Current PID state
+ * @param {number} deltaTime - Time step (seconds)
+ * @returns {object} { newTemp, heatOutput, updatedPidState }
+ */
+export function applyAcControl(roomTemp, setpoint, acUnit, pidState, deltaTime) {
+  const error = setpoint - roomTemp
+  
+  const { Kp, Ki, Kd, integralWindupLimit } = acUnit.pidTuning
+  const proportional = error * Kp
+  const integral = Math.max(-integralWindupLimit, 
+    Math.min(integralWindupLimit, pidState.integral + error * deltaTime)) * Ki
+  const derivative = ((error - pidState.previousError) / deltaTime) * Kd
+  
+  const pidOutput = (proportional + integral + derivative) / 100
+  
+  let heatOutput = pidOutput &gt; 0
+    ? pidOutput * acUnit.thermalCharacteristics.heatingMaxWatts
+    : pidOutput * acUnit.thermalCharacteristics.coolingMaxWatts
+  
+  const maxChange = acUnit.constraints.maxRateOfChangePerSec * deltaTime
+  const tempChange = Math.max(-maxChange, Math.min(maxChange, 
+    (heatOutput / 36000) * deltaTime))  // 36000 J/°C for 30m³ room
+  
+  return {
+    newTemp: roomTemp + tempChange,
+    heatOutput,
+    updatedPidState: { proportional, integral, derivative, previousError: error }
+  }
+}
+```
+
+### Air Handler / Scrubber
+**Location:** `src/utils/airHandlerScrubber.js`
+
+```javascript
+/**
+ * Apply scrubber/air handler to room composition
+ * @param {object} composition - Current air composition (fractions)
+ * @param {object} airHandler - Air handler config (from JSON)
+ * @param {number} roomVolume - Room volume (m³)
+ * @param {number} deltaTime - Time step (seconds)
+ * @param {string} operatingMode - &#39;off&#39; | &#39;low&#39; | &#39;medium&#39; | &#39;high&#39;
+ * @returns {object} { newComposition, contaminantsRemoved }
+ */
+export function applyScrubber(composition, airHandler, roomVolume, deltaTime, operatingMode) {
+  const flowPercent = airHandler.operatingModes[operatingMode]?.flowPercent || 0
+  const effectiveFlow = (airHandler.flowCharacteristics.maxFlowRateM3PerHour / 3600) 
+    * (flowPercent / 100)
+  
+  const exchangeFraction = Math.min(1, (effectiveFlow * deltaTime) / roomVolume)
+  
+  const newComposition = {}
+  const contaminantsRemoved = {}
+  
+  for (const [species, fraction] of Object.entries(composition)) {
+    const target = airHandler.targetComposition[species] || 0
+    const efficiency = airHandler.filtrationEfficiency[species] || 0.5
+    const adjustment = (target - fraction) * exchangeFraction * efficiency
+    newComposition[species] = fraction + adjustment
+    contaminantsRemoved[species] = -adjustment
+  }
+  
+  return { newComposition, contaminantsRemoved }
+}
+```
+
+---
+
+## 🔥 ENDOTHERMIC/EXOTHERMIC REACTION TRACKING
+
+### Reaction Heat Model (In Substance JSON)
+**Location:** `src/data/substances/compounds/{id}/info.json`
+
+```javascript
+{
+  // ... existing substance data ...
+  
+  &quot;reactions&quot;: {
+    &quot;dissolution&quot;: {
+      &quot;enthalpy&quot;: -6.0,  // kJ/mol (negative = exothermic, releases heat)
+      &quot;description&quot;: &quot;Dissolving NaCl in water is endothermic&quot;
+    },
+    &quot;vaporization&quot;: {
+      &quot;enthalpy&quot;: 40.7,  // kJ/mol (positive = endothermic, absorbs heat)
+      &quot;description&quot;: &quot;Water evaporation absorbs heat from surroundings&quot;
+    },
+    &quot;neutralization&quot;: {
+      &quot;enthalpy&quot;: -55.8,  // kJ/mol (exothermic)
+      &quot;description&quot;: &quot;Acid-base reaction releases significant heat&quot;
+    }
+  }
+}
+```
+
+### Heat Tracking in Simulation
+**Location:** `src/utils/physics.js` (expanded)
+
+```javascript
+/**
+ * Apply endothermic/exothermic effects to room temperature
+ * @param {number} reactionEnthalpyKJ - Heat released (positive) or absorbed (negative)
+ * @param {number} roomVolume - Room volume (m³)
+ * @param {number} roomHeatCapacity - Room air heat capacity (J/°C)
+ * @returns {number} Temperature change (°C)
+ */
+export function applyReactionHeatToRoom(reactionEnthalpyKJ, roomVolume, roomHeatCapacity) {
+  const reactionHeatJ = reactionEnthalpyKJ * 1000
+  const tempChange = reactionHeatJ / roomHeatCapacity
+  return tempChange
+}
+```
+
+---
+
+## 📊 EXPERIMENT SCORECARD
+
+### Scorecard Data Structure
+**Generated at experiment completion**
+
+```javascript
+{
+  &quot;experimentId&quot;: &quot;altitude-effect&quot;,
+  &quot;experimentName&quot;: &quot;Altitude&#39;s Effect on Boiling Water&quot;,
+  &quot;timestamp&quot;: &quot;2026-01-29T14:32:00Z&quot;,
+  
+  // Experiment results
+  &quot;experiment&quot;: {
+    &quot;substance&quot;: &quot;water&quot;,
+    &quot;altitude&quot;: 5000,
+    &quot;pressure&quot;: 54000,  // Pa
+    &quot;boilingPoint&quot;: 83.5,  // °C
+    &quot;timeToBoil&quot;: 245,  // seconds
+    &quot;heatApplied&quot;: 2000,  // Watts
+    &quot;waterEvaporated&quot;: 0.15,  // kg
+    &quot;finalTemperature&quot;: 83.5  // °C
+  },
+  
+  // Room state changes
+  &quot;room&quot;: {
+    &quot;startTemperature&quot;: 20,  // °C
+    &quot;endTemperature&quot;: 22.3,  // °C (heated by burner)
+    &quot;totalHeatAdded&quot;: 490000,  // Joules (from all sources)
+    &quot;totalHeatRemoved&quot;: 85000,  // Joules (from AC)
+    &quot;netHeatChange&quot;: 405000,  // Joules
+    
+    &quot;composition&quot;: {
+      &quot;start&quot;: { N2: 0.78, O2: 0.21, Ar: 0.01, CO2: 0.0004, H2O: 0.01 },
+      &quot;end&quot;: { N2: 0.78, O2: 0.21, Ar: 0.01, CO2: 0.0008, H2O: 0.05 }  // More moisture from boiling
+    },
+    
+    &quot;alerts&quot;: [
+      { timestamp: 120, severity: &#39;info&#39;, message: &#39;Room humidity rising (steam)&#39; },
+      { timestamp: 245, severity: &#39;info&#39;, message: &#39;Boiling detected&#39; }
+    ]
+  },
+  
+  // Performance metrics
+  &quot;metrics&quot;: {
+    &quot;efficiency&quot;: 0.78,  // How well the experiment ran
+    &quot;sustainability&quot;: 0.65,  // How well the room handled it
+    &quot;score&quot;: 72  // 0-100 overall
+  },
+  
+  // Player notes (optional)
+  &quot;notes&quot;: &quot;Tried altitude of 5000m to see boiling point change&quot;
+}
+```
+
+### Scorecard Rendering
+**Location:** `src/components/ExperimentScorecard.jsx` (new)
+
+- Display all experiment results
+- Show room state before/after
+- Display heat/composition logs as graphs
+- Download as CSV or JSON
+- Show alerts and warnings
+
+---
+
+## 🎮 CONTROL PANEL ADDITIONS
+
+### Finish Experiment Button
+**Location:** `src/components/ControlPanel.jsx` (new section)
+
+```jsx
+{/* Finish Experiment Button - appears when experiment achievable but not auto-complete */}
+{liquidMass &gt; 0 &amp;&amp; activeExperiment !== &#39;boiling-water&#39; &amp;&amp; (
+  &lt;button 
+    className=&quot;action-button finish-button&quot;
+    onClick={handleFinishExperiment}
+  &gt;
+    ✓ Finish Experiment
+  &lt;/button&gt;
+)}
+```
+
+### AC Controls (Hidden for now, UI template ready)
+**Location:** `src/components/RoomControls.jsx` (future)
+
+```jsx
+&lt;div className=&quot;room-controls&quot;&gt;
+  &lt;label&gt;AC Setpoint:&lt;/label&gt;
+  &lt;input type=&quot;range&quot; min=&quot;15&quot; max=&quot;28&quot; value={acSetpoint} /&gt;
+  
+  &lt;label&gt;Air Handler:&lt;/label&gt;
+  &lt;select value={airHandlerMode}&gt;
+    &lt;option value=&quot;standby&quot;&gt;Off&lt;/option&gt;
+    &lt;option value=&quot;low&quot;&gt;Low&lt;/option&gt;
+    &lt;option value=&quot;medium&quot;&gt;Medium&lt;/option&gt;
+    &lt;option value=&quot;high&quot;&gt;High&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+```
+
+---
+
+## 🗺️ IMPLEMENTATION ROADMAP
+
+### Phase 1: Foundation (Hidden from UI)
+- [ ] Create `src/utils/roomEnvironment.js` (state + integrator)
+- [ ] Create `src/utils/acUnitHandler.js` (PID controller)
+- [ ] Create `src/utils/airHandlerScrubber.js` (composition updater)
+- [ ] Add room.json to each workshop (`public/assets/workshops/{workshop}/room.json`)
+- [ ] Add burner files (`public/assets/workshops/{workshop}/burners/*.json`)
+- [ ] Add AC unit files (`public/assets/workshops/{workshop}/ac-units/*.json`)
+- [ ] Add air handler files (`public/assets/workshops/{workshop}/air-handlers/*.json`)
+- [ ] Migrate burner wattageSteps from workshop.json to burner JSONs
+- [ ] Update workshopLoader.js to load room.json + equipment files
+- [ ] Hook room temperature into physics simulation
+- [ ] Track heat/composition logs in GameScene state
+
+### Phase 2: Display &amp; Control
+- [ ] Create `src/components/ExperimentScorecard.jsx`
+- [ ] Add &quot;Finish Experiment&quot; button to ControlPanel
+- [ ] Implement scorecard download (CSV/JSON)
+- [ ] Add end-of-experiment modal (triggered after boiling or manual finish)
+
+### Phase 3: UI Enhancements
+- [ ] Add Room Controls panel (AC setpoint, air handler mode)
+- [ ] Display live heat/composition graphs during experiment
+- [ ] Show room alerts and warnings
+- [ ] Add room state sidebar
+
+### Phase 4: Extended Content
+- [ ] Planetary lab templates (Mars, Venus, alien methane atmosphere)
+- [ ] Substance-specific reactions (endothermic/exothermic)
+- [ ] AC/scrubber upgrades and progression
+- [ ] Failure scenarios (AC breaks, filter clogs, toxin buildup)
+
+---
+
+## 📝 NOTES FOR IMPLEMENTATION
+
+**PID Tuning:** Start conservative (Kp=50, Ki=2, Kd=10). Adjust if oscillations appear.
+
+**Heat Capacity:** Room air ~1200 J/m³·°C. For 30m³: ~36,000 J/°C.
+
+**Composition Units:** Use volume fractions (0.0–1.0 per species). Later switch to partial pressures if needed for precision.
+
+**Logging Strategy:** Store heat/composition at configurable interval (every timestep or every 10 steps) to avoid log bloat.
+
+**Scorecard Timing:** Generate when user clicks &quot;Finish Experiment&quot; or when auto-complete triggers (boiling point reached).
+
+---
+
+**Last Updated:** 2026-01-31  
+**Author:** Planning Phase  
+**Status:** Ready for implementation
+
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

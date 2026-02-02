@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>state.json - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/index.html">data</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/substances/index.html">substances</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/substances/compounds/index.html">compounds</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/substances/compounds/pure/index.html">pure</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/substances/compounds/pure/water-h2o/index.html">water-h2o</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/data/substances/compounds/pure/water-h2o/liquid/index.html">liquid</a> <span class="breadcrumb-sep">›</span> <span>state.json</span>
+        </nav>
+        <div class="wiki-topbar-title">state.json</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">state.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">json</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>state.json</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\data\substances\compounds\pure\water-h2o\liquid\state.json</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-json">{
+  &quot;compoundId&quot;: &quot;water&quot;,
+  &quot;phase&quot;: &quot;liquid&quot;,
+  &quot;phaseName&quot;: &quot;water&quot;,
+  &quot;density&quot;: {
+    &quot;value&quot;: 1.0,
+    &quot;unit&quot;: &quot;kg/L&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;pressure&quot;: 1.0,
+    &quot;maxDensityTemperature&quot;: 3.98,
+    &quot;volumetricExpansionCoefficient&quot;: 0.000207,
+    &quot;note&quot;: &quot;Dynamic: use expansion coefficient to calculate density at other T&quot;
+  },
+  &quot;specificHeat&quot;: {
+    &quot;value&quot;: 4.186,
+    &quot;unit&quot;: &quot;J/(g·°C)&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;source&quot;: &quot;measured&quot;
+  },
+  &quot;thermalConductivity&quot;: {
+    &quot;value&quot;: 0.6,
+    &quot;unit&quot;: &quot;W/(m·K)&quot;,
+    &quot;temperature&quot;: 20
+  },
+  &quot;latentHeatOfVaporization&quot;: {
+    &quot;value&quot;: 2257,
+    &quot;unit&quot;: &quot;kJ/kg&quot;,
+    &quot;note&quot;: &quot;Energy required to boil water to steam at 100°C&quot;
+  },
+  &quot;evaporationCoefficient&quot;: {
+    &quot;value&quot;: 0.04,
+    &quot;note&quot;: &quot;Hertz-Knudsen α coefficient. Water has low value due to strong hydrogen bonding (Eames 1997). Range 0.01-1.0.&quot;
+  },
+  &quot;compressibility&quot;: {
+    &quot;value&quot;: 0.000450,
+    &quot;unit&quot;: &quot;1/Pa&quot;,
+    &quot;note&quot;: &quot;How much density changes under pressure (use for high-altitude inverse)&quot;
+  },
+  &quot;antoineCoefficients&quot;: {
+    &quot;sets&quot;: [
+      {
+        &quot;name&quot;: &quot;low-temperature&quot;,
+        &quot;A&quot;: 8.07131,
+        &quot;B&quot;: 1730.63,
+        &quot;C&quot;: 233.426,
+        &quot;TminC&quot;: 1,
+        &quot;TmaxC&quot;: 100,
+        &quot;source&quot;: &quot;NIST (Bridgeman and Aldrich, 1964)&quot;
+      },
+      {
+        &quot;name&quot;: &quot;high-temperature&quot;,
+        &quot;A&quot;: 8.14019,
+        &quot;B&quot;: 1810.94,
+        &quot;C&quot;: 244.485,
+        &quot;TminC&quot;: 99,
+        &quot;TmaxC&quot;: 374,
+        &quot;source&quot;: &quot;NIST (Stull, 1947)&quot;
+      }
+    ],
+    &quot;A&quot;: 8.07131,
+    &quot;B&quot;: 1730.63,
+    &quot;C&quot;: 233.426,
+    &quot;TminC&quot;: 1,
+    &quot;TmaxC&quot;: 374,
+    &quot;TminC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MINIMUM: Below 1°C, water freezes at standard pressure. The low-temperature set (1-100°C) is used.&quot;,
+    &quot;TmaxC_note&quot;: &quot;EMPIRICALLY VERIFIED RANGE MAXIMUM: 374°C is water&#39;s critical point (liquid/gas distinction vanishes). The high-temperature set (99-374°C) covers above-boiling conditions.&quot;,
+    &quot;formula&quot;: &quot;log10(Pvap) = A - B/(C + T)&quot;,
+    &quot;unit&quot;: &quot;Pressure in mmHg, Temperature in °C&quot;,
+    &quot;source&quot;: &quot;NIST Chemistry WebBook - two coefficient sets covering 1-374°C&quot;,
+    &quot;note&quot;: &quot;Two overlapping sets provide full liquid range. Default coefficients are for common use (1-100°C). Physics engine should select appropriate set based on expected temperature range.&quot;
+  },
+  &quot;electricalConductivity&quot;: {
+    &quot;value&quot;: 0.00055,
+    &quot;unit&quot;: &quot;S/m&quot;,
+    &quot;temperature&quot;: 20,
+    &quot;note&quot;: &quot;Pure water is a poor conductor&quot;,
+    &quot;applicationUse&quot;: &quot;Shows baseline; any dissolved ions dramatically increase conductivity&quot;
+  },
+  &quot;reference&quot;: &quot;pure/water-h2o/info.json&quot;
+}
+
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

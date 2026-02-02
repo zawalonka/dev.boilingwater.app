@@ -3,35 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Different Fluids</title>
+  <title>Different Fluids - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 </head>
 <body>
   <div class="wiki-layout">
     <div class="wiki-main">
       <header class="wiki-topbar">
         <details class="wiki-menu" aria-label="Menu">
-          <summary>☰</summary>
+          <summary>☰ Menu</summary>
           <nav class="wiki-menu-links">
-            <a href="/wiki/index.html">Main page</a>
-            <a href="/wiki/entities/elements/index.html">Elements</a>
-            <a href="/wiki/entities/compounds/index.html">Compounds</a>
-            <a href="/wiki/entities/solutions/index.html">Solutions</a>
-            <a href="/wiki/entities/phases/index.html">Phases</a>
-            <a href="/wiki/entities/levels/index.html">Levels</a>
-            <a href="/wiki/entities/experiments/index.html">Experiments</a>
-            <a href="/wiki/entities/formulas/index.html">Formulas</a>
-            <a href="/wiki/entities/processes/index.html">Processes</a>
-            <a href="/wiki/entities/modules/index.html">Modules</a>
-            <a href="/wiki/entities/symbols/index.html">Symbols</a>
-            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
             <div class="wiki-menu-divider"></div>
-            <a href="/">Back to Game</a>
+            <a href="/">⬅️ Back to Game</a>
           </nav>
         </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/index.html">Experiments</a> <span class="breadcrumb-sep">›</span> <span>Different Fluids</span>
+        </nav>
         <div class="wiki-topbar-title">Different Fluids</div>
       </header>
       <main class="wiki-content">
+        
         <article class="wiki-article">
           
       
@@ -58,6 +86,21 @@
         <div class="infobox-value"><a href="/wiki/entities/experiments/dangerous-liquids.html">Dangerous Liquids</a></div>
       </div>
     
+      <div class="infobox-row">
+        <div class="infobox-label">Tutorial</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Requires Location</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Unlocks Room Controls</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
     </aside>
   
       <section class="section">
@@ -67,12 +110,205 @@
     <p class="subtitle">Experiment</p>
   </div>
 
-        <h3>Parent (level)</h3>
-        <p><a href="/wiki/entities/levels/1.html">Level 1</a></p>
+        <p>Explore how different fluids behave when heated</p>
       </section>
+      
+        <section class="section">
+          <h2>📚 What You Learn</h2>
+          <p>Different substances have <strong>unique boiling points</strong> due to molecular structure and intermolecular forces:</p>
+          <table class="wiki-table">
+            <tr><th>Substance</th><th>Boiling Point (sea level)</th><th>Why?</th></tr>
+            <tr><td>Acetone</td><td>56.0°C</td><td>Weak dipole-dipole forces</td></tr>
+            <tr><td>Ethanol</td><td>78.4°C</td><td>Hydrogen bonding (moderate)</td></tr>
+            <tr><td>Water</td><td>100.0°C</td><td>Strong hydrogen bonding</td></tr>
+            <tr><td>Acetic Acid</td><td>118.1°C</td><td>Carboxylic acid dimers</td></tr>
+          </table>
+        </section>
+        <section class="section">
+          <h2>🔬 Full Simulation Pipeline</h2>
+          <p>The game runs a complete thermodynamics simulation every 100ms. Here's what happens when heating ethanol:</p>
+          
+          <h3>Step 1: Load Substance Properties</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 1: Load Substance Data</summary>
+    <p class="code-description">Each substance has unique thermodynamic properties loaded from JSON files.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Loading ethanol from JSON
+const ethanol = await loadSubstancePhase(&#39;ethanol&#39;, &#39;liquid&#39;)
+
+// Parsed properties:
+{
+  name: &quot;Ethanol&quot;,
+  molarMass: 46.07,
+  density: 0.789,              // kg/L at 20°C
+  specificHeat: 2.44,          // J/(g·°C)
+  thermalConductivity: 0.169,  // W/(m·K)
+  heatOfVaporization: 838,     // kJ/kg
+  antoineCoefficients: {
+    A: 8.04494,
+    B: 1554.3,
+    C: 222.65,
+    TminC: -31,
+    TmaxC: 100
+  }
+}</code></pre>
+  </details>
+
+          <h3>Step 2: Calculate Boiling Point (Antoine Equation)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 2: Boiling Point Calculation</summary>
+    <p class="code-description">Antoine equation converts pressure to boiling temperature using substance-specific coefficients.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Ethanol at sea level (101,325 Pa)
+const pressure = 101325  // Pa
+const coeffs = ethanol.antoineCoefficients
+
+// Antoine equation: log₁₀(P) = A - B/(C + T)
+// Solve for T: T = B/(A - log₁₀(P)) - C
+const pressureMmHg = pressure * 0.00750062  // 759.99 mmHg
+const boilingTemp = coeffs.B / (coeffs.A - Math.log10(pressureMmHg)) - coeffs.C
+
+// Result: 78.4°C (ethanol&#39;s boiling point)</code></pre>
+  </details>
+
+          <h3>Step 3: Heat Transfer (Q = mcΔT)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 3: Heating Calculation</summary>
+    <p class="code-description">Heat from burner raises temperature based on specific heat capacity (unique per substance).</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Heating 0.5 kg ethanol with 2000W burner
+const mass = 0.5           // kg
+const specificHeat = 2.44  // J/(g·°C) = 2440 J/(kg·°C)
+const heatInput = 2000     // Watts
+const deltaTime = 0.1      // 100ms time step
+
+// Energy added this timestep
+const energyAdded = heatInput * deltaTime  // 200 Joules
+
+// Temperature increase: ΔT = Q / (m × c)
+const tempIncrease = energyAdded / (mass * specificHeat)
+// Result: 0.164°C per timestep
+
+// New temperature
+currentTemp += tempIncrease  // 25.0 → 25.164°C</code></pre>
+  </details>
+
+          <h3>Step 4: Cooling (Newton's Law of Cooling)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 4: Cooling Model</summary>
+    <p class="code-description">When burner is off, liquid cools exponentially toward room temperature.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Hot ethanol cooling to room temperature
+const currentTemp = 60      // °C
+const ambientTemp = 20      // °C
+const k = 0.05              // heat transfer coefficient
+const deltaTime = 0.1       // seconds
+
+// Newton&#39;s Law: dT/dt = -k(T - T_ambient)
+const coolingRate = -k * (currentTemp - ambientTemp)
+// Result: -2.0°C per second
+
+const tempChange = coolingRate * deltaTime
+// Result: -0.2°C this timestep
+
+currentTemp += tempChange  // 60.0 → 59.8°C</code></pre>
+  </details>
+
+          <h3>Step 5: Evaporation (Pre-Boiling)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 5: Pre-Boiling Evaporation</summary>
+    <p class="code-description">Liquids evaporate even below boiling point - substances with higher vapor pressure evaporate faster.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Ethanol evaporating at 50°C (below boiling)
+const currentTemp = 50      // °C
+const surfaceArea = 0.0314  // m² (10cm radius pot)
+
+// Get vapor pressure at current temperature
+const vaporPressure = solveAntoineForPressure(currentTemp, antoineCoeffs)
+// Result: 29,300 Pa (ethanol has high vapor pressure)
+
+// Mass transfer coefficient (depends on air flow, temperature)
+const kMass = 0.002  // m/s
+
+// Evaporation rate (mass transfer model)
+const evapRate = kMass * surfaceArea * (vaporPressure / (R * T))
+// Result: 0.00015 kg/s
+
+const massLost = evapRate * deltaTime  // 0.000015 kg per timestep</code></pre>
+  </details>
+
+          <h3>Step 6: Phase Change (Boiling)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 6: Phase Change</summary>
+    <p class="code-description">At boiling point, energy creates vapor instead of raising temperature. Lower heat of vaporization = faster boiling.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Ethanol reaches 78.4°C and starts boiling
+if (currentTemp &gt;= boilingPoint &amp;&amp; heatInput &gt; 0) {
+  // All energy goes into phase change (no temp increase)
+  const energyAvailable = heatInput * deltaTime  // 200 J
+  const heatOfVaporization = 838000  // J/kg for ethanol
+  
+  // Mass converted to vapor
+  const massVaporized = energyAvailable / heatOfVaporization
+  // Result: 0.000239 kg (0.239 grams) per timestep
+  
+  liquidMass -= massVaporized
+  
+  // Temperature stays at 78.4°C until all liquid is gone
+  currentTemp = boilingPoint
+}</code></pre>
+  </details>
+
+          <h3>Complete Timestep Function</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Complete Simulation Loop</summary>
+    <p class="code-description">The complete simulation pipeline runs every 100ms, updating temperature and mass based on all physics models.</p>
+    <pre class="line-numbers"><code class="language-javascript">// This runs every 100ms during the game
+function simulateTimeStep(state, heatInput, deltaTime, substance) {
+  // 1. Calculate boiling point
+  const boilingPoint = calculateBoilingPoint(altitude, substance)
+  
+  // 2. Add heat from burner
+  if (heatInput &gt; 0 &amp;&amp; state.temp &lt; boilingPoint) {
+    const energyAdded = heatInput * deltaTime
+    const tempIncrease = energyAdded / (state.mass * substance.specificHeat)
+    state.temp += tempIncrease
+  }
+  
+  // 3. Apply cooling
+  const coolingRate = -substance.heatTransferCoeff * (state.temp - ambientTemp)
+  state.temp += coolingRate * deltaTime
+  
+  // 4. Evaporation (pre-boiling)
+  if (state.temp &lt; boilingPoint) {
+    const evapRate = calculateEvaporationRate(state.temp, substance)
+    state.mass -= evapRate * deltaTime
+  }
+  
+  // 5. Boiling (at boiling point)
+  if (state.temp &gt;= boilingPoint &amp;&amp; heatInput &gt; 0) {
+    const massVaporized = (heatInput * deltaTime) / substance.heatOfVaporization
+    state.mass -= massVaporized
+    state.temp = boilingPoint  // Temperature plateaus
+  }
+  
+  return state
+}</code></pre>
+  </details>
+        </section>
+        <section class="section">
+          <h2>🎮 Try This</h2>
+          <ul>
+            <li><strong>Compare heating rates:</strong> Acetone heats faster (lower specific heat: 2.15 J/g°C) vs water (4.18 J/g°C)</li>
+            <li><strong>Compare boiling times:</strong> Acetone boils at 56°C, ethanol at 78°C, water at 100°C</li>
+            <li><strong>Watch evaporation:</strong> Acetone loses mass faster even before boiling (higher vapor pressure)</li>
+            <li><strong>Observe cooling:</strong> Different substances cool at different rates based on thermal conductivity</li>
+          </ul>
+        </section>
+      
       <section class="section">
-        <h2>Raw data</h2>
-        <pre class="code">{
+        <h2>🔧 Formulas Used</h2>
+        <p>This experiment relies on the following physics formulas:</p>
+        <ul><li><a href="/wiki/entities/formulas/antoineEquation.html">antoineEquation</a> - Calculates vapor pressure and boiling points</li><li><a href="/wiki/entities/formulas/heatCapacity.html">heatCapacity</a> - Determines how fast liquid heats up</li><li><a href="/wiki/entities/formulas/newtonCooling.html">newtonCooling</a> - Models heat loss to environment</li><li><a href="/wiki/entities/formulas/ebullioscopy.html">ebullioscopy</a> - Boiling point elevation for solutions</li><li><a href="/wiki/entities/formulas/dynamicKb.html">dynamicKb</a> - Temperature-dependent ebullioscopic constant</li></ul>
+      </section>
+      
+      <section class="section">
+        <h2>📊 Experiment Configuration</h2>
+        <pre class="line-numbers"><code class="language-json">{
   &quot;id&quot;: &quot;different-fluids&quot;,
   &quot;name&quot;: &quot;Different Fluids&quot;,
   &quot;level&quot;: 1,
@@ -81,12 +317,147 @@
   &quot;isTutorial&quot;: false,
   &quot;order&quot;: 3,
   &quot;levelId&quot;: 1
-}</pre>
+}</code></pre>
       </section>
     
         </article>
       </main>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
 </body>
 </html>

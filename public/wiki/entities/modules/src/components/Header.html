@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Header.jsx - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/components/index.html">components</a> <span class="breadcrumb-sep">›</span> <span>Header.jsx</span>
+        </nav>
+        <div class="wiki-topbar-title">Header.jsx</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">Header.jsx</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">React Component</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">jsx</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/App.html">App.jsx</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>Header.jsx</h1>
+    <p class="subtitle">React Component</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>Header Component</p>
+<p>This is the top navigation bar of the application.</p>
+<p>It displays:</p>
+<p>- App title (&quot;Boiling Water&quot;)</p>
+<p>- Level and Experiment dropdowns (when in game view)</p>
+<p>- Hamburger menu button (on the right side)</p>
+<p>- Dropdown menu with navigation links (appears when hamburger is clicked)</p>
+<p>The header is fixed at the top of the viewport and doesn&#39;t scroll with the page.</p>
+<p>It&#39;s positioned above the main game scene.</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\components\Header.jsx</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-jsx">/**
+ * Header Component
+ * 
+ * This is the top navigation bar of the application.
+ * It displays:
+ * - App title (&quot;Boiling Water&quot;)
+ * - Level and Experiment dropdowns (when in game view)
+ * - Hamburger menu button (on the right side)
+ * - Dropdown menu with navigation links (appears when hamburger is clicked)
+ * 
+ * The header is fixed at the top of the viewport and doesn&#39;t scroll with the page.
+ * It&#39;s positioned above the main game scene.
+ */
+
+import { useState } from &#39;react&#39;
+import &#39;../styles/Header.css&#39;
+import { EXPERIMENTS } from &#39;../constants/workshops&#39;
+
+/**
+ * Header Function Component
+ * 
+ * Props:
+ * - onMenuClick: Optional callback function to notify parent when menu is toggled
+ * - onNavigate: Navigate to a given view (game, about, docs, issue, workshop)
+ * - onReload: Reload the current level/game view
+ * - onWorkshopChange: Change the active workshop id
+ * - onLevelChange: Change the active level id
+ * - onExperimentChange: Change the active experiment id
+ * - onSkipTutorial: Skip the tutorial and reveal level selectors
+ * - activeWorkshopId: Currently selected workshop id
+ * - activeLevel: Currently selected level (numeric: 0, 1, 2...)
+ * - activeExperiment: Currently selected experiment id
+ * - availableWorkshops: Array of workshop ids to choose from (filtered by level)
+ * - availableLevels: Array of level objects with id, name, order
+ * - availableExperiments: Array of experiment objects for current level
+ * - activeView: Current active view (game, about, docs, submit-issue, submit-workshop)
+ * - showSelectors: Whether to show level/workshop selector dropdowns
+ */
+function Header({ 
+  onMenuClick, 
+  onNavigate, 
+  onReload,
+  onWorkshopChange,
+  onLevelChange,
+  onExperimentChange,
+  onSkipTutorial,
+  activeWorkshopId,
+  activeLevel,
+  activeExperiment,
+  availableWorkshops = [],
+  availableLevels = [],
+  availableExperiments = [],
+  activeView,
+  showSelectors = false
+}) {
+  // ============================================================================
+  // STATE
+  // ============================================================================
+
+  /**
+   * Track whether the dropdown menu is currently open
+   * - true: menu is visible
+   * - false: menu is hidden
+   * Starts as false (menu closed)
+   */
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // ============================================================================
+  // EVENT HANDLERS
+  // ============================================================================
+
+  /**
+   * toggleMenu - Toggle the menu open/closed state
+   * 
+   * Does two things:
+   * 1. Flips the menuOpen state (open → closed, closed → open)
+   * 2. Calls the onMenuClick callback if provided by parent component
+   *    (This lets parent components react to menu changes)
+   */
+  const toggleMenu = () =&gt; {
+    setMenuOpen(!menuOpen)        // Flip the menu state
+    onMenuClick?.()               // Call parent callback if it exists (using optional chaining)
+  }
+
+  // Navigate helper
+  const handleNavigate = (view) =&gt; {
+    onNavigate?.(view)
+    setMenuOpen(false)
+  }
+
+  // Reload helper (used when already in game view)
+  const handleReload = () =&gt; {
+    onReload?.()
+    setMenuOpen(false)
+  }
+
+  // Workshop selector
+  const handleWorkshopChange = (e) =&gt; {
+    const next = e.target.value
+    onWorkshopChange?.(next)
+  }
+
+  // Level selector
+  const handleLevelChange = (e) =&gt; {
+    const next = e.target.value
+    onLevelChange?.(next)
+  }
+
+  // ============================================================================
+  // RENDER
+  // ============================================================================
+
+  return (
+    &lt;header className=&quot;app-header&quot;&gt;
+      {/* 
+        Main header container
+        - Positioned at the very top of the page (fixed positioning via CSS)
+        - Contains app title and menu button side-by-side
+      */}
+      &lt;div className=&quot;header-content&quot;&gt;
+        
+        {/* 
+          ===== HAMBURGER MENU BUTTON =====
+          The three-line menu icon on the left
+          Clicking this toggles the dropdown menu open/closed
+        */}
+        &lt;button 
+          className=&quot;hamburger-menu&quot;
+          onClick={toggleMenu}
+          aria-label=&quot;Menu&quot;  // Accessibility: screen readers will read &quot;Menu&quot; for this button
+        &gt;
+          {/* Three &lt;span&gt; elements that form the visual hamburger menu icon */}
+          {/* (Styled as three horizontal lines via CSS) */}
+          &lt;span&gt;&lt;/span&gt;
+          &lt;span&gt;&lt;/span&gt;
+          &lt;span&gt;&lt;/span&gt;
+        &lt;/button&gt;
+
+        {/* App title (keep clean; experiment name lives in dropdown) */}
+        &lt;h1 className=&quot;app-title&quot;&gt;Boiling Water&lt;/h1&gt;
+
+        {/* Skip Tutorial button (Boiling Water experiment only) */}
+        {activeExperiment === &#39;boiling-water&#39; &amp;&amp; !showSelectors &amp;&amp; (
+          &lt;button 
+            className=&quot;skip-tutorial-banner-button&quot;
+            onClick={onSkipTutorial}
+            title=&quot;Skip the tutorial and unlock level and experiment selectors&quot;
+          &gt;
+            ⏭️ Skip Tutorial
+            &lt;span className=&quot;skip-tutorial-note&quot;&gt;⚠️ Resets level&lt;/span&gt;
+          &lt;/button&gt;
+        )}
+
+        {/* Level and Experiment selectors (hidden until tutorial passed or skipped) */}
+        {showSelectors &amp;&amp; activeView === &#39;game&#39; &amp;&amp; (
+          &lt;&gt;
+            {/* Level selector - Numeric levels */}
+            &lt;div className=&quot;level-selector&quot;&gt;
+              &lt;label htmlFor=&quot;level-select&quot; className=&quot;level-label&quot;&gt;Level:&lt;/label&gt;
+              &lt;select 
+                id=&quot;level-select&quot; 
+                value={activeLevel} 
+                onChange={(e) =&gt; onLevelChange?.(parseInt(e.target.value))}
+              &gt;
+                {availableLevels.map((level) =&gt; (
+                  &lt;option key={level.id} value={level.id}&gt;{`Level ${level.id}`}&lt;/option&gt;
+                ))}
+              &lt;/select&gt;
+              &lt;span className=&quot;level-note&quot;&gt;⚠️ Resets game&lt;/span&gt;
+            &lt;/div&gt;
+
+            {/* Experiment selector - Changes within current level */}
+            {availableExperiments.length &gt; 0 &amp;&amp; (
+              &lt;div className=&quot;experiment-selector&quot;&gt;
+                &lt;label htmlFor=&quot;experiment-select&quot; className=&quot;experiment-label&quot;&gt;Experiment:&lt;/label&gt;
+                &lt;select 
+                  id=&quot;experiment-select&quot; 
+                  value={activeExperiment} 
+                  onChange={(e) =&gt; onExperimentChange?.(e.target.value)}
+                &gt;
+                  {availableExperiments.map((exp, idx) =&gt; (
+                    &lt;option key={exp.id} value={exp.id}&gt;{`${idx + 1}. ${exp.name}`}&lt;/option&gt;
+                  ))}
+                &lt;/select&gt;
+                &lt;span className=&quot;level-note&quot;&gt;⚠️ Resets game&lt;/span&gt;
+              &lt;/div&gt;
+            )}
+
+            {/* Workshop selector - Visual variant within current level */}
+            &lt;div className=&quot;workshop-selector&quot;&gt;
+              &lt;label htmlFor=&quot;workshop-select&quot; className=&quot;workshop-label&quot;&gt;Workshop:&lt;/label&gt;
+              &lt;select id=&quot;workshop-select&quot; value={activeWorkshopId} onChange={handleWorkshopChange}&gt;
+                {availableWorkshops.map((workshop) =&gt; (
+                  &lt;option key={workshop.id} value={workshop.id}&gt;{workshop.name}&lt;/option&gt;
+                ))}
+              &lt;/select&gt;
+              &lt;span className=&quot;level-note&quot;&gt;⚠️ Resets game&lt;/span&gt;
+            &lt;/div&gt;
+
+            {/* Reset level button */}
+            &lt;button 
+              className=&quot;reset-level-button&quot;
+              onClick={handleReload}
+              title=&quot;Reset current level to starting state&quot;
+            &gt;
+              🔄 Reset
+            &lt;/button&gt;
+          &lt;/&gt;
+        )}
+      &lt;/div&gt;
+
+      {/* 
+        ===== DROPDOWN MENU =====
+        Navigation menu with links
+        Only rendered if menuOpen === true (conditional rendering using &amp;&amp;)
+        When menuOpen is false, this entire section doesn&#39;t appear in the DOM
+      */}
+      {menuOpen &amp;&amp; (
+        &lt;nav className=&quot;menu-dropdown&quot;&gt;
+          &lt;ul&gt;
+            {/* 
+              Navigation links
+              Currently these are placeholder links (href=&quot;#home&quot;, etc.)
+              In a real app, these might navigate to different pages or trigger app functions
+            */}
+            &lt;li&gt;
+              {activeView === &#39;game&#39; ? (
+                &lt;button onClick={handleReload} className=&quot;menu-link&quot;&gt;Reload Level&lt;/button&gt;
+              ) : (
+                &lt;button onClick={() =&gt; handleNavigate(&#39;game&#39;)} className=&quot;menu-link&quot;&gt;Back to Game&lt;/button&gt;
+              )}
+            &lt;/li&gt;
+            &lt;li&gt;&lt;button onClick={() =&gt; handleNavigate(&#39;about&#39;)} className=&quot;menu-link&quot;&gt;About&lt;/button&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;button onClick={() =&gt; handleNavigate(&#39;docs&#39;)} className=&quot;menu-link&quot;&gt;Docs&lt;/button&gt;&lt;/li&gt;
+            &lt;li&gt;
+              &lt;a
+                href=&quot;/wiki/index.html&quot;
+                className=&quot;menu-link&quot;
+                target=&quot;_blank&quot;
+                rel=&quot;noreferrer&quot;
+              &gt;
+                Wiki
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;button onClick={() =&gt; handleNavigate(&#39;submit-issue&#39;)} className=&quot;menu-link&quot;&gt;Submit Issue&lt;/button&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;button onClick={() =&gt; handleNavigate(&#39;submit-workshop&#39;)} className=&quot;menu-link&quot;&gt;Submit Workshop&lt;/button&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      )}
+    &lt;/header&gt;
+  )
+}
+
+export default Header
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

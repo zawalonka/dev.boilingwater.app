@@ -1,0 +1,191 @@
+{
+  "_META": {
+    "version": "1.0",
+    "description": "Script dependency graph and metadata for wiki generation",
+    "created": "2026-02-01",
+    "purpose": "Document which scripts depend on each other, what they do, when they run, and whether they're used"
+  },
+  "scripts": {
+    "fetch-elements-from-api": {
+      "name": "Fetch Elements from API",
+      "path": "scripts/fetch-elements-from-api.js",
+      "purpose": "Fetch periodic table element properties from external API",
+      "runTime": "dev",
+      "inputs": [
+        "api.api-ninjas.com/v1/elements (external API)"
+      ],
+      "outputs": [
+        "src/data/substances/periodic-table/*.json (118 element files)"
+      ],
+      "apiUsed": "api.api-ninjas.com/v1/elements",
+      "dataRetrieved": 26,
+      "fallback": "generate-all-118",
+      "status": "active",
+      "used": true,
+      "buildTime": false,
+      "runtimeOnly": true,
+      "orphan": false,
+      "description": "Fetches 26 numeric properties (atomic mass, electronegativity, ionization energy, etc.) for all 118 elements. Has fallback to hardcoded data if API fails."
+    },
+    "generate-all-118": {
+      "name": "Generate All 118 Elements",
+      "path": "scripts/generate-all-118.js",
+      "purpose": "Hardcoded fallback periodic table generator",
+      "runTime": "dev",
+      "inputs": [
+        "Hardcoded PERIODIC_TABLE constant in script"
+      ],
+      "outputs": [
+        "src/data/substances/periodic-table/*.json (118 element files)"
+      ],
+      "apiUsed": "none",
+      "dataRetrieved": 26,
+      "parent": "fetch-elements-from-api",
+      "relationship": "fallback - runs if fetch-elements-from-api fails OR as standalone",
+      "status": "active",
+      "used": true,
+      "buildTime": false,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "Hardcoded alternative to fetch-elements-from-api. Contains the same 26 properties frozen in code. Serves as backup if API unavailable."
+    },
+    "add-diffusion-volumes": {
+      "name": "Add Diffusion Volumes",
+      "path": "scripts/add-diffusion-volumes.js",
+      "purpose": "Inject Fuller-Schettler-Giddings atomic diffusion volumes into element files",
+      "runTime": "dev",
+      "inputs": [
+        "src/data/substances/periodic-table/*.json (must exist first)"
+      ],
+      "outputs": [
+        "Updated src/data/substances/periodic-table/*.json with diffusion field"
+      ],
+      "dependencies": [
+        "fetch-elements-from-api OR generate-all-118 (must run first)"
+      ],
+      "apiUsed": "none",
+      "dataSource": "Fuller, Schettler, Giddings (1966) + Reid et al. (1987)",
+      "status": "active",
+      "used": true,
+      "buildTime": false,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "Reads published diffusion volume constants and adds them to element JSON files. Used for calculating evaporation rates via mass transfer equations."
+    },
+    "update-educational-notes": {
+      "name": "Update Educational Notes",
+      "path": "scripts/update-educational-notes.js",
+      "purpose": "Inject educational/descriptive content into substance files from manual library",
+      "runTime": "dev",
+      "inputs": [
+        "scripts/temp-data/educational-notes.json (manual library)"
+      ],
+      "outputs": [
+        "Updated src/data/substances/**/info.json with educationalNotes field"
+      ],
+      "dependencies": [
+        "Substance files must exist (from compounds/elements/solutions)"
+      ],
+      "apiUsed": "none",
+      "dataSource": "Manual JSON library (currently empty template)",
+      "status": "active",
+      "used": true,
+      "buildTime": false,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "Reads from manual educational library and injects notes into existing substance files. Library is currently a template - needs population."
+    },
+    "generateSubstanceCatalog": {
+      "name": "Generate Substance Catalog",
+      "path": "scripts/generateSubstanceCatalog.js",
+      "purpose": "Build-time filesystem scanner that creates lazy-load import registry",
+      "runTime": "build",
+      "inputs": [
+        "File system: src/data/substances/ (all elements/compounds/solutions)"
+      ],
+      "outputs": [
+        "src/generated/substanceCatalog.js (auto-generated registry)"
+      ],
+      "dependencies": [
+        "All substance files must exist and be valid JSON"
+      ],
+      "apiUsed": "none",
+      "status": "active",
+      "used": true,
+      "buildTime": true,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "Scans filesystem at build time to generate dynamic import catalog. Essential for Vite build process. Runs before main app bundle."
+    },
+    "optimize-images": {
+      "name": "Optimize Images",
+      "path": "scripts/optimize-images.js",
+      "purpose": "Compress workshop PNG/JPG assets for production",
+      "runTime": "dev",
+      "inputs": [
+        "public/assets/workshops/**/*.png"
+      ],
+      "outputs": [
+        "Optimized PNG (UI elements) or converted JPG (backgrounds)"
+      ],
+      "apiUsed": "none",
+      "external": ["sharp (npm package)"],
+      "status": "optional",
+      "used": false,
+      "buildTime": false,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "Optional dev tooling. Compresses backgrounds from PNG to JPG (~70% size reduction) and compresses UI element PNGs (~40% reduction). Not part of build pipeline."
+    },
+    "validate-elements": {
+      "name": "Validate Elements",
+      "path": "scripts/validate-elements.js",
+      "purpose": "Quality assurance - validate element JSON schema and structure",
+      "runTime": "dev",
+      "inputs": [
+        "src/data/substances/periodic-table/*.json"
+      ],
+      "outputs": [
+        "Console reports, auto-fixes common issues"
+      ],
+      "dependencies": [
+        "Element files must exist"
+      ],
+      "apiUsed": "none",
+      "status": "maintenance",
+      "used": false,
+      "buildTime": false,
+      "runtimeOnly": false,
+      "orphan": false,
+      "description": "QA tooling for developers. Checks all 118 element files match the Fe (iron) standard schema. Not part of main pipeline."
+    }
+  },
+  "pipeline": {
+    "sequentialOrder": [
+      "fetch-elements-from-api (attempts to fetch from API)",
+      "  └─ OR fallback to generate-all-118 (if API fails)",
+      "add-diffusion-volumes (requires element files exist)",
+      "update-educational-notes (requires substance files exist)",
+      "generateSubstanceCatalog (runs at build time, indexes all substances)"
+    ],
+    "buildTimeScripts": [
+      "generateSubstanceCatalog"
+    ],
+    "developmentScripts": [
+      "fetch-elements-from-api",
+      "generate-all-118",
+      "add-diffusion-volumes",
+      "update-educational-notes",
+      "optimize-images",
+      "validate-elements"
+    ],
+    "orphanScripts": [],
+    "unusedScripts": [
+      "optimize-images (optional dev tooling)"
+    ],
+    "maintenanceOnlyScripts": [
+      "validate-elements (QA tooling)"
+    ]
+  },
+  "dataFlowDiagram": "See docs/research/SCRIPTS_AND_DATA_SOURCES.md for detailed pipeline diagram"
+}

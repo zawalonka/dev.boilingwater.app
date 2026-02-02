@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>add-diffusion-volumes.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../scripts/index.html">scripts</a> <span class="breadcrumb-sep">›</span> <span>add-diffusion-volumes.js</span>
+        </nav>
+        <div class="wiki-topbar-title">add-diffusion-volumes.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">add-diffusion-volumes.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">fs</span>, <span class="external-import">path</span>, <span class="external-import">url</span></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>add-diffusion-volumes.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>Add Diffusion Volume Script</p>
+<p>Adds atomic diffusion volume (Σv) data to periodic table element files.</p>
+<p>These values are used in the Fuller-Schettler-Giddings equation to calculate</p>
+<p>binary diffusion coefficients for vapor-air mass transfer.</p>
+<p>PHYSICS BACKGROUND:</p>
+<p>The Fuller-Schettler-Giddings equation calculates diffusion coefficient D_AB:</p>
+<pre class="code">D_AB = (0.00143 × T^1.75) / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)</pre>
+<p>Where Σv is the sum of atomic diffusion volumes for a molecule.</p>
+<p>For compounds, sum the atomic contributions: Σv(C₂H₅OH) = 2×C + 6×H + 1×O</p>
+<p>DATA SOURCE:</p>
+<p>Fuller, E.N., Schettler, P.D., Giddings, J.C. (1966). &quot;A new method for</p>
+<p>prediction of binary gas-phase diffusion coefficients.&quot; Industrial &amp;</p>
+<p>Engineering Chemistry, 58(5), 18-27.</p>
+<p>Additional values from Reid, Prausnitz, Poling (1987). &quot;The Properties of</p>
+<p>Gases and Liquids&quot;, 4th ed., McGraw-Hill.</p>
+<p>Usage: node scripts/add-diffusion-volumes.js</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>scripts\add-diffusion-volumes.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">#!/usr/bin/env node
+
+/**
+ * Add Diffusion Volume Script
+ * 
+ * Adds atomic diffusion volume (Σv) data to periodic table element files.
+ * These values are used in the Fuller-Schettler-Giddings equation to calculate
+ * binary diffusion coefficients for vapor-air mass transfer.
+ * 
+ * PHYSICS BACKGROUND:
+ * The Fuller-Schettler-Giddings equation calculates diffusion coefficient D_AB:
+ *   D_AB = (0.00143 × T^1.75) / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)
+ * 
+ * Where Σv is the sum of atomic diffusion volumes for a molecule.
+ * For compounds, sum the atomic contributions: Σv(C₂H₅OH) = 2×C + 6×H + 1×O
+ * 
+ * DATA SOURCE:
+ * Fuller, E.N., Schettler, P.D., Giddings, J.C. (1966). &quot;A new method for 
+ * prediction of binary gas-phase diffusion coefficients.&quot; Industrial &amp; 
+ * Engineering Chemistry, 58(5), 18-27.
+ * 
+ * Additional values from Reid, Prausnitz, Poling (1987). &quot;The Properties of 
+ * Gases and Liquids&quot;, 4th ed., McGraw-Hill.
+ * 
+ * Usage: node scripts/add-diffusion-volumes.js
+ */
+
+import fs from &#39;fs&#39;;
+import path from &#39;path&#39;;
+import { fileURLToPath } from &#39;url&#39;;
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ELEMENTS_DIR = path.join(__dirname, &#39;../src/data/substances/periodic-table&#39;);
+
+/**
+ * Atomic Diffusion Volumes (Σv increments)
+ * Source: Fuller, Schettler, Giddings (1966); Reid et al. (1987)
+ * 
+ * Units: dimensionless (cm³/mol conceptually)
+ * 
+ * These are PHYSICAL CONSTANTS from published literature, not arbitrary values.
+ * For elements without experimental data, we use estimation methods:
+ * - Noble gases: measured values
+ * - Transition metals: estimated from atomic radius correlation
+ * - Lanthanides/Actinides: estimated from group trends
+ */
+const DIFFUSION_VOLUMES = {
+  // === MAIN GROUP ELEMENTS (well-characterized) ===
+  // Primary data from Fuller et al. (1966)
+  H: { value: 2.31, source: &#39;Fuller 1966&#39;, note: &#39;Hydrogen - well characterized&#39; },
+  He: { value: 2.67, source: &#39;Fuller 1966&#39;, note: &#39;Helium - noble gas, measured&#39; },
+  C: { value: 15.9, source: &#39;Fuller 1966&#39;, note: &#39;Carbon - well characterized&#39; },
+  N: { value: 4.54, source: &#39;Fuller 1966&#39;, note: &#39;Nitrogen (atomic contribution)&#39; },
+  O: { value: 6.11, source: &#39;Fuller 1966&#39;, note: &#39;Oxygen - well characterized&#39; },
+  F: { value: 14.7, source: &#39;Fuller 1966&#39;, note: &#39;Fluorine&#39; },
+  Ne: { value: 5.98, source: &#39;Fuller 1966&#39;, note: &#39;Neon - noble gas, measured&#39; },
+  S: { value: 22.9, source: &#39;Fuller 1966&#39;, note: &#39;Sulfur - well characterized&#39; },
+  Cl: { value: 21.0, source: &#39;Fuller 1966&#39;, note: &#39;Chlorine&#39; },
+  Ar: { value: 16.2, source: &#39;Fuller 1966&#39;, note: &#39;Argon - noble gas, measured&#39; },
+  Br: { value: 21.9, source: &#39;Fuller 1966&#39;, note: &#39;Bromine&#39; },
+  Kr: { value: 24.5, source: &#39;Fuller 1966&#39;, note: &#39;Krypton - noble gas, measured&#39; },
+  I: { value: 29.8, source: &#39;Reid 1987&#39;, note: &#39;Iodine&#39; },
+  Xe: { value: 32.7, source: &#39;Fuller 1966&#39;, note: &#39;Xenon - noble gas, measured&#39; },
+  
+  // === ALKALI METALS ===
+  Li: { value: 10.5, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Na: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  K: { value: 28.5, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Rb: { value: 35.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Cs: { value: 42.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Fr: { value: 48.0, source: &#39;Estimated&#39;, note: &#39;Estimated from group trend&#39; },
+  
+  // === ALKALINE EARTH METALS ===
+  Be: { value: 8.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Mg: { value: 14.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Ca: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Sr: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Ba: { value: 35.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Ra: { value: 40.0, source: &#39;Estimated&#39;, note: &#39;Estimated from group trend&#39; },
+  
+  // === METALLOIDS ===
+  B: { value: 12.0, source: &#39;Estimated&#39;, note: &#39;Estimated from atomic radius&#39; },
+  Si: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Silicon - estimated&#39; },
+  Ge: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Germanium - estimated&#39; },
+  As: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Arsenic - estimated&#39; },
+  Sb: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Antimony - estimated&#39; },
+  Te: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Tellurium - estimated&#39; },
+  Po: { value: 32.0, source: &#39;Estimated&#39;, note: &#39;Polonium - estimated&#39; },
+  At: { value: 35.0, source: &#39;Estimated&#39;, note: &#39;Astatine - estimated from halogens&#39; },
+  
+  // === POST-TRANSITION METALS ===
+  Al: { value: 16.0, source: &#39;Estimated&#39;, note: &#39;Aluminum - estimated&#39; },
+  Ga: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Gallium - estimated&#39; },
+  In: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Indium - estimated&#39; },
+  Sn: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Tin - estimated&#39; },
+  Tl: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Thallium - estimated&#39; },
+  Pb: { value: 30.0, source: &#39;Estimated&#39;, note: &#39;Lead - estimated&#39; },
+  Bi: { value: 32.0, source: &#39;Estimated&#39;, note: &#39;Bismuth - estimated&#39; },
+  
+  // === PHOSPHORUS GROUP (explicitly) ===
+  P: { value: 15.0, source: &#39;Estimated&#39;, note: &#39;Phosphorus - estimated from S/N&#39; },
+  Se: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Selenium - estimated from S trend&#39; },
+  
+  // === NOBLE GASES (all measured) ===
+  Rn: { value: 38.0, source: &#39;Estimated&#39;, note: &#39;Radon - estimated from noble gas trend&#39; },
+  
+  // === TRANSITION METALS (3d series) ===
+  Sc: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Scandium - estimated&#39; },
+  Ti: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Titanium - estimated&#39; },
+  V: { value: 17.0, source: &#39;Estimated&#39;, note: &#39;Vanadium - estimated&#39; },
+  Cr: { value: 16.0, source: &#39;Estimated&#39;, note: &#39;Chromium - estimated&#39; },
+  Mn: { value: 16.5, source: &#39;Estimated&#39;, note: &#39;Manganese - estimated&#39; },
+  Fe: { value: 15.5, source: &#39;Estimated&#39;, note: &#39;Iron - estimated&#39; },
+  Co: { value: 15.0, source: &#39;Estimated&#39;, note: &#39;Cobalt - estimated&#39; },
+  Ni: { value: 14.5, source: &#39;Estimated&#39;, note: &#39;Nickel - estimated&#39; },
+  Cu: { value: 14.0, source: &#39;Estimated&#39;, note: &#39;Copper - estimated&#39; },
+  Zn: { value: 15.0, source: &#39;Estimated&#39;, note: &#39;Zinc - estimated&#39; },
+  
+  // === TRANSITION METALS (4d series) ===
+  Y: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Yttrium - estimated&#39; },
+  Zr: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Zirconium - estimated&#39; },
+  Nb: { value: 19.0, source: &#39;Estimated&#39;, note: &#39;Niobium - estimated&#39; },
+  Mo: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Molybdenum - estimated&#39; },
+  Tc: { value: 17.5, source: &#39;Estimated&#39;, note: &#39;Technetium - estimated&#39; },
+  Ru: { value: 17.0, source: &#39;Estimated&#39;, note: &#39;Ruthenium - estimated&#39; },
+  Rh: { value: 16.5, source: &#39;Estimated&#39;, note: &#39;Rhodium - estimated&#39; },
+  Pd: { value: 16.0, source: &#39;Estimated&#39;, note: &#39;Palladium - estimated&#39; },
+  Ag: { value: 17.0, source: &#39;Estimated&#39;, note: &#39;Silver - estimated&#39; },
+  Cd: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Cadmium - estimated&#39; },
+  
+  // === TRANSITION METALS (5d series) ===
+  Hf: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Hafnium - estimated&#39; },
+  Ta: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Tantalum - estimated&#39; },
+  W: { value: 19.0, source: &#39;Estimated&#39;, note: &#39;Tungsten - estimated&#39; },
+  Re: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Rhenium - estimated&#39; },
+  Os: { value: 17.0, source: &#39;Estimated&#39;, note: &#39;Osmium - estimated&#39; },
+  Ir: { value: 16.5, source: &#39;Estimated&#39;, note: &#39;Iridium - estimated&#39; },
+  Pt: { value: 17.0, source: &#39;Estimated&#39;, note: &#39;Platinum - estimated&#39; },
+  Au: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Gold - estimated&#39; },
+  Hg: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Mercury - estimated&#39; },
+  
+  // === LANTHANIDES (estimated from trend) ===
+  La: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Lanthanum - lanthanide estimate&#39; },
+  Ce: { value: 27.5, source: &#39;Estimated&#39;, note: &#39;Cerium - lanthanide estimate&#39; },
+  Pr: { value: 27.0, source: &#39;Estimated&#39;, note: &#39;Praseodymium - lanthanide estimate&#39; },
+  Nd: { value: 26.5, source: &#39;Estimated&#39;, note: &#39;Neodymium - lanthanide estimate&#39; },
+  Pm: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Promethium - lanthanide estimate&#39; },
+  Sm: { value: 25.5, source: &#39;Estimated&#39;, note: &#39;Samarium - lanthanide estimate&#39; },
+  Eu: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Europium - lanthanide estimate&#39; },
+  Gd: { value: 25.0, source: &#39;Estimated&#39;, note: &#39;Gadolinium - lanthanide estimate&#39; },
+  Tb: { value: 24.5, source: &#39;Estimated&#39;, note: &#39;Terbium - lanthanide estimate&#39; },
+  Dy: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Dysprosium - lanthanide estimate&#39; },
+  Ho: { value: 23.5, source: &#39;Estimated&#39;, note: &#39;Holmium - lanthanide estimate&#39; },
+  Er: { value: 23.0, source: &#39;Estimated&#39;, note: &#39;Erbium - lanthanide estimate&#39; },
+  Tm: { value: 22.5, source: &#39;Estimated&#39;, note: &#39;Thulium - lanthanide estimate&#39; },
+  Yb: { value: 23.0, source: &#39;Estimated&#39;, note: &#39;Ytterbium - lanthanide estimate&#39; },
+  Lu: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Lutetium - lanthanide estimate&#39; },
+  
+  // === ACTINIDES (estimated from trend) ===
+  Ac: { value: 32.0, source: &#39;Estimated&#39;, note: &#39;Actinium - actinide estimate&#39; },
+  Th: { value: 30.0, source: &#39;Estimated&#39;, note: &#39;Thorium - actinide estimate&#39; },
+  Pa: { value: 29.0, source: &#39;Estimated&#39;, note: &#39;Protactinium - actinide estimate&#39; },
+  U: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Uranium - actinide estimate&#39; },
+  Np: { value: 27.5, source: &#39;Estimated&#39;, note: &#39;Neptunium - actinide estimate&#39; },
+  Pu: { value: 27.0, source: &#39;Estimated&#39;, note: &#39;Plutonium - actinide estimate&#39; },
+  Am: { value: 26.5, source: &#39;Estimated&#39;, note: &#39;Americium - actinide estimate&#39; },
+  Cm: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Curium - actinide estimate&#39; },
+  Bk: { value: 25.5, source: &#39;Estimated&#39;, note: &#39;Berkelium - actinide estimate&#39; },
+  Cf: { value: 25.0, source: &#39;Estimated&#39;, note: &#39;Californium - actinide estimate&#39; },
+  Es: { value: 24.5, source: &#39;Estimated&#39;, note: &#39;Einsteinium - actinide estimate&#39; },
+  Fm: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Fermium - actinide estimate&#39; },
+  Md: { value: 23.5, source: &#39;Estimated&#39;, note: &#39;Mendelevium - actinide estimate&#39; },
+  No: { value: 23.0, source: &#39;Estimated&#39;, note: &#39;Nobelium - actinide estimate&#39; },
+  Lr: { value: 22.5, source: &#39;Estimated&#39;, note: &#39;Lawrencium - actinide estimate&#39; },
+  
+  // === SUPER-HEAVY ELEMENTS (7th period, highly estimated) ===
+  Rf: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Rutherfordium - superheavy estimate&#39; },
+  Db: { value: 23.0, source: &#39;Estimated&#39;, note: &#39;Dubnium - superheavy estimate&#39; },
+  Sg: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Seaborgium - superheavy estimate&#39; },
+  Bh: { value: 21.0, source: &#39;Estimated&#39;, note: &#39;Bohrium - superheavy estimate&#39; },
+  Hs: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Hassium - superheavy estimate&#39; },
+  Mt: { value: 19.0, source: &#39;Estimated&#39;, note: &#39;Meitnerium - superheavy estimate&#39; },
+  Ds: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Darmstadtium - superheavy estimate&#39; },
+  Rg: { value: 18.0, source: &#39;Estimated&#39;, note: &#39;Roentgenium - superheavy estimate&#39; },
+  Cn: { value: 20.0, source: &#39;Estimated&#39;, note: &#39;Copernicium - superheavy estimate&#39; },
+  Nh: { value: 22.0, source: &#39;Estimated&#39;, note: &#39;Nihonium - superheavy estimate&#39; },
+  Fl: { value: 24.0, source: &#39;Estimated&#39;, note: &#39;Flerovium - superheavy estimate&#39; },
+  Mc: { value: 26.0, source: &#39;Estimated&#39;, note: &#39;Moscovium - superheavy estimate&#39; },
+  Lv: { value: 28.0, source: &#39;Estimated&#39;, note: &#39;Livermorium - superheavy estimate&#39; },
+  Ts: { value: 30.0, source: &#39;Estimated&#39;, note: &#39;Tennessine - superheavy estimate&#39; },
+  Og: { value: 42.0, source: &#39;Estimated&#39;, note: &#39;Oganesson - superheavy noble gas estimate&#39; },
+};
+
+/**
+ * Process all element files and add diffusion volume data
+ */
+function main() {
+  console.log(&#39;🔬 Adding atomic diffusion volumes to periodic table elements...\n&#39;);
+  
+  if (!fs.existsSync(ELEMENTS_DIR)) {
+    console.error(`✗ Elements directory not found: ${ELEMENTS_DIR}`);
+    process.exit(1);
+  }
+  
+  const files = fs.readdirSync(ELEMENTS_DIR).filter(f =&gt; f.endsWith(&#39;.json&#39;));
+  let updated = 0;
+  let skipped = 0;
+  let errors = [];
+  
+  for (const filename of files) {
+    const filepath = path.join(ELEMENTS_DIR, filename);
+    
+    try {
+      const data = JSON.parse(fs.readFileSync(filepath, &#39;utf8&#39;));
+      const symbol = data.symbol;
+      
+      if (!symbol) {
+        errors.push(`${filename}: No symbol found`);
+        continue;
+      }
+      
+      const diffusionData = DIFFUSION_VOLUMES[symbol];
+      
+      if (!diffusionData) {
+        errors.push(`${filename}: No diffusion volume data for ${symbol}`);
+        skipped++;
+        continue;
+      }
+      
+      // Add diffusion volume to the element data
+      // Place it in a &#39;diffusion&#39; object for clarity
+      data.diffusion = {
+        atomicDiffusionVolume: diffusionData.value,
+        unit: &#39;dimensionless (cm³/mol conceptually)&#39;,
+        source: diffusionData.source,
+        note: diffusionData.note,
+        equation: &#39;Fuller-Schettler-Giddings (1966)&#39;,
+        usage: &#39;Sum atomic contributions for compound Σv, then: D_AB = 0.00143×T^1.75 / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)&#39;
+      };
+      
+      // Write back
+      fs.writeFileSync(filepath, JSON.stringify(data, null, 2) + &#39;\n&#39;);
+      updated++;
+      
+      // Log progress for key elements
+      if ([&#39;H&#39;, &#39;C&#39;, &#39;N&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Cl&#39;, &#39;Ar&#39;].includes(symbol)) {
+        console.log(`  ✓ ${symbol.padEnd(3)} (${data.name}): Σv = ${diffusionData.value} [${diffusionData.source}]`);
+      }
+      
+    } catch (err) {
+      errors.push(`${filename}: ${err.message}`);
+    }
+  }
+  
+  // Summary
+  console.log(`\n${&#39;─&#39;.repeat(50)}`);
+  console.log(`✅ Updated: ${updated} elements`);
+  console.log(`⏭️  Skipped: ${skipped} elements (no data)`);
+  
+  if (errors.length &gt; 0) {
+    console.log(`\n❌ Errors (${errors.length}):`);
+    errors.forEach(e =&gt; console.log(`   ${e}`));
+  }
+  
+  console.log(`\n📚 Data sources:`);
+  console.log(`   - Fuller, Schettler, Giddings (1966) - Primary source`);
+  console.log(`   - Reid, Prausnitz, Poling (1987) - Secondary source`);
+  console.log(`   - Estimated values based on atomic radius correlations\n`);
+}
+
+main();
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

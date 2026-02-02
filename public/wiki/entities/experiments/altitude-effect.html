@@ -3,35 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Altitude&#39;s Effect on Boiling Water</title>
+  <title>Altitude&#39;s Effect on Boiling Water - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 </head>
 <body>
   <div class="wiki-layout">
     <div class="wiki-main">
       <header class="wiki-topbar">
         <details class="wiki-menu" aria-label="Menu">
-          <summary>☰</summary>
+          <summary>☰ Menu</summary>
           <nav class="wiki-menu-links">
-            <a href="/wiki/index.html">Main page</a>
-            <a href="/wiki/entities/elements/index.html">Elements</a>
-            <a href="/wiki/entities/compounds/index.html">Compounds</a>
-            <a href="/wiki/entities/solutions/index.html">Solutions</a>
-            <a href="/wiki/entities/phases/index.html">Phases</a>
-            <a href="/wiki/entities/levels/index.html">Levels</a>
-            <a href="/wiki/entities/experiments/index.html">Experiments</a>
-            <a href="/wiki/entities/formulas/index.html">Formulas</a>
-            <a href="/wiki/entities/processes/index.html">Processes</a>
-            <a href="/wiki/entities/modules/index.html">Modules</a>
-            <a href="/wiki/entities/symbols/index.html">Symbols</a>
-            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
             <div class="wiki-menu-divider"></div>
-            <a href="/">Back to Game</a>
+            <a href="/">⬅️ Back to Game</a>
           </nav>
         </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/index.html">Experiments</a> <span class="breadcrumb-sep">›</span> <span>Altitude&#39;s Effect on Boiling Water</span>
+        </nav>
         <div class="wiki-topbar-title">Altitude&#39;s Effect on Boiling Water</div>
       </header>
       <main class="wiki-content">
+        
         <article class="wiki-article">
           
       
@@ -58,6 +86,21 @@
         <div class="infobox-value"><a href="/wiki/entities/experiments/different-fluids.html">Different Fluids</a></div>
       </div>
     
+      <div class="infobox-row">
+        <div class="infobox-label">Tutorial</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Requires Location</div>
+        <div class="infobox-value">Yes</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Unlocks Room Controls</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
     </aside>
   
       <section class="section">
@@ -67,12 +110,157 @@
     <p class="subtitle">Experiment</p>
   </div>
 
-        <h3>Parent (level)</h3>
-        <p><a href="/wiki/entities/levels/1.html">Level 1</a></p>
+        <p>Discover how altitude changes the boiling point of water</p>
       </section>
+      
+        <section class="section">
+          <h2>📚 What You Learn</h2>
+          <p>Atmospheric pressure decreases with altitude, which <strong>lowers the boiling point</strong> of water:</p>
+          <ul>
+            <li><strong>Sea Level (0m):</strong> 101,325 Pa → Water boils at 100.0°C</li>
+            <li><strong>Denver (1,609m):</strong> 83,437 Pa → Water boils at 95.0°C</li>
+            <li><strong>Mt. Everest (8,848m):</strong> 31,400 Pa → Water boils at 71.0°C</li>
+            <li><strong>ISA Model:</strong> Uses standard atmosphere equation to calculate pressure from altitude</li>
+          </ul>
+        </section>
+        <section class="section">
+          <h2>🔬 Complete Calculation Pipeline</h2>
+          <p>Here's the full calculation flow when you select "Denver, Colorado" in the game:</p>
+          
+          <h3>Step 1: Player Selects Location</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 1: Location Selection</summary>
+    <p class="code-description">Player selection triggers altitude change, which recalculates pressure and boiling point.</p>
+    <pre class="line-numbers"><code class="language-javascript">// User clicks &quot;Denver, Colorado&quot; from location dropdown
+const selectedLocation = {
+  name: &quot;Denver, Colorado&quot;,
+  altitude: 1609,  // meters above sea level
+  lat: 39.7392,
+  lon: -104.9903
+}
+
+console.log(&quot;Altitude set to:&quot;, selectedLocation.altitude, &quot;meters&quot;)</code></pre>
+  </details>
+
+          <h3>Step 2: Calculate Atmospheric Pressure (ISA Model)</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 2: Pressure from Altitude</summary>
+    <p class="code-description">ISA (International Standard Atmosphere) model calculates realistic pressure at any altitude.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Denver at 1,609 meters
+const altitude = 1609  // meters
+const seaLevelPressure = 101325  // Pa
+const tempLapseRate = 0.0065  // K/m (standard atmosphere)
+const seaLevelTemp = 288.15  // K (15°C)
+const g = 9.80665  // m/s² (gravity)
+const M = 0.0289644  // kg/mol (molar mass of air)
+const R = 8.31447  // J/(mol·K) (gas constant)
+
+// ISA troposphere model (0-11km)
+const tempAtAltitude = seaLevelTemp - (tempLapseRate * altitude)
+// Result: 288.15 - (0.0065 × 1609) = 277.7 K
+
+const exponent = (g * M) / (R * tempLapseRate)
+// Result: 5.255877
+
+const pressureRatio = Math.pow(tempAtAltitude / seaLevelTemp, exponent)
+const pressure = seaLevelPressure * pressureRatio
+// Result: 83,437 Pa (Denver&#39;s atmospheric pressure)
+
+console.log(&quot;Pressure at Denver:&quot;, pressure, &quot;Pa&quot;)</code></pre>
+  </details>
+
+          <h3>Step 3: Solve Antoine Equation for Boiling Point</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 3: Boiling Point Calculation</summary>
+    <p class="code-description">Antoine equation solves backward: given pressure, find boiling temperature.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Example: Water at Denver&#39;s pressure (83,437 Pa)
+const pressure = 83437  // Pa from ISA model
+const antoineCoeffs = {
+  A: 8.07131,
+  B: 1730.63,
+  C: 233.426
+}
+
+// Convert pressure to mmHg (Antoine uses mmHg)
+const pressureMmHg = pressure * 0.00750062
+// Result: 625.8 mmHg
+
+// Solve Antoine equation backward for temperature
+// log₁₀(P) = A - B/(C + T)
+// Rearrange: T = B/(A - log₁₀(P)) - C
+const T = antoineCoeffs.B / (antoineCoeffs.A - Math.log10(pressureMmHg)) - antoineCoeffs.C
+// Result: 95.0°C (water&#39;s boiling point in Denver)
+
+console.log(&quot;Water boils at:&quot;, T.toFixed(1), &quot;°C in Denver&quot;)</code></pre>
+  </details>
+
+          <h3>Step 4: Simulation Runs with New Boiling Point</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 4: Physics Loop with Adjusted Boiling Point</summary>
+    <p class="code-description">Physics simulation uses the altitude-adjusted boiling point throughout the experiment.</p>
+    <pre class="line-numbers"><code class="language-javascript">// Game&#39;s physics loop (every 100ms)
+function simulateTimeStep(state, heatInput, deltaTime, substance) {
+  // Boiling point is now 95°C instead of 100°C
+  const boilingPoint = 95.0  // calculated from altitude
+  
+  // Heat water from 20°C → 95°C
+  if (state.temp &lt; boilingPoint &amp;&amp; heatInput &gt; 0) {
+    const energyAdded = heatInput * deltaTime  // 2000W × 0.1s = 200J
+    const tempIncrease = energyAdded / (state.mass * substance.specificHeat)
+    state.temp += tempIncrease
+    
+    console.log(&quot;Heating:&quot;, state.temp.toFixed(1), &quot;°C&quot;)
+  }
+  
+  // Start boiling at 95°C (not 100°C!)
+  if (state.temp &gt;= boilingPoint &amp;&amp; heatInput &gt; 0) {
+    console.log(&quot;BOILING at 95°C - Lower pressure = lower boiling point!&quot;)
+    const massVaporized = (heatInput * deltaTime) / substance.heatOfVaporization
+    state.mass -= massVaporized
+    state.temp = boilingPoint  // Temperature plateaus at 95°C
+  }
+  
+  return state
+}</code></pre>
+  </details>
+
+          <h3>Step 5: Display Educational Message</h3>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Step 5: Educational Feedback</summary>
+    <p class="code-description">Game displays educational explanation when water boils at unexpected temperature.</p>
+    <pre class="line-numbers"><code class="language-javascript">// When water reaches boiling point
+if (hasReachedBoilingPoint) {
+  const message = buildEducationalMessage(altitude, boilingPoint)
+  displayMessage(message)
+}
+
+// Example output for Denver:
+&quot;Water is boiling at 95.0°C!
+At 1,609 meters altitude, lower atmospheric pressure (83,437 Pa)
+allows water molecules to escape as vapor at a lower temperature.
+At sea level, water would boil at 100.0°C.&quot;</code></pre>
+  </details>
+        </section>
+        <section class="section">
+          <h2>🎮 Try This</h2>
+          <ul>
+            <li><strong>Denver (1,609m):</strong> Water boils at ~95°C - notice how much faster it boils!</li>
+            <li><strong>La Paz, Bolivia (3,640m):</strong> Water boils at ~87°C - extremely fast boiling</li>
+            <li><strong>Mt. Everest base camp (5,380m):</strong> Water boils at ~82°C - impossible to cook pasta!</li>
+            <li><strong>Mt. Everest summit (8,848m):</strong> Water boils at ~71°C - barely warm enough for tea</li>
+            <li><strong>Dead Sea (-430m):</strong> Water boils at ~101.4°C - slightly higher pressure</li>
+          </ul>
+        </section>
+      
       <section class="section">
-        <h2>Raw data</h2>
-        <pre class="code">{
+        <h2>🔧 Formulas Used</h2>
+        <p>This experiment relies on the following physics formulas:</p>
+        <ul><li><a href="/wiki/entities/formulas/antoineEquation.html">antoineEquation</a> - Calculates vapor pressure and boiling points</li><li><a href="/wiki/entities/formulas/heatCapacity.html">heatCapacity</a> - Determines how fast liquid heats up</li><li><a href="/wiki/entities/formulas/newtonCooling.html">newtonCooling</a> - Models heat loss to environment</li><li><a href="/wiki/entities/formulas/isaAtmosphere.html">isaAtmosphere</a> - Converts altitude to atmospheric pressure</li></ul>
+      </section>
+      
+      <section class="section">
+        <h2>📊 Experiment Configuration</h2>
+        <pre class="line-numbers"><code class="language-json">{
   &quot;id&quot;: &quot;altitude-effect&quot;,
   &quot;name&quot;: &quot;Altitude&#39;s Effect on Boiling Water&quot;,
   &quot;level&quot;: 1,
@@ -81,12 +269,147 @@
   &quot;isTutorial&quot;: false,
   &quot;order&quot;: 2,
   &quot;levelId&quot;: 1
-}</pre>
+}</code></pre>
       </section>
     
         </article>
       </main>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
 </body>
 </html>

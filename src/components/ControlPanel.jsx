@@ -167,11 +167,16 @@ function ControlPanel({
                 <span className="timer-label">Timer:</span>
                 <span className="timer-value">{formatTime(timeElapsed)}</span>
               </div>
+              <span id="timer-controls-help" className="sr-only">
+                Use these controls to start, pause, or reset the experiment timer.
+              </span>
               <div className="timer-buttons">
                 <button 
                   className="timer-button"
                   onClick={handleTimerToggle}
                   title={isTimerRunning ? "Pause timer" : "Start timer"}
+                  aria-label={isTimerRunning ? "Pause timer" : "Start timer"}
+                  aria-describedby="timer-controls-help"
                 >
                     {isTimerRunning ? '⏸' : '▶'}
                 </button>
@@ -179,6 +184,8 @@ function ControlPanel({
                   className="timer-button"
                   onClick={handleTimerReset}
                   title="Reset timer to zero"
+                  aria-label="Reset timer"
+                  aria-describedby="timer-controls-help"
                 >
                     ↻
                 </button>
@@ -204,6 +211,7 @@ function ControlPanel({
                 onChange={handleFluidChange}
                 className="fluid-dropdown"
                 title="Select which fluid to boil"
+                aria-describedby="fluid-select-help"
               >
                 {availableFluids.map(fluidId => (
                   <option key={fluidId} value={fluidId}>
@@ -211,14 +219,24 @@ function ControlPanel({
                   </option>
                 ))}
               </select>
+              <span id="fluid-select-help" className="sr-only">
+                Choose which substance to heat and boil.
+              </span>
             </div>
           )}
 
           {/* Game controls - speed controls (Tutorial/Exp 1 only) */}
           {liquidMass > 0 && activeExperiment === 'boiling-water' && (
+            <span id="speed-control-help" className="sr-only">
+              Increase simulation speed during the tutorial.
+            </span>
+          )}
+
+          {liquidMass > 0 && activeExperiment === 'boiling-water' && (
             <button 
               className="action-button speed-button status-button"
               onClick={handleSpeedUp}
+              aria-describedby="speed-control-help"
             >
               ⚡ Speed: {formatSpeed(timeSpeed)}
             </button>
@@ -227,14 +245,19 @@ function ControlPanel({
           {/* Advanced speed controls with arrows (Advanced Mode Only) */}
           {isAdvancedModeAvailable && (
             <>
-              <div className="speed-warning">
+              <div className="speed-warning" id="speed-controls-warning">
                 ⚠️ Speed acceleration is unreliable — results unverified
               </div>
+              <span id="speed-controls-advanced-help" className="sr-only">
+                Use these controls to slow down, pause, or speed up the simulation.
+              </span>
               <div className="speed-controls-advanced">
               <button 
                 className="speed-arrow"
                 onClick={handleSpeedHalve}
                 title="Halve speed"
+                aria-label="Halve speed"
+                aria-describedby="speed-controls-advanced-help speed-controls-warning"
               >
                 ◀
               </button>
@@ -242,6 +265,8 @@ function ControlPanel({
                 className="speed-arrow"
                 onClick={handleQuickPause}
                 title={timeSpeed === 0 ? "Resume" : "Pause"}
+                aria-label={timeSpeed === 0 ? "Resume" : "Pause"}
+                aria-describedby="speed-controls-advanced-help speed-controls-warning"
               >
                 {timeSpeed === 0 ? '▶' : '⏸'}
               </button>
@@ -250,6 +275,8 @@ function ControlPanel({
                 className="speed-arrow"
                 onClick={handleSpeedDouble}
                 title="Double speed"
+                aria-label="Double speed"
+                aria-describedby="speed-controls-advanced-help speed-controls-warning"
               >
                 ▶
               </button>
@@ -324,6 +351,9 @@ function ControlPanel({
               <span className="altitude-display">
                 Altitude: {altitude.toLocaleString()}m
               </span>
+              <span id="location-dialog-help" className="sr-only">
+                Opens location and altitude settings.
+              </span>
               {locationName ? (
                 <button 
                   className="action-button location-button"
@@ -331,6 +361,7 @@ function ControlPanel({
                     setShowLocationPopup(true)
                   }}
                   title="Change location"
+                  aria-describedby="location-dialog-help"
                 >
                   📍 {locationName}
                 </button>
@@ -341,6 +372,7 @@ function ControlPanel({
                     setShowLocationPopup(true)
                   }}
                   title="Set your location"
+                  aria-describedby="location-dialog-help"
                 >
                   📍 Set Location
                 </button>
@@ -371,16 +403,17 @@ function ControlPanel({
           </p>
 
           {locationError && (
-            <div className="location-error">
+            <div className="location-error" id="location-error" role="alert">
               <span className="error-icon">⚠️</span>
               <span className="error-text">{locationError}</span>
             </div>
           )}
 
           <div className="location-section">
-            <label className="section-title">Search for a Location (Worldwide)</label>
+            <label className="section-title" htmlFor="location-input">Search for a Location (Worldwide)</label>
             <div className="location-inputs">
               <input
+                id="location-input"
                 type="text"
                 placeholder="City, landmark, or place (Death Valley, Mt Everest, Tokyo)"
                 value={userZipCode}
@@ -390,6 +423,8 @@ function ControlPanel({
                 }}
                 onKeyPress={(e) => e.key === 'Enter' && handleSearchLocation()}
                 disabled={isLoadingLocation}
+                aria-invalid={Boolean(locationError)}
+                aria-describedby={`${locationError ? 'location-error ' : ''}location-search-help`}
                 className="location-input location-search-input"
               />
               <button
@@ -397,18 +432,24 @@ function ControlPanel({
                 disabled={isLoadingLocation || !userZipCode.trim()}
                 className="location-button"
                 title="Search worldwide"
+                aria-label="Search location"
+                aria-describedby="location-search-help"
               >
                 {isLoadingLocation ? '⏳' : '🔍'}
               </button>
             </div>
+            <small id="location-search-help" className="location-help">
+              Enter a city, landmark, or place name.
+            </small>
           </div>
 
           <div className="location-divider">or</div>
 
           <div className="location-section">
-            <label className="section-title">Enter Altitude Manually</label>
+            <label className="section-title" htmlFor="altitude-input">Enter Altitude Manually</label>
             <div className="altitude-inputs">
               <input
+                id="altitude-input"
                 type="number"
                 placeholder="Meters (negative = below sea level)"
                 value={manualAltitude}
@@ -418,16 +459,23 @@ function ControlPanel({
                 }}
                 onKeyPress={(e) => e.key === 'Enter' && handleSetManualAltitude()}
                 disabled={isLoadingLocation}
+                aria-invalid={Boolean(locationError)}
+                aria-describedby={`${locationError ? 'location-error ' : ''}manual-altitude-help`}
                 className="altitude-input"
               />
               <button
                 onClick={handleSetManualAltitude}
                 disabled={isLoadingLocation || !manualAltitude.trim()}
                 className="location-button"
+                aria-label="Set altitude"
+                aria-describedby="manual-altitude-help"
               >
                 ✓
               </button>
             </div>
+            <small id="manual-altitude-help" className="location-help">
+              Negative values are allowed (below sea level).
+            </small>
           </div>
 
           <div className="location-divider">or</div>
@@ -437,10 +485,11 @@ function ControlPanel({
               onClick={handleFindMyLocation}
               disabled={isLoadingLocation}
               className="location-button find-my-location"
+              aria-describedby="geolocation-help"
             >
               {isLoadingLocation ? '⏳ Getting your location...' : '📍 Use My Current Location'}
             </button>
-            <small className="location-help">Uses browser geolocation (needs permission)</small>
+            <small id="geolocation-help" className="location-help">Uses browser geolocation (needs permission)</small>
           </div>
         </div>
       )}

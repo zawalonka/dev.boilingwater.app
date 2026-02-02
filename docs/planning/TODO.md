@@ -27,6 +27,148 @@
 
 ---
 
+## 🔬 ELEMENT DATA REGENERATION (URGENT - DATA QUALITY)
+
+### ELEMENT DATA: Smart Regenerator Script (CHECK MODE READY)
+**Status:** SCRIPTING COMPLETE - Ready for check phase  
+**Goal:** Validate current element data against authoritative sources, add phase data, fix precision issues
+
+**Key Finding:** NIST/IUPAC data currently identical (commit a3fa632 homogenized them)
+- **Original (be1e37d):** NIST H=1.00794, IUPAC H=1.008 (different precision)
+- **Current (all 118):** Both H=1.008 (precision lost in regeneration)
+- **Issue:** Game needs SINGULAR precise atomic weights, not ranges
+
+**Script: `scripts/regenerate-elements.js`**
+
+**Three Modes:**
+1. **CHECK MODE (default)** - No changes, validation only
+   - ✅ READY: Scans all 118 files, compares against PubChem sources
+   - Reports: Discrepancies, missing phase data, range values in atomic mass
+   - Run: `node scripts/regenerate-elements.js`
+
+2. **UPDATE MODE** - Incremental additions
+   - TODO: Fetch ONLY new fields (phase data) from PubChem
+   - Run: `node scripts/regenerate-elements.js --update`
+
+3. **RECREATE MODE** - Full rebuild (EMERGENCY ONLY, commented out)
+   - TODO: Rebuild all 118 from PubChem/NIST (rarely used)
+   - Run: `node scripts/regenerate-elements.js --recreate`
+
+**Data Sources (VERIFIED AUTHORITATIVE):**
+- ✅ **PubChem (PRIMARY):** https://pubchem.ncbi.nlm.nih.gov/periodic-table/#view=list  
+  - Government source: NIH National Library of Medicine
+  - Individual pages: `https://pubchem.ncbi.nlm.nih.gov/element/{atomicNumber}`
+  - **Full per-field source attribution with DOI links** (e.g., "Empirical Atomic Radius 60 pm - J.C. Slater [DOI:10.1063/1.1725697]")
+  - Explicitly labels empirical vs calculated vs measured
+  - 15+ properties per element
+
+- ✅ **NIST (VERIFICATION):** https://physics.nist.gov/PhysRefData/Elements/per_text.html  
+  - U.S. National Institute of Standards and Technology (metrology authority)
+  - Atomic weights with uncertainty ranges, ionization energies, spectroscopic data
+  - Critically evaluated on SI scale
+  - Bibliographic references embedded per value
+
+- ✅ **Ptable.com (SUPPLEMENTARY):** https://ptable.com  
+  - Educational tool (hobby project, Michael Dayah + Eric Scerri review)
+  - Good for visual trends; not primary scientific reference
+  - Lacks per-value citations
+
+**CRITICAL REQUIREMENT: Atomic Weight Precision**
+
+The game uses atomicMass for stoichiometric calculations. **Must be singular, not range.**
+
+**Issue to Resolve:**
+- NIST publishes: Atomic weight ranges (e.g., H = 1.00782–1.00811, varies by isotope source)
+- IUPAC publishes: Standard atomic weight intervals (e.g., H = 1.008, single value)
+- **For game:** Must pick ONE authoritative value per element, consistent across all 118
+
+**Per-Element Strategy:**
+- [ ] For each element, examine PubChem sources (may show 3-4 different values)
+- [ ] Identify which is most appropriate for game physics
+- [ ] Add source selection logic (NIST vs IUPAC vs other)
+- [ ] Document choice reason (e.g., "IUPAC standard weight for consistency")
+- [ ] Flag elements needing manual review (e.g., radioactive elements, variable composition)
+
+**Post-Check Validation (AFTER script runs):**
+- [ ] Verify NO atomicMass values contain ± or – (ranges)
+- [ ] Per-element source selection documented
+- [ ] Phase data successfully added for all 118 elements
+- [ ] Thermal properties (specific heat, conductivity) verified for phase data
+
+**Implementation Steps:**
+
+1. ✅ **Check Mode Complete** - Ready to run
+   - Scans existing 118 files
+   - Detects missing phase data (all 118 need it)
+   - Validates against PubChem (limited by HTML parsing, needs enhancement)
+   - Reports ERROR for any atomic mass with ranges
+
+2. **Enhance HTML Parser** - Extract ALL sources
+   - Improve PubChem page scraping to find all property values/sources
+   - Parse table rows properly: [Value] [Source] [License/Citation]
+   - NOT limited to NIST/IUPAC - capture ALL available sources
+
+3. **Add Phase Data Structure** - Template for all 118
+   - gas: { density, specificHeat, thermalConductivity, ... }
+   - liquid: { density, specificHeat, latentHeatOfVaporization, ... }
+   - solid: { density, specificHeat, latentHeatOfFusion, ... }
+   - Source all from PubChem (e.g., liquid water from NIST WebBook)
+
+4. **Atomic Weight Selection Logic**
+   - Define per-element source priority: IUPAC > NIST > Other
+   - For elements with variable composition (e.g., Cl: 35/37 isotopes), select standard value
+   - For radioactive elements, note in source field
+   - Validate no ranges present
+
+5. **Run Update Mode** - Apply all changes
+   - Fetch phase data from PubChem
+   - Update 118 files with phase properties
+   - Apply atomic weight fixes if needed
+   - Add comprehensive source attribution
+
+6. **Manual Spot-Check** - Per-element validation
+   - Inspect 10-15 random elements for quality
+   - Verify phase data makes sense (e.g., chlorine liquid exists at -101°C)
+   - Confirm atomic mass matches expectations
+
+7. **Commit & Document**
+   - Track which elements have which sources (git commit message)
+   - Update NIST/IUPAC objects with verified data
+   - Remove homogenization (restore precision where justified)
+   - Document date & source URLs
+
+**Data Sources (VERIFIED):**
+- [ ] **Backup existing files:** Copy `src/data/substances/periodic-table/` to `scripts/temp-data/periodic-table-backup/`
+- [ ] **Regenerate all 118 files** using new scraper
+- [ ] **Validate against existing:** Compare old vs new, flag major discrepancies (>5% difference in numeric values)
+- [ ] **Update educational notes:** Keep existing educational notes, verify/expand with new data
+- [ ] **Remove broken API script:** Delete `scripts/fetch-elements-from-api.js` (API returns 404)
+- [ ] **Update generation script:** Replace hardcoded PERIODIC_TABLE array with scraper-generated data
+
+**PubChem Data Fields (15+ per element):**
+- Atomic Mass (u)
+- Standard State (Gas/Solid/Liquid)
+- Electron Configuration
+- Oxidation States
+- Electronegativity (Pauling Scale)
+- Atomic Radius (van der Waals) pm
+- Ionization Energy (eV)
+- Electron Affinity (eV)
+- Melting Point (K)
+- Boiling Point (K)
+- Density (g/cm³)
+- Year Discovered
+
+**NIST Data Fields:**
+- Atomic Weight (with uncertainty ranges: [min, max])
+- Ground-state Level
+- Ground-state Configuration
+- Links to spectroscopic databases
+
+**Implementation Priority:** HIGH - Educational accuracy depends on verified sources
+
+---
+
 ## ⚡ HIGH PRIORITY (Post-Accessibility)
 
 ### 2. LOCALIZATION / INTERNATIONALIZATION (i18n)

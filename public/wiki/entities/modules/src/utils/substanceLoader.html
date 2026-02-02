@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>substanceLoader.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/index.html">utils</a> <span class="breadcrumb-sep">›</span> <span>substanceLoader.js</span>
+        </nav>
+        <div class="wiki-topbar-title">substanceLoader.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">substanceLoader.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/DEFAULT_SUBSTANCE.html">DEFAULT_SUBSTANCE</a></li><li><a href="/wiki/entities/symbols/getAvailableSubstances.html">getAvailableSubstances</a></li><li><a href="/wiki/entities/symbols/getSubstanceMetadata.html">getSubstanceMetadata</a></li><li><a href="/wiki/entities/symbols/parseProps.html">parseProps</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a>, <span class="external-import">../generated/substanceCatalog</span></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li>src\generated\substanceCatalog.js</li><li><a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>substanceLoader.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>SUBSTANCE LOADER</p>
+<p>Loads substances using auto-generated catalog (zero hardcoding).</p>
+<p>The catalog is regenerated on every build by scanning the filesystem.</p>
+<p>This file has ZERO knowledge of specific elements or compounds.</p>
+<p>It only imports from the generated catalog and provides a clean API.</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\utils\substanceLoader.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">/**
+ * SUBSTANCE LOADER
+ * 
+ * Loads substances using auto-generated catalog (zero hardcoding).
+ * The catalog is regenerated on every build by scanning the filesystem.
+ * 
+ * This file has ZERO knowledge of specific elements or compounds.
+ * It only imports from the generated catalog and provides a clean API.
+ */
+
+import { parseSubstanceProperties as parseProps } from &#39;./substanceParser&#39;
+import { 
+  compoundLoaders, 
+  elementLoaders, 
+  compoundMetadata, 
+  elementMetadata
+} from &#39;../generated/substanceCatalog&#39;
+
+// Preloadable map for compound phase state files (Vite will bundle these JSON files)
+const phaseStateLoaders = import.meta.glob(&#39;../data/substances/compounds/**/state.json&#39;)
+
+// ============================================================================
+// INTERNAL HELPERS
+// ============================================================================
+
+/**
+ * Calculate diffusion volume sum by loading element data at runtime
+ * 
+ * This is called at substance load time (game resets on substance change).
+ * Each element&#39;s diffusion volume is stored in its JSON file.
+ * 
+ * @param {Array} elements - Array from compound info.json: [{symbol, count, ...}]
+ * @returns {Promise&lt;number|null&gt;} Sum of atomic diffusion volumes (Σv)
+ */
+async function calculateDiffusionVolumeSumFromElements(elements) {
+  if (!Array.isArray(elements) || elements.length === 0) {
+    return null
+  }
+  
+  let sum = 0
+  
+  for (const element of elements) {
+    const symbol = element.symbol
+    const count = element.count || 1
+    
+    // Load the element data from catalog
+    const loader = elementLoaders[symbol]
+    if (!loader) {
+      console.warn(`No loader for element ${symbol}`)
+      return null
+    }
+    
+    const data = await loader()
+    const elementData = data.default || data
+    
+    // Extract diffusion volume from element data
+    const diffusionVolume = elementData.diffusion?.atomicDiffusionVolume
+    if (typeof diffusionVolume !== &#39;number&#39;) {
+      console.warn(`No diffusion volume for ${symbol}`)
+      return null
+    }
+    
+    sum += count * diffusionVolume
+  }
+  
+  return sum
+}
+
+// ============================================================================
+// RE-EXPORTS
+// ============================================================================
+
+// Re-export parser function for backward compatibility
+export { parseProps as parseSubstanceProperties }
+
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+/**
+ * Default substance to load on startup
+ * Using &#39;water&#39; as default
+ */
+export const DEFAULT_SUBSTANCE = &#39;water&#39;
+
+// ============================================================================
+// DISCOVERY FUNCTIONS
+// ============================================================================
+
+/**
+ * Get all available substance IDs (compounds + elements)
+ * Discovered dynamically from filesystem at build time
+ */
+export function getAvailableSubstances() {
+  return {
+    compounds: Object.keys(compoundLoaders),
+    elements: Object.keys(elementLoaders),
+    all: [...Object.keys(compoundLoaders), ...Object.keys(elementLoaders)]
+  }
+}
+
+/**
+ * Get metadata for a substance (display name, category, etc)
+ * @param {string} substanceId - Compound ID or element symbol
+ * @returns {Object} Metadata with displayName, category
+ */
+export function getSubstanceMetadata(substanceId) {
+  return compoundMetadata[substanceId] || elementMetadata[substanceId] || {
+    displayName: substanceId,
+    category: &#39;unknown&#39;
+  }
+}
+
+// ============================================================================
+// LOADING FUNCTIONS
+// ============================================================================
+
+/**
+ * Load substance info only (no phase state files)
+ * Useful for quick metadata checks like phase at ambient temperature
+ * @param {string} substanceId - Element symbol or compound ID
+ * @returns {Promise&lt;Object&gt;} Substance info data with element flag when applicable
+ */
+export async function loadSubstanceInfo(substanceId) {
+  try {
+    if (elementLoaders[substanceId]) {
+      const loader = elementLoaders[substanceId]
+      const data = await loader()
+      const elementData = data.default || data
+
+      return {
+        ...elementData,
+        isElement: true,
+        currentPhase: elementData.physicalProperties?.phase || null
+      }
+    }
+
+    if (compoundLoaders[substanceId]) {
+      const loader = compoundLoaders[substanceId]
+      const info = await loader()
+      const infoData = info.default || info
+
+      return {
+        ...infoData,
+        isElement: false,
+        currentPhase: null,
+        phaseState: null
+      }
+    }
+
+    throw new Error(`Substance &quot;${substanceId}&quot; not found in catalog`)
+  } catch (error) {
+    console.error(`Failed to load substance info for &quot;${substanceId}&quot;:`, error)
+    throw error
+  }
+}
+
+/**
+ * Load a substance (element or compound) from generated catalog
+ * @param {string} substanceId - Element symbol or compound ID
+ * @param {string} phase - Phase name (liquid, solid, gas) - for compounds only
+ * @returns {Promise&lt;Object&gt;} Complete substance data
+ */
+export async function loadSubstance(substanceId, phase = &#39;liquid&#39;) {
+  try {
+    // Try element first (symbols are usually uppercase like &#39;H&#39;, &#39;O&#39;, etc.)
+    if (elementLoaders[substanceId]) {
+      const loader = elementLoaders[substanceId]
+      const data = await loader()
+      const elementData = data.default || data
+      
+      // Mark as element and set phase based on element&#39;s natural state
+      // Most elements at room temp are solid, but H, N, O, F, Cl, noble gases are gas
+      const gasElements = [&#39;H&#39;, &#39;He&#39;, &#39;N&#39;, &#39;O&#39;, &#39;F&#39;, &#39;Ne&#39;, &#39;Cl&#39;, &#39;Ar&#39;, &#39;Kr&#39;, &#39;Xe&#39;, &#39;Rn&#39;]
+      const liquidElements = [&#39;Br&#39;, &#39;Hg&#39;]  // Only two liquid at room temp
+      
+      let naturalPhase = &#39;solid&#39;
+      if (gasElements.includes(substanceId)) naturalPhase = &#39;gas&#39;
+      if (liquidElements.includes(substanceId)) naturalPhase = &#39;liquid&#39;
+      
+      return {
+        ...elementData,
+        isElement: true,
+        currentPhase: phase || naturalPhase
+      }
+    }
+    
+    // Try compound
+    if (compoundLoaders[substanceId]) {
+      const loader = compoundLoaders[substanceId]
+      const info = await loader()
+      const infoData = info.default || info
+      
+      // Load phase-specific state file
+      // Compounds have structure: /compounds/{category}/{name}/info.json
+      //                            /compounds/{category}/{name}/{phase}/state.json
+      const compoundPath = infoData.id || substanceId
+      const compoundCategory = infoData.category || &#39;pure&#39;
+      
+      // Load element diffusion volumes for mass transfer calculations
+      // This happens at load time (not pre-calculated) - game resets on substance change anyway
+      let diffusionVolumeSum = null
+      if (Array.isArray(infoData.elements) &amp;&amp; infoData.elements.length &gt; 0) {
+        // Pure compounds: calculate from element composition
+        try {
+          diffusionVolumeSum = await calculateDiffusionVolumeSumFromElements(infoData.elements)
+        } catch (err) {
+          console.warn(`Could not calculate diffusion volume for ${substanceId}:`, err.message)
+        }
+      } else if (infoData.type === &#39;mixture&#39; &amp;&amp; Array.isArray(infoData.components)) {
+        // Solutions/mixtures: use the SOLVENT&#39;s diffusion properties
+        // (e.g., saltwater evaporates water, not NaCl)
+        const solvent = infoData.components.find(c =&gt; c.role === &#39;solvent&#39;)
+        if (solvent &amp;&amp; solvent.id) {
+          try {
+            // Recursively load the solvent compound to get its diffusion data
+            const solventData = await loadSubstance(solvent.id, phase)
+            diffusionVolumeSum = solventData?.diffusionVolumeSum ?? null
+            if (diffusionVolumeSum) {
+              console.log(`Mixture ${substanceId}: using solvent (${solvent.id}) diffusion volume sum: ${diffusionVolumeSum.toFixed(2)}`)
+            }
+          } catch (err) {
+            console.warn(`Could not load solvent diffusion for ${substanceId}:`, err.message)
+          }
+        }
+      }
+      
+      try {
+        // Dynamically import the phase state file
+        // Path: ../data/substances/compounds/{category}/{folder}/{phase}/state.json
+        // We need to figure out the folder name from the catalog metadata
+        const metadata = compoundMetadata[substanceId]
+        if (!metadata || !metadata.folderPath) {
+          throw new Error(`No folder path found for compound ${substanceId}`)
+        }
+        
+        const phaseStatePath = `../data/substances/compounds/${metadata.folderPath}/${phase}/state.json`
+        const phaseStateLoader = phaseStateLoaders[phaseStatePath]
+        if (!phaseStateLoader) {
+          throw new Error(`No phase state loader found for ${phaseStatePath}`)
+        }
+        const phaseState = await phaseStateLoader()
+        const phaseStateData = phaseState.default || phaseState
+        
+        return {
+          ...infoData,
+          phaseState: phaseStateData,
+          currentPhase: phase,
+          diffusionVolumeSum  // Calculated at load time from element data
+        }
+      } catch (error) {
+        console.warn(`Could not load phase state for ${substanceId}/${phase}:`, error.message)
+        // Return without phase state if file doesn&#39;t exist
+        return {
+          ...infoData,
+          phaseState: null,
+          diffusionVolumeSum,
+          currentPhase: phase
+        }
+      }
+    }
+    
+    throw new Error(`Substance &quot;${substanceId}&quot; not found in catalog`)
+  } catch (error) {
+    console.error(`Failed to load substance &quot;${substanceId}&quot;:`, error)
+    throw error
+  }
+}
+
+/**
+ * Load substance with parsed physics properties ready for simulation
+ * @param {string} substanceId - Element or compound ID
+ * @param {string} phase - Phase name (liquid, solid, gas)
+ * @returns {Promise&lt;Object&gt;} Parsed substance with physics properties
+ */
+export async function loadSubstancePhase(substanceId, phase = &#39;liquid&#39;) {
+  const rawData = await loadSubstance(substanceId, phase)
+  return parseSubstanceProperties(rawData)
+}
+
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

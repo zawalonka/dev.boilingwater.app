@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCRIPTS_AND_DATA_SOURCES.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/research/index.html">research</a> <span class="breadcrumb-sep">›</span> <span>SCRIPTS_AND_DATA_SOURCES.md</span>
+        </nav>
+        <div class="wiki-topbar-title">SCRIPTS_AND_DATA_SOURCES.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">SCRIPTS_AND_DATA_SOURCES.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>SCRIPTS_AND_DATA_SOURCES.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\research\SCRIPTS_AND_DATA_SOURCES.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Scripts &amp; Data Sources Inventory
+
+&gt; **Created:** February 1, 2026  
+&gt; **Purpose:** Comprehensive audit of all data pipelines, APIs used, and data sources  
+&gt; **Status:** Complete audit of existing implementation
+
+---
+
+## Scripts Overview
+
+### Data Generation &amp; Processing Pipeline
+
+```
+Script Name              | Purpose                           | Data Source             | Output
+------------------------|-----------------------------------|------------------------|---------------------------
+fetch-elements-from-api | Fetch element properties from API | api.api-ninjas.com      | [periodic-table]/001_H_*.json
+generate-all-118        | Hardcoded fallback periodic table | Hardcoded in script     | [periodic-table]/001_H_*.json
+update-educational-notes| Inject educational notes into JSON| temp-data/educational..| Updates existing JSONs
+add-diffusion-volumes   | Add Fuller-Schettler-Giddings Σv | Hardcoded in script     | Updates [periodic-table]/*.json
+generateSubstanceCatalog| Scan filesystem → lazy catalog   | File system scan        | src/generated/substanceCatalog.js
+optimize-images         | Compress workshop PNG/JPG         | public/assets/workshops | Optimized PNG/JPG
+validate-elements       | Check element JSON structure      | [periodic-table]/*.json | Reports/fixes issues
+```
+
+---
+
+## 1. FETCH-ELEMENTS-FROM-API.JS
+
+**Purpose:** Fetch scientific element data from external API  
+**API Used:** `api.api-ninjas.com/v1/elements`
+
+### Data Retrieved (26 Properties)
+```
+atomicNumber, symbol, name, category, block, valenceElectrons, oxidationStates,
+atomicMass, electronegativity_pauling, ionizationEnergy, atomicRadius,
+electronAffinity, standardMolarEntropy, specificHeatCapacity, 
+meltingPointK, boilingPointK, densityGCm3, thermalConductivity, 
+phase, appearance
+```
+
+### Output Format
+```json
+{
+  &quot;atomicNumber&quot;: 1,
+  &quot;symbol&quot;: &quot;H&quot;,
+  &quot;name&quot;: &quot;Hydrogen&quot;,
+  &quot;standardUsed&quot;: &quot;iupac&quot;,
+  &quot;nist&quot;: { &quot;atomicMass&quot;: 1.008, &quot;electronegativity&quot;: 2.20, ... },
+  &quot;iupac&quot;: { &quot;atomicMass&quot;: 1.008, &quot;electronegativity&quot;: 2.20, ... },
+  &quot;physicalProperties&quot;: {
+    &quot;phase&quot;: &quot;gas&quot;,
+    &quot;appearance&quot;: &quot;colorless, odorless gas&quot;,
+    &quot;uses&quot;: [],
+    &quot;notes&quot;: &quot;Element group: nonmetal&quot;
+  },
+  &quot;educationalNotes&quot;: &quot;&quot;  // Empty until update-educational-notes.js runs
+}
+```
+
+### Limitations
+- ❌ **NO educational/historical content** (uses, discovery, history, applications)
+- ✅ **Authoritative scientific properties** (mass, electronegativity, melting/boiling points)
+- ⚠️ **Requires API key** (authentication not set up in this env)
+- ⚠️ **Rate-limited** (no burst querying)
+
+### Data Attribution
+Claims to use NIST Chemistry WebBook 2024 + IUPAC Periodic Table 2024 as sources
+
+---
+
+## 2. GENERATE-ALL-118.JS
+
+**Purpose:** Hardcoded fallback periodic table (backup if API fails)  
+**Data Source:** Hardcoded constants in the script  
+**Data Coverage:** All 118 elements
+
+### Data Structure
+```javascript
+const PERIODIC_TABLE = [
+  { n: 1, s: &quot;H&quot;, nm: &quot;Hydrogen&quot;, cat: &quot;nonmetal&quot;, am: 1.008, en: 2.20, ie: 1312.0, ... },
+  { n: 2, s: &quot;He&quot;, nm: &quot;Helium&quot;, cat: &quot;noble-gas&quot;, am: 4.003, en: null, ie: 2372.3, ... },
+  // ... 118 total
+]
+```
+
+### Field Abbreviations
+- `n` = atomic number
+- `s` = symbol
+- `nm` = name
+- `cat` = category (nonmetal, noble-gas, alkali-metal, etc.)
+- `b` = block (s, p, d, f)
+- `v` = valence electrons
+- `ox` = oxidation states
+- `am` = atomic mass
+- `en` = electronegativity
+- `ie` = ionization energy
+- `ar` = atomic radius
+- `ea` = electron affinity
+- `sme` = standard molar entropy
+- `shc` = specific heat capacity
+- `mp` = melting point (°C)
+- `bp` = boiling point (°C)
+- `d` = density (g/cm³)
+- `tc` = thermal conductivity
+- `ph` = phase
+- `ap` = appearance
+
+### Output
+Generates element JSON files with same structure as fetch-elements-from-api.js output
+
+### Data Source
+- **Comment**: &quot;NIST Chemistry WebBook, IUPAC Periodic Table standard references&quot;
+- **Actual**: Hardcoded values (likely sourced from NIST/IUPAC at development time, frozen in code)
+
+---
+
+## 3. UPDATE-EDUCATIONAL-NOTES.JS
+
+**Purpose:** Inject educational notes from local library into substance JSON files  
+**Data Source:** `scripts/temp-data/educational-notes.json`
+
+### Process Flow
+```
+temp-data/educational-notes.json
+           ↓
+  [Read elements/compounds/mixtures sections]
+           ↓
+  [Find matching substance files]
+           ↓
+  [Add educationalNotes field to each]
+           ↓
+  Updated JSON files with educationalNotes populated
+```
+
+### Library Structure
+```json
+{
+  &quot;compounds&quot;: {
+    &quot;water-h2o&quot;: &quot;Note about water...&quot;,
+    &quot;ethanol&quot;: &quot;Note about ethanol...&quot;
+  },
+  &quot;elements&quot;: {
+    &quot;001_H&quot;: &quot;Most abundant element in the universe...&quot;,
+    &quot;006_C&quot;: &quot;Basis of all organic chemistry...&quot;
+  },
+  &quot;mixtures&quot;: {
+    &quot;saltwater-3pct-nacl&quot;: &quot;Saltwater is a solution...&quot;
+  }
+}
+```
+
+### Current Status
+**EMPTY TEMPLATE** - File contains only metadata and instructions  
+No educational notes currently populated
+
+### What Gets Updated
+- **Compounds:** `src/data/substances/compounds/pure/*/info.json`
+- **Mixtures:** `src/data/substances/compounds/solutions/*/info.json`
+- **Elements:** `src/data/substances/periodic-table/*.json`
+
+Field name used: `educationalNotes` (canonical)
+
+---
+
+## 4. ADD-DIFFUSION-VOLUMES.JS
+
+**Purpose:** Add atomic diffusion volume (Σv) data for mass transfer calculations  
+**Data Source:** Fuller, Schettler, Giddings (1966) + Reid, Prausnitz, Poling (1987)
+
+### Physics Background
+Used in **Fuller-Schettler-Giddings equation** to calculate diffusion coefficients for vapor evaporation:
+```
+D_AB = (0.00143 × T^1.75) / (P × M_AB^0.5 × (Σv_A^(1/3) + Σv_B^(1/3))²)
+```
+
+### Data Categories
+
+| Category | Examples | Source | Count |
+|----------|----------|--------|-------|
+| **Well-Characterized** (Fuller 1966) | H, C, N, O, S, Cl, Ar, noble gases | Published literature | ~14 |
+| **Estimated** | Alkali metals, alkaline earth, transition metals | Atomic radius correlation | ~100+ |
+
+### Data Format
+```json
+{
+  &quot;diffusion&quot;: {
+    &quot;atomicDiffusionVolume&quot;: 2.31,
+    &quot;unit&quot;: &quot;dimensionless (cm³/mol conceptually)&quot;,
+    &quot;source&quot;: &quot;Fuller 1966&quot;,
+    &quot;note&quot;: &quot;Hydrogen - well characterized&quot;
+  }
+}
+```
+
+### Full Data Table
+Includes all 118 elements with documented sources (Fuller 1966, Reid 1987, or &quot;Estimated&quot;)
+
+---
+
+## 5. GENERATESUBSTANCECATALOG.JS
+
+**Purpose:** Build-time file scanner → generates lazy import catalog  
+**Data Source:** File system scan of `src/data/substances/`
+
+### Process
+1. **Scan compounds:** Find all `compounds/{type}/{id}/info.json`
+2. **Scan elements:** Find all `periodic-table/XXX_Element_category.json`
+3. **Index by ID:** Create registry with display names, paths, categories
+4. **Generate:** Write `src/generated/substanceCatalog.js` with lazy imports
+
+### Output File
+```javascript
+// src/generated/substanceCatalog.js (auto-generated)
+export const substances = {
+  compounds: {
+    water: { displayName: &#39;Water&#39;, path: &#39;...&#39;, folderPath: &#39;...&#39; },
+    ethanol: { displayName: &#39;Ethanol&#39;, path: &#39;...&#39;, folderPath: &#39;...&#39; }
+  },
+  elements: {
+    H: { displayName: &#39;Hydrogen&#39;, path: &#39;...&#39;, atomicNumber: 1 },
+    He: { displayName: &#39;Helium&#39;, path: &#39;...&#39;, atomicNumber: 2 }
+  }
+}
+```
+
+### No External APIs
+✅ File system only (no network calls)
+
+---
+
+## 6. OPTIMIZE-IMAGES.JS
+
+**Purpose:** Compress workshop PNG/JPG assets  
+**Data Source:** `public/assets/workshops/{workshop}/`
+
+### Transformation Rules
+- **Backgrounds** (`background.png` → `background.jpg`)
+  - Convert PNG to JPG
+  - Quality 75, mozjpeg, progressive
+  - Reduces file size ~70%
+
+- **UI elements** (pot, flame, etc. stay PNG)
+  - Heavy compression (quality 60, level 9)
+  - Keep transparency
+  - Reduces file size ~40%
+
+### External Dependencies
+Uses `sharp` library for image processing (no APIs)
+
+---
+
+## 7. VALIDATE-ELEMENTS.JS
+
+**Purpose:** Quality assurance - check all 118 element JSON files match schema  
+**Data Source:** `src/data/substances/periodic-table/*.json`  
+**Reference Standard:** `026_transition-metal_Fe.json` (Iron)
+
+### Checks Performed
+✅ NIST/IUPAC sections have required properties  
+✅ Physical properties in correct location  
+✅ educationalNotes field exists (empty or populated)  
+✅ No misplaced properties  
+✅ Auto-fix common issues  
+
+### No External APIs
+File system validation only
+
+---
+
+## Current Data Flow Summary
+
+```
+                    API fetch attempt
+                           ↓
+        ┌────────────────────────────────────────┐
+        │  api.api-ninjas.com/v1/elements        │
+        │  (26 numeric scientific properties)    │
+        │  ⚠️ Requires API key, rate-limited     │
+        └────────────────────────────────────────┘
+                           ↓ (Success or Fallback)
+                    ┌──────────────┐
+                    │ generate-118 │ (Hardcoded)
+                    └──────────────┘
+                           ↓
+                  Element JSON created
+                           ↓
+        ┌────────────────────────────────────────┐
+        │ add-diffusion-volumes.js               │
+        │ Injects Fuller-Schettler-Giddings Σv   │
+        │ (Source: Published 1966 + estimated)   │
+        └────────────────────────────────────────┘
+                           ↓
+        ┌────────────────────────────────────────┐
+        │ update-educational-notes.js            │
+        │ ❌ Injects from: temp-data/edu...json  │
+        │ ✅ Template exists, currently EMPTY    │
+        └────────────────────────────────────────┘
+                           ↓
+              Final Element JSON with:
+        ✅ Scientific properties (API or hardcoded)
+        ✅ Diffusion volumes (published data)
+        ❌ Educational notes (EMPTY currently)
+```
+
+---
+
+## What APIs Are Actually Used?
+
+| API | Current Use | Status | Limitations |
+|-----|-------------|--------|-------------|
+| `api.api-ninjas.com` | Element properties (26 fields) | ⚠️ Requires API key | No educational content |
+| **NIST Chemistry WebBook** | Referenced in docs | ⚠️ Not actively called | Would need scraping/API |
+| **IUPAC** | Referenced in docs | ⚠️ Not actively called | No direct API |
+| **Fuller-Schettler-Giddings** | Diffusion volumes hardcoded | ✅ Embedded in script | Physical constants only |
+| **PubChem** | Not used | ❌ Not integrated | Candidate for future |
+
+---
+
+## Missing Data Sources
+
+### What We Don&#39;t Have
+❌ Educational/historical content  
+❌ Real-world applications  
+❌ Discovery context  
+❌ Safety data (beyond NIST physical properties)  
+❌ Toxicity information  
+❌ Common uses in industry  
+
+### Why
+- NIST/IUPAC: Scientific properties only (no narrative)
+- api.api-ninjas.com: 26 numeric fields, no descriptive content
+- PubChem: Available but not integrated; would need parsing/API
+- Wikipedia/DBpedia: Could provide educational content but not used
+
+---
+
+## To Populate Educational Notes
+
+### Option A: Manual Curation (Current Approach)
+1. Add entries to `scripts/temp-data/educational-notes.json`
+2. Run `node scripts/update-educational-notes.js`
+3. Educational notes injected into all substance JSONs
+
+**Status:** Template ready, library empty
+
+### Option B: Integrate PubChem API
+1. Fetch compound metadata from https://pubchem.ncbi.nlm.nih.gov/api
+2. Extract safety/uses/synonyms
+3. Supplement with manual curation for historical content
+
+**Status:** Not implemented
+
+### Option C: Auto-Generate from AI
+1. Use scientific properties from NIST/PubChem
+2. Generate educational summaries via GPT/Claude
+3. Manual review/curation layer
+
+**Status:** Not implemented
+
+---
+
+## Recommendations
+
+1. **Immediate:** Populate `scripts/temp-data/educational-notes.json` manually (fastest, most curated)
+2. **Short-term:** Integrate PubChem for compound safety/uses data
+3. **Long-term:** Consider NIST API (if available) for authoritative thermodynamic data
+4. **Not recommended:** Replace manual curation entirely with AI (loses accuracy/context)
+
+---
+
+**Last Updated:** February 1, 2026  
+**Data Audit:** Complete
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "title": "Phases of Matter",
+  "summary": "Phases of matter describe how particles are arranged and how they move. In the game, phase-specific properties (density, heat capacity, latent heat, vapor pressure) control how each substance heats, cools, evaporates, and boils.",
+  "educationalNotes": "Understanding phases helps connect microscopic particle motion to macroscopic behavior. In this sandbox, each phase changes how energy moves (conduction, convection), how pressure responds, and how quickly substances transition between states.",
+  "sections": [
+    {
+      "title": "Why phases matter in the simulation",
+      "body": "The same substance behaves very differently across phases. A solid stores heat differently than a liquid, and a gas responds dramatically to pressure. The wiki groups phase data so students can compare how properties change across states."
+    },
+    {
+      "title": "Phase transitions",
+      "body": "Phase transitions occur when temperature or pressure crosses a threshold for that substance. The simulation uses phase transition data (melting, boiling, critical point) and latent heat to model energy required to change state."
+    }
+  ],
+  "states": {
+    "solid": {
+      "summary": "Solids have a fixed shape and volume. Particles are tightly packed and mainly vibrate in place.",
+      "educationalNotes": "Solids are ideal for showing how heat moves via conduction and why specific heat and density strongly affect temperature rise. In the game, solids can store heat without flowing, which changes cooling behavior and phase transition timing.",
+      "keyProperties": [
+        "High density relative to gases",
+        "Defined shape and volume",
+        "Heat flow through conduction"
+      ],
+      "examples": ["Ice", "Table salt", "Metal cookware"]
+    },
+    "liquid": {
+      "summary": "Liquids flow and take the shape of their container while maintaining a fixed volume. Molecules slide past one another.",
+      "educationalNotes": "Liquids connect particle motion to convection. They evaporate below boiling, so vapor pressure and surface area matter. In the simulation, liquid properties drive how fast temperature rises and how boiling begins.",
+      "keyProperties": [
+        "Surface tension",
+        "Convection-driven heat transfer",
+        "Evaporation below boiling point"
+      ],
+      "examples": ["Water", "Ethanol", "Glycerin"]
+    },
+    "gas": {
+      "summary": "Gases expand to fill their container. Particles are far apart and move freely, making gases highly compressible.",
+      "educationalNotes": "Gases are governed strongly by pressure and temperature. This is where the ideal gas relationship shows up in the game when vapor fills the room and affects boiling point.",
+      "keyProperties": [
+        "Low density",
+        "High compressibility",
+        "Pressure and temperature strongly linked"
+      ],
+      "examples": ["Steam", "Ammonia gas", "Nitrogen"]
+    },
+    "plasma": {
+      "summary": "Plasma is an ionized gas where electrons are separated from atoms, creating an electrically conductive fluid.",
+      "educationalNotes": "Plasma highlights how extreme energy inputs change matter into ionized states. It connects electricity, magnetism, and thermodynamics in advanced experiments and future game modules.",
+      "keyProperties": [
+        "Contains ions and free electrons",
+        "Responds to electric and magnetic fields",
+        "Occurs at very high temperatures or low pressures"
+      ],
+      "examples": ["Lightning", "Auroras", "Stars"],
+      "notes": "Plasma is not yet modeled in the current gameplay physics, but the wiki includes it as a first-class phase for scientific completeness and future expansion."
+    }
+  },
+  "lastUpdated": "2026-02-01"
+}

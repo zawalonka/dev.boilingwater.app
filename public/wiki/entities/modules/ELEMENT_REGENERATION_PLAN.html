@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ELEMENT_REGENERATION_PLAN.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <span>ELEMENT_REGENERATION_PLAN.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ELEMENT_REGENERATION_PLAN.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ELEMENT_REGENERATION_PLAN.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ELEMENT_REGENERATION_PLAN.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>ELEMENT_REGENERATION_PLAN.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Element Data Regeneration Plan
+
+&gt; **Date:** February 2, 2026  
+&gt; **Status:** CHECK MODE READY - Awaiting manual validation and update approval
+
+---
+
+## 📋 SUMMARY
+
+The `scripts/regenerate-elements.js` script is now ready to validate and update all 118 element files from authoritative sources (PubChem + NIST).
+
+**Current Status:**
+- ✅ Check mode complete: Scans all 118 files, detects missing phase data (ALL 118)
+- ✅ Validation framework in place: Compares current data against PubChem sources
+- ⚠️ HTML parsing limited: Can extract values but needs enhancement to capture ALL sources
+- 🔴 **CRITICAL FINDING:** All elements missing physics properties for liquid/solid/gas phases
+
+---
+
+## 🔍 KEY FINDINGS
+
+### Data Precision Issue (DISCOVERED)
+Original commit `be1e37d` had DIFFERENT NIST/IUPAC values:
+- **Hydrogen:** NIST=1.00794, IUPAC=1.008 (precision levels differed)
+- **Oxygen:** NIST=15.9994, IUPAC=15.999 (precision levels differed)
+
+Commit `a3fa632` (&quot;regenerate all 118 elements&quot;) **homogenized them to identical values**:
+- Now: Both NIST=1.008, Both IUPAC=1.008
+- **Problem:** Lost precision/distinction between authoritative sources
+- **Cause:** Script duplicated single-source data with different labels instead of fetching from BOTH sources separately
+
+### Game-Critical Requirement: Atomic Weight Must Be Singular
+**The game uses atomicMass for stoichiometric calculations.**
+- ❌ Cannot use ranges (e.g., &quot;1.00782–1.00811&quot;)
+- ✅ Must use single precise value (e.g., &quot;1.008&quot;)
+
+**Issue:**
+- NIST publishes ranges (varies by isotope source composition)
+- IUPAC publishes standard intervals (single values)
+- **Solution:** Select ONE authoritative source per element, consistently applied across all 118
+
+---
+
+## 🛠️ SCRIPT MODES
+
+### 1. CHECK MODE (✅ READY)
+```bash
+node scripts/regenerate-elements.js
+```
+
+**What it does:**
+- Scans existing 118 element files
+- Reports: All 118 missing `physicalProperties.phases` (gas/liquid/solid)
+- Validates sample elements (first 5) against PubChem
+- Flags any atomic mass values containing ranges (±, –)
+- **Writes nothing to disk**
+
+**Output:**
+```
+📊 Found 118 existing element files
+📈 Status:
+   Total files: 118
+   Files needing update (phase data): 118
+   
+🔎 CHECK MODE: Comparing current data against PubChem...
+📋 H (Hydrogen):
+   ✅ All values validated
+   
+POST-CHECK VALIDATION REQUIRED:
+   TODO: Verify atomic weight values are SINGULAR and PRECISE
+   - Game calculations depend on precise atomicMass (no ranges)
+   - Must select authoritative source consistently...
+```
+
+### 2. UPDATE MODE (🔴 TODO)
+```bash
+node scripts/regenerate-elements.js --update
+```
+
+**What it will do:**
+- Fetch phase data from PubChem for all 118 elements
+- Add `physicalProperties.phases` structure (gas/liquid/solid)
+- Fix any atomic mass precision issues
+- Apply consistent source selection across all elements
+- **Writes changes to JSON files**
+
+**Not yet implemented:**
+- PubChem phase data extraction
+- Intelligent source selection logic
+- Per-element handling for ambiguous cases
+
+### 3. RECREATE MODE (⚠️ EMERGENCY ONLY)
+```bash
+node scripts/regenerate-elements.js --recreate
+```
+
+**What it would do:**
+- Full rebuild of all 118 elements from scratch
+- Rarely needed; commented out for safety
+- Only use if files corrupted/lost
+
+---
+
+## 📊 DATA SOURCES (VERIFIED AUTHORITATIVE)
+
+### Primary Source: PubChem
+- **URL:** https://pubchem.ncbi.nlm.nih.gov/element/{atomicNumber}
+- **Provider:** NIH National Library of Medicine (U.S. government)
+- **Coverage:** All 118 elements with 15+ properties each
+- **Per-field attribution:** Every value cites source with DOI (e.g., &quot;Empirical Atomic Radius 60 pm - J.C. Slater [DOI:10.1063/1.1725697]&quot;)
+- **Distinguishes:** Empirical vs calculated vs measured values
+- **Sources referenced:** NIST, IUPAC CIAAW, Jefferson Lab, Los Alamos, peer-reviewed papers
+
+### Verification Source: NIST
+- **URL:** https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element={atomicNumber}&amp;context=text
+- **Provider:** U.S. National Institute of Standards and Technology (metrology authority)
+- **Coverage:** Atomic weights (with uncertainty ranges), ionization energies, spectroscopic data
+- **Critically evaluated:** All experimental values on SI scale
+- **Use:** Cross-verify PubChem values, confirm uncertainty ranges
+
+### Supplementary: Ptable.com
+- **URL:** https://ptable.com
+- **Provider:** Michael Dayah (educational tool, reviewed by Eric Scerri)
+- **Use:** Visual trends, secondary verification
+- **Limitation:** Educational reference, not cited in scientific papers
+
+### Standards Authority: IUPAC
+- **URL:** https://iupac.org/what-we-do/periodic-table-of-elements/
+- **Role:** Defines official atomic weights and chemical nomenclature
+- **Access:** Through PubChem (which cites IUPAC CIAAW)
+- **Note:** Blocks automated access (HTTP 403)
+
+---
+
+## 🎯 IMPLEMENTATION ROADMAP
+
+### Phase 1: Validation &amp; Analysis (THIS STEP - NOW)
+- [x] Create check mode script (`regenerate-elements.js`)
+- [x] Scan all 118 files, detect missing phase data
+- [x] Compare sample against PubChem
+- [x] Report atomic weight precision issues
+- [ ] **NEXT:** Run check mode, examine sample output, identify which elements have issues
+
+### Phase 2: Data Enhancement (NEXT SESSION)
+- [ ] Improve HTML parser to extract ALL sources (not just first match)
+- [ ] For each element: capture all available values + their sources + citations
+- [ ] Build source attribution map per element
+
+### Phase 3: Phase Data Addition (AFTER Phase 2)
+- [ ] Define phase data structure template:
+  ```json
+  &quot;physicalProperties&quot;: {
+    &quot;phase&quot;: &quot;solid|liquid|gas&quot;,
+    &quot;phases&quot;: {
+      &quot;gas&quot;: {
+        &quot;density&quot;: 0.00008988,
+        &quot;specificHeat&quot;: 14.3,
+        &quot;thermalConductivity&quot;: 0.1815,
+        &quot;source&quot;: &quot;NIST Chemistry WebBook&quot;
+      },
+      &quot;liquid&quot;: {...},
+      &quot;solid&quot;: {...}
+    }
+  }
+  ```
+- [ ] Scrape PubChem for phase-specific properties
+- [ ] Add to all 118 elements
+
+### Phase 4: Atomic Weight Normalization (CRITICAL)
+- [ ] For each element: select single authoritative value
+- [ ] Document source choice (NIST vs IUPAC vs other)
+- [ ] Verify NO ranges (±, –) in final values
+- [ ] Per-element handling for ambiguous cases (e.g., radioactive elements)
+
+### Phase 5: Execution
+- [ ] Run `--update` mode
+- [ ] Manually spot-check 10-15 random elements
+- [ ] Verify phase data quality
+- [ ] Verify atomic mass precision
+
+### Phase 6: Commit &amp; Release
+- [ ] Document all changes in git commit message
+- [ ] Include source URLs and verification dates
+- [ ] Tag with source authorities (PubChem, NIST, date)
+- [ ] Update codebase version marker
+
+---
+
+## ✅ READY TO RUN
+
+**To test check mode now:**
+```bash
+cd d:\gamedev\Boilingwater.app
+node scripts/regenerate-elements.js
+```
+
+**Expected output:**
+- List of all 118 elements missing phase data
+- Sample validation of first 5 elements
+- TODO list for manual inspection
+- **No files will be modified**
+
+---
+
+## ⚠️ IMPORTANT NOTES
+
+1. **Atomic Weight is Critical:** The game performs stoichiometric calculations. **Must be singular, precise values** - ranges will cause calculation errors.
+
+2. **Source Selection Matters:** Different sources (NIST, IUPAC) may have slightly different values for the same property. Script must consistently choose one per element.
+
+3. **Phase Data is Essential:** All 118 elements currently missing gas/liquid/solid phase properties needed for thermodynamic calculations.
+
+4. **HTML Parsing is Fragile:** Current regex-based parser works for simple cases but may fail on complex PubChem structures. May need Puppeteer/Playwright for JS-rendered content.
+
+5. **Manual Validation Required:** After automated update, spot-check results manually for quality assurance.
+
+---
+
+## 📚 RELATED FILES
+
+- [COMPLETED_TODOS.md](docs/planning/COMPLETED_TODOS.md) - Historical data regeneration attempts
+- [TODO.md](docs/planning/TODO.md) - Element regeneration section with detailed tasks
+- [GOTCHAS.md](GOTCHAS.md) - Known issues (see &quot;Theme Validation&quot; for similar data loading issues)
+- [scripts/regenerate-elements.js](scripts/regenerate-elements.js) - Main script
+- [src/data/substances/periodic-table/](src/data/substances/periodic-table/) - Element JSON files (001_H_nonmetal.json through 118_Og_noble-gas.json)
+
+---
+
+**Last Updated:** 2026-02-02  
+**Next Step:** Run check mode, examine output, approve phase 2 enhancement work
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

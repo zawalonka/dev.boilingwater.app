@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>substanceParser.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/index.html">utils</a> <span class="breadcrumb-sep">›</span> <span>substanceParser.js</span>
+        </nav>
+        <div class="wiki-topbar-title">substanceParser.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">substanceParser.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/parseSubstanceProperties.html">parseSubstanceProperties</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>substanceParser.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>SUBSTANCE PARSER</p>
+<p>Extracts physics-engine-ready values from loaded substance JSON data.</p>
+<p>This is a PURE FUNCTION—no side effects, no file loading.</p>
+<p>Input: Raw substance data from loadSubstance()</p>
+<p>Output: Simplified object with typed properties ready for physics calculations</p>
+<p>All thermodynamic values come from JSON files.</p>
+<p>NO hardcoded values in this module.</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\utils\substanceParser.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">/**
+ * SUBSTANCE PARSER
+ * 
+ * Extracts physics-engine-ready values from loaded substance JSON data.
+ * This is a PURE FUNCTION—no side effects, no file loading.
+ * 
+ * Input: Raw substance data from loadSubstance()
+ * Output: Simplified object with typed properties ready for physics calculations
+ * 
+ * All thermodynamic values come from JSON files.
+ * NO hardcoded values in this module.
+ */
+
+import { ATMOSPHERE } from &#39;../constants/physics&#39;
+
+/**
+ * Helper to extract numeric values from nested property objects
+ * Handles both forms:
+ *   - Nested: { value: 1.0, unit: &#39;kg/L&#39; } → returns 1.0
+ *   - Flat: { density: 1.0 } → returns 1.0
+ * 
+ * @param {*} obj - The property object or numeric value
+ * @returns {number|null} The numeric value, or null if not found
+ */
+function extractValue(obj) {
+  if (typeof obj === &#39;number&#39;) return obj
+  if (obj?.value !== undefined) return obj.value
+  return null
+}
+
+/**
+ * Parse substance data into physics-engine-ready format
+ * 
+ * Takes the complete substance definition (compound info + phase state JSON OR element JSON)
+ * and extracts all needed properties for simulations.
+ * 
+ * SUPPORTS:
+ * - Compounds: Full info.json + phase state.json
+ * - Elements: Periodic table JSON with nist/iupac data
+ * 
+ * OUTPUT STRUCTURE includes:
+ * - Identification: id, name, formula, currentPhase
+ * - Transitions: boilingPoint, meltingPoint, triplePoint, criticalPoint
+ * - Thermodynamic: specificHeat, heatOfVaporization, density, etc.
+ * - Altitude: altitudeLapseRate for boiling point adjustments
+ * - Antoine: antoineCoefficients for vapor pressure calculations
+ * - Mixture: components array, volatileMassFraction for solutions
+ * - Advanced: molarMass, conductivity, saturation (for chemistry students)
+ * 
+ * @param {Object} substanceData - Complete data from loadSubstance()
+ *   Must include: compound metadata, phaseState, currentPhase OR element data
+ * @returns {Object} Physics-ready properties object
+ * 
+ * @throws Will return null values for missing properties rather than throwing
+ *         to allow graceful fallbacks in physics engine
+ */
+export function parseSubstanceProperties(substanceData) {
+  if (!substanceData) return null
+
+  const isElement = substanceData.isElement === true
+  const compound = substanceData
+  const phaseState = substanceData.phaseState
+  const currentPhase = substanceData.currentPhase
+
+  // ===== ELEMENT-SPECIFIC HANDLING =====
+  if (isElement) {
+    const nist = substanceData.nist || {}
+    const iupac = substanceData.iupac || {}
+    
+    return {
+      // IDENTIFICATION
+      id: substanceData.symbol,
+      name: substanceData.name,
+      formula: substanceData.symbol,
+      currentPhase: currentPhase,
+      isElement: true,
+      atomicNumber: substanceData.atomicNumber,
+
+      // PHASE TRANSITIONS (from NIST/IUPAC data)
+      boilingPointSeaLevel: nist.boilingPoint || iupac.boilingPoint || null,
+      meltingPoint: nist.meltingPoint || iupac.meltingPoint || null,
+      triplePoint: null,  // Not typically in element data
+      criticalPoint: null,
+
+      // ALTITUDE LAPSE RATE (default)
+      altitudeLapseRate: ATMOSPHERE.TEMP_LAPSE_RATE,
+
+      // THERMODYNAMIC PROPERTIES
+      specificHeat: nist.specificHeatCapacity || iupac.specificHeatCapacity || null,
+      heatOfVaporization: null,  // Not in basic element data
+      heatOfFusion: null,
+      density: nist.density || iupac.density || null,
+      thermalConductivity: nist.thermalConductivity || iupac.thermalConductivity || null,
+      coolingCoefficient: 0.0015,  // Default
+
+      // ADVANCED PROPERTIES
+      molarMass: nist.atomicMass || iupac.atomicMass || null,
+      electronegativity: nist.electronegativity || iupac.electronegativity || null,
+      entropy: nist.standardMolarEntropy || iupac.standardMolarEntropy || null,
+      ionizationEnergy: nist.ionizationEnergy || iupac.ionizationEnergy || null,
+
+      // CAPABILITY FLAGS
+      canBoil: Number.isFinite(nist.boilingPoint || iupac.boilingPoint),
+      canFreeze: Number.isFinite(nist.meltingPoint || iupac.meltingPoint),
+      components: [],
+      nonVolatileMassFraction: 0,
+      volatileMassFraction: 1,
+
+      // VISUAL PROPERTIES
+      color: substanceData.physicalProperties?.appearance || null,
+      phase: substanceData.physicalProperties?.phase || currentPhase,
+
+      // ANTOINE (not available for simple elements)
+      antoineCoefficients: null,
+
+      // METADATA
+      metadata: {
+        source: nist.source || iupac.source,
+        elementCategory: substanceData.elementCategory,
+        educationalNotes: substanceData.educationalNotes
+      },
+      lastUpdated: substanceData.lastUpdated
+    }
+  }
+
+  // ===== COMPOUND HANDLING (existing logic) =====
+  // From compound metadata (constant across all phases)
+  const boilingPointSeaLevel = Number.isFinite(compound.phaseTransitions?.boilingPoint)
+    ? compound.phaseTransitions.boilingPoint
+    : null
+
+  const meltingPoint = Number.isFinite(compound.phaseTransitions?.meltingPoint)
+    ? compound.phaseTransitions.meltingPoint
+    : null
+  const triplePoint = compound.phaseTransitions?.triplePoint || null
+  const criticalPoint = compound.phaseTransitions?.criticalPoint || null
+
+  // ===== MIXTURE/SOLUTION ELEVATION =====
+  // For solutions: boiling point elevation from dissolved solutes (colligative property)
+  // e.g., saltwater boils 0.515°C higher than pure water due to van&#39;t Hoff effect
+  const boilingPointElevation = Number.isFinite(compound.effectOfDissolution?.boilingPointElevation)
+    ? compound.effectOfDissolution.boilingPointElevation
+    : 0
+  const meltingPointDepression = Number.isFinite(compound.effectOfDissolution?.meltingPointDepression)
+    ? compound.effectOfDissolution.meltingPointDepression
+    : 0
+
+  // ===== THERMODYNAMIC DATA =====
+  // From phase-specific state files
+  const specificHeat = extractValue(phaseState?.specificHeat)  // J/(g·°C)
+  const heatOfVaporization = extractValue(phaseState?.latentHeatOfVaporization)  // kJ/kg
+  const heatOfFusion = extractValue(phaseState?.latentHeatOfFusion)  // kJ/kg
+  const density = extractValue(phaseState?.density)  // kg/L
+  const thermalConductivity = extractValue(phaseState?.thermalConductivity)  // W/(m·K)
+  const coolingCoefficient = extractValue(phaseState?.coolingCoefficient) ?? 0.0015  // 1/s
+  const evaporationCoefficient = extractValue(phaseState?.evaporationCoefficient)  // Hertz-Knudsen α (0.01-1.0)
+
+  // ===== ALTITUDE &amp; PRESSURE EFFECTS =====
+  const altitudeLapseRate = Number.isFinite(compound.phaseTransitions?.altitudeLapseRate)
+    ? compound.phaseTransitions.altitudeLapseRate
+    : ATMOSPHERE.TEMP_LAPSE_RATE  // Fall back to standard atmosphere
+
+  // ===== MIXTURE/SOLUTION BEHAVIOR =====
+  // For solutions: calculate volatile vs non-volatile mass fractions
+  const components = Array.isArray(compound.components) ? compound.components : []
+  
+  const nonVolatileMassFraction = components.reduce((sum, component) =&gt; {
+    if (!component || typeof component.massFraction !== &#39;number&#39;) return sum
+    const role = component.role || &#39;component&#39;
+    const isVolatile = component.isVolatile === true || role === &#39;solvent&#39; || role === &#39;volatile&#39;
+    return sum + (isVolatile ? 0 : component.massFraction)
+  }, 0)
+  
+  const clampedNonVolatile = Math.min(Math.max(nonVolatileMassFraction, 0), 1)
+  const volatileMassFraction = Math.max(0, 1 - clampedNonVolatile)
+
+  // ===== CAPABILITY FLAGS =====
+  const canBoil = Number.isFinite(boilingPointSeaLevel) &amp;&amp; Number.isFinite(heatOfVaporization)
+  const canFreeze = Number.isFinite(meltingPoint) &amp;&amp; Number.isFinite(heatOfFusion)
+
+  // ===== RETURN PHYSICS-READY OBJECT =====
+  return {
+    // IDENTIFICATION (constant, from compound metadata)
+    id: compound.id,
+    name: compound.name,
+    formula: compound.chemicalFormula,
+    currentPhase: currentPhase,
+
+    // PHASE TRANSITIONS (constant, from compound metadata)
+    boilingPointSeaLevel,
+    meltingPoint,
+    triplePoint,
+    criticalPoint,
+
+    // MIXTURE/SOLUTION ELEVATION (colligative properties)
+    // These are used by calculateBoilingPointElevation() for DYNAMIC calculation
+    // The static boilingPointElevation is kept for legacy fallback
+    boilingPointElevation,  // °C elevation (legacy, static at 100°C)
+    meltingPointDepression, // °C depression for solutions (e.g., -1.87 for saltwater)
+    vanHoffFactor: compound.effectOfDissolution?.vanHoffFactor ?? null,  // i (1.9 for NaCl)
+    molality: compound.effectOfDissolution?.molality ?? null,  // mol/kg solvent
+
+    // ALTITUDE &amp; PRESSURE (constant, from compound metadata)
+    altitudeLapseRate,
+
+    // THERMODYNAMIC PROPERTIES (phase-specific, from state.json)
+    specificHeat,  // J/(g·°C)
+    heatOfVaporization,  // kJ/kg
+    heatOfFusion,  // kJ/kg
+    density,  // kg/L
+    thermalConductivity,  // W/(m·K)
+    coolingCoefficient,  // 1/s
+    evaporationCoefficient,  // Hertz-Knudsen α (0.01-1.0)
+
+    // MASS TRANSFER (calculated at load time from element diffusion volumes)
+    // Used by Fuller-Schettler-Giddings equation for realistic evaporation rates
+    diffusionVolumeSum: compound.diffusionVolumeSum ?? null,
+
+    // ADVANCED THERMODYNAMICS (phase-specific, optional)
+    compressibility: extractValue(phaseState?.compressibility),  // 1/Pa
+    volumetricExpansionCoefficient: extractValue(phaseState?.volumetricExpansionCoefficient),  // 1/K
+    electronegativity: compound.electronegativity,
+    entropy: extractValue(phaseState?.entropy),  // J/(mol·K)
+
+    // MIXTURE/SOLUTION PROPERTIES
+    components,
+    canBoil,
+    canFreeze,
+    nonVolatileMassFraction: clampedNonVolatile,
+    volatileMassFraction,
+
+    // CHEMICAL &amp; OPTICAL PROPERTIES (for educational display)
+    molarMass: compound.molarMass,
+    electricalConductivity: extractValue(phaseState?.electricalConductivity),  // S/m
+    vanThoffFactor: extractValue(phaseState?.vanThoffFactor),  // i (dimensionless)
+    saturationPoint: extractValue(phaseState?.saturationPoint),  // g/L
+    refractiveIndex: extractValue(phaseState?.refractiveIndex),
+    color: compound.color,
+
+    // VAPOR PRESSURE CALCULATIONS (Antoine equation, for accurate boiling point)
+    antoineCoefficients: phaseState?.antoineCoefficients || null,
+
+    // METADATA &amp; VERSIONING
+    metadata: compound.metadata,
+    lastUpdated: compound.lastUpdated
+  }
+}
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

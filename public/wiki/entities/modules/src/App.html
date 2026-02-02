@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App.jsx - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <span>App.jsx</span>
+        </nav>
+        <div class="wiki-topbar-title">App.jsx</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">App.jsx</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">React Component</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">jsx</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a>, <a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>, <a href="/wiki/entities/modules/src/utils/workshopLoader.html">workshopLoader.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/main.html">main.jsx</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>App.jsx</h1>
+    <p class="subtitle">React Component</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\App.jsx</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-jsx">import { useState, useEffect } from &#39;react&#39;
+import Header from &#39;./components/Header&#39;
+import GameScene from &#39;./components/GameScene&#39;
+import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from &#39;./utils/workshopLoader&#39;
+import { LEVELS, EXPERIMENTS } from &#39;./constants/workshops&#39;
+import &#39;./styles/App.css&#39;
+
+function App() {
+  const [gameStage, setGameStage] = useState(0)
+  const [userLocation, setUserLocation] = useState(null)
+  const [workshopLoaded, setWorkshopLoaded] = useState(false)
+  const [activeView, setActiveView] = useState(&#39;game&#39;)  // game | about | docs | submit-issue | submit-workshop
+  const [gameInstanceKey, setGameInstanceKey] = useState(0)
+  const [activeLevel, setActiveLevel] = useState(1)  // Numeric level (1, 2, 3...)
+  const [activeExperiment, setActiveExperiment] = useState(&#39;boiling-water&#39;)  // Experiment ID within level
+  const [activeWorkshopId, setActiveWorkshopId] = useState(&#39;pre-alpha-kitchen-1&#39;)
+  const [availableWorkshops, setAvailableWorkshops] = useState([{ id: &#39;pre-alpha-kitchen-1&#39;, name: &#39;Pre Alpha Kitchen 1&#39; }])
+  const [activeWorkshopData, setActiveWorkshopData] = useState(null)
+  const [hasBoiledBefore, setHasBoiledBefore] = useState(false)  // Track if user has boiled water once
+  const [showSelectors, setShowSelectors] = useState(false)  // Show level/workshop selectors
+
+  // Load available workshops and apply default
+  useEffect(() =&gt; {
+    async function bootWorkshop() {
+      try {
+        const levelWorkshops = await getWorkshopsByLevel(activeLevel)
+        setAvailableWorkshops(levelWorkshops)
+        const processed = await initializeWorkshop(activeWorkshopId, { apply: true })
+        // Preload all workshop images to prevent lag
+        await preloadWorkshopImages(processed)
+        setActiveWorkshopData(processed)
+        setWorkshopLoaded(true)
+      } catch (error) {
+        console.error(&#39;Failed to load workshop:&#39;, error)
+        setWorkshopLoaded(true)
+      }
+    }
+    bootWorkshop()
+  }, [])
+
+  // Workshop change handler
+  const handleWorkshopChange = async (workshopId) =&gt; {
+    try {
+      const processed = await initializeWorkshop(workshopId, { apply: true })
+      // Preload new workshop images immediately
+      await preloadWorkshopImages(processed)
+      setActiveWorkshopId(workshopId)
+      setActiveWorkshopData(processed)
+      // Reset game completely: stage back to 0, force GameScene re-mount
+      setGameStage(0)
+      setGameInstanceKey((k) =&gt; k + 1)
+    } catch (error) {
+      console.error(&#39;Failed to change workshop:&#39;, error)
+    }
+  }
+
+  // Level change handler
+  // optionalNextExperimentId lets callers override the default first experiment for that level
+  const handleLevelChange = async (levelId, optionalNextExperimentId = null) =&gt; {
+    try {
+      const levelWorkshops = await getWorkshopsByLevel(levelId)
+      setAvailableWorkshops(levelWorkshops)
+      setActiveLevel(levelId)
+      
+      // Switch to the first workshop of the new level
+      const firstWorkshop = levelWorkshops &amp;&amp; levelWorkshops.length &gt; 0 ? levelWorkshops[0] : { id: &#39;pre-alpha-kitchen-1&#39; }
+      const processed = await initializeWorkshop(firstWorkshop.id, { apply: true })
+      await preloadWorkshopImages(processed)
+      setActiveWorkshopId(firstWorkshop.id)
+      setActiveWorkshopData(processed)
+      
+      // Reset game and set default experiment for this level
+      const sortedExperiments = (EXPERIMENTS[levelId] || []).slice().sort((a, b) =&gt; (a.order || 0) - (b.order || 0))
+      const defaultExperiment = optionalNextExperimentId || sortedExperiments?.[0]?.id || &#39;boiling-water&#39;
+      setActiveExperiment(defaultExperiment)
+      setGameStage(0)
+      setGameInstanceKey((k) =&gt; k + 1)
+    } catch (error) {
+      console.error(&#39;Failed to change level:&#39;, error)
+    }
+  }
+
+  // Experiment change handler
+  const handleExperimentChange = (experimentId) =&gt; {
+    setActiveExperiment(experimentId)
+    setGameStage(0)
+    setGameInstanceKey((k) =&gt; k + 1)
+    // Location popup will be triggered in GameScene if this is Exp 2+
+  }
+
+  // Equipment change handler - reloads scene with new equipment
+  const handleEquipmentChange = async (equipmentType, equipmentId) =&gt; {
+    if (!activeWorkshopData || !activeWorkshopId) return
+    
+    try {
+      const newEquipment = await loadEquipment(activeWorkshopId, equipmentType, equipmentId)
+      if (!newEquipment) {
+        console.warn(`Could not load ${equipmentType}/${equipmentId}`)
+        return
+      }
+      
+      // Update workshop data with new equipment
+      const updatedWorkshopData = { ...activeWorkshopData }
+      if (equipmentType === &#39;ac-units&#39;) {
+        updatedWorkshopData.acUnit = newEquipment
+      } else if (equipmentType === &#39;air-handlers&#39;) {
+        updatedWorkshopData.airHandler = newEquipment
+      } else if (equipmentType === &#39;burners&#39;) {
+        updatedWorkshopData.burnerConfig = {
+          wattageSteps: newEquipment.wattageSteps || [0, 500, 1000, 2000],
+          controlType: newEquipment.controlType || &#39;knob&#39;,
+          maxWatts: newEquipment.thermalCharacteristics?.maxWatts || 2000,
+          efficiencyPercent: newEquipment.thermalCharacteristics?.efficiencyPercent || 85
+        }
+      }
+      
+      setActiveWorkshopData(updatedWorkshopData)
+      // Reset game to apply new equipment
+      setGameStage(0)
+      setGameInstanceKey((k) =&gt; k + 1)
+    } catch (error) {
+      console.error(`Failed to change ${equipmentType}:`, error)
+    }
+  }
+
+  // Location will be requested when entering stage 2 (altitude-based lessons)
+  // For now, default to sea level
+  useEffect(() =&gt; {
+    if (gameStage === 2) {
+      // Future: Request geolocation here when we implement stage 2
+      // For now, just set to sea level
+      setUserLocation({
+        altitude: 0,
+        latitude: 0,
+        longitude: 0
+      })
+    } else {
+      // Stage 0-1: Use default sea level
+      setUserLocation({
+        altitude: 0,
+        latitude: 0,
+        longitude: 0
+      })
+    }
+  }, [gameStage])
+
+  // Handle skip tutorial button (fast-forward to altitude experiment)
+  const handleSkipTutorial = async () =&gt; {
+    setShowSelectors(true)
+    // Move directly to Level 1, Experiment 2 (Altitude&#39;s Effect)
+    await handleLevelChange(1, &#39;altitude-effect&#39;)
+  }
+
+  // Handle when user completes the tutorial boil (Experiment: boiling-water)
+  const handleWaterBoiled = () =&gt; {
+    if (activeExperiment === &#39;boiling-water&#39; &amp;&amp; !hasBoiledBefore) {
+      setHasBoiledBefore(true)
+      setShowSelectors(true)
+      // Modal stays visible until user clicks button
+    }
+  }
+
+  // Handle location changes (from GameScene location input)
+  const handleLocationChange = (locationData) =&gt; {
+    setUserLocation({
+      altitude: locationData.altitude,
+      zipCode: locationData.zipCode,
+      country: locationData.country,
+      name: locationData.name,
+      latitude: locationData.latitude,
+      longitude: locationData.longitude
+    })
+    console.log(&#39;✓ Location updated:&#39;, locationData.name, `(${locationData.altitude}m)`)
+  }
+
+  const handleNavigate = (view) =&gt; {
+    setActiveView(view)
+    if (view === &#39;game&#39;) {
+      setGameStage(0)
+    }
+  }
+
+  const handleReload = () =&gt; {
+    setGameStage(0)
+    setGameInstanceKey((k) =&gt; k + 1)
+    setActiveView(&#39;game&#39;)
+  }
+
+  // Submit issues to the repo (updated link)
+  const issueUrl = &#39;https://github.com/zawalonka/Boilingwater.app/issues/new&#39;
+
+  const renderView = () =&gt; {
+    if (activeView === &#39;about&#39;) {
+      return (
+        &lt;div className=&quot;info-page&quot;&gt;
+          &lt;h2&gt;About Boiling Water&lt;/h2&gt;
+          &lt;p&gt;Boiling Water is an educational physics and chemistry sandbox that shows how fluids heat, cool, and boil under different conditions. It uses real thermodynamics (specific heat, latent heat, altitude-based boiling points, and Newton&amp;apos;s Law of Cooling) with extensible JSON-based fluid and workshop systems.&lt;/p&gt;
+          &lt;p&gt;Players can drag a pot, control burner heat, observe boiling changes with altitude, and swap workshop skins to match different lessons. The project is pre-alpha, focused on accuracy and extensibility first, visuals second.&lt;/p&gt;
+          &lt;p&gt;Built with React and Vite, the app separates data (fluids, workshops) from simulation code so educators and modders can add new fluids, environments, and visuals without touching core code.&lt;/p&gt;
+        &lt;/div&gt;
+      )
+    }
+
+    if (activeView === &#39;docs&#39;) {
+      return (
+        &lt;div className=&quot;info-page&quot;&gt;
+          &lt;h2&gt;Project Docs (Concise)&lt;/h2&gt;
+          &lt;p&gt;&lt;strong&gt;Core idea:&lt;/strong&gt; Teach thermodynamics through interactive play. Heating uses power → temperature rise via specific heat; boiling uses latent heat; cooling uses Newton&amp;apos;s Law of Cooling with altitude-adjusted boiling points.&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;Data-first design:&lt;/strong&gt; Fluids live in JSON (specific heat, latent heat, boiling point, cooling coefficient). Workshops live in JSON (colors, images, layout). Add a file → get a new fluid or visual style.&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;Key files:&lt;/strong&gt; Substance data in &lt;a href=&quot;/src/data/substances&quot;&gt;src/data/substances&lt;/a&gt;, workshop files in &lt;a href=&quot;/public/assets/workshops&quot;&gt;public/assets/workshops&lt;/a&gt;, physics in &lt;a href=&quot;/src/utils/physics.js&quot;&gt;src/utils/physics.js&lt;/a&gt;, workshop loader in &lt;a href=&quot;/src/utils/workshopLoader.js&quot;&gt;src/utils/workshopLoader.js&lt;/a&gt;.&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;What&amp;apos;s next:&lt;/strong&gt; More fluids (ethanol, oils), periodic table content, UI selectors for fluids, richer lesson stages, and additional workshop environments.&lt;/p&gt;
+        &lt;/div&gt;
+      )
+    }
+
+    if (activeView === &#39;submit-issue&#39;) {
+      return (
+        &lt;div className=&quot;info-page&quot;&gt;
+          &lt;h2&gt;Submit an Issue&lt;/h2&gt;
+          &lt;p&gt;Found a bug or have feedback? Open a GitHub issue and include steps to reproduce, expected vs. actual behavior, and screenshots if possible.&lt;/p&gt;
+          &lt;a className=&quot;action-button&quot; href={issueUrl} target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;Open GitHub Issue&lt;/a&gt;
+        &lt;/div&gt;
+      )
+    }
+
+    if (activeView === &#39;submit-workshop&#39;) {
+      return (
+        &lt;div className=&quot;info-page&quot;&gt;
+          &lt;h2&gt;Submit a Workshop or Environment&lt;/h2&gt;
+          &lt;p&gt;Workshops are JSON files stored with images in &lt;code&gt;public/assets/workshops/&amp;lt;workshopId&amp;gt;/&lt;/code&gt;. Layout (pot, flame, water stream) lives in the &lt;code&gt;layout&lt;/code&gt; section so placement can change per environment.&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;Minimum required fields:&lt;/strong&gt; colors (header_background, button_primary, panel_background, etc.), images (background, pot_empty, pot_full, flame), metadata (id, name, author), and layout (pot start/size, flame position, water stream ranges).&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;How to share:&lt;/strong&gt; Send the JSON plus your images. Keep background at 1280×800 pixels, use transparent PNGs for pot and flame, and reuse the existing placement unless your layout truly changes.&lt;/p&gt;
+        &lt;/div&gt;
+      )
+    }
+
+    // Default: Game view
+    return (
+      &lt;div className=&quot;game-container&quot;&gt;
+        &lt;GameScene
+          key={gameInstanceKey}
+          stage={gameStage}
+          location={userLocation}
+          onStageChange={setGameStage}
+          workshopLayout={activeWorkshopData?.layout}
+          workshopImages={activeWorkshopData?.images}
+          workshopEffects={activeWorkshopData?.effects}
+          burnerConfig={activeWorkshopData?.burnerConfig}
+          roomConfig={activeWorkshopData?.room}
+          acUnitConfig={activeWorkshopData?.acUnit}
+          airHandlerConfig={activeWorkshopData?.airHandler}
+          activeLevel={activeLevel}
+          activeExperiment={activeExperiment}
+          showSelectors={showSelectors}
+          onWaterBoiled={handleWaterBoiled}
+          onSkipTutorial={handleSkipTutorial}
+          onLevelChange={handleLevelChange}
+          onExperimentChange={handleExperimentChange}
+          onLocationChange={handleLocationChange}
+          onEquipmentChange={handleEquipmentChange}
+          hasBoiledBefore={hasBoiledBefore}
+        /&gt;
+      &lt;/div&gt;
+    )
+  }
+
+  return (
+    &lt;div className=&quot;app&quot;&gt;
+      {workshopLoaded &amp;&amp; (
+        &lt;&gt;
+          &lt;Header
+            onNavigate={handleNavigate}
+            onReload={handleReload}
+            onWorkshopChange={handleWorkshopChange}
+            onLevelChange={handleLevelChange}
+            onExperimentChange={handleExperimentChange}
+            activeWorkshopId={activeWorkshopId}
+            activeLevel={activeLevel}
+            activeExperiment={activeExperiment}
+            availableWorkshops={availableWorkshops}
+            availableLevels={LEVELS}
+            availableExperiments={(EXPERIMENTS[activeLevel] || []).slice().sort((a, b) =&gt; (a.order || 0) - (b.order || 0))}
+            activeView={activeView}
+            showSelectors={showSelectors}
+            onSkipTutorial={handleSkipTutorial}
+          /&gt;
+          {renderView()}
+        &lt;/&gt;
+      )}
+    &lt;/div&gt;
+  )
+}
+
+export default App
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

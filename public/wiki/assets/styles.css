@@ -200,8 +200,79 @@
     .cat-lanthanide { background: #e6fff7; }
     .cat-actinide { background: #fff0e6; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #c8ccd1;
+    }
+    .data-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #202122;
+    }
+    .data-table tr:hover {
+      background: #f8f9fa;
+    }
+    .data-table a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+    .data-table a:hover {
+      text-decoration: underline;
+    }
     .subtitle { color: #54595d; margin-top: -8px; }
     .entity-header { margin-bottom: 16px; }
+    .molecule-representations {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .molecule-flat, .molecule-2d {
+      flex: 1;
+      min-width: 250px;
+    }
+    .molecule-flat h3, .molecule-2d h3 {
+      font-size: 14px;
+      color: #54595d;
+      margin-bottom: 8px;
+    }
+    .molecule-formula {
+      display: block;
+      font-size: 18px;
+      padding: 20px;
+      background: #f8f9fa;
+      border: 1px solid #c8ccd1;
+      border-radius: 6px;
+      text-align: center;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .molecule-viewer {
+      width: 100%;
+      min-height: 220px;
+      border: 1px solid #c8ccd1;
+      border-radius: 6px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .molecule-meta { color: #54595d; font-size: 13px; }
+    .molecule-fallback {
+      font-family: monospace;
+      font-size: 12px;
+      color: #54595d;
+    }
     @media (max-width: 900px) {
       .wiki-sidebar { display: none; }
       .wiki-content { padding: 20px; }

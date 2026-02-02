@@ -1,10 +1,21 @@
 # Accessibility Overhaul - Detailed TODO
 
-> **Status:** NOT STARTED  
-> **Scope:** WCAG 2.1 Level AA compliance across entire React application  
+> **Status:** PARTIALLY COMPLETE (LABELING & DESCRIPTIONS ONLY)  
+> **Scope:** WCAG 2.1 Level AA compliance across entire React application — **Deferred to later development stage**  
 > **Estimated Effort:** 40-50 hours comprehensive; 6-8 hours for quick wins  
-> **Priority:** CRITICAL - Currently inaccessible for keyboard and screen reader users  
+> **Priority:** DEFERRED - Revisit when core gameplay and UI are stable  
 > **Audit Date:** 2026-02-01
+
+## ✅ COMPLETED NOW (2026-02-01)
+
+Limited scope: **labels, descriptions, and alt text only** (no keyboard controls, no modal/focus changes).
+
+- Added explicit labels/IDs for location input, manual altitude input, fluid selector, and room equipment selectors.
+- Added `aria-describedby` help text for key controls (timer, speed, location, equipment, setpoint).
+- Added accessible error association for location errors.
+- Added descriptive `alt` text for pot/flame/steam imagery.
+- Added `.sr-only` utility for screen-reader-only descriptions.
+- Converted room toggles to semantic buttons with `aria-pressed` and `disabled`.
 
 ---
 
@@ -22,59 +33,50 @@
 
 ---
 
-## 🔴 PHASE 1: CRITICAL QUICK WINS (6-8 hours) — HIGHEST PRIORITY
+## 🔴 PHASE 1: CRITICAL QUICK WINS (6-8 hours) — DEFERRED
 
 These fixes enable basic screen reader and keyboard navigation. Start here.
 
 ### 1.1 Form Input Labels
 **Files:** `src/components/ControlPanel.jsx`, `src/components/RoomControls.jsx`
 
-- [ ] **Location search input** (line ~386)
-  - [ ] Add `<label htmlFor="location-input">Location/Altitude:</label>`
-  - [ ] Add `id="location-input"` to input element
-  - [ ] Remove placeholder-as-label pattern; keep placeholder as hint
+- [x] **Location search input** (line ~386)
+  - [x] Add `<label htmlFor="location-input">Location/Altitude:</label>`
+  - [x] Add `id="location-input"` to input element
+  - [x] Keep placeholder as hint (label is explicit)
   
-- [ ] **Manual altitude input** (line ~414)
-  - [ ] Add `<label htmlFor="altitude-input">Altitude (meters):</label>`
-  - [ ] Add `id="altitude-input"` to input element
+- [x] **Manual altitude input** (line ~414)
+  - [x] Add `<label htmlFor="altitude-input">Altitude (meters):</label>`
+  - [x] Add `id="altitude-input"` to input element
   
-- [ ] **Fluid/substance selector dropdown**
-  - [ ] Add `<label htmlFor="substance-select">Select Substance:</label>`
-  - [ ] Add `id="substance-select"` to select element
+- [x] **Fluid/substance selector dropdown**
+  - [x] Add `<label htmlFor="fluid-select">Fluid:</label>`
+  - [x] Add `id="fluid-select"` to select element
   
-- [ ] **RoomControls selectors** (AC setpoint, air handler mode, etc.)
-  - [ ] Add labels for all dropdown selects
-  - [ ] Ensure each has matching `id` and `for` attributes
+- [x] **RoomControls selectors** (AC setpoint, air handler mode, etc.)
+  - [x] Add labels for all dropdown selects
+  - [x] Ensure each has matching `id` and `for` attributes
 
 ### 1.2 ARIA Live Regions for Status Updates
 **Files:** `src/components/ControlPanel.jsx`, `src/components/GameScene.jsx`
 
 - [ ] **Temperature display**
-  - [ ] Wrap temperature/status region in `<div aria-live="polite" aria-atomic="true">`
-  - [ ] Announce when water reaches boiling point
-  - Example: `<div aria-live="polite">{temperature}°C{isBoiling && " - BOILING!"}</div>`
+  - [ ] Defer `aria-live` updates until status messaging is finalized
 
 - [ ] **Boiling detection alert**
-  - [ ] Add `aria-live="assertive"` (urgent) when boiling detected
-  - [ ] Announce "Water is boiling" immediately
+  - [ ] Defer `aria-live="assertive"` until messaging is finalized
 
-- [ ] **Location error messages**
-  - [ ] Move error text into `aria-live="polite"` region
-  - [ ] Add `aria-invalid="true"` to input when error occurs
+- [x] **Location error messages**
+  - [x] Add `aria-invalid="true"` and link input to error text
 
 - [ ] **Experiment status messages**
-  - [ ] Wrap all status/alert displays in `aria-live` regions
-  - [ ] Tutorial completion, level unlocks, etc. should be announced
+  - [ ] Defer `aria-live` status regions
 
 ### 1.3 Modal/Dialog Semantics
 **Files:** `src/components/ControlPanel.jsx` (location popup), potential modals in GameScene
 
 - [ ] **Location selection popup**
-  - [ ] Replace DIV with semantic `<dialog>` element
-  - [ ] Add `aria-modal="true"` (for browser support)
-  - [ ] Add `aria-labelledby="dialog-title"` pointing to modal title
-  - [ ] Implement focus trap (trap Tab key within modal)
-  - [ ] Close on Escape key
+  - [ ] Defer semantic dialog + focus management changes
   - Example:
     ```jsx
     <dialog open aria-modal="true" aria-labelledby="location-title">
@@ -84,22 +86,19 @@ These fixes enable basic screen reader and keyboard navigation. Start here.
     ```
 
 - [ ] **Scorecard modal** (when boiling completes)
-  - [ ] Use `<dialog>` element
-  - [ ] Focus trap + Escape to close
+  - [ ] Defer semantic dialog + focus management changes
 
 ### 1.4 Icon Button Labels
 **Files:** `src/components/ControlPanel.jsx`, `src/components/GameScene.jsx`
 
-- [ ] **Burner control buttons** (↑ ↓)
-  - [ ] Add `aria-label="Increase heat"` and `aria-label="Decrease heat"`
-  - [ ] Already has some labels; verify all buttons have them
+- [x] **Burner control buttons** (↑ ↓)
+  - [x] Labels present; added descriptive help text
 
-- [ ] **Speed control buttons** (↑ ↓)
-  - [ ] Add `aria-label="Speed up"` and `aria-label="Speed down"`
+- [x] **Speed control buttons**
+  - [x] Added `aria-label` and descriptive help text
 
-- [ ] **All icon-only buttons**
-  - [ ] Audit every `<button>` that contains only a symbol/emoji
-  - [ ] Add descriptive `aria-label` if missing
+- [x] **All icon-only buttons**
+  - [x] Added descriptive `aria-label` where needed
 
 ### 1.5 Color Contrast Fixes
 **Files:** `src/styles/GameScene.css`, `src/styles/App.css`, `src/styles/ControlPanel.css`
@@ -121,7 +120,7 @@ These fixes enable basic screen reader and keyboard navigation. Start here.
 
 ---
 
-## 🟠 PHASE 2: KEYBOARD NAVIGATION & FOCUS (8-10 hours)
+## 🟠 PHASE 2: KEYBOARD NAVIGATION & FOCUS (8-10 hours) — DEFERRED
 
 Enables full keyboard control of the UI and basic game controls.
 
@@ -241,7 +240,7 @@ CSS:
 
 ---
 
-## 🟡 PHASE 3: SEMANTIC HTML & WCAG LEVEL AA (10-12 hours)
+## 🟡 PHASE 3: SEMANTIC HTML & WCAG LEVEL AA (10-12 hours) — DEFERRED
 
 Comprehensive semantic improvements for full WCAG 2.1 Level AA compliance.
 
@@ -313,11 +312,8 @@ Comprehensive semantic improvements for full WCAG 2.1 Level AA compliance.
 ### 3.4 Image Alt Text
 **Files:** `src/components/GameScene.jsx`
 
-- [ ] **Pot images**
-  - [ ] "Boiling pot.png": alt="Pot full of boiling water"
-  - [ ] "Empty pot.png": alt="Empty pot, waiting to be filled"
-  - [ ] "Counter.png": alt="Kitchen counter with stovetop"
-  - [ ] "Flame.png": alt="Blue flame from burner (heat intensity visual)"
+- [x] **Pot/Flame/Steam images**
+  - [x] Added descriptive `alt` text based on asset usage
 
 - [ ] **Verify all background images**
   - [ ] Check if any are decorative-only (can use alt="")
@@ -345,7 +341,7 @@ Comprehensive semantic improvements for full WCAG 2.1 Level AA compliance.
 
 ---
 
-## 🟢 PHASE 4: TESTING & EDGE CASES (6-8 hours)
+## 🟢 PHASE 4: TESTING & EDGE CASES (6-8 hours) — DEFERRED
 
 Validation and refinement with actual assistive technologies.
 

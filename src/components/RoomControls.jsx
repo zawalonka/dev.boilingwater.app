@@ -80,18 +80,23 @@ function RoomControls({
       {/* AC Unit Selection */}
       {availableAcUnits?.length > 1 && (
         <div className="room-control-group">
-          <label className="control-label">
+          <label className="control-label" htmlFor="ac-unit-select">
             <span>🌡️ AC Unit</span>
           </label>
           <select
+            id="ac-unit-select"
             className="equipment-select"
             value={selectedAcUnitId || ''}
             onChange={(e) => onAcUnitChange?.(e.target.value)}
+            aria-describedby="ac-unit-help"
           >
             {availableAcUnits.map(id => (
               <option key={id} value={id}>{id}</option>
             ))}
           </select>
+          <span id="ac-unit-help" className="sr-only">
+            Select which AC unit to use in this workshop.
+          </span>
         </div>
       )}
 
@@ -100,16 +105,23 @@ function RoomControls({
         <label className="control-label">
           <span>❄️ AC Unit</span>
         </label>
-        <div 
+        <span id="ac-toggle-help" className="sr-only">
+          Toggle the AC system on or off.
+        </span>
+        <button 
+          type="button"
           className={`ac-toggle ${summary?.acEnabled ? 'active' : ''}`}
           onClick={() => onAcEnabledChange?.(!summary?.acEnabled)}
+          disabled={!acUnit}
+          aria-pressed={Boolean(summary?.acEnabled)}
+          aria-describedby="ac-toggle-help"
           style={{ cursor: acUnit ? 'pointer' : 'not-allowed', opacity: acUnit ? 1 : 0.5 }}
         >
           <span className="toggle-label">Climate Control</span>
           <span className={`toggle-status ${summary?.acEnabled ? 'on' : 'off'}`}>
             {summary?.acEnabled ? 'ON' : 'OFF'}
           </span>
-        </div>
+        </button>
       </div>
 
       {/* AC Setpoint Controls (only when AC enabled) */}
@@ -119,11 +131,16 @@ function RoomControls({
             <span>🎯 AC Setpoint</span>
             <span className="control-status">{acStatus}</span>
           </label>
+          <span id="ac-setpoint-help" className="sr-only">
+            Decrease or increase the target room temperature.
+          </span>
           <div className="ac-setpoint-control">
             <button 
               className="setpoint-btn"
               onClick={() => onAcSetpointChange?.((summary?.acSetpoint ?? 20) - 1)}
               disabled={!acUnit}
+              aria-label="Decrease AC setpoint"
+              aria-describedby="ac-setpoint-help"
             >
               −
             </button>
@@ -134,6 +151,8 @@ function RoomControls({
               className="setpoint-btn"
               onClick={() => onAcSetpointChange?.((summary?.acSetpoint ?? 20) + 1)}
               disabled={!acUnit}
+              aria-label="Increase AC setpoint"
+              aria-describedby="ac-setpoint-help"
             >
               +
             </button>
@@ -144,18 +163,23 @@ function RoomControls({
       {/* Air Handler Selection */}
       {availableAirHandlers?.length > 1 && (
         <div className="room-control-group">
-          <label className="control-label">
+          <label className="control-label" htmlFor="air-handler-select">
             <span>💨 Air Handler</span>
           </label>
           <select
+            id="air-handler-select"
             className="equipment-select"
             value={selectedAirHandlerId || ''}
             onChange={(e) => onAirHandlerChange?.(e.target.value)}
+            aria-describedby="air-handler-help"
           >
             {availableAirHandlers.map(id => (
               <option key={id} value={id}>{id}</option>
             ))}
           </select>
+          <span id="air-handler-help" className="sr-only">
+            Select which air handler or scrubber to use.
+          </span>
         </div>
       )}
 
@@ -164,16 +188,23 @@ function RoomControls({
         <label className="control-label">
           <span>🔄 Scrubber</span>
         </label>
-        <div 
+        <span id="air-handler-toggle-help" className="sr-only">
+          Toggle the air handler or scrubber on or off.
+        </span>
+        <button 
+          type="button"
           className={`air-handler-toggle ${summary?.airHandlerMode !== 'off' ? 'active' : ''}`}
           onClick={() => onAirHandlerModeChange?.(summary?.airHandlerMode === 'off' ? 'on' : 'off')}
+          disabled={!airHandler}
+          aria-pressed={summary?.airHandlerMode !== 'off'}
+          aria-describedby="air-handler-toggle-help"
           style={{ cursor: airHandler ? 'pointer' : 'not-allowed', opacity: airHandler ? 1 : 0.5 }}
         >
           <span className="toggle-label">Auto-Scrub</span>
           <span className={`toggle-status ${summary?.airHandlerMode !== 'off' ? 'on' : 'off'}`}>
             {summary?.airHandlerMode !== 'off' ? 'ON' : 'OFF'}
           </span>
-        </div>
+        </button>
         {summary?.airHandlerMode !== 'off' && (summary?.scrubberActivity ?? 0) > 0 && (
           <div className="air-handler-activity">
             Working at {Math.round((summary?.scrubberActivity ?? 0) * 100)}%

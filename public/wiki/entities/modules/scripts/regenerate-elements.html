@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>regenerate-elements.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../scripts/index.html">scripts</a> <span class="breadcrumb-sep">›</span> <span>regenerate-elements.js</span>
+        </nav>
+        <div class="wiki-topbar-title">regenerate-elements.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">regenerate-elements.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">fs</span>, <span class="external-import">path</span>, <span class="external-import">url</span></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>regenerate-elements.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>Smart Element Data Regenerator</p>
+<p>Intelligently updates element JSON files from PubChem/NIST sources.</p>
+<p>Only fetches and updates data when necessary.</p>
+<p>Usage:</p>
+<p>node regenerate-elements.js                    # Check existing, make no changes</p>
+<p>node regenerate-elements.js --update           # Update with new data fields (e.g., phase data)</p>
+<p>node regenerate-elements.js --recreate         # EMERGENCY ONLY: Full rebuild from scratch</p>
+<p>How it works:</p>
+<p>1. Scans existing element JSONs to determine current schema</p>
+<p>2. If --update: Fetches ONLY new fields from PubChem</p>
+<p>3. If --recreate: Rebuilds all 118 elements from scratch (commented out, use carefully)</p>
+<p>4. Reports changes made and files updated</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>scripts\regenerate-elements.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">#!/usr/bin/env node
+/**
+ * Smart Element Data Regenerator
+ * 
+ * Intelligently updates element JSON files from PubChem/NIST sources.
+ * Only fetches and updates data when necessary.
+ * 
+ * Usage:
+ *   node regenerate-elements.js                    # Check existing, make no changes
+ *   node regenerate-elements.js --update           # Update with new data fields (e.g., phase data)
+ *   node regenerate-elements.js --recreate         # EMERGENCY ONLY: Full rebuild from scratch
+ * 
+ * How it works:
+ * 1. Scans existing element JSONs to determine current schema
+ * 2. If --update: Fetches ONLY new fields from PubChem
+ * 3. If --recreate: Rebuilds all 118 elements from scratch (commented out, use carefully)
+ * 4. Reports changes made and files updated
+ */
+
+import fs from &#39;fs&#39;;
+import path from &#39;path&#39;;
+import { fileURLToPath } from &#39;url&#39;;
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ELEMENTS_DIR = path.join(__dirname, &#39;../src/data/substances/periodic-table&#39;);
+
+// Parse command-line arguments
+const args = process.argv.slice(2);
+const UPDATE_MODE = args.includes(&#39;--update&#39;);
+const RECREATE_MODE = args.includes(&#39;--recreate&#39;);
+
+// ============================================================================
+// SCHEMA DEFINITIONS
+// ============================================================================
+
+/**
+ * Current schema - what we have in existing files
+ */
+const CURRENT_SCHEMA = {
+  atomicNumber: &#39;number&#39;,
+  symbol: &#39;string&#39;,
+  name: &#39;string&#39;,
+  elementCategory: &#39;string&#39;,
+  chemicalBlock: &#39;string&#39;,
+  valenceElectrons: &#39;number&#39;,
+  oxidationStates: &#39;array&#39;,
+  standardUsed: &#39;string&#39;,
+  nist: &#39;object&#39;,
+  iupac: &#39;object&#39;,
+  physicalProperties: &#39;object&#39;,
+  lastUpdated: &#39;string&#39;,
+  educationalNotes: &#39;string&#39;,
+  diffusion: &#39;object&#39;
+};
+
+/**
+ * New fields to add when --update is used
+ * This is what we want to ADD to existing files
+ */
+const NEW_FIELDS_UPDATE = {
+  physicalProperties: {
+    phases: {
+      gas: { description: &#39;Gas phase properties&#39; },
+      liquid: { description: &#39;Liquid phase properties&#39; },
+      solid: { description: &#39;Solid phase properties&#39; }
+    }
+  }
+};
+
+/**
+ * Full schema if recreating from scratch (COMMENTED OUT - dangerous)
+ * Only use if files are corrupted or lost
+ */
+const FULL_SCHEMA_FROM_SCRATCH = {
+  // Include all fields for fresh generation
+  // ... would include everything ...
+};
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
+
+/**
+ * Detect what fields are missing from an existing element JSON
+ */
+function detectMissingFields(existingJson) {
+  const missing = [];
+  
+  // Check for phase data in physicalProperties
+  if (existingJson.physicalProperties &amp;&amp; !existingJson.physicalProperties.phases) {
+    missing.push(&#39;physicalProperties.phases&#39;);
+  }
+  
+  // Add more detection logic here as needed
+  
+  return missing;
+}
+
+/**
+ * Load all existing element files and analyze schema
+ */
+function analyzeExistingElements() {
+  if (!fs.existsSync(ELEMENTS_DIR)) {
+    console.log(&#39;❌ Elements directory not found. Run with --recreate to build from scratch.&#39;);
+    return null;
+  }
+
+  const files = fs.readdirSync(ELEMENTS_DIR).filter(f =&gt; f.endsWith(&#39;.json&#39;));
+  
+  if (files.length === 0) {
+    console.log(&#39;❌ No element files found. Run with --recreate to build from scratch.&#39;);
+    return null;
+  }
+
+  console.log(`📊 Found ${files.length} existing element files`);
+  
+  // Analyze first file to detect schema
+  const samplePath = path.join(ELEMENTS_DIR, files[0]);
+  const sample = JSON.parse(fs.readFileSync(samplePath, &#39;utf8&#39;));
+  
+  console.log(`📋 Sample element schema: ${Object.keys(sample).join(&#39;, &#39;)}`);
+  
+  // Check all files for missing fields
+  const filesNeedingUpdate = [];
+  
+  for (const file of files) {
+    const filePath = path.join(ELEMENTS_DIR, file);
+    const data = JSON.parse(fs.readFileSync(filePath, &#39;utf8&#39;));
+    const missing = detectMissingFields(data);
+    
+    if (missing.length &gt; 0) {
+      filesNeedingUpdate.push({ file, missing });
+    }
+  }
+  
+  return {
+    totalFiles: files.length,
+    filesNeedingUpdate,
+    sampleSchema: Object.keys(sample)
+  };
+}
+
+/**
+ * NOTE: PubChem HTML structure requires proper parsing to extract ALL sources
+ * 
+ * Expected sources for each property:
+ * - Atomic Weight: NIST (with uncertainty range), IUPAC, CAS
+ * - Electronegativity: Pauling scale, Allred-Rochow, Sanderson
+ * - Atomic Radius: Covalent, Van der Waals, Metallic
+ * - Ionization Energy: First IE, subsequent IEs per shell
+ * 
+ * Current implementation does basic pattern matching.
+ * For production, consider:
+ * 1. Puppeteer/Playwright for JavaScript-rendered content
+ * 2. PubChem&#39;s non-public XML API if available
+ * 3. Manual JSON catalog of authoritative values with full citations
+ */
+
+/**
+ * Fetch element data from PubChem
+ * Extracts ALL sources and values for each property
+ */
+async function fetchPubChemElementData(atomicNumber, symbol) {
+  try {
+    const url = `https://pubchem.ncbi.nlm.nih.gov/element/${atomicNumber}`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      console.warn(`    ⚠️  Could not fetch PubChem data for ${symbol} (HTTP ${response.status})`);
+      return null;
+    }
+    
+    const html = await response.text();
+    
+    // Parse property tables from HTML
+    // Look for data in table rows: &lt;tr&gt;&lt;td&gt;Property&lt;/td&gt;&lt;td&gt;Value&lt;/td&gt;&lt;td&gt;Source&lt;/td&gt;&lt;/tr&gt;
+    const parsed = {
+      symbol,
+      atomicNumber,
+      atomicMass: extractPropertyFromTable(html, &#39;Atomic Weight|Relative Atomic Mass|Standard Atomic Weight&#39;),
+      electronegativity: extractPropertyFromTable(html, &#39;Electronegativity|Pauling&#39;),
+      ionizationEnergy: extractPropertyFromTable(html, &#39;Ionization Energy|First Ionization&#39;),
+      atomicRadius: extractPropertyFromTable(html, &#39;Atomic Radius|Covalent|Van der Waals&#39;),
+      electronAffinity: extractPropertyFromTable(html, &#39;Electron Affinity&#39;),
+      meltingPoint: extractPropertyFromTable(html, &#39;Melting Point&#39;),
+      boilingPoint: extractPropertyFromTable(html, &#39;Boiling Point&#39;),
+      density: extractPropertyFromTable(html, &#39;Density&#39;),
+      thermalConductivity: extractPropertyFromTable(html, &#39;Thermal Conductivity&#39;),
+      source: &#39;PubChem (NIH - multiple authoritative sources)&#39;
+    };
+    
+    return parsed;
+  } catch (error) {
+    console.warn(`    ⚠️  Error fetching ${symbol}: ${error.message}`);
+    return null;
+  }
+}
+
+/**
+ * Extract property values and sources from PubChem HTML tables
+ * Returns array of { value, source, note } objects
+ */
+function extractPropertyFromTable(html, propertyPattern) {
+  const results = [];
+  
+  // Match table rows containing the property
+  // Format: &lt;tr&gt;...&lt;td&gt;Property Name&lt;/td&gt;...&lt;td&gt;123.45&lt;/td&gt;...&lt;td&gt;Source Info&lt;/td&gt;...&lt;/tr&gt;
+  const rowPattern = new RegExp(`&lt;tr[^&gt;]*&gt;.*?${propertyPattern}.*?&lt;/tr&gt;`, &#39;gi&#39;);
+  const tablePattern = /&lt;table[^&gt;]*&gt;[\s\S]*?&lt;\/table&gt;/gi;
+  
+  let tableMatch;
+  while ((tableMatch = tablePattern.exec(html)) !== null) {
+    const table = tableMatch[0];
+    
+    let rowMatch;
+    const localRowPattern = new RegExp(`&lt;tr[^&gt;]*&gt;.*?${propertyPattern}.*?&lt;/tr&gt;`, &#39;gi&#39;);
+    while ((rowMatch = localRowPattern.exec(table)) !== null) {
+      const row = rowMatch[0];
+      
+      // Extract all &lt;td&gt; contents
+      const tdPattern = /&lt;td[^&gt;]*&gt;(.*?)&lt;\/td&gt;/gi;
+      const tds = [];
+      let tdMatch;
+      while ((tdMatch = tdPattern.exec(row)) !== null) {
+        // Clean up HTML tags
+        const text = tdMatch[1]
+          .replace(/&lt;[^&gt;]*&gt;/g, &#39;&#39;)
+          .replace(/&amp;nbsp;/g, &#39; &#39;)
+          .replace(/&amp;amp;/g, &#39;&amp;&#39;)
+          .trim();
+        if (text) tds.push(text);
+      }
+      
+      // Extract value and source from cells
+      if (tds.length &gt;= 2) {
+        // Usually: [Property, Value, Source/Notes]
+        const value = tds[1]?.match(/[\d.±+\-]/g)?.join(&#39;&#39;) || tds[1];
+        const source = tds[2] || tds.slice(2).join(&#39; &#39;) || &#39;Unknown&#39;;
+        
+        if (value &amp;&amp; !isNaN(parseFloat(value))) {
+          results.push({
+            value: parseFloat(value),
+            rawValue: value,
+            source: source.substring(0, 100), // Truncate long source strings
+            note: tds.slice(3).join(&#39; &#39;)
+          });
+        }
+      }
+    }
+  }
+  
+  // Deduplicate
+  const unique = [];
+  const seen = new Set();
+  for (const result of results) {
+    const key = result.value.toString();
+    if (!seen.has(key)) {
+      unique.push(result);
+      seen.add(key);
+    }
+  }
+  
+  return unique.length &gt; 0 ? unique : null;
+}
+
+/**
+ * Compare current element data against PubChem authoritative values
+ * Shows ALL sources and their values from PubChem for comparison
+ * 
+ * CRITICAL FOR GAME: Atomic weight MUST be a singular precise value, not a range
+ * Game uses atomicMass for stoichiometric calculations - ranges cause errors
+ */
+function compareWithPubChem(elementData, pubchemData) {
+  if (!pubchemData) return [];
+  
+  const discrepancies = [];
+  const fieldsToCheck = [&#39;atomicMass&#39;, &#39;electronegativity&#39;, &#39;ionizationEnergy&#39;, &#39;atomicRadius&#39;, &#39;electronAffinity&#39;, &#39;meltingPoint&#39;, &#39;boilingPoint&#39;, &#39;density&#39;, &#39;thermalConductivity&#39;];
+  
+  fieldsToCheck.forEach(field =&gt; {
+    if (pubchemData[field] &amp;&amp; Array.isArray(pubchemData[field])) {
+      const nistValue = elementData.nist?.[field];
+      const iupacValue = elementData.iupac?.[field];
+      const nistSource = elementData.nist?.source;
+      
+      // ATOMIC WEIGHT SPECIAL CHECK: Must be singular, not range
+      if (field === &#39;atomicMass&#39;) {
+        if (nistValue &amp;&amp; (nistValue.toString().includes(&#39;–&#39;) || nistValue.toString().includes(&#39;±&#39;))) {
+          discrepancies.push({
+            field,
+            severity: &#39;ERROR&#39;,
+            issue: &#39;Atomic weight contains range/uncertainty - game needs singular precise value&#39;,
+            current: { nist: nistValue, iupac: iupacValue, source: nistSource },
+            pubchemSources: pubchemData[field],
+            action: &#39;Must select single authoritative value from available sources&#39;
+          });
+        }
+      }
+      
+      // Check if our values appear in ANY of the PubChem sources
+      const foundMatch = pubchemData[field].some(source =&gt; 
+        Math.abs(parseFloat(source.value) - parseFloat(nistValue || 0)) &lt; 0.001 ||
+        Math.abs(parseFloat(source.value) - parseFloat(iupacValue || 0)) &lt; 0.001
+      );
+      
+      if (!foundMatch &amp;&amp; nistValue) {
+        discrepancies.push({
+          field,
+          severity: &#39;WARNING&#39;,
+          issue: &#39;Value not found in PubChem sources - may be outdated&#39;,
+          current: { nist: nistValue, iupac: iupacValue, source: nistSource },
+          pubchemSources: pubchemData[field],
+          mismatch: true
+        });
+      }
+    }
+  });
+  
+  return discrepancies;
+}
+
+// ============================================================================
+// MAIN LOGIC
+// ============================================================================
+
+console.log(&#39;🔍 Element Data Regenerator\n&#39;);
+
+// Analyze current state
+const analysis = analyzeExistingElements();
+
+if (!analysis) {
+  process.exit(1);
+}
+
+console.log(`\n📈 Status:`);
+console.log(`   Total files: ${analysis.totalFiles}`);
+console.log(`   Files needing update (phase data): ${analysis.filesNeedingUpdate.length}`);
+
+if (analysis.filesNeedingUpdate.length &gt; 0) {
+  console.log(`\n   Missing fields:`);
+  analysis.filesNeedingUpdate.forEach(({ file, missing }) =&gt; {
+    console.log(`     - ${file}: ${missing.join(&#39;, &#39;)}`);
+  });
+}
+
+// Determine action
+if (UPDATE_MODE) {
+  console.log(&#39;\n⚙️  UPDATE MODE: Validating against PubChem and adding new fields...\n&#39;);
+  console.log(&#39;Will update the following files:&#39;);
+  analysis.filesNeedingUpdate.forEach(({ file, missing }) =&gt; {
+    console.log(`  ✏️  ${file} (adding: ${missing.join(&#39;, &#39;)})`);
+  });
+  console.log(&#39;\nTODO: Implement phase data fetching from PubChem&#39;);
+} else if (RECREATE_MODE) {
+  console.log(&#39;\n⚠️  RECREATE MODE: This will rebuild all 118 elements from scratch!&#39;);
+  console.log(&#39;This should ALMOST NEVER be used. Use --update for incremental changes.\n&#39;);
+  console.log(&#39;TODO: Implement full rebuild from PubChem/NIST&#39;);
+} else {
+  // Default mode: Check against PubChem authoritative data
+  console.log(&#39;\n🔎 CHECK MODE: Comparing current data against PubChem...\n&#39;);
+  console.log(&#39;Fetching PubChem data for verification (this may take a moment)...\n&#39;);
+  
+  const files = fs.readdirSync(ELEMENTS_DIR).filter(f =&gt; f.endsWith(&#39;.json&#39;)).slice(0, 5); // Sample first 5 for quick test
+  
+  (async () =&gt; {
+    let discrepanciesFound = 0;
+    
+    for (const file of files) {
+      const filePath = path.join(ELEMENTS_DIR, file);
+      const elementData = JSON.parse(fs.readFileSync(filePath, &#39;utf8&#39;));
+      
+      console.log(`\n📋 ${elementData.symbol} (${elementData.name}):`);
+      
+      const pubchemData = await fetchPubChemElementData(elementData.atomicNumber, elementData.symbol);
+      
+      if (!pubchemData) {
+        console.log(`   ⚠️  Could not validate against PubChem`);
+        continue;
+      }
+      
+      const discrepancies = compareWithPubChem(elementData, pubchemData);
+      
+      if (discrepancies.length === 0) {
+        console.log(`   ✅ All values validated`);
+      } else {
+        discrepanciesFound += discrepancies.length;
+        discrepancies.forEach(({ field, severity, issue, current, pubchemSources, action }) =&gt; {
+          const icon = severity === &#39;ERROR&#39; ? &#39;❌&#39; : &#39;⚠️&#39;;
+          console.log(`   ${icon} ${severity}: ${field}`);
+          console.log(`       Issue: ${issue}`);
+          console.log(`       Current: NIST=${current.nist}, IUPAC=${current.iupac}`);
+          console.log(`       Source: ${current.source}`);
+          if (pubchemSources &amp;&amp; Array.isArray(pubchemSources)) {
+            console.log(`       PubChem sources available (${pubchemSources.length}):`);
+            pubchemSources.forEach((source, idx) =&gt; {
+              console.log(`         [${idx + 1}] ${source.rawValue} - ${source.source}`);
+              if (source.note) console.log(`             Note: ${source.note}`);
+            });
+          }
+          if (action) console.log(`       Action: ${action}`);
+        });
+      }
+    }
+    
+    console.log(`\n${&#39;=&#39;.repeat(60)}`);
+    if (discrepanciesFound === 0) {
+      console.log(`✅ Check complete. All sampled elements match PubChem data.\n`);
+    } else {
+      console.log(`⚠️  Check complete. Found ${discrepanciesFound} discrepancies.\n`);
+      console.log(`   Run with --update to fetch corrected data from PubChem.\n`);
+    }
+    
+    console.log(`\n📋 POST-CHECK VALIDATION REQUIRED:`);
+    console.log(`   TODO: Verify atomic weight values are SINGULAR and PRECISE`);
+    console.log(`   - Game calculations depend on precise atomicMass (no ranges)`);
+    console.log(`   - Must select authoritative source consistently across all elements`);
+    console.log(`   - Per-element handling may be needed for elements with multiple valid sources`);
+    console.log(`   - Recommend: NIST for consistency (but verify no ranges present)`);
+    console.log(`\n   TODO: After --update run, manually inspect:`)
+    console.log(`   - Any atomicMass values containing ± or – (ranges)`);
+    console.log(`   - Per-element source selection for game use`);
+    console.log(`   - Ensure phase data was successfully added`);
+    
+    console.log(&#39;\nDone.&#39;);
+  })();
+}
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

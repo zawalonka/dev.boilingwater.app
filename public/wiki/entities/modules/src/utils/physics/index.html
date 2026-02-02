@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>index.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/index.html">utils</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/physics/index.html">physics</a> <span class="breadcrumb-sep">›</span> <span>index.js</span>
+        </nav>
+        <div class="wiki-topbar-title">index.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">index.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/AIR_DIFFUSION_VOLUME.html">AIR_DIFFUSION_VOLUME</a></li><li><a href="/wiki/entities/symbols/AIR_MOLAR_MASS.html">AIR_MOLAR_MASS</a></li><li><a href="/wiki/entities/symbols/COMMON_SOLUTES.html">COMMON_SOLUTES</a></li><li><a href="/wiki/entities/symbols/CONVECTIVE_HEAT_TRANSFER.html">CONVECTIVE_HEAT_TRANSFER</a></li><li><a href="/wiki/entities/symbols/DEFAULT_EVAPORATION_COEFFICIENT.html">DEFAULT_EVAPORATION_COEFFICIENT</a></li><li><a href="/wiki/entities/symbols/LATENT_HEAT_VALUES.html">LATENT_HEAT_VALUES</a></li><li><a href="/wiki/entities/symbols/PID_PRESETS.html">PID_PRESETS</a></li><li><a href="/wiki/entities/symbols/SPECIFIC_HEAT_VALUES.html">SPECIFIC_HEAT_VALUES</a></li><li><a href="/wiki/entities/symbols/STANDARD_ATMOSPHERES.html">STANDARD_ATMOSPHERES</a></li><li><a href="/wiki/entities/symbols/STANDARD_KB_VALUES.html">STANDARD_KB_VALUES</a></li><li><a href="/wiki/entities/symbols/airKinematicViscosity.html">airKinematicViscosity</a></li><li><a href="/wiki/entities/symbols/applyAcEffect.html">applyAcEffect</a></li><li><a href="/wiki/entities/symbols/applyAirHandlerEffect.html">applyAirHandlerEffect</a></li><li><a href="/wiki/entities/symbols/applyCoolingStep.html">applyCoolingStep</a></li><li><a href="/wiki/entities/symbols/applyDeadband.html">applyDeadband</a></li><li><a href="/wiki/entities/symbols/applyHeatEnergy.html">applyHeatEnergy</a></li><li><a href="/wiki/entities/symbols/calculateACH.html">calculateACH</a></li><li><a href="/wiki/entities/symbols/calculateAltitudeFromPressure.html">calculateAltitudeFromPressure</a></li><li><a href="/wiki/entities/symbols/calculateBoilingPoint.html">calculateBoilingPoint</a></li><li><a href="/wiki/entities/symbols/calculateBoilingPointAtPressure.html">calculateBoilingPointAtPressure</a></li><li><a href="/wiki/entities/symbols/calculateBoilingPointElevation.html">calculateBoilingPointElevation</a></li><li><a href="/wiki/entities/symbols/calculateDiffusionCoefficient.html">calculateDiffusionCoefficient</a></li><li><a href="/wiki/entities/symbols/calculateDiffusionInAir.html">calculateDiffusionInAir</a></li><li><a href="/wiki/entities/symbols/calculateDiffusionVolumeSum.html">calculateDiffusionVolumeSum</a></li><li><a href="/wiki/entities/symbols/calculateDynamicKb.html">calculateDynamicKb</a></li><li><a href="/wiki/entities/symbols/calculateEffectiveCoolingCoeff.html">calculateEffectiveCoolingCoeff</a></li><li>calculateEvaporatedM</li><li>calculateEvaporationM</li><li><a href="/wiki/entities/symbols/calculateEvaporativeCooling.html">calculateEvaporativeCooling</a></li><li><a href="/wiki/entities/symbols/calculateExchangeFraction.html">calculateExchangeFraction</a></li><li><a href="/wiki/entities/symbols/calculateFusionEnergy.html">calculateFusionEnergy</a></li><li><a href="/wiki/entities/symbols/calculateHeatEnergy.html">calculateHeatEnergy</a></li><li><a href="/wiki/entities/symbols/calculateHeatingEnergy.html">calculateHeatingEnergy</a></li><li><a href="/wiki/entities/symbols/calculateHeatingTime.html">calculateHeatingTime</a></li><li>calculateM</li><li>calculateMeltedM</li><li><a href="/wiki/entities/symbols/calculateNetEvaporationFlux.html">calculateNetEvaporationFlux</a></li><li><a href="/wiki/entities/symbols/calculatePartialPressure.html">calculatePartialPressure</a></li><li><a href="/wiki/entities/symbols/calculatePidOutput.html">calculatePidOutput</a></li><li>calculatePressure</li><li><a href="/wiki/entities/symbols/calculatePressureISA.html">calculatePressureISA</a></li><li>calculateRoomAirM</li><li><a href="/wiki/entities/symbols/calculateSherwoodNumber.html">calculateSherwoodNumber</a></li><li><a href="/wiki/entities/symbols/calculateTempChange.html">calculateTempChange</a></li><li><a href="/wiki/entities/symbols/calculateTemperatureISA.html">calculateTemperatureISA</a></li><li><a href="/wiki/entities/symbols/calculateVaporizationEnergy.html">calculateVaporizationEnergy</a></li><li><a href="/wiki/entities/symbols/calculateVaporizedM.html">calculateVaporizedM</a></li><li><a href="/wiki/entities/symbols/celsiusToFahrenheit.html">celsiusToFahrenheit</a></li><li><a href="/wiki/entities/symbols/celsiusToKelvin.html">celsiusToKelvin</a></li><li><a href="/wiki/entities/symbols/cfmToM3PerHour.html">cfmToM3PerHour</a></li><li><a href="/wiki/entities/symbols/createPidState.html">createPidState</a></li><li><a href="/wiki/entities/symbols/estimatePotSurfaceArea.html">estimatePotSurfaceArea</a></li><li><a href="/wiki/entities/symbols/exchangeComposition.html">exchangeComposition</a></li><li><a href="/wiki/entities/symbols/exchangeSpecies.html">exchangeSpecies</a></li><li><a href="/wiki/entities/symbols/fahrenheitToCelsius.html">fahrenheitToCelsius</a></li><li><a href="/wiki/entities/symbols/fahrenheitToKelvin.html">fahrenheitToKelvin</a></li><li><a href="/wiki/entities/symbols/formatTemperature.html">formatTemperature</a></li><li><a href="/wiki/entities/symbols/getStandardKb.html">getStandardKb</a></li><li><a href="/wiki/entities/symbols/kelvinToCelsius.html">kelvinToCelsius</a></li><li><a href="/wiki/entities/symbols/kelvinToFahrenheit.html">kelvinToFahrenheit</a></li><li>m</li><li><a href="/wiki/entities/symbols/simulateEvaporationStep.html">simulateEvaporationStep</a></li><li><a href="/wiki/entities/symbols/simulateTimeStep.html">simulateTimeStep</a></li><li><a href="/wiki/entities/symbols/solveAntoineForPressure.html">solveAntoineForPressure</a></li><li><a href="/wiki/entities/symbols/solveAntoineForTemperature.html">solveAntoineForTemperature</a></li><li><a href="/wiki/entities/symbols/temperatureAtTime.html">temperatureAtTime</a></li><li><a href="/wiki/entities/symbols/timeToCool.html">timeToCool</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/processes/boilingPoint/calculateBoilingPoint.html">calculateBoilingPoint</a>, <a href="/wiki/entities/processes/heating/applyHeat.html">applyHeat</a>, <a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulateTimeStep</a>, <a href="/wiki/entities/processes/roomControl/applyAcEffect.html">applyAcEffect</a>, <a href="/wiki/entities/processes/roomControl/applyAirHandlerEffect.html">applyAirHandlerEffect</a>, <a href="/wiki/entities/formulas/antoineEquation.html">antoineEquation</a>, <a href="/wiki/entities/formulas/isaAtmosphere.html">isaAtmosphere</a>, <a href="/wiki/entities/formulas/dynamicKb.html">dynamicKb</a>, <a href="/wiki/entities/formulas/ebullioscopy.html">ebullioscopy</a>, <a href="/wiki/entities/formulas/heatCapacity.html">heatCapacity</a>, <a href="/wiki/entities/formulas/latentHeat.html">latentHeat</a>, <a href="/wiki/entities/formulas/newtonCooling.html">newtonCooling</a>, <a href="/wiki/entities/formulas/temperatureConversion.html">temperatureConversion</a>, <a href="/wiki/entities/formulas/pidController.html">pidController</a>, <a href="/wiki/entities/formulas/gasExchange.html">gasExchange</a>, <a href="/wiki/entities/formulas/evaporation.html">evaporation</a>, <a href="/wiki/entities/formulas/diffusion.html">diffusion</a>, <a href="/wiki/entities/formulas/massTransfer.html">massTransfer</a></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/App.html">App.jsx</a></li><li><a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a></li><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/acUnitHandler.html">acUnitHandler.js</a></li><li><a href="/wiki/entities/modules/src/utils/airHandlerScrubber.html">airHandlerScrubber.js</a></li><li><a href="/wiki/entities/modules/src/utils/locationUtils.html">locationUtils.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li><li><a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li><li><a href="/wiki/entities/modules/src/utils/unitUtils.html">unitUtils.js</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>index.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>PHYSICS MODULE - PUBLIC API</p>
+<p>===========================</p>
+<p>This is the main entry point for all physics calculations.</p>
+<p>Import from here - don&#39;t import directly from formulas or processes.</p>
+<p>STRUCTURE:</p>
+<p>src/utils/physics/</p>
+<p>├── index.js              ← You are here (public API)</p>
+<p>├── formulas/             ← Individual named equations (textbook)</p>
+<p>│   ├── antoineEquation.js</p>
+<p>│   ├── isaAtmosphere.js</p>
+<p>│   ├── dynamicKb.js</p>
+<p>│   ├── ebullioscopy.js</p>
+<p>│   ├── heatCapacity.js</p>
+<p>│   ├── latentHeat.js</p>
+<p>│   ├── newtonCooling.js</p>
+<p>│   ├── temperatureConversion.js</p>
+<p>│   ├── pidController.js      ← Control algorithm for AC/Air Handler</p>
+<p>│   └── gasExchange.js        ← Room air mixing physics</p>
+<p>└── processes/            ← Orchestrators that chain formulas (lab manual)</p>
+<p>├── boilingPoint/     ← calculateBoilingPoint + stubs</p>
+<p>├── heating/          ← applyHeatEnergy + stubs</p>
+<p>├── simulation/       ← simulateTimeStep + stubs</p>
+<p>└── roomControl/      ← applyAcEffect, applyAirHandlerEffect + stubs</p>
+<p>USAGE:</p>
+<p>import { calculateBoilingPoint, simulateTimeStep } from &#39;../utils/physics&#39;</p>
+<p>const bp = calculateBoilingPoint(5000, fluidProps)  // → 83.3°C</p>
+<p>const newState = simulateTimeStep(state, 2000, 0.1, fluidProps)</p>
+<p>DESIGN PHILOSOPHY:</p>
+<p>- Formulas: One file per named equation, heavily commented for education</p>
+<p>- Processes: Chain formulas together, import through visible stubs</p>
+<p>- Single source of truth: Edit a formula once, all processes get the fix</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\index.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">/**
+ * PHYSICS MODULE - PUBLIC API
+ * ===========================
+ * 
+ * This is the main entry point for all physics calculations.
+ * Import from here - don&#39;t import directly from formulas or processes.
+ * 
+ * STRUCTURE:
+ *   src/utils/physics/
+ *   ├── index.js              ← You are here (public API)
+ *   ├── formulas/             ← Individual named equations (textbook)
+ *   │   ├── antoineEquation.js
+ *   │   ├── isaAtmosphere.js
+ *   │   ├── dynamicKb.js
+ *   │   ├── ebullioscopy.js
+ *   │   ├── heatCapacity.js
+ *   │   ├── latentHeat.js
+ *   │   ├── newtonCooling.js
+ *   │   ├── temperatureConversion.js
+ *   │   ├── pidController.js      ← Control algorithm for AC/Air Handler
+ *   │   └── gasExchange.js        ← Room air mixing physics
+ *   └── processes/            ← Orchestrators that chain formulas (lab manual)
+ *       ├── boilingPoint/     ← calculateBoilingPoint + stubs
+ *       ├── heating/          ← applyHeatEnergy + stubs
+ *       ├── simulation/       ← simulateTimeStep + stubs
+ *       └── roomControl/      ← applyAcEffect, applyAirHandlerEffect + stubs
+ * 
+ * USAGE:
+ *   import { calculateBoilingPoint, simulateTimeStep } from &#39;../utils/physics&#39;
+ *   
+ *   const bp = calculateBoilingPoint(5000, fluidProps)  // → 83.3°C
+ *   const newState = simulateTimeStep(state, 2000, 0.1, fluidProps)
+ * 
+ * DESIGN PHILOSOPHY:
+ * - Formulas: One file per named equation, heavily commented for education
+ * - Processes: Chain formulas together, import through visible stubs
+ * - Single source of truth: Edit a formula once, all processes get the fix
+ */
+
+// ============================================================
+// PROCESSES (Main game functions - import these for simulation)
+// ============================================================
+
+export { 
+  calculateBoilingPoint,
+  calculateBoilingPointAtPressure,
+  calculatePressure 
+} from &#39;./processes/boilingPoint/calculateBoilingPoint.js&#39;
+
+export { 
+  applyHeatEnergy,
+  calculateHeatingEnergy 
+} from &#39;./processes/heating/applyHeat.js&#39;
+
+export { 
+  simulateTimeStep 
+} from &#39;./processes/simulation/simulateTimeStep.js&#39;
+
+// Room Control - AC and Air Handler processes
+export {
+  applyAcEffect,
+  calculateRoomAirMass
+} from &#39;./processes/roomControl/applyAcEffect.js&#39;
+
+export {
+  applyAirHandlerEffect
+} from &#39;./processes/roomControl/applyAirHandlerEffect.js&#39;
+
+
+// ============================================================
+// FORMULAS (Direct access for advanced use or education)
+// ============================================================
+
+// Antoine Equation - vapor pressure ↔ temperature
+export { 
+  solveAntoineForTemperature,
+  solveAntoineForPressure 
+} from &#39;./formulas/antoineEquation.js&#39;
+
+// ISA Atmosphere - altitude ↔ pressure
+export { 
+  calculatePressureISA,
+  calculateTemperatureISA,
+  calculateAltitudeFromPressure 
+} from &#39;./formulas/isaAtmosphere.js&#39;
+
+// Dynamic Kb - temperature-dependent ebullioscopic constant
+export { 
+  calculateDynamicKb,
+  getStandardKb,
+  STANDARD_KB_VALUES 
+} from &#39;./formulas/dynamicKb.js&#39;
+
+// Ebullioscopy - boiling point elevation
+export { 
+  calculateBoilingPointElevation,
+  massPercentToMolality,
+  COMMON_SOLUTES 
+} from &#39;./formulas/ebullioscopy.js&#39;
+
+// Heat Capacity - Q = mcΔT
+export { 
+  calculateHeatEnergy,
+  calculateTempChange,
+  calculateHeatingTime,
+  SPECIFIC_HEAT_VALUES 
+} from &#39;./formulas/heatCapacity.js&#39;
+
+// Latent Heat - phase change energy
+export { 
+  calculateVaporizationEnergy,
+  calculateVaporizedMass,
+  calculateFusionEnergy,
+  calculateMeltedMass,
+  LATENT_HEAT_VALUES 
+} from &#39;./formulas/latentHeat.js&#39;
+
+// Newton&#39;s Law of Cooling - dT/dt = -k(T - Tambient)
+export { 
+  calculateEffectiveCoolingCoeff,
+  applyCoolingStep,
+  temperatureAtTime,
+  timeToCool,
+  CONVECTIVE_HEAT_TRANSFER 
+} from &#39;./formulas/newtonCooling.js&#39;
+
+// Temperature Conversion - °C ↔ °F ↔ K
+export { 
+  celsiusToFahrenheit,
+  fahrenheitToCelsius,
+  celsiusToKelvin,
+  kelvinToCelsius,
+  fahrenheitToKelvin,
+  kelvinToFahrenheit,
+  formatTemperature 
+} from &#39;./formulas/temperatureConversion.js&#39;
+
+// PID Controller - control algorithm for AC/equipment
+export {
+  calculatePidOutput,
+  createPidState,
+  applyDeadband,
+  PID_PRESETS
+} from &#39;./formulas/pidController.js&#39;
+
+// Gas Exchange - room air mixing physics
+export {
+  calculateExchangeFraction,
+  exchangeSpecies,
+  exchangeComposition,
+  cfmToM3PerHour,
+  calculateACH,
+  STANDARD_ATMOSPHERES
+} from &#39;./formulas/gasExchange.js&#39;
+
+// Evaporation - pre-boiling mass transfer and evaporative cooling
+// NOTE: simulateEvaporationWithMassTransfer is the preferred method (physically accurate)
+// It uses Fuller-Schettler-Giddings diffusion + boundary layer mass transfer
+// Hertz-Knudsen functions kept for fallback/reference
+export {
+  // Mass transfer model (preferred - uses diffusion physics)
+  simulateEvaporationWithMassTransfer,
+  // Hertz-Knudsen model (fallback - theoretical max rate)
+  calculateEvaporationFlux,
+  calculateNetEvaporationFlux,
+  calculateEvaporatedMass,
+  calculateEvaporativeCooling,
+  estimatePotSurfaceArea,
+  calculatePartialPressure,
+  simulateEvaporationStep,
+  DEFAULT_EVAPORATION_COEFFICIENT
+} from &#39;./formulas/evaporation.js&#39;
+
+// Diffusion - Fuller-Schettler-Giddings equation for binary diffusion coefficients
+export {
+  calculateDiffusionCoefficient,
+  calculateDiffusionInAir,
+  calculateDiffusionVolumeSum,
+  AIR_DIFFUSION_VOLUME,
+  AIR_MOLAR_MASS
+} from &#39;./formulas/diffusion.js&#39;
+
+// Mass Transfer - boundary layer correlations
+export {
+  calculateMassTransferCoefficient,
+  calculateEvaporationMass,
+  calculateSherwoodNumber,
+  airKinematicViscosity
+} from &#39;./formulas/massTransfer.js&#39;
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

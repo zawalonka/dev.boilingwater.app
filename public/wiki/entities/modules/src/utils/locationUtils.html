@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>locationUtils.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/index.html">utils</a> <span class="breadcrumb-sep">›</span> <span>locationUtils.js</span>
+        </nav>
+        <div class="wiki-topbar-title">locationUtils.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">locationUtils.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/formatAltitude.html">formatAltitude</a></li><li><a href="/wiki/entities/symbols/getAltitudeFromCoordinates.html">getAltitudeFromCoordinates</a></li><li><a href="/wiki/entities/symbols/getAltitudeFromLocationName.html">getAltitudeFromLocationName</a></li><li><a href="/wiki/entities/symbols/getUserLocation.html">getUserLocation</a></li><li><a href="/wiki/entities/symbols/searchLocation.html">searchLocation</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/locationUtils.html">locationUtils.js</a></li><li><a href="/wiki/entities/modules/src/utils/unitUtils.html">unitUtils.js</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>locationUtils.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>Location &amp; Altitude Utilities</p>
+<p>Handles worldwide location search, geocoding, geolocation, and altitude lookups</p>
+<p>Works anywhere in the world via OpenStreetMap Nominatim API</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\utils\locationUtils.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">/**
+ * Location &amp; Altitude Utilities
+ * Handles worldwide location search, geocoding, geolocation, and altitude lookups
+ * Works anywhere in the world via OpenStreetMap Nominatim API
+ */
+
+/**
+ * Get altitude from coordinates using Open-Elevation API (free, no key required)
+ * @param {number} latitude
+ * @param {number} longitude
+ * @returns {Promise&lt;number&gt;} Altitude in meters
+ */
+export const getAltitudeFromCoordinates = async (latitude, longitude) =&gt; {
+  try {
+    const response = await fetch(
+      `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`
+    );
+    if (!response.ok) throw new Error(&#39;Open-Elevation API error&#39;);
+    const data = await response.json();
+    return data.results[0]?.elevation || 0;
+  } catch (error) {
+    console.error(&#39;Error fetching altitude:&#39;, error);
+    return 0; // Default to sea level on error
+  }
+};
+
+/**
+ * Search for a location by place name worldwide
+ * Accepts city names, regions, landmarks, etc. (works anywhere globally)
+ * Examples: &quot;Denver&quot;, &quot;Tokyo&quot;, &quot;Mount Everest&quot;, &quot;Sydney&quot;, &quot;London&quot;
+ * 
+ * @param {string} locationName - Place name, city, region, or landmark
+ * @returns {Promise&lt;{latitude: number, longitude: number, name: string, type: string}&gt;}
+ */
+export const searchLocation = async (locationName) =&gt; {
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(locationName)}&amp;format=json&amp;limit=5`,
+      {
+        headers: {
+          &#39;User-Agent&#39;: &#39;BoilingWater-EducationalApp/1.0&#39;
+        }
+      }
+    );
+
+    if (!response.ok) throw new Error(&#39;Location search failed&#39;);
+    const data = await response.json();
+
+    if (data.length === 0) {
+      throw new Error(`Location not found: &quot;${locationName}&quot;. Try a city, landmark, mountain, or geographic feature.`);
+    }
+
+    // Return best match (first result is usually most relevant)
+    const result = data[0];
+    return {
+      latitude: parseFloat(result.lat),
+      longitude: parseFloat(result.lon),
+      name: result.display_name.split(&#39;,&#39;)[0], // First part is usually the city/landmark
+      type: result.type || &#39;location&#39;,
+      fullName: result.display_name
+    };
+  } catch (error) {
+    console.error(&#39;Error searching location:&#39;, error);
+    throw error;
+  }
+};
+
+/**
+ * Get altitude from location name (combines search→coords→altitude)
+ * Works worldwide: &quot;Denver&quot;, &quot;Tokyo&quot;, &quot;Sydney&quot;, &quot;Cairo&quot;, etc.
+ * 
+ * @param {string} locationName - Place name, city, or landmark
+ * @returns {Promise&lt;{altitude: number, name: string, fullName: string}&gt;}
+ */
+export const getAltitudeFromLocationName = async (locationName) =&gt; {
+  try {
+    const location = await searchLocation(locationName);
+    const altitude = await getAltitudeFromCoordinates(location.latitude, location.longitude);
+    return {
+      altitude,
+      name: location.name,
+      fullName: location.fullName,
+      latitude: location.latitude,
+      longitude: location.longitude
+    };
+  } catch (error) {
+    console.error(&#39;Error fetching altitude from location name:&#39;, error);
+    throw error;
+  }
+};
+
+
+/**
+ * Get user&#39;s current location using browser Geolocation API
+ * @returns {Promise&lt;{latitude: number, longitude: number, altitude: number, name: string}&gt;}
+ */
+export const getUserLocation = async () =&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    if (!navigator.geolocation) {
+      reject(new Error(&#39;Geolocation not supported by this browser&#39;));
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) =&gt; {
+        const { latitude, longitude } = position.coords;
+        try {
+          const altitude = await getAltitudeFromCoordinates(latitude, longitude);
+          
+          // Try to get location name from reverse geocoding
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&amp;lon=${longitude}&amp;format=json`,
+            {
+              headers: {
+                &#39;User-Agent&#39;: &#39;BoilingWater-EducationalApp/1.0&#39;
+              }
+            }
+          );
+          
+          let name = &#39;Your Location&#39;;
+          if (response.ok) {
+            const data = await response.json();
+            name = data.address?.city || data.address?.town || data.address?.county || &#39;Your Location&#39;;
+          }
+          
+          resolve({ latitude, longitude, altitude, name });
+        } catch (error) {
+          // Still return coords even if altitude lookup fails
+          resolve({ latitude, longitude, altitude: 0, name: &#39;Your Location&#39; });
+        }
+      },
+      (error) =&gt; {
+        console.error(&#39;Geolocation error:&#39;, error);
+        reject(error);
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: 3600000 // Cache location for 1 hour
+      }
+    );
+  });
+};
+
+/**
+ * Format altitude for display
+ * @param {number} altitude - Altitude in meters
+ * @param {string} unit - &#39;metric&#39; or &#39;imperial&#39;
+ * @returns {string} Formatted string like &quot;1,200 m&quot; or &quot;3,937 ft&quot;
+ */
+export const formatAltitude = (altitude, unit = &#39;metric&#39;) =&gt; {
+  if (unit === &#39;imperial&#39;) {
+    const feet = altitude * 3.28084;
+    return `${Math.round(feet).toLocaleString()} ft`;
+  }
+  return `${Math.round(altitude).toLocaleString()} m`;
+};
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

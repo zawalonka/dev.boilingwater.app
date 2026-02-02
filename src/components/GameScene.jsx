@@ -1345,7 +1345,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           {burnerHeat > 0 && (
             <img 
               src={flameImage}
-              alt="Flame"
+              alt="Gas burner flame"
               className="flame-graphic"
               style={{
                 filter: effects.flameGlow.enabled ? flameFilter : 'none',
@@ -1373,6 +1373,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               {`${wattageSteps[burnerHeat] || 0} W`}
             </div>
 
+            <span id="burner-controls-help" className="sr-only">
+              Adjust the burner power level to change heating intensity.
+            </span>
+
             <button
               className="burner-btn burner-btn-down"
               style={{
@@ -1383,6 +1387,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               }}
               onClick={handleHeatDown}
               aria-label="Burner down"
+              aria-describedby="burner-controls-help"
               title="Decrease burner wattage"
             >
               {layout.burnerControls.downButton.symbol || '↓'}
@@ -1399,6 +1404,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               }}
               onClick={handleHeatUp}
               aria-label="Burner up"
+              aria-describedby="burner-controls-help"
               title="Increase burner wattage"
             >
               {layout.burnerControls.upButton.symbol || '↑'}
@@ -1460,7 +1466,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           */}
           <img
             src={liquidMass > 0 ? potFullImage : potEmptyImage}
-            alt={liquidMass > 0 ? 'Full Pot' : 'Empty Pot'}
+            alt={liquidMass > 0 ? 'Pot filled with liquid' : 'Empty pot'}
             className="pot-image"
             draggable={false}  // Disable browser's native drag for images
           />
@@ -1471,7 +1477,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               {steamConfig.asset ? (
                 <img
                   src={steamConfig.asset}
-                  alt="Steam effect"
+                  alt="Steam rising from the pot"
                   className="steam-sprite"
                   draggable={false}
                 />

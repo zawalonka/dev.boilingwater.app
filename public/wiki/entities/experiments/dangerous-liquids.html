@@ -3,35 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dangerous Liquids</title>
+  <title>Dangerous Liquids - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 </head>
 <body>
   <div class="wiki-layout">
     <div class="wiki-main">
       <header class="wiki-topbar">
         <details class="wiki-menu" aria-label="Menu">
-          <summary>☰</summary>
+          <summary>☰ Menu</summary>
           <nav class="wiki-menu-links">
-            <a href="/wiki/index.html">Main page</a>
-            <a href="/wiki/entities/elements/index.html">Elements</a>
-            <a href="/wiki/entities/compounds/index.html">Compounds</a>
-            <a href="/wiki/entities/solutions/index.html">Solutions</a>
-            <a href="/wiki/entities/phases/index.html">Phases</a>
-            <a href="/wiki/entities/levels/index.html">Levels</a>
-            <a href="/wiki/entities/experiments/index.html">Experiments</a>
-            <a href="/wiki/entities/formulas/index.html">Formulas</a>
-            <a href="/wiki/entities/processes/index.html">Processes</a>
-            <a href="/wiki/entities/modules/index.html">Modules</a>
-            <a href="/wiki/entities/symbols/index.html">Symbols</a>
-            <a href="/wiki/entities/public/index.html">Public Files</a>
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
             <div class="wiki-menu-divider"></div>
-            <a href="/">Back to Game</a>
+            <a href="/">⬅️ Back to Game</a>
           </nav>
         </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/index.html">Experiments</a> <span class="breadcrumb-sep">›</span> <span>Dangerous Liquids</span>
+        </nav>
         <div class="wiki-topbar-title">Dangerous Liquids</div>
       </header>
       <main class="wiki-content">
+        
         <article class="wiki-article">
           
       
@@ -53,6 +81,21 @@
         <div class="infobox-value"><a href="/wiki/entities/experiments/different-fluids.html">Different Fluids</a></div>
       </div>
     
+      <div class="infobox-row">
+        <div class="infobox-label">Tutorial</div>
+        <div class="infobox-value">No</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Requires Location</div>
+        <div class="infobox-value">Yes</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Unlocks Room Controls</div>
+        <div class="infobox-value">Yes (AC + Air Handler)</div>
+      </div>
+    
     </aside>
   
       <section class="section">
@@ -62,12 +105,91 @@
     <p class="subtitle">Experiment</p>
   </div>
 
-        <h3>Parent (level)</h3>
-        <p><a href="/wiki/entities/levels/1.html">Level 1</a></p>
+        <p>Work with hazardous substances - room ventilation is critical!</p>
       </section>
+      
+        <section class="section">
+          <h2>📚 What You Learn</h2>
+          <p>This experiment introduces <strong>room environment simulation</strong> and hazardous substance handling:</p>
+          <ul>
+            <li><strong>Vapor Release:</strong> Boiling substances release vapor into room air (changes composition)</li>
+            <li><strong>Room Pressure Feedback:</strong> Vapor accumulation increases pressure → raises boiling point</li>
+            <li><strong>AC Temperature Control:</strong> PID controller maintains room temperature despite burner heat</li>
+            <li><strong>Air Handler Filtration:</strong> Scrubs toxic vapors and maintains breathable atmosphere</li>
+          </ul>
+        </section>
+        <section class="section">
+          <h2>⚠️ Dangerous Substances</h2>
+          <p>Some liquids produce <strong>toxic or flammable vapors</strong> that require active room ventilation:</p>
+          <table class="wiki-table">
+            <tr><th>Substance</th><th>Hazard</th><th>Safe Exposure</th></tr>
+            <tr><td>Ammonia (NH₃)</td><td>Toxic vapor</td><td>&lt; 25 ppm</td></tr>
+            <tr><td>Methanol</td><td>Toxic + Flammable</td><td>&lt; 200 ppm</td></tr>
+            <tr><td>Acetone</td><td>Flammable</td><td>&lt; 500 ppm</td></tr>
+            <tr><td>Chloroform</td><td>Carcinogen</td><td>&lt; 2 ppm</td></tr>
+          </table>
+        </section>
+        <section class="section">
+          <h2>🔬 Room Environment Physics</h2>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Code: Vapor Release → Pressure Feedback</summary>
+    <p class="code-description">Boiling creates a feedback loop: vapor raises room pressure, which raises boiling point, which slows boiling.</p>
+    <pre class="line-numbers"><code class="language-javascript">// When liquid boils, vapor is released into room
+const vaporMolesAdded = massEvaporated / molarMass
+composition[substanceId] += vaporMolesAdded / totalRoomMoles
+
+// Pressure increases (ideal gas law: P = nRT/V)
+const newPressure = (totalMoles * R * roomTempK) / roomVolumeM3
+
+// Higher pressure → higher boiling point (feedback!)
+const newBoilingPoint = solveAntoineForTemperature(newPressure, substance)</code></pre>
+  </details>
+          <details class="code-snippet" open>
+    <summary class="code-snippet-title">Code: AC + Air Handler Control</summary>
+    <p class="code-description">AC uses PID control to maintain temperature, while air handler filters contaminants.</p>
+    <pre class="line-numbers"><code class="language-javascript">// PID controller keeps room cool despite burner heat
+const error = setpoint - currentTemp
+const pidOutput = (Kp * error) + (Ki * integral) + (Kd * derivative)
+const acPower = pidOutput * maxCoolingWatts
+
+// Air handler scrubs toxic vapors
+const removalRate = flowRate * efficiency[substance]
+composition[toxicVapor] -= removalRate * deltaTime</code></pre>
+  </details>
+        </section>
+        <section class="section">
+          <h2>🎮 New Controls Unlocked</h2>
+          <p>This experiment unlocks the <strong>Room Controls panel</strong>:</p>
+          <ul>
+            <li><strong>AC Temperature Setpoint:</strong> Control room temperature (15-28°C)</li>
+            <li><strong>Air Handler Mode:</strong> Off / Low / Medium / High filtration</li>
+            <li><strong>Room Status Display:</strong> Shows temperature, pressure, O₂ level, contaminant warnings</li>
+          </ul>
+        </section>
+        <section class="section">
+          <h2>🎮 Try This</h2>
+          <ul>
+            <li><strong>No ventilation:</strong> Boil ammonia with air handler OFF - watch room composition degrade</li>
+            <li><strong>AC test:</strong> Set AC to 15°C and boil water - observe room staying cool despite burner</li>
+            <li><strong>Pressure experiment:</strong> Boil in sealed room (no ventilation) - boiling point rises as pressure increases</li>
+          </ul>
+        </section>
+      
       <section class="section">
-        <h2>Raw data</h2>
-        <pre class="code">{
+        <h2>🔧 Formulas Used</h2>
+        <p>This experiment relies on the following physics formulas:</p>
+        <ul><li><a href="/wiki/entities/formulas/antoineEquation.html">antoineEquation</a> - Calculates vapor pressure and boiling points</li><li><a href="/wiki/entities/formulas/heatCapacity.html">heatCapacity</a> - Determines how fast liquid heats up</li><li><a href="/wiki/entities/formulas/newtonCooling.html">newtonCooling</a> - Models heat loss to environment</li><li><a href="/wiki/entities/formulas/isaAtmosphere.html">isaAtmosphere</a> - Converts altitude to atmospheric pressure</li><li><a href="/wiki/entities/formulas/pidController.html">pidController</a> - AC temperature control algorithm</li><li><a href="/wiki/entities/formulas/gasExchange.html">gasExchange</a> - Air handler composition mixing</li><li><a href="/wiki/entities/formulas/evaporation.html">evaporation</a> - Pre-boiling evaporation into room air</li><li><a href="/wiki/entities/formulas/massTransfer.html">massTransfer</a> - Boundary layer mass transfer model</li><li><a href="/wiki/entities/formulas/ebullioscopy.html">ebullioscopy</a> - Boiling point elevation for solutions</li><li><a href="/wiki/entities/formulas/dynamicKb.html">dynamicKb</a> - Temperature-dependent ebullioscopic constant</li></ul>
+      </section>
+      
+      <section class="section">
+        <h2>⚙️ Processes Used</h2>
+        <p>High-level orchestration processes:</p>
+        <ul><li><a href="/wiki/entities/processes/roomEnvironment.html">roomEnvironment</a> - Room state management and simulation</li><li><a href="/wiki/entities/processes/acControl.html">acControl</a> - PID-based temperature control</li><li><a href="/wiki/entities/processes/airHandling.html">airHandling</a> - Composition scrubbing and filtration</li></ul>
+      </section>
+      
+      <section class="section">
+        <h2>📊 Experiment Configuration</h2>
+        <pre class="line-numbers"><code class="language-json">{
   &quot;id&quot;: &quot;dangerous-liquids&quot;,
   &quot;name&quot;: &quot;Dangerous Liquids&quot;,
   &quot;level&quot;: 1,
@@ -77,12 +199,147 @@
   &quot;unlocksRoomControls&quot;: true,
   &quot;order&quot;: 4,
   &quot;levelId&quot;: 1
-}</pre>
+}</code></pre>
       </section>
     
         </article>
       </main>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
 </body>
 </html>

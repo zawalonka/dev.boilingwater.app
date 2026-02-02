@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>metadata.json - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../scripts/index.html">scripts</a> <span class="breadcrumb-sep">›</span> <span>metadata.json</span>
+        </nav>
+        <div class="wiki-topbar-title">metadata.json</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">metadata.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">json</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>metadata.json</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>scripts\metadata.json</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-json">{
+  &quot;_META&quot;: {
+    &quot;version&quot;: &quot;1.0&quot;,
+    &quot;description&quot;: &quot;Script dependency graph and metadata for wiki generation&quot;,
+    &quot;created&quot;: &quot;2026-02-01&quot;,
+    &quot;purpose&quot;: &quot;Document which scripts depend on each other, what they do, when they run, and whether they&#39;re used&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;fetch-elements-from-api&quot;: {
+      &quot;name&quot;: &quot;Fetch Elements from API&quot;,
+      &quot;path&quot;: &quot;scripts/fetch-elements-from-api.js&quot;,
+      &quot;purpose&quot;: &quot;Fetch periodic table element properties from external API&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;api.api-ninjas.com/v1/elements (external API)&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;src/data/substances/periodic-table/*.json (118 element files)&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;api.api-ninjas.com/v1/elements&quot;,
+      &quot;dataRetrieved&quot;: 26,
+      &quot;fallback&quot;: &quot;generate-all-118&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;used&quot;: true,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: true,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Fetches 26 numeric properties (atomic mass, electronegativity, ionization energy, etc.) for all 118 elements. Has fallback to hardcoded data if API fails.&quot;
+    },
+    &quot;generate-all-118&quot;: {
+      &quot;name&quot;: &quot;Generate All 118 Elements&quot;,
+      &quot;path&quot;: &quot;scripts/generate-all-118.js&quot;,
+      &quot;purpose&quot;: &quot;Hardcoded fallback periodic table generator&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;Hardcoded PERIODIC_TABLE constant in script&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;src/data/substances/periodic-table/*.json (118 element files)&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;dataRetrieved&quot;: 26,
+      &quot;parent&quot;: &quot;fetch-elements-from-api&quot;,
+      &quot;relationship&quot;: &quot;fallback - runs if fetch-elements-from-api fails OR as standalone&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;used&quot;: true,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Hardcoded alternative to fetch-elements-from-api. Contains the same 26 properties frozen in code. Serves as backup if API unavailable.&quot;
+    },
+    &quot;add-diffusion-volumes&quot;: {
+      &quot;name&quot;: &quot;Add Diffusion Volumes&quot;,
+      &quot;path&quot;: &quot;scripts/add-diffusion-volumes.js&quot;,
+      &quot;purpose&quot;: &quot;Inject Fuller-Schettler-Giddings atomic diffusion volumes into element files&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;src/data/substances/periodic-table/*.json (must exist first)&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;Updated src/data/substances/periodic-table/*.json with diffusion field&quot;
+      ],
+      &quot;dependencies&quot;: [
+        &quot;fetch-elements-from-api OR generate-all-118 (must run first)&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;dataSource&quot;: &quot;Fuller, Schettler, Giddings (1966) + Reid et al. (1987)&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;used&quot;: true,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Reads published diffusion volume constants and adds them to element JSON files. Used for calculating evaporation rates via mass transfer equations.&quot;
+    },
+    &quot;update-educational-notes&quot;: {
+      &quot;name&quot;: &quot;Update Educational Notes&quot;,
+      &quot;path&quot;: &quot;scripts/update-educational-notes.js&quot;,
+      &quot;purpose&quot;: &quot;Inject educational/descriptive content into substance files from manual library&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;scripts/temp-data/educational-notes.json (manual library)&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;Updated src/data/substances/**/info.json with educationalNotes field&quot;
+      ],
+      &quot;dependencies&quot;: [
+        &quot;Substance files must exist (from compounds/elements/solutions)&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;dataSource&quot;: &quot;Manual JSON library (currently empty template)&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;used&quot;: true,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Reads from manual educational library and injects notes into existing substance files. Library is currently a template - needs population.&quot;
+    },
+    &quot;generateSubstanceCatalog&quot;: {
+      &quot;name&quot;: &quot;Generate Substance Catalog&quot;,
+      &quot;path&quot;: &quot;scripts/generateSubstanceCatalog.js&quot;,
+      &quot;purpose&quot;: &quot;Build-time filesystem scanner that creates lazy-load import registry&quot;,
+      &quot;runTime&quot;: &quot;build&quot;,
+      &quot;inputs&quot;: [
+        &quot;File system: src/data/substances/ (all elements/compounds/solutions)&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;src/generated/substanceCatalog.js (auto-generated registry)&quot;
+      ],
+      &quot;dependencies&quot;: [
+        &quot;All substance files must exist and be valid JSON&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;used&quot;: true,
+      &quot;buildTime&quot;: true,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Scans filesystem at build time to generate dynamic import catalog. Essential for Vite build process. Runs before main app bundle.&quot;
+    },
+    &quot;optimize-images&quot;: {
+      &quot;name&quot;: &quot;Optimize Images&quot;,
+      &quot;path&quot;: &quot;scripts/optimize-images.js&quot;,
+      &quot;purpose&quot;: &quot;Compress workshop PNG/JPG assets for production&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;public/assets/workshops/**/*.png&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;Optimized PNG (UI elements) or converted JPG (backgrounds)&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;external&quot;: [&quot;sharp (npm package)&quot;],
+      &quot;status&quot;: &quot;optional&quot;,
+      &quot;used&quot;: false,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;Optional dev tooling. Compresses backgrounds from PNG to JPG (~70% size reduction) and compresses UI element PNGs (~40% reduction). Not part of build pipeline.&quot;
+    },
+    &quot;validate-elements&quot;: {
+      &quot;name&quot;: &quot;Validate Elements&quot;,
+      &quot;path&quot;: &quot;scripts/validate-elements.js&quot;,
+      &quot;purpose&quot;: &quot;Quality assurance - validate element JSON schema and structure&quot;,
+      &quot;runTime&quot;: &quot;dev&quot;,
+      &quot;inputs&quot;: [
+        &quot;src/data/substances/periodic-table/*.json&quot;
+      ],
+      &quot;outputs&quot;: [
+        &quot;Console reports, auto-fixes common issues&quot;
+      ],
+      &quot;dependencies&quot;: [
+        &quot;Element files must exist&quot;
+      ],
+      &quot;apiUsed&quot;: &quot;none&quot;,
+      &quot;status&quot;: &quot;maintenance&quot;,
+      &quot;used&quot;: false,
+      &quot;buildTime&quot;: false,
+      &quot;runtimeOnly&quot;: false,
+      &quot;orphan&quot;: false,
+      &quot;description&quot;: &quot;QA tooling for developers. Checks all 118 element files match the Fe (iron) standard schema. Not part of main pipeline.&quot;
+    }
+  },
+  &quot;pipeline&quot;: {
+    &quot;sequentialOrder&quot;: [
+      &quot;fetch-elements-from-api (attempts to fetch from API)&quot;,
+      &quot;  └─ OR fallback to generate-all-118 (if API fails)&quot;,
+      &quot;add-diffusion-volumes (requires element files exist)&quot;,
+      &quot;update-educational-notes (requires substance files exist)&quot;,
+      &quot;generateSubstanceCatalog (runs at build time, indexes all substances)&quot;
+    ],
+    &quot;buildTimeScripts&quot;: [
+      &quot;generateSubstanceCatalog&quot;
+    ],
+    &quot;developmentScripts&quot;: [
+      &quot;fetch-elements-from-api&quot;,
+      &quot;generate-all-118&quot;,
+      &quot;add-diffusion-volumes&quot;,
+      &quot;update-educational-notes&quot;,
+      &quot;optimize-images&quot;,
+      &quot;validate-elements&quot;
+    ],
+    &quot;orphanScripts&quot;: [],
+    &quot;unusedScripts&quot;: [
+      &quot;optimize-images (optional dev tooling)&quot;
+    ],
+    &quot;maintenanceOnlyScripts&quot;: [
+      &quot;validate-elements (QA tooling)&quot;
+    ]
+  },
+  &quot;dataFlowDiagram&quot;: &quot;See docs/research/SCRIPTS_AND_DATA_SOURCES.md for detailed pipeline diagram&quot;
+}
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

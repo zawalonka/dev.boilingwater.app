@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>physics.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/constants/index.html">constants</a> <span class="breadcrumb-sep">›</span> <span>physics.js</span>
+        </nav>
+        <div class="wiki-topbar-title">physics.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">physics.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Exports</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/ATMOSPHERE.html">ATMOSPHERE</a></li><li><a href="/wiki/entities/symbols/GAME_CONFIG.html">GAME_CONFIG</a></li><li><a href="/wiki/entities/symbols/UNIVERSAL.html">UNIVERSAL</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Used in</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a></li><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a></li><li><a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li></ul></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>physics.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>UNIVERSAL PHYSICS CONSTANTS FOR THERMODYNAMICS</p>
+<p>All values use SI units (meters, kilograms, seconds, Celsius, Joules) unless otherwise specified</p>
+<p>These constants represent universal physical laws and atmospheric properties.</p>
+<p>Substance-specific properties (water, ethanol, etc.) are now loaded from src/data/substances/</p>
+<p>NOTE: WATER_CONSTANTS has been DEPRECATED and moved to src/data/substances/compounds/water-h2o/</p>
+<p>This allows easy extension to other substances like ethanol, saltwater, oils, etc.</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\constants\physics.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">/**
+ * UNIVERSAL PHYSICS CONSTANTS FOR THERMODYNAMICS
+ * All values use SI units (meters, kilograms, seconds, Celsius, Joules) unless otherwise specified
+ * 
+ * These constants represent universal physical laws and atmospheric properties.
+ * Substance-specific properties (water, ethanol, etc.) are now loaded from src/data/substances/
+ * 
+ * NOTE: WATER_CONSTANTS has been DEPRECATED and moved to src/data/substances/compounds/water-h2o/
+ * This allows easy extension to other substances like ethanol, saltwater, oils, etc.
+ */
+
+// =====================================================================
+// ATMOSPHERIC PROPERTIES
+// =====================================================================
+// These constants describe the Earth&#39;s atmosphere and how it changes with altitude
+export const ATMOSPHERE = {
+  // STANDARD ATMOSPHERIC PRESSURE AT SEA LEVEL
+  // = 101,325 Pascals (Pa) = 101.325 kilopascals (kPa) = 1 atmosphere (atm)
+  // 
+  // This is the air pressure at sea level under standard conditions.
+  // It&#39;s the weight of all the air above you pressing down. At higher altitudes,
+  // there&#39;s less air above you, so pressure is lower.
+  // 
+  // Air pressure affects boiling point: water boils when its vapor pressure
+  // equals atmospheric pressure. Lower pressure → lower boiling point.
+  STANDARD_PRESSURE: 101325,
+  
+  // TEMPERATURE LAPSE RATE
+  // How much temperature decreases per meter of altitude
+  // = 1°C decrease per 300 meters elevation
+  // = 1/300 ≈ 0.00333 °C per meter
+  // 
+  // Real atmosphere: more complex (changes with season, location, weather),
+  // but 1°C per 300m is a good average for the lower atmosphere (troposphere).
+  // 
+  // Real-world examples:
+  // - Denver (1600m): 1600m × (1°C/300m) ≈ 5.3°C cooler than sea level baseline
+  // - Boiling point: 100°C - 5.3°C ≈ 94.7°C
+  // 
+  // - Mount Everest (8848m): 8848m × (1°C/300m) ≈ 29.5°C cooler than sea level
+  // - Boiling point: 100°C - 29.5°C ≈ 70.5°C
+  TEMP_LAPSE_RATE: 1 / 300
+}
+
+// =====================================================================
+// UNIVERSAL CONSTANTS
+// =====================================================================
+// Fundamental physical constants used in atmospheric and gas calculations
+export const UNIVERSAL = {
+  // UNIVERSAL GAS CONSTANT (R)
+  // = 8.314 Joules per mole per Kelvin (J/(mol·K))
+  // 
+  // This constant appears in the ideal gas law: PV = nRT
+  // Where P = pressure, V = volume, n = moles, T = temperature (Kelvin)
+  // 
+  // It&#39;s also used in the barometric formula to relate atmospheric pressure
+  // to altitude: P = P₀ × exp(-Mgh/RT)
+  // 
+  // The constant is &quot;universal&quot; because it&#39;s the same for ALL gases.
+  GAS_CONSTANT: 8.314,
+  
+  // ABSOLUTE ZERO
+  // The lowest possible temperature, where all molecular motion stops
+  // = -273.15°C = 0 Kelvin (K)
+  // 
+  // Temperature conversions between Celsius and Kelvin:
+  // K = °C + 273.15
+  // °C = K - 273.15
+  // 
+  // Example: Room temperature = 20°C = 293.15K
+  //          Water freezes = 0°C = 273.15K
+  //          Water boils = 100°C = 373.15K
+  ABSOLUTE_ZERO: -273.15
+}
+
+// =====================================================================
+// GAME CONFIGURATION
+// =====================================================================
+// Settings that control how the game simulation works
+export const GAME_CONFIG = {
+  // SIMULATION TIME STEP (in milliseconds)
+  // The game simulation updates every 100ms (0.1 seconds)
+  // 
+  // This controls how fast the simulation runs:
+  // - Smaller values (e.g., 50ms) = more frequent updates = more accurate but uses more CPU
+  // - Larger values (e.g., 200ms) = less frequent updates = less accurate but lighter
+  // - 100ms is a good balance: updates 10 times per second (visible motion feels smooth)
+  // 
+  // Each simulation step, the stove heat is applied for 0.1 seconds:
+  // energyApplied = heatInputWatts × 0.1 seconds
+  TIME_STEP: 100,
+  
+  // GAS BURNER OUTPUT (in Watts)
+  // A typical medium heat setting on a household gas range
+  // A standard household gas burner outputs 5,000-7,000 BTU/hour
+  // 1700 Watts = ~5,800 BTU/hour (medium heat on a gas stove)
+  // This heats 1 kg of water from 20°C to 100°C in about 3.5 minutes of real time
+  GAS_BURNER_WATTS: 1700,
+  
+  // HEAT TRANSFER COEFFICIENT (for Newton&#39;s Law of Cooling)
+  // This is now loaded from the fluid JSON file (e.g., water.json)
+  // Different fluids have different cooling rates based on their thermal properties
+  // The coefficient determines exponential cooling: dT/dt = -k(T - T_ambient)
+  // Typical range: 0.001 to 0.003 per second for liquids in metal containers
+  // NOTE: AMBIENT_COOLING_WATTS has been deprecated in favor of exponential cooling model
+  
+  // DEFAULT STARTING TEMPERATURE (in Celsius)
+  // Water always starts at room temperature
+  // This is also the ambient temperature used for cooling calculations
+  // 
+  // 20°C is approximately room temperature in most environments.
+  // Some people use 22-25°C, but 20°C is standard for physics/chemistry calculations.
+  ROOM_TEMPERATURE: 20,
+  
+  // DEFAULT WATER AMOUNT (in kilograms)
+  // The pot starts with 1 kilogram (1 liter) of water
+  // 
+  // 1 liter is roughly the amount in a typical kitchen mug or small pot.
+  // This makes calculations easier: heating 1 kg by 10°C requires exactly
+  // 1000g × 4.186 J/(g·°C) × 10°C = 41,860 Joules
+  DEFAULT_WATER_MASS: 1.0,
+  
+  // HEATING TIME CALCULATIONS (in seconds)
+  // For 1kg of water from 20°C (room temp) to 100°C (boiling at sea level)
+  // Energy needed: Q = mcΔT = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 Joules
+  // Time = Energy / Power (Watts)
+  HEATING_TIME_LOW: 837,      // 400W burner: ~14 minutes
+  HEATING_TIME_MED: 197,      // 1700W burner: ~3.3 minutes  
+  HEATING_TIME_HIGH: 134,     // 2500W burner: ~2.2 minutes
+  
+  // EDUCATIONAL LANGUAGE LEVELS
+  // Used for displaying explanations at different complexity levels
+  // (Not currently implemented in the game, but framework is ready)
+  // 
+  // Level 1 (BEGINNER): Very simple, everyday language
+  // Level 2 (INTERMEDIATE): Physics terms introduced, formulas shown
+  // Level 3 (STANDARD): Full physics terminology, detailed explanations
+  // Level 4 (EXPERT): Advanced formulas, real-world edge cases discussed
+  LANGUAGE_LEVELS: {
+    BEGINNER: 1,
+    INTERMEDIATE: 2,
+    STANDARD: 3,
+    EXPERT: 4
+  }
+}
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

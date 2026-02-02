@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEVELOPMENT.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/guides/index.html">guides</a> <span class="breadcrumb-sep">›</span> <span>DEVELOPMENT.md</span>
+        </nav>
+        <div class="wiki-topbar-title">DEVELOPMENT.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">DEVELOPMENT.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>DEVELOPMENT.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\guides\DEVELOPMENT.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Boiling Water - Development Guide
+
+## 🎯 Project Overview
+
+Boiling Water is an interactive physics and chemistry learning game built with React. This guide will help you set up the development environment and understand the project architecture.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** 18.x or higher
+- **npm** or **yarn** package manager
+- A modern web browser (Chrome, Firefox, Edge, or Safari)
+
+### Initial Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   The app will open automatically at `http://localhost:3000`
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   Output will be in the `dist/` directory
+
+### Available Commands
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 📁 Project Structure
+
+```
+boilingwater-app/
+├── src/
+│   ├── components/        # React components
+│   │   └── KitchenScene.jsx
+│   ├── utils/            # Utility functions
+│   │   └── physics.js    # Core physics calculations
+│   ├── constants/        # Constants and configuration
+│   │   └── physics.js    # Physical constants
+│   ├── styles/           # CSS files
+│   │   ├── index.css
+│   │   ├── App.css
+│   │   └── KitchenScene.css
+│   ├── App.jsx           # Main app component
+│   └── main.jsx          # Entry point
+├── public/               # Static assets
+├── index.html            # HTML entry point
+├── package.json          # Dependencies and scripts
+├── vite.config.js        # Vite configuration
+└── README.md             # Project readme
+```
+
+## 🧪 Physics Engine Architecture
+
+### Core Philosophy
+
+**Real Physics Only** - All calculations use actual thermodynamic equations and empirical data.
+
+### Key Modules
+
+#### `src/constants/physics.js`
+Physical constants based on real-world data:
+- Water properties (specific heat, heat of vaporization, density)
+- Atmospheric properties (pressure, temperature lapse rate)
+- Universal constants (gas constant)
+
+#### `src/utils/physics.js`
+Core physics calculations:
+
+- **`calculateBoilingPoint(altitude)`** - Determines boiling point based on elevation
+- **`calculatePressure(altitude)`** - Barometric pressure at altitude
+- **`calculateHeatingEnergy(mass, tempStart, tempEnd)`** - Energy needed to heat water (Q = mcΔT)
+- **`applyHeatEnergy(mass, currentTemp, energyJoules, boilingPoint)`** - Applies energy and handles phase changes
+- **`simulateTimeStep(state, heatInputWatts, deltaTime)`** - Main simulation loop
+
+### Simulation Loop
+
+The game runs a discrete-time simulation:
+1. Time step: 100ms (configurable in `GAME_CONFIG.TIME_STEP`)
+2. Heat input: Constant watts (default: 2000W for stove)
+3. Energy distribution: Temperature increase OR phase change (never both simultaneously at boiling point)
+
+## 🎨 Component Architecture
+
+### Current Components
+
+#### `App.jsx`
+- Root component
+- Manages game stage progression
+- Handles user location (for altitude-based calculations)
+
+#### `KitchenScene.jsx`
+- Stage 0: Basic boiling water interaction
+- Manages simulation state
+- Renders kitchen visuals and controls
+- Displays &quot;the hook&quot; when water boils
+
+### Planned Components
+
+- `LabScene.jsx` - Advanced laboratory environment (Stage 3+)
+- `DetailPanel.jsx` - Expandable physics details for advanced users
+- `LanguageToggle.jsx` - Adaptive vocabulary system
+- `PhaseChart.jsx` - Temperature over time visualization
+- `EnergyDiagram.jsx` - Energy flow visualization
+
+## 🎮 Game Stages
+
+### Stage 0: Just Boil Water (Simplified Mode)
+**Goal:** 30-second experience that provides instant utility
+
+**Flow:**
+1. Fill pot with water
+2. Turn on heat
+3. Watch water heat up
+4. Water boils at altitude-specific temperature
+5. Hook appears → curiosity trigger
+
+**Physics:** Simplified but based on real equations
+
+### Stage 1: Why Altitude Matters (Planned)
+- Temperature becomes prominent
+- Altitude display
+- Explanation of pressure effects
+- F/C toggle unlocks
+
+### Stage 2+: Progressive Complexity (Planned)
+See [BoilingWater_Full_Documentation.md](BoilingWater_Full_Documentation.md) for complete roadmap
+
+## 🔬 Adding New Physics
+
+When adding new physics simulations:
+
+1. **Add constants** to `src/constants/physics.js`
+2. **Implement calculations** in `src/utils/` (separate files for different domains)
+3. **Use real data** - cite sources in comments
+4. **Document simplifications** - if you must approximate, explain why
+
+### Example: Adding a New Substance
+
+```javascript
+// In src/constants/physics.js
+export const ETHANOL_CONSTANTS = {
+  SPECIFIC_HEAT_LIQUID: 2.44, // J/(g·K) at 25°C
+  HEAT_OF_VAPORIZATION: 838, // kJ/kg at boiling point
+  BOILING_POINT_SEA_LEVEL: 78.37, // °C
+  DENSITY: 0.789 // kg/L at 20°C
+}
+```
+
+## 🎨 Styling Guidelines
+
+- **Mobile-first:** Design for small screens, enhance for desktop
+- **Clear iconography:** Visual elements should be obvious and clickable
+- **Warm colors:** Kitchen stage uses warm tones (#f9f3e8, #ede4d3)
+- **Cool colors:** Lab stage will use cooler tones
+- **Animations:** Subtle and purposeful (bubbling, steam, heat)
+
+## 🌐 Future: Electron Wrapper
+
+The React app will be wrapped in Electron for desktop distribution:
+
+```
+boilingwater-app/
+├── electron/
+│   ├── main.js           # Electron main process
+│   └── preload.js        # Preload scripts
+└── electron-builder.json # Build configuration
+```
+
+This enables:
+- Steam distribution
+- Local file saving for custom experiments
+- Offline functionality
+
+## 🧩 Modding System (Future)
+
+Experiments will be shareable via JSON files:
+
+```json
+{
+  &quot;name&quot;: &quot;Custom Experiment&quot;,
+  &quot;description&quot;: &quot;Description here&quot;,
+  &quot;constants&quot;: {
+    &quot;gravity&quot;: 9.81,
+    &quot;atmospheric_pressure&quot;: 101325
+  },
+  &quot;initialState&quot;: {
+    &quot;waterMass&quot;: 1.0,
+    &quot;temperature&quot;: 20
+  }
+}
+```
+
+## 📚 Learning Resources
+
+### Physics References
+- **Thermodynamics:** Fundamentals of Engineering Thermodynamics
+- **Water properties:** NIST Chemistry WebBook
+- **Atmospheric science:** NOAA data
+
+### Code References
+- **React:** [react.dev](https://react.dev)
+- **Vite:** [vitejs.dev](https://vitejs.dev)
+
+## 🐛 Common Issues
+
+### Issue: React not found
+**Solution:** Run `npm install`
+
+### Issue: Port 3000 already in use
+**Solution:** Either:
+- Close other apps using port 3000
+- Or modify port in `vite.config.js`
+
+## 🤝 Contributing
+
+This project is in early development. Key areas where contributions will be welcome:
+
+1. **Physics accuracy** - Verify equations and constants
+2. **Visual design** - Improve UI/UX
+3. **Accessibility** - Ensure keyboard navigation, screen readers
+4. **Chemistry expansion** - Add new substances and reactions
+5. **Language system** - Build adaptive vocabulary database
+
+## 📝 Code Style
+
+- Use **Prettier** for formatting (run `npm run format`)
+- Follow **ESLint** rules (run `npm run lint`)
+- Write clear comments for complex physics calculations
+- Cite sources for physical constants
+
+## 🎯 Current Development Focus
+
+**Phase:** MVP Development - Stage 0
+
+**Priorities:**
+1. ✅ Basic project structure
+2. ✅ Core physics engine (thermodynamics)
+3. ✅ Stage 0 interface (simplified boiling)
+4. 🔲 Geolocation for altitude detection
+5. 🔲 Refined visuals and animations
+6. 🔲 Stage 1 (altitude explanation)
+
+## 📞 Questions?
+
+See the full project vision in [BoilingWater_Full_Documentation.md](BoilingWater_Full_Documentation.md)
+
+---
+
+**Status:** Early Development | **Updated:** January 2026
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>
