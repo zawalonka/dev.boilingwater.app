@@ -262,3 +262,77 @@ export function buildUsageAnalysis(entityNames, directRelationships = new Map(),
     }
   })
 }
+
+/**
+ * Detect solution usage in game code
+ * @param {string} repoRoot - Repository root path
+ * @param {Object[]} solutions - Solution entities
+ * @returns {Set} Set of solution IDs used in game code
+ */
+export async function detectSolutionUsage(repoRoot, solutions) {
+  const solutionUsedInGame = new Set()
+
+  try {
+    const srcDir = path.join(repoRoot, 'src')
+    if (fs.existsSync(srcDir)) {
+      const scanDir = async (dir) => {
+        const files = await fs.readdir(dir, { withFileTypes: true })
+        for (const file of files) {
+          if (file.isDirectory()) {
+            await scanDir(path.join(dir, file.name))
+          } else if (file.name.endsWith('.js') || file.name.endsWith('.jsx')) {
+            const filePath = path.join(dir, file.name)
+            const content = await fs.readFile(filePath, 'utf-8')
+            for (const solution of solutions) {
+              if (content.includes(solution.id) || content.includes(solution.data.name || '')) {
+                solutionUsedInGame.add(solution.id)
+              }
+            }
+          }
+        }
+      }
+      await scanDir(srcDir)
+    }
+  } catch (err) {
+    // Silently continue
+  }
+
+  return solutionUsedInGame
+}
+
+/**
+ * Detect phase usage in game code and experiments
+ * @param {string} repoRoot - Repository root path
+ * @param {Object[]} phases - Phase entities
+ * @returns {Set} Set of phase slugs used in game code
+ */
+export async function detectPhaseUsage(repoRoot, phases) {
+  const phasesUsedInGame = new Set()
+
+  try {
+    const srcDir = path.join(repoRoot, 'src')
+    if (fs.existsSync(srcDir)) {
+      const scanDir = async (dir) => {
+        const files = await fs.readdir(dir, { withFileTypes: true })
+        for (const file of files) {
+          if (file.isDirectory()) {
+            await scanDir(path.join(dir, file.name))
+          } else if (file.name.endsWith('.js') || file.name.endsWith('.jsx')) {
+            const filePath = path.join(dir, file.name)
+            const content = await fs.readFile(filePath, 'utf-8')
+            for (const phase of phases) {
+              if (content.includes(phase.slug) || content.includes(phase.phase) || content.includes(phase.compoundId)) {
+                phasesUsedInGame.add(phase.slug)
+              }
+            }
+          }
+        }
+      }
+      await scanDir(srcDir)
+    }
+  } catch (err) {
+    // Silently continue
+  }
+
+  return phasesUsedInGame
+}
