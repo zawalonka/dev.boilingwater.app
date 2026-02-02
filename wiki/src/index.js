@@ -3,7 +3,19 @@ import path from 'path'
 import crypto from 'crypto'
 import { fileURLToPath, pathToFileURL } from 'url'
 import { globSync } from 'glob'
-import { detectScriptUsage, detectDocUsage, detectStyleUsage, detectFileUsage, detectSolutionUsage, detectPhaseUsage } from './orphanDetection.js'
+import { 
+  detectScriptUsage,
+  findOrphanElements,
+  findOrphanCompounds,
+  findOrphanLevels,
+  findOrphanExperiments,
+  findOrphanFormulas,
+  findOrphanProcesses,
+  findOrphanModules,
+  findOrphanPublicFiles,
+  findOrphanSymbols,
+  generateOrphanReports
+} from './orphanDetection.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(__dirname, '..', '..')
@@ -15,6 +27,7 @@ const cacheFile = path.join(cacheDir, 'build.json')
 const basePath = process.env.WIKI_BASE_PATH || '/wiki'
 
 const inputGlobs = [
+  'wiki/src/**/*.js',
   'src/data/substances/periodic-table/*.json',
   'src/data/substances/compounds/pure/*/info.json',
   'src/data/substances/compounds/solutions/*/info.json',
@@ -113,7 +126,7 @@ const page = ({ title, content, breadcrumbs = [], toc = [] }) => `<!doctype html
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${escapeHtml(title)} - Boiling Water Wiki</title>
   <link rel="stylesheet" href="${withBase('assets/styles.css')}" />
-  <link rel="stylesheet" href="${withBase('assets/kekule/kekule.min.css')}" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 </head>
@@ -192,31 +205,126 @@ const page = ({ title, content, breadcrumbs = [], toc = [] }) => `<!doctype html
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
-  <script src="${withBase('assets/kekule/kekule.min.js')}"></script>
   <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
     (() => {
-      const nodes = Array.from(document.querySelectorAll('[data-smiles]'))
-      if (!nodes.length) return
-      const init = () => {
-        if (!window.Kekule || !window.Kekule.ChemWidget || !window.Kekule.IO) {
-          nodes.forEach((node) => node.classList.add('molecule-fallback'))
-          return
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\\[CH3\\]/g, 'C')
+          .replace(/\\[CH2\\]/g, 'C')
+          .replace(/\\[CH\\]/g, 'C')
+          .replace(/\\[OH\\]/g, 'O')
+          .replace(/\\[NH2\\]/g, 'N')
+          .replace(/\\[NH\\]/g, 'N')
+          .replace(/\\[SH\\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\\[C\\]/g, 'C')
+          .replace(/\\[N\\]/g, 'N')
+          .replace(/\\[O\\]/g, 'O')
+          .replace(/\\[S\\]/g, 'S')
+          .replace(/\\[P\\]/g, 'P')
+          .replace(/\\[F\\]/g, 'F')
+          .replace(/\\[Cl\\]/g, 'Cl')
+          .replace(/\\[Br\\]/g, 'Br')
+          .replace(/\\[I\\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\\(OH\\)/g, '(O)')
+          .replace(/\\(NH2\\)/g, '(N)')
+          .replace(/\\(NH\\)/g, '(N)')
+          .replace(/\\(SH\\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
         }
-        nodes.forEach((node) => {
-          const smiles = node.getAttribute('data-smiles')
-          if (!smiles) return
-          try {
-            const mol = Kekule.IO.loadFormatData(smiles, 'smi')
-            const viewer = new Kekule.ChemWidget.Structure2DViewer(node)
-            viewer.setChemObj(mol)
-            viewer.setAutoSize(true)
-            viewer.setRenderType(Kekule.Render.RendererType.R2D)
-          } catch (err) {
-            node.classList.add('molecule-fallback')
-            node.textContent = smiles
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
           }
         })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
       }
+      
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init)
       } else {
@@ -1066,7 +1174,7 @@ const titleCase = (value) => value
 
 const getSmilesString = (data) => {
   if (!data) return ''
-  return data.explicitSmiles || data.smiles || data.SMILES || ''
+  return data.smiles || data.explicitSmiles || data.SMILES || ''
 }
 
 const renderMoleculeViewer = (smiles, label = 'Structure') => {
@@ -1082,7 +1190,6 @@ const renderMoleculeViewer = (smiles, label = 'Structure') => {
     <section class="section">
       <h2>${escapeHtml(label)}</h2>
       <div class="molecule-viewer" data-smiles="${escapeHtml(smiles)}"></div>
-      <p class="molecule-meta">SMILES: <code>${escapeHtml(smiles)}</code></p>
     </section>
   `
 }
@@ -1506,14 +1613,68 @@ const build = async () => {
     .cat-lanthanide { background: #e6fff7; }
     .cat-actinide { background: #fff0e6; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #c8ccd1;
+    }
+    .data-table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #202122;
+    }
+    .data-table tr:hover {
+      background: #f8f9fa;
+    }
+    .data-table a {
+      color: #3366cc;
+      text-decoration: none;
+    }
+    .data-table a:hover {
+      text-decoration: underline;
+    }
     .subtitle { color: #54595d; margin-top: -8px; }
     .entity-header { margin-bottom: 16px; }
+    .molecule-representations {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .molecule-flat, .molecule-2d {
+      flex: 1;
+      min-width: 250px;
+    }
+    .molecule-flat h3, .molecule-2d h3 {
+      font-size: 14px;
+      color: #54595d;
+      margin-bottom: 8px;
+    }
+    .molecule-formula {
+      display: block;
+      font-size: 18px;
+      padding: 20px;
+      background: #f8f9fa;
+      border: 1px solid #c8ccd1;
+      border-radius: 6px;
+      text-align: center;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .molecule-viewer {
       width: 100%;
       min-height: 220px;
       border: 1px solid #c8ccd1;
       border-radius: 6px;
-      background: #ffffff;
+      background: #f8f9fa;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1584,9 +1745,9 @@ const build = async () => {
           <h3>Public Files</h3>
           ${renderList([
             linkTo('entities/public/index.html', `Workshops (${publicCounts.workshops})`),
-            linkTo('entities/public/index.html', `Burners (${publicCounts.burners})`),
-            linkTo('entities/public/index.html', `AC Units (${publicCounts.acUnits})`),
-            linkTo('entities/public/index.html', `Air Handlers (${publicCounts.airHandlers})`)
+            linkTo('entities/public/burners/index.html', `Burners (${publicCounts.burners})`),
+            linkTo('entities/public/ac-units/index.html', `AC Units (${publicCounts.acUnits})`),
+            linkTo('entities/public/air-handlers/index.html', `Air Handlers (${publicCounts.airHandlers})`)
           ])}
         </div>
         <div class="portal-box">
@@ -1710,10 +1871,7 @@ generateSubstanceCatalog.js (BUILD TIME - indexes all)
   const elementsTable = renderPeriodicTable(elements)
   
   // Orphan elements report (elements not used in any compound)
-  const orphanElements = elements.filter((element) => {
-    const usedInCompounds = (elementChildren.get(element.slug) || []).length > 0
-    return !usedInCompounds
-  })
+  const orphanElements = findOrphanElements(elements, elementChildren)
   const orphanElementLinks = orphanElements.map((e) => linkTo(`entities/elements/${e.slug}.html`, e.data.name || e.slug))
   
   await writePage('entities/elements/index.html', page({
@@ -1776,12 +1934,7 @@ generateSubstanceCatalog.js (BUILD TIME - indexes all)
   const compoundLinks = compounds.map((compound) => linkTo(`entities/compounds/${compound.id}.html`, compound.id))
   
   // Orphan compounds report (compounds not used anywhere - no solutions, no substance loader references)
-  const orphanCompounds = compounds.filter((compound) => {
-    const usedInSolutions = (compoundChildren.get(compound.id) || []).length > 0
-    const hasPhases = (phasesByCompound.get(compound.id) || []).length > 0
-    // Could also check if substance is in catalog or referenced by modules
-    return !usedInSolutions && hasPhases  // has phases but not used in solutions
-  })
+  const orphanCompounds = findOrphanCompounds(compounds, compoundChildren, phasesByCompound)
   const orphanCompoundLinks = orphanCompounds.map((c) => linkTo(`entities/compounds/${c.id}.html`, c.data.name || c.id))
   
   await writePage('entities/compounds/index.html', page({
@@ -2015,9 +2168,7 @@ generateSubstanceCatalog.js (BUILD TIME - indexes all)
   }
 
   const levelLinks = levels.map((level) => linkTo(`entities/levels/${level.id}.html`, `${level.name || level.id}`))
-  const orphanLevels = levels.filter((level) =>
-    !experiments.some((experiment) => Number(experiment.level) === Number(level.id))
-  )
+  const orphanLevels = findOrphanLevels(levels, experiments)
   const orphanLevelLinks = orphanLevels.map((level) => linkTo(`entities/levels/${level.id}.html`, level.name || level.id))
 
   await writePage('entities/levels/index.html', page({
@@ -2072,9 +2223,7 @@ generateSubstanceCatalog.js (BUILD TIME - indexes all)
   }
 
   const experimentLinks = experiments.map((experiment) => linkTo(`entities/experiments/${experiment.id}.html`, experiment.name || experiment.id))
-  const orphanExperiments = experiments.filter((experiment) =>
-    !levels.some((level) => Number(level.id) === Number(experiment.level))
-  )
+  const orphanExperiments = findOrphanExperiments(experiments, levels)
   const orphanExperimentLinks = orphanExperiments.map((experiment) => linkTo(`entities/experiments/${experiment.id}.html`, experiment.name || experiment.id))
 
   await writePage('entities/experiments/index.html', page({
@@ -2636,11 +2785,7 @@ composition[toxicVapor] -= removalRate * deltaTime`,
   const formulaLinks = formulas.map((formula) => linkTo(`entities/formulas/${formula.slug}.html`, formula.slug))
   
   // Orphan formulas report (formulas with no usage anywhere)
-  const orphanFormulas = formulas.filter((formula) => {
-    const usedByProcesses = (formulaToProcesses.get(formula.slug) || []).length > 0
-    const usedInCode = formula.exports.some((name) => (formulaUsage.get(name) || new Set()).size > 0)
-    return !usedByProcesses && !usedInCode
-  })
+  const orphanFormulas = findOrphanFormulas(formulas, formulaToProcesses, formulaUsage)
   const orphanFormulaLinks = orphanFormulas.map((f) => linkTo(`entities/formulas/${f.slug}.html`, f.slug))
   
   await writePage('entities/formulas/index.html', page({
@@ -2721,10 +2866,7 @@ composition[toxicVapor] -= removalRate * deltaTime`,
   const processLinks = processes.map((process) => linkTo(`entities/processes/${process.slug}.html`, process.slug))
   
   // Orphan processes report (processes with no usage anywhere)
-  const orphanProcesses = processes.filter((proc) => {
-    const usedInCode = proc.exports.some((name) => (processUsage.get(name) || new Set()).size > 0)
-    return !usedInCode && !proc.isStub
-  })
+  const orphanProcesses = findOrphanProcesses(processes, processUsage)
   const orphanProcessLinks = orphanProcesses.map((p) => linkTo(`entities/processes/${p.slug}.html`, p.slug))
   
   await writePage('entities/processes/index.html', page({
@@ -2813,13 +2955,7 @@ composition[toxicVapor] -= removalRate * deltaTime`,
   const moduleLinks = modules.map((mod) => linkTo(`entities/modules/${mod.slug}.html`, mod.filename))
   
   // Orphan modules report (modules not imported by any other module)
-  const orphanModules = modules.filter((mod) => {
-    const isImported = modules.some((other) => 
-      other.imports.some((imp) => imp.includes(mod.slug) || imp.endsWith(mod.filename.replace(/\.(js|jsx)$/, '')))
-    )
-    const isEntryPoint = mod.filename === 'main.jsx' || mod.filename === 'App.jsx'
-    return !isImported && !isEntryPoint
-  })
+  const orphanModules = findOrphanModules(modules)
   const orphanModuleLinks = orphanModules.map((m) => linkTo(`entities/modules/${m.slug}.html`, m.filename))
   
   await writePage('entities/modules/index.html', page({
@@ -3023,50 +3159,50 @@ composition[toxicVapor] -= removalRate * deltaTime`,
     await writePage(`entities/assets/${asset.assetPath}.html`, page({ title: asset.publicPath, content }))
   }
 
-  const publicByCategory = new Map()
+  // ============================================================================
+  // PUBLIC FILES - Organized by Workshop hierarchy
+  // Structure: workshops/ → {workshopId}/ → equipment categories
+  // ============================================================================
+
+  // Group files by workshop
+  const filesByWorkshop = new Map()
   for (const file of publicFiles) {
-    const key = file.category || 'public'
-    if (!publicByCategory.has(key)) publicByCategory.set(key, new Map())
-    const bucket = publicByCategory.get(key)
-    if (!bucket.has(file.slug)) {
-      bucket.set(file.slug, file)
+    const workshopId = file.workshopId || '_root'
+    if (!filesByWorkshop.has(workshopId)) {
+      filesByWorkshop.set(workshopId, {
+        workshop: null,
+        room: null,
+        effects: null,
+        burners: [],
+        acUnits: [],
+        airHandlers: [],
+        other: []
+      })
+    }
+    const bucket = filesByWorkshop.get(workshopId)
+    
+    if (file.category === 'workshop') {
+      bucket.workshop = file
+    } else if (file.category === 'room') {
+      bucket.room = file
+    } else if (file.category === 'effects') {
+      bucket.effects = file
+    } else if (file.category === 'burners') {
+      bucket.burners.push(file)
+    } else if (file.category === 'ac-units') {
+      bucket.acUnits.push(file)
+    } else if (file.category === 'air-handlers') {
+      bucket.airHandlers.push(file)
+    } else {
+      bucket.other.push(file)
     }
   }
 
-  const categoryOrder = ['workshop', 'burners', 'ac-units', 'air-handlers', 'room.json', 'effects.json', 'public']
-  const categoryLabels = {
-    workshop: 'Workshops',
-    burners: 'Burners',
-    'ac-units': 'AC Units',
-    'air-handlers': 'Air Handlers',
-    'room.json': 'Rooms',
-    'effects.json': 'Effects',
-    public: 'Other Public'
-  }
+  // Workshop count
+  const workshopIds = Array.from(filesByWorkshop.keys()).filter(id => id !== '_root')
+  const workshopCount = workshopIds.length
 
-  const publicSections = []
-  const getLinks = (items) => items
-    .sort((a, b) => (a.slug || '').localeCompare(b.slug || ''))
-    .map((file) => linkTo(`entities/public/${file.slug}.html`, file.filename))
-
-  for (const category of categoryOrder) {
-    const bucket = publicByCategory.get(category)
-    if (!bucket) continue
-    const items = Array.from(bucket.values())
-    const title = categoryLabels[category] || category
-    publicSections.push(`
-      <section class=\"section\">
-        <h2>${escapeHtml(title)} (${items.length})</h2>
-        ${items.length ? renderList(getLinks(items)) : '<p>None.</p>'}
-      </section>
-    `)
-  }
-
-  // Workshops count (distinct IDs)
-  const workshopIds = new Set(publicFiles.filter((f) => f.workshopId).map((f) => f.workshopId))
-  const workshopCount = workshopIds.size
-
-  // Assets grouped by workshop
+  // Assets grouped by workshop (for image references)
   const assetsByWorkshop = new Map()
   for (const asset of assets) {
     const parts = asset.assetPath.split('/').filter(Boolean)
@@ -3076,34 +3212,30 @@ composition[toxicVapor] -= removalRate * deltaTime`,
     assetsByWorkshop.get(workshopId).push(asset)
   }
 
-  const assetSections = Array.from(assetsByWorkshop.entries()).map(([workshopId, list]) => {
-    const links = list.map((asset) => linkTo(`entities/assets/${asset.assetPath}.html`, asset.publicPath))
-    return `
-      <section class=\"section\">
-        <h2>Workshop Assets: ${escapeHtml(workshopId)} (${list.length})</h2>
-        ${renderList(links)}
-      </section>
-    `
-  })
-
-  // Orphan public files report (public files not referenced by any module)
-  const orphanPublicFiles = publicFiles.filter((file) => {
-    const referencedAssets = assets.filter((asset) => 
-      Array.from(asset.references || []).some((ref) => ref.slug === file.slug && ref.filename === file.filename)
-    )
-    return referencedAssets.length === 0
-  })
+  // Orphan public files report
+  const orphanPublicFiles = findOrphanPublicFiles(publicFiles, assets)
   const orphanPublicLinks = orphanPublicFiles.map((f) => linkTo(`entities/public/${f.slug}.html`, f.filename))
+
+  // Main public files index - list workshops
+  const workshopLinks = workshopIds.sort().map(workshopId => {
+    const data = filesByWorkshop.get(workshopId)
+    const equipmentCount = data.burners.length + data.acUnits.length + data.airHandlers.length
+    return linkTo(`entities/public/workshops/${workshopId}/index.html`, 
+      `${workshopId} (${equipmentCount} equipment)`)
+  })
 
   await writePage('entities/public/index.html', page({
     title: 'Public Files',
     content: `
-      <section class=\"section\">
-        ${renderEntityHeader('Public Files', `Workshop count: ${workshopCount}`)}
+      <section class="section">
+        ${renderEntityHeader('Public Files', 'Workshop configurations and equipment')}
         <p>${linkTo('entities/reports/orphan-public-files.html', '⚠️ View unreferenced files report')} (${orphanPublicFiles.length} unreferenced)</p>
       </section>
-      ${publicSections.join('')}
-      ${assetSections.join('')}
+      <section class="section">
+        <h2>Workshops (${workshopCount})</h2>
+        <p>Each workshop contains its configuration, room settings, and available equipment.</p>
+        ${workshopLinks.length ? renderList(workshopLinks) : '<p>No workshops found.</p>'}
+      </section>
     `
   }))
   
@@ -3118,34 +3250,282 @@ composition[toxicVapor] -= removalRate * deltaTime`,
     `
   }))
 
+  // ============================================================================
+  // EQUIPMENT CATEGORY INDEX PAGES
+  // Deduplicate by file content - show unique equipment with workshop usage
+  // ============================================================================
+
+  // Collect all equipment across workshops
+  const allBurners = publicFiles.filter(f => f.category === 'burners')
+  const allAcUnits = publicFiles.filter(f => f.category === 'ac-units')
+  const allAirHandlers = publicFiles.filter(f => f.category === 'air-handlers')
+
+  // Deduplicate equipment by file content hash
+  // Returns Map<contentHash, { file, workshops: string[], specs }>
+  const deduplicateEquipment = (equipment) => {
+    const byContent = new Map()
+    
+    for (const f of equipment) {
+      // Normalize content for comparison (remove whitespace differences)
+      const normalizedContent = f.content.replace(/\s+/g, ' ').trim()
+      const contentKey = normalizedContent
+      
+      if (!byContent.has(contentKey)) {
+        // Parse specs from first occurrence
+        let specs = ''
+        let name = f.filename.replace('.json', '')
+        try {
+          const data = JSON.parse(f.content)
+          name = data.name || data.id || name
+          if (data.thermalCharacteristics?.maxWatts) {
+            specs = `${data.thermalCharacteristics.maxWatts}W`
+          }
+          if (data.thermalCharacteristics?.coolingMaxWatts) {
+            specs = `${data.thermalCharacteristics.coolingMaxWatts}W cooling`
+          }
+          if (data.flowCharacteristics?.maxFlowRateCFM) {
+            specs = `${data.flowCharacteristics.maxFlowRateCFM} CFM`
+          }
+        } catch (e) { /* ignore */ }
+        
+        byContent.set(contentKey, {
+          file: f,
+          name,
+          specs,
+          workshops: [f.workshopId]
+        })
+      } else {
+        // Same content, different workshop - add to workshops list
+        byContent.get(contentKey).workshops.push(f.workshopId)
+      }
+    }
+    
+    return Array.from(byContent.values())
+  }
+
+  // Helper to build deduplicated equipment table rows
+  const buildDeduplicatedRows = (uniqueEquipment) => {
+    return uniqueEquipment.map(item => {
+      const workshopLinks = item.workshops.map(w => 
+        linkTo(`entities/public/workshops/${w}/index.html`, w)
+      ).join(', ')
+      
+      return `<tr>
+        <td>${linkTo(`entities/public/${item.file.slug}.html`, item.name)}</td>
+        <td>${workshopLinks}</td>
+        <td>${item.specs}</td>
+      </tr>`
+    }).join('')
+  }
+
+  const uniqueBurners = deduplicateEquipment(allBurners)
+  const uniqueAcUnits = deduplicateEquipment(allAcUnits)
+  const uniqueAirHandlers = deduplicateEquipment(allAirHandlers)
+
+  // Burners index page
+  await writePage('entities/public/burners/index.html', page({
+    title: 'Burners',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Burners', 'Heat sources for experiments')}
+        <p>${linkTo('entities/reports/orphan-burners.html', '⚠️ View orphan burners report')}</p>
+        <p><strong>${uniqueBurners.length} unique burners</strong> (${allBurners.length} instances across ${workshopCount} workshops)</p>
+      </section>
+      <section class="section">
+        <h2>Burner Configurations</h2>
+        <table class="data-table">
+          <thead>
+            <tr><th>Burner</th><th>Used In Workshops</th><th>Max Power</th></tr>
+          </thead>
+          <tbody>
+            ${buildDeduplicatedRows(uniqueBurners)}
+          </tbody>
+        </table>
+      </section>
+    `
+  }))
+
+  // AC Units index page
+  await writePage('entities/public/ac-units/index.html', page({
+    title: 'AC Units',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('AC Units', 'Temperature control equipment')}
+        <p>${linkTo('entities/reports/orphan-ac-units.html', '⚠️ View orphan AC units report')}</p>
+        <p><strong>${uniqueAcUnits.length} unique AC units</strong> (${allAcUnits.length} instances across ${workshopCount} workshops)</p>
+      </section>
+      <section class="section">
+        <h2>AC Unit Configurations</h2>
+        <table class="data-table">
+          <thead>
+            <tr><th>AC Unit</th><th>Used In Workshops</th><th>Cooling Power</th></tr>
+          </thead>
+          <tbody>
+            ${buildDeduplicatedRows(uniqueAcUnits)}
+          </tbody>
+        </table>
+      </section>
+    `
+  }))
+
+  // Air Handlers index page
+  await writePage('entities/public/air-handlers/index.html', page({
+    title: 'Air Handlers',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Air Handlers', 'Ventilation and air quality control')}
+        <p>${linkTo('entities/reports/orphan-air-handlers.html', '⚠️ View orphan air handlers report')}</p>
+        <p><strong>${uniqueAirHandlers.length} unique air handlers</strong> (${allAirHandlers.length} instances across ${workshopCount} workshops)</p>
+      </section>
+      <section class="section">
+        <h2>Air Handler Configurations</h2>
+        <table class="data-table">
+          <thead>
+            <tr><th>Air Handler</th><th>Used In Workshops</th><th>Flow Rate</th></tr>
+          </thead>
+          <tbody>
+            ${buildDeduplicatedRows(uniqueAirHandlers)}
+          </tbody>
+        </table>
+      </section>
+    `
+  }))
+
+  // Generate workshop index pages
+  for (const [workshopId, data] of filesByWorkshop) {
+    if (workshopId === '_root') continue
+    
+    const workshopAssets = assetsByWorkshop.get(workshopId) || []
+    
+    // Parse workshop.json for display name
+    let workshopName = workshopId
+    if (data.workshop) {
+      try {
+        const parsed = JSON.parse(data.workshop.content)
+        workshopName = parsed.name || parsed.metadata?.name || workshopId
+      } catch (e) { /* use workshopId */ }
+    }
+
+    // Build equipment links
+    const burnerLinks = data.burners.map(f => 
+      linkTo(`entities/public/${f.slug}.html`, f.filename.replace('.json', '')))
+    const acLinks = data.acUnits.map(f => 
+      linkTo(`entities/public/${f.slug}.html`, f.filename.replace('.json', '')))
+    const ahLinks = data.airHandlers.map(f => 
+      linkTo(`entities/public/${f.slug}.html`, f.filename.replace('.json', '')))
+    const assetLinks = workshopAssets.map(a => 
+      linkTo(`entities/assets/${a.assetPath}.html`, path.basename(a.publicPath)))
+
+    const infobox = renderInfobox(workshopName, [
+      { label: 'Workshop ID', value: escapeHtml(workshopId) },
+      { label: 'Workshop Config', value: data.workshop ? linkTo(`entities/public/${data.workshop.slug}.html`, 'workshop.json') : '' },
+      { label: 'Room Config', value: data.room ? linkTo(`entities/public/${data.room.slug}.html`, 'room.json') : '' },
+      { label: 'Effects', value: data.effects ? linkTo(`entities/public/${data.effects.slug}.html`, 'effects.json') : '' },
+      { label: 'Burners', value: burnerLinks.length ? `${burnerLinks.length}` : '0' },
+      { label: 'AC Units', value: acLinks.length ? `${acLinks.length}` : '0' },
+      { label: 'Air Handlers', value: ahLinks.length ? `${ahLinks.length}` : '0' },
+      { label: 'Assets', value: assetLinks.length ? `${assetLinks.length} images` : '' }
+    ])
+
+    const breadcrumbs = [
+      { label: 'Main', href: '../../../../index.html' },
+      { label: 'Public Files', href: '../../index.html' },
+      { label: workshopName, href: null }
+    ]
+
+    const content = `
+      ${infobox}
+      <section class="section">
+        ${renderEntityHeader(workshopName, 'Workshop')}
+      </section>
+      
+      ${data.burners.length ? `
+      <section class="section">
+        <h2>🔥 Burners (${data.burners.length})</h2>
+        ${renderList(burnerLinks)}
+      </section>
+      ` : ''}
+      
+      ${data.acUnits.length ? `
+      <section class="section">
+        <h2>❄️ AC Units (${data.acUnits.length})</h2>
+        ${renderList(acLinks)}
+      </section>
+      ` : ''}
+      
+      ${data.airHandlers.length ? `
+      <section class="section">
+        <h2>💨 Air Handlers (${data.airHandlers.length})</h2>
+        ${renderList(ahLinks)}
+      </section>
+      ` : ''}
+      
+      ${workshopAssets.length ? `
+      <section class="section">
+        <h2>🖼️ Assets (${workshopAssets.length})</h2>
+        ${renderList(assetLinks)}
+      </section>
+      ` : ''}
+    `
+    
+    await writePage(`entities/public/workshops/${workshopId}/index.html`, page({ 
+      title: workshopName, 
+      content,
+      breadcrumbs 
+    }))
+  }
+
+  // Generate individual public file pages with proper parent links
   for (const file of publicFiles) {
     const referencedAssets = assets
       .filter((asset) => Array.from(asset.references || []).some((ref) => ref.slug === file.slug && ref.filename === file.filename))
       .map((asset) => linkTo(`entities/assets/${asset.assetPath}.html`, asset.publicPath))
 
-    const workshopLabel = file.workshopId
-      ? linkTo(`entities/public/assets/workshops/${file.workshopId}/workshop.html`, file.workshopId)
+    // Determine parent workshop
+    const workshopLink = file.workshopId
+      ? linkTo(`entities/public/workshops/${file.workshopId}/index.html`, file.workshopId)
       : ''
+
+    // Determine siblings (other files in same category/workshop)
+    const siblings = publicFiles.filter(f => 
+      f.workshopId === file.workshopId && 
+      f.category === file.category && 
+      f.slug !== file.slug
+    ).map(f => linkTo(`entities/public/${f.slug}.html`, f.filename.replace('.json', '')))
 
     // Build breadcrumbs
     const breadcrumbs = [
       { label: 'Main', href: '../../index.html' },
-      { label: 'Public Files', href: 'index.html' },
-      { label: file.filename, href: null }
+      { label: 'Public Files', href: 'index.html' }
     ]
+    if (file.workshopId) {
+      breadcrumbs.push({ label: file.workshopId, href: `workshops/${file.workshopId}/index.html` })
+    }
+    breadcrumbs.push({ label: file.filename, href: null })
+
+    // Category label
+    const categoryLabels = {
+      'workshop': 'Workshop Config',
+      'room': 'Room Config',
+      'effects': 'Effects Config',
+      'burners': 'Burner',
+      'ac-units': 'AC Unit',
+      'air-handlers': 'Air Handler'
+    }
 
     const content = `
       ${renderInfobox(file.filename, [
-        { label: 'Type', value: 'Public JSON' },
+        { label: 'Type', value: categoryLabels[file.category] || 'Public JSON' },
         { label: 'Path', value: escapeHtml(file.slug + '.json') },
-        { label: 'Workshop', value: workshopLabel },
+        { label: 'Workshop', value: workshopLink },
         { label: 'Category', value: file.category ? escapeHtml(file.category) : '' },
+        { label: 'Siblings', value: siblings.length ? renderLinkList(siblings) : '' },
         { label: 'Referenced assets', value: referencedAssets.length ? renderLinkList(referencedAssets) : '' }
       ])}
-      <section class=\"section\">
-        ${renderEntityHeader(file.filename, 'Public JSON')}
+      <section class="section">
+        ${renderEntityHeader(file.filename, categoryLabels[file.category] || 'Public JSON')}
       </section>
-      <section class=\"section\">
+      <section class="section">
         <h2>Raw data</h2>
         ${renderCodeBlock(file.content, 'json')}
       </section>
@@ -3171,14 +3551,7 @@ composition[toxicVapor] -= removalRate * deltaTime`,
   }))
 
   // Orphan symbols report (no re-exports, no imports, no call sites, no internal usage)
-  const orphanSymbols = symbols.filter((sym) =>
-    sym.reExports.length === 0 &&
-    sym.importedBy.length === 0 &&
-    sym.callSites.length === 0 &&
-    sym.internalUsages.length === 0 &&
-    sym.reExportUsages.length === 0
-  )
-
+  const orphanSymbols = findOrphanSymbols(symbols)
   const orphanLinks = orphanSymbols.map((sym) => linkTo(`entities/symbols/${sym.name}.html`, sym.name))
   await writePage('entities/reports/orphan-symbols.html', page({
     title: 'Orphan Symbols',
@@ -3333,92 +3706,21 @@ composition[toxicVapor] -= removalRate * deltaTime`,
     await writePage(`entities/symbols/${sym.name}.html`, page({ title: sym.name, content }))
   }
 
-  // Comprehensive orphan detection for docs, styles, and root files
-  
-  // Docs orphan detection
-  const docUsage = await detectDocUsage(repoRoot, docsModules)
-  const orphanDocs = docsModules.filter(doc => (docUsage.get(doc.slug) || []).length === 0)
-  const orphanDocLinks = orphanDocs.map(doc => linkTo(`entities/modules/${doc.slug}.html`, doc.filename))
-  
-  await writePage('entities/reports/orphan-docs.html', page({
-    title: 'Orphan Docs',
-    content: `
-      <section class="section">
-        ${renderEntityHeader('Orphan Docs', 'Documentation files not referenced in game code')}
-        <p>These documentation files exist but are not imported or referenced anywhere in the codebase.</p>
-        ${orphanDocs.length > 0 ? `<p><strong>Total: ${orphanDocs.length}</strong></p>` : ''}
-        ${orphanDocLinks.length ? renderList(orphanDocLinks) : '<p><strong>None found!</strong> All docs are referenced.</p>'}
-      </section>
-    `
-  }))
-
-  // Styles orphan detection
-  const styleUsage = await detectStyleUsage(repoRoot, styleModules)
-  const orphanStyles = styleModules.filter(style => (styleUsage.get(style.slug) || []).length === 0)
-  const orphanStyleLinks = orphanStyles.map(style => linkTo(`entities/modules/${style.slug}.html`, style.filename))
-  
-  await writePage('entities/reports/orphan-styles.html', page({
-    title: 'Orphan Styles',
-    content: `
-      <section class="section">
-        ${renderEntityHeader('Orphan Styles', 'CSS stylesheets not imported anywhere')}
-        <p>These stylesheets exist but are not imported in any JavaScript/JSX files or the main index.</p>
-        ${orphanStyles.length > 0 ? `<p><strong>Total: ${orphanStyles.length}</strong></p>` : ''}
-        ${orphanStyleLinks.length ? renderList(orphanStyleLinks) : '<p><strong>None found!</strong> All stylesheets are in use.</p>'}
-      </section>
-    `
-  }))
-
-  // Root files orphan detection
-  const rootFileUsage = await detectFileUsage(repoRoot, rootModules)
-  const orphanRootFiles = rootModules.filter(file => (rootFileUsage.get(file.slug) || []).length === 0)
-  const orphanRootFileLinks = orphanRootFiles.map(file => linkTo(`entities/modules/${file.slug}.html`, file.filename))
-  
-  await writePage('entities/reports/orphan-root-files.html', page({
-    title: 'Orphan Root Files',
-    content: `
-      <section class="section">
-        ${renderEntityHeader('Orphan Root Files', 'Top-level files not referenced in codebase')}
-        <p>These root-level files exist but are not imported or referenced in game code or wiki.</p>
-        ${orphanRootFiles.length > 0 ? `<p><strong>Total: ${orphanRootFiles.length}</strong></p>` : ''}
-        ${orphanRootFileLinks.length ? renderList(orphanRootFileLinks) : '<p><strong>None found!</strong> All root files are referenced.</p>'}
-      </section>
-    `
-  }))
-
-  // Solutions orphan detection
-  const solutionUsedInGame = await detectSolutionUsage(repoRoot, solutions)
-  const orphanSolutions = solutions.filter(sol => (solutionUsedInGame.get(sol.id) || []).length === 0)
-  const orphanSolutionLinks = orphanSolutions.map(sol => linkTo(`entities/solutions/${sol.id}.html`, sol.data.name || sol.id))
-  
-  await writePage('entities/reports/orphan-solutions.html', page({
-    title: 'Orphan Solutions',
-    content: `
-      <section class="section">
-        ${renderEntityHeader('Orphan Solutions', 'Solutions not used in game code or experiments')}
-        <p>These solutions exist but are not referenced in the game code or experiment definitions.</p>
-        ${orphanSolutions.length > 0 ? `<p><strong>Total: ${orphanSolutions.length}</strong></p>` : ''}
-        ${orphanSolutionLinks.length ? renderList(orphanSolutionLinks) : '<p><strong>None found!</strong> All solutions are used.</p>'}
-      </section>
-    `
-  }))
-
-  // Phases orphan detection
-  const phasesUsedInGame = await detectPhaseUsage(repoRoot, phases)
-  const orphanPhases = phases.filter(phase => (phasesUsedInGame.get(phase.slug) || []).length === 0)
-  const orphanPhaseLinks = orphanPhases.map(phase => linkTo(`entities/phases/${phase.slug}.html`, phase.slug))
-  
-  await writePage('entities/reports/orphan-phases.html', page({
-    title: 'Orphan Phases',
-    content: `
-      <section class="section">
-        ${renderEntityHeader('Orphan Phases', 'Phase states not used in game code')}
-        <p>These phase definitions exist but are not referenced in experiments or game logic.</p>
-        ${orphanPhases.length > 0 ? `<p><strong>Total: ${orphanPhases.length}</strong></p>` : ''}
-        ${orphanPhaseLinks.length ? renderList(orphanPhaseLinks) : '<p><strong>None found!</strong> All phases are used.</p>'}
-      </section>
-    `
-  }))
+  // Generate file-scanning based orphan reports (docs, styles, root files, solutions, phases, equipment)
+  await generateOrphanReports({
+    repoRoot,
+    docsModules,
+    styleModules,
+    rootModules,
+    solutions,
+    phases,
+    publicFiles,
+    writePage,
+    page,
+    linkTo,
+    renderEntityHeader,
+    renderList
+  })
 
   await writeCache({
     hash: newHash,
