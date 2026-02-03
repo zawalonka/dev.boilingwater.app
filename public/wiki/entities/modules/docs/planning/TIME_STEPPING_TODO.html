@@ -402,8 +402,120 @@ This approach works but is expensive:
 
 ---
 
-**Last Updated:** 2026-02-02  
-**Status:** Research Complete - Ready for Implementation  
+---
+
+## Web Worker Approach (Alternative to Sub-stepping)
+
+**Research Date:** 2026-02-03
+
+### The Browser Limitation
+
+`setInterval` has a **browser minimum of ~1-4ms**. Even if you set `TIME_STEP: 1`, the browser throttles callbacks to ~4ms minimum (250 callbacks/sec max).
+
+**Current Architecture Limits:**
+- `setInterval(callback, 100)` runs ~10 times/second at 1x speed
+- Setting TIME_STEP smaller doesn&#39;t help (browser throttles anyway)
+- Can&#39;t get finer accuracy (e.g., 1000 steps/sec) with current setInterval approach
+
+### Web Worker Solution
+
+**What It Does:**
+- Runs physics on a **separate CPU thread** (not limited by browser UI throttling)
+- Can execute **10,000-50,000 physics steps per second** (limited only by JavaScript execution speed, not browser minimums)
+- Main thread handles UI at 60fps, worker handles physics at full CPU speed
+- Decouples simulation accuracy from display refresh rate
+
+**Threading Capabilities:**
+- Each Web Worker = 1 CPU thread (separate from main UI thread)
+- Can spawn multiple workers (typically up to CPU core count)
+- Each worker is **single-threaded JavaScript** but runs on its own OS thread
+- For sequential time-stepping: **1 worker is enough** (each step depends on previous)
+
+**Why Pipeline Parallelism Doesn&#39;t Work:**
+```
+Factory Assembly Line (works):
+Car 1: [Paint] → [Wheels] → [Engine]
+Car 2:          [Paint] → [Wheels] → [Engine]  (parallel, independent cars)
+
+Physics Time-Stepping (doesn&#39;t work):
+Step 1: temp=20°C → temp=20.05°C
+Step 2: temp=20.05°C → temp=20.10°C  (MUST wait for Step 1&#39;s result)
+Step 3: temp=20.10°C → temp=20.15°C  (MUST wait for Step 2&#39;s result)
+```
+Data dependency prevents parallelism. Overhead (context switching ~10-100μs) &gt;&gt; work per step (~1μs).
+
+**Practical Limits:**
+1. **Message passing overhead** — sending data between main thread ↔ worker has cost
+2. **JavaScript execution speed** — still interpreted/JIT, not compiled like C++
+3. **Memory copying** — data sent to worker gets copied (unless using SharedArrayBuffer)
+4. **Realistic throughput:** ~10,000-50,000 steps/sec for lightweight physics
+
+### Implementation Ease
+
+**Existing Code is Perfect for Workers:**
+- Physics functions are **pure and modular** (math in, math out)
+- No DOM access, no React state — already decoupled
+- `simulateTimeStep()` can be imported directly in worker
+- **ZERO changes to physics code needed**
+
+**Minimal Changes Required:**
+
+**1. Create Worker File** (~100 lines, new file)
+```javascript
+// src/workers/physicsWorker.js
+import { simulateTimeStep } from &#39;../utils/physics&#39;
+
+// Worker receives commands, runs simulation, sends results back
+self.onmessage = (e) =&gt; {
+  // Run physics loop, send updates
+}
+```
+
+**2. GameScene.jsx Changes** (~50-100 lines modified)
+```javascript
+// Replace setInterval with:
+const worker = new Worker(new URL(&#39;../workers/physicsWorker.js&#39;, import.meta.url))
+
+// Send commands to worker
+worker.postMessage({ type: &#39;START&#39;, heatWatts: 2000, ... })
+
+// Receive updates from worker
+worker.onmessage = (e) =&gt; {
+  setTemperature(e.data.temperature)
+  setWaterInPot(e.data.waterMass)
+}
+```
+
+**3. Physics Functions** (**ZERO changes**)
+- Already pure functions
+- Worker imports and calls them directly
+
+**Vite Support:**
+Vite has **built-in worker bundling**:
+```javascript
+const worker = new Worker(new URL(&#39;./worker.js&#39;, import.meta.url), { type: &#39;module&#39; })
+```
+No special config needed.
+
+**Prototype Effort Estimate:** ~1-2 hours
+- 30 min: Create worker file, basic message passing
+- 30 min: Hook up GameScene to worker
+- 30 min: Test and debug message flow
+
+### Next Steps (Research)
+
+- [ ] Research SharedArrayBuffer for zero-copy data transfer
+- [ ] Profile current physics loop execution time (1 step cost)
+- [ ] Benchmark worker message passing overhead
+- [ ] Test worker performance at different step sizes (1ms, 10ms, 100ms)
+- [ ] Investigate Web Worker debugging tools in Chrome DevTools
+- [ ] Research WASM compilation for physics engine (if JavaScript is too slow)
+- [ ] Compare worker approach vs sub-stepping approach (performance, complexity, maintainability)
+
+---
+
+**Last Updated:** 2026-02-03  
+**Status:** Research Complete - Web Worker approach identified as viable alternative  
 **Confidence:** High (backed by code inspection and mathematical analysis)
 </code></pre>
         </details>

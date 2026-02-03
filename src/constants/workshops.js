@@ -155,46 +155,6 @@ export const WORKSHOP_CONFIG = {
     workshopsDirectory: 'workshops'
 }
 
-// Color palette categories (helps organize workshop colors)
-export const COLOR_CATEGORIES = {
-  header: [
-    'header_background',
-    'header_text',
-    'badge_background',
-    'badge_text'
-  ],
-  buttons: [
-    'button_primary',
-    'button_primary_text',
-    'button_hover',
-    'button_hover_text',
-    'button_active',
-    'button_active_text',
-    'button_disabled',
-    'button_disabled_text'
-  ],
-  panels: [
-    'panel_background',
-    'panel_text',
-    'panel_border',
-    'panel_accent'
-  ],
-  game: [
-    'burner_background',
-    'sink_background',
-    'water_color',
-    'flame_glow'
-  ],
-  feedback: [
-    'warning_background',
-    'warning_text',
-    'success_background',
-    'success_text',
-    'error_background',
-    'error_text'
-  ]
-}
-
 /**
  * Scope types - determines where a workshop skin can be applied
  */

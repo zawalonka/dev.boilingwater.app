@@ -14,6 +14,7 @@ import {
   findOrphanModules,
   findOrphanPublicFiles,
   findOrphanSymbols,
+  findDeadCodeIdentifiers,
   generateOrphanReports
 } from './orphanDetection.js'
 
@@ -891,7 +892,8 @@ const buildAssets = async (modules, publicFiles) => {
  */
 const parseImportedSymbols = (content) => {
   const symbolImports = []
-  // Match: import { sym1, sym2 as alias } from '...'
+  
+  // Match static imports: import { sym1, sym2 as alias } from '...'
   const importRegex = /import\s*\{([^}]+)\}\s*from\s*['"]([^'"]+)['"]/g
   let match
   while ((match = importRegex.exec(content)) !== null) {
@@ -905,6 +907,21 @@ const parseImportedSymbols = (content) => {
       symbolImports.push({ symbol, source })
     }
   }
+  
+  // Match dynamic imports: const { symbol } = await import('...')
+  // Also match: const { symbol } = import('...')
+  const dynamicImportRegex = /(?:const|let|var)\s*\{([^}]+)\}\s*=\s*(?:await\s+)?import\s*\(\s*['"]([^'"]+)['"]\s*\)/g
+  while ((match = dynamicImportRegex.exec(content)) !== null) {
+    const symbols = match[1].split(',').map((s) => {
+      const parts = s.trim().split(/\s+as\s+/)
+      return parts[0].trim()
+    }).filter(Boolean)
+    const source = match[2]
+    for (const symbol of symbols) {
+      symbolImports.push({ symbol, source })
+    }
+  }
+  
   return symbolImports
 }
 
@@ -1048,10 +1065,21 @@ const buildSymbols = async (formulas, processes, modules) => {
   }
   
   // Find who imports each symbol and call sites
-  const allFiles = globSync('src/**/*.{js,jsx}', {
+  // EXPANDED SCOPE: Scan entire repository for comprehensive dead code detection
+  const allFiles = globSync('**/*.{js,jsx,mjs,cjs}', {
     cwd: repoRoot,
     absolute: true,
-    ignore: ['src/generated/**']
+    ignore: [
+      'node_modules/**',
+      '.git/**',
+      'dist/**',
+      'build/**',
+      'wiki/dist/**',
+      'public/wiki/**',
+      'src/generated/**',
+      '.cache/**',
+      'coverage/**'
+    ]
   })
 
   const fileContentMap = new Map()
@@ -1757,6 +1785,14 @@ const build = async () => {
             linkTo('entities/scripts/index.html', `Scripts (${scriptModules.length})`),
             linkTo('entities/styles/index.html', `Styles (${styleModules.length})`),
             linkTo('entities/root-files/index.html', `Root Files (${rootModules.length})`)
+          ])}
+        </div>
+        <div class="portal-box">
+          <h3>Code Health</h3>
+          ${renderList([
+            linkTo('entities/reports/dead-code.html', 'Dead Code Report'),
+            linkTo('entities/reports/orphan-symbols.html', 'Orphan Symbols'),
+            linkTo('entities/reports/orphan-scripts.html', 'Orphan Scripts')
           ])}
         </div>
       </div>
@@ -3560,6 +3596,73 @@ composition[toxicVapor] -= removalRate * deltaTime`,
         ${renderEntityHeader('Orphan Symbols', 'Symbols with no exports, re-exports, or usage')}
         <p>Total: ${orphanSymbols.length}</p>
         ${orphanLinks.length ? renderList(orphanLinks) : '<p>None found.</p>'}
+      </section>
+    `
+  }))
+
+  // Dead code report - comprehensive identifier analysis
+  const deadCodeAnalysis = await findDeadCodeIdentifiers(symbols, repoRoot)
+  
+  const renderDeadCodeTable = (items) => {
+    if (!items.length) return '<p><strong>None found!</strong></p>'
+    
+    const rows = items.map(item => {
+      const relPath = path.relative(repoRoot, item.file).replace(/\\/g, '/')
+      const entityLink = item.entityType === 'formula' 
+        ? linkTo(`entities/formulas/${item.entitySlug}.html`, item.name)
+        : item.entityType === 'process'
+        ? linkTo(`entities/processes/${item.entitySlug}.html`, item.name)
+        : linkTo(`entities/modules/${item.entitySlug}.html`, item.name)
+      
+      const usageInfo = item.internalUsageCount 
+        ? `Self-only (${item.internalUsageCount} internal)` 
+        : 'Orphaned'
+      
+      return `
+        <tr>
+          <td>${entityLink}</td>
+          <td><code>${escapeHtml(relPath)}</code></td>
+          <td>${escapeHtml(item.entityType)}</td>
+          <td>${escapeHtml(usageInfo)}</td>
+        </tr>
+      `
+    }).join('')
+    
+    return `
+      <table class="data-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <thead>
+          <tr style="background: #f5f5f5; border-bottom: 2px solid #ddd;">
+            <th style="padding: 8px; text-align: left;">Identifier</th>
+            <th style="padding: 8px; text-align: left;">File</th>
+            <th style="padding: 8px; text-align: left;">Type</th>
+            <th style="padding: 8px; text-align: left;">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    `
+  }
+  
+  await writePage('entities/reports/dead-code.html', page({
+    title: 'Dead Code Report',
+    content: `
+      <section class="section">
+        ${renderEntityHeader('Dead Code Report', 'Exported identifiers with no external usage')}
+        <p>This report scans the entire codebase for exported functions and constants that are either:</p>
+        <ul>
+          <li><strong>Self-referenced only:</strong> Exported and used within own file, but never imported elsewhere</li>
+          <li><strong>Truly orphaned:</strong> Exported but never imported or used anywhere</li>
+        </ul>
+        
+        <h3 style="margin-top: 32px;">Self-Referenced Only (${deadCodeAnalysis.selfReferencedOnly.length})</h3>
+        <p>These identifiers are exported and used within their own file, but never imported externally:</p>
+        ${renderDeadCodeTable(deadCodeAnalysis.selfReferencedOnly)}
+        
+        <h3 style="margin-top: 32px;">Truly Orphaned (${deadCodeAnalysis.trulyOrphaned.length})</h3>
+        <p>These identifiers are exported but have zero usage anywhere in the codebase:</p>
+        ${renderDeadCodeTable(deadCodeAnalysis.trulyOrphaned)}
       </section>
     `
   }))

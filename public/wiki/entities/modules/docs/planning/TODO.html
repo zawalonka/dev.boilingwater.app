@@ -117,32 +117,39 @@
 ---
 
 ### 2. Time Speed Sub-stepping (Performance Critical)
-**Status:** NOT STARTED | **0% Complete**  
+**Status:** RESEARCHING | **5% Complete**  
 **Impact:** At extreme speeds (65536x), physics diverges  
 **Problem:** deltaTime = 6553.6s per step at 65536x → equations break down  
-**Solution:** Subdivide large timesteps into smaller physics steps (0.1s each)
 
-**Quick Overview:**
-- Current: One giant physics step per frame (e.g., 6553.6s at 65536x)
-- Problem: Physics equations assume ~0.1s steps. Larger steps = divergence &amp; garbage output.
-- Fix: Apply multiple small steps sequentially instead of one huge step
-- Cost: 65536× speed = 655K steps per frame (performance impact)
+**⚠️ KEY FINDING (2026-02-03): Web Worker Approach May Be Better**
+- Browser `setInterval` is throttled to ~4ms minimum (250 callbacks/sec max)
+- Current TIME_STEP=100ms can&#39;t be reduced for finer accuracy at 1x speed
+- **Web Worker solution:** Run physics on separate CPU thread = **10,000-50,000 steps/sec** (no browser throttling)
+- Physics code is already pure functions → ZERO changes needed to move to worker
+- Vite has built-in worker support → minimal refactor (~1-2 hours)
 
-**See:** [TIME_STEPPING_TODO.md](TIME_STEPPING_TODO.md) for complete explanation, physics analysis, and implementation options.
+**See:** [TIME_STEPPING_TODO.md](TIME_STEPPING_TODO.md) for:
+- Complete physics analysis and divergence explanation
+- Web Worker research findings and implementation plan
+- Browser setInterval limitations and why workers solve it
+- Pipeline parallelism analysis (why it doesn&#39;t work for sequential physics)
 
 **Implementation Options:**
-1. **Speed Cap** (simplest): Limit UI to 256x. Fast, proven, avoids divergence.
-2. **Sub-stepping** (robust): Divide steps. Expensive CPU but mathematically correct.
-3. **Adaptive Stepping** (sophisticated): Auto-adjust step sizes based on stability. Complex.
-4. **Analytical Solutions** (limited): Direct solve for simple heating. Only for Q=mcΔT.
+1. **Web Worker** (NEW - most promising): Physics on separate thread. No browser throttling. Best accuracy + performance.
+2. **Speed Cap** (simplest): Limit UI to 256x. Fast, proven, avoids divergence.
+3. **Sub-stepping** (robust): Divide steps. Expensive CPU but mathematically correct.
+4. **Adaptive Stepping** (sophisticated): Auto-adjust step sizes. Complex.
 
 **Implementation Tasks:**
-- [ ] Choose approach
+- [ ] Research more on Web Workers (SharedArrayBuffer, message overhead, WASM option)
+- [ ] Profile current physics loop execution time
+- [ ] Choose approach (Worker vs Sub-stepping vs Speed Cap)
+- [ ] Create `src/workers/physicsWorker.js` if choosing worker approach
 - [ ] Create `src/utils/physics/timeSubstepper.js` if choosing sub-stepping
 - [ ] Test at 1x, 256x, 65536x (verify no divergence)
 - [ ] Profile performance impact
 
-**Dependencies:** None | **Unlocks:** Reliable speed acceleration, removes unreliability warning
+**Dependencies:** None | **Unlocks:** Reliable speed acceleration, finer accuracy at 1x, removes unreliability warning
 
 ---
 

@@ -224,6 +224,22 @@ export function calculateFusionEnergy(massKg, heatOfFusionKJ) {
 /**
  * Calculate mass that can be melted with given energy
  * 
+ * NOTE: Currently UNUSED - kept for future ice/freezing features.
+ * The game currently only simulates:
+ *   1. Heating water (Q = mcΔT)
+ *   2. Boiling water (liquid → gas via calculateVaporizedMass)
+ * 
+ * This function would be used for:
+ *   - Starting experiments with ice cubes
+ *   - Melting ice to liquid water
+ *   - Reverse phase change (freezing water back to ice)
+ *   - Complete phase transition chains (solid → liquid → gas)
+ * 
+ * EXAMPLE USE CASE (future):
+ *   Energy available: 334,000 J
+ *   Water heat of fusion: 334 kJ/kg
+ *   Result: calculateMeltedMass(334000, 334) = 1 kg of ice melted
+ * 
  * @param {number} energyJ - Available energy in Joules
  * @param {number} heatOfFusionKJ - Latent heat of fusion in kJ/kg
  * @returns {number} Mass that can be melted in kilograms

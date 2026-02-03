@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dead Code Report - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <div class="wiki-topbar-title">Dead Code Report</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>Dead Code Report</h1>
+    <p class="subtitle">Exported identifiers with no external usage</p>
+  </div>
+
+        <p>This report scans the entire codebase for exported functions and constants that are either:</p>
+        <ul>
+          <li><strong>Self-referenced only:</strong> Exported and used within own file, but never imported elsewhere</li>
+          <li><strong>Truly orphaned:</strong> Exported but never imported or used anywhere</li>
+        </ul>
+        
+        <h3 style="margin-top: 32px;">Self-Referenced Only (22)</h3>
+        <p>These identifiers are exported and used within their own file, but never imported externally:</p>
+        
+      <table class="data-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <thead>
+          <tr style="background: #f5f5f5; border-bottom: 2px solid #ddd;">
+            <th style="padding: 8px; text-align: left;">Identifier</th>
+            <th style="padding: 8px; text-align: left;">File</th>
+            <th style="padding: 8px; text-align: left;">Type</th>
+            <th style="padding: 8px; text-align: left;">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/roomEnvironment.html">addVaporToRoom</a></td>
+          <td><code>src/utils/roomEnvironment.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/roomEnvironment.html">applyHeatToRoom</a></td>
+          <td><code>src/utils/roomEnvironment.js</code></td>
+          <td>module</td>
+          <td>Self-only (2 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/workshopLoader.html">applyWorkshopStyles</a></td>
+          <td><code>src/utils/workshopLoader.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/massTransfer.html">calculateDensityRatioTerm</a></td>
+          <td><code>src/utils/physics/formulas/massTransfer.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/evaporation.html">calculateEvaporatedMass</a></td>
+          <td><code>src/utils/physics/formulas/evaporation.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/evaporation.html">calculateEvaporationFlux</a></td>
+          <td><code>src/utils/physics/formulas/evaporation.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/massTransfer.html">calculateGrashofNumber</a></td>
+          <td><code>src/utils/physics/formulas/massTransfer.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/processes/roomControl/applyAcEffect.html">calculateRoomAirMass</a></td>
+          <td><code>src/utils/physics/processes/roomControl/applyAcEffect.js</code></td>
+          <td>process</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">calculateSaturationVaporPressure</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (2 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/massTransfer.html">calculateSchmidtNumber</a></td>
+          <td><code>src/utils/physics/formulas/massTransfer.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">createUnitPreferences</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/diffusion.html">diffusionCm2ToM2</a></td>
+          <td><code>src/utils/physics/formulas/diffusion.js</code></td>
+          <td>formula</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/locationUtils.html">getAltitudeFromCoordinates</a></td>
+          <td><code>src/utils/locationUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (2 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">getDefaultTemperatureUnit</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">kilogramsToPounds</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">metersToFeet</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/roomEnvironment.html">normalizeFormula</a></td>
+          <td><code>src/utils/roomEnvironment.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/substanceLoader.html">parseProps</a></td>
+          <td><code>src/utils/substanceLoader.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/workshopLoader.html">processWorkshop</a></td>
+          <td><code>src/utils/workshopLoader.js</code></td>
+          <td>module</td>
+          <td>Self-only (2 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/locationUtils.html">searchLocation</a></td>
+          <td><code>src/utils/locationUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/workshopLoader.html">validateWorkshopData</a></td>
+          <td><code>src/utils/workshopLoader.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">volumeFractionToRH</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Self-only (1 internal)</td>
+        </tr>
+      
+        </tbody>
+      </table>
+    
+        
+        <h3 style="margin-top: 32px;">Truly Orphaned (19)</h3>
+        <p>These identifiers are exported but have zero usage anywhere in the codebase:</p>
+        
+      <table class="data-table" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <thead>
+          <tr style="background: #f5f5f5; border-bottom: 2px solid #ddd;">
+            <th style="padding: 8px; text-align: left;">Identifier</th>
+            <th style="padding: 8px; text-align: left;">File</th>
+            <th style="padding: 8px; text-align: left;">Type</th>
+            <th style="padding: 8px; text-align: left;">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td><a href="/wiki/entities/formulas/latentHeat.html">calculateMeltedMass</a></td>
+          <td><code>src/utils/physics/formulas/latentHeat.js</code></td>
+          <td>formula</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/workshopLoader.html">DEFAULT_WORKSHOP</a></td>
+          <td><code>src/utils/workshopLoader.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">feetToMeters</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">formatHumidity</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">formatMass</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">formatTemperatureRange</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/constants/workshops.html">GAME_RESOLUTION</a></td>
+          <td><code>src/constants/workshops.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/airHandlerScrubber.html">getAirHandlerStatus</a></td>
+          <td><code>src/utils/airHandlerScrubber.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/substanceLoader.html">getSubstanceMetadata</a></td>
+          <td><code>src/utils/substanceLoader.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">getTemperatureLabel</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">loadUnitPreferences</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/ebullioscopy.html">massPercentToMolality</a></td>
+          <td><code>src/utils/physics/formulas/ebullioscopy.js</code></td>
+          <td>formula</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">poundsToKilograms</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/airHandlerScrubber.html">resetAirHandlerState</a></td>
+          <td><code>src/utils/airHandlerScrubber.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">rhToVolumeFraction</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/utils/unitUtils.html">saveUnitPreferences</a></td>
+          <td><code>src/utils/unitUtils.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/formulas/evaporation.html">simulateEvaporationWithMassTransfer</a></td>
+          <td><code>src/utils/physics/formulas/evaporation.js</code></td>
+          <td>formula</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/constants/physics.html">UNIVERSAL</a></td>
+          <td><code>src/constants/physics.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        <tr>
+          <td><a href="/wiki/entities/modules/src/constants/workshops.html">WORKSHOP_SCOPE</a></td>
+          <td><code>src/constants/workshops.js</code></td>
+          <td>module</td>
+          <td>Orphaned</td>
+        </tr>
+      
+        </tbody>
+      </table>
+    
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

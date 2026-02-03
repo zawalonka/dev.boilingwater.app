@@ -758,3 +758,55 @@ export async function generateOrphanReports({
   return results
 }
 
+/**
+ * Find dead code identifiers (exported but unused or self-referenced only)
+ * Scans ENTIRE codebase for comprehensive dead code detection
+ * @param {Object[]} symbols - All symbols from buildSymbols
+ * @param {string} repoRoot - Repository root path
+ * @returns {Promise<Object>} { deadIdentifiers, selfReferencedOnly, trulyOrphaned }
+ */
+export async function findDeadCodeIdentifiers(symbols, repoRoot) {
+  const deadIdentifiers = []
+  const selfReferencedOnly = []
+  const trulyOrphaned = []
+  
+  for (const sym of symbols) {
+    // Skip if no definition (shouldn't happen but safety check)
+    if (!sym.definition) continue
+    
+    const hasExternalImports = sym.importedBy.length > 0
+    const hasCallSites = sym.callSites.length > 0
+    const hasReExports = sym.reExports.length > 0
+    const hasInternalUsage = sym.internalUsages.length > 0
+    
+    // Self-referenced only: exported, used internally, but never imported externally
+    if (hasInternalUsage && !hasExternalImports && !hasCallSites && !hasReExports) {
+      selfReferencedOnly.push({
+        name: sym.name,
+        file: sym.definition.file,
+        entityType: sym.definition.entityType,
+        entitySlug: sym.definition.entitySlug,
+        internalUsageCount: sym.internalUsages.length
+      })
+      deadIdentifiers.push(sym)
+    }
+    
+    // Truly orphaned: exported but zero usage anywhere
+    if (!hasExternalImports && !hasCallSites && !hasReExports && !hasInternalUsage) {
+      trulyOrphaned.push({
+        name: sym.name,
+        file: sym.definition.file,
+        entityType: sym.definition.entityType,
+        entitySlug: sym.definition.entitySlug
+      })
+      deadIdentifiers.push(sym)
+    }
+  }
+  
+  return {
+    deadIdentifiers,
+    selfReferencedOnly: selfReferencedOnly.sort((a, b) => a.name.localeCompare(b.name)),
+    trulyOrphaned: trulyOrphaned.sort((a, b) => a.name.localeCompare(b.name))
+  }
+}
+
