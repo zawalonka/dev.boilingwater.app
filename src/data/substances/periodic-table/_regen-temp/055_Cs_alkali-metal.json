@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 55,
+  "symbol": "Cs",
+  "name": "Cesium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 132.90545196,
+    "ionizationEnergy": 3.894,
+    "atomicRadius": 343,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 301.5928,
+    "boilingPoint": 9446711240,
+    "density": 1.93,
+    "electronConfiguration": 61,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin caesius for \"sky blue\", which was the colour of the caesium line in the spectroscope. Caesium was discovered by the German chemist Robert Wilhelm Bunsen and the German physicist Gustav Robert Kirchhoff in 1860. It was first isolated by the German chemist Carl Setterberg in 1882.",
+      "Cesium was discovered by Robert Wilhelm Bunsen and Gustav Robert Kirchhoff, German chemists, in 1860 through the spectroscopic analysis of Durkheim mineral water. They named cesium after the blue lines they observed in its spectrum. Today, cesium is primarily obtained from the mineral pollucite (CsAlSi2O6). Obtaining pure cesium is difficult since cesium ores are frequently contaminated with rubidium, an element that is chemically similar to cesium. To obtain pure cesium, cesium and rubidium ores are crushed and heated with sodium metal to 650°C, forming an alloy that can then be separated with a process known as fractional distillation. Metallic cesium is too reactive to easily handle and is usually sold in the form of cesium azide (CsN3). Cesium is recovered from cesium azide by heating it.",
+      "From the Latin word caesius, sky blue. Cesium was discovered spectroscopically in 1860 by Bunsen and Kirchhoff in mineral water from Durkheim."
+    ],
+    "discovery": [],
+    "uses": [
+      "Cesium has the second lowest melting point of all metallic elements, which limits its uses. Cesium readily combines with oxygen and is used as a getter, a material that combines with and removes trace gases from vacuum tubes. Cesium is also used in atomic clocks, in photoelectric cells and as a catalyst in the hydrogenation of certain organic compounds. Since it is easily ionized and has a high mass, cesium ions may one day be used as a propellant in ion engines on spacecraft.Cesium reacts violently with water and ice, forming cesium hydroxide (CsOH). Cesium hydroxide is the strongest base known and will attack glass. Cesium chloride (CsCl) and cesium nitrate (CsNO3) are cesium's most common compounds and are primarily used in the production of other chemicals.",
+      "Because of it has great affinity for oxygen, the metal is used as a \"getter\" in electron tubes. It is also used in photoelectric cells, as well as a catalyst in the hydrogenation of certain organic compounds.The metal has recently found application in ion propulsion systems. Cesium is used in atomic clocks, which are accurate to 5 s in 300 years. Its chief compounds are the chloride and the nitrate."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal is characterized by a spectrum containing two bright lines in the blue along with several others in the red, yellow, and green wavelengths. It is silvery white, soft, and ductile. It is the most electropositive and most alkaline element.Cesium, gallium, and mercury are the only three metals that are liquid at room temperature. Cesium reacts explosively with cold water, and reacts with ice at temperatures above -116C. Cesium hydroxide, the strongest base known, attacks glass."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:50.859Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/55",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/caesium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele055.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele055.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/55.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=55",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 68,
+  "symbol": "Er",
+  "name": "Erbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 167.259,
+    "ionizationEnergy": 6.108,
+    "atomicRadius": 235,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 180215292784,
+    "boilingPoint": 314128685194,
+    "density": 9.07,
+    "electronConfiguration": 62412,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 36,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Swedish town of Ytterby, where the ore gadolinite (in which it was found) was first mined. Erbium was discovered by the Swedish surgeon and chemist Carl-Gustav Mosander in 1843 in a yttrium sample. He separated the yttrium into yttrium, a rose-coloured salt he called terbium and a deep-yellow peroxide that he called erbium.",
+      "The mineral gadolinite ((Ce, La, Nd, Y)2FeBe2Si2O10), discovered in a quarry near the town of Ytterby, Sweden, has been the source of a great number of rare earth elements. In 1843, Carl Gustaf Mosander, a Swedish chemist, was able to separate gadolinite into three materials, which he named yttria, erbia and terbia. As might be expected considering the similarities between their names and properties, scientists soon confused erbia and terbia and, by 1877, had reversed their names. What Mosander called erbia is now called terbia and visa versa. From these two substances, Mosander discovered two new elements, terbium and erbium. Today, erbium is primarily obtained through an ion exchange process from the minerals xenotime (YPO4) and euxenite ((Y, Ca, Er, La, Ce, U, Th)(Nb, Ta, Ti)2O6).",
+      "Erbium, one of the so-called rare-earth elements on the lanthanide series, is found in the minerals mentioned under dysprosium. In 1842 Mosander separated \"yttria\" found in the mineral gadolinite, into three fractions which he called yttria, erbia, and terbia. The names erbia and terbia became confused in this early period. After 1860, Mosander's terbia was known as erbia, and after 1877, the earlier known erbia became terbia. The erbia of this period was later shown to consist of five oxides, now known as erbia, scandia, holmia, thulia and ytterbia. By 1905 Urbain and James independently succeeded in isolating fairly pure Er2O3. Klemm and Bommer first produced reasonably pure erbium metal in 1934 by reducing the anhydrous chloride with potassium vapor."
+    ],
+    "discovery": [],
+    "uses": [
+      "Erbium is alloyed with vanadium to make it softer and easier to shape. Erbium is added to fiber optic cables as a doping agent where it is used as a signal amplifier. Erbium also has some uses in the nuclear power industry.Erbia, the renamed material that Mosander discovered in 1843, is erbium oxide (Er2O3), one of erbium's compounds. Erbia has a pink color and is used to color glass and glazes. Other erbium compounds include: erbium fluoride (ErF3, erbium chloride (ErCl3 and erbium iodide (ErI3).",
+      "Erbium is finding nuclear and metallurgical uses. Added to vanadium, for example, erbium lowers the hardness and improves workability. Erbium oxide gives a pink color and has been used as a colorant in glasses and porcelain enamel glazes."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The pure metal is soft and malleable and has a bright, silvery, metallic luster. As with other rare-earth metals, its properties depend to a certain extent on the impurities present. The metal is fairly stable in air and does not oxidize as rapidly as some of the other rare-earth metals. Naturally occurring erbium is a mixture of six isotopes, all of which are stable. Nine radioactive isotopes of erbium are also recognized. Recent production techniques, using ion-exchange reactions, have resulted in much lower prices of the rare-earth metals and their compounds in recent years. Most of the rare-earth oxides have sharp absorption bands in the visible, ultraviolet, and near infrared. This property, associated with the electronic structure, gives beautiful pastel colors to many of the rare-earth salts."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:53.614Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/68",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/erbium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele068.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele068.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/68.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=68",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

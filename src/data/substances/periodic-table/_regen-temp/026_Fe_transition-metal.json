@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 26,
+  "symbol": "Fe",
+  "name": "Iron",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 55.845,
+    "ionizationEnergy": 7.902,
+    "atomicRadius": 194,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 181115382800,
+    "boilingPoint": 313428615182,
+    "density": 7.874,
+    "electronConfiguration": 4236,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 54,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Anglo-Saxon iron of unknown origin. The element has been known from prehistoric times. The symbol Fe is derived from the Latin ferrum for \"firmness\". It is of interest to note that 56Fe requires more energy to be formed than any other nuclide. It is, therefore, the ultimate endproduct of stellar nuclear fusion.",
+      "Archaeological evidence suggests that people have been using iron for at least 5000 years. Iron is the cheapest and one of the most abundant of all metals, comprising nearly 5.6% of the earth's crust and nearly all of the earth's core. Iron is primarily obtained from the minerals hematite (Fe2O3) and magnetite (Fe3O4). The minerals taconite, limonite (FeO(OH)·nH2O) and siderite (FeCO3) are other important sources.",
+      "Latin ferrum. Iron was used prehistorically:▸ Iron is mentioned numerous times in the Old Testament of the Bible.▸ A remarkable iron pillar, dating to about A.D. 400, remains standing today in Delhi, India. This solid shaft of wrought iron is about 7 1/4 m high by 40 cm in diameter. Corrosion to the pillar has been minimal although it has been exposed to the weather since its creation."
+    ],
+    "discovery": [],
+    "uses": [
+      "Huge amounts of iron are used to make steel, an alloy of iron and carbon. Steel typically contains between 0.3% and 1.5% carbon, depending on the desired characteristics. The addition of other elements can give steel other useful properties. Small amounts of chromium improves durability and prevents rust (stainless steel); nickel increases durability and resistance to heat and acids; manganese increases strength and resistance to wear; molybdenum increases strength and resistance to heat; tungsten retains hardness at high temperatures; and vanadium increases strength and springiness. Steel is used to make paper clips, skyscrapers and everything in between.In addition to helping build the world around us, iron helps keep plants and animals alive. Iron plays a role in the creation of chlorophyll in plants and is an essential part of hemoglobin, the substance that carries oxygen within red blood cells. Iron sulfate (FeSO4) is used to treat the blood disease anemia.",
+      "Iron is a vital constituent of plant and animal life and works as an oxygen carrier in hemoglobin.Taconite is becoming increasingly important as a commercial ore. The pure metal is not often encountered in commerce, but is usually alloyed with carbon or other metals."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The pure metal is very reactive chemically and rapidly corrodes, especially in moist air or at elevated temperatures. It has four allotropic forms or ferrites, known as alpha, beta, gamma, and omega, with transition points at 700, 928, and 1530C. The alpha form is magnetic, but when transformed into the beta form, the magnetism disappears although the lattice remains unchanged. The relations of these forms are peculiar. Pig iron is an alloy containing about 3 percent carbon with varying amounts of sulfur, silicon, manganese, and phosphorus.Iron is hard, brittle, fairly fusible, and is used to produce other alloys, including steel. Wrought iron contains only a few tenths of a percent of carbon, is tough, malleable, less fusible, and usually has a \"fibrous\" structure.Carbon steel is an alloy of iron with small amounts of Mn, S, P, and Si. Alloy steels are carbon steels with other additives such as nickel, chromium, vanadium, etc. Iron is a cheap, abundant, useful, and important metal."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:44.910Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/26",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/iron.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele026.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele026.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/26.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=26",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

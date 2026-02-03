@@ -1,0 +1,90 @@
+{
+  "atomicNumber": 94,
+  "symbol": "Pu",
+  "name": "Plutonium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 244,
+    "ionizationEnergy": 6.06,
+    "atomicRadius": 243,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 9136401184,
+    "boilingPoint": 350132285842,
+    "density": 19.84,
+    "electronConfiguration": 7256,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 70,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Plutonium was first produced by Glenn T. Seaborg, Joseph W. Kennedy, Edward M. McMillan and Arthur C. Wohl by bombarding an isotope of uranium, uranium-238, with deuterons that had been accelerated in a device called a cyclotron. This created neptunium-238 and two free neutrons. Neptunium-238 has a half-life of 2.1 days and decays into plutonium-238 through beta decay. Although they conducted their work at the University of California in 1941, their discovery was not revealed to the rest of the scientific community until 1946 because of wartime security concerns. Plutonium's most stable isotope, plutonium-244, has a half-life of about 82,000,000 years. It decays into uranium-240 through alpha decay. Plutonium-244 will also decay through spontaneous fission.",
+      "Plutonium is the second transuranium element of the actinide series. Element 93 was discovered in 1940/41 by Glenn T. Seaborg, Edwin M. McMillan, J. W. Kennedy, and A. C. Wahl by deuteron bombardment of uranium-238 in the 60-inch cyclotron at the University of California, Berkeley Lab. They first synthesized neptunium-238 (half-life 2.1 days) which subsequently beta-decayed to form a new heavier element with atomic number 94 and atomic weight 238 (half-life 87.7 years). It was fitting that element 94 be named after the next planetoid, Pluto following the precedence that uranium was named after the planet Uranus and neptunium after the planet Neptune. Seaborg submitted a paper to the journal Physical Review in March 1941 documenting the discovery, but the paper was quickly withdrawn when it was found that an isotope of plutonium, Pu-239 could undergo nuclear fission making it useful in developing an atomic bomb. Pu-239 had a fission cross-section 50% greater than that of 235U, the best fissioning element known at that time.Seaborg was called away from Berkeley to lead the Plutonium Production Lab or \"Met Lab\" at the University of Chicago. The Met Lab was to produce useful quantities of plutonium as part of the secret Manhattan Project during World War II to develop an atomic bomb. On August 18, 1942, a trace quantity of plutonium was isolated and measured at the Met Lab for the first time. About 50 micrograms of Pu-239 combined with uranium and fission products was produced and only about 1 microgram was isolated. This was enough material for chemists to determine the new element's atomic weight. In November 1943 a few milligrams of PuF3 was reduced to create the first sample of plutonium metal. Enough plutonium was produced to make it the first man-made element to be visible to the unaided eye.The nuclear properties of plutonium-239 were also being studied and researchers found that when hit with a neutron it fissions by releasing energy and more neutrons. These neutrons can hit neighboring atoms of Pu-239 and so on, in an exponentially fast chain-reaction, releasing a tremendous amount of energy. This energy could result in an explosion large enough to destroy a city or fuel a nuclear reactor.During WW II the three primary research and production sites of the Manhattan Project were the Plutonium Production Facility at what is now the Hanford Site, Washington, the Uranium Enrichment facilities at Oak Ridge, Tennessee, and the weapons research and design laboratory, now known as Los Alamos National Laboratory. In 1943, the first production reactor that made Pu-239 was the X-10 Graphite Reactor built at a facility in Oak Ridge, Tennessee that later became the Oak Ridge National Laboratory.The Manhattan Project produced the plutonium for the \"Trinity Test\" conducted in New Mexico by Los Alamos Laboratory Director Robert Oppenheimer and Army General Leslie Groves. The world’s first atomic bomb (\"The Gadget\") was exploded near Socorro, New Mexico on July 16, 1945, resulting in an explosion with an energy equivalent of approximately 20,000 tons of TNT. The first atomic bomb used in war had a uranium core and was dropped on Hiroshima, Japan on August 6, 1945. The second atomic bomb used had a plutonium core and was nicknamed \"Fat Man\" because of its round shape. It was used to destroy Nagasaki, Japan in August 9, 1945, which put an end to WW II.Publication of the discovery and the naming of the new element plutonium was delayed until a year after the end of World War II. Seaborg originally considered the name \"plutium\", but later thought that it did not sound as good as \"plutonium.\"Later, during the Cold-War era, large stockpiles of weapons-grade plutonium were built up by both the Soviet Union and the United States. Each year about 20 tons of plutonium is still produced as a by-product of the nuclear power industry. As of 2007 it was estimated that the plutonium stockpile was about 500 tons, world-wide. Since the end of the Cold War these stockpiles have become a focus of nuclear proliferation concerns. In 2000, the United States and the Russian Federation mutually agreed to each dispose of 34 tons of weapon grade plutonium before the end of 2019 by converting it to a mixed uranium-plutonium oxide (MOX) fuel to be used in commercial nuclear power reactors.Today plutonium-239 remains an important component of nuclear weapons, and the United States maintains plutonium-related capabilities in support of national defense and global nuclear deterrence. Pu-239 for civilian nuclear power plants provides energy for many nations. Plutonium-238 continues to be vital to space exploration pushing the limits beyond which manned space exploration is possible and satisfying our quest for knowledge."
+    ],
+    "discovery": [],
+    "uses": [
+      "Only two of plutonium's isotopes, plutonium-238 and plutonium-239, have found uses outside of basic research. Plutonium-238 is used in radioisotope thermoelectric generators to provide electricity for space probes that venture too far from the sun to use solar power, such as the Cassini and Galileo probes. Plutonium-239 will undergo a fission chain reaction if enough of it is concentrated in one place, so it is used at the heart of modern day nuclear weapons and in some nuclear reactors.",
+      "Plutonium has assumed the position of dominant importance among the transuranium elements because of its use as an explosive ingredient in nuclear weapons and the place which it holds as a key material in the development of industrial use of nuclear power. During fission, a fraction of the binding energy, which holds a nucleus together, is released as a large amount of electromagnetic and kinetic energy which is quickly converted to thermal energy. Fission of a kilogram of plutonium-239 can produce an explosion equivalent to 21,000 tons of TNT which is equivalent to about 22 million kilowatt hours of heat energy. In 1982 it was estimated that about 300,000 kg had accumulated. The most common chemical process, PUREX (Plutonium–URanium EXtraction) reprocesses spent nuclear fuel to extract plutonium and uranium which can be used to form a mixed U/Pu oxide or \"MOX\" fuel for reuse in nuclear power reactors. MOX fuel production is also a good mechanism to reduce excessive defense plutonium stockpiles for peaceful purposes, which in effect is forging \"swords into plowshares.\"Plutonium isotopes undergo radioactive decay, which produces decay heat. Different isotopes produce different amounts of heat per mass. Pu-238 with a half-life of 88 years has a relatively high heat production rate which makes it useful as a power source with a long service life. The decay heat is usually listed as watt/kilogram, or milliwatt/gram. Pu-238 is a heat source in radioisotope thermoelectric generators, which are used to power spacecraft and extra-terrestrial rovers. As a power and heat source, Pu-238 has also been used to power instruments left on the Moon by Apollo astronauts, weather satellites and interplanetary probes and powers the Cassini Saturn mission and the Mars rovers.Plutonium-238 was at one time used successfully to power artificial heart pacemakers but has been replaced by lithium-based primary cells. Plutonium-238 was studied as a way to provide supplemental heat to scuba divers. Pu-238 mixed with beryllium is a convenient method to generate neutrons."
+    ],
+    "production": [
+      "Plutonium is the heaviest primordial element in existence by virtue of its most stable isotope, plutonium-244, whose half-life of about 80 million years is just long enough for the element to be found in trace quantities in nature. In 1971 mass spectrometric measurements of plutonium isolated from Precambrian bastnasite (a lanthanide chloride-fluoride mineral) by Hoffman and coworkers confirmed the presence of Pu-244 in nature. Although the existence of Pu-244 as an extinct radioactive element had been postulated to explain the xenon isotope ratios observed in meteorites, this is the first indication of its present existence in nature. Plutonium also exists in trace quantities in naturally occurring uranium ores. It is formed in much the same manner as neptunium: by irradiation of natural uranium with the neutrons followed by beta decay. Exceedingly small amounts of Pu-238, attributed to the extremely rare double-beta decay of U-238, have been found in natural uranium samples. Plutonium was most likely formed by neutron activation of natural U-238 at the Oklo natural reactor but if formed it has long since decayed away. Plutonium is for the most part a by-product of nuclear reactions in reactors where some of the neutrons released by the fission process convert U-238 nuclei into plutonium. Plutonium-238 and -239 are the most widely synthesized isotopes. Plutonium-239 is synthesized via the following reaction using uranium (U) and neutrons (n) via beta decay (β-) with neptunium as an intermediate:Plutonium-238 is synthesized by bombarding uranium-238 with deuterons in the following first discovery reaction:"
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Plutonium is unique among the elements in its physicochemical complexities by virtue of its position at a transitional location in the periodic table where the 5f electrons are at the border between delocalized (not associated with a single atom) and localized (associated with a single atom) behavior and it is considered one of the most complex of the elements. Plutonium also sits near the juncture where the actinide series transitions from main d-block element chemistry to rare earth like behavior as a result of the actinide contraction. Because of its defense and commercial importance, plutonium is one of the most intensely investigated of elements.Plutonium metal has a bright silvery appearance at first and takes on a dull gray, yellow or olive green tarnish when oxidized in air. A relatively large piece of plutonium is warm to the touch because of the energy given off by alpha decay. Larger pieces will produce enough heat to boil water. The metal readily dissolves in concentrated mineral acids. Plutonium metal normally has six allotropes or crystal structures; alpha (α), beta (β), gamma (γ), delta (δ), delta prime (δ') and epsilon (ε). It forms a seventh phase (zeta, ζ) under high temperature and a limited pressure range. These allotropes have very similar energy levels but significantly varying densities (from 16.00 to 19.86 grams/cm3) and crystal structures. This makes plutonium very sensitive to changes in temperature, pressure, or chemistry, and allows for dramatic volume changes following phase transitions. At room temperature plutonium is in its alpha (α) form, the most common structural form of the element. It is as hard and brittle as cast iron unless alloyed with other metals to form the room-temperature stabilized delta (δ) phase which makes it soft and ductile. Unlike most metals, it is not a good conductor of heat or electricity. It has a low melting point (640 °C) and an unusually high boiling point (3,228 °C).Plutonium can form alloys and intermediate compounds with most other metals. Gallium, aluminum, americium, scandium and cerium can stabilize the δ phase of plutonium metal. Nuclear fuel pellets can be formed by alloying plutonium with various metals such as: aluminum; zirconium; cerium; cerium-cobalt; uranium-titanium, uranium-zirconium and uranium-molybdenum. Thorium-plutonium-uranium alloys were investigated as a nuclear fuel for fast breeder reactors. A plutonium-gallium-cobalt alloy (PuCoGa5) was found to be an unconventional superconductor, showing superconductivity below 18.5 Kelvin, an order of magnitude higher than the highest between heavy fermion systems known.Plutonium forms compounds with a variety of other elements. Plutonium reacts with pure hydrogen, forming plutonium hydrides. It also reacts readily with oxygen, forming PuO and PuO2 as well as intermediate and sub-stoichiometric oxides. The metal reacts with the halogens, giving rise to trivalent Pu compounds with the general formula PuX3 where X can be F, Cl, Br or I and tetravalent plutonium compounds such as PuF4. The following oxyhalides are observed: PuOCl, PuOBr and PuOI. Plutonium reacts with carbon to form PuC, nitrogen to form PuN and silicon to form PuSi2. Pu3+ and Pu4+ oxalates are important intermediates that are calcined to form oxides as a step in plutonium processing. Other important compounds in reprocessing are fluoride, peroxide, acetylacetone, carbonate and hydroxide.The color displayed by plutonium solutions depends on both the oxidation state and the extent of complexation by various ligands. In aqueous solution plutonium exhibits five ionic valence states: Pu+3 (blue lavender), Pu+4 (salmon-colored, when uncomplexed), PuO+ (lavender), PuO+2 (orange-brown) and PuOxOHy (dark green in basic solution). The pentavalent ion, PuO+ is unstable in aqueous solutions and it disproportionates into Pu+4 and PuO+2. However, PuO2+ can be stabilized in aqueous solution in a narrow pH range around 4.5. By virtue of the close proximity of the electrode potentials of the various plutonium redox couples (~ 1 Volt/NHE), four oxidation states can co-exist in solution simultaneously: Pu3+, Pu4+, PuO2+ and PuO22+.Pu4+ is a \"hard\" (ionic) cation with the largest electronic charge of plutonium ions and it forms complexes with a variety of inorganic and organic ligands. In dilute perchloric acid, Pu4+ is un-complexed and is salmon-colored. However in concentrated acids, Pu4+ forms anionic complexes such as: Pu(NO3)62- (dark green) and Pu(Cl)62- (brick red). Pu4+, having a high ionic charge readily hydrolyzes (combines with hydroxide ion) at near-neutral pH values forming a green colloidal suspension that behaves like a solution but is actually a solid precipitate that can be separated by ultra-centrifugation.Plutonium-organic complexes are very important for separation, reprocessing, and purification and include: Tributyl phosphate (TBP); Di-(2-ethylhexyl)phosphoric acid (DEHPA or HDEHP); octyl(phenyl)-N,N-diisobutyl-carbamoylmethylphosphine oxide (CMPO); crown-ethers; and many others."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:59.290Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/94",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele094.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele094.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/94.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=94",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

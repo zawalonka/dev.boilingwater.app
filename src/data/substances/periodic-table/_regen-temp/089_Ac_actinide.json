@@ -1,0 +1,87 @@
+{
+  "atomicNumber": 89,
+  "symbol": "Ac",
+  "name": "Actinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 227,
+    "ionizationEnergy": 5.17,
+    "atomicRadius": 260,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 132410511924,
+    "boilingPoint": 347131985788,
+    "density": 10.07,
+    "electronConfiguration": 7261,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Actinium was discovered in 1899 by André-Louis Debierne, a French chemist, while experimenting with new methods of separating rare earth oxides. Friedrich Otto Giesel independently discovered actinium in 1902. Actinium is a rare element that is present in uranium ores in tiny amounts, but it is usually cheaper and easier to create actinium when it is needed by bombarding radium with neutrons in a nuclear reactor.Actinium's most stable isotope, actinium-227, has a half-life of 21.77 years. It decays into francium-223 through alpha decay or into thorium-227 through beta decay.",
+      "From the Greek aktis, aktinos, meaning beam or ray. Discovered by Andre Debierne in 1899 and independently by F. Giesel in 1902. Occurs naturally in association with uranium minerals."
+    ],
+    "discovery": [],
+    "uses": [
+      "Actinium has no significant commercial applications, although it is used in the production of neutrons."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Actinium-227, a decay product of uranium-235, is a beta emitter with a 21.6-year half-life. Its principal decay products are thorium-227 (18.5-day half-life), radium-223 (11.4-day half-life), and a number of short-lived products including radon, bismuth, polonium, and lead isotopes. In equilibrium with its decay products, it is a powerful source of alpha particles. Actinium metal has been prepared by the reduction of actinium fluoride with lithium vapor at about 1100 to 1300-degrees C. The chemical behavior of actinium is similar to that of the rare earths, particularly lanthanum. Purified actinium comes into equilibrium with its decay products at the end of 185 days, and then decays according to its 21.6-year half-life. It is about 150 times as active as radium, making it of value in the production of neutrons.In April of 2012, Los Alamos National Laboratory announced a new medical isotope project that shows promise for rapidly producing major quantities of a new cancer-treatment agent, actinium 225 (Ac-225). Both a press release and a video are available."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:58.284Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/89",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele089.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele089.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/89.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=89",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

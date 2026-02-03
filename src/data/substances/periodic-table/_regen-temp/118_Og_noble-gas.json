@@ -1,0 +1,71 @@
+{
+  "atomicNumber": 118,
+  "symbol": "Og",
+  "name": "Oganesson",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 294,
+    "boilingPoint": 350,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 7276514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": -10,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "On October 16, 2006, scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, along with scientists from the U.S. Department of Energy's Lawrence Livermore National Laboratory, announced the creation of oganesson. They produced oganesson by bombarding atoms of californium-249 with ions of calcium-48. This produced oganesson-294, an isotope with a half-life of about 0.89 milliseconds (0.00089 seconds), and three free neutrons. The californium target was irradiated with a total of 1.6*1019 calcium ions over the course of 1080 hours, resulting in the production of three atoms of oganesson. Oganesson's most stable isotope, oganesson-294, has a half-life of about 0.89 milliseconds. It decays into livermorium-290 through alpha decay.",
+      "On Novemer 28th, 2016, element 118 was named Oganesson with the symbol (Og). The name was proposed by the Joint Institute for Nuclear Research, Dubna (Russia) and Lawrence Livermore National Laboratory (USA). It honors Professor Yuri Oganessian (born 1933) for his pioneering contributions to transactinoid elements research."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of oganesson have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Oganesson does not occur naturally in the Earth’s crust. The name oganesson and symbol Og are the accepted ones for element 118. The name is in line with the tradition of honoring a scientist and recognizes Prof. Yuri Oganessian (Fig. IUPAC.118.1; born 1933) for his pioneering contribution to trans-actinoid element research. His many achievements include the discovery of super-heavy elements and significant advances in the nuclear physics of super-heavy nuclei, including experimental evidence for the “island of stability.”In 2005, experiments were performed in Dubna’s U-400 cyclotron, where 48Ca bombarded a spinning target of 249Cf at nearly 3×104 km/s to produce oganesson. With the success of creating oganesson, scientists from Livermore and Joint Institute for Nuclear Research (JINR) are starting experiments to create element 120 by bombarding a 244Pu target with a beam of 58Fe [680], [681], [682], [683]. Oganesson has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:04.588Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/118",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele118.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele118.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/118.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=118",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

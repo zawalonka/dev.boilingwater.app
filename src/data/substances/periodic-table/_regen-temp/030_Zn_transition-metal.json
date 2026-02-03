@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 30,
+  "symbol": "Zn",
+  "name": "Zinc",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 65.38,
+    "ionizationEnergy": 9.394,
+    "atomicRadius": 139,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 692.68419,
+    "boilingPoint": 11809071665,
+    "density": 7.134,
+    "electronConfiguration": 42310,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the German zink of unknown origin. It was first used in prehistoric times, where its compounds were used for healing wounds and sore eyes and for making brass. Zinc was recognized as a metal as early as 1374.",
+      "Although zinc compounds have been used for at least 2,500 years in the production of brass, zinc wasn't recognized as a distinct element until much later. Metallic zinc was first produced in India sometime in the 1400s by heating the mineral calamine (ZnCO3) with wool. Zinc was rediscovered by Andreas Sigismund Marggraf in 1746 by heating calamine with charcoal. Today, most zinc is produced through the electrolysis of aqueous zinc sulfate (ZnSO4).",
+      "From the German word Zink, of obscure origin. Centuries before zinc was recognized as a distinct element, zinc ores were used for making brass. An alloy containing 87 percent zinc has been found in prehistoric ruins in Transylvania.Metallic zinc was produced in the 13th century A.D. India by reducing calamine with organic substances such as wool. The metal was rediscovered in Europe by Marggraf in 1746. He demonstrated that zinc could be obtained by reducing calamine with charcoal."
+    ],
+    "discovery": [],
+    "uses": [
+      "Roughly one third of all metallic zinc produced today is used in a process known as galvanization. During galvanization, an object that is subject to corrosion, such as an iron nail, is given a protective coating of zinc. The zinc can be applied to an object by dipping it in a pool of molten zinc, but it is most often applied through an electroplating process. Sacrificial zinc anodes are used in cathodic protection systems to protect exposed iron from corrosion. Metallic zinc is also used to make dry cell batteries, roof cladding and die castings.Zinc is used to make many useful alloys. Brass, an alloy of zinc that contains between 55% and 95% copper, is probably the best known zinc alloy. Brass was first used about 2,500 years ago and was widely used by the ancient Romans, who used it to make such things as coins, kettles and decorative items. Brass is still used today, particularly in musical instruments, screws and other hardware that must resist corrosion. Zinc is alloyed with lead and tin to make solder, a metal with a relatively low melting point used to join electrical components, pipes and other metallic items. Prestal®, an alloy containing 78% zinc and 22% aluminum, is a strange material that is nearly as strong as steel but is molded as easily as plastic. Nickel silver, typewriter metal, spring brass and German silver are other common zinc alloys.Zinc oxide (ZnO), a common zinc compound, forms when metallic zinc is exposed to the air and forms a protective coating that protects the rest of the metal. Zinc oxide is used in paints, some rubber products, cosmetics, pharmaceuticals, plastics, printing inks, soap and batteries, among other things. Zinc sulfide (ZnS), another zinc compound, glows when it is exposed to ultraviolet light, X-rays or electrons and is used to make luminous watch dials, television screens and fluorescent light bulbs. Zinc chloride (ZnCl2) is another zinc compound that is used to protect wood from decay and insects.",
+      "The metal is employed to form numerous alloys with other metals. Brass, nickel silver, typewriter metal, commercial bronze, spring bronze, German silver, soft solder, and aluminum solder are some of the more important alloys.Large quantities of zinc are used to produce die castings, which are used extensively by the automotive, electrical, and hardware industries. An alloy called Prestal(R), consisting of 78 percent zinc and 22 percent aluminum, is reported to be almost as strong as steel and as easy to mold as plastic. The alloy said to be so moldable that it can be molded into form using inexpensive ceramics or cement die casts.Zinc is also used extensively to galvanize other metals such as iron to prevent corrosion. Zinc oxide is a unique and very useful material for modern civilization. It is widely used in the manufacture of paints, rubber products, cosmetics, pharmaceuticals, floor coverings, plastics, printing inks, soap, storage batteries, textiles, electrical equipment, and other products. Lithopone, a mixture of zinc sulfide and barium sulfate, is an important pigment.Zinc sulfide is used in making luminous dials, X-ray and TV screens, and fluorescent lights.The chloride and chromate are also important compounds. Zinc is an essential element in the growth of human beings and animals. Tests show that zinc-deficient animals require 50 percent more food to gain the same weight as an animal supplied with sufficient zinc."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Zinc is a bluish-white, lustrous metal. It is brittle at ordinary temperatures but malleable at 100 to 150°C. It is a fair conductor of electricity, and burns in air at high red heat with evolution of white clouds of the oxide.It exhibits superplasticity. Neither zinc nor zirconium is ferromagnetic; but ZrZn2 exhibits ferromagnetism at temperatures below 35°K. It has unusual electrical, thermal, optical, and solid-state properties that have not been fully investigated."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:45.688Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/30",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/zinc.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele030.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele030.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/30.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=30",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

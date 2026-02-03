@@ -94,9 +94,10 @@
           <summary>View source code</summary>
           <pre class="line-numbers"><code class="language-markdown"># Room Environment &amp; Atmospheric System
 
-&gt; **Status:** Phase 1 Implementation  
+&gt; **Status:** ✅ Phase 1 COMPLETE (2026-02-01)  
 &gt; **Scope:** Modular room state, AC/scrubber parts, closed-system physics, experiment scorecard
 &gt; **Target Integration:** L1E4+ (Room Control experiment unlocks AC/handler dropdowns)
+&gt; **See:** [COMPLETED_TODOS.md](COMPLETED_TODOS.md) - Room Environment Phase 1 section
 
 ---
 
@@ -798,18 +799,25 @@ export function applyReactionHeatToRoom(reactionEnthalpyKJ, roomVolume, roomHeat
 
 ## 🗺️ IMPLEMENTATION ROADMAP
 
-### Phase 1: Foundation (Hidden from UI)
-- [ ] Create `src/utils/roomEnvironment.js` (state + integrator)
-- [ ] Create `src/utils/acUnitHandler.js` (PID controller)
-- [ ] Create `src/utils/airHandlerScrubber.js` (composition updater)
-- [ ] Add room.json to each workshop (`public/assets/workshops/{workshop}/room.json`)
-- [ ] Add burner files (`public/assets/workshops/{workshop}/burners/*.json`)
-- [ ] Add AC unit files (`public/assets/workshops/{workshop}/ac-units/*.json`)
-- [ ] Add air handler files (`public/assets/workshops/{workshop}/air-handlers/*.json`)
-- [ ] Migrate burner wattageSteps from workshop.json to burner JSONs
-- [ ] Update workshopLoader.js to load room.json + equipment files
-- [ ] Hook room temperature into physics simulation
-- [ ] Track heat/composition logs in GameScene state
+### ✅ Phase 1: Foundation (COMPLETE)
+**Completed:** 2026-02-01
+
+- [x] Create `src/utils/roomEnvironment.js` (state + integrator)
+- [x] Create `src/utils/acUnitHandler.js` (PID controller)
+- [x] Create `src/utils/airHandlerScrubber.js` (composition updater)
+- [x] Create `src/hooks/useRoomEnvironment.js` (React hook)
+- [x] Add room.json to each workshop (`public/assets/workshops/{workshop}/room.json`)
+- [x] Add burner files (`public/assets/workshops/{workshop}/burners/*.json`)
+- [x] Add AC unit files (`public/assets/workshops/{workshop}/ac-units/*.json`)
+- [x] Add air handler files (`public/assets/workshops/{workshop}/air-handlers/*.json`)
+- [x] Migrate burner wattageSteps from workshop.json to burner JSONs
+- [x] Update workshopLoader.js to load room.json + equipment files
+- [x] Create `src/components/RoomControls.jsx` (UI panel)
+- [x] Hook room temperature into physics simulation
+- [x] Track heat/composition logs in GameScene state
+- [x] Progressive unlock (L1E4+ only)
+- [x] Vapor release → room composition
+- [x] Pressure feedback loop (room pressure affects boiling point)
 
 ### Phase 2: Display &amp; Control
 - [ ] Create `src/components/ExperimentScorecard.jsx`

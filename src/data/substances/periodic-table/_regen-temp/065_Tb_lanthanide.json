@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 65,
+  "symbol": "Tb",
+  "name": "Terbium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 158.92535,
+    "ionizationEnergy": 5.864,
+    "atomicRadius": 221,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 162913562473,
+    "boilingPoint": 350332305846,
+    "density": 8.23,
+    "electronConfiguration": 6249,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 6152,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the village of Ytterby in Sweden, where the mineral ytterbite (the source of terbium) was first found. Terbium was discovered by the Swedish surgeon and chemist Carl-Gustav Mosander in 1843 in an yttrium salt, which he resolved into three elements. He called one yttrium, a rose-colored salt he called terbium, and a deep-yellow peroxide he called erbium. In 1862, the Swiss chemist Marc Delafontaine reexamined yttrium and found the yellow peroxide. Because the name erbium had now been assigned to the rose-colored oxide, he reintroduced the name terbium for the yellow peroxide. Thus the original names given to erbium and terbium samples are now switched.",
+      "The mineral gadolinite ((Ce, La, Nd, Y)2FeBe2Si2O10), discovered in a quarry near the town of Ytterby, Sweden, has been the source of a great number of rare earth elements. In 1843, Carl Gustaf Mosander, a Swedish chemist, was able to separate gadolinite into three materials, which he named yttria, erbia and terbia. As might be expected considering the similarities between their names and properties, scientists soon confused erbia and terbia and, by 1877, had reversed their names. What Mosander called erbia is now called terbia and visa versa. From these two substances, Mosander discovered two new elements, terbium and erbium. Today, terbium can be obtained from the minerals xenotime (YPO4) and euxenite ((Y, Ca, Er, La, Ce, U, Th)(Nb, Ta, Ti)2O6), but is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements that typically contains as much as 0.03% terbium.",
+      "Discovered by Mosander in 1843. Terbium is a member of the lanthanide or \"rare earth\" group of elements. It is found in cerite, gadolinite, and other minerals along with other rare earths. It is recovered commercially from monazite in which it is present to the extent of 0.03%, from xenotime, and from euxenite, a complex oxide containing 1% or more of terbia."
+    ],
+    "discovery": [],
+    "uses": [
+      "Terbium is used to dope some types of solid-state devices and, along with zirconium dioxide (ZrO2), as a crystal stabilizer in fuel cells that operate at high temperatures.Terbia, the renamed material that Mosander discovered in 1843, is terbium oxide (Tb2O3), one of terbium's compounds. Terbia can potentially be used as an activator for green phosphors in television tubes. Sodium terbium borate, another terbium compound, is used to make laser light.",
+      "Sodium terbium borate is used in solid-state devices. It can be used with ZrO2 as a crystal stabilizer of fuel cells which operate at elevated temperature. Few other uses have been found."
+    ],
+    "production": [
+      "Terbium has been isolated only in recent years with the development of ion-exchange techniques for separating the rare-earth elements. As with other rare earth metals, it can be produced by reducing the anhydrous chloride or fluoride with calcium metal in a tantalum crucible. Calcium and tantalum impurities can be removed by vacuum remelting. Other methods of isolation are possible."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Terbium is reasonably stable in air. It is a silver-gray metal, and is malleable, ductile, and soft enough to be cut with a knife. Two crystal modifications exist, with a transformation temperature of 1289°C. Twenty one isotopes with atomic masses ranging from 145 to 165 are recognized. The oxide is a chocolate or dark maroon color."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:53.027Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/65",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/terbium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele065.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele065.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/65.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=65",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

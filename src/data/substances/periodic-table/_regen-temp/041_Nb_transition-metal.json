@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 41,
+  "symbol": "Nb",
+  "name": "Niobium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 92.90637,
+    "ionizationEnergy": 6.759,
+    "atomicRadius": 207,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 275024774491,
+    "boilingPoint": 501747448571,
+    "density": 8.57,
+    "electronConfiguration": 5144,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 612,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek mythological character Niobe, who was the daughter of Tantalus, because the elements niobium and tantalum were originally thought to be identical. Niobium was discovered in a black mineral from America called columbite by the British chemist and manufacturer Charles Hatchett in 1801 and he called the element columbium. In 1809, the English chemist William Hyde Wollaston claimed that columbium and tantalum were identical.Forty years later, the German chemist and pharmacist, Heinrich Rose, determined that they were two different elements in 1846 and gave the name niobium because it was so difficult to distinguish it from tantalum. The name columbium continued to be used in America and niobium in Europe until IUPAC adopted the name niobium in 1949. Niobium was first isolated by the chemist C. W. Blomstrand in 1846.",
+      "The story of niobium's discovery is a bit confusing. The first governor of Connecticut, John Winthrop the Younger, discovered a new mineral around 1734. He named the mineral columbite ((Fe, Mn, Mg)(Nb, Ta)2O6) and sent a sample of it to the British Museum in London, England. The columbite sat in the museum's mineral collection for years until it was analyzed by Charles Hatchett in 1801. Hatchett could tell that there was an unknown element in the columbite, but he was not able to isolate it. He named the new element columbium. The fate of columbium took a drastic turn in 1809 when William Hyde Wollaston, an English chemist and physicist, compared the minerals columbite and tantalite ((Fe, Mn)(Ta, Nb)2O6) and declared that columbium was actually the element tantalum. This confusion arose because tantalum and niobium are similar metals, are always found together and are very difficult to isolate.Niobium was rediscovered and renamed by Heinrich Rose in 1844 when he produced two new acids, niobic acid and pelopic acid, from samples of columbite and tantalite. These acids are very similar to each other and it took another twenty-two years and a Swiss chemist named Jean Charles Galissard de Marignac to prove that these were two distinct chemicals produced from two different elements. Metallic niobium was finally isolated by the Swedish chemist Christian Wilhelm Blomstrand in 1864. Today, niobium is primarily obtained from the minerals columbite and pyrochlore ((Ca, Na)2Nb2O6(O, OH, F)).",
+      "Named after Niobe, the daughter of Tantalu. Discovered in 1801 by Hatchett in an ore sent to England. The metal was first prepared in 1864 by Blomstrand, who reduced the chloride by heating it in a hydrogen atmosphere. The name niobium was adopted by the International Union of Pure and Applied Chemicstry (IUPAC) in 1950 after 100 years of controversy. Many leading chemical societies and government organizations refer to it by this name. Most metallurgists, leading metal societies, and all but one of the leading U.S. commercial producers, however, still refer to the metal as \"columbium.\""
+    ],
+    "discovery": [],
+    "uses": [
+      "Niobium is used as an alloying agent and for jewelry, but perhaps its most interesting applications are in the field of superconductivity. Superconductive wire can be made from an alloy of niobium and titanium which can then be used to make superconductive magnets. Other alloys of niobium, such as those with tin and aluminum, are superconductive as well. Pure niobium is itself a superconductor when it is cooled below 9.25 K (-442.75°F). Superconductive niobium cavities are at the heart of a machine built at the Thomas Jefferson National Accelerator Facility. This machine, called an electron accelerator, is used by scientists to study the quark structure of matter. The accelerator's 338 niobium cavities are bathed in liquid helium and accelerate electrons to nearly the speed of light.",
+      "Niobium is used in arc-welding rods for stabilized grades of stainless steel. Thousands of pounds of niobium have been used in advanced air frame systems such as were used in the Gemini space program. The element has superconductive properties; superconductive magnets have been made with Nb-Zr wire, which retains its superconductivity in strong magnetic fields. This type of application offers hope of direct large-scale generation of electric power. Niobium is also commonly used for jewelry."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Niobium is a shiny, white, soft, and ductile metal, and takes on a bluish cast when exposed to air at room temperatures for a long time. The metal starts to oxidize in air at 200°C, and when processed at even moderate temperatures must be placed in a protective atmosphere."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:47.751Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/41",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/niobium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele041.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele041.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/41.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=41",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

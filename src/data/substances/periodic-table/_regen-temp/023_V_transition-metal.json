@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 23,
+  "symbol": "V",
+  "name": "Vanadium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 50.9415,
+    "ionizationEnergy": 6.746,
+    "atomicRadius": 179,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 218319103470,
+    "boilingPoint": 368034076165,
+    "density": 6,
+    "electronConfiguration": 4233,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Scandinavian goddess of love and beauty, Freyja Vanadis, because of its many beautiful multi-coloured compounds. Vanadium was discovered by the Swedish physician and chemist Nils-Gabriel Sefström in 1830.Vanadium had originally been discovered by the Spanish mineralogist Andres Manuel del Rio y Fernandez in 1801, who named it erythronium, after the plant of that name whose flowers have many beautiful colours. Del Rio later decided that it was really chromium in his lead sample. Vanadium metal was first isolated by the English chemist Henry Enfield Roscoe in 1869.",
+      "Vanadium was discovered by Andrés Manuel del Rio, a Spanish chemist, in 1801. Rio sent samples of vanadium ore and a letter describing his methods to the Institute de France in Paris, France, for analysis and confirmation. Unfortunately for Rio, his letter was lost in a shipwreck and the Institute only received his samples, which contained a brief note describing how much this new element, which Rio had named erythronium, resembled chromium. Rio withdrew his claim when he received a letter from Paris disputing his discovery. Vanadium was rediscovered by Nils Gabriel Sefstrôm, a Swedish chemist, in 1830 while analyzing samples of iron from a mine in Sweden. Vanadium was isolated by Sir Henry Enfield Roscoe, an English chemist, in 1867 by combining vanadium trichloride (VCl3) with hydrogen gas (H2). Today, vanadium is primarily obtained from the minerals vanadinite (Pb5(VO)3Cl) and carnotite (K2(UO2)2VO4·1-3H2O) by heating crushed ore in the presence of carbon and chlorine to produce vanadium trichloride. The vanadium trichloride is then heated with magnesium in an argon atmosphere.",
+      "Named after Scandinavian goddess, Vanadis. Vanadium was first discovered by del Rio in 1801. Unfortunately, a French chemist incorrectly declared that del Rio's new element was only impure chromium. Del Rio thought himself to be mistaken and accepted the French chemists' statement.The element was rediscovered in 1830 by Sefstrom, who named the element in honor of the Scandinavian goddess, Vanadis, because of its beautiful multicolored compounds. It was isolated in nearly pure form by Roscoe, who in 1867 reduced the chloride with hydrogen.Vanadium of 99.3 to 99.8% purity was not produced until 1922."
+    ],
+    "discovery": [],
+    "uses": [
+      "Vanadium is corrosion resistant and is sometimes used to make special tubes and pipes for the chemical industry. Vanadium also does not easily absorb neutrons and has some applications in the nuclear power industry. A thin layer of vanadium is used to bond titanium to steel.Nearly 80% of the vanadium produced is used to make ferrovanadium or as an additive to steel. Ferrovanadium is a strong, shock resistant and corrosion resistant alloy of iron containing between 1% and 6% vanadium. Ferrovanadium and vanadium-steel alloys are used to make such things as axles, crankshafts and gears for cars, parts of jet engines, springs and cutting tools.Vanadium pentoxide (V2O5) is perhaps vanadium's most useful compound. It is used as a mordant, a material which permanently fixes dyes to fabrics. Vanadium pentoxide is also used as a catalyst in certain chemical reactions and in the manufacture of ceramics. Vanadium pentoxide can also be mixed with gallium to form superconductive magnets.",
+      "Vanadium is used in producing rust resistant and high speed tool steels. It is an important carbide stabilizer in making steels.About 80% of the vanadium now produced is used as ferrovanadium or as a steel additive. Vanadium foil is used as a bonding agent in cladding titanium to steel. Vanadium pentoxide is used in ceramics and as a catalyst.It is also used to produce a superconductive magnet with a field of 175,000 gauss."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Pure vanadium is a bright white metal, and is soft and ductile. It has good corrosion resistance to alkalis, sulfuric and hydrochloric acid, and salt water, but the metal oxidizes readily above 660°C.The metal has good structural strength and a low fission neutron cross section, making it useful in nuclear applications."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:44.353Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/23",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/vanadium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele023.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele023.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/23.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=23",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

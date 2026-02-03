@@ -1,0 +1,91 @@
+{
+  "atomicNumber": 85,
+  "symbol": "At",
+  "name": "Astatine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 210,
+    "ionizationEnergy": 9.5,
+    "atomicRadius": 202,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 575302576,
+    "boilingPoint": 337,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "density": 7,
+    "electronConfiguration": 6241451065,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7531,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Astatine was produced by Dale R. Carson, K.R. MacKenzie and Emilio Segrè by bombarding an isotope of bismuth, bismuth-209, with alpha particles that had been accelerated in a device called a cyclotron. This created astatine-211 and two free neutrons. This work was conducted at the University of California in 1940. Small amounts of astatine exist in nature as a result of the decay of uranium and thorium, although the total amount of astatine in the earth's crust at any particular time is less than 30 grams. Due to its scarcity, astatine is produced when it is needed. A total of 0.05 micrograms (0.00000005 grams) of astatine have been produced to date.Astatine's most stable isotope, astatine-210, has a half-life of 8.1 hours. It decays into bismuth-206 through alpha decay or into polonium-210 through electron capture.",
+      "From the Greek astatos meaning unstable. Synthesized in 1940 by D.R. Corson, K.R. MacKenzie, and E. Segre at the University of California by bombarding bismuth with alpha particles. The longest-lived isotopes, with naturally occurring uranium and thorium isotopes, and traces of 217At are equilibrium with 233U and 239Np resulting from integration of thorium and uranium with naturally produced neutrons. The total amount of astatine present in the earth's crust, however, is less than 1 oz."
+    ],
+    "discovery": [],
+    "uses": [
+      "Due to the small amounts produced and its short half-life, there are currently no uses for astatine outside of basic scientific research."
+    ],
+    "production": [
+      "Astatine can be produced by bombarding bismuth with energetic alpha particles to obtain the relatively long-lived 209-211At, which can be distilled from the target by heating in air."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The \"time of flight\" mass spectrometer has been used to confirm that this highly radioactive halogen behaves chemically very much like other halogens, particularly iodine. Astatine is said to be more metallic than iodine, and, like iodine, it probably accumulates in the thyroid gland. Workers at the Brookhaven National Laboratory have recently used reactive scattering in crossed molecular beams to identify and measure elementary reactions involving astatine."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:57.484Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/85",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele085.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele085.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/85.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=85",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

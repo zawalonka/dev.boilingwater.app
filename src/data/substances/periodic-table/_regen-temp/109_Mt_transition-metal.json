@@ -1,0 +1,72 @@
+{
+  "atomicNumber": 109,
+  "symbol": "Mt",
+  "name": "Meitnerium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 278,
+    "atomicRadius": 128,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "electronConfiguration": 7251467,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 986431,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Meitnerium was first produced by Peter Armbruster, Gottfried Münzenber and their team working at the Gesellschaft für Schwerionenforschung in Darmstadt, Germany in 1982. They bombarded atoms of bismuth-209 with ions of iron-58 with a device known as a linear accelerator. This produced atoms of meitnerium-266, an isotope with a half-life of about 3.8 milliseconds (0.0038 seconds), and a free neutron. Meitnerium's most stable isotope, meitnerium-278, has a half-life of about 8 seconds. It decays into bohrium-274 through alpha decay.",
+      "On August 29, 1982, physicists at the Heavy Ion Research Laboratory, Darmstadt, West Germany made and identified element 109 by bombing a target of 209Bi with accelerated nuclei of 58Fe. If the combined energy of two nuclei is sufficiently high, the repulsive forces between the nuclei can be overcome.In this experiment, a week of target bombardment was required to produce a single fused nucleus. The team confirmed the existence of element 109 by four independent measurements. The newly formed atom recoiled from the target at predicted velocity and was separated from smaller, faster nuclei by a newly developed velocity filter. The time of flight to the detector and the striking energy were measured and found to match predicted values.The nucleus of 266X started to decay 5 ms after striking the detector. A high-energy alpha particle was emitted, producing 262/107X. This in turn emitted an alpha particle, becoming 258/105Db, which in turn captured an electron and became 258/104Rf. This in turn decayed into other nuclides. This experiment demonstrated the feasibility of using fusion techniques as a method of making new, heavy nuclei."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only small amounts of meitnerium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Meitnerium does not occur naturally in the Earth’s crust. Meitnerium was first synthesized by German scientists at the GSI Center for Heavy Ion Research in Darmstadt, Germany in 1984 using the nuclear reaction 209Bi (58Fe, n) 266MtHs. The element is named for the physicist, Lise Meitner (Fig. IUPAC.109.1), who discovered the element protactinium [653], [655]. Meitnerium is used only for scientific research.",
+      "Meitnerium is named after Lise Meitner."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:02.753Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/109",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele109.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele109.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/109.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=109",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

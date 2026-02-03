@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 90,
+  "symbol": "Th",
+  "name": "Thorium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 232.0377,
+    "ionizationEnergy": 6.08,
+    "atomicRadius": 237,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 202317503182,
+    "boilingPoint": 506147888650,
+    "density": 11.72,
+    "electronConfiguration": 7262,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from Thor, the Scandinavian god of thunder. It was discovered in the mineral thorite (ThSiO4) by the Swedish chemist Jöns Jacob Berzelius in 1828. Thorium was first isolated by the chemists D. Lely, Jr. and L. Hamburger in 1914.",
+      "Thorium was discovered by Jöns Jacob Berzelius, a Swedish chemist, in 1828. He discovered it in a sample of a mineral that was given to him by the Reverend Has Morten Thrane Esmark, who suspected that it contained an unknown substance. Esmark's mineral is now known as thorite (ThSiO4). Thorium makes up about 0.0007% of the earth's crust and is primarily obtained from thorite, thorianite (ThO2) and monazite ((Ce, La, Th, Nd, Y)PO4).",
+      "Morten Esmark found a black mineral on Løvøya island, Norway and gave a sample to his father Jens Esmark, a noted mineralogist. The elder Esmark was not able to identify it and sent a sample to Swedish chemist Jöns Jakob Berzelius for examination in 1828. In 1829 Berzelius determined that it contained a new element, which he named thorium after Thor, the Norse god of thunder. The metal had no practical uses until 1885 when Carl Auer von Welsbach invented the gas mantle. Thorium was first observed to be radioactive in 1898, independently, by Polish-French physicist Marie Curie and German chemist Gerhard Carl Schmidt. Between 1900 and 1903, Ernest Rutherford and Frederick Soddy showed how thorium decayed at a fixed rate over time into a series of other elements. This observation led to the identification of half-life as one of the outcomes of the alpha particle experiments that led to their disintegration theory of radioactivity. The crystal bar process (or \"iodide process\") was discovered by Anton Eduard van Arkel and Jan Hendrik de Boer in 1925 to produce high-purity metallic thorium. Because of health concerns, the thorium in classic lantern mantles has been replaced by rare-earth elements that also produce intense light without the radioactivity."
+    ],
+    "discovery": [],
+    "uses": [
+      "Thorium is used as an alloying agent to improve magnesium's strength at high temperatures. Thorium is also used to coat tungsten filaments used in electronic devices, such at television sets. When bombarded with neutrons, thorium-232 becomes thorium-233, which eventually decays into uranium-233 through a series of beta decays. Uranium-233 is a fissionable material and can be used as a nuclear fuel.Thorium oxide (ThO2), one of thorium's compounds, has many uses. It is primarily used in a type of lantern mantel known as a Welsbach mantle. This mantle, which also contains about 1% cerium oxide, glows with a bright white light when it is heated in a gas flame. Thorium oxide has a very high melting point, about 3300°C, and is used to make high temperature crucibles. Thorium oxide is also used to make glass with a high index of refraction that is used to make high quality camera lenses. Thorium oxide is used as a catalyst in the production of sulfuric acid (H2SO4), in the cracking of petroleum products and in the conversion of ammonia (NH3) to nitric acid (HNO3).Thorium's most stable isotope, thorium-232, has a half-life of about 14,050,000,000 years. It decays into radium-228 through alpha decay or decays through spontaneous fission.",
+      "The principal historic use of thorium has been in the preparation of the Welsbach mantle, used for portable gaslights. These mantles, consisting of thorium oxide with about 1% cerium oxide and other ingredients, glow with a dazzling light when heated in a gas flame. Thorium is an important alloying element in magnesium, imparting high strength and creep resistance at elevated temperatures. Because thorium has a low work-function and high electron emission, it is used to coat tungsten wire used in electronic equipment. The oxide is also used to control the grain size of tungsten used for electric lamps; it is also used for high-temperature laboratory crucibles. Glasses containing thorium oxide have a high refractive index and low dispersion. Consequently, they find application in high quality lenses for cameras and scientific instruments. Thorium oxide has also found use as a catalyst in the conversion of ammonia to nitric acid, in petroleum cracking, and in producing sulfuric acid. Thorium metal is a source of nuclear power. There is probably more energy available for use from thorium in the minerals of the earth's crust than from both uranium and fossil fuels. Any sizable demand from thorium as a nuclear fuel is still several years in the future. Work has been done in developing thorium cycle converter-reactor systems. Several prototypes, including the HTGR (high-temperature gas-cooled reactor) and MSRE (molten salt converter reactor experiment), have operated. While the HTGR reactors are efficient, they are not expected to become important commercially for many years because of certain operating difficulties."
+    ],
+    "production": [
+      "Several methods are available for producing thorium metal; it can be obtained by reducing thorium oxide with calcium, by electrolysis of anhydrous thorium chloride in a fused mixture of sodium and potassium chlorides, by calcium reduction of thorium tetrachloride mixed with anhydrous zinc chloride, and by reduction of thorium tetrachloride with an alkali metal."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "When pure, thorium is a silvery-white metal that is air-stable and retains its luster for several months. When contaminated with the oxide, thorium slowly tarnishes in air, becoming gray and finally black. The physical properties of thorium are greatly influenced by the degree of contamination with the oxide. The purest specimens often contain several tenths of a percent of the oxide. High-purity thorium has been made. Pure thorium is soft, very ductile, and can be cold-rolled, swaged, and drawn. Thorium is dimorphic, changing at 1400°C from a cubic to a body-centered cubic structure. Thorium oxide has a melting point of 3300°C, which is the highest of all oxides. Only a few elements, such as tungsten, and a few compounds, such as tantalum carbide, have higher melting points. Thorium is slowly attacked by water, but does not dissolve readily in most common acids, except hydrochloric. Powdered thorium metal is often pyrophoric and should be handled carefully. When heated in air, thorium turnings ignite and burn brilliantly with a white light."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:58.466Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/90",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/thorium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele090.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele090.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/90.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=90",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

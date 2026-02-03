@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 47,
+  "symbol": "Ag",
+  "name": "Silver",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 107.8682,
+    "ionizationEnergy": 7.576,
+    "atomicRadius": 172,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 1234.93961,
+    "boilingPoint": 243521623924,
+    "density": 10.501,
+    "electronConfiguration": 51410,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Anglo-Saxon seofor and siolfur, which is of unknown origin. The symbol Ag derives from the Latin argentum and Sanskrit argunas from \"bright\". Silver was known in prehistoric times.",
+      "Archaeological evidence suggests that people have been using silver for at least 5000 years. Silver can be obtained from pure deposits, from silver ores such as argentite (Ag2S) and horn silver (AgCl), and in conjunction with deposits of ores containing lead, gold or copper.",
+      "The Latin word for silver is argentum. Silver has been known since ancient times. It is mentioned in Genesis. Slag dumps in Asia Minor and on islands in the Aegean Sea indicate that man learned to separate silver from lead as early as 3000 B.C."
+    ],
+    "discovery": [],
+    "uses": [
+      "Silver and silver compounds have many uses. Pure silver is the best conductor of heat and electricity of all known metals, so it is sometimes used in making solder, electrical contacts and printed circuit boards. Silver is also the best reflector of visible light known, but silver mirrors must be given a protective coating to prevent them from tarnishing. Silver has also been used to create coins, although today other metals are typically used in its place. Sterling silver, an alloy containing 92.5% silver, is used to make silverware, jewelry and other decorative items. High capacity batteries can be made with silver and zinc and silver and cadmium. Silver nitrate (AgNO3) is light sensitive and is used to make photographic films and papers. Silver iodide (AgI) is used to seed clouds to produce rain.",
+      "Sterling silver is used for jewelry, silverware, etc. where appearance is paramount. This alloy contains 92.5% silver, the remainder being copper or some other metal. Silver is of the utmost importance in photography, about 30% of the U.S. industrial consumption going into this application. It is used for dental alloys. Silver is used in making solder and brazing alloys, electrical contacts, and high capacity silver-zinc and silver-cadmium batteries. Silver paints are used for making printed circuits. It is used in mirror production and may be deposited on glass or metals by chemical deposition, electrode position, or by evaporation. When freshly deposited, it is the best reflector of visible light known, but is rapidly tarnished and loses much of its reflectance. It is a poor reflector of ultraviolet. Silver fulminate, a powerful explosive, is sometimes formed during the silvering process. Silver iodide is used in seeding clouds to produce rain. Silver chloride has interesting optical properties as it can be made transparent; it also is a cement for glass. Silver nitrate, or lunar caustic, the most important silver compound, is used extensively in photography. Silver for centuries has been used traditionally for coinage by many countries of the world. In recent times, however, consumption of silver has greatly exceeded the output."
+    ],
+    "production": [
+      "Silver is also recovered during electrolytic refining of copper. Commercial fine silver contains at least 99.9% silver. Purities of 99.999+% are available commercially."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Pure silver has a brilliant white metallic luster. It is a little harder than gold and is very ductile and malleable, being exceeded only by gold and perhaps palladium. Pure silver has the highest electrical and thermal conductivity of all metals, and possesses the lowest contact resistance. It is stable in pure air and water, but tarnishes when exposed to ozone, hydrogen sulfide, or air containing sulfur. The alloys of silver are important."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:49.252Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/47",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/silver.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele047.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele047.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/47.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=47",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

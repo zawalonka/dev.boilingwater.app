@@ -1,0 +1,115 @@
+{
+  "atomicNumber": 2,
+  "symbol": "He",
+  "name": "Helium",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 4.002602,
+    "ionizationEnergy": 24.587,
+    "atomicRadius": 140,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 0.95,
+    "boilingPoint": 4.22,
+    "density": 0.0001785,
+    "electronConfiguration": 12,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "states": {
+    "solid": {
+      "phaseName": null,
+      "meltingPoint": 0.95,
+      "density": null,
+      "specificHeat": null
+    },
+    "liquid": {
+      "phaseName": "liquid",
+      "boilingPoint": 4.22,
+      "meltingPoint": 0.95,
+      "density": 0.0001785,
+      "specificHeat": null
+    },
+    "gas": {
+      "phaseName": "gas",
+      "density": 0.0001785,
+      "boilingPoint": 4.22
+    }
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek helios for \"sun\". The element was discovered by spectroscopy during a solar eclipse in the sun's chromosphere by the French astronomer Pierre-Jules-Cesar Janssen in 1868. It was independently discovered and named helium by the English astronomer Joseph Norman Lockyer.Helium was thought to be only a solar constituent until it was later found to be identical to the helium in the uranium ore cleveite by the Scottish chemist William Ramsay in 1895. The Swedish chemists Per Theodore Cleve and Nils Abraham Langet independently found helium in cleveite at about the same time.",
+      "Helium, the second most abundant element in the universe, was discovered on the sun before it was found on the earth. Pierre-Jules-César Janssen, a French astronomer, noticed a yellow line in the sun's spectrum while studying a total solar eclipse in 1868. Sir Norman Lockyer, an English astronomer, realized that this line, with a wavelength of 587.49 nanometers, could not be produced by any element known at the time. It was hypothesized that a new element on the sun was responsible for this mysterious yellow emission. This unknown element was named helium by Lockyer. The hunt to find helium on earth ended in 1895. Sir William Ramsay, a Scottish chemist, conducted an experiment with a mineral containing uranium called clevite. He exposed the clevite to mineral acids and collected the gases that were produced. He then sent a sample of these gases to two scientists, Lockyer and Sir William Crookes, who were able to identify the helium within it. Two Swedish chemists, Nils Langlet and Per Theodor Cleve, independently found helium in clevite at about the same time as Ramsay.Helium makes up about 0.0005% of the earth's atmosphere. This trace amount of helium is not gravitationally bound to the earth and is constantly lost to space. The earth's atmospheric helium is replaced by the decay of radioactive elements in the earth's crust. Alpha decay, one type of radioactive decay, produces particles called alpha particles. An alpha particle can become a helium atom once it captures two electrons from its surroundings. This newly formed helium can eventually work its way to the atmosphere through cracks in the crust.",
+      "From the Greek word helios, the sun. Janssen obtained the first evidence of helium during the solar eclipse of 1868 when he detected a new line in the solar spectrum. Lockyer and Frankland suggested the name helium for the new element. In 1895 Ramsay discovered helium in the uranium mineral cleveite while it was independently discovered in cleveite by the Swedish chemists Cleve and Langlet at about the same time. Rutherford and Royds in 1907 demonstrated that alpha particles are helium nuclei."
+    ],
+    "discovery": [],
+    "uses": [
+      "Helium is commercially recovered from natural gas deposits, mostly from Texas, Oklahoma and Kansas. Helium gas is used to inflate blimps, scientific balloons and party balloons. It is used as an inert shield for arc welding, to pressurize the fuel tanks of liquid fueled rockets and in supersonic windtunnels. Helium is combined with oxygen to create a nitrogen free atmosphere for deep sea divers so that they will not suffer from a condition known as nitrogen narcosis. Liquid helium is an important cryogenic material and is used to study superconductivity and to create superconductive magnets. The Department of Energy's Jefferson Lab uses large amounts of liquid helium to operate its superconductive electron accelerator.Helium is an inert gas and does not easily combine with other elements. There are no known compounds that contain helium, although attempts are being made to produce helium diflouride (HeF2).",
+      "▸ as an inert gas shield for arc welding;▸ a protective gas in growing silicon and germanium crystals and producing titanium and zirconium;▸ as a cooling medium for nuclear reactors, and▸ as a gas for supersonic wind tunnels.A mixture of helium and oxygen is used as an artificial atmosphere for divers and others working under pressure. Different ratios of He and O2 are used for different diver operation depths.Helium is extensively used for filling balloons as it is a much safer gas than hydrogen. One of the recent largest uses for helium has been for pressuring liquid fuel rockets. A Saturn booster, like the type used on the Apollo lunar missions, required about 13 million ft3 of helium for a firing, plus more for checkouts.Liquid helium's use in magnetic resonance imaging (MRI) continues to increase as the medical profession accepts and develops new uses for the equipment. This equipment has eliminated some need for exploratory surgery by accurately diagnosing patients. Another medical application uses MRE to determine (by blood analysis) whether a patient has any form of cancer.Helium is also being used to advertise on blimps for various companies, including Goodyear. Other lifting gas applications are being developed by the Navy and Air Force to detect low-flying cruise missiles. Additionally, the Drug Enforcement Agency is using radar-equipped blimps to detect drug smugglers along the United States boarders. In addition, NASA is currently using helium-filled balloons to sample the atmosphere in Antarctica to determine what is depleting the ozone layer."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Helium has the lowest melting point of any element and is widely used in cryogenic research because its boiling point is close to absolute zero. Also, the element is vital in the study of super conductivity.Using liquid helium, Kurti, co-workers and others have succeeded in obtaining temperatures of a few microkelvins by the adiabatic demagnetization of copper nuclei.Helium has other peculiar properties: It is the only liquid that cannot be solidified by lowering the temperature. It remains liquid down to absolute zero at ordinary pressures, but will readily solidify by increasing the pressure. Solid 3He and 4He are unusual in that both can be changed in volume by more than 30% by applying pressure.The specific heat of helium gas is unusually high. The density of helium vapor at the normal boiling point is also very high, with the vapor expanding greatly when heated to room temperature. Containers filled with helium gas at 5 to 10 K should be treated as though they contained liquid helium due to the large increase in pressure resulting from warming the gas to room temperature.While helium normally has a 0 valence, it seems to have a weak tendency to combine with certain other elements. Means of preparing helium difluoride have been studied, and species such as HeNe and the molecular ions He+ and He++ have been investigated."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:17:48.076Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/2",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/helium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele002.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele002.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/2.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=2",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

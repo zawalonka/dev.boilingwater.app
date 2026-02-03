@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 57,
+  "symbol": "La",
+  "name": "Lanthanum",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 138.90547,
+    "ionizationEnergy": 5.577,
+    "atomicRadius": 240,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 11919181684,
+    "boilingPoint": 373734646267,
+    "density": 6.15,
+    "electronConfiguration": 6251,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek lanthanein for \"to be hidden\" or \"to escape notice\" because it hid in cerium ore and was difficult to separate from that rare earth mineral. Lanthanum was discovered by the Swedish surgeon and chemist Carl-Gustav Mosander in 1839. In 1842, Mosander separated his lanthanium sample into two oxides; for one of these he retained the name lanthanum and for the other he gave the name didymium (or twin).",
+      "Lanthanum was discovered by Carl Gustaf Mosander, a Swedish chemist, in 1839. Mosander was searching for impurities he believed existed within samples of cerium. He treated cerium nitrate (Ce(NO3)3) with dilute nitric acid (HNO3) and found a new substance he named lanthana (La2O3). Roughly 0.0018% of the earth's crust is composed of lanthanum. Today, lanthanum is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements that can contain as much as 25% lanthanum.",
+      "From the Greek word lanthanein, to escape notice. Mosander in 1839 extracted lanthana from impure cerium nitrate and recognized the new element.Lanthanum was isolated in relatively pure form in 1923. Iron exchange and solvent extraction techniques have led to much easier isolation of the so-called \"rare-earth\" elements."
+    ],
+    "discovery": [],
+    "uses": [
+      "Lanthanum is one of the rare earth elements used to make carbon arc lights which are used in the motion picture industry for studio lighting and projector lights. Lanthanum also makes up about 25% of Misch metal, a material that is used to make flints for lighters. Lanthana (La2O3) is used to make the glass used in camera lenses and in other special glasses.",
+      "Rare-earth compounds containing lanthanum are extensively used in carbon lighting applications, especially by the motion picture industry for studio lighting and projection. This application consumes about 25 percent of the rare-earth compounds produced. La2O3 improves the alkali resistance of glass, and is used in making special optical glasses. Small amounts of lanthanum, as an additive, can be used to produce nodular cast iron.There is current interest in hydrogen sponge alloys containing lanthanum. These alloys take up to 400 times their own volume of hydrogen gas, and the process is reversible. Every time they take up the gas, heat energy is released; therefore these alloys have possibilities in an energy conservation system."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Lanthanum is silvery white, malleable, ductile, and soft enough to be cut with a knife. It is one of the most reactive of the rare-earth metals. It oxidizes rapidly when exposed to air. Cold water attacks lanthanum slowly, while hot water attacks it much more rapidly.The metal reacts directly with elemental carbon, nitrogen, boron, selenium, silicon, phosphorus, sulfur, and with halogens.At 310°C, lanthanum changes from a hexagonal to a face-centered cubic structure, and at 865°C it again transforms into a body-centered cubic structure."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:51.288Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/57",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/lanthanum.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele057.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele057.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/57.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=57",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

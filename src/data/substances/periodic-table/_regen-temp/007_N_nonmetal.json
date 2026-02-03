@@ -1,0 +1,90 @@
+{
+  "atomicNumber": 7,
+  "symbol": "N",
+  "name": "Nitrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 14.00674,
+    "ionizationEnergy": 14.534,
+    "atomicRadius": 155,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 63.15,
+    "boilingPoint": 77.36,
+    "density": 0.0012506,
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin nitrum and Greek nitron for \"native soda\" and genes for \"forming\". Nitrogen was discovered by the Scottish physician and chemist Daniel Rutherford in 1772.",
+      "Nitrogen was discovered by the Scottish physician Daniel Rutherford in 1772. It is the fifth most abundant element in the universe and makes up about 78% of the earth's atmosphere, which contains an estimated 4,000 trillion tons of the gas. Nitrogen is obtained from liquefied air through a process known as fractional distillation.",
+      "From the Latin word nitrum, Greek Nitron, native soda; and genes, forming. Nitrogen was discovered by chemist and physician Daniel Rutherford in 1772. He removed oxygen and carbon dioxide from air and showed that the residual gas would not support combustion or living organisms. At the same time there were other noted scientists working on the problem of nitrogen. These included Scheele, Cavendish, Priestley, and others. They called it \"burnt\" or\" dephlogisticated air,\" which meant air without oxygen."
+    ],
+    "discovery": [],
+    "uses": [
+      "The largest use of nitrogen is for the production of ammonia (NH3). Large amounts of nitrogen are combined with hydrogen to produce ammonia in a method known as the Haber process. Large amounts of ammonia are then used to create fertilizers, explosives and, through a process known as the Ostwald process, nitric acid (HNO3).Nitrogen gas is largely inert and is used as a protective shield in the semiconductor industry and during certain types of welding and soldering operations. Oil companies use high pressure nitrogen to help force crude oil to the surface. Liquid nitrogen is an inexpensive cryogenic liquid used for refrigeration, preservation of biological samples and for low temperature scientific experimentation. Jefferson Lab's Frostbite Theater features videos of many basic liquid nitrogen experiments."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:40.524Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/7",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/nitrogen.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele007.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele007.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/7.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=7",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

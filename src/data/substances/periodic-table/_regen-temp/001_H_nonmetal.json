@@ -1,0 +1,113 @@
+{
+  "atomicNumber": 1,
+  "symbol": "H",
+  "name": "Hydrogen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 1.00794,
+    "ionizationEnergy": 13.598,
+    "atomicRadius": 120,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 13.81,
+    "boilingPoint": 20.28,
+    "density": 0.00008988,
+    "electronConfiguration": 11,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "states": {
+    "solid": {
+      "phaseName": null,
+      "meltingPoint": 13.81,
+      "density": null,
+      "specificHeat": null
+    },
+    "liquid": {
+      "phaseName": "liquid",
+      "boilingPoint": 20.28,
+      "meltingPoint": 13.81,
+      "density": 0.00008988,
+      "specificHeat": null
+    },
+    "gas": {
+      "phaseName": "gas",
+      "density": 0.00008988,
+      "boilingPoint": 20.28
+    }
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek hydro for \"water\" and genes for \"forming\" because it burned in air to form water. Hydrogen was discovered by the English physicist Henry Cavendish in 1766.",
+      "Scientists had been producing hydrogen for years before it was recognized as an element. Written records indicate that Robert Boyle produced hydrogen gas as early as 1671 while experimenting with iron and acids. Hydrogen was first recognized as a distinct element by Henry Cavendish in 1766. Composed of a single proton and a single electron, hydrogen is the simplest and most abundant element in the universe. It is estimated that 90% of the visible universe is composed of hydrogen.Hydrogen is the raw fuel that most stars 'burn' to produce energy. The same process, known as fusion, is being studied as a possible power source for use on earth. The sun's supply of hydrogen is expected to last another 5 billion years.",
+      "From the Greek word hydro (water), and genes (forming). Hydrogen was recognized as a distinct substance by Henry Cavendish in 1776. Diagram of a simple hydrogen atom.Hydrogen is the most abundant of all elements in the universe. The heavier elements were originally made from hydrogen atoms or from other elements that were originally made from hydrogen atoms."
+    ],
+    "discovery": [],
+    "uses": [
+      "Hydrogen is a commercially important element. Large amounts of hydrogen are combined with nitrogen from the air to produce ammonia (NH3) through a process called the Haber process. Hydrogen is also added to fats and oils, such as peanut oil, through a process called hydrogenation. Liquid hydrogen is used in the study of superconductors and, when combined with liquid oxygen, makes an excellent rocket fuel.Hydrogen combines with other elements to form numerous compounds. Some of the common ones are: water (H2O), ammonia (NH3), methane (CH4), table sugar (C12H22O11), hydrogen peroxide (H2O2) and hydrochloric acid (HCl).Hydrogen has three common isotopes. The simplest isotope, called protium, is just ordinary hydrogen. The second, a stable isotope called deuterium, was discovered in 1932. The third isotope, tritium, was discovered in 1934.",
+      "Great quantities of hydrogen are required commercially for nitrogen fixation using the Haber ammonia process, and for the hydrogenation of fats and oils. It is also used in large quantities in methanol production, in hydrodealkylation, hydrocracking, and hydrodesulfurization. Other uses include rocket fuel, welding, producing hydrochloric acid, reducing metallic ores, and filling balloons.The lifting power of 1 cubic foot of hydrogen gas is about 0.07 lb at °C, 760 mm pressure.The hydrogen fuel cell is a developing technology that will allow great amounts of electrical power to be obtained using a source of hydrogen gas.Consideration is being given to an entire economy based on solar- and nuclear-generated hydrogen. Public acceptance, high capital investment, and the high cost of hydrogen with respect to today's fuels are but a few of the problems facing such an economy. Located in remote regions, power plants would electrolyze seawater; the hydrogen produced would travel to distant cities by pipelines. Pollution-free hydrogen could replace natural gas, gasoline, etc., and could serve as a reducing agent in metallurgy, chemical processing, refining, etc. It could also be used to convert trash into methane and ethylene."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:17:47.898Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/1",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/hydrogen.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele001.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele001.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/1.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=1",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

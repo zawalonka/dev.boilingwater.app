@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 21,
+  "symbol": "Sc",
+  "name": "Scandium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 44.955908,
+    "ionizationEnergy": 6.561,
+    "atomicRadius": 211,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 181415412806,
+    "boilingPoint": 310928365137,
+    "density": 2.99,
+    "electronConfiguration": 4231,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin scandia for Scandinavia, where the mineral was found. It was discovered by the Swedish chemist Lars-Fredrik Nilson in 1879 in an ytterbium sample. In the same year, the Swedish chemist Per Theodore Cleve proved that scandium was Mendeleev's predicted \"eka-boron\".",
+      "Scandium was discovered by Lars Fredrik Nilson, a Swedish chemist, in 1879 while attempting to produce a sample of pure ytterbia from 10 kilograms of the mineral euxenite ((Y, Ca, Er, La, Ce, U, Th)(Nb, Ta, Ti)2O6). Scandium can be obtained from the minerals thortveitite ((Sc, Y)2Si2O7), bazzite (Be3(Sc, Al)2Si6O18) and wiikite, but is usually obtained as a byproduct of refining uranium. Metallic scandium was first produced in 1937 and the first pound (0.45 kilograms) of pure scandium was produced in 1960. Scandium is a soft, light metal that might have applications in the aerospace industry. With a cost of $270 per gram ($122,500 per pound), scandium is too expensive for widespread use.",
+      "From the Latin word Scandia, Scandinavia. On the basis of the Periodic System, Mendeleev predicted the existence of ekaboron, which would have an atomic weight between 40 of calcium and 48 of titanium. The element was discovered by Nilson in 1878 in the minerals euxenite and gadolinite, which had not yet been found anywhere except in Scandinavia. By processing 10 kg of euxenite and other residues of rare-earth minerals, Nilson was able to prepare about 2g of highly pure scandium oxide. Later scientists pointed out that Nilson's scandium was identical with Mendeleev's ekaboron."
+    ],
+    "discovery": [],
+    "uses": [
+      "Alloys of scandium and aluminum are used in some kinds of athletic equipment, such as aluminum baseball bats, bicycle frames and lacrosse sticks. It is expected that scandium-aluminum alloys will be important in the manufacture of fuel cells.Scientists have only studied a few compounds of scandium. About 20 kilograms (44 pounds) of scandium oxide (Sc2O3), also known as scandia, are used each year in the United States in the production of high intensity lights. Scandium iodide (ScI3) is added to mercury vapor lamps so that they will emit light that closely resembles sunlight.",
+      "About 20 kg of scandium (as Sc2O3) are used yearly in the U.S. to produce high-intensity lights. The radioactive isotope 46Sc is used as a tracing agent in refinery crackers for crude oil, etc.Scandium iodide added to mercury vapor lamps produces a highly efficient light source resembling sunlight, which is important for indoor or night-time color TV."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Scandium is a silver-white metal which develops a slightly yellowish or pinkish cast upon exposure to air. A relatively soft element, scandium resembles yttrium and the rare-earth metals more than it resembles aluminum or titanium.It is a very light metal and has a much higher melting point than aluminum, making it of interest to designers of spacecraft. Scandium is not attacked by a 1:1 mixture of HNO3 and 48% HF.Chemically it is one of the alkaline earth elements; it readily forms a white coating of nitride in air, reacts with water, burns with a yellow-red flame."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:43.992Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/21",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/scandium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele021.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele021.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/21.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=21",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

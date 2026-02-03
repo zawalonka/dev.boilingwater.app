@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 58,
+  "symbol": "Ce",
+  "name": "Cerium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 140.116,
+    "ionizationEnergy": 5.539,
+    "atomicRadius": 235,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 10717981468,
+    "boilingPoint": 369734246195,
+    "density": 6.77,
+    "electronConfiguration": 624151,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 14,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the planetoid Ceres, which was discovered by the Italian astronomer Giuseppe Piazzi in 1801 and named for Ceres, the Roman goddess of agriculture and harvest. Two years later, the element cerium was discovered by the German chemist Martin-Heinrich Klaproth, who called it ochroeite earth because of its yellow colour.Cerium was independently discovered at the same time by the Swedish chemist Jöns Jacob Berzelius and the Swedish mineralogist Wilhelm von Hisinger, who called it ceria. It was first isolated in 1875 by the American mineralogist and chemist William Frances Hillebrand and the American chemist Thomas H. Norton.",
+      "Cerium was discovered by Jöns Jacob Berzelius and Wilhelm von Hisinger, Swedish chemists, and independently by Martin Heinrich Klaproth, a German chemist, in 1803. Cerium is the most abundant of the rare earth elements and makes up about 0.0046% of the earth's crust. Today, cerium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "Cerium was named for the asteroid Ceres, which was discovered in 1801. The element was discovered two years later in 1803 by Klaproth and by Berzelius and Hisinger. In 1875 Hillebrand and Norton prepared the metal."
+    ],
+    "discovery": [],
+    "uses": [
+      "Pure cerium will ignite if it is scratched with a sharp object, but can be safely used if combined with other materials. Cerium is one of the rare earth elements used to make carbon arc lights which are used in the motion picture industry for studio lighting and projector lights. Cerium is also a component of Misch metal, a material that is used to make flints for lighters. Cerium is also used as a catalyst to refine petroleum and as an alloying agent to make special metals.Cerium oxide (Ce2O3 and CeO2) is a component of the walls of self cleaning ovens and of incandescent lantern mantles. Cerium oxide is also used to polish glass surfaces. Ceric sulfate (Ce(So4)2) is used in some chemical analysis processes. Other cerium compounds are used to make some types of glass as well as to remove color from glass.",
+      "Cerium is a component of misch metal, which is extensively used in the manufacture of pyrophoric alloys for cigarette lighters. While cerium is not radioactive, the impure commercial grade may contain traces of thorium, which is radioactive. The oxide is an important constituent of incandescent gas mantles and is emerging as a hydrocarbon catalyst in self cleaning ovens where it can be incorporated into oven walls to prevent the collection of cooking residues.As ceric sulfate is used extensively as a volumetric oxidizing agent in quantitative analysis. Cerium compounds are used in the manufacture of glass, both as a component and as a decolorizer.The oxide is finding increased use as a glass polishing agent instead of rouge, for it polishes much faster than rouge. Cerium, with other rare earths, is used in carbon-arc lighting, especially in the motion picture industry. It is also useful as a catalyst in petroleum refining and in metallurgical and nuclear applications."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Cerium is especially interesting because of its variable electronic structure. The energy of the inner 4f level is nearly the same as that of the outer (valence) electrons, and only small amounts of energy are required to change the relative occupancy of these electronic levels. This gives rise to dual valency states.For example, a volume change of about 10 percent occurs when cerium is subjected to high pressures or low temperatures. Cesium's valence appears to change from about 3 to 4 when it is cooled or compressed. The low temperature behavior of cerium is complex.Cerium is an iron-gray lustrous metal. It is malleable, and oxidizes very readily at room temperature, especially in moist air. Except for europium, cerium is the most reactive of the rare-earth metals. It decomposes slowly in cold water and rapidly in hot water.Alkali solutions and dilute and concentrated acids attack the metal rapidly. The pure metal is likely to ignite if scratched with a knife.Ceric slats are orange red or yellowish; cerous salts are usually white."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:51.487Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/58",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/cerium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele058.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele058.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/58.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=58",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

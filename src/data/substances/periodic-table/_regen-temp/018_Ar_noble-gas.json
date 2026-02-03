@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 18,
+  "symbol": "Ar",
+  "name": "Argon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 39.948,
+    "ionizationEnergy": 15.76,
+    "atomicRadius": 188,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 83.8,
+    "boilingPoint": 87.3,
+    "density": 0.0017837,
+    "electronConfiguration": 3236,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek argos for \"lazy\" or \"inactive\" because it does not combine with other elements. It was discovered in 1894 by the Scottish chemist William Ramsay and the English physicist Robert John Strutt (Lord Rayleigh) in liquefied air. Rayleigh's initial interest derived from a problem posed by the English physicist Henry Cavendish in 1785, i.e., when oxygen and nitrogen were removed from air, there was an unknown residual gas remaining.",
+      "Argon was discovered by Sir William Ramsay, a Scottish chemist, and Lord Rayleigh, an English chemist, in 1894. Argon makes up 0.93% of the earth's atmosphere, making it the third most abundant gas. Argon is obtained from the air as a byproduct of the production of oxygen and nitrogen.",
+      "From the Greek argos, inactive. Its presence in air was suspected by Cavendish in 1785, discovered by Lord Raleigh and Sir William Ramsay in 1894."
+    ],
+    "discovery": [],
+    "uses": [
+      "Argon is frequently used when an inert atmosphere is needed. It is used to fill incandescent and fluorescent light bulbs to prevent oxygen from corroding the hot filament. Argon is also used to form inert atmospheres for arc welding, growing semiconductor crystals and processes that require shielding from other atmospheric gases.Once thought to be completely inert, argon is known to form at least one compound. The synthesis of argon fluorohydride (HArF) was reported by Leonid Khriachtchev, Mika Pettersson, Nino Runeberg, Jan Lundell and Markku Räsänen in August of 2000. Stable only at very low temperatures, argon fluorohydride begins to decompose once it warms above -246°C (-411°F). Because of this limitation, argon fluorohydride has no uses outside of basic scientific research.",
+      "It is used in electric light bulbs and in fluorescent tubes at a pressure of about 400 Pa. and in filling photo tubes, glow tubes, etc. Argon is also used as an inert gas shield for arc welding and cutting, as blanket for the production of titanium and other reactive elements, and as a protective atmosphere for growing silicon and germanium crystals."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Argon is two and one half times as soluble in water as nitrogen, having about the same solubility as oxygen. Argon is colorless and odorless, both as a gas and liquid. Argon is considered to be a very inert gas and is not known to form true chemical compounds, as do krypton, xenon, and radon."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:43.472Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/18",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/argon.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele018.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele018.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/18.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=18",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

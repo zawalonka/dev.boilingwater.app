@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 35,
+  "symbol": "Br",
+  "name": "Bromine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 79.904,
+    "ionizationEnergy": 11.814,
+    "atomicRadius": 183,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 265.95,
+    "boilingPoint": 331.9558,
+    "density": 3.11,
+    "electronConfiguration": 4231045,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Liquid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek bromos for \"bad stench\" or \"bad odour\". It was first prepared by the German chemist Carl Löwig in 1825, but it was first publicly announced in 1826 by the French chemist and pharmacist Antoine-Jérôme Balard, and so the discovery is, therefore, credited to him.",
+      "The only nonmetallic element that is a liquid at normal room temperatures, bromine was produced by Carl Löwig, a young chemistry student, the summer before starting his freshman year at Heidelberg. When he showed his professor, Leopold Gmelin, the red, smelly liquid he had produced, Gmelin realized that this was an unknown substance and encouraged Löwig to produce more of it so they could study it in detail. Unfortunately, winter exams and the holidays delayed Löwig's work long enough for another chemist, Antoine-Jérôme Balard, to publish a paper in 1826 describing the new element. Balard was credited with the discovery and named it after the greek word for stench, bromos. Today, bromine is primarily obtained by treating brines from wells in Michigan and Arkansas with chlorine.",
+      "From the Greek word bromos, stench. Discovered by Balard in 1826, but not prepared in quantity until 1860."
+    ],
+    "discovery": [],
+    "uses": [
+      "Elemental bromine is a hazardous material. It causes severe burns when it comes in contact with the skin and its vapor irritates the eyes, nose and throat. Most of the bromine produced in the United States was used in the manufacture of ethylene dibromide(C2H4Br2), a chemical added to leaded gasolines that prevented the accumulation of lead compounds within the engine. With the discontinuation of leaded gasolines in favor of unleaded gasolines, the demand for bromine has been greatly reduced. Silver bromide (AgBr), a chemical used in photography, now accounts for the largest use of bromine. Other bromine compounds are used in fumigants, in flameproofing agents and in some compounds used to purify water. Tyrian purple, an expensive purple dye known to ancient civilizations, was produced from an organic bromine compound secreted from a sea mussel known as the murex.",
+      "Bromine is used in making fumigants, flameproofing agents, water purification compounds, dyes, medicines, sanitizers, inorganic bromides for photography, etc. Organic bromides are also important."
+    ],
+    "production": [
+      "Much of the bromine output in the U.S. was used in the production of ethylene dibromide, a lead scavenger used in making gasoline anti-knock compounds. Lead in gasoline, however, has been drastically reduced due to environmental considerations. This will greatly affect future production of bromine."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Bromine is the only nonmetallic liquid element. It is a heavy, mobile, reddish-brown liquid, volatilizing readily at room temperature to a red vapor with a strong disagreeable odor, resembling chlorine, and having a very irritating effect on the eyes and throat; it is readily soluble in water or carbon disulfide, forming a red solution, is less active than chlorine but more so than iodine; it unites readily with many elements and has a bleaching action; when spilled on the skin it produces painful sores. It presents a serious health hazard, and maximum safety precautions should be taken when handling it."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:46.657Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/35",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/bromine.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele035.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele035.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/35.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=35",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

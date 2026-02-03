@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 17,
+  "symbol": "Cl",
+  "name": "Chlorine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 35.4527,
+    "ionizationEnergy": 12.968,
+    "atomicRadius": 175,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 171.65,
+    "boilingPoint": 239.11,
+    "density": 0.003214,
+    "electronConfiguration": 3235,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek chloros for \"pale green\" or \"greenish yellow\" colour of the element. It was discovered by the Swedish pharmacist and chemist Carl-Wilhelm Scheele in 1774. In 1810, the English chemist Humphry Davy proved it was an element.",
+      "Since it combines directly with nearly every element, chlorine is never found free in nature. Chlorine was first produced by Carl Wilhelm Scheele, a Swedish chemist, when he combined the mineral pyrolusite (MnO2) with hydrochloric acid (HCl) in 1774. Although Scheele thought the gas produced in his experiment contained oxygen, Sir Humphry Davy proved in 1810 that it was actually a distinct element. Today, most chlorine is produced through the electrolysis of aqueous sodium chloride (NaCl).",
+      "From the Greek word chloro, greenish yellow. Discovered in 1774 by Scheele, who thought it contained oxygen. Chlorine was named in 1810 by Davy, who insisted it was an element."
+    ],
+    "discovery": [],
+    "uses": [
+      "Chlorine is commonly used as an antiseptic and is used to make drinking water safe and to treat swimming pools. Large amounts of chlorine are used in many industrial processes, such as in the production of paper products, plastics, dyes, textiles, medicines, antiseptics, insecticides, solvents and paints.Two of the most familiar chlorine compounds are sodium chloride (NaCl) and hydrogen chloride (HCl). Sodium chloride, commonly known as table salt, is used to season food and in some industrial processes. Hydrogen chloride, when mixed with water (H2O), forms hydrochloric acid, a strong and commercially important acid. Other chlorine compounds include: chloroform (CHCl3), carbon tetrachloride (CCl4), potassium chloride (KCl), lithium chloride (LiCl), magnesium chloride (MgCl2) and chlorine dioxide (ClO2).Chlorine is a very dangerous material. Liquid chlorine burns the skin and gaseous chlorine irritates the mucus membranes. Concentrations of the gas as low as 3.5 parts per million can be detected by smell while concentrations of 1000 parts per million can be fatal after a few deep breaths.",
+      "Chlorine is widely used in making many everyday products. It is used for producing safe drinking water the world over. Even the smallest water supplies are now usually chlorinated.It is also extensively used in the production of paper products, dyestuffs, textiles, petroleum products, medicines, antiseptics, insecticides, food, solvents, paints, plastics, and many other consumer products.Most of the chlorine produced is used in the manufacture of chlorinated compounds for sanitation, pulp bleaching, disinfectants, and textile processing. Further use is in the manufacture of chlorates, chloroform, carbon tetrachloride, and in the extraction of bromine.Organic chemistry demands much from chlorine, both as an oxidizing agent and in substitution, since it often brings many desired properties in an organic compound when substituted for hydrogen, as in one form of synthetic rubber."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "It is a member of the halogen (salt-forming) group of elements and is obtained from chlorides by the action of oxidizing agents and more often by electrolysis; it is a greenish-yellow gas, combining directly with nearly all elements. At 10°C one volume of water dissolves 3.10 volumes of chlorine, at 30°C only 1.77 volumes."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:42.991Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/17",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/chlorine.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele017.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele017.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/17.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=17",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

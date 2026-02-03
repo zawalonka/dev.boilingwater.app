@@ -1,0 +1,88 @@
+{
+  "atomicNumber": 86,
+  "symbol": "Rn",
+  "name": "Radon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 222,
+    "ionizationEnergy": 10.745,
+    "atomicRadius": 220,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 202,
+    "boilingPoint": 211.45,
+    "density": 0.00973,
+    "electronConfiguration": 6241451066,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Radon was discovered by Friedrich Ernst Dorn, a German chemist, in 1900 while studying radium's decay chain. Originally named niton after the Latin word for shining, nitens, radon has been known as radon since 1923. Today, radon is still primarily obtained through the decay of radium. At normal room temperatures, radon is a colorless, odorless, radioactive gas. The most common forms of radon decay through alpha decay. Alpha decay usually isn't considered to be a great radiological hazard since the alpha particles produced by the decay are easily stopped. However, since radon is a gas, it is easily inhaled and living tissue is directly exposed to the radiation. Although it has a relatively short half-life, radon decays into longer lived, solid, radioactive elements which can collect on dust particles and be inhaled as well. For these reasons, there is some concern as to the amount of radon present within homes. Radon seeps into houses as a result of the decay of radium, thorium or uranium ores underground and varies greatly from location to location. On average, the earth's atmosphere is 0.0000000000000000001% radon.When cooled to its solid state, radon glows yellow. The glow becomes orange-red as the temperature is lowered.Radon's most stable isotope, radon-222, has a half-life of about 3.8 days. It decays into polonium-218 through alpha decay.",
+      "The name was derived from radium; called niton at first, from the Latin word nitens meaning shining.The element was discovered in 1900 by Dorn, who called it radium emanation. In 1908 Ramsay and Gray, who named it niton, isolated the element and determined its density, finding it to be the heaviest known gas. It is essentially inert and occupies the last place in the zero group of gases in the Periodic Table. Since 1923, it has been called radon."
+    ],
+    "discovery": [],
+    "uses": [
+      "Small amounts of radon are sometimes used by hospitals to treat some forms of cancer. Radon fluoride (RnF) is the only confirmed compound of radon.",
+      "Radon is still produced for therapeutic use by a few hospitals by pumping it from a radium source and sealing it in minute tubes, called seeds or needles, for application to patient. This practice has been largely discontinued as hospitals can get the seeds directly from suppliers, who make up the seeds with the desired activity for the day of use."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Radon is present in the atomosphere at very low concentrations. See Wikipedia for discussion of concentration. At ordinary temperatures radon is a colorless gas; when cooled below the freezing point, radon exhibits a brilliant phosphorescence which becomes yellow as the temperature is lowered and orange-red at the temperature of liquid air. It has been reported that fluorine reacts with radon, forming a fluoride. Radon clathrates have also been reported."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:57.690Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/86",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele086.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele086.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/86.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=86",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

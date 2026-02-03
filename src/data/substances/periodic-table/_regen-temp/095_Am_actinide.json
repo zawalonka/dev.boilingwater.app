@@ -1,0 +1,89 @@
+{
+  "atomicNumber": 95,
+  "symbol": "Am",
+  "name": "Americium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 243,
+    "ionizationEnergy": 5.993,
+    "atomicRadius": 244,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 144911762149,
+    "boilingPoint": 228420113652,
+    "density": 13.69,
+    "electronConfiguration": 7257,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 872,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Americium was discovered in 1944 by the American scientists Glenn T. Seaborg, Ralph A. James, Leon O. Morgan and Albert Ghiorso. They produced americium by bombarding plutonium-239, an isotope of plutonium, with high energy neutrons. This formed plutonium-240, which was itself bombarded with neutrons. The plutonium-240 changed into plutonium-241, which then decayed into americium-241 through beta decay. This work was carried out at the University of Chicago's Metallurgical Laboratory, now known as Argonne National Laboratory. Americium's most stable isotope, americium-243, has a half-life of about 7,370 years. It decays into neptunium-239 through alpha decay.",
+      "Americium was the fourth synthetic transuranic element to be discovered and was named after the continent of North America by analogy to its lighter lanthanide homologue, europium, which was named after Europe, its continent of discovery. Americium was made by Glenn Seaborg, Ralph James, Leon Morgan, and Albert Ghiorso late in 1944 at the wartime metallurgical laboratory at the University of Chicago. It was made as the result of successive neutron capture reactions by plutonium isotopes in a nuclear reactor. The product element was quite difficult to separate based on its anticipated properties, which were incorrect as it turned out. Unlike the lighter previously discovered transuranium elements placed in the main block of the periodic table, americium behaved chemically like the lanthanide series of elements. It exhibited, for example, the trivalent state as the most stable in aqueous solutions. This behavior and the similar behavior of the newly discovered element, curium, prompted Glenn Seaborg to boldly and radically revise the periodic table and create the actinide series of elements.The first americium isotope identified was that of 241Am, which has an alpha decay half-life of 432.2 years to daughter neptunium-237. The initial discovery was classified as secret as part of the Manhattan Project during World War II, but the discovery was later declassified. Seaborg announced the discovery of elements 95, americium 96, and curium on the U.S. children’s radio show,\"The Quiz Kids\" five days before his planned presentation at an American Chemical Society meeting in November 1945. His announcement resulted when one of the young listeners asked whether any new transuranium element beside plutonium and neptunium had been discovered."
+    ],
+    "discovery": [],
+    "uses": [
+      "Americium can be produced in kilogram quantities and has a few practical uses. It is used in smoke detectors and can be used as a portable source of gamma rays. Americium-241, with a half-life of 432.2 years, is used in these products because it is easier to produce relatively pure samples of this isotope.",
+      "There are many commercial applications for americium isotopes. Americium-241 has been used as a portable source of both gamma rays and alpha particles for a number of medical and industrial uses. The 60-keV gamma ray emissions from 241Am in such sources can be used for indirect analysis of materials in radiography and X-ray fluorescence spectroscopy, as well as for quality control in fixed nuclear density gauges and nuclear densometers. For example, americium has been employed to gauge glass thickness to help create flat glass. Americium-241 is also suitable for calibration of gamma-ray spectrometers in the low-energy range, since its spectrum consists of nearly a single gamma peak. Americium-241 is also used as the ionization source in commercial smoke detectors. Several unusual applications, such as a nuclear battery or fuel for space ships with nuclear propulsion, have been proposed for the isotope 242mAm, but they are as yet hindered by the scarcity and high price of this isomer."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Americium does not occur naturally in the Earth’s crust. In 1944, it was first synthesized by Glenn T. Seaborg and his team at the University of California Laboratory in Berkeley via multiple neutron capture reaction on 239Pu to produce 241Am : 239Pu (n, γ) 240Pu, 240Pu (n, γ) 241Pu, and 241Pu→ 241Am+β −.",
+      "The initial americium samples weighed a few micrograms; they were barely visible and were identified by their radioactivity. The first substantial amounts of metallic americium were not prepared until 1951 via reduction of americium(III) fluoride with barium metal in high vacuum at 1100 °C, producing up to 200 milligrams. The luster of freshly prepared americium metal is white and more silvery than plutonium or neptunium prepared in the same manner. It appears to be more malleable than uranium or neptunium and tarnishes slowly in dry air at room temperature. In solution, oxidation states III, IV, V, and VI are known and there is an unsubstantiated claim of the existence of Am(VII). Am(IV) is unstable in acidic media but in strongly basic carbonate solutions Am(IV) is stable. In fact, in carbonate solutions, americium has been shown to be the second element after plutonium to have in coexistence all four oxidation states simultaneously. There are numerous compounds of americium. Its oxides have the most practical applications."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:59.504Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/95",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele095.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele095.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/95.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=95",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

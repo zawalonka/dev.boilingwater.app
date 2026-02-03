@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 32,
+  "symbol": "Ge",
+  "name": "Germanium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 72.63,
+    "ionizationEnergy": 7.9,
+    "atomicRadius": 211,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 1211.40938,
+    "boilingPoint": 310628335131,
+    "density": 5.323,
+    "electronConfiguration": 4231042,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 30,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin germania for Germany. It was discovered and isolated by the German chemist Clemens-Alexander Winkler in 1886 in the mineral argyrodite (GeS2×4Ag2S).",
+      "First proposed to exist by Dmitri Mendeleyev in 1871 based on gaps in his newly created Periodic Table of Elements, germanium was discovered by the German chemist Clemens Winkler in the mineral argyrodite (Ag8GeS6) in 1886. Today, germanium is primarily obtained from the smelting of zinc ores and from the byproducts of burning certain types of coal.",
+      "From the Latin word Germania, Germany. Mendeleev predicted the existence of Germanium in 1871 as ekasilicon, and the element was discovered by Winkler in 1886."
+    ],
+    "discovery": [],
+    "uses": [
+      "The largest use of germanium is in the semiconductor industry. When doped with small amounts of arsenic, gallium, indium, antimony or phosphorus, germanium is used to make transistors for use in electronic devices. Germanium is also used to create alloys and as a phosphor in fluorescent lamps. Both germanium and germanium oxide (GeO) are transparent to infrared radiation and are used in infrared optical instruments and infrared detectors. Some germanium compounds seem to be effective in killing some types of bacteria and are currently being studied for use in chemotherapy.",
+      "When germanium is doped with arsenic, gallium, or other elements, it is used as a transistor element in thousands of electronic applications. The most common use of germanium is as a semiconductor. Germanium is also finding many other applications including use as an alloying agent, as a phosphor in fluorescent lamps, and as a catalyst.Germanium and germanium oxide are transparent to the infrared and are used in infrared spectroscopes and other optical equipment, including extremely sensitive infrared detectors.The high index of refraction and dispersion properties of its oxide's have made germanium useful as a component of wide-angle camera lenses and microscope objectives.The field of organo-germanium chemistry is becoming increasingly important. Certain germanium compounds have a low mammalian toxicity, but a marked activity against certain bacteria, which makes them useful as chemotherapeutic agents."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The element is a gray-white metalloid. In pure state, the element is crystalline and brittle, retaining its luster in air at room temperature. It is a very important semiconductor. Zone-refining techniques have led to production of crystalline germanium for semiconductor use with an impurity of only one part in 1010."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:46.065Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/32",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/germanium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele032.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele032.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/32.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=32",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 45,
+  "symbol": "Rh",
+  "name": "Rhodium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 102.9055,
+    "ionizationEnergy": 7.459,
+    "atomicRadius": 195,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 223719643567,
+    "boilingPoint": 396836956683,
+    "density": 12.4,
+    "electronConfiguration": 5148,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 492,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek rhodon for rose because of the rose color of dilute solutions of its salts. It was discovered by the English chemist and physicist William Hyde Wollaston in 1803 in a crude platinum ore.",
+      "Rhodium was discovered by William Hyde Wollaston, an English chemist, in 1803 shortly after his discovery of the element palladium. He obtained rhodium from a sample of platinum ore that was obtained from South America. After removing the platinum and palladium from the sample, he was left with a dark red powder. The powder turned out to be sodium rhodium chloride (Na3RhCl6·12H2O). Wollaston obtained rhodium from the powder by treating it with hydrogen gas (H2). Rhodium tends to occur along with deposits of platinum and is primarily obtained as a byproduct of mining and refining platinum. Rhodium is also obtained as a byproduct of the nickel mining operation in the Sudbury region of Ontario, Canada.",
+      "From the Greek word rhodon, rose. Wollaston discovered rhodium between 1803 and 1804 in crude platinum ore he presumably obtained from South America."
+    ],
+    "discovery": [],
+    "uses": [
+      "Rhodium is used to make electrical contacts, as jewelry and in catalytic converters, but is most frequently used as an alloying agent in other materials, such as platinum and palladium. These alloys are used to make such things as furnace coils, electrodes for aircraft spark plugs and laboratory crucibles.",
+      "Rhodium's primary use is as an alloying agent to harden platinum and palladium. Such alloys are used for furnace windings, thermocoupling elements, bushings for glass fiber production, electrodes for aircraft spark plugs, and laboratory crucibles. It is useful as an electrical contact material as it has a low electrical resistance, a low and stable contact resistance, and is highly resistant to corrosion. Plated rhodium, produced by electroplating or evaporation, is exceptionally hard and is used for optical instruments. Rhodium is also used for jewelry, for decoration, and as a catalyst."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal is silvery white and at red heat slowly changes in air to the resquioxide. At higher temperatures it converts back to the element. Rhodium has a higher melting point and lower density than platinum. It is highly reflective, hard, and durable."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:48.840Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/45",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/rhodium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele045.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele045.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/45.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=45",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

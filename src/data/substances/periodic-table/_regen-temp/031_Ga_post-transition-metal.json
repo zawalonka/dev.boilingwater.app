@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 31,
+  "symbol": "Ga",
+  "name": "Gallium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 69.723,
+    "ionizationEnergy": 5.999,
+    "atomicRadius": 187,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 302.9129,
+    "boilingPoint": 247722043999,
+    "density": 5.91,
+    "electronConfiguration": 4231041,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin gallia for France. It was discovered in zinc blende by the French chemist Paul-Emile Lecoq de Boisbaudran in 1875. It was first isolated in 1878 by Lecoq de Boisbaudran and the French chemist Émile-Clément Jungflesch.",
+      "First proposed to exist by Dmitri Mendeleyev in 1871 based on gaps in his newly created Periodic Table of Elements, gallium was discovered spectroscopically by the French chemist Paul-Émile Lecoq de Boisbaudran in 1875. Later that same year, Lecoq was able to obtain pure gallium through the electrolysis of a solution of gallium hydroxide (Ga(OH)3) in potassium hydroxide (KOH). Trace amounts of gallium are found in diaspore, sphalerite, germanite and bauxite as well as in the byproducts of burning coal.",
+      "From the Latin word Gallia, France; also from Latin, gallus, a translation of \"Lecoq,\" a cock. Predicted and described by Mendeleev as ekaaluminum, and discovered spectroscopically by Lecoq de Boisbaudran in 1875, who in the same year obtained the free metal by electrolysis of a solution of the hydroxide in KOH."
+    ],
+    "discovery": [],
+    "uses": [
+      "Gallium melts near room temperature and has one of the largest liquid ranges of any metal, so it has found use in high temperature thermometers. Gallium easily forms alloys with most metals and has been used to create low melting alloys. Gallium is used as a doping material for semiconductors and has been used to produce solid-state items like transistors and light emitting diodes. Gallium arsenide (GaAs) can produce laser light directly from electricity. Large amounts of gallium trichloride (GaCl3) have been gathered to build the Gallium Neutrino Observatory, an observatory located in Italy built to study particles called neutrinos which are produced inside the sun during the process of nuclear fusion.",
+      "Gallium wets glass or porcelain and forms a brilliant mirror when it is painted on glass. It is widely used in doping semiconductors and producing solid-state devices such as transistors.Magnesium gallate containing divalent impurities, such as Mn+2, is finding use in commercial ultraviolet-activated powder phosphors. Gallium arsenide is capable of converting electricity directly into coherent light. Gallium readily alloys with most metals, and has been used as a component in low-melting alloys."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "It is one of four metals  mercury, cesium, and rubidium  which can be liquid near room temperature and, thus, can be used in high-temperature thermometers. It has one of the longest liquid ranges of any metal and has a low vapor pressure even at high temperatures.There is a strong tendency for gallium to supercool below its freezing point. Therefore, seeding may be necessary to initiate solidification.Ultra-pure gallium has a beautiful, silvery appearance, and the solid metal exhibits a conchoidal fracture similar to glass. The metal expands 3.1 percent on solidifying; therefore, it should not be stored in glass or metal containers, because they may break as the metal solidifies.High-purity gallium is attacked only slowly by mineral acids."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:45.863Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/31",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/gallium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele031.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele031.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/31.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=31",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

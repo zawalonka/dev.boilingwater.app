@@ -1,0 +1,88 @@
+{
+  "atomicNumber": 84,
+  "symbol": "Po",
+  "name": "Polonium",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 209,
+    "ionizationEnergy": 8.417,
+    "atomicRadius": 197,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 527254489,
+    "boilingPoint": 12359621764,
+    "density": 9.32,
+    "electronConfiguration": 6241451064,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Polonium was discovered by Marie Sklodowska Curie, a Polish chemist, in 1898. She obtained polonium from pitchblende, a material that contains uranium, after noticing that unrefined pitchblende was more radioactive than the uranium that was separated from it. She reasoned that pitchblende must contain at least one other radioactive element. Curie needed to refine several tons of pitchblende in order to obtain tiny amounts of polonium and radium, another radioactive element discovered by Curie. One ton of uranium ore contains only about 100 micrograms (0.0001 grams) of polonium. Due to its scarcity, polonium is usually produced by bombarding bismuth-209 with neutrons in a nuclear reactor. This forms bismuth-210, which has a half-life of 5 days. Bismuth-210 decays into polonium-210 through beta decay. Milligram amounts of polonium-210 have been produced by this method.Polonium-210 is a very strong emitter of alpha particles. A single gram of polonium-210 creates 140 Watts of heat energy and is being considered as a lightweight heat source for thermoelectric power for spacecraft. Polonium-210 has a half-life of 138.39 days.Polonium's most stable isotope, polonium-209, has a half-life of 102 years. It decays into lead-205 through alpha decay. Polonium-209 is available from Oak Ridge National Laboratory at the cost of about $3200 per microcurie.",
+      "Named after Poland, native country of Madam Curie. Polonium, also called Radium F, was the first element discovered by Curie in 1898 while seeking the cause of radioactivity of pitchblend from Joachimsthal, Bohemia. The electroscope showed it separating with bismuth."
+    ],
+    "discovery": [],
+    "uses": [
+      "Polonium can be used to eliminate static electricity in machinery that is caused by processes such as the rolling of paper, wire or sheet metal, although other materials which emit beta particles are more commonly used for this purpose. Polonium is also used in brushes for removing dust from photographic films, although the polonium must be carefully sealed to protect the user from contamination. Polonium is also combined with beryllium to form neutron sources.",
+      "Because almost all alpha radiation is stopped within the solid source and its container, giving up its energy, polonium has attracted attention for uses as a lightweight heat source for thermoelectric power in space satellites.Polonium can be mixed or alloyed with beryllium to provide a source of neutrons. The element has been used in devices for eliminating static charges in textile mills, etc.; however, beta sources are both more commonly used and less dangerous. It is also used on brushes for removing dust from photographic films. The polonium for these is carefully sealed and controlled, minimizing hazards to the user."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Polonium-210 is a low-melting, fairly volatile metal, 50% of which is vaporized in air in 45 hours at 55°C. It is an alpha emitter with a half-life of 138.39 days. A milligram emits as many alpha particles as 5 g of radium.The energy released by its decay is so large (140W/g) that a capsule containing about half a gram reaches a temperature above 500C. The capsule also presents a contact gamma-ray dose rate of 0.012 Gy/h. A few curies (1 curie = 3.7 x 1010Bq) of polonium exhibit a blue glow, caused by excitation of the surrounding gas.Polonium is readily dissolved in dilute acids, but is only slightly soluble in alkali. Polonium salts of organic acids char rapidly; halide amines are reduced to the metal."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:57.265Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/84",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele084.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele084.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/84.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=84",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

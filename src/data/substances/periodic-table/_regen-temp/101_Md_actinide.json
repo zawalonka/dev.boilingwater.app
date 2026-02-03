@@ -1,0 +1,74 @@
+{
+  "atomicNumber": 101,
+  "symbol": "Md",
+  "name": "Mendelevium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 258,
+    "ionizationEnergy": 6.58,
+    "meltingPoint": 11008271521,
+    "electronConfiguration": 72513,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 272,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Mendelevium was first produced by Stanley G. Thompson, Glenn T. Seaborg, Bernard G. Harvey, Gregory R. Choppin and Albert Ghiorso working at the University of California, Berkeley, in 1955. They bombarded atoms of einsteinium-253 with helium ions using a device known as a cyclotron. This produced atoms of mendelevium-256, an isotope with a half-life of about 77 minutes, and a free neutron. Mendelevium's most stable isotope, mendelevium-258, has a half-life of about 51.5 days. It decays into einsteinium-254 through alpha decay or decays through spontaneous fission.",
+      "Mendelevium is named after Dmitri Mendeleev. It is the ninth transuranium element of the actinide series discovered. It was first identified by Ghiorso, Harvey, Choppin, Thompson, and Seaborg in early in 1955 during the bombardment of the isotope 253Es with helium ions in the Berkeley 60-inch cyclotron. The isotope produced was 256Md, which has a half-life of 76 min. This first identification was notable in that 256Md was synthesized on a one-atom-at-a-time basis."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only small amounts of mendelevium have ever been produced, it currently has no uses outside of basic scientific research.",
+      "256Md has been used to elucidate some of the chemical properties of mendelevium in aqueous solution."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Mendelevium does not occur naturally in the Earth’s crust. It was first synthesized in 1955 by Glenn T. Seaborg and his team at the University of California using the reactions 253Es (4He, n) 256Md and 253Es (4He, 2n) 255Md. Mendelevium is named for the Russian scientist, Dmitri Mendeleev (Fig. IUPAC.101.1), who developed the Periodic Table of the chemical elements [636], [637]. There are no applications for isotopes of mendelevium aside from scientific research.",
+      "Experiments seem to show that the element possesses a moderately stable dipositive (II) oxidation state in addition to the tripositive (III) oxidation state, which is characteristic of the actinide elements."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:00.819Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/101",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele101.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele101.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/101.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=101",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

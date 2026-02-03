@@ -1,0 +1,96 @@
+{
+  "atomicNumber": 44,
+  "symbol": "Ru",
+  "name": "Ruthenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 101.07,
+    "ionizationEnergy": 7.361,
+    "atomicRadius": 207,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 260723344233,
+    "boilingPoint": 442341507502,
+    "density": 12.1,
+    "electronConfiguration": 5147,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 55,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin ruthenia for the old name of Russia. It was discovered in a crude platinum ore by the Russian chemist Gottfried Wilhelm Osann in 1828. Osann thought that he had found three new metals in the sample, pluranium, ruthenium, and polinium. In 1844, Russian chemist Karl Karlovich Klaus was able to show that Osann's mistake was due to the impurity of the sample, and Klaus was able to isolate the ruthenium metal.",
+      "Ruthenium was discovered by Karl Karlovich Klaus, a Russian chemist, in 1844 while analyzing the residue of a sample of platinum ore obtained from the Ural mountains. Apparently, Jedrzej Sniadecki, a Polish chemist, had produced ruthenium in 1807 but he withdrew his claim of discovery after other scientists failed to replicate his results. Ruthenium tends to occur along with deposits of platinum and is primarily obtained as a byproduct of mining and refining platinum. Ruthenium is also obtained as a byproduct of the nickel mining operation in the Sudbury region of Ontario, Canada.",
+      "From the Latin word Ruthenia, Russia. In 1827, Berzelius and Osann examined the residues left after dissolving crude platinum from the Ural mountains in aqua regia. While Berzelius found no unusual metals, Osann thought he found three new metals, one of which he named ruthenium. In 1844 Klaus, generally recognized as the discoverer, showed that Osann's ruthenium oxide was very impure and that it contained a new metal. Klaus obtained 6 g of ruthenium from the portion of crude platinum that is insoluble in aqua regia."
+    ],
+    "discovery": [],
+    "uses": [
+      "Ruthenium is primarily used as an alloying agent. Adding 0.1% ruthenium to titanium makes titanium 100 times more resistant to corrosion. Small amounts of ruthenium are added to platinum and palladium to strengthen them. These alloys are used in jewelry and in electrical contacts that must resist wear."
+    ],
+    "production": [
+      "The metal is isolated commercially by a complex chemical process, the final stage of which is the hydrogen reduction of ammonium ruthenium chloride, which yields a powder. The powder is consolidated by powder metallurgy techniques or by argon-arc welding."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Ruthenium is a hard, white metal and has four crystal modifications. It does not tarnish at room temperatures, but oxidizes explosively. It is attacked by halogens, hydroxides, etc. Ruthenium can be plated by electrodeposition or by thermal decomposition methods. The metal is one of the most effective hardeners for platinum and palladium, and is alloyed with these metals to make electrical contacts for severe wear resistance. A ruthenium-molybdenum alloy is said to be superconductive at 10.6 K. The corrosion resistance of titanium is improved a hundredfold by addition of 0.1% ruthenium. It is a versatile catalyst. Hydrogen sulfide can be split catalytically by light using an aqueous suspension of CdS particles loaded with ruthenium dioxide. It is thought this may have application to removal of H2S from oil refining and other industrial processes. Compounds in at least eight oxidation states have been found, but of these, the +2, +3, and +4 states are the most common. Ruthenium tetroxide, like osmium tetroxide, is highly toxic. In addition, it may explode. Ruthenium compounds show a marked resemblance to those of cadmium."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:48.640Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/44",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/ruthenium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele044.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele044.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/44.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=44",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

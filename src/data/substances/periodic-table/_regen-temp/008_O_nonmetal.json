@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 8,
+  "symbol": "O",
+  "name": "Oxygen",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 15.9994,
+    "ionizationEnergy": 13.618,
+    "atomicRadius": 152,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 54.36,
+    "boilingPoint": 90.2,
+    "density": 0.001429,
+    "electronConfiguration": 2224,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": -2,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek oxys for \"acid\" and genes for \"forming\" because the French chemist Antoine-Laurent Lavoisier once thought that oxygen was integral to all acids.Oxygen was discovered independently by the Swedish pharmacist and chemist Carl-Wilhelm Scheele in 1771, and the English clergyman and chemist Joseph Priestley in 1774. Scheele's Chemical Treatise on Air and Fire was delayed in publication until 1777, so Priestley is credited with the discovery because he published first.",
+      "Oxygen had been produced by several chemists prior to its discovery in 1774, but they failed to recognize it as a distinct element. Joseph Priestley and Carl Wilhelm Scheele both independently discovered oxygen, but Priestly is usually given credit for the discovery. They were both able to produce oxygen by heating mercuric oxide (HgO). Priestley called the gas produced in his experiments 'dephlogisticated air' and Scheele called his 'fire air'. The name oxygen was created by Antoine Lavoisier who incorrectly believed that oxygen was necessary to form all acids. Oxygen is the third most abundant element in the universe and makes up nearly 21% of the earth's atmosphere. Oxygen accounts for nearly half of the mass of the earth's crust, two thirds of the mass of the human body and nine tenths of the mass of water. Large amounts of oxygen can be extracted from liquefied air through a process known as fractional distillation. Oxygen can also be produced through the electrolysis of water or by heating potassium chlorate (KClO3).",
+      "From the Greek word oxys, acid, and genes, forming. The behavior of oxygen and nitrogen as components of air led to the advancement of the phlogiston theory of combustion, which captured the minds of chemists for a century.Joseph Priestley is generally credited with its discovery, although Scheele also discovered it independently.Its atomic weight was used as a standard of comparison for each of the other elements until 1961 when the International Union of Pure and Applied Chemistry adopted carbon 12 as the new basis."
+    ],
+    "discovery": [],
+    "uses": [
+      "Oxygen is a highly reactive element and is capable of combining with most other elements. It is required by most living organisms and for most forms of combustion. Impurities in molten pig iron are burned away with streams of high pressure oxygen to produce steel. Oxygen can also be combined with acetylene (C2H2) to produce an extremely hot flame used for welding. Liquid oxygen, when combined with liquid hydrogen, makes an excellent rocket fuel. Ozone (O3) forms a thin, protective layer around the earth that shields the surface from the sun's ultraviolet radiation. Oxygen is also a component of hundreds of thousands of organic compounds.",
+      "Plants and animals rely on oxygen for respiration. Hospitals frequently prescribe oxygen for patients with respiratory ailments."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The gas is colorless, odorless, and tasteless. The liquid and solid forms are a pale blue color and are strongly paramagnetic."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:40.721Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/8",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/oxygen.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele008.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele008.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/8.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=8",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

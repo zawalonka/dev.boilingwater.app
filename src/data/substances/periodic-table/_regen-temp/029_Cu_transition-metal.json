@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 29,
+  "symbol": "Cu",
+  "name": "Copper",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 63.546,
+    "ionizationEnergy": 7.726,
+    "atomicRadius": 140,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 1357.771084,
+    "boilingPoint": 283525624644,
+    "density": 8.933,
+    "electronConfiguration": 41310,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin cuprum for Cyprus, the island where the Romans first obtained copper. The symbol Cu also comes from the Latin cuprum. The element has been known since prehistoric times.",
+      "Archaeological evidence suggests that people have been using copper for at least 11,000 years. Relatively easy to mine and refine, people discovered methods for extracting copper from its ores at least 7,000 years ago. The Roman Empire obtained most of its copper from the island of Cyprus, which is where copper's name originated. Today, copper is primarily obtained from the ores cuprite (CuO2), tenorite (CuO), malachite (CuO3·Cu(OH)2), chalcocite (Cu2S), covellite (CuS) and bornite (Cu6FeS4). Large deposits of copper ore are located in the United States, Chile, Zambia, Zaire, Peru and Canada.",
+      "From the Latin word cuprum, from the island of Cyprus. It is believed that copper has been mined for 5,000 years."
+    ],
+    "discovery": [],
+    "uses": [
+      "Used in large amounts by the electrical industry in the form of wire, copper is second only to silver in electrical conductance. Since it resists corrosion from the air, moisture and seawater, copper has been widely used in coins. Although once made nearly entirely from copper, American pennies are now made from zinc that has been coated with copper. Copper is also used to make water pipes and jewelry, as well as other items.Pure copper is usually too soft for most uses. People first learned about 5,000 years ago that copper can be strengthened if it is mixed with other metals. The two most familiar alloys of copper are bronze and brass. Bronze, the first alloy created by people, is a mix of copper that contains as much as 25% tin. Early people used bronze to make tools, weaponry, containers and ornamental items. Brass, a mix of copper that contains between 5% and 45% zinc, was first used about 2,500 years ago. The Romans were the first to make extensive use of brass, using it to make such things as coins, kettles and ornamental objects. Today, brass is also used in some musical instruments, screws and other hardware that must resist corrosion.Hydrated copper sulfate (CuSO4·H2O), also known as blue vitriol, is the best known copper compound. It is used as an agricultural poison, as an algicide in water purification and as a blue pigment for inks. Cuperic chloride (CuCl2), another copper compound, is used to fix dyes to fabrics. Cuprous chloride (CuCl) is a poisonous white powder that is chiefly used to absorb carbon dioxide (CO2). Copper cyanide (CuCN) is commonly used in electroplating.",
+      "The electrical industry is one of the greatest users of copper. Iron's alloys  brass and bronze  are very important: all American coins are copper alloys and gun metals also contain copper.Copper has wide use as an agricultural poison and as an algaecide in water purification. Copper compounds, such as Fehling's solution, are widely used in analytical chemistry tests for sugar."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Copper is reddish and takes on a bright metallic luster. It is malleable, ductile, and a good conductor of heat and electricity (second only to silver in electrical conductivity)."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:45.510Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/29",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/copper.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele029.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele029.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/29.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=29",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

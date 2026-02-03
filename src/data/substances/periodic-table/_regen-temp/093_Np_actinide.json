@@ -1,0 +1,87 @@
+{
+  "atomicNumber": 93,
+  "symbol": "Np",
+  "name": "Neptunium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 237,
+    "ionizationEnergy": 6.266,
+    "atomicRadius": 221,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 9176441191,
+    "boilingPoint": 417539027056,
+    "density": 20.25,
+    "electronConfiguration": 725461,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 6112,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Neptunium was first produced by Edwin M. McMillian and Philip H. Abelson, working at the University of California, Berkeley, in 1940. They produced neptunium-239, an isotope of neptunium with a half-life of about 2.4 days, by bombarding uranium with slow moving neutrons.",
+      "Named for the planet Neptune (named after the Roman god of the sea), the next planet out from the Sun after Uranus. There were many early false reports of the discovery of neptunium. The most significant was by Enrico Fermi who believed that bombarding uranium with neutrons followed by beta decay would lead to the formation of element 93. In 1934, he bombarded uranium atoms with neutrons and reported that he had produced elements 93 and 94. As it turned out, Fermi had actually fissioned or split uranium atoms into many fragment radioisotopes. The explanation and announcement of the discovery of fission was later published by Hahn and Strassman, although it was their co-worker Lisa Meitner who had correctly interpreted the results of the experiments. In 1940, with excitement about fission reaching the University of California at Berkeley, Professor Edwin McMillan and graduate student Philip Abelson bombarded uranium with cyclotron-produced moderated (slow) neutrons, resulting not in “fission” but \"fusion\" of the reactants forming the new element 93, which they named \"neptunium\":23892U + 10n → 23992U → 23993Np + β-Neptunium-239 was the first transuranium element produced synthetically and the first actinide series transuranium element discovered. This isotope has a beta-decay half-life of 2.3565 days, which forms daughter product plutonium-239 with a half-life of 24,000 years."
+    ],
+    "discovery": [],
+    "uses": [
+      "Neptunium's most stable isotope, neptunium-237, has a half-life of about 2,144,000 years. It decays into protactinium-233 through alpha decay. Neptunium-237, which is produced in gram quantities as a by-product of the production of plutonium in nuclear reactors, is used in neutron detectors.Once considered to be completely artificial, extremely small amounts of neptunium are produced naturally in uranium ores through the interaction of atoms of uranium in the ore with neutrons produced by the decay of other atoms of uranium in the ore."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Neptunium metal buttons (photo courtesy Lawrence Berkeley National Laboratory)"
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:59.066Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/93",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele093.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele093.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/93.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=93",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 60,
+  "symbol": "Nd",
+  "name": "Neodymium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 144.242,
+    "ionizationEnergy": 5.525,
+    "atomicRadius": 229,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 129410211870,
+    "boilingPoint": 334730745565,
+    "density": 7.01,
+    "electronConfiguration": 6244,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 54,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek neos for \"new\" and didymos for \"twin\". It was discovered by the Swedish surgeon and chemist Carl Gustav Mosander in 1841, who called it didymium (or twin) because of its similarity to lanthanum, which he had previously discovered two years earlier. In 1885, the Austrian chemist Carl Auer (Baron von Welsbach) separated didymium into two elements, one of which he called neodymium (or new twin).",
+      "Neodymium was discovered by Carl F. Auer von Welsbach, an Austrian chemist, in 1885. He separated neodymium, as well as the element praseodymium, from a material known as didymium. Today, neodymium is primarily obtained from through an ion exchange process monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "From the Greek word neos meaning new, and didymos, twin. In 1841, Mosander, extracted a rose-colored oxide from cerite , which he believed contained a new element. He named the element didymium, as it was an inseparable twin brother of lanthanum. In 1885 von Welsbach separated didymium into two new elemental components, neodymia and praseodymia, by repeated fractionation of ammonium didymium nitrate. While the free metal is in misch metal, long known and used as a pyrophoric alloy for light flints, the element was not isolated in relatively pure form until 1925. Neodymium is present in misch metal to the extent of about 18%. It is present in the minerals monazite and bastnasite, which are principal sources of rare-earth metals."
+    ],
+    "discovery": [],
+    "uses": [
+      "Neodymium makes up about 18% of Misch metal, a material that is used to make flints for lighters. Neodymium is also a component of didymium glass, which is used to make certain types of welder's and glass blower's goggles. Neodymium is added to glass to remove the green color caused by iron contaminants. It can also be added to glass to create violet, red or gray colors. Some types of glass containing neodymium are used by astronomers to calibrate devices called spectrometers and other types are used to create artificial rubies for lasers. Some neodymium salts are used to color enamels and glazes.",
+      "Didymium, of which neodymium is a component, is used for coloring glass to make welders goggles. By itself, neodymium colors glass delicate shades ranging from pure violet through wine-red and warm gray. Light transmitted through such glass shows unusually sharp absorption bands. The glass has been used in astronomical work to produce sharp bands by which spectral lines may be calibrated. Glass containing neodymium can be used as a laser material to produce coherent light. Neodymium salts are also used as a colorant for enamels."
+    ],
+    "production": [
+      "The element may be obtained by separating neodymium salts from other rare earths by ion-exchange or solvent extraction techniques, and by reducing anhydrous halides such as NdF3 with calcium metal. Other separation techniques are possible."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal has a bright silvery metallic luster, Neodymium is one of the more reactive rare-earth metals and quickly tarnishes in air, forming an oxide that spalls off and exposes metal to oxidation. The metal, therefore, should be kept under light mineral oil or sealed in a plastic material. Neodymium exists in two allotropic forms, with a transformation from a double hexagonal to a body-centered cubic structure taking place at 863°C."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:51.889Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/60",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/neodymium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele060.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele060.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/60.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=60",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

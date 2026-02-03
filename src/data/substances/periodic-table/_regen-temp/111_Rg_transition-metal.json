@@ -1,0 +1,72 @@
+{
+  "atomicNumber": 111,
+  "symbol": "Rg",
+  "name": "Roentgenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 281,
+    "atomicRadius": 138,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "electronConfiguration": 7251469,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 531,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Roentgenium was first produced by Peter Armbruster, Gottfried Münzenber and their team working at the Gesellschaft für Schwerionenforschung in Darmstadt, Germany in late 1994. They bombarded atoms of bismuth-209 with ions of nickel-64 with a device known as a linear accelerator. This produced three atoms of roentgenium-272, an isotope with a half-life of about 1.5 milliseconds (0.0015 seconds), and a free neutron. Roentgenium's most stable isotope, roentgenium-281, has a half-life of about 26 seconds and decays through spontaneous fission.",
+      "Discovered by Gesellschaft Schwerionenforschung (GSI) in Darmstadt, in 1994. Reasearch group of S. Hofmann, V. Ninov, F.P. Hessberger, P. Armbruster, H. Folger, G. Munzenberg, H.J. Schott, and others."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of roentgenium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Roentgenium does not occur naturally in the Earth’s crust. Roentgenium was first synthesized by an international team of scientists from the GSI in Darmstadt, Germany, the Joint Institute for Nuclear Research (JINR) in Dubna, Russia, the Comenius University in Bratislava, Slovakia, and the University of Jyväskylä, Finland at the GSI Helmholtz Center for Heavy Ion Research in Darmstadt, Germany in 1994, using the nuclear reaction 209Bi (64Ni, n) 272Rg. The credit for the first synthesis was confirmed in 2003. The element was named after Wilhelm Conrad Roentgen (Fig. IUPAC.111.1), who discovered X-rays in 1895 [660], [661], [662]. Roentgenium has no known isotopic applications aside from scientific research.",
+      "Roentgenium is named after Wilhelm Conrad Röntgen."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:03.182Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/111",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele111.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele111.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/111.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=111",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

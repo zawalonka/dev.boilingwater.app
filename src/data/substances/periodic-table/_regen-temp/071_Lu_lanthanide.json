@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 71,
+  "symbol": "Lu",
+  "name": "Lutetium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 174.9668,
+    "ionizationEnergy": 5.426,
+    "atomicRadius": 221,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 193616633025,
+    "boilingPoint": 367534026156,
+    "density": 9.84,
+    "electronConfiguration": 6241451,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from Lutetia, the ancient name for the city of Paris. The discovery of lutetium is credited to the French chemist Georges Urbain in 1907 although it had been separated earlier and independently by the Austrian chemist Carl Auer (Baron von Welsbach) from an ytterbium sample.Von Welsbach had named the element cassiopeium after the constellation Cassiopeia. However, because Urbain published his results before Auer, his name for the element was adopted by IUPAC in 1949.",
+      "The mineral gadolinite ((Ce, La, Nd, Y)2FeBe2Si2O10), discovered in a quarry near the town of Ytterby, Sweden, has been the source of a great number of rare earth elements. In 1843, Carl Gustaf Mosander, a Swedish chemist, was able to separate gadolinite into three materials, which he named yttria, erbia and terbia. As might be expected considering the similarities between their names and properties, scientists soon confused erbia and terbia and, by 1877, had reversed their names. What Mosander called erbia is now called terbia and visa versa. In 1878 Jean Charles Galissard de Marignac, a Swiss chemist, discovered that erbia was itself composed of two components. One component was named ytterbia by Marignac while the other component retained the name erbia. Marignac believed that ytterbia was a compound of a new element, which he named ytterbium. Other chemists produced and experimented with ytterbium in an attempt to determine some of it's properties. Unfortunately, different scientists obtained different results from the same experiments. While some scientists believed that these inconsistent results were caused by poor procedures or faulty equipment, Georges Urbain, a French chemist, believed that ytterbium wasn't an element at all, but a mixture of two elements. In 1907, Urbain was able to separate ytterbium into two elements. Urbain named one of the elements neoytterbium (new ytterbium) and the other element lutecium. Carl Auer von Welsbach, an Austrian chemist working independently of Urbain, reached the same conclusions at nearly the same time. Welsbach chose the names albebaranium and cassiopium for these elements. Urbain was eventually credited with the discovery of the elements and won the right to name them, although chemists later changed the name neoytterbium back to ytterbium and changed the spelling of lutecium to lutetium. Today, lutetium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "Lutetia is the ancient name for Paris. In 1907, Urbain described a process by which Marignac's ytterbium (1879) could be separated into the two elements, ytterbium (neoytterbium) and lutetium. These elements were identical with \"aldebaranium\" and \"cassiopeium,\" independently discovered at this time. The spelling of the element was changed from lutecium to lutetium in 1949."
+    ],
+    "discovery": [],
+    "uses": [
+      "Lutetium is one of the most difficult elements to prepare and has no large scale practical uses, although some of its radioactive isotopes can be used as a catalyst in the cracking of petroleum products and a catalyst in some hydrogenation and polymerization processes.",
+      "Stable lutetium nuclides, which emit pure beta radiation after thermal neutron activation, can be used as catalysts in cracking, alkylation, hydrogenation, and polymerization. Virtually no other commercial uses have been found yet for lutetium."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Lutetium occurs in very small amounts in nearly all minerals containing yttrium, and is present in monazite to the extent of about 0.003%, which is a commercial source. The pure metal has been isolated only in recent years and is one of the most difficult to prepare. It can be prepared by the reduction of anhydrous LuCl3 or LuF3 by an alkali or alkaline earth metal. The metal is silvery white and relatively stable in air. 176Lu occurs naturally (2.6%) with 175Lu (97.4%). It is radioactive with a half-life of about 3 x 1010 years."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:54.268Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/71",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/lutetium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele071.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele071.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/71.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=71",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

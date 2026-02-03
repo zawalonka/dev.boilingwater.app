@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 62,
+  "symbol": "Sm",
+  "name": "Samarium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 150.36,
+    "ionizationEnergy": 5.644,
+    "atomicRadius": 229,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 134710741965,
+    "boilingPoint": 206717943261,
+    "density": 7.52,
+    "electronConfiguration": 6246,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 70,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the mineral samarskite, in which it was found and that had been named for Colonel Samarski, a Russian mine official. Samarium was originally discovered in 1878 by the Swiss chemist Marc Delafontaine, who called it decipium. It was also discovered by the French chemist Paul-Emile Lecoq de Boisbaudran in 1879. In 1881, Delafontaine determined that his decipium could be resolved into two elements, one of which was identical to Boisbaudran's samarium. In 1901, the French chemist Eugène-Anatole Demarçay showed that this samarium earth also contained europium.",
+      "Samarium was observed spectroscopically by Jean Charles Galissard de Marignac, a Swiss chemist, in a material known as dydimia in 1853. Paul-Émile Lecoq de Boisbaudran, a French chemist, was the first to isolate samarium from the mineral samarskite ((Y, Ce, U, Fe)3(Nb, Ta, Ti)5O16) in 1879. Today, samarium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements that can contain as much as 2.8% samarium.",
+      "Discovered spectroscopically by its sharp absorption lines in 1879 by Lecoq de Boisbaudran in the mineral samarskite, named in honor of a Russian mine official, Col. Samarski."
+    ],
+    "discovery": [],
+    "uses": [
+      "Samarium is one of the rare earth elements used to make carbon arc lights which are used in the motion picture industry for studio lighting and projector lights. Samarium also makes up about 1% of Misch metal, a material that is used to make flints for lighters.Samarium forms a compound with cobalt (SmCo5) which is a powerful permanent magnet with the highest resistance to demagnetization of any material known. Samarium oxide (Sm2O3) is added to glass to absorb infrared radiation and acts as a catalyst for the dehydration and dehydrogenation of ethanol (C2H6O).",
+      "Samarium, along with other rare earths, is used for carbon-arc lighting for the motion picture industry. SmCo5 has been used in making a new permanent magnet material with the highest resistance to demagnetization of any known material. It is said to have an intrinsic coercive force as high as 2200 kA/m. Samarium oxide has been used in optical glass to absorb the infrared. Samarium is used to dope calcium fluoride crystal for use in optical lasers or lasers. Compounds of the metal act as sensitizers for phosphors excited in the infrared; the oxide exhibits catalytic properties in the dehydration and dehydrogenation of ethyl alcohol. It is used in infrared absorbing glass and as a neutron absorber in nuclear reactors."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Samarium has a bright silver luster and is reasonably stable in air. Three crystal modifications of the metal exist, with transformations at 734 and 922°C. The metal ignites in air at about 150°C. The sulfide has excellent high-temperature stability and good thermoelectric efficiencies up to 1100°C."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:52.399Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/62",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/samarium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele062.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele062.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/62.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=62",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

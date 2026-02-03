@@ -1,0 +1,74 @@
+{
+  "atomicNumber": 117,
+  "symbol": "Ts",
+  "name": "Tennessine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 294,
+    "atomicRadius": 138,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 6238233505506621000,
+    "meltingPoint_source": "u-s-department-of-energy",
+    "boilingPoint": 8836101130,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 7275514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": -1,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "On April 5, 2010, scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, along with scientists from the U.S. Department of Energy's Lawrence Livermore National Laboratory and Oak Ridge National Laboratory, announced the creation of tennessine. They produced tennessine by bombarding atoms of berkelium-249 with ions of calcium-48. Tennessine's most stable isotope, tennessine-294, has a half-life of about 80 milliseconds. It decays into moscovium-290 through alpha decay.",
+      "On Novemer 28th, 2016 element 117 was named Tennessine with the symbol (Ts). The Tennessee region of the United States is home to Oak Ridge National Laboratory, Vanderbilt University, and the University of Tennessee at Knoxville, all of which contributed to superheavy element research."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of tennessine have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Tennessine does not occur naturally in the Earth’s crust. The name tennessine and the symbol Ts, are the accepted ones for element 117. The name is in recognition of the contribution of the Tennessee region, including Oak Ridge National Laboratory (ORNL), Vanderbilt University, and the University of Tennessee at Knoxville, to super-heavy element research, including the production and chemical separation of unique actinide target materials for super-heavy element synthesis at ORNL’s High Flux Isotope Reactor (HFIR) and Radiochemical Engineering Development Center (REDC) [676], [677], [678], [679].In 2009, two isotopes, 293Ts and 294Ts were synthesized from the bombardment of 48Ca ions with 249Bk nuclei (Fig. IUPAC.117.1) in the Dubna gas filled recoil separator and the heavy ion cyclotron U-400. Tennessine has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:04.353Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/117",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele117.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele117.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/117.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=117",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

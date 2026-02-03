@@ -1,0 +1,87 @@
+{
+  "atomicNumber": 87,
+  "symbol": "Fr",
+  "name": "Francium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 223,
+    "ionizationEnergy": 3.9,
+    "atomicRadius": 348,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 3002781,
+    "boilingPoint": 680,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 71,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Francium was discovered by Marguerite Catherine Perey, a French chemist, in 1939 while analyzing actinium's decay sequence. Although considered a natural element, scientists estimate that there is no more than one ounce of francium in the earth's crust at one time. Since there is so little naturally occurring francium on earth, scientists must produce francium in order to study it. Francium can be produced by bombarding thorium with protons or by bombarding radium with neutrons. Francium's most stable isotope, francium-223, has a half-life of about 22 minutes. It decays into radium-223 through beta decay or into astatine-219 through alpha decay.",
+      "Discovered in 1939 by Mlle. Marguerite Perey of the Curie Institute, Paris. Francium, the heaviest known member of the alkali metals series, occurs as a result of an alpha disintegration of actinium. It can also be made artificially by bombarding thorium with protons. While it occurs naturally in uranium minerals, there is probably less than an ounce of francium at any time in the total crust of the earth. It has the highest equivalent weight of any element, and is the most unstable of the first 101 elements of the periodic system. Thirty-three isotopes of francium are recognized. The longest lived 223Fr (Ac, K), a daughter of 227Ac, has a half-life of 22 min. This is the only isotope of francium occurring in nature. Because all known isotopes of francium are highly unstable, knowledge of the chemical properties of this element comes from radiochemical techniques. No weighable quantity of the element has been prepared or isolated. The chemical properties of francium most resemble cesium."
+    ],
+    "discovery": [],
+    "uses": [
+      "Due to the small amounts produced and its short half-life, there are currently no uses for francium outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Francium was discovered in 1939 by Marguerite Perey, a physicist at the Curie Institute in Paris, France (Fig. IUPAC.87.1). 223Fr (with a half-life of 22 min) occurs naturally in uranium minerals as a result of actinium decay. However, it is estimated that no more than approximately 30 g of francium is present in the Earth’s crust at any time. Francium can be produced artificially for research by bombarding thorium with protons. Francium was named in honor of Perey’s home country, France [575], [576], [577]. Francium has no known isotopic applications outside of scientific research."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:57.901Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/87",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele087.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele087.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/87.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=87",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

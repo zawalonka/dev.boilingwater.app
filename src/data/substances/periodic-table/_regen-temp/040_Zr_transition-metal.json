@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 40,
+  "symbol": "Zr",
+  "name": "Zirconium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 91.224,
+    "ionizationEnergy": 6.634,
+    "atomicRadius": 186,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 212818553371,
+    "boilingPoint": 468244097968,
+    "density": 6.52,
+    "electronConfiguration": 5242,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Arabic zargun for \"gold-like\". It was discovered in zirconia by the German chemist Martin-Heinrich Klaproth in 1789. Zirconium was first isolated by Swedish chemist Jöns Jacob Berzelius in 1824 in an impure state, and finally by the chemists D. Lely, Jr. and L. Hamburger in a pure state in 1914.",
+      "Zirconium was discovered by Martin Heinrich Klaproth, a German chemist, while analyzing the composition of the mineral jargon (ZrSiO4) in 1789. Zirconium was isolated by Jöns Jacob Berzelius, a Swedish chemist, in 1824 and finally prepared in a pure form in 1914. Obtaining pure zirconium is very difficult because it is chemically similar to hafnium, an element which is always found mixed with deposits of zirconium. Today, most zirconium is obtained from the minerals zircon (ZrSiO4) and baddeleyite (ZrO2) through a process known as the Kroll Process.",
+      "From the Persian zargun, gold like. Zircon, the primary gemstone of zirconium, is also known as jargon, hyacinth, jacinth, or ligure. This mineral, or its variations, is mentioned in biblical writings. The mineral was not known to contain a new element until Klaproth, in 1789, analyzed a jargon from Ceylon and identified the new element, which Werner named zircon (silex circonius), and which Klaproth called Zirkonertz (zirconia). The impure metal was first isolated by Berzelius in 1824 by heating a mixture of potassium and potassium zirconium fluoride in a small decomposition process they developed."
+    ],
+    "discovery": [],
+    "uses": [
+      "Zirconium is a corrosion resistant metal that is used in high performance pumps and valves. Since it also does not easily absorb neutrons, zirconium is widely used in nuclear reactors. The nuclear power industry uses nearly 90% of the zirconium produced each year, which must be nearly free of hafnium. Zirconium is also used as an alloying agent in steel, to make some types of surgical equipment and as a getter, a material that combines with and removes trace gases from vacuum tubes.Zircon (ZrSiO4) is a zirconium compound that can take many different forms, the most popular of which is a clear, transparent gemstone that can be cut to look like diamond and is frequently used in jewelry. Zirconium dioxide (ZrO2) can withstand very high temperatures and is used to make crucibles and to line the walls of high temperature furnaces. Zirconium carbonate (3ZrO2·CO2·H2O) is used in lotions to treat poison ivy.",
+      "It is used extensively by the chemical industry where corrosive agents are employed. Zirconium is used as a getter in vacuum tubes, as an alloying agent in steel, in surgical appliances, photoflash bulbs, explosive primers, rayon spinnerets, lamp filaments, etc. It is used in poison ivy lotions in the form of the carbonate as it combines with urushiol. With niobium, zirconium is superconductive at low temperatures and is used to make superconductive magnets, which offer hope of direct large-scale generation of electric power. Zirconium oxide (zircon) has a high index of refraction and is used as a gem material. The impure oxide, zirconia, is used for laboratory crucibles that will withstand heat shock, for linings of metallurgical furnaces, and by the glass and ceramic industries as a refractory material. Its use as a refractory material accounts for a large share of all zirconium consumed."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Reactor-grade zirconium is essentially free of hafnium. Zircaloy(R) is an important alloy developed specifically for nuclear applications. Zirconium is exceptionally resistant to corrosion by many common acids and alkalis, by sea water, and by other agents. Alloyed with zinc, zirconium becomes magnetic at temperatures below 35°K."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:47.566Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/40",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/zirconium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele040.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele040.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/40.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=40",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

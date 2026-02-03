@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 76,
+  "symbol": "Os",
+  "name": "Osmium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 190.23,
+    "ionizationEnergy": 8.7,
+    "atomicRadius": 216,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 330630335491,
+    "boilingPoint": 528550129054,
+    "density": 22.57,
+    "electronConfiguration": 6241456,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 54,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek osme for \"smell\" because of the sharp odor of its volatile oxide. Both osmium and iridium were discovered simultaneously in a crude platinum ore by the English chemist Smithson Tennant in 1803.",
+      "Osmium and iridium were discovered at the same time by the British chemist Smithson Tennant in 1803. Osmium and iridium were identified in the black residue remaining after dissolving platinum ore with aqua regia, a mixture of 25% nitric acid (HNO3) and 75% hydrochloric acid (HCl). Today, osmium is primarily recovered during the processing of platinum and nickel ores.",
+      "Discovered in 1803 by Tennant in the residue left when crude platinum is dissolved by aqua regia."
+    ],
+    "discovery": [],
+    "uses": [
+      "Metallic osmium is hard, brittle and very difficult to make. Powdered osmium is easier to make but emits osmium tetroxide (OsO4) when it is exposed to the air. Unfortunately, osmium tetroxide smells bad and is very poisonous. Because of these problems, osmium is primarily used to make very hard alloys. Osmium alloys can be found in ball point pen tips, fountain pen tips, record player needles, electrical contacts and other devices where frictional wear must be minimized.",
+      "The tetroxide has been used to detect fingerprints and to stain fatty tissue for microscope slides. The metal is almost entirely used to produce very hard alloys with other metals of the platinum group for fountain pen tips, instrument pivots, phonograph needles, and electrical contacts."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal is lustrous, bluish white, extremely hard, and brittle even at high temperatures. It has the highest melting point and the lowest vapor pressure of the platinum group. The metal is very difficult to fabricate, but the powdered or spongy metal slowly gives off osmium tetroxide, which as a powerful oxidizing agent and has a strong smell. The tetroxide is highly toxic, and boils at 130°C.Density measurements show osmium to be a little more dense than iridium, and osmium is often cited as the heavier element. However, calculations of the density from the space lattice, which may be more reliable than these measurements, give a density of 22.65 for iridium compared to 22.61 for osmium. According to IUPAC, because of this apparent contradiction, no decision has been made as to which is heavier."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:55.333Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/76",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/osmium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele076.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele076.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/76.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=76",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

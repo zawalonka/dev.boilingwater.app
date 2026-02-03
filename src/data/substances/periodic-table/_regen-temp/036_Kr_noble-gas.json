@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 36,
+  "symbol": "Kr",
+  "name": "Krypton",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 83.798,
+    "ionizationEnergy": 14,
+    "atomicRadius": 202,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 115.79,
+    "boilingPoint": 119.93,
+    "density": 0.003733,
+    "electronConfiguration": 4231046,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek kryptos for \"concealed\" or \"hidden\". It was discovered in liquefied atmospheric air by the Scottish chemist William Ramsay and the English chemist Morris William Travers in 1898. A wavelength in the atomic spectrum of 86Kr is a fundamental standard of length.",
+      "Krypton was discovered on May 30, 1898 by Sir William Ramsay, a Scottish chemist, and Morris M. Travers, an English chemist, while studying liquefied air. Small amounts of liquid krypton remained behind after the more volatile components of liquid air had boiled away. The earth's atmosphere is about 0.0001% krypton.",
+      "From the Greek word kryptos, hidden. Discovered in 1898 by Ramsay and Travers in the residue left after liquid air had nearly boiled away. In 1960 it was internationally agreed that the fundamental unit of length, the meter, should be defined in terms of the orange-red spectral line of 86Kr. This replaced the standard meter of Paris, which was defined in terms of a bar made of a platinum-iridium alloy. In October 1983, the meter, which originally was defined as being one ten millionth of a quadrant of the earth's polar circumference, was again redefined by the International Bureau of Weights and Measures as being the length of a path traveled by light in a vacuum during a time interval of 1/299,792,458 of a second."
+    ],
+    "discovery": [],
+    "uses": [
+      "The high cost of obtaining krypton from the air has limited its practical applications. Krypton is used in some types of photographic flashes used in high speed photography. Some fluorescent light bulbs are filled with a mixture of krypton and argon gases. Krypton gas is also combined with other gases to make luminous signs that glow with a greenish-yellow light. In 1960, the length of the meter was defined in terms of the orange-red spectral line of krypton-86, an isotope of krypton.Once thought to be completely inert, krypton is known to form a few compounds. Krypton difluoride (KrF2) is the easiest krypton compound to make and gram amounts of it have been produced.For those that are curious, pictures of krypton gas and krypton plasma can be found in the Questions and Answers section of this site.",
+      "Krypton clathrates are prepared using hydroquinone and phenol. 85Kr can be used for chemical analysis by imbedding the isotope in various solids. During this process, kryptonates are formed. Kryptonate activity is sensitive to chemical reactions at the solution surface. Estimates of the concentration of reactants are therefore made possible. Krypton is used in certain photographic flash lamps for high-speed photography."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Krypton is a \"noble\" gas. It is characterized by its brilliant green and orange spectral lines."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:46.850Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/36",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/krypton.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele036.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele036.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/36.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=36",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 37,
+  "symbol": "Rb",
+  "name": "Rubidium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 85.4678,
+    "ionizationEnergy": 4.177,
+    "atomicRadius": 303,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 312.4639,
+    "boilingPoint": 9616881270,
+    "density": 1.53,
+    "electronConfiguration": 51,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin rubidus for \"deepest red\" because of the two deep red lines in its spectra. Rubidium was discovered in the mineral lepidolite by the German chemist Robert Wilhelm Bunsen and the German physicist Gustav-Robert Kirchoff in 1861. Bunsen isolated rubidium in 1863.",
+      "Rubidium was discovered by the German chemists Robert Bunsen and Gustav Kirchhoff in 1861 while analyzing samples of the mineral lepidolite (KLi2Al(Al, Si)3O10(F, OH)2) with a device called a spectroscope. The sample produced a set of deep red spectral lines they had never seen before. Bunsen was eventually able to isolate samples of rubidium metal. Today, most rubidium is obtained as a byproduct of refining lithium.",
+      "From the Latin word rubidus, deepest red. Discovered in 1861 by Bunsen and Kirchoff in the mineral lepidolite by use of the spectroscope."
+    ],
+    "discovery": [],
+    "uses": [
+      "Rubidium is used in vacuum tubes as a getter, a material that combines with and removes trace gases from vacuum tubes. It is also used in the manufacture of photocells and in special glasses. Since it is easily ionized, it might be used as a propellant in ion engines on spacecraft. Recent discoveries of large deposits of rubidium suggest that its usefulness will increase as its properties become better understood.Rubidium forms a large number of compounds, although none of them has any significant commercial application. Some of the common rubidium compounds are: rubidium chloride (RbCl), rubidium monoxide (Rb2O) and rubidium copper sulfate Rb2SO4·CuSO4·6H20). A compound of rubidium, silver and iodine, RbAg4I5, has interesting electrical characteristics and might be useful in thin film batteries.",
+      "Because rubidium can be easily ionized, it has been considered for use in \"ion engines\" for space vehicles; however, cesium is somewhat more efficient for this purpose. It is also proposed for use as a working fluid for vapor turbines and for use in a thermoelectric generator using the magnetohydrodynamic principle where rubidium ions are formed by heat at high temperature and passed through a magnetic field. These conduct electricity and act like an amature of a generator thereby generating an electric current. Rubidium is used as a getter in vacuum tubes and as a photocell component. It has been used in making special glasses. RbAg4I5 is important, as it has the highest room conductivity of any known ionic crystal. At 20°C its conductivity is about the same as dilute sulfuric acid. This suggests use in thin film batteries and other applications."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Rubidium can be liquid at room temperature. It is a soft, silvery-white metallic element of the alkali group and is the second most electropositive and alkaline element. It ignites spontaneously in air and reacts violently in water, setting fire to the liberated hydrogen. As with other alkali metals, it forms amalgams with mercury and it alloys with gold, cesium, sodium, and potassium. It colors a flame yellowish violet. Rubidium metal can be prepared by reducing rubidium chloride with calcium, and by a number of other methods. It must be kept under a dry mineral oil or in a vacuum or inert atmosphere."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:47.028Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/37",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/rubidium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele037.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele037.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/37.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=37",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "atomicNumber": 88,
+  "symbol": "Ra",
+  "name": "Radium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 226,
+    "ionizationEnergy": 5.279,
+    "atomicRadius": 283,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 9737001292,
+    "boilingPoint": 141311402084,
+    "density": 5,
+    "electronConfiguration": 72,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Radium was discovered by Marie Sklodowska Curie, a Polish chemist, and Pierre Curie, a French chemist, in 1898. Marie Curie obtained radium from pitchblende, a material that contains uranium, after noticing that unrefined pitchblende was more radioactive than the uranium that was separated from it. She reasoned that pitchblende must contain at least one other radioactive element. Curie needed to refine several tons of pitchblende in order to obtain tiny amounts of radium and polonium, another radioactive element discovered by Curie. One ton of uranium ore contains only about 0.14 grams of radium. Today, radium can be obtained as a byproduct of refining uranium and is usually sold as radium chloride (RaCl2) or radium bromide (RaBr2) and not as a pure material. Radium's most stable isotope, radium-226, has a half-life of about 1600 years. It decays into radon-222 through alpha decay or into lead-212 by ejecting a carbon-14 nucleus.",
+      "Radium was discovered in 1898 by Madame Curie in the pitchblende or uraninite of North Bohemia, where it occurs. There is about 1 g of radium in 7 tons of pitchblende. The element was isolated in 1911 by Mme. Curie and Debierne by the electrolysis of a solution of pure radium chloride employing a mercury cathode; on distillation in an atmosphere of hydrogen, this amalgam yielded the pure metal."
+    ],
+    "discovery": [],
+    "uses": [
+      "The Curie, a unit used to describe the activity of a radioactive substance, is based on radium-226. It is equal to the number of atoms in a one gram sample of radium-226 that will decay in one second, or 37,000,000,000 decays per second.Radium had been used to make self-luminous paints for watches, aircraft instrument dials and other instrumentation, but has largely been replaced by cobalt-60, a less dangerous radioactive source. A mixture of radium and beryllium will emit neutrons and is used as a neutron source. Radium is used to produce radon, a radioactive gas used to treat some types of cancer. A single gram of radium-226 will produce 0.000l milliliters of radon a day.Radium is about one million times more active than uranium. The lab notebooks used by the Curies are too highly contaminated to be safely handled today.",
+      "One gram of radium produces about 0.0001 ml (stp) of emanation, or radon gas, per day. This is purged from the radium and sealed in minute tubes, which are used in the treatment of cancer and other diseases. Radium was used in the producing of self-luminous paints, neutron sources, and in medicine for the treatment of disease. Other radioisotopes, such as 60Co, are now being used in place of radium. Some of these sources are much more powerful, and others are safer to use. Radium loses about 1% of its activity in 25 years, being transformed into elements of lower atomic weight. Lead is a final product of disintegration. Stored radium and radium-containing products or minerals should be ventilated to prevent build-up of radon."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Radium is obtained commercially as bromide and chloride; it is doubtful if any appreciable stock of the isolated element now exists. The pure metal is brilliant white when freshly prepared, but blackens on exposure to air, probably due to formation of the nitride. It exhibits luminescence, as do its slats; it decomposes in water and is somewhat more volatile than barium. It is a member of the alkaline-earth group of metals. Radium imparts a carmine red color to a flame. Radium emits alpha, beta, and gamma rays and when mixed with beryllium produce neutrons. One gram of 226Ra undergoes 3.7 x 1010 disintegrations per second. The curie is defined as that amount of radioactivity which has the same disintegration rate as 1 g of 226Ra. Twenty five isotopes are now known; radium 226, the common isotope, has a half-life of 1600 years."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:58.095Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/88",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele088.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele088.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/88.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=88",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

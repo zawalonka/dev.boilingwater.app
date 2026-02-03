@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 25,
+  "symbol": "Mn",
+  "name": "Manganese",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 54.938044,
+    "ionizationEnergy": 7.434,
+    "atomicRadius": 197,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 151912462275,
+    "boilingPoint": 233420613742,
+    "density": 7.3,
+    "electronConfiguration": 4235,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7,
+    "groundLevel": 652,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin magnes for \"magnet\" since pyrolusite (MnO2) has magnetic properties. It was discovered by the Swedish pharmacist and chemist Carl-Wilhelm Scheele in 1774. In the same year, the Swedish chemist Johan Gottlieb Gahn first isolated the metal.",
+      "Proposed to be an element by Carl Wilhelm Scheele in 1774, manganese was discovered by Johan Gottlieb Gahn, a Swedish chemist, by heating the mineral pyrolusite (MnO2) in the presence of charcoal later that year. Today, most manganese is still obtained from pyrolusite, although it is usually burned in a furnace with powdered aluminum or is treated with sulfuric acid (H2SO4) to form manganese sulfate (MnSO4), which is then electrolyzed.",
+      "From the Latin word magnes, magnet, from magnetic properties of pyrolusite. Recognized by Carl Wilhelm Scheele, Torbern Olof Bergman, and others as an element and isolated by Gahn in 1774 by reduction of the dioxide with carbon."
+    ],
+    "discovery": [],
+    "uses": [
+      "Nearly 90% of all of the manganese produced each year is used in the production of steel. Manganese is added to molten steel to remove oxygen and sulfur and is alloyed with steel to make it easier to form and work with and to increase steel's strength and resistance to impact. Railroad tracks, for example, are made with steel that contains as much as 1.2% manganese. Manganese is also used to give glass an amethyst color and is responsible for the color of amethyst gemstones.Manganese dioxide (MnO2), the most common compound of manganese, makes up about 0.14% of the Earth's crust. It is used in dry cell batteries to prevent the formation of hydrogen, to remove the green color in glass that is caused by the presence of iron contaminants, and as a drying agent in black paints.",
+      "The dioxide (pyrolusite) is used as a depolarizer in dry cells and is used to \"decolorize\" glass that is colored green by impurities of iron. Manganese by itself colors glass an amethyst color and is responsible for the color of true amethyst. The dioxide is also used in the preparation of oxygen and chlorine and in drying black paints. The permanganate is a powerful oxidizing agent and is used in quantitative analysis and in medicine.Manganese is widely distributed throughout the animal kingdom. It is an important trace element and may be essential for utilization of vitamin B1."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "It is gray-white, resembling iron, but is harder and very brittle. The metal is reactive chemically and decomposes slowly in cold water. Manganese is used to form many important alloys. Manganese improves rolling and forging qualities in steel, along with adding strength, stiffness, wear resistance, hardness.With aluminum and antimony, and especially with small amounts of copper, it forms highly ferromagnetic alloys.Manganese metal is ferromagnetic only after special treatment. The pure metal exists in four allotropic forms. The alpha form is stable at ordinary temperature; gamma manganese, which changes to alpha at ordinary temperatures, is said to be flexible, soft, easily cut, and capable of being bent."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:44.714Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/25",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/manganese.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele025.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele025.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/25.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=25",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

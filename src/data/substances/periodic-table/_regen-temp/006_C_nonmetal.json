@@ -1,0 +1,92 @@
+{
+  "atomicNumber": 6,
+  "symbol": "C",
+  "name": "Carbon",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 12.0107,
+    "ionizationEnergy": 11.26,
+    "atomicRadius": 170,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 382335506422,
+    "boilingPoint": 409838256917,
+    "density": 2.267,
+    "electronConfiguration": 2222,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 30,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin carbo for \"charcoal\". It was known in prehistoric times in the form of charcoal and soot. In 1797, the English chemist Smithson Tennant proved that diamond is pure carbon.",
+      "Carbon, the sixth most abundant element in the universe, has been known since ancient times. Carbon is most commonly obtained from coal deposits, although it usually must be processed into a form suitable for commercial use. Three naturally occurring allotropes of carbon are known to exist: amorphous, graphite and diamond.",
+      "From the Latin word carbo: charcoal. Carbon, an element of prehistoric discovery, is very widely distributed in nature. It is found in abundance in the sun, stars, comets, and atmospheres of most planets. Carbon in the form of microscopic diamonds is found in some meteorites.Natural diamonds are found in kimberlite of ancient volcanic \"pipes,\" found in South Africa, Arkansas, and elsewhere. Diamonds are now also being recovered from the ocean floor off the Cape of Good Hope. About 30% of all industrial diamonds used in the U.S. are now made synthetically.The energy of the sun and stars can be attributed at least in part to the well-known carbon-nitrogen cycle."
+    ],
+    "discovery": [],
+    "uses": [
+      "Amorphous carbon is formed when a material containing carbon is burned without enough oxygen for it to burn completely. This black soot, also known as lampblack, gas black, channel black or carbon black, is used to make inks, paints and rubber products. It can also be pressed into shapes and is used to form the cores of most dry cell batteries, among other things.Graphite, one of the softest materials known, is a form of carbon that is primarily used as a lubricant. Although it does occur naturally, most commercial graphite is produced by treating petroleum coke, a black tar residue remaining after the refinement of crude oil, in an oxygen-free oven. Naturally occurring graphite occurs in two forms, alpha and beta. These two forms have identical physical properties but different crystal structures. All artificially produced graphite is of the alpha type. In addition to its use as a lubricant, graphite, in a form known as coke, is used in large amounts in the production of steel. Coke is made by heating soft coal in an oven without allowing oxygen to mix with it. Although commonly called lead, the black material used in pencils is actually graphite.Diamond, the third naturally occurring form of carbon, is one of the hardest substances known. Although naturally occurring diamond is typically used for jewelry, most commercial quality diamonds are artificially produced. These small diamonds are made by squeezing graphite under high temperatures and pressures for several days or weeks and are primarily used to make things like diamond tipped saw blades. Although they posses very different physical properties, graphite and diamond differ only in their crystal structure.A fourth allotrope of carbon, known as white carbon, was produced in 1969. It is a transparent material that can split a single beam of light into two beams, a property known as birefringence. Very little is known about this form of carbon.Large molecules consisting only of carbon, known as buckminsterfullerenes, or buckyballs, have recently been discovered and are currently the subject of much scientific interest. A single buckyball consists of 60 or 70 carbon atoms (C60 or C70) linked together in a structure that looks like a soccer ball. They can trap other atoms within their framework, appear to be capable of withstanding great pressures and have magnetic and superconductive properties.Carbon-14, a radioactive isotope of carbon with a half-life of 5,730 years, is used to find the age of formerly living things through a process known as radiocarbon dating. The theory behind carbon dating is fairly simple. Scientists know that a small amount of naturally occurring carbon is carbon-14. Although carbon-14 decays into nitrogen-14 through beta decay, the amount of carbon-14 in the environment remains constant because new carbon-14 is always being created in the upper atmosphere by cosmic rays. Living things tend to ingest materials that contain carbon, so the percentage of carbon-14 within living things is the same as the percentage of carbon-14 in the environment. Once an organism dies, it no longer ingests much of anything. The carbon-14 within that organism is no longer replaced and the percentage of carbon-14 begins to decrease as it decays. By measuring the percentage of carbon-14 in the remains of an organism, and by assuming that the natural abundance of carbon-14 has remained constant over time, scientists can estimate when that organism died. For example, if the concentration of carbon-14 in the remains of an organism is half of the natural concentration of carbon-14, a scientist would estimate that the organism died about 5,730 years ago, the half-life of carbon-14.There are nearly ten million known carbon compounds and an entire branch of chemistry, known as organic chemistry, is devoted to their study. Many carbon compounds are essential for life as we know it. Some of the most common carbon compounds are: carbon dioxide (CO2), carbon monoxide (CO), carbon disulfide (CS2), chloroform (CHCl3), carbon tetrachloride (CCl4), methane (CH4), ethylene (C2H4), acetylene (C2H2), benzene (C6H6), ethyl alcohol (C2H5OH) and acetic acid (CH3COOH)."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:40.341Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/6",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/carbon.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele006.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele006.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/6.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=6",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

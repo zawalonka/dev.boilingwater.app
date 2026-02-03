@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 19,
+  "symbol": "K",
+  "name": "Potassium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 39.0983,
+    "ionizationEnergy": 4.341,
+    "atomicRadius": 275,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 336.5363,
+    "boilingPoint": 10327591398,
+    "density": 0.89,
+    "electronConfiguration": 41,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the English \"potash\" or \"pot ashes\" because it is found in caustic potash (KOH). The symbol K derives from the Latin kalium via the Arabic qali for alkali. It was first isolated by the British chemist Humphry Davy in 1807 from electrolysis of potash (KOH).",
+      "Although potassium is the eighth most abundant element on earth and comprises about 2.1% of the earth's crust, it is a very reactive element and is never found free in nature. Metallic potassium was first isolated by Sir Humphry Davy in 1807 through the electrolysis of molten caustic potash (KOH). A few months after discovering potassium, Davy used the same method to isolate sodium. Potassium can be obtained from the minerals sylvite (KCl), carnallite (KCl·MgCl2·6H2O), langbeinite (K2Mg2(SO4)3) and polyhalite (K2Ca2Mg(SO4)4·2H2O). These minerals are often found in ancient lake and sea beds. Caustic potash, another important source of potassium, is primarily mined in Germany, New Mexico, California and Utah. Pure potassium is a soft, waxy metal that can be easily cut with a knife. It reacts with oxygen to form potassium superoxide (KO2) and with water to form potassium hydroxide (KOH), hydrogen gas and heat. Enough heat is produced to ignite the hydrogen gas. To prevent it from reacting with the oxygen and water in the air, samples of metallic potassium are usually stored submerged in mineral oil.",
+      "From the English word, potash - pot ashes; Latin kalium, Arab qali, alkali. Discovered in 1807 by Davy, who obtained it from caustic potash (KOH); this was the first metal isolated by electrolysis."
+    ],
+    "discovery": [],
+    "uses": [
+      "Potassium forms an alloy with sodium (NaK) that is used as a heat transfer medium in some types of nuclear reactors.Potassium forms many important compounds. Potassium chloride (KCl) is the most common potassium compound. It is used in fertilizers, as a salt substitute and to produce other chemicals. Potassium hydroxide (KOH) is used to make soaps, detergents and drain cleaners. Potassium carbonate (KHCO3), also known as pearl ash, is used to make some types of glass and soaps and is obtained commercially as a byproduct of the production of ammonia. Potassium superoxide (KO2) can create oxygen from water vapor (H2O) and carbon dioxide (CO2) through the following reaction: 2KO2 + H2O + 2CO2 => 2KHCO3 + O2. It is used in respiratory equipment and is produced by burning potassium metal in dry air. Potassium nitrate (KNO3), also known as saltpeter or nitre, is used in fertilizers, match heads and pyrotechnics.",
+      "The greatest demand for potash has been in its use for fertilizers. Potassium is an essential constituent for plant growth and is found in most soils.An alloy of sodium and potassium (NaK) is used as a heat-transfer medium. Many potassium salts are of utmost importance, including the hydroxide, nitrate, carbonate, chloride, chlorate, bromide, iodide, cyanide, sulfate, chromate, and dichromate."
+    ],
+    "production": [
+      "Potassium is never found free in nature, but is obtained by electrolysis of the hydroxide, much in the same manner as prepared by Davy's first process. Thermal methods also are commonly used to produce potassium (such as by reduction of potassium compounds with CaC2, C, Si, or Na)."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "It is one of the most reactive and electropositive of metals. Except for lithium, it is the lightest known metal. It is soft, easily cut with a knife, and is silvery in appearance immediately after a fresh surface is exposed. It rapidly oxidizes in air and must be preserved in a mineral oil such as kerosene.As with other metals of the alkali group, it decomposes in water with the evolution of hydrogen. It catches fire spontaneously on water. Potassium and its salts impart a violet color to flames."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:43.641Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/19",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/potassium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele019.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele019.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/19.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=19",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

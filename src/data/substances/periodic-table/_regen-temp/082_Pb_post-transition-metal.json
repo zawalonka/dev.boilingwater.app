@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 82,
+  "symbol": "Pb",
+  "name": "Lead",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 207.2,
+    "ionizationEnergy": 7.417,
+    "atomicRadius": 202,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 600.61327,
+    "boilingPoint": 202217493180,
+    "density": 11.342,
+    "electronConfiguration": 6241451062,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 12120,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Anglo-Saxon lead, which is of unknown origin. The element was known from prehistoric times. The chemical symbol Pb is derived from the Latin plumbum.<!--  --> <p class=\"caption\">For more information about the natural variations of the atomic weight of lead please read IUPAC Technical Report Variation of lead isotopic composition and atomic weight in terrestrial materials (IUPAC Technical Report) <img src=\"images/pdf.gif\" style=\"width:auto; margin:0; vertical-align:bottom;\"> by Z.-K. Zhu et al Pure Appl. Chem. <strong>93</strong>, 155-166 (2021).",
+      "Lead has been known since ancient times. It is sometimes found free in nature, but is usually obtained from the ores galena (PbS), anglesite (PbSO4), cerussite (PbCO3) and minum (Pb3O4). Although lead makes up only about 0.0013% of the earth's crust, it is not considered to be a rare element since it is easily mined and refined. Most lead is obtained by roasting galena in hot air, although nearly one third of the lead used in the United States is obtained through recycling efforts.",
+      "Long known, mentioned in Exodus. The alchemists believed lead to be the oldest metal and associated with the planet Saturn. Native lead occurs in nature, but is rare."
+    ],
+    "discovery": [],
+    "uses": [
+      "Lead is a soft, malleable and corrosion resistant material. The ancient Romans used lead to make water pipes, some of which are still in use today. Unfortunately for the ancient Romans, lead is a cumulative poison and the decline of the Roman empire has been blamed, in part, on lead in the water supply. Lead is used to line tanks that store corrosive liquids, such as sulfuric acid (H2SO4). Lead's high density makes it useful as a shield against X-ray and gamma-ray radiation and is used in X-ray machines and nuclear reactors. Lead is also used as a covering on some wires and cables to protect them from corrosion, as a material to absorb vibrations and sounds and in the manufacture of ammunition. Most of the lead used today is used in the production on lead-acid storage batteries, such as the batteries found in automobiles.Several lead alloys are widely used. Solder, an alloy that is nearly half lead and half tin, is a material with a relatively low melting point that is used to join electrical components, pipes and other metallic items. Type metal, an alloy of lead, tin and antimony, is a material used to make the type used in printing presses and plates. Babbit metal, another lead alloy, is used to reduce friction in bearings.Lead forms many useful compounds. Lead monoxide (PbO), also known as litharge, is a yellow solid that is used to make some types of glass, such as lead crystal and flint glass, in the vulcanizing of rubber and as a paint pigment. Lead dioxide (PbO2) is a brown material that is used in lead-acid storage batteries. Trilead tetraoxide (Pb3O4), also known as red lead, is used to make a reddish-brown paint that prevents rust on outdoor steel structures. Lead arsenate (Pb3(AsO4)2) has been used as an insecticide although other, less harmful, substances have now largely replaced it. Lead carbonate (PbCO3), also known as cerussite, is a white, poisonous substance that was once widely used as a pigment for white paint. Use of lead carbonate in paints has largely been stopped in favor of titanium oxide (TiO2). Lead sulfate (PbSO4), also known as anglesite, is used in a paint pigment known as sublimed white lead. Lead chromate (PbCrO4), also known as crocoite, is used to produce chrome yellow paint. Lead nitrate (Pb(NO3)2) is used to make fireworks and other pyrotechnics. Lead silicate (PbSiO3) is used to make some types of glass and in the production of rubber and paints.",
+      "The metal is very effective as a sound absorber, is used as a radiation shield around X-ray equipment and nuclear reactors, and is used to absorb vibration. White lead, the basic carbonate, sublimed white lead, chrome yellow, and other lead compounds are used extensively in paints, although in recent years the use of lead in paints has been drastically curtailed to eliminate or reduce health hazards.Lead oxide is used in producing fine \"crystal glass\" and \"flint glass\" of a high index of refraction for achromatic lenses. The nitrate and the acetate are soluble salts. Lead salts such as lead arsenate have been used as insecticides, but their use in recent years has been practically eliminated in favor of less harmful organic compounds."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Lead is a bluish-white metal of bright luster. It is very soft, highly malleable, ductile, and a poor conductor of electricity. It is very resistant to corrosion; lead pipes bearing the insignia of Roman emperors, used as drains from the baths, are still in service. It is used in containers for corrosive liquids (such as sulfuric acid) and may be toughened by the addition of a small percentage of antimony or other metals."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:56.544Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/82",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/lead.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele082.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele082.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/82.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=82",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "atomicNumber": 5,
+  "symbol": "B",
+  "name": "Boron",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 10.811,
+    "ionizationEnergy": 8.298,
+    "atomicRadius": 192,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 234820753767,
+    "boilingPoint": 427340007232,
+    "density": 2.37,
+    "electronConfiguration": 2221,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Arabic buraq for \"white\". Although its compounds were known for thousands of years, it was not isolated until 1808 by the French chemists Louis-Joseph Gay-Lussac and Louis-Jacques Thenard.",
+      "Boron was discovered by Joseph-Louis Gay-Lussac and Louis-Jaques Thénard, French chemists, and independently by Sir Humphry Davy, an English chemist, in 1808. They all isolated boron by combining boric acid (H3BO3) with potassium. Today, boron is obtained by heating borax (Na2B4O7·10H2O) with carbon, although other methods are used if high-purity boron is required.",
+      "From the Arabic word Buraq, Persian Burah. Boron compounds have been known for thousands of years, but the element was not discovered until 1808 by Sir Humphry Davy and by Gay-Lussac and Thenard."
+    ],
+    "discovery": [],
+    "uses": [
+      "Boron is used in pyrotechnics and flares to produce a green color. Boron has also been used in some rockets as an ignition source. Boron-10, one of the naturally occurring isotopes of boron, is a good absorber of neutrons and is used in the control rods of nuclear reactors, as a radiation shield and as a neutron detector. Boron filaments are used in the aerospace industry because of their high-strength and lightweight.Boron forms several commercially important compounds. The most important boron compound is sodium borate pentahydrate (Na2B4O7·5H2O). Large amounts of this compound are used in the manufacture of fiberglass insulation and sodium perborate bleach. The second most important compound is boric acid (H3BO3), which is used to manufacture textile fiberglass and is used in cellulose insulation as a flame retardant. Sodium borate decahydrate (Na2B4O7·10H2O), better known as borax, is the third most important boron compound. Borax is used in laundry products and as a mild antiseptic. Borax is also a key ingredient in a substance known as Oobleck, a strange material 6th grade students experiment with while participating in Jefferson Lab's BEAMS program. Other boron compounds are used to make borosilicate glasses, enamels for covering steel and as a potential medicine for treating arthritis.",
+      "Amorphous boron is used in pyrotechnic flares to provide a distinctive green color, and in rockets as an igniter.By far the most commercially important boron compound in terms of dollar sales is Na2B4O7 &#8226; 5H2O. This pentahydrate is used in very large quantities in the manufacture of insulation fiberglass and sodium perborate bleach.Boric acid is also an important boron compound with major markets in textile products. Use of borax as a mild antiseptic is minor in economical terms. Boron compounds are also extensively used in the manufacture of borosilicate glasses. Other boron compounds show promise in treating arthritis.The isotope boron-10 is used as a control for nuclear reactors, as a shield for nuclear radiation, and in instruments used for detecting neutrons. Boron nitride has remarkable properties and can be used to make a material as hard as diamond. The nitride also behaves like an electrical insulator but conducts heat like a metal.Boron also has lubricating properties similar to graphite. The hydrides are easily oxidized with considerable energy liberation, and have been studied for use as rocket fuels. Demand is increasing for boron filaments, a high-strength, lightweight material chiefly employed for advanced aerospace structures.Boron is similar to carbon in that it has a capacity to form stable covalently bonded molecular networks. Carbonates, metalloboranes, phosphacarboranes, and other families comprise thousands of compounds."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:40.167Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/5",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/boron.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele005.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele005.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/5.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=5",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

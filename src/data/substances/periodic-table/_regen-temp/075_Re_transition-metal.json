@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 75,
+  "symbol": "Re",
+  "name": "Rhenium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 186.207,
+    "ionizationEnergy": 7.88,
+    "atomicRadius": 217,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 345931865767,
+    "boilingPoint": 5869559610105,
+    "density": 20.8,
+    "electronConfiguration": 6241455,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7,
+    "groundLevel": 652,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin rhenus for the Rhine river in Germany. Rhenium was discovered by x-ray spectroscopy in 1925 by German chemists Walter Noddack, Ida Tacke, and Otto Berg.",
+      "Rhenium was discovered by the German chemists Ida Tacke-Noddack, Walter Noddack and Otto Carl Berg in 1925. They detected rhenium spectroscopically in platinum ores and in the minerals columbite ((Fe, Mn, Mg)(Nb, Ta)2O6), gadolinite ((Ce, La, Nd, Y)2FeBe2Si2O10) and molybdenite (MoS2). Rhenium is present in these materials only in trace amounts. In 1928, Noddack and Berg were able to extract 1 gram of rhenium from 660 kilograms of molybdenite. Today, rhenium is obtained as a byproduct of refining molybdenum and copper.",
+      "Discovery of rhenium is generally attributed to Noddack, Tacke, and Berg, who announced in 1925 they had detected the element in platinum ore and columbite. They also found the element in gadolinite and molybdenite. By working up 660 kg of molybdenite in 1928 they were able to extract 1 g of rhenium."
+    ],
+    "discovery": [],
+    "uses": [
+      "Rhenium is used in flash lamps for photography and for filaments in mass spectrographs and ion gages, but is most frequently used as an alloying agent in tungsten and molybdenum and as a catalyst for performing certain reactions to a type of hydrocarbon known as an olefin.",
+      "It is widely used as filaments for mass spectrographs and ion gauges. Rhenium-molybdenum alloys are superconductive at 10 K.Rhenium is also used as an electrical contact material because it has good wear resistance and withstands arc corrosion. Thermocouples made of Re-W are used for measuring temperatures up to 2200C, and rhenium wire is used in photoflash lamps for photography.Rhenium catalysts are exceptionally resistant to poisoning from nitrogen, sulfur, and phosphorus, and are used for hydrogenation of fine chemicals."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The element is silvery white with a metallic luster; its density is exceeded only by that of platinum, iridium, and osmium, and its melting point is exceeded only by that of tungsten and carbon.The usual commercial form of the element is powder, but it can be consolidated by pressing and resistance-sintering in a vacuum or hydrogen atmosphere. This process produces a compact shape in excess of 90 percent of the density of the metal.Annealed rhenium is very ductile, and can be bent, coiled, or rolled. Rhenium is used as an additive to tungsten and molybdenum -based alloys to impart useful properties."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:55.140Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/75",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/rhenium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele075.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele075.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/75.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=75",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

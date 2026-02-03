@@ -1,0 +1,96 @@
+{
+  "atomicNumber": 91,
+  "symbol": "Pa",
+  "name": "Protactinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 231.03588,
+    "ionizationEnergy": 5.89,
+    "atomicRadius": 243,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 184515722862,
+    "boilingPoint": 4027,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "density": 15.37,
+    "electronConfiguration": 725261,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 4112,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek protos (first) for preceding the element actinium, because its most common isotope (231Pa) decays to 227Ac by loss of an alpha particle.In 1913 the German chemists K. Fajans and O. H. Gohring identified the first isotope of protactinium, 234Pa, and proposed the name brevium because of that isotope's short half-life of 6.7 h. 231Pa, with a longer half-life of 3.25(1)×104 a, was identified in 1918 by the German chemist O. Hahn and the Austrian physicist L. Meitner; and, independently in Britain, by F. Soddy and J. A. Cranston.",
+      "Protactinium was first identified by Kasimir Fajans and O.H. Göhring in 1913 while studying uranium's decay chain. The particular isotope they found, protactinium-234m, has a half-life of about 1.17 minutes. They named the element brevium, meaning brief, and then continued with their studies. Protactinium's existence was confirmed in 1918 when another isotope, protactinium-231, was independently discovered and studied by two groups of scientists, Otto Hahn and Lise Meitner of Germany and Frederick Soddy and John Cranston of Great Britain. Protactinium was first isolated by Aristid V. Grosse in 1934. Protactinium is a rare, poisonous and expensive element that is present in uranium ores in very small amounts. In 1961, the Great Britain Atomic Energy Authority was able to produce 125 grams of 99.9% pure protactinium, although they had to process about 55,000 kilograms of ore and spend about $500,000 to get it.Protactinium's most stable isotope, protactinium-231, has a half-life of about 32,760 years. It decays into actinium-227 through alpha decay.",
+      "The name \"protactinium\" comes from adding the Greek protos meaning first, before the word \"actinium.\" In 1871, Dmitri Mendeleevpredicted the existence of an element between thorium and uranium. In 1900, William Crookes isolated protactinium from uraniu. It was an intensely radioactive material, however, he could not characterize it as a new chemical element and thus named it uranium-X. In 1913 the first isotope of element 91, 234Pa, was discovered by K. Fajans and O.H. Gohring. It was a very short-lived member of the naturally occurring 238U decay series and as such they named it \"brevium.\" In 1917/18, two groups of scientists, Otto Hahn and Lise Meitner of Germany and Frederick Soddy and John Cranston of Great Britain, independently discovered another isotope of protactinium, 231Pa having much longer half-life of about 32,000 years. The name was changed to proto-actinium as being more consistent with the longer-lived characteristics of the most abundant isotope. In 1927, Grosse prepared 2 mg of a white powder, which was shown to be Pa2O5. In 1934 he isolated the element from 0.1 g of pure Pa2O5 by two methods, one of which was by converting the oxide to an iodide and \"cracking\" it in a high vacuum by an electrically heated filament by the reaction: 2PaI5 > 2Pa + 5I2. In 1949, the name protoactinium was shortened by the IUPAC who officially named it protactinium and confirmed Hahn and Meitner as co-discoverers. The new name meant \"parent of actinium\" and reflected the fact that actinium is a decay product of the radioactive decay of protactinium."
+    ],
+    "discovery": [],
+    "uses": [
+      "Due to its scarcity, high radioactivity and toxicity, there are currently no uses for protactinium outside of basic scientific research.",
+      "Because of its scarcity, high radioactivity and high toxicity, there are currently no practical uses for protactinium other than that of basic scientific research, and for this purpose, protactinium is generally extracted from spent nuclear fuel."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Protactinium metal is a dense, silvery-gray material with a bright metallic luster which it retains for some time in air but it does readily react with oxygen, water vapor and inorganic acids to form various compounds. In solid compounds protactinium is most stable in the oxidation state +5, but it also exists in the +4, +3 and +2 oxidation states. In solution the +5 state rapidly hydrolyzes by combining with hydroxide ions to form soluble or insoluble hydroxy-oxide solids which have a tendency to stick to the surfaces of vessels in which it is contained. A number of protactinium compounds are known, some of which are colored. The element is superconductive below 1.4K."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:58.663Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/91",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/protactinium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele091.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele091.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/91.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=91",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

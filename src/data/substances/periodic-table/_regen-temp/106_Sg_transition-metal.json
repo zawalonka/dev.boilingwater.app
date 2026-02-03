@@ -1,0 +1,76 @@
+{
+  "atomicNumber": 106,
+  "symbol": "Sg",
+  "name": "Seaborgium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 271,
+    "ionizationEnergy": 7.8,
+    "ionizationEnergy_source": "nist-physical-measurement-laboratory",
+    "atomicRadius": 132,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "electronConfiguration": 7251464,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 65430,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "groundLevel": 0,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Seaborgium was first produced by a team of scientists led by Albert Ghiorso working at the Lawrence Berkeley Laboratory in Berkeley, California, in 1974. They created seaborgium by bombarding atoms of californium-249 with ions of oxygen-18 using a machine called the Super-Heavy Ion Linear Accelerator. The collision produced atoms of seaborgium-263 and four free neutrons. Seaborgium-263 is an isotope of seaborgium with a half-life of about 1 second. Three months before the Berkeley group announced their discovery, a team of scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, claimed to have produced seaborgium. Their method involved bombarding atoms of lead-207 and lead-208 with ions of chromium-54 with a device called a cyclotron. They believed that they had produced atoms of seaborgium-259. The Berkeley group's work was confirmed in 1993 and they were credited with the discovery. Seaborgium's most stable isotope, seaborgium-271, has a half-life of about 2.4 minutes. It decays into rutherfordium-267 through alpha decay or decays through spontaneous fission..",
+      "IIn June 1974, members of the Joint Institute for Nuclear Research in Dubna, U.S.S.R., reported their discovery of Element 106, which they reported to have synthesized. Glenn Seaborg was part of this group, and the element was named in his honor.In September 1974, workers of the Lawrence Berkeley and Livermore Laboratories also claimed creation Element 106 \"without any scientific doubt.\" The LBL and LLL Group used the Super HILAC to accelerate 18O ions onto a 249Cf target.Element 106 was created by the reaction 249Cf(18O, 4N)263X, which decayed by alpha emission to rutherfordium, and then by alpha emission to nobelium, which in turn further decayed by alpha between daughter and granddaughter. The element so identified had alpha energies of 9.06 and 9.25 MeV with a half-life of 0.9 +/- 0.2 s.At Dubna, 280-MeV ions of 54Cr from the 310-cm cyclotron were used to strike targets of 206Pb, 207Pb, and 208Pb, in separate runs. Foils exposed to a rotating target disc were used to detect spontaneous fission activities. The foils were etched and examined microscopically to detect the number of fission tracks and the half-life of the fission activity. Other experiments were made to aid in confirmation of the discovery."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of seaborgium have ever been made, there are currently no uses for seaborgium outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Seaborgium does not occur naturally in the Earth’s crust. In 1974, seaborgium was first synthesized by Albert Ghiorso and his team at the University of California in Berkeley using the nuclear reaction 249Cf (18O, 4n) 263Sg. The element is named for Glenn T. Seaborg (Fig. IUPAC.106.1), who synthesized a number of trans-uranium elements [634], [648].Seaborgium has no commercial applications. However, 265Sg was one of the decay products used to confirm the synthesis of copernicium in a particle accelerator experiment.",
+      "Seaborgium is named after Glenn Seaborg."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:02.074Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/106",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele106.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele106.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/106.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=106",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

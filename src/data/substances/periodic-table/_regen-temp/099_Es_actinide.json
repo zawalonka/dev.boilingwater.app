@@ -1,0 +1,77 @@
+{
+  "atomicNumber": 99,
+  "symbol": "Es",
+  "name": "Einsteinium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 252,
+    "ionizationEnergy": 6.42,
+    "atomicRadius": 245,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 11338601580,
+    "boilingPoint": 996,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 72511,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 4152,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Einsteinium was discovered by a team of scientists led by Albert Ghiorso in 1952 while studying the radioactive debris produced by the detonation of the first hydrogen bomb. The isotope they discovered, einsteinium-253, has a half-life of about 20 days and was produced by combining 15 neutrons with uranium-238, which then underwent seven beta decays. Today, einsteinium is produced though a lengthy chain of nuclear reactions that involves bombarding each isotope in the chain with neutrons and then allowing the resulting isotope to undergo beta decay. Einsteinium's most stable isotope, einsteinium-252, has a half-life of about 471.7 days. It decays into berkelium-248 through alpha decay or into californium-252 through electron capture.",
+      "Einsteinium, the seventh transuranic element of the actinide series to be discovered, was identified by Ghiorso and co-workers at Berkeley in December 1952 in debris from the first large thermonuclear explosion, which took place in the Pacific in November, 1952. The 20-day 253Es isotope was produced. It was named after Albert Einstein.In 1961, enough einsteinium was produced to separate a macroscopic amount of 253Es. This sample weighted about 0.01µg and was measured using a special magnetic-type balance. 253Es so produced was used to produce mendelevium (Element 101) by neutron bombardment.About 3 µg of einsteinium has been produced in the High Flux Isotope Reactor (HFIR) at Oak Ridge National Laboratories by:▸ irradiating kilogram quantities of 239Pu in a reactor for several years to produce 242Pu,▸ fabricating the 242Pu into pellets of plutonium oxide and aluminum powder,▸ loading the pellets into target rods for an initial 1-year irradiation at the Savannah River Plant, and,▸ irradiating the targets for another 4 months in the HFIR.The targets were then removed for chemical separation of the einsteinium from californium daughter products. About 2 milligrams of einsteinium can be present in special HFIR campaigns."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only small amounts of einsteinium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Einsteinium does not occur naturally in the Earth’s crust. It was first identified in December 1952 by American scientists from the Argonne National Laboratory near Chicago, Illinois, the Los Alamos National Laboratory in Los Alamos, New Mexico, and The University of California Laboratory in Berkeley, California in the debris of thermonuclear weapons. The element was named for Albert Einstein (Fig. IUPAC.99.1). 253Es was the first isotope identified; it has a half-life of 20.47 days. The isotope with the longest half-life is 252Es, with a half-life of 472 days [630], [631].There are no uses for isotopes of einsteinium outside of basic scientific research for the production of higher transuranic elements and studies of actinide science. Due to the radiation and heat given off by einsteinium isotopes, it is difficult to use them in experiments and studies [631].",
+      "Tracer studies using 253Es show that einsteinium has chemical properties typical of a heavy trivalent, actinide element. Oxidation states of II and III for einsteinium have been reported and oxidation state IV has been postulated from vapor transport studies but not established unequivocally. Einsteinium is the first divalent metal in the actinide series (two bonding electrons rather than three). The self-irradiation properties of einsteinium make it extremely difficult, for example, to obtain x-ray crystallographic data. The intense gamma and x-rays from einsteinium decay to daughter products over-exposes the x-ray film/detector. This intense self-irradiation can be exploited however to study accelerated aging and radiation damage studies, and for targeted radiation medical treatments. An example of einsteinium chemical studies is the chemical consequences of radioactive decay. With the relatively short half-life of Es-253 (20.47 days) one can study the in-growth of daughter Bk-249 (half-life 330 days) and grand-daughter Cf-249 (half-life 351 years). Evidence suggests that divalent Es might decay into a divalent Bk daughter and subsequently into as of yet unknown divalent Cf. There are no commercial uses for einsteinium however it is the heaviest element for which bulk studies can be performed that allows for fundamental studies of the role of 5-f electrons in actinide systematics.Further reading:Richard G. Haire (2006) Chapter 12, The Chemistry of the Actinide and Transactinide Elements, Third Edition, L. R. Morss, J. Fuger, and N. M. Edelstein, Eds, Springer Publishers.This element reviewed and Updated by Dr. David Hobart, 2011"
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:00.363Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/99",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele099.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele099.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/99.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=99",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

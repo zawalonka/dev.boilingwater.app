@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 92,
+  "symbol": "U",
+  "name": "Uranium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 238.02891,
+    "ionizationEnergy": 6.194,
+    "atomicRadius": 240,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 140811352075,
+    "boilingPoint": 440441317468,
+    "density": 18.95,
+    "electronConfiguration": 725361,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 56,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the planet Uranus, which in Roman mythology was \"Father Heaven\". The German chemist Martin-Heinrich Klaproth discovered the element in 1789, following William Hershel's discovery of the planet in 1781. The metallic uranium was first isolated by the French chemist Eugène-Melchior Peligot in 1841.",
+      "Uranium was discovered by Martin Heinrich Klaproth, a German chemist, in the mineral pitchblende (primarily a mix of uranium oxides) in 1789. Although Klaproth, as well as the rest of the scientific community, believed that the substance he extracted from pitchblende was pure uranium, it was actually uranium dioxide (UO2). After noticing that 'pure' uranium reacted oddly with uranium tetrachloride (UCl4), Eugène-Melchoir Péligot, a French chemist isolated pure uranium by heating uranium dioxide with potassium in a platinum crucible. Radioactivity was first discovered in 1896 when Antoine Henri Becquerel, a French physicist, detected it from a sample of uranium. Today, uranium is obtained from uranium ores such as pitchblende, uraninite (UO2), carnotite (K2(UO2)2VO4·1-3H2O) and autunite (Ca(UO2)2(PO4)2·10H2O) as well as from phosphate rock (Ca3(PO4)2), lignite (brown coal) and monazite sand ((Ce, La, Th, Nd, Y)PO4). Since there is little demand for uranium metal, uranium is usually sold in the form of sodium diuranate (Na2U2O7·6H2O), also known as yellow cake, or triuranium octoxide (U3O8).",
+      "The use of uranium in its natural oxide form dates back to 79 A.D. when it was used as a yellow coloring agent in ceramic glazes. Yellow glass with 1% uranium oxide was found in an ancient Roman villa near Naples, Italy. In the late Middle Ages, pitchblende was extracted from the silver mines and was used as a coloring agent in the glassmaking industry. The identification of uranium as an element is generally credited to Martin H. Klaproth. While experimenting with pitchblende in 1789, he concluded that it contained a new element, which he named after the newly discovered planet Uranus (named after the Greek god of the sky or heaven). What Klaproth actually identified was not the pure element but uranium oxide. The pure metal was first isolated in 1841 by Eugène-Melchior Péligot, who reduced anhydrous uranium tetrachloride with potassium metal.In 1896 Antoine H. Becquerel discovered that uranium exhibited invisible light or rays; it was radioactivity. In 1934 research by Enrico Fermi and others eventually led to the use of uranium fission in the first nuclear weapon used in war and later in the peaceful use of uranium as fuel in nuclear power production. An ensuing arms race during the Cold War between the United States and the Soviet Union produced tens of thousands of nuclear weapons that used uranium metal and uranium-derived plutonium-239. The security of those weapons and their fissile material following the breakup of the Soviet Union in 1991 is an ongoing concern.In 1972 French physicist Francis Perrin discovered ancient and no longer active prehistoric natural nuclear fission reactors in uranium ore deposits at the Oklo mine in Gabon, West Africa, collectively known as the Oklo Fossil Reactors. The ore deposit is 1.7 billion years old; at that time, uranium-235 constituted about 3% of the total uranium on Earth (0.72% today). This is high enough to permit a sustained nuclear fission chain reaction to occur, provided other supporting geologic conditions exist."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since it is naturally radioactive, uranium, usually in the form of uranium dioxide (UO2), is most commonly used in the nuclear power industry to generate electricity. Naturally occurring uranium consists of three isotopes: uranium-234, uranium-235 and uranium-238. Although all three isotopes are radioactive, only uranium-235 is a fissionable material that can be used for nuclear power.When a fissionable material is struck by a neutron, its nucleus can release energy by splitting into smaller fragments. If some of the fragments are other neutrons, they can strike other atoms and cause them to split as well. A fissionable material, such as uranium-235, is a material capable of producing enough free neutrons to sustain a nuclear chain reaction.Only 0.7204% of naturally occurring uranium is uranium-235. This is too low a concentration to sustain a nuclear chain reaction without the help of a material known as a moderator. A moderator is a material that can slow down a neutron without absorbing it. Slow neutrons are more likely to react with uranium-235 and reactors using natural uranium can be made using graphite or heavy water as a moderator. Methods also exist for concentrating uranium-235. Once the levels of uranium-235 have been increased to about 3%, normal water can be used as a moderator.Uranium-238, uranium's most common isotope, can be converted into plutonium-239, a fissionable material that can also be used as a fuel in nuclear reactors. To produce plutonium-239, atoms of uranium-238 are exposed to neutrons. Uranium-239 forms when uranium-238 absorbs a neutron. Uranium-239 has a half-life of about 23 minutes and decays into neptunium-239 through beta decay. Neptunium-239 has a half-life of about 2.4 days and decays into plutonium-239, also through beta decay.Although it does not occur naturally, uranium-233 is also a fissionable material that can be used as a fuel in nuclear reactors. To produce uranium-233, atoms of thorium-232 are exposed to neutrons. Thorium-233 forms when thorium-232 absorbs a neutron. Thorium-233 has a half-life of about 22 minutes and decays into protactinium-233 through beta decay. Protactinium-233 has a half-life of about 27 days and decays into uranium-233, also through beta decay. If completely fissioned, one pound (0.45 kilograms) of uranium-233 will provide the same amount of energy as burning 1,500 tons (1,350,000 kilograms) of coal.Uranium is a dense metal that has uses outside of the nuclear power industry. It is used as a target for X-ray production, as ammunition for some types of military weaponry, as a shield against radiation, as a counterweight for aircraft control surfaces and in the gyroscopes of inertial guidance systems.Uranium compounds have been used for centuries to color glass. A 2,000 year old sample of yellow glass found near Naples, Italy contains uranium oxide. Uranium trioxide (UO3) is an orange powder and has been used in the manufacture of Fiestaware plates. Other uranium compounds have also been used to make vaseline glass and glazes. The uranium within these items is radioactive and should be treated with care.Uranium's most stable isotope, uranium-238, has a half-life of about 4,468,000,000 years. It decays into thorium-234 through alpha decay or decays through spontaneous fission.",
+      "Uranium was used in as coloring agents in ceramic glazes and glass in ancient Rome and in the Middle Ages producing orange-red to lemon yellow hues. More recently it was used as an orange glaze in contemporary Fiestaware© dishware but was later discontinued for health reasons. Many contemporary uses of uranium exploit its unique nuclear properties. Uranium-235 has the distinction of being the only naturally occurring fissileisotope. This means it can be split into two or three fragments (fission products) by thermal neutrons. Uranium-238 is fissionable by fast neutrons, and is fertile, meaning it can be transmuted to fissile plutonium-239 in a nuclear reactor. Another fissile isotope, uranium-233, can be produced from natural thorium and is also important in nuclear technology. While uranium-238 has a small probability for spontaneous fission or even induced fission with fast neutrons, uranium-235 and to a lesser degree uranium-233 have a much higher fission cross-section for slow neutrons. In sufficient concentration, these isotopes maintain a sustained nuclear chain reaction. This generates the heat in nuclear power reactors, and produces the fissile material for nuclear weapons. This nuclear conversion can be brought about in breeder reactors where it is possible to produce more new fissionable material than the fissionable material used in maintaining the chain reaction. Depleted uranium (238U) (depleted of uranium-235) is used in balistic armor penetration and as armor plating.Uranium-238 is not fissile, but is a fertile isotope, because after neutron activation it can produce plutonium-239, another fissile isotope. Indeed, the238U nucleus can absorb one neutron to produce the radioactive isotope uranium-239. 239U decays by beta emission to neptunium-239, also a beta-emitter, that decays in its turn, within a few days into plutonium-239. 239Pu was used as fissile material in the first atomic bomb detonated in the \"Trinity test\" on 15 July 1945 in New Mexico.Uranium-235 is of even greater importance because it is the key to utilizing uranium. 235U, while occurring in natural uranium to the extent of only 0.71%, is so fissionable with slow neutrons that a self-sustaining fission chain reaction can be made in a reactor constructed from natural uranium and a suitable moderator, such as heavy water or graphite, alone.Uranium-235 can be concentrated by gaseous diffusion and other physical processes, if desired, and used directly as a nuclear fuel, instead of natural uranium, or used as an explosive.Natural uranium, slightly enriched with 235U by a small percentage, is used to fuel nuclear power reactors to generate electricity. Natural thorium can be irradiated with neutrons to produce the important isotope 233U as follows: 232Th(n, gamma) >233Th(beta) >233Pa(beta) >233U. While thorium itself is not fissionable, 233U is, and in this way may be used as a nuclear fuel. One pound of completely fissioned uranium has the fuel value of over 1500 tons of coal.The uses of nuclear fuels to generate electrical power, to make isotopes for peaceful purposes, and to make explosives are well known. Uranium in the U.S.A. is controlled by the U.S. Nuclear Regulatory Commission. New uses are being found for depleted uranium, i.e., uranium with the percentage of 235U lowered to about 0.2%. Uranium is used in inertial guidance devices, in gyro compasses, as counterweights for aircraft control surfaces, as ballast for missile reentry vehicles, and as a shielding material. Uranium metal is used for X-ray targets for production of high-energy X-rays; the nitrate was once used as a photographic toner, and the acetate was once used in analytical chemistry. Crystals of uranium nitrate are triboluminescent. Uranium salts have also been used for producing yellow \"Vaseline\" glass and glazes."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Pure uranium is a silvery white, weakly radioactive metal, which is harder than most elements. It is malleable, ductile, slightly paramagnetic, strongly electropositive and is a poor electrical conductor. Uranium metal has very high density, being approximately 70% denser than lead, but slightly less dense than gold. Uranium metal exhibits in three crystallographic modifications: alpha > (688°C) > beta > (776°C) > gamma. Uranium is pyrophoric when finely divided. It is a little softer than steel and is attacked by cold water in a finely divided state.In air, uranium metal becomes coated with a layer of oxide. Acids dissolve the metal, forming the +3 oxidation state which oxidizes rapidly by water and air to form higher oxidation states. Uranium metal is unaffected by alkalis. Uranium metal can be prepared by reducing uranium halides with alkali or alkaline earth metals or by reducing uranium oxides by calcium, aluminum, or carbon at high temperatures. The metal can also be produced by electrolysis of KUF5 or UF4, dissolved in a molten salt mixture of CaCl2 and NaCl. High-purity uranium can be prepared by the thermal decomposition of uranium halides on a hot filament.Uranium metal reacts with almost all nonmetallic elements and their compounds, with reactivity increasing with temperature. Hydrochloric and nitric acids dissolve uranium, but non-oxidizing acids other than hydrochloric acid attack the element very slowly. When finely divided, it can react with cold water. In air, uranium metal oxidizes and becomes coated with a dark layer of uranium oxide. Uranium forms a variety of alloys and compounds with the most important oxidation states being uranium(IV) and uranium(VI), and their two corresponding oxides are, respectively, uranium dioxide, UO2 and uranium trioxide, UO3. Besides the oxides, other Important uranium compounds include fluorides, chlorides, bromides, iodides, carbonates, hydrides, carbides, nitrides, phosphates, etc. At room temperatures, uranium hexafluoride, UF6, has a high vapor pressure, making it useful in the gaseous diffusion process used to separate the rare U-235 from the common U-238 isotope. Uranium hydrides, nitrides and carbides are relatively inertsemimetallic compounds that are minimally soluble in acids and have been used as stable fuel pellets in nuclear power reactor technology.Uranium exists in aqueous solutions in the +3, +4, +5, and +6 oxidation states. Oxidation state +6 as the UO22+ ion (yellow in color) is the most stable state in solution. Uranium in the +5 state as the UO2+ ion is colorless, quite unstable and disproportionates (reacts with itself) to form the +6 and +4 states. The +4 state (green) is reasonably stable in solution, but the +3 state (dark green or dark red depending on the illumination source - daylight vs fluorescent light) is unstable and easily oxidizes to +4. The +4 state in near-neutral pH solutions readily hydrolyzes to form black oxy-hydroxide precipitates."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:58.865Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/92",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/uranium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele092.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele092.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/92.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=92",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

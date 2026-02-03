@@ -1,0 +1,75 @@
+{
+  "atomicNumber": 115,
+  "symbol": "Mc",
+  "name": "Moscovium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 289,
+    "atomicRadius": 187,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 670400750,
+    "meltingPoint_source": "u-s-department-of-energy",
+    "boilingPoint": 140011002000,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 7273514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 13,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "On February 2, 2004, scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, along with scientists from the U.S. Department of Energy's Lawrence Livermore National Laboratory and Oak Ridge National Laboratory, announced the creation of moscovium. In experiments performed between July 14, 2003 and August 10, 2003, atoms of americium-243 were bombarded with ions of calcium-48 using a device called a cyclotron. This produced one atom of moscovium-287 and three atoms of moscovium-288. All four atoms quickly decayed into other elements. Moscovium's most stable isotope, moscovium-289, has a half-life of about 220 milliseconds. It decays into nihonium-285 through alpha decay.",
+      "On Novemer 28th, 2016, element 115 was named Moscovium with the symbol Mc. Moscovium is the Moscow region of Russia, which is home to much of Russia’s superheavy element research. Muscovium was discovered by together by the Joint Institute for Nuclear Research, Dubna (Russia), Oak Ridge National Laboratory (USA), Vanderbilt University (USA) and Lawrence Livermore National Laboratory (USA)."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of moscovium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Moscovium does not occur naturally in the Earth’s crust. The name moscovium and the symbol Mc, are the accepted ones for element 115. The name is in recognition of the Moscow region and honors the ancient Russian land that is home to the Joint Institute for Nuclear Research (JIRN), where the discovery experiments were conducted using the Dubna gas filled recoil separator in combination with the heavy ion accelerator capabilities of the Flerov Laboratory of Nuclear Reactions.48Ca and 243Am were bombarded together in a cyclotron during a series of experiments from 14 July to 10 August 2003 (Fig. IUPAC.115.1). In February 2004, the results from these experiments were released in a report that stated “ununpentium” had been synthesized. This initial name means “115” in the IUPAC systematic naming scheme, which combines Latin and Greek names to produce un-un-pentium for 115. Moscovium has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:03.964Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/115",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele115.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele115.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/115.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=115",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

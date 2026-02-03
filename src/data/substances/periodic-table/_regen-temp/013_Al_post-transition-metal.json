@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 13,
+  "symbol": "Al",
+  "name": "Aluminum",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 26.9815385,
+    "ionizationEnergy": 5.986,
+    "atomicRadius": 184,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 933.43766,
+    "boilingPoint": 279225194566,
+    "density": 2.7,
+    "electronConfiguration": 3231,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin, alum and alumen for \"stringent\" because the early Romans called any substance with a stringent taste alum. The element was known in prehistoric times. In 1825, the Danish physicist, Hans Christian Oersted, isolated impure aluminium. The pure metal was first isolated by the German chemist Friedrich Wöhler in 1827.",
+      "Although aluminum is the most abundant metal in the earth's crust, it is never found free in nature. All of the earth's aluminum has combined with other elements to form compounds. Two of the most common compounds are alum, such as potassium aluminum sulfate (KAl(SO4)2·12H2O), and aluminum oxide (Al2O3). About 8.2% of the earth's crust is composed of aluminum. Scientists suspected than an unknown metal existed in alum as early as 1787, but they did not have a way to extract it until 1825. Hans Christian Oersted, a Danish chemist, was the first to produce tiny amounts of aluminum. Two years later, Friedrich Wöhler, a German chemist, developed a different way to obtain aluminum. By 1845, he was able to produce samples large enough to determine some of aluminum's basic properties. Wöhler's method was improved in 1854 by Henri Étienne Sainte-Claire Deville, a French chemist. Deville's process allowed for the commercial production of aluminum. As a result, the price of aluminum dropped from around $1200 per kilogram in 1852 to around $40 per kilogram in 1859. Unfortunately, aluminum remained too expensive to be widely used.",
+      "From the Latin word alumen, alum. The ancient Greeks and Romans used alum as an astringent and as a mordant in dyeing. In 1761 de Morveau proposed the name alumine for the base in alum, and Lavoisier, in 1787, thought this to be the oxide of a still undiscovered metal.Friedrich Wohler is generally credited with having isolated the metal in 1827, although an impure form was prepared by Oersted two years earlier. In 1807, Davy proposed the name aluminium for the metal, undiscovered at that time, and later agreed to change it to aluminum. Shortly thereafter, the name aluminum was adopted to conform with the \"ium\" ending of most elements.Aluminium was also the accepted spelling in the U.S. until 1925, at which time the American Chemical Society decided to use the name aluminum thereafter in their publications. See the Wikipedia entry on Aluminium for additional discussion on the spelling of this element."
+    ],
+    "discovery": [],
+    "uses": [
+      "Two important developments in the 1880s greatly increased the availability of aluminum. The first was the invention of a new process for obtaining aluminum from aluminum oxide. Charles Martin Hall, an American chemist, and Paul L. T. Héroult, a French chemist, each invented this process independently in 1886. The second was the invention of a new process that could cheaply obtain aluminum oxide from bauxite. Bauxite is an ore that contains a large amount of aluminum hydroxide (Al2O3·3H2O), along with other compounds. Karl Joseph Bayer, an Austrian chemist, developed this process in 1888. The Hall-Héroult and Bayer processes are still used today to produce nearly all of the world's aluminum.With an easy way to extract aluminum from aluminum oxide and an easy way to extract large amounts of aluminum oxide from bauxite, the era of inexpensive aluminum had begun. In 1888, Hall formed the Pittsburgh Reduction Company, which is now known as the Aluminum Company of America, or Alcoa. When it opened, his company could produce about 25 kilograms of aluminum a day. By 1909, his company was producing about 41,000 kilograms of aluminum a day. As a result of this huge increase of supply, the price of aluminum fell rapidly to about $0.60 per kilogram.Today, aluminum and aluminum alloys are used in a wide variety of products: cans, foils and kitchen utensils, as well as parts of airplanes, rockets and other items that require a strong, light material. Although it doesn't conduct electricity as well as copper, it is used in electrical transmission lines because of its light weight. It can be deposited on the surface of glass to make mirrors, where a thin layer of aluminum oxide quickly forms that acts as a protective coating. Aluminum oxide is also used to make synthetic rubies and sapphires for lasers.",
+      "It is extensively used for kitchen utensils, outside building decoration, and in thousands of industrial applications where a strong, light, easily constructed material is needed.Although its electrical conductivity is only about 60% that of copper, it is used in electrical transmission lines because of its light weight. Pure aluminum is soft and lacks strength, but alloyed with small amounts of copper, magnesium, silicon, manganese, or other elements impart a variety of useful properties.These alloys are of vital importance in the construction of modern aircraft and rockets. Aluminum, evaporated in a vacuum, forms a highly reflective coating for both visible light and radiant heat. These coatings soon form a thin layer of the protective oxide and do not deteriorate as do silver coatings. They are used to coat telescope mirrors and to make decorative paper, packages, and toys."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Pure aluminum, a silvery-white metal, possesses many desirable characteristics. It is light, it is nonmagnetic and nonsparking, stands second among metals in the scale of malleability, and sixth in ductility."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:41.678Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/13",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/aluminium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele013.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele013.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/13.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=13",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

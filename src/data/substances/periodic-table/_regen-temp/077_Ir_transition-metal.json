@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 77,
+  "symbol": "Ir",
+  "name": "Iridium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 192.217,
+    "ionizationEnergy": 9.1,
+    "atomicRadius": 202,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 271924464435,
+    "boilingPoint": 470144288002,
+    "density": 22.42,
+    "electronConfiguration": 6241457,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 492,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin Iris, the Greek goddess of rainbows, because of the variety of colours in the element's salt solutions. Iridium and osmium were both discovered in a crude platinum ore in 1803 by the English chemist Smithson Tennant. Iridium was discovered independently by the French chemist H. V. Collet-Descotils, who actually published his paper one month before Tennant, but Tennant is given credit for the discovery, perhaps because he alone also found osmium in the ore.",
+      "Iridium and osmium were discovered at the same time by the British chemist Smithson Tennant in 1803. Iridium and osmium were identified in the black residue remaining after dissolving platinum ore with aqua regia, a mixture of 25% nitric acid (HNO3) and 75% hydrochloric acid (HCl). Today, iridium is still obtained from platinum ores and as a by-product of mining nickel.",
+      "From the Latin word iris meaning rainbow. Tennant discovered iridium in 1803 in the residue left when crude platinum is dissolved by aqua regia. The name iridium is appropriate because its salts are highly colored."
+    ],
+    "discovery": [],
+    "uses": [
+      "Pure iridium is very brittle and is nearly impossible to machine. It is primarily used as a hardening agent for platinum. Platinum-iridium alloys are used to make crucibles and other high temperature equipment. Iridium is also alloyed with osmium to make the tips of fountain pens and compass bearings.Iridium is the most corrosive resistant metal known. For this reason, the standard meter bar was created from an alloy of 90% platinum and 10% iridium. This bar was replaced as the definition of the meter in 1960 when the meter was redefined in terms of the orange-red spectral line of krypton-86.A thin, worldwide layer of iridium exists in a layer of sediment that was put down at the end of the Cretaceous period. Since meteors and asteroids contain a higher percentage of iridium than the earth's crust, this iridium enriched layer is seen as evidence that the earth was struck by a large meteor or asteroid at that time. Dust from the impact would have spread around the globe, depositing the iridium. The dust also would have blocked the sun for a time, resulting in the extinction of many plant and animal species, including the dinosaurs.",
+      "Although its principal use is as a hardening agent for platinum, iridium is also used to make crucibles and devices requiring high temperatures. It is also used for electrical contacts.The element forms an alloy with osmium which is used for tipping pens and compass bearings."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Iridium, a metal of the platinum family, is white (similar to platinum) but with a slight yellowish cast. Because iridium is very hard and brittle, it is hard to machine, form, or work.It is the most corrosion-resistant metal known, and was used in making the standard meter bar of Paris, which is a 90 percent platinum and 10 percent iridium alloy. This meter bar was replaced in 1960 as a fundamental unit of length (see Krypton).Iridium is not attacked by any of the acids nor by aqua regia, but is attacked by molten salts, such as NaCl and NaCN. The specific gravity of iridium is to osmium's specific gravity. Calculations of the densities of iridium and osmium from the space lattices give values of 22.65 and 22.61 g/cm^3, respectively. These values may be more reliable than actual physical measurements for determining which element is heavier."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:55.536Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/77",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/iridium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele077.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele077.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/77.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=77",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

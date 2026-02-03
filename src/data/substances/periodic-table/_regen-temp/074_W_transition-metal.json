@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 74,
+  "symbol": "W",
+  "name": "Tungsten",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 183.84,
+    "ionizationEnergy": 7.98,
+    "atomicRadius": 210,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 369534226192,
+    "boilingPoint": 5828555510031,
+    "density": 19.3,
+    "electronConfiguration": 6241454,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 50,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Swedish tungsten for \"heavy stone\". The symbol W derives from the German wolfram, which was found with tin and interfered with the smelting of tin. It was said to eat up tin like a wolf eats up sheep. The element was discovered by the Swedish pharmacist and chemist Carl-Wilhelm Scheele in 1781. Tungsten metal was first isolated by the Spanish chemists Fausto Elhuyar and his brother Juan José in 1783.",
+      "Tungsten was discovered by Juan José and Fausto Elhuyar, Spanish chemists and brothers, in 1783 in samples of the mineral wolframite ((Fe, Mn)WO4). Today, tungsten is primarily obtained from wolframite and scheelite (CaWO4) using the same basic method developed by José and Elhuyar. Tungsten ores are crushed, cleaned and treated with alkalis to form tungsten trioxide (WO3). Tungsten trioxide is then heated with carbon or hydrogen gas (H2), forming tungsten metal and carbon dioxide (CO2) or tungsten metal and water vapor (H2O).",
+      "From Swedish, tung sten meanig heavy stone. In 1779 Peter Woulfe examined the mineral now known as wolframite and concluded it must contain a new substance. Scheele, in 1781, found that a new acid could be made from tungsten (a name first applied about 1758 to a mineral now known as scheelite). Scheele and Berman suggested the possibility of obtaining a new metal by reducing this acid. The de Elhuyar brothers found acid in wolframite in 1783 that was identical to the acid of tungsten (tungstic acid) of Scheele, and in that year they succeeded in obtaining the element by reduction of this acid with charcoal. Tungsten occurs in wolframite, scheelite, huebnertie, and ferberite. Important deposits of tungsten occur in California, Colorado, South Korea, Bolivia, Russia, and Portugal. China is reported to have about 75% of the world's tungsten resources. Natural tungsten contains five stable isotopes. Twenty one other unstable isotopes are recognized. The metal is obtained commercially be reducing tungsten oxide with hydrogen or carbon."
+    ],
+    "discovery": [],
+    "uses": [
+      "Pure tungsten is a light gray or whitish metal that is soft enough to be cut with a hacksaw and ductile enough to be drawn into wire or extruded into various shapes. If contaminated with other materials, tungsten becomes brittle and difficult to work with. Tungsten has the highest melting point of all metallic elements and is used to make filaments for incandescent light bulbs, fluorescent light bulbs and television tubes. Tungsten expands at nearly the same rate as borosilicate glass and is used to make metal to glass seals. Tungsten is also used as a target for X-ray production, as heating elements in electric furnaces and for parts of spacecraft and missiles which must withstand high temperatures.Tungsten is alloyed with steel to form tough metals that are stable at high temperatures. Tungsten-steel alloys are used to make such things as high speed cutting tools and rocket engine nozzles.Tungsten carbide (WC) is an extremely hard tungsten compound. It is used in the tips of drill bits, high speed cutting tools and in mining machinery. Tungsten disulfide (WS2) is a dry lubricant that can be used to temperatures as high as 500°C. Tungsten forms compounds with calcium and magnesium that have phosphorescent properties and are used in fluorescent light bulbs.",
+      "Tungsten and its alloys are used extensively for filaments for electric lamps, electron and television tubes, and for metal evaporation work; for electrical contact points for automobile distributors; X-ray targets; windings and heating elements for electrical furnaces; and for numerous spacecraft and high-temperature applications. High-speed tool steels, Hastelloy(R), Stellite(R), and many other alloys contain tungsten. Tungsten carbide is of great importance to the metal-working, mining, and petroleum industries. Calcium and magnesium tungstates are widely used in fluorescent lighting; other salts of tungsten are used in the chemical and tanning industries. Tungsten disulfide is a dry, high-temperature lubricant, stable to 500C. Tungsten bronzes and other tungsten compounds are used in paints."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Pure tungsten is a steel-gray to tin-white metal. Very pure tungsten can be cut with a hacksaw, forged, spun, drawn, and extruded. The impure metal is brittle and can be worked only with difficulty. Tungsten has the highest melting point of all metals, and at temperatures over 1650°C has the highest tensile strength. The metal oxidizes in air and must be protected at elevated temperatures. It has excellent corrosion resistance and is attacked only slightly by most mineral acids. The thermal expansion is about the same as borosilicate glass, which makes the metal useful for glass-to-metal seals."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:54.931Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/74",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/tungsten.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele074.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele074.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/74.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=74",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

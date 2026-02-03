@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 12,
+  "symbol": "Mg",
+  "name": "Magnesium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 24.305,
+    "ionizationEnergy": 7.646,
+    "atomicRadius": 173,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 9236501202,
+    "boilingPoint": 136310901994,
+    "density": 1.74,
+    "electronConfiguration": 32,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from Magnesia, a district in the north-eastern region of Greece called Thessalia. The Scottish chemist Joseph Black recognized it as a separate element in 1755. In 1808, the English chemist Humphry Davy obtained the impure metal, and in 1831 the French pharmacist and chemist Antoine- Alexandre Brutus Bussy isolated the metal in the pure state.",
+      "Although it is the eighth most abundant element in the universe and the seventh most abundant element in the earth's crust, magnesium is never found free in nature. Magnesium was first isolated by Sir Humphry Davy, an English chemist, through the electrolysis of a mixture of magnesium oxide (MgO) and mercuric oxide (HgO) in 1808. Today, magnesium can be extracted from the minerals dolomite (CaCO3·MgCO3) and carnallite (KCl·MgCl2·6H2O), but is most often obtained from seawater. Every cubic kilometer of seawater contains about 1.3 billion kilograms of magnesium (12 billion pounds per cubic mile).",
+      "From Magnesia, district in Thessaly. Compounds of magnesium have long been known. Black recognized magnesium as an element in 1755. Davy isolated it in 1808 and Bussy prepared it in coherent form in 1831. Magnesium is the eighth most abundant element in the earth's crust. It does not occur uncombined, but is found in large deposits in the form of magnesite, dolomite, and other minerals."
+    ],
+    "discovery": [],
+    "uses": [
+      "Magnesium burns with a brilliant white light and is used in pyrotechnics, flares and photographic flashbulbs. Magnesium is the lightest metal that can be used to build things, although its use as a structural material is limited since it burns at relatively low temperatures. Magnesium is frequently alloyed with aluminum, which makes aluminum easier to roll, extrude and weld. Magnesium-aluminum alloys are used where strong, lightweight materials are required, such as in airplanes, missiles and rockets. Cameras, horseshoes, baseball catchers' masks and snowshoes are other items that are made from magnesium alloys.Magnesium oxide (MgO), also known as magnesia, is the second most abundant compound in the earth's crust. Magnesium oxide is used in some antacids, in making crucibles and insulating materials, in refining some metals from their ores and in some types of cements. When combined with water (H2O), magnesia forms magnesium hydroxide (Mg(OH)2), better known as milk of magnesia, which is commonly used as an antacid and as a laxative.Hydrated magnesium sulphate (MgSO4·7H2O), better known as Epsom salt, was discovered in 1618 by a farmer in Epsom, England, when his cows refused to drink the water from a certain mineral well. He tasted the water and found that it tasted very bitter. He also noticed that it helped heal scratches and rashes on his skin. Epsom salt is still used today to treat minor skin abrasions.Other magnesium compounds include magnesium carbonate (MgCO3) and magnesium fluoride (MgF2). Magnesium carbonate is used to make some types of paints and inks and is added to table salt to prevent caking. A thin film of magnesium fluoride is applied to optical lenses to help reduce glare and reflections.",
+      "Uses include flashlight photography, flares, and pyrotechnics, including incendiary bombs. It is one third lighter than aluminum, and in alloys is essential for airplane and missile construction. The metal improves the mechanical, fabrication, and welding characteristics of aluminum when used as an alloying agent. Magnesium is used in producing nodular graphite in cast iron, and is used as an additive to conventional propellants.It is also used as a reducing agent in the production of pure uranium and other metals from their salts. The hydroxide (milk of magnesia), chloride, sulfate (Epsom salts), and citrate are used in medicine. Dead-burned magnesite is employed for refractory purposes such as brick and liners in furnaces and converters."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Magnesium is a light, silvery-white, and fairly tough metal. It tarnishes slightly in air, and finely divided magnesium readily ignites upon heating in air and burns with a dazzling white flame."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:41.484Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/12",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/magnesium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele012.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele012.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/12.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=12",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

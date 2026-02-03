@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 33,
+  "symbol": "As",
+  "name": "Arsenic",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 74.921595,
+    "ionizationEnergy": 9.815,
+    "atomicRadius": 185,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 10908171503,
+    "boilingPoint": 8876141137,
+    "density": 5.776,
+    "electronConfiguration": 4231043,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin arsenicium and the Greek arsenikos for \"masculine\" or \"male\" because the ancients thought that metals were different sexes. Arsenic was known in prehistoric times for its poisonous sulfides. The German scientist and philosopher, Albert von Bollstadt (Albert the Great or Albertus Magnus) is thought to have obtained the metal around 1250.",
+      "Although arsenic compounds were mined by the early Chinese, Greek and Egyptian civilizations, it is believed that arsenic itself was first identified by Albertus Magnus, a German alchemist, in 1250. Arsenic occurs free in nature, but is most often found in the minerals arsenopyrite (FeAsS), realgar (AsS) and orpiment (As2S3). Today, most commercial arsenic is obtained by heating arsenopyrite.",
+      "From the Latin word arsenicum, Greek arsenikon. Elemental arsenic occurs in two solid modifications: yellow, and gray or metallic, with specific gravities of 1.97, and 5.73, respectively. It is believed that Albertus Magnus obtained the element in 1250 A.D. In 1649 Schroeder published two methods of preparing the element. Mispickel arsenopyrite, (FeSAs), is the most common mineral from which, on heating, the arsenic sublimes leaving ferrous sulfide."
+    ],
+    "discovery": [],
+    "uses": [
+      "Arsenic and its compounds are poisonous. They have been used to make rat poison and some insecticides. Small amounts of arsenic are added to germanium to make transistors. Gallium arsenide (GaAs) can produce laser light directly from electricity.If you were paying careful attention to the physical data listed above, you may have noticed that arsenic's boiling point is lower than its melting point. This occurs because these two temperatures are measured at different atmospheric pressures. When heated at standard atmospheric pressure, arsenic changes directly from a solid to a gas, or sublimates, at a temperature of 887 K. In order to form liquid arsenic, the atmospheric pressure must be increased. At 28 times standard atmospheric pressure, arsenic melts at a temperature of 1090 K. If it were also measured at a pressure of 28 atmospheres, arsenic's boiling point would be higher than its melting point, as you would expect.",
+      "Arsenic is used in bronzing, pyrotechny, and for hardening and improving the sphericity of shot. The most important compounds are white arsenic, the sulfide, Paris green, calcium arsenate, and lead arsenate; the last three have been used as agricultural insecticides and poisons. Marsh's test makes use of the formation and ready decomposition of arsine. Arsenic is finding increasing uses as a doping agent in solid-state devices such as transistors. Gallium arsenide is used as a laser material to convert electricity directly into coherent light."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The element is a steel gray, very brittle, crystalline, semimetallic solid; it tarnishes in air, and when it is heated it rapidly oxidizes to arsenous oxide, which smells of garlic. Arsenic and its compounds are poisonous."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:46.299Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/33",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/arsenic.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele033.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele033.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/33.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=33",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

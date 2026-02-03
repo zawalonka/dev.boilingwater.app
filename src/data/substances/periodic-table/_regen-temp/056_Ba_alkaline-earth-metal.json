@@ -1,0 +1,94 @@
+{
+  "atomicNumber": 56,
+  "symbol": "Ba",
+  "name": "Barium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 137.327,
+    "ionizationEnergy": 5.212,
+    "atomicRadius": 268,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 10007271341,
+    "boilingPoint": 217018973447,
+    "density": 3.62,
+    "electronConfiguration": 62,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Barium was first isolated by Sir Humphry Davy, an English chemist, in 1808 through the electrolysis of molten baryta (BaO). Barium is never found free in nature since it reacts with oxygen in the air, forming barium oxide (BaO), and with water, forming barium hydroxide (Ba(OH)2) and hydrogen gas (H2). Barium is most commonly found as the mineral barite (BaSO4) and witherite (BaCO3) and is primarily produced through the electrolysis of barium chloride (BaCl2).",
+      "From the Greek word barys, heavy. Baryta was distinguished from lime by Scheele in 1774; the element was discovered by Sir Humphrey Davy in 1808."
+    ],
+    "discovery": [],
+    "uses": [
+      "Barium is used as a getter, a material that combines with and removes trace gases from vacuum tubes.Barium sulfate (BaSO4), a common barium compound, is used as a filler for rubber, plastics and resins. It can be combined with zinc oxide (ZnO) to make a white pigment known as lithophone or with sodium sulfate (Na2SO4) to make another white pigment known as blanc fixe. Stones made from impure barium sulfate glow when exposed to light and will glow in the dark for up to six years if intensely heated in the presence of charcoal. These stones, known as Bologna stones, were discovered near Bologna, Italy in the early 1500s and were thought to possess magical properties by alchemists. Although all barium compounds are poisonous, barium sulfate can be safely ingested since it does not dissolve in water. It is also a good absorber of X-rays and, when swallowed, can be used to produce X-ray images of the intestinal tract.Barium carbonate (BaCO3), another common barium compound, is used in the manufacture of ceramics and some types of glass. It is a component in clay slurries used in drilling oil wells. Barium carbonate is used to purify some chemical solutions and is the primary base material for the manufacture of other barium compounds.Barium forms several other useful compounds. Barium nitrate (Ba(NO3)2) burns with a bright green color and is used in signal flares and fireworks. Barium chloride (BaCl) is used as a water softener. Barium oxide (BaO) easily absorbs moisture and is used as a desiccant. Barium peroxide (BaO2) forms hydrogen peroxide (H2O2) when it is mixed with water and is used as a bleaching agent that activates when wet. Barium titanate (BaTiO3) is used as a dielectric material in capacitors. Barium ferrite (BaO·6Fe2O3) is used to make magnets.Barium-137m, a radioactive form of barium produced by the decay of cesium-137, has a relatively short half-life and is commonly used in high school and college physics half-life determination experiments.",
+      "The metal is used as a \"getter\" in vacuum tubes. The most important compounds are the peroxide, chloride, sulfate, carbonate, nitrate, and chlorate. Lithopone, a pigment containing barium sulfate and zinc sulfide, has good covering power, and does not darken in the presence of sulfides. The sulfate, as permanent white is also used in paint, in X-ray diagnostic work, and in glassmaking. Barite is extensively used as a weighing agent in oil well drilling fluids, and is used in making rubber. The carbonate has been used as a rat poison, while the nitrate and chlorate give colors in pyrotechnics. The impure sulfide phosphoresces after exposure to the light. All barium compounds that are water or acid soluble are poisonous. Naturally occurring barium is a mixture of seven stable isotopes. Twenty two other radioactive isotopes are known to exist."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Barium is a metallic element, soft, and when pure is silvery white; it belongs to the alkaline earth group, chemically resembling calcium. The metal oxidizes very easily and should be kept under petroleum or other suitable oxygen-free liquids to exclude air. It is decomposed by water or alcohol."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:51.097Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/56",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/barium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele056.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele056.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/56.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=56",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

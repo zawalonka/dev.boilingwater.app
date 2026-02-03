@@ -1,0 +1,73 @@
+{
+  "atomicNumber": 114,
+  "symbol": "Fl",
+  "name": "Flerovium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 289,
+    "atomicRadius": 180,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "boilingPoint": 210,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 7272514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1246,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Flerovium was first produced by scientists working at the Joint Institute for Nuclear Research in Dubna, Russia in 1998. They bombarded atoms of plutonium with ions of calcium. This produced a single atom of flerovium-289, an isotope with a half-life of about 21 seconds. Flerovium's most stable isotope, flerovium-289, has a half-life of about 0.97 seconds. It decays into copernicium-285 through alpha decay.",
+      "Flerovium is radioactive and has the symbol Fl and the atomic number 114. The element is named after Russian physicist Georgy Flyorov, who founded the Joint Institute for Nuclear Research in Dubna, Russia, where the element was first discovered in 1999.Element 114 has a 30-second half-life, which is much longer than element 112's. This is evidence of the \"island of stability\" that was predicted to occur around element 114 (where the combination of protons and neutrons would combine to make a stable structure).A beam containing 48Ca was aimed into a244Pu target to make this atom.The name Flerovium was adopted by IUPAC on May 31, 2012."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of flerovium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Flerovium does not occur naturally in the Earth’s crust. Flerovium was named for the Flerov Laboratory for Nuclear Reactions of the Joint Institute for Nuclear Research (JIRN). In 1999, a collaboration of scientists from the Joint Institute for Nuclear Research in Dubna, Russia (Figs. 4.114.1 and 4.114.2) and the Lawrence Livermore Laboratory in the USA synthesized flerovium. They used nuclear reaction experiments to eventually produce 287Fl by cross-bombardments of 48Ca with both (even-A) 242Pu and (odd-A) 245Cm. The intermediate nuclide 283Cn was observed with known decay characteristics that established the synthesis of flerovium [668], [669]. Flerovium has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:03.767Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/114",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele114.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele114.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/114.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=114",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

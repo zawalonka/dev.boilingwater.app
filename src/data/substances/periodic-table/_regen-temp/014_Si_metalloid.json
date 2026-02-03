@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 14,
+  "symbol": "Si",
+  "name": "Silicon",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 28.0855,
+    "ionizationEnergy": 8.152,
+    "atomicRadius": 210,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 168714142577,
+    "boilingPoint": 353832655909,
+    "density": 2.3296,
+    "electronConfiguration": 3232,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 30,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin silex and silicis for \"flint\". Amorphous silicon was discovered by the Swedish chemist Jöns Jacob Berzelius in 1824. Crystalline silicon was first prepared by the French chemist Henri Sainte-Claire Deville in 1854.",
+      "Silicon was discovered by Jöns Jacob Berzelius, a Swedish chemist, in 1824 by heating chips of potassium in a silica container and then carefully washing away the residual by-products. Silicon is the seventh most abundant element in the universe and the second most abundant element in the earth's crust. Today, silicon is produced by heating sand (SiO2) with carbon to temperatures approaching 2200°C.",
+      "From the Latin. word silex, silicis, flint. In 1800, Davy thought silica to be a compound and not an element; but in 1811, Gay Lussac and Thenard probably prepared impure amorphous silicon by heating potassium with silicon tetrafluoride.In 1824 Berzelius, generally credited with the discovery, prepared amorphous silicon by the same general method and purified the product by removing the fluosilicates by repeated washings. Deville in 1854 first prepared crystalline silicon, the second allotropic form of the element."
+    ],
+    "discovery": [],
+    "uses": [
+      "Two allotropes of silicon exist at room temperature: amorphous and crystalline. Amorphous appears as a brown powder while crystalline silicon has a metallic luster and a grayish color. Single crystals of crystalline silicon can be grown with a process known as the Czochralski process. These crystals, when doped with elements such as boron, gallium, germanium, phosphorus or arsenic, are used in the manufacture of solid-state electronic devices, such as transistors, solar cells, rectifiers and microchips.Silicon dioxide (SiO2), silicon's most common compound, is the most abundant compound in the earth's crust. It commonly takes the form of ordinary sand, but also exists as quartz, rock crystal, amethyst, agate, flint, jasper and opal. Silicon dioxide is extensively used in the manufacture of glass and bricks. Silica gel, a colloidal form of silicon dioxide, easily absorbs moisture and is used as a desiccant.Silicon forms other useful compounds. Silicon carbide (SiC) is nearly as hard as diamond and is used as an abrasive. Sodium silicate (Na2SiO3), also known as water glass, is used in the production of soaps, adhesives and as an egg preservative. Silicon tetrachloride (SiCl4) is used to create smoke screens. Silicon is also an important ingredient in silicone, a class of material that is used for such things as lubricants, polishing agents, electrical insulators and medical implants.",
+      "Silicon is one of man's most useful elements. In the form of sand and clay it is used to make concrete and brick; it is a useful refractory material for high-temperature work, and in the form of silicates it is used in making enamels, pottery, etc. Silica, as sand, is a principal ingredient of glass, one of the most inexpensive of materials with excellent mechanical, optical, thermal, and electrical properties. Glass can be made in a very great variety of shapes, and is used as containers, window glass, insulators, and thousands of other uses. Silicon tetrachloride can be used as iridize glass.Hyperpure silicon can be doped with boron, gallium, phosphorus, or arsenic to produce silicon for use in transistors, solar cells, rectifiers, and other solid-state devices which are used extensively in the electronics and space-age industries.Hydrogenated amorphous silicon has shown promise in producing economical cells for converting solar energy into electricity.Silicon is important to plant and animal life. Diatoms in both fresh and salt water extract Silica from the water to build their cell walls. Silica is present in the ashes of plants and in the human skeleton. Silicon is an important ingredient in steel; silicon carbide is one of the most important abrasives and has been used in lasers to produce coherent light of 4560 A.Silcones are important products of silicon. They may be prepared by hydrolyzing a silicon organic chloride, such as dimethyl silicon chloride. Hydrolysis and condensation of various substituted chlorosilanes can be used to produce a very great number of polymeric products, or silicones, ranging from liquids to hard, glasslike solids with many useful properties."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Crystalline silicon has a metallic luster and grayish color. Silicon is a relatively inert element, but it is attacked by halogens and dilute alkali. Most acids, except hydrofluoric, do not affect it. Elemental silicon transmits more than 95% of all wavelengths of infrared, from 1.3 to 6.y micro-m."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:41.880Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/14",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/silicon.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele014.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele014.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/14.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=14",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

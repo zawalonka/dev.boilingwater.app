@@ -1,0 +1,88 @@
+{
+  "atomicNumber": 96,
+  "symbol": "Cm",
+  "name": "Curium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 247,
+    "ionizationEnergy": 6.02,
+    "atomicRadius": 245,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 161813452453,
+    "boilingPoint": 340031005600,
+    "density": 13.51,
+    "electronConfiguration": 725761,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 92,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Curium was first produced by Glenn T. Seaborg, Ralph A. James and Albert Ghiorso, working at the University of California, Berkeley, in 1944. They bombarded atoms of plutonium-239, an isotope of plutonium, with alpha particles that had been accelerated in a device called a cyclotron. This produced atoms of curium-242 and one free neutron. Curium-242 has a half-life of about 163 days and decays into plutonium-238 through alpha decay or decays through spontaneous fission. Curium's most stable isotope, curium-247, has a half-life of about 15,600,000 years. It decays into plutonium-243 through alpha decay.",
+      "Although curium follows americium in the periodic system, it was actually the third transuranium element to be discovered. It was identified by Seaborg, James, and Ghiorso in 1944 at the wartime metallurgical laboratory at the University of Chicago as a result of helium-ion bombardment of 239Pu in the Berkeley, California, 60-inch cyclotron. Visible amounts (30 µg) of 242Cm, in the form of the hydroxide, were first isolated by Werner and Perlman of the University of California in 1947. In 1950, Crane, Wallmann, and Cunningham found that the magnetic susceptibility of microgram samples of CmF3 was of the same magnitude as that of GdF3. This provided direct experimental evidence for assigning an electronic configuration to Cm+3. In 1951, the same workers prepared curium in its elemental form for the first time. Fourteen isotopes of curium are now known ranging in mass from 237 to 251. The most stable, 247Cm, with a half-life of 16 million years, is so short compared to the earth's age that any primordial curium must have disappeared long ago from the natural scene."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only milligram amounts of curium have ever been produced, there are currently no commercial applications for it, although it might be used in radioisotope thermoelectric generators in the future. Curium is primarily used for basic scientific research.Scientists have produced several curium compounds. They include: curium dioxide (CmO2), curium trioxide (Cm2O3), curium bromide (CmBr3), curium chloride (CmCl3), curium chloride (CmCl3), curium tetrafluoride (CmF4) and curium iodide (CmI3). As with the element, the compounds currently have no commercial applications and are primarily used for basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Curium does not occur naturally in the Earth’s crust. It was first synthesized in 1944 by Glenn T. Seaborg and his team at the University of California in Berkeley using the reaction 239Pu (4He, n) 242Cm. The element was named after Pierre and Marie Curie, who discovered radium and polonium.",
+      "Minute amounts of curium probably exist in natural deposits of uranium, as a result of a sequence of neutron captures and beta decays sustained by the very low flux of neutrons naturally present in uranium ores. The presence of natural curium, however, has never been detected. 242Cm and 244Cm are available in multigram quantities. 248Cm has been produced only in milligram amounts. Curium is similar in some regards to gadolinium, its rare earth homolog, but it has a more complex crystal structure. Curium metal is lustrous, malleable, silver in color, chemically reactive, and is more electropositive than aluminum. Curium metal exist in two crystal forms, a double hexagonal close packed (dhcp) and a high temperature face-centered cubic close packed (fcc) structure. Metallic curium dissolves rapidly in dilute acid to form Cm(III) solutions. Curium metal surfaces rapidly oxidize in air to form a thin film possibly starting out as CmO, Oxidation then progressing to Cm2O3, and eventually to form stable CmO2. Note however that the formation of divalent compounds of curium such as CmO have never been observed in bulk form. Most compounds and solutions of trivalent curium are quite stable and are faintly yellow or yellow-green in color. The stability of the trivalent state for curium is attributed to the half-filled 5f7 electron shell configuration. Curium in the tetravalent state is meta-stable in concentrated fluoride solutions but very stable in the solid state, primarily as the oxides and fluorides. Because curium isotopes are available in macro quantities a number of curium compounds have been prepared and characterized with the majority in the trivalent state.242Cm generates about three watts of thermal energy per gram. This compares to one-half watt per gram of 238Pu. Both 242Cm and 244Cm have been used as power sources for space and medical uses. 244Cm is now offered for sale at $100/mg. Curium absorbed into the body accumulates in the bones, and is therefore very toxic as its radiation destroys the red-cell forming mechanism. The maximum permissible total body burden of 244Cm (soluble) in a human being is 0.3 microcurie.This element reviewed and Updated by Dr. David Hobart, 2011"
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:59.723Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/96",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele096.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele096.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/96.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=96",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

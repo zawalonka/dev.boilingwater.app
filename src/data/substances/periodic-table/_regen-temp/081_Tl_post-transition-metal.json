@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 81,
+  "symbol": "Tl",
+  "name": "Thallium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 204.3833,
+    "ionizationEnergy": 6.108,
+    "atomicRadius": 196,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 577304579,
+    "boilingPoint": 174614732683,
+    "density": 11.8,
+    "electronConfiguration": 6241451061,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek thallos for \"green shoot\" or \"twig\" because of the bright green line in its spectrum. Thallium was discovered by the English physicist and chemist William Crookes in 1861. Metallic thallium was first isolated by the French chemist Claude-Auguste Lamy in 1862.",
+      "Thallium was discovered spectroscopically by Sir William Crookes, an English chemist, in 1861. Crooks had obtained the sludge left over from the production of sulfuric acid (H2SO4) from a friend. After removing all of the selenium from the sludge, he inspected it with a device known as a spectroscope to look for signs of tellurium. Rather than seeing the yellow spectral lines produced by tellurium, he observed a bright green line that no one had ever seen before. He named the new element that was producing the green line thallium, after the greek word for 'green twig', thallos. He isolated samples of thallium the next year. Thallium is found in the minerals crooksite (CuThSe), lorandite (TlAsS2) and hutchinsonite ((Pb, Tl)2As5S9), but is usually obtained as a byproduct of the production of sulfuric acid or as a byproduct of refining zinc or lead.",
+      "From Greek thallos, meanin a green shoot or twig. Thallium was discovered spectroscopically in 1861 by Crookes. The element was named after the beautiful green spectral line, which identified the element. The metal was isolated both by Crookes and by Lamy in 1862 at about the same time."
+    ],
+    "discovery": [],
+    "uses": [
+      "There are no uses for metallic thallium since pure thallium quickly combines with oxygen and water vapor from the atmosphere, forming a black, powdery substance. Thallium, used in conjunction with sulfur or selenium and arsenic, forms low melting glass. Thallium sulfate (Tl2SO4), an odorless, tasteless thallium compound, was once used as a rat and ant poison, although it has been banned from household use in the United States since 1974. Thallium sulfide (Tl2S), thallium iodide (TlI) and thallium bromide (TlBr) are all compounds used in devices to detect infrared radiation.",
+      "Thallium sulfate has been widely employed as a rodenticide and ant killer. It is odorless and tasteless, giving no warning of its presence. Its use, however, has been prohibited in the U.S. since 1975 as a household insecticide and rodenticide. The electrical conductivity of thallium sulfide changes with exposure to infrared light, and this compound is used in photocells. Thallium bromide-iodide crystals have been used as infrared optical materials. Thallium has been used, with sulfur or selenium and arsenic, to produce low melting glasses with become fluid between 125 and 150C. These glasses have properties at room temperatures similar to ordinary glasses and are said to be durable and insoluble in water. Thallium oxide has been used to produce glasses with a high index of refraction, and is used in the manufacture of photo cells. Thallium has been used in treating ringworm and other skin infections; however, its use has been limited because of the narrow margin between toxicity and therapeutic benefits."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "When freshly exposed to air, thallium exhibits a metallic luster, but soon develops a bluish-gray tinge, resembling lead in appearance. A heavy oxide builds up on thallium if left in air, and in the presence of water the hydride is formed. The metal is very soft and malleable. It can be cut with a knife. Twenty five isotopic forms of thallium, with atomic masses ranging from 184 to 210 are recognized. Natural thallium is a mixture of two isotopes. A mercury-thallium alloy, which forms a eutectic at 8.5% thallium, is reported to freeze at -60C, some 20 degrees below the freezing point of mercury."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:56.345Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/81",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/thallium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele081.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele081.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/81.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=81",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

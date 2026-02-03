@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 79,
+  "symbol": "Au",
+  "name": "Gold",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 196.966569,
+    "ionizationEnergy": 9.226,
+    "atomicRadius": 166,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 1337.331064,
+    "boilingPoint": 312928565173,
+    "density": 19.282,
+    "electronConfiguration": 61414510,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Sanskrit jval for \"shine\", the Teutonic word gulth for \"shining metal\", and the Anglo-Saxon gold of unknown origin. The symbol Au derives from the Latin aurum, for Aurora, the goddess of dawn. Gold was known and highly valued in prehistoric times.",
+      "An attractive and highly valued metal, gold has been known for at least 5500 years. Gold is sometimes found free in nature but it is usually found in conjunction with silver, quartz (SiO2), calcite (CaCO3), lead, tellurium, zinc or copper. There is roughly 1 milligram of gold dissolved in every ton of seawater, although extracting it currently costs more than the gold is worth. It has been estimated that all of the gold that has currently been refined could be placed in a cube measuring 20 meters on a side.",
+      "Known and highly valued from earliest times, gold is found in nature as the free metal and in tellurides; it is very widely distributed and is almost always associated with quartz or pyrite."
+    ],
+    "discovery": [],
+    "uses": [
+      "Gold is the most malleable and ductile of all known metals. A single ounce of gold can be beaten into a sheet measuring roughly 5 meters on a side. Thin sheets of gold, known as gold leaf, are primarily used in arts and crafts for gilding. One sheet of gold leaf can be as thin as 0.000127 millimeters, or about 400 times thinner than a human hair.Pure gold is soft and is usually alloyed with other metals, such as silver, copper, platinum or palladium, to increase its strength. Gold alloys are used to make jewelry, decorative items, dental fillings and coins. The amount of gold in an alloy is measured with a unit called a karat. One karat is equal to one part in twenty-four, so an 18 karat gold ring contains 18 parts pure gold and 6 parts alloy material.Gold is a good conductor of heat and electricity and does not tarnish when it is exposed to the air, so it can be used to make electrical connectors and printed circuit boards. Gold is also a good reflector of infrared radiation and can be used to help shield spacecraft and skyscrapers from the sun's heat. Gold coated mirrors can be used to make telescopes that are sensitive to infrared light.A radioactive isotope of gold, gold-198, is used for treating cancer. Gold sodium thiosulfate (AuNa3O6S4) is used as a treatment for arthritis. Chlorauric acid (HAuCl4) is used to preserve photographs by replacing the silver atoms present in an image.",
+      "It is used in coinage and is a standard for monetary systems in many countries. It is also extensively used for jewelry, decoration, dental work, and for plating. It is used for coating certain space satellites, as it is a good reflector of infrared and is inert."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "It is estimated that all the gold in the world, so far refined, could be placed in a single cube 60 ft. on a side. Of all the elements, gold in its pure state is undoubtedly the most beautiful. It is metallic, having a yellow color when in a mass, but when finely divided it may be black, ruby, or purple. The Purple of Cassius is a delicate test for auric gold. It is the most malleable and ductile metal; 1 oz. of gold can be beaten out to 300 ft2. It is a soft metal and is usually alloyed to give it more strength. It is a good conductor of heat and electricity, and is unaffected by air and most reagents."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:55.929Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/79",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/gold.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele079.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele079.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/79.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=79",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

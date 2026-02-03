@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 72,
+  "symbol": "Hf",
+  "name": "Hafnium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 178.49,
+    "ionizationEnergy": 6.825,
+    "atomicRadius": 212,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 250622334051,
+    "boilingPoint": 487646038317,
+    "density": 13.3,
+    "electronConfiguration": 6241452,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin hafnia for Copenhagen. An element named celtium was erroneously claimed to have been discovered in 1911 by the French chemist Georges Urbain in rare earth samples, until the Danish physicist Niels Bohr, predicted hafnium's properties using his theory of electronic configuration of the elements. Bohr argued that hafnium would not be a rare earth element, but would be found in zirconium ore. Hafnium was discovered by the Dutch physicist Dirk Coster and the Hungarian physicist George von Hevesy in 1923, while working at Bohr's Institute in Copenhagen.",
+      "Hafnium was discovered by Dirk Coster, a Danish chemist, and George Charles de Hevesy, a Hungarian chemist, in 1923. They used a method known as X-ray spectroscopy to study the arrangement of the outer electrons of atoms in samples of zirconium ore. The electron structure of hafnium had been predicted by Niels Bohr and Coster and Hevesy found a pattern that matched. Hafnium is difficult to separate from zirconium and is present in all of its ores. It is obtained with the same methods used to extract zirconium.",
+      "From Hafinia, the Latin name for Copenhagen. Many years before its discovery in 1923 (credited to D. Coster and G. von Hevesey), Hafnium was thought to be present in various minerals and concentrations. On the basis of the Bohr theory, the new element was expected to be associated with zirconium.It was finally identified in zircon from Norway, by means of X-ray spectroscope analysis. It was named in honor of the city in which the discovery was made. Most zirconium minerals contain 1 to 5 percent hafnium.It was originally separated from zirconium by repeated recrystallization of the double ammonium or potassium fluorides by von Hevesey and Jantzen. Metallic hafnium was first prepared by van Arkel and deBoer by passing the vapor of the tetraiodide over a heated tungsten filament. Almost all hafnium metal now produced is made by reducing the tetrachloride with magnesium or with sodium (Kroll Process)."
+    ],
+    "discovery": [],
+    "uses": [
+      "Hafnium is a good absorber of neutrons and is used in the control rods of nuclear reactors. Hafnium is also used in vacuum tubes as a getter, a material that combines with and removes trace gases from vacuum tubes. Hafnium has been used as an alloying agent in iron, titanium, niobium and other metals.Melting near 3890°C, hafnium carbide (HfC) has the highest melting point of any known two-element compound. Hafnium nitride (HfN) also has a high melting point, around 3305°C. Other hafnium compounds include: hafnium chloride (HfCl4), hafnium fluoride (HfF4) and hafnium oxide (HfO2).",
+      "Because the element not only has a good absorption cross section for thermal neutrons (almost 600 times that of zirconium), but also excellent mechanical properties and is extremely corrosion-resistant, hafnium is used for reactor control rods. Such rods are used in nuclear submarines.Hafnium is used in gas-filled and incandescent lamps, and is an efficient getter for scavenging oxygen and nitrogen."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Hafnium is a ductile metal with a brilliant silver luster. Its properties are considerably influenced by presence of zirconium impurities. Of all the elements, zirconium and hafnium are two of the most difficult to separate. Although their chemistry is almost identical, the density of zirconium is about half of hafnium. Very pure hafnium has been produced, with zirconium being the major impurity.Hafnium has been successfully alloyed with iron, titanium, niobium, tantalum, and other metals. Hafnium carbide is the most refractory binary composition known, and the nitride is the most refractory of all known metal nitrides (m.p. 3310C). At 700 degrees C hafnium rapidly absorbs hydrogen to form the composition HfH1.86.Hafnium is resistant to concentrated alkalis, but at elevated temperatures reacts with oxygen, nitrogen, carbon, boron, sulfur, and silicon. Halogens react directly to form tetrahalides."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:54.521Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/72",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/hafnium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele072.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele072.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/72.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=72",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

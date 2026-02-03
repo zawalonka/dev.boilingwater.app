@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 51,
+  "symbol": "Sb",
+  "name": "Antimony",
+  "elementCategory": "metalloid",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 121.76,
+    "ionizationEnergy": 8.64,
+    "atomicRadius": 206,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 903.7863,
+    "boilingPoint": 186015872889,
+    "density": 6.685,
+    "electronConfiguration": 5241053,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Semi-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek, anti + monos for \"not alone\" or \"not one\" because it was found in many compounds. The symbol Sb comes from stibium, which is derived from the Greek stibi for \"mark\" because it was used for blackening eyebrows and eyelashes. The minerals stibnite (Sb2S3) and stibine (SbH3) are two of more than one hundred mineral species, which were known in the ancient world.",
+      "Antimony has been known since ancient times. It is sometimes found free in nature, but is usually obtained from the ores stibnite (Sb2S3) and valentinite (Sb2O3). Nicolas Lémery, a French chemist, was the first person to scientifically study antimony and its compounds. He published his findings in 1707. Antimony makes up about 0.00002% of the earth's crust.",
+      "From the Greek word anti plus monos - \"a metal not found alone\". Antimony was recognized in compounds by the ancients and was known as a metal at the beginning of the 17th century and possibly much earlier."
+    ],
+    "discovery": [],
+    "uses": [
+      "Antimony is a brittle metal and is a poor conductor of heat and electricity. Very pure antimony is used to make certain types of semiconductor devices, such as diodes and infrared detectors. Antimony is alloyed with lead to increase lead's durability. Antimony alloys are also used in batteries, low friction metals, type metal and cable sheathing, among other products. Antimony compounds are used to make flame-proofing materials, paints, ceramic enamels, glass and pottery. The ancient Egyptians used antimony, in the form of stibnite, for black eye make-up.",
+      "Antimony is finding use in semiconductor technology for making infrared detectors, diodes and Hall-effect devices. It greatly increases the hardness and mechanical strength of lead. Batteries, antifriction alloys, type metal, small arms and tracer bullets, cable sheathing, and minor products use about half the metal produced. Compounds taking up the other half are oxides, sulfides, sodium antimonate, and antimony trichloride. These are used in manufacturing flame-proofing compounds, paints ceramic enamels, glass, and pottery."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Antimony is a poor conductor of heat and electricity. Antimony and many of its compounds are toxic."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:50.080Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/51",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/antimony.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele051.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele051.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/51.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=51",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

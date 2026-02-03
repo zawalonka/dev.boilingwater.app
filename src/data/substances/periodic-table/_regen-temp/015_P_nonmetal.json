@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 15,
+  "symbol": "P",
+  "name": "Phosphorus",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 30.973761998,
+    "ionizationEnergy": 10.487,
+    "atomicRadius": 180,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 317.3044,
+    "boilingPoint": 553.6528,
+    "density": 1.82,
+    "electronConfiguration": 3233,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek phosphoros for \"bringing light\" because it has the property of glowing in the dark. This was also the ancient name for the planet Venus, when it appears before sunrise. Phosphorus was discovered by the German merchant Hennig Brand in 1669.",
+      "In what is perhaps the most disgusting method of discovering an element, phosphorus was first isolated in 1669 by Hennig Brand, a German physician and alchemist, by boiling, filtering and otherwise processing as many as 60 buckets of urine. Thankfully, phosphorus is now primarily obtained from phosphate rock (Ca3(PO4)2).",
+      "From the Greek phosphoros, light bearing; ancient name for the planet Venus when appearing before sunrise. Brand discovered phosphorus in 1669 by preparing it from urine."
+    ],
+    "discovery": [],
+    "uses": [
+      "Phosphorus has three main allotropes: white, red and black. White phosphorus is poisonous and can spontaneously ignite when it comes in contact with air. For this reason, white phosphorus must be stored under water and is usually used to produce phosphorus compounds. Red phosphorus is formed by heating white phosphorus to 250°C (482°F) or by exposing white phosphorus to sunlight. Red phosphorus is not poisonous and is not as dangerous as white phosphorus, although frictional heating is enough to change it back to white phosphorus. Red phosphorus is used in safety matches, fireworks, smoke bombs and pesticides. Black phosphorus is also formed by heating white phosphorus, but a mercury catalyst and a seed crystal of black phosphorus are required. Black phosphorus is the least reactive form of phosphorus and has no significant commercial uses.Phosphoric acid (H3PO4) is used in soft drinks and to create many phosphate compounds, such as triple superphosphate fertilizer (Ca(H2PO4)2·H2O). Trisodium phosphate (Na3PO4) is used as a cleaning agent and as a water softener. Calcium phosphate (Ca3(PO4)2) is used to make china and in the production of baking powder. Some phosphorus compounds glow in the dark or emit light in response to absorbing radiation and are used in fluorescent light bulbs and television sets.",
+      "In recent years, concentrated phosphoric acids, which may contain as much as 70% to 75% P2O5 content, have become of great importance to agriculture and farm production. World-wide demand for fertilizers has caused record phosphate production. Phosphates are used in the production of special glasses, such as those used for sodium lamps.Bone-ash calcium phosphate is used to create fine chinaware and to produce mono-calcium phosphate, used in baking powder.Phosphorus is also important in the production of steels, phosphor bronze, and many other products. Trisodium phosphate is important as a cleaning agent, as a water softener, and for preventing boiler scale and corrosion of pipes and boiler tubes.Phosphorus is also an essential ingredient of all cell protoplasm, nervous tissue, and bones."
+    ],
+    "production": [
+      "White phosphorus may be made by several methods. By one process, tri-calcium phosphate, the essential ingredient of phosphate rock, is heated in the presence of carbon and silica in an electric furnace or fuel-fired furnace. Elementary phosphorus is liberated as vapor and may be collected under phosphoric acid, an important compound in making super-phosphate fertilizers."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Phosphorus exists in four or more allotropic forms: white (or yellow), red, and black (or violet). Ordinary phosphorus is a waxy white solid; when pure it is colorless and transparent. White phosphorus has two modifications: alpha and beta with a transition temperature at -3.8°C.It is insoluble in water, but soluble in carbon disulfide. It takes fire spontaneously in air, burning to the pentoxide."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:42.058Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/15",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/phosphorus.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele015.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele015.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/15.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=15",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

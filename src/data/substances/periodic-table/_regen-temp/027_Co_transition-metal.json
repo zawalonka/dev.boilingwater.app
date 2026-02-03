@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 27,
+  "symbol": "Co",
+  "name": "Cobalt",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 58.933194,
+    "ionizationEnergy": 7.881,
+    "atomicRadius": 192,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 176814952723,
+    "boilingPoint": 320029275301,
+    "density": 8.86,
+    "electronConfiguration": 4237,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 492,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the German Kobold for \"evil spirits\" or \"goblins\", who were superstitiously thought to cause trouble for miners because the mineral contained arsenic that injured their health and the metallic ores did not yield metals when treated with the normal methods. Cobalt was discovered in 1735 by the Swedish chemist Georg Brandt.",
+      "Cobalt was discovered by Georg Brandt, a Swedish chemist, in 1739. Brandt was attempting to prove that the ability of certain minerals to color glass blue was due to an unknown element and not to bismuth, as was commonly believed at the time. Cobalt's primary ores are cobaltite (CoAsS) and erythrite (Co3(AsO4)2). Cobalt is usually recovered as a byproduct of mining and refining nickel, silver, lead, copper and iron.",
+      "From the German word Kobald, goblin or evil spirit; also from the Greek cobalos, mine. George Brandt discovered cobalt in 1735."
+    ],
+    "discovery": [],
+    "uses": [
+      "Although cobalt is used in electroplating to give objects an attractive surface that resists oxidation, it is more widely used to form alloys. Alnico, an alloy consisting of aluminum, nickel and cobalt is used to make powerful permanent magnets. Stellite alloys, which contain cobalt, chromium and tungsten, are used to make high-speed and high temperature cutting tools and dyes. Cobalt is also used to make alloys for jet engines and gas turbines, magnetic steels and some types of stainless steels.Cobalt-60, a radioactive isotope of cobalt, is an important source of gamma rays and is used to treat some forms of cancer and as a medical tracer. Cobalt-60 has a half-life of 5.27 years and decays into nickel-60 through beta decay.Cobalt compounds have been used for centuries to color porcelain, glass, pottery, tile and enamel. Some of these compounds are known as: cobalt blue, ceruleum, new blue, smalt, cobalt yellow and cobalt green. In addition to being used as a dye, cobalt is also important to human nutrition as it is an essential part of vitamin B12.",
+      "It is alloyed with iron, nickel and other metals to make Alnico, an alloy of unusual magnetic strength with many important uses. Stellite alloys, containing cobalt, chromium, and tungsten, are used for high-speed, heavy-duty, high temperature cutting tools, and for dies.Cobalt is also used in other magnetic steels and stainless steels, and in alloys used in jet turbines and gas turbine generators. The metal is used in electroplating because of its appearance, hardness, and resistance to oxidation.Cobalt salts have been used for centuries to produce brilliant and permanent blue colors in porcelain, glass, pottery, tiles, and enamels. It is the principal ingredient in Sevre's and Thenard's blue. A solution of the chloride is used as a sympathetic ink. Cobalt carefully used in the form of the chloride, sulfate, acetate, or nitrate has been found effective in correcting a certain mineral deficiency disease in animals.Soils should contain 0.13 to 0.30 ppm of cobalt for proper animal nutrition."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Cobalt is a brittle, hard metal, resembling iron and nickel in appearance. It has a metallic permeability of about two thirds that of iron. Cobalt tends to exist as a mixture of two allotropes over a wide temperature range. The transformation is sluggish and accounts in part for the wide variation in reported data on physical properties of cobalt."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:45.093Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/27",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/cobalt.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele027.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele027.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/27.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=27",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

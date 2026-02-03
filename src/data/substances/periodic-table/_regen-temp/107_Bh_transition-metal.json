@@ -1,0 +1,76 @@
+{
+  "atomicNumber": 107,
+  "symbol": "Bh",
+  "name": "Bohrium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 270,
+    "ionizationEnergy": 7.7,
+    "ionizationEnergy_source": "nist-physical-measurement-laboratory",
+    "atomicRadius": 128,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "electronConfiguration": 7251465,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7543,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "groundLevel": 52,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "First produced in 1976 by scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, and later confirmed in 1981 by Peter Armbruster, Gottfried Münzenber and their team working at the Gesellschaft für Schwerionenforschung in Darmstadt, Germany, bohrium was produced by bombarding a target of bismuth-209 with ions of chromium-54. Bohrium's most stable isotope, bohrium-270, has a half-life of about 1 minute. It decays into dubnium-266 through alpha decay.",
+      "Formally known as Ns, NielsbohriumIn 1976 Soviet scientists at Dubna announced they had synthesized element 107 by bombarding 204Bi with heavy nuclei of 54Cr. Reports say that experiments in 1975 had allowed scientists \"to glimpse\" the new element for 2/1000 s. A rapidly rotating cylinder, coated with a thin layer of bismuth metal, was used as a target. This was bombarded by a stream of 54Cr ions fired tangentially.The existence of element 107 was confirmed by a team of West German physicists at the Heavy Ion Research Laboratory at Darmstadt, who created and identified six nuclei of element 107."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of bohrium have ever been made, there are currently no uses for bohrium outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Bohrium does not occur naturally in the Earth’s crust. Bohrium was first synthesized by German scientists at the GSI Center for Heavy Ion Research in Darmstadt, Germany in 1981 using the nuclear reaction 209Bi (54Cr, n) 262Bh. The element is named for Niels Bohr (Fig. IUPAC.107.1), the Nobel Prize winning physicist [649], [650]. Bohrium has no known isotopic applications aside from scientific research.",
+      "Bohrium is named after Niels Bohr."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:02.294Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/107",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele107.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele107.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/107.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=107",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

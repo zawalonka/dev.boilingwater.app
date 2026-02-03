@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 46,
+  "symbol": "Pd",
+  "name": "Palladium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 106.42,
+    "ionizationEnergy": 8.337,
+    "atomicRadius": 202,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 1828.051554,
+    "boilingPoint": 323629635365,
+    "density": 12,
+    "electronConfiguration": 410,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the second largest asteroid of the solar system Pallas (named after the goddess of wisdom and arts—Pallas Athene). The element was discovered by the English chemist and physicist William Hyde Wollaston in 1803, one year after the discovery of Pallas by the German astronomer Wilhelm Olbers in 1802. The discovery was originally published anonymously by Wollaston to obtain priority, while not disclosing any details about his preparation.",
+      "Palladium was discovered by William Hyde Wollaston, an English chemist, in 1803 while analyzing samples of platinum ore that were obtained from South America. Although it is a rare element, palladium tends to occur along with deposits of platinum, nickel, copper, silver and gold and is recovered as a byproduct of mining these other metals.",
+      "Palladium was named after the asteroid Pallas, which was discovered at about the same time. Pallas was the Greek goddess of wisdom."
+    ],
+    "discovery": [],
+    "uses": [
+      "Palladium is used to make springs for watches, surgical instruments, electrical contacts and dental fillings and crowns. Finely divided palladium acts as a catalyst and is used in hydrogenation and dehydrogenation processes. Palladium at room temperature can absorb up to 900 times its own volume of hydrogen. Hydrogen will easily pass through heated palladium, a property that allows for the easy purification of hydrogen. Palladium alloys are used to make jewelry and, when alloyed with gold, forms a material known as white gold.Palladium dichloride (PdCl2), a palladium compound, can absorb large amounts of carbon monoxide (CO) gas and is used in carbon monoxide detectors.",
+      "Finely divided palladium is a good catalyst and is used for hydrogenation and dehydrogenation reactions. It is alloyed and used in jewelry trades.White gold is an alloy of gold decolorized by the addition of palladium. Like gold, palladium can be beaten into leaf as thin as 1/250,000 in. The metal is used in dentistry, watch making, and in making surgical instruments and electrical contacts."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The element is a silvery-white metal, it does not tarnish in air, and it is the least dense and lowest melting of the platinum group of metals. When annealed, it is soft and ductile; cold-working greatly increases its strength and hardness. Palladium is attacked by nitric and sulfuric acid.At room temperatures, the metal has the unusual property of absorbing up to 900 times its own volume of hydrogen, possibly forming Pd2H. It is not yet clear if this is a true compound. Hydrogen readily diffuses through heated palladium, providing a means of purifying the gas."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:49.038Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/46",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/palladium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele046.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele046.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/46.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=46",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

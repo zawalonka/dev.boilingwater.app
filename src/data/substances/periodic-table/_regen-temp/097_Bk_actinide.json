@@ -1,0 +1,75 @@
+{
+  "atomicNumber": 97,
+  "symbol": "Bk",
+  "name": "Berkelium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 247,
+    "ionizationEnergy": 6.23,
+    "atomicRadius": 244,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 132310501922,
+    "boilingPoint": 2627,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "density": 14,
+    "electronConfiguration": 7259,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 6152,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Berkelium was first produced by Stanley G. Thompson, Glenn T. Seaborg, Kenneth Street, Jr. and Albert Ghiorso working at the University of California, Berkeley, in December, 1949. They bombarded an isotope of americium, americium-241, with alpha particles with a device called a cyclotron. This created berkelium-243 and two free neutrons. Berkelium's most stable isotope, berkelium-247, has a half-life of about 1,380 years. It decays into americium-243 through alpha decay.The first visible amounts of a berkelium compound, berkelium chloride (BkCl3) was produced in 1962 and weighed about 3 billionths of a gram (0.000000003 grams). Berkelium oxychloride (BkOCl), berkelium fluoride (BkF3), berkelium dioxide (BkO2) and berkelium trioxide (BkO3) have been identified and studied with a method known as X-ray diffraction.Since only small amounts of berkelium have ever been produced, there are no known uses for berkelium and its compounds outside of basic scientific research.",
+      "Berkelium, the eighth member of the actinide transition series, was first produced in 1949 by Thompson, Ghiorso, and Seaborg via accelerator bombardment of 241Am with high energy alpha particles. This generated a new electron-capture activity eluting on a chromatography column just ahead of curium. This activity was assigned to an isotope of element 97 with mass number 243. It was named berkelium after Berkeley, California, the city of its discovery. Initial investigation of its chemical properties were limited to tracer experiments (ion exchange and co-precipitation) but these were sufficient to establish the stability of Bk(III) and the accessibility of Bk(IV) ions in aqueous solution and provide an estimate of the electrochemical potential of the Bk(IV)/Bk(III) couple.A complete study of an element is not possible by tracer methods alone, so a campaign was initiated in 1952 for long-term irradiation of about 8 grams of 239Pu in a nuclear reactor in Arco, Idaho to provide macro amounts of berkelium. In 1958 about 0.6 micrograms of 249Bk with a half-life of 330 days was recovered, separated, and purified by Cunningham et al. who determined the absorption spectrum in aqueous solution and measured the magnetic susceptibility of Bk(III). The first structural determination of a berkelium compound was in 1962. Four X-ray diffraction lines were obtained from 4 nanograms of berkelium-249 dioxide and indexed as face centered cubic. The first bulk (> 1 microgram) samples of berkelium metal were prepared in 1969 by reduction of BkF3 with lithium metal vapor at 1300 K by Haire and Peterson et al. Bk metal issilvery in appearance, easily soluble in dilute mineral acids, and rapidly oxidized by air or oxygen at elevated temperatures to form the oxide. The metal exhibits two crystal forms: double hexagonal closest packed (dhcp) and face centered cubic (fcc). Numerous alloys and compounds of berkelium have been prepared and studied including hydrides, oxides, halides, chalcogenides, pnictides, oxalates, oxychlorides, organometallic, and coordination compounds to name a few. Berkelium oxidation states Bk(0), Bk(III), and Bk(IV) are known in bulk and some evidence has been offered for the existence of Bk(II) but there is only speculation on the possible existence of Bk(V) ions.Fourteen isotopes of berkelium are now known and have been synthesized from mass number 238 to 251. As with other actinide elements, berkelium tends to accumulate in the skeletal system. Because of its rarity, berkelium presently has no commercial use, however, with its relatively long half-life and availability in microgram quantities, Bk-249 is used extensively as a target to synthesize heavier elements by charged particle bombardment. Berkelium is the first member of the second half of the actinide series and as such, studies of the physicochemical properties of this element enables more accurate extrapolations to the behavior of the heavier elements for which studies are severely limited by scarcity of material, very short half-lives, and intense radioactivity.Further reading: D. E. Hobart and J. R. Peterson (2006) \"Berkelium,\" Chapter 10 in The Chemistry of the Actinide and Transactinide Elements, Third Edition, L. R. Morss, J. Fuger, and N. M. Edelstein, Eds, Springer Publishers.This element reviewed and Updated by David Hobart, Los Alamos National Laboratory 2011"
+    ],
+    "discovery": [],
+    "uses": [],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Berkelium does not occur naturally in the Earth’s crust. It was first synthesized in December 1949 by Stanley G. Thompson, Glenn T. Seaborg, and Albert Ghiorso at the University of California in Berkeley using the nuclear reaction 241Am (4He, 2n) 243Bk in the Berkeley 60-inch cyclotron. The element was named for the town in California where it was first synthesized. The first isotope of berkelium produced from this experiment had a mass number of 243 and a half-life of 4.5 h. 247Bk has a half-life of 1.4×103 years, which makes it one of the least radioactive isotopes of berkelium. 249Bk has a half-life of 320 days, which makes it possible to isolate and study on a macroscopic scale, although studies have found that the radiation given off from berkelium creates health hazards. For example, lengthy exposure to the radiation from berkelium has been shown to cause an accumulation of berkelium in the skeletal system of rats. The radiation is also unfavorable to the formation of red blood cells [620], [621], [622], [623], [624]. Berkelium has no known isotopic applications aside from scientific research, in which it served as a target for the production of tennessine (Fig. IUPAC.97.1)."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:59.948Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/97",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele097.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele097.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/97.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=97",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 28,
+  "symbol": "Ni",
+  "name": "Nickel",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 58.6934,
+    "ionizationEnergy": 7.64,
+    "atomicRadius": 163,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 172814552651,
+    "boilingPoint": 318629135275,
+    "density": 8.912,
+    "electronConfiguration": 4238,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 34,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the German Nickel for \"deceptive little spirit\" because miners called mineral niccolite (NiAs) by the name Kupfernickel (false copper) because it resembled copper ores in appearance, but no copper was found in the ore. It was discovered by the Swedish metallurgist Axel-Frederik Cronstedt in 1751.",
+      "Nickel was discovered by the Swedish chemist Axel Fredrik Cronstedt in the mineral niccolite (NiAs) in 1751. Today, most nickel is obtained from the mineral pentlandite (NiS·2FeS). Most of the world's supply of nickel is mined in the Sudbury region of Ontario, Canada. It is believed that this large deposit of nickel ore is a result of an ancient meteor impact.",
+      "From the German word Nickel (Satan), and from kupfernickel, Old Nick's copper. Cronstedt discovered nickel in 1751 in kupfernickel (niccolite)."
+    ],
+    "discovery": [],
+    "uses": [
+      "Nickel is a hard, corrosion resistant metal. It can be electroplated onto other metals to form a protective coating. Finely divided nickel is used as a catalyst for the hydrogenation of vegetable oils. Adding nickel to glass gives it a green color. A single kilogram of nickel can be drawn into 300 kilometers of wire. Nickel is also used to manufacture some types of coins and batteries.Nickel is alloyed with other metals to improve their strength and resistance to corrosion. Nickel is alloyed with steel to make armor plate, vaults and machine parts. It is alloyed with copper to make pipes that are used in desalination plants. Very powerful permanent magnets, known as Alnico magnets, can be made from an alloy of aluminum, nickel, cobalt and iron.",
+      "It is extensively used for making stainless steel and other corrosion-resistant alloys such as Invar(R), Monel(R), Inconel(R), and the Hastelloys(R). Tubing made of copper-nickel alloy is extensively used in making desalination plants for converting sea water into fresh water.Nickel, used extensively to make coins and nickel steel for armor plates and burglar-proof vaults, and is also a component in Nichrome(R), Permalloy(R), and constantan.Nickel gives glass a greenish color. Nickel plating is often used to provide a protective coating for other metals, and finely divided nickel is a catalyst for hydrogenating vegetable oils. It is also used in ceramics, in the manufacture of Alnico magnets, and in the Edison(R) storage battery."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Nickel is silvery white and takes on a high polish. It is hard, malleable, ductile, somewhat ferromagnetic, and a fair conductor of heat and electricity. It belongs to the iron-cobalt group of metals and is chiefly valuable for the alloys it forms."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:45.279Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/28",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/nickel.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele028.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele028.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/28.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=28",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

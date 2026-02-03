@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 22,
+  "symbol": "Ti",
+  "name": "Titanium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 47.867,
+    "ionizationEnergy": 6.828,
+    "atomicRadius": 187,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 194116683034,
+    "boilingPoint": 356032875949,
+    "density": 4.5,
+    "electronConfiguration": 4232,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin titans, who were the mythological \"first sons of the earth\". It was originally discovered by the English clergyman William Gregor in the mineral ilmenite (FeTiO3) in 1791. He called this mineral menachanite and the element menachin, for the Menachan parish where it was found. It was rediscovered in 1795 by the German chemist Martin Heinrich Klaproth, who called it titanium because it had no characteristic properties to use as a name. Titanium metal was first isolated by the Swedish chemists Sven Otto Pettersson and Lars Fredrik Nilson.",
+      "Titanium was discovered in 1791 by the Reverend William Gregor, an English pastor. Pure titanium was first produced by Matthew A. Hunter, an American metallurgist, in 1910. Titanium is the ninth most abundant element in the earth's crust and is primarily found in the minerals rutile (TiO2), ilmenite (FeTiO3) and sphene (CaTiSiO5). Titanium makes up about 0.57% of the earth's crust.",
+      "From the Latin titans, the first sons of the Earth, Greek mythology.Discovered by Gregor in 1791; named by Klaproth in 1795. Impure titanium was prepared by Nilson and Pettersson in 1887; however, the pure metal (99.9%) was not made until 1910 when Hunter heated TiCl4 with sodium in a steel bomb."
+    ],
+    "discovery": [],
+    "uses": [
+      "Titanium is a strong, light metal. It is as strong as steel and twice as strong as aluminum, but is 45% lighter than steel and only 60% heavier than aluminum. Titanium is not easily corroded by sea water and is used in propeller shafts, rigging and other parts of boats that are exposed to sea water. Titanium and titanium alloys are used in airplanes, missiles and rockets where strength, low weight and resistance to high temperatures are important. Since titanium does not react within the human body, it is used to create artificial hips, pins for setting bones and for other biological implants. Unfortunately, the high cost of titanium has limited its widespread use.Titanium oxide (TiO2) is used as a pigment to create white paint and accounts for the largest use of the element. Pure titanium oxide is relatively clear and is used to create titania, an artificial gemstone. Titanium tetrachloride (TiCl4), another titanium compound, has been used to make smoke screens.A final bit of titanium trivia  titanium is one of the few elements that will burn in an atmosphere of pure nitrogen.",
+      "Titanium is important as an alloying agent with aluminum, molybdenum, manganese, iron, and other metals. Alloys of titanium are principally used for aircraft and missiles where lightweight strength and ability to withstand extremes of temperature are important.Titanium is as strong as steel, but 45% lighter. It is 60% heavier than aluminum, but twice as strong.Titanium has potential use in desalination plants for converting sea water into fresh water. The metal has excellent resistance to sea water and is used for propeller shafts, rigging, and other parts of ships exposed to salt water. A titanium anode coated with platinum has been used to provide cathodic protection from corrosion by salt water.It is produced artificially for use as a gemstone, but it is relatively soft. Star sapphires and rubies exhibit their asterism as a result of the presence of TiO2.Titanium dioxide is extensively used for both house paint and artist's paint, because it is permanent and has good covering power. Titanium oxide pigment accounts for the largest use of the element. Titanium paint is an excellent reflector of infrared, and is extensively used in solar observatories where heat causes poor viewing conditions.Titanium tetrachloride is used to iridize glass. This compound fumes strongly in air and has been used to produce smoke screens."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Titanium, when pure, is a lustrous, white metal. It has a low density, good strength, is easily fabricated, and has excellent corrosion resistance. It is ductile only when it is free of oxygen. The metal, which burns in air, is the only element that burns in nitrogen.Titanium is resistant to dilute sulfuric and hydrochloric acid, most organic acids, most chlorine gas, and chloride solutions.Natural titanium is reported to become very radioactive after bombardment with deuterons. The emitted radiations are mostly positrons and hard gamma rays. The metal is dimorphic. The hexagonal alpha form changes to the cubic beta form very slowly at about 880°C. The metal combines with oxygen at red heat, and with chlorine at 550°C.Titanium metal is considered to be physiologically inert. When pure, titanium dioxide is relatively clear and has an extremely high index of refraction with an optical dispersion higher than diamond."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:44.175Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/22",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/titanium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele022.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele022.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/22.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=22",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

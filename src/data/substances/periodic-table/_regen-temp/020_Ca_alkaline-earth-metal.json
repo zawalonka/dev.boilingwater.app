@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 20,
+  "symbol": "Ca",
+  "name": "Calcium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 40.078,
+    "ionizationEnergy": 6.113,
+    "atomicRadius": 231,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 11158421548,
+    "boilingPoint": 175714842703,
+    "density": 1.54,
+    "electronConfiguration": 42,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin calx for \"lime\" (CaO) or \"limestone\" (CaCO3) in which it was found. It was first isolated by British chemist Humphry Davy in 1808 with help from the Swedish chemist Jöns Jacob Berzelius and the Swedish court physician M. M. af Pontin.",
+      "Although calcium is the fifth most abundant element in the earth's crust, it is never found free in nature since it easily forms compounds by reacting with oxygen and water. Metallic calcium was first isolated by Sir Humphry Davy in 1808 through the electrolysis of a mixture of lime (CaO) and mercuric oxide (HgO). Today, metallic calcium is obtained by displacing calcium atoms in lime with atoms of aluminum in hot, low-pressure containers. About 4.2% of the earth's crust is composed of calcium.",
+      "From the Latin word calx, lime. Though lime was prepared by the Romans in the first century under the name calx, the metal was not discovered until 1808. After learning that Berzelius and Pontin prepared calcium amalgam by electrolyzing lime in mercury, Davy was able to isolate the impure metal."
+    ],
+    "discovery": [],
+    "uses": [
+      "Due to its high reactivity with common materials, there is very little demand for metallic calcium. It is used in some chemical processes to refine thorium, uranium and zirconium. Calcium is also used to remove oxygen, sulfur and carbon from certain alloys. Calcium can be alloyed with aluminum, beryllium, copper, lead and magnesium. Calcium is also used in vacuum tubes as a getter, a material that combines with and removes trace gases from vacuum tubes.Calcium carbonate (CaCO3) is one of the common compounds of calcium. It is heated to form quicklime (CaO) which is then added to water (H2O). This forms another material known as slaked lime (Ca(OH)2) which is an inexpensive base material used throughout the chemical industry. Chalk, marble and limestone are all forms of calcium carbonate. Calcium carbonate is used to make white paint, cleaning powder, toothpaste and stomach antacids, among other things. Other common compounds of calcium include: calcium sulfate (CaSO4), also known as gypsum, which is used to make dry wall and plaster of Paris, calcium nitrate (Ca(NO3)2), a naturally occurring fertilizer and calcium phosphate (Ca3(PO4)2), the main material found in bones and teeth.",
+      "The metal is used as a reducing agent in preparing other metals such as thorium, uranium, zirconium, etc., and is used as a deoxidizer, desulfurizer, or decarburizer for various ferrous and nonferrous alloys. It is also used as an alloying agent for aluminum, beryllium, copper, lead, and magnesium alloys, and serves as a \"getter\" for residual gases in vacuum tubes, etc."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal has a silvery color, is rather hard, and is prepared by electrolysis of fused chloride and calcium fluoride (to lower the melting point).Chemically it is one of the alkaline earth elements; it readily forms a white coating of nitride in air, reacts with water, burns with a yellow-red flame."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:43.818Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/20",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/calcium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele020.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele020.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/20.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=20",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

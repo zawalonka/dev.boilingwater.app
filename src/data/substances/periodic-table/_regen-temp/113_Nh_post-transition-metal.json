@@ -1,0 +1,73 @@
+{
+  "atomicNumber": 113,
+  "symbol": "Nh",
+  "name": "Nihonium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 286,
+    "atomicRadius": 170,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 700430810,
+    "meltingPoint_source": "u-s-department-of-energy",
+    "boilingPoint": 143011302070,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 5146107271,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "On July 23, 2004, scientists working at the RIKEN Nishina Center for Accelerator-based Science in Wako, Japan, created the first two atoms of the element nihonium by accelerating zinc ions to 10 percent the speed of light and then impacting them onto a thin bismuth target. Both atoms quickly underwent a series of four alpha decays, forming dubnium-262, which then decayed by spontaneous fission. Nihonium's most stable isotope, nihonium-286, has a half-life of about 20 seconds. It decays into roentgenium-282 through alpha decay.",
+      "On November 28th, 2016 element 113 was named “nihonium” with the symbol Nh. The name was proposed by the discoverers at RIKEN Nishina Center for Accelerator-Based Science in Japan. The name means mean “the Land of Rising Sun” and comes from the word “Nihon,” which means “Japan” in Japanese."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of nihonium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Nihonium does not occur naturally in the Earth’s crust. The name nihonium and the symbol Nh are the accepted ones for element 113. Nihon is one of the two ways to say “Japan” in Japanese and means “the land of the Rising Sun.” It is the first element to have been discovered in an Asian country [665], [666], [667].The synthesis of nihonium was first announced in 2004. The Joint Institute for Nuclear Research (JINR) and the Lawrence Livermore National Laboratory were able to produce two super-heavy elements by bombarding a rotating 243Am disc with an ion beam of 48Ca in a U-400 cyclotron. During the reaction, isotopes of moscovium, previously known as ununpentium, were synthesized and decayed in a tenth of a second to nihonium, which then decayed to roentgenium. Because the atoms of moscovium only existed for a tenth of a second, radiochemical proof was needed to support its syntheses. A Swiss scientist at the Paul Scherrer Institute (PSI) performed the radiochemical experiment by analyzing a copper plate that had been placed behind the 243Am disc in the cyclotron. This copper plate collected all moscovium atoms that were synthesized and was processed through liquid chromatography techniques that yielded five times more moscovium atoms than produced by fusion alone. The direct synthesis of nihonium was announced later that year by a team of Japanese scientists from the Cyclotron Center of the RIKEN Research Institute. These scientists bombarded atoms of 209Bi with a beam of 70Zn in a RIKEN heavy-ion linear accelerator (RILAC), shown in Fig. IUPAC.113.1, and gas-filled recoil ion separator (GARIS), shown in Fig. IUPAC.113.2. Nihonium has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:03.573Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/113",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele113.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele113.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/113.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=113",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

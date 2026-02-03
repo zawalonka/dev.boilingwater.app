@@ -1,0 +1,75 @@
+{
+  "atomicNumber": 116,
+  "symbol": "Lv",
+  "name": "Livermorium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 293,
+    "atomicRadius": 183,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 637780364507688000,
+    "meltingPoint_source": "u-s-department-of-energy",
+    "boilingPoint": 1.035113576286214e+21,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 7274514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": -2,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "On December 6, 2000, scientists working at the Joint Institute for Nuclear Research in Dubna, Russia, along with scientists from the U.S. Department of Energy's Lawrence Livermore National Laboratory, announced the creation of livermorium. They produced livermorium by bombarding atoms of curium-248 with ions of calcium-48. This produced livermorium-292, an isotope with a half-life of about 0.6 milliseconds (0.0006 seconds), and four free neutrons. Livermorium's most stable isotope, livermorium-293, has a half-life of about 53 milliseconds. It decays into flerovium-289 through alpha decay.",
+      "Livermorium is a synthetic element with the symbol Lv and an atomic number of 116.It was first reported by Russian scientists from Dubna (Joint Institute for Nuclear Research) in 2000. Its former name was ununhexium and the name Livermorium name was adopted by IUPAC on May 31, 2012."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of livermorium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Livermorium does not occur naturally in the Earth’s crust. In 2000, scientists from the Joint Institute for Nuclear Research (JINR) in Dubna, Russia (Fig. IUPAC.116.1) worked with scientists from the Lawrence Livermore National Laboratory at the University of California and other collaborators to synthesize element 116. This element was first given the placeholder name ununhexium; in May of 2012 it was granted the name livermorium, with the symbol Lv. Researchers first studied livermorium as a decay product of oganesson and then synthesized livermorium by bombarding atoms of 248Cm with ions of 48Ca. The initial reaction of 248Cm with 48Ca produced the isotope 292Lv. Researchers were also able to produce livermorium by bombarding 245Cm with 48Ca. There are four known isotopes of livermorium [669], [674]. Livermorium has no known isotopic applications aside from scientific research."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:04.159Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/116",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele116.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele116.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/116.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=116",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

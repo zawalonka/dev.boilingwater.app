@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 34,
+  "symbol": "Se",
+  "name": "Selenium",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 78.971,
+    "ionizationEnergy": 9.752,
+    "atomicRadius": 190,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 493.6522,
+    "boilingPoint": 9586851265,
+    "density": 4.809,
+    "electronConfiguration": 4231044,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek Selene, who was the Greek goddess of the Moon because the element is chemically found with tellurium (Tellus was the Roman goddess of the Earth). Selenium was discovered by the Swedish chemist Jöns Jacob Berzelius in 1817, while trying to isolate tellurium in an impure sample.",
+      "Selenium was discovered by Jöns Jacob Berzelius, a Swedish chemist, in 1817 after analyzing an impurity that was contaminating the sulfuric acid (H2SO4) being produced at a particular factory in Sweden. Originally believing the material was tellurium, Berzelius eventually realized that it was actually a previously unknown element. Selenium occurs in minerals such as eucairite (CuAgSe), crooksite (CuThSe) and clausthalite (PbSe), but these minerals are too rare to use as a major source of selenium. Today, most selenium is obtained as a byproduct of refining copper.",
+      "From the Greek word Selene, moon. Discovered by Berzelius in 1817, who found it associated with tellurium (named for the earth)."
+    ],
+    "discovery": [],
+    "uses": [
+      "Selenium's resistance to the flow of electricity is greatly affected by the amount of light shining on it. The brighter the light, the better selenium conducts electricity. This property has made selenium useful in devices that respond to the intensity of light, such as electric eyes, photo cells, light meters for cameras and copiers. Selenium can also produce electricity directly from sunlight and is used in solar cells. Selenium is also a semiconductor and is used in some types of solid-state electronics as well as in rectifiers, devices which convert alternating current electricity into direct current electricity. In addition to its use in electrical devices, selenium is also used to make a ruby-red color in glasses and enamels, as a photographic toner and as an additive to stainless steel.Selenium forms few inorganic compounds, none of which are commercially important. They include selenious acid (H2SeO3), selenium dichloride (SeCl2) and selenium oxychloride (SeOCl2).",
+      "Selenium is used in Xerography for reproducing and copying documents, letters, etc. It is used by the glass industry to decolorize glass and to make ruby-colored glasses and enamels. It is also used as a photographic toner, and as an additive to stainless steel."
+    ],
+    "production": [
+      "Selenium is found in a few rare minerals such as crooksite and clausthalite. In years past it has been obtained from flue dusts remaining from processing copper sulfide ores, but the anode metal from electrolytic copper refineries now provide the source of most of the world's selenium. Selenium is recovered by roasting the mud with soda or sulfuric acid, or by smelting them with soda and niter."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Selenium exists in several allotropic forms, although three are generally recognized. Selenium can be prepared with either an amorphous or a crystalline structure. The color of amorphous selenium is either red (in powder form) or black (in vitreous form). Crystalline monoclinic selenium is a deep red; crystalline hexagonal selenium, the most stable variety, is a metallic gray.Selenium exhibits both photovoltaic action, where light is converted directly into electricity, and photoconductive action, where the electrical resistance decreases with increased illumination. These properties make selenium useful in the production of photocells and exposure meters for photographic use, as well as solar cells. Selenium is also able to convert a.c. electricity to d.c., and is extensively used in rectifiers. Below its melting point, selenium is a p-type semiconductor and has many uses in electronic and solid-state applications.Elemental selenium has been said to be practically nontoxic and is considered to be an essential trace element; however, hydrogen selenide and other selenium compounds are extremely toxic, and resemble arsenic in their physiological reactions."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:46.480Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/34",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/selenium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele034.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele034.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/34.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=34",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

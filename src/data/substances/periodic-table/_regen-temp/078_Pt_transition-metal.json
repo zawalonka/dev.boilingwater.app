@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 78,
+  "symbol": "Pt",
+  "name": "Platinum",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 195.084,
+    "ionizationEnergy": 9,
+    "atomicRadius": 209,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 2041.551768,
+    "boilingPoint": 409838256917,
+    "density": 21.46,
+    "electronConfiguration": 6141459,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 4,
+    "groundLevel": 33,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Spanish platina for \"silver\". In 1735, the Spanish astronomer Antonio de Ulloa found platinum in Peru, South America. In 1741, the English metallurgist Charles Wood found platinum from Colombia, South America. In 1750, the English physician William Brownrigg prepared purified platinum metal.",
+      "Used by the pre-Columbian Indians of South America, platinum wasn't noticed by western scientists until 1735. Platinum can occur free in nature and is sometimes found in deposits of gold-bearing sands, primarily those found in the Ural mountains, Columbia and the western United States. Platinum, in the form of the mineral sperrylite (PtAs2), is also obtained as a byproduct of the nickel mining operation in the Sudbury region of Ontario, Canada. Credit for the modern rediscovery of platinum is usually given to Antonio de Ulloa.",
+      "Discovered in South America by Ulloa in 1735 and by Wood in 1741. The metal was used by pre-Columbian Indians."
+    ],
+    "discovery": [],
+    "uses": [
+      "Platinum is a soft, dense, ductile metal that is very resistant to corrosion. It is used to make jewelry, wire, electrical contacts and laboratory vessels. Platinum expands at nearly the same rate as soda-lime-silica glass, so it is used to make sealed electrodes in glass systems. Platinum is used to coat missile nose cones, jet engine fuel nozzles and other devices that must operate reliably for long periods of time at high temperatures. Platinum resistance wires are used in high temperature electric furnaces. Platinum anodes are used in cathodic protection systems to prevent ships, pipelines and steel piers from corroding in salt water.Platinum is widely used as a catalyst. It will convert methyl alcohol vapors (CH4O) into formaldehyde (CH2O) on contact, glowing red hot in the process. This effect is used to make small hand warmers. Platinum is also used in a device called a catalytic converter, a device found in the exhaust systems of most cars. Catalytic converters combine carbon monoxide (CO) and unburned fuel from a car's exhaust with oxygen from the air, forming carbon dioxide (CO2) and water vapor (H2O). Platinum is also used as a catalyst in the production of sulfuric acid (H2SO4) and in the cracking of petroleum products. Fuel cells, devices that combine hydrogen and oxygen to produce electricity and water, also use platinum as a catalyst.",
+      "The metal is extensively used in jewelry, wire, and vessels for laboratory use, and in many valuable instruments including therocouple elements. It is also used for electrical contacts, corrosion-resistant apparatus, and in dentistry.Platinum-cobalt alloys have magnetic properties. One such alloy made of 76.7% Pt and 23.3% Co, by weight, is an extremely powerful magnet that offers a B-H (max) almost twice that of Alnico V. Platinum resistance wires are used for constructing high-temperature electric furnaces.The metal is used for coating missile nose cones, jet engine fuel nozzles, etc., which must perform reliably at high temperatures for long periods of time. The metal, like palladium, absorbs large volumes of hydrogen, retaining it at ordinary temperatures but giving it up when heated.In the finely divided state platinum is an excellent catalyst, having long been used in the contact process for producing sulfuric acid. It is also used as a catalyst in cracking petroleum products. Much interest exists in using platinum as a catalyst in fuel cells and in antipollution devices for automobiles.Platinum anodes are extensively used in cathodic protection systems for large ships and ocean-going vessels, pipelines, steel piers, etc. Fine platinum wire will glow red hot when placed in the vapor of methyl alcohol. It acts here as a catalyst, converting the alcohol to formaldehyde. The phenomenon has been used commercially to produce cigarette lighters and hand warmers. Hydrogen and oxygen explode in the presence of platinum."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Platinum is a beautiful silvery-white metal, when pure, and is malleable and ductile. It has a coefficient of expansion almost equal to that of soda-lime-silica glass, and is therefore used to make sealed electrodes in glass systems. The metal does not oxidize in air at any temperature, but is corroded by halogens, cyanides, sulfur, and caustic alkalis.It is insoluble in hydrochloric and nitric acid, but dissolves when they are mixed as aqua regia, forming chloroplatinic acid."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:55.739Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/78",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/platinum.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele078.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele078.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/78.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=78",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

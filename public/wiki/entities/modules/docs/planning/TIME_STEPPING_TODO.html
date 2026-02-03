@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TIME_STEPPING_TODO.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/planning/index.html">planning</a> <span class="breadcrumb-sep">›</span> <span>TIME_STEPPING_TODO.md</span>
+        </nav>
+        <div class="wiki-topbar-title">TIME_STEPPING_TODO.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">TIME_STEPPING_TODO.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>TIME_STEPPING_TODO.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\planning\TIME_STEPPING_TODO.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Time Stepping Model - TODO Documentation
+
+&gt; **Purpose:** Complete explanation of physics time stepping and the time speed sub-stepping problem
+&gt; **Status:** Research Complete - Ready for Implementation
+&gt; **Supports:** TODO.md Item #2 (Time Speed Sub-stepping) - CRITICAL PATH
+
+---
+
+## Quick Answer
+
+**What is a &quot;step&quot;?**
+- One simulation step = **0.1 seconds of in-game time**
+- This happens **once per animation frame** (typically 60 FPS on monitors)
+- But at high speeds, deltaTime gets multiplied, so one frame = many in-game seconds
+
+**Are steps connected to time?**
+- ✅ **YES** - explicitly and directly
+- `deltaTime = (TIME_STEP / 1000) × timeSpeed`
+- TIME_STEP = 100 milliseconds (0.1 seconds)
+- At 1x speed: one frame = 0.1s in-game
+- At 65536x speed: one frame = 6,553.6 seconds in-game
+
+**The Problem (Why time sub-stepping is needed):**
+- Physics equations are written for small time steps (0.1 seconds)
+- At 65536x, one call to `simulateTimeStep()` represents 6,553.6 seconds
+- This is **67,776× larger** than the equation expects
+- Result: **Physics diverges** (errors compound, solutions go nonlinear)
+
+---
+
+## The Time Model in Detail
+
+### TIME_STEP Constant
+**Location:** `src/constants/physics.js` line 91
+
+```javascript
+TIME_STEP: 100,  // milliseconds
+```
+
+This means:
+- **One physics simulation step = 100 milliseconds = 0.1 seconds**
+- Called every animation frame
+- Updates pot temperature, water mass, boiling state
+- Each call applies heat for 0.1 seconds: `Energy = Watts × 0.1 seconds`
+
+### Time Speed Multiplier
+**Location:** `src/components/GameScene.jsx` lines 137, 523
+
+```javascript
+// Line 137: Initialize speed multiplier
+const [timeSpeed, setTimeSpeed] = useState(1)
+
+// Line 523: Calculate actual deltaTime per frame
+const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+```
+
+**What this does:**
+- `timeSpeed` = user-selected multiplier (1x, 2x, 4x, 256x, 65536x)
+- `deltaTime` = how many in-game seconds this frame represents
+- Example calculations:
+
+| Speed | Calculation | Result | Notes |
+|-------|-------------|--------|-------|
+| **1x (normal)** | (100 / 1000) × 1 | 0.1 sec/frame | ~10 frames/sec of physics |
+| **2x (double)** | (100 / 1000) × 2 | 0.2 sec/frame | Pot heats twice as fast |
+| **4x** | (100 / 1000) × 4 | 0.4 sec/frame | Pot heats 4× as fast |
+| **256x** | (100 / 1000) × 256 | 25.6 sec/frame | Water boils in ~10 frames |
+| **65536x** | (100 / 1000) × 65536 | 6,553.6 sec/frame | 91 minutes in-game per frame! |
+
+### The Physics Loop
+**Location:** `src/components/GameScene.jsx` lines 521-542
+
+```javascript
+// Calculate deltaTime (in-game seconds this frame represents)
+const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+
+// Call physics engine
+const newState = simulateTimeStep(
+  {
+    waterMass: waterInPot,      // kg
+    temperature: temperature,    // °C
+    altitude: altitude,          // meters
+    residueMass: residueMass     // kg
+  },
+  heatInputWatts,               // Watts (0 = off)
+  deltaTime,                    // ← THIS IS THE PROBLEM AT HIGH SPEEDS
+  fluidProps,                   // Substance data (water, ethanol, etc.)
+  ambientTemperature            // Room temp for cooling (°C)
+)
+
+// Update state with new values
+setTemperature(newState.temperature)
+setWaterInPot(newState.waterMass)
+```
+
+---
+
+## What simulateTimeStep() Does
+
+**Location:** `src/utils/physics/processes/simulation/simulateTimeStep.js`
+
+The physics engine does the following **for each frame:**
+
+```javascript
+1. Calculate boiling point at current altitude
+2. IF heat is on:
+   - Apply burner energy: E = Watts × deltaTime
+   - Update temperature using specific heat: Q = m × c × ΔT
+   - If temp ≥ boiling point: generate steam
+   - Update water mass (subtract evaporated vapor)
+3. IF heat is off:
+   - Apply Newton&#39;s Law of Cooling: dT/dt = -k(T - Tambient)
+   - Equilibrate temperature toward room temp
+4. Return new temperature, mass, phase state
+```
+
+### Key Physics Equations
+
+**Heating (Q = mcΔT):**
+```
+Energy applied = heatInputWatts × deltaTime
+Temperature rise = Energy / (mass × specificHeat)
+ΔT = E / (m × c)
+```
+
+**Cooling (Newton&#39;s Law: dT/dt = -k(T - Tambient)):**
+```
+Temperature decay = k × (current - ambient)
+k = convective heat transfer coefficient / (mass × specific heat)
+```
+
+**Vapor Pressure (Antoine Equation):**
+```
+log₁₀(Pvap) = A - B / (C + T)
+```
+
+**Boiling Point (from ISA atmosphere):**
+```
+Altitude → Pressure (ISA model) → Boiling Point (Antoine inversion)
+P = 101325 × (1 - 0.0065×h / 288.15)^5.255
+Boiling Point = B / (A - log₁₀(P)) - C
+```
+
+---
+
+## THE PROBLEM: Physics Divergence at Extreme Speeds
+
+### Why This Is a Problem
+
+Physics equations assume **small time steps**. They&#39;re derived using calculus for infinitesimal time intervals.
+
+**What happens at 65536x speed?**
+
+Example: Heating water from 20°C to 100°C
+
+**At 1x speed (0.1s per step):**
+- Frame 1: Apply 2000W for 0.1s → ΔT = (2000 × 0.1) / (1 × 4186) = 0.048°C → T = 20.048°C
+- Frame 2: Apply 2000W for 0.1s → ΔT = 0.048°C → T = 20.096°C
+- ... 1667 frames total ...
+- Frame 1667: T ≈ 100°C ✓ Correct!
+
+**At 65536x speed (6553.6s per step):**
+- Frame 1: Apply 2000W for 6553.6s → ΔT = (2000 × 6553.6) / (1 × 4186) = 3,134°C → T = 3,154°C ❌ WAY TOO HOT!
+- Physical equation is applied once with a HUGE time step
+- Non-linear effects break down (water would vaporize instantly)
+- Cooling calculation also breaks (exponential decay equation diverges)
+- Result: **Garbage output**
+
+### Why Antoine Equation Breaks Down
+
+The Antoine equation is empirical (fitted to real-world data) for temperatures near the boiling point.
+
+At extreme values:
+- Coefficients are tuned for small ranges (e.g., 0°C to 100°C)
+- Large jumps in temperature per step cause equation to extrapolate wildly
+- Example: If solver calculates T = 3000°C, Antoine coefficients are useless
+
+### Why Newton Cooling Breaks Down
+
+Newton&#39;s Law uses exponential decay:
+```
+T(t) = Tambient + (T0 - Tambient) × e^(-k×t)
+```
+
+At 65536x, one step = 6553.6 seconds. If k = 0.001:
+```
+e^(-0.001 × 6553.6) = e^(-6.55) ≈ 0.0013
+```
+
+Temperature crashes to ambient almost instantly, but then next step overshoots or oscillates.
+
+---
+
+## The Solution: Time Sub-stepping
+
+**Location:** Will be `src/utils/timeSubstepper.js` (not yet created)
+
+Instead of one giant leap, subdivide the large deltaTime into smaller physics steps:
+
+```javascript
+/**
+ * Subdivide large time steps into smaller physics steps
+ * Fixes divergence at extreme speeds (65536x) where deltaTime &gt;&gt; 0.1s
+ * 
+ * @param {number} deltaTime - Desired time to advance (seconds)
+ * @param {number} preferredStepSize - Target physics step size (seconds)
+ * @returns {array} Array of step sizes to apply sequentially
+ * 
+ * @example
+ * const steps = subdivideTimeStep(6553.6, 0.1)
+ * // Returns: [0.1, 0.1, 0.1, ..., 0.1] (65536 steps of 0.1 seconds each)
+ * // Total sum = 6553.6 seconds
+ */
+export function subdivideTimeStep(deltaTime, preferredStepSize = 0.1) {
+  const numSteps = Math.ceil(deltaTime / preferredStepSize)
+  const actualStepSize = deltaTime / numSteps
+  return Array(numSteps).fill(actualStepSize)
+}
+```
+
+**Usage in GameScene.jsx:**
+```javascript
+const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+
+// Subdivide into small steps (0.1s each) if needed
+const steps = subdivideTimeStep(deltaTime, 0.1)
+
+// Apply each small step sequentially
+let state = { waterMass, temperature, altitude, residueMass }
+for (const stepSize of steps) {
+  state = simulateTimeStep(state, heatInputWatts, stepSize, fluidProps, ambientTemperature)
+}
+
+// Now update with final state
+setTemperature(state.temperature)
+setWaterInPot(state.waterMass)
+```
+
+**Results:**
+- ✅ Physics stays in normal operating range
+- ✅ Heating curves are smooth, not jagged
+- ✅ Cooling follows exponential decay correctly
+- ✅ Antoine equation stays in verified range
+- ❌ Performance cost: 65536 steps per frame at 65536x (CPU spike!)
+
+### Performance Note
+
+This approach works but is expensive:
+- **1x speed:** 1 step per frame ✓ Fast
+- **256x speed:** 2560 steps per frame - Noticeable slowdown
+- **65536x speed:** 655,360 steps per frame - Would freeze the game
+
+**Better solutions (not yet implemented):**
+1. **Adaptive stepping:** Use larger steps where physics is stable, smaller steps where it&#39;s not
+2. **Speed limit:** Cap UI at 256x or 1024x to keep physics tractable
+3. **Analytical solutions:** For simple heating (constant power), solve Q=mcΔT directly without iteration
+4. **Separate display/physics time:** Physics runs at fixed 60 Hz, display updates faster visually
+
+---
+
+## Implementation Accuracy Check
+
+**Location:** `docs/planning/TODO.md` → CRITICAL PATH → &quot;Time Speed Sub-stepping&quot;
+
+**Validation:**
+- ✅ &quot;At extreme speeds (65536x), deltaTime = 6553s per frame&quot; → **CORRECT** (6553.6s to be exact)
+- ✅ &quot;Physics diverges&quot; → **CORRECT** (confirmed by mathematical analysis above)
+- ✅ Solution approach is sound → **CORRECT** (time sub-stepping is standard physics fix)
+
+**Assessment:**
+- TODO Item #2 is technically accurate
+- Implementation is straightforward (20-50 lines of code)
+- Performance impact should be considered (add speed cap or adaptive stepping)
+- Could be done quickly, but performance testing needed afterward
+
+---
+
+## References in Codebase
+
+**Physics System:**
+- `src/utils/physics/index.js` - Public API (formulas + processes)
+- `src/utils/physics/processes/simulation/simulateTimeStep.js` - Main time stepping function
+- `src/utils/physics/processes/heating/_heating.js` - Energy application
+- `src/utils/physics/processes/heating/_newtonCooling.js` - Cooling model
+
+**Time Model:**
+- `src/constants/physics.js` - TIME_STEP = 100ms
+- `src/components/GameScene.jsx` lines 137, 523 - Speed multiplier and deltaTime calculation
+
+**Room Environment (uses same deltaTime):**
+- `src/hooks/useRoomEnvironment.js` - Room AC/air handler simulation
+- `src/utils/acUnitHandler.js` - PID controller for temperature
+- `src/utils/airHandlerScrubber.js` - Gas exchange model
+
+---
+
+## Summary
+
+| Aspect | Answer |
+|--------|--------|
+| **What is a &quot;step&quot;?** | 0.1 seconds of in-game time, applied once per animation frame |
+| **Are steps connected to time?** | ✅ YES - `deltaTime = (0.1s) × timeSpeed` |
+| **Is 65536x calculation correct?** | ✅ YES - `(100ms / 1000) × 65536 = 6,553.6 seconds` |
+| **Why is that a problem?** | Physics equations assume small steps (~0.1s), not giant leaps (6,553s) |
+| **Is sub-stepping the right fix?** | ✅ YES - Standard approach in game physics engines |
+| **Is TODO Item #2 technically accurate?** | ✅ YES - Description matches physics reality |
+| **What&#39;s next?** | Implement `timeSubstepper.js` and test at various speeds |
+
+---
+
+**Last Updated:** 2026-02-02  
+**Status:** Research Complete - Ready for Implementation  
+**Confidence:** High (backed by code inspection and mathematical analysis)
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

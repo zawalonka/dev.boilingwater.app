@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 63,
+  "symbol": "Eu",
+  "name": "Europium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 151.964,
+    "ionizationEnergy": 5.67,
+    "atomicRadius": 233,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 10958221512,
+    "boilingPoint": 180215292784,
+    "density": 5.24,
+    "electronConfiguration": 6247,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 872,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the continent of Europe. It was separated from the mineral samaria in magnesium- samarium nitrate by the French chemist Eugène-Anatole Demarçay in 1896. It was also first isolated by Demarçay in 1901.",
+      "Europium was discovered by Eugène-Antole Demarçay, a French chemist, in 1896. Demarçay suspected that samples of a recently discovered element, samarium, were contaminated with an unknown element. He was able to produce reasonably pure europium in 1901. Today, europium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "Named after Europe. In 1890 Boisbaudran obtained basic fractions from samarium-gadolinium concentrates which had spark spectral lines not accounted for by samarium or gadolinium. These lines subsequently have been shown to belong to europium. The discovery of europium is generally credited to Demarcay, who separated the rare earth in reasonably pure form in 1901. The pure metal was not isolated until recent years."
+    ],
+    "discovery": [],
+    "uses": [
+      "Europium is the most reactive of the rare earth elements. There are no commercial applications for europium metal, although it has been used to dope some types of plastics to make lasers. Since it is a good absorber of neutrons, europium is being studied for use in nuclear reactors.Europium oxide (Eu2O3), one of europium's compounds, is widely used as a red phosphor in television sets and as an activator for yttrium-based phosphors.",
+      "Europium-doped plastic has been used as a laser material. With the development of ion-exchange techniques and special processes, the cost of the metal has been greatly reduced in recent years."
+    ],
+    "production": [
+      "Europium is now prepared by mixing Eu2O3 with a 10%-excess of lanthanum metal and heating the mixture in a tantalum crucible under high vacuum. The element is collected as a silvery-white metallic deposit on the walls of the crucible."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "As with other rare-earth metals, except for lanthanum, europium ignites in air at about 150 to 180°C. Europium is about as hard as lead and is quite ductile. It is the most reactive of the rare-earth metals, quickly oxidizing in air. It resembles calcium in its reaction with water. Bastnasite and monazite are the principal ores containing europium."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:52.589Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/63",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/europium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele063.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele063.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/63.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=63",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

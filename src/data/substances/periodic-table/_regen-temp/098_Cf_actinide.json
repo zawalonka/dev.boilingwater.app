@@ -1,0 +1,77 @@
+{
+  "atomicNumber": 98,
+  "symbol": "Cf",
+  "name": "Californium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 251,
+    "ionizationEnergy": 6.3,
+    "atomicRadius": 245,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 11739001652,
+    "boilingPoint": 1470,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 72510,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 58,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Californium was first produced by Stanley G. Thompson, Glenn T. Seaborg, Kenneth Street, Jr. and Albert Ghiorso working at the University of California, Berkeley, in 1950. They bombarded atoms of curium-242 with helium ions using a device known as a cyclotron. This produced atoms of californium-245, an isotope with a half-life of about 45 minutes, and a free neutron.",
+      "Californium, the sixth transuranium element to be discovered, was produced by Thompson, Street, Ghioirso, and Seaborg in 1950 by bombarding microgram quantities of 242Cm with 35 MeV helium ions in the Berkeley 60-inch cyclotronproducing 244Cf. Since the lanthanide homologue of californium (dysprosium) has a stable trivalent state in aqueous solution it was anticipated that californium would exhibit a stable trivalent state as well. This accurate prediction allowed for the successful chromatographic separation of californium from other actinides and for its unequivocal identification."
+    ],
+    "discovery": [],
+    "uses": [
+      "Californium-252, an isotope with a half-life of about 2.6 years, is a very strong neutron source. One microgram (0.000001 grams) of californium-252 produces 170,000,000 neutrons per minute. It is being used as a neutron source to identify gold and silver ores through a technique known as neutron activation. It is also being used in devices known as neutron moisture gauges that are used to find water and oil bearing layers in oil wells.A few compounds of californium have been produced and studied. They include: californium oxide (CfO3), californium trichloride (CfCl3) and californium oxychloride (CfOCl).Californium's most stable isotope, californium-251, has a half-life of about 898 years. It decays into curium-247 through alpha decay or decays through spontaneous fission."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Californium does not occur naturally in the Earth’s crust. It was first synthesized in 1950 by Glenn T. Seaborg and his team at the University of California using the reaction 242Cm (4He, n) 245Cf. The element was named for the state where it was first synthesized.",
+      "Californium is the second half of the actinide series where its f electrons are further removed or shielded from the valence electrons that those of the lighter actinides. Thus californium resembles the behavior of the lanthanide elements exhibiting divalent, trivalent, and tetravalent oxidation states in solid-state compounds. In solution, the trivalent state is the most stable however the divalent, tetravalent and a possible pentavalent state have been reported. The existence of Cf(V) is questionable.Californium metal is fairly reactive. On standing in air or moisture, small pieces or foils of Cf metal quickly form an oxide but not in a violent reaction. Two methods have been successful for preparation of Cf metal: reduction of californium trifluoride with lithium metal at elevated temperature and using thorium or lanthanum metal to reduce californium oxide (R. G. Haire, 1982). The largest amount of metal prepared at one time was about 10 milligrams. The metal was eventually determined to be trivalent with a room-temperature double hexagonal close-packed structure. A face centered cubic structure has also been observed for californium metal at high temperature.Some alloys and numerous solid-state compounds have been prepared with californium in spite of the fact that only small amounts of the element are available at any one time. Californium compounds include oxides, halides, oxyhalides, pnictides, chacogenides hydrides, tellurides, oxysulfate and oxysulfide to name a few. Some organo-californium coumpounds have also been prepared.Because californium is a very efficient source of neutrons, many new uses are expected for it. It has already found use in neutron moisture gauges and in well-logging (the determination of water and oil-bearing layers). It is also being used as a portable neutron source for discovery of metals such as gold or silver by on-the-spot activation analysis. 252Cf is now being offered for sale by the Oak Ridge National Laboratory at a cost of $10/mg. As of May, 1975, more than 63 mg have been produced and sold. It has been suggested that californium may be produced in certain stellar explosions, called supernovae, for the radioactive decay of 254Cf (55-day half-life) agrees with the characteristics of the light curves of such explosions observed through telescopes. This suggestion, however, is questioned.Further reading: Richard G. Haire (2006) Chapter 11, \"The Chemistry of the Actinide and Transactinide Element,\" Third Edition, L. R. Morss, J. Fuger, and N. M. Edelstein, Eds, Springer Publishers.This element reviewed and Updated by Dr. David Hobart, 2011"
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:00.151Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/98",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele098.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele098.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/98.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=98",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

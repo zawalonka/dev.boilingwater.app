@@ -1,0 +1,74 @@
+{
+  "atomicNumber": 112,
+  "symbol": "Cn",
+  "name": "Copernicium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 285,
+    "atomicRadius": 147,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "boilingPoint": 357,
+    "boilingPoint_source": "u-s-department-of-energy",
+    "electronConfiguration": 72514610,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 210,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Copernicium was first produced by Peter Armbruster, Gottfried Münzenber and their team working at the Gesellschaft für Schwerionenforschung in Darmstadt, Germany on February 9, 1996. They bombarded atoms of lead with ions of zinc with a device known as a linear accelerator. This produced atoms of copernicium-277, an isotope with a half-life of about 0.24 milliseconds (0.00024 seconds). Copernicium's most stable isotope, copernicium-285, has a half-life of about 30 seconds. It decays into darmstadtium-281 through alpha decay.",
+      "On February 9, 1996, element 277Cn was created at the Gesellschaft fur Schwerionenforschung in Darmstadt, Germany by using the reaction 208Pb + 70Zn. Unlike element 110, Copernicium has properties more similar to radon than mercury, but due to its short half-life, it is difficult to study. As of 2011, Copernicum's most stable isotope has an atomic weight of 285."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of copernicium have ever been produced, it currently has no uses outside of basic scientific research.Originally, the symbol Cp was recommended for Copernicium. That symbol was rejected because Cp had previously been used for the element lutetium which, prior to 1949, had cassiopeium as an alternative allowed name. Please see this file for additional details."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Copernicium does not occur naturally in the Earth’s crust. Copernicium was synthesized by scientists at the GSI Helmholtz Center for Heavy Ion Research in Darmstadt, Germany in 1996 (Fig. IUPAC.112.1). Sigurd Hofmann and an international team of scientists used the nuclear reaction 208Pb (70Zn, n) 277Cn. The observed alpha decays led to the known nuclide, 269Sg. The name, copernicium, was given to element 112 to honor astronomer Nicholas Copernicus, who is known for his heliocentric theory of how the planets orbit the Sun [663], [664]. Copernicium has no known isotopic applications aside from scientific research.",
+      "Copernicium is named after the astronomer Nicolaus Copernicus."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:03.379Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/112",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele112.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele112.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/112.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=112",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

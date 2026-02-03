@@ -86,9 +86,9 @@ export const GAME_CONFIG = {
   // - Larger values (e.g., 200ms) = less frequent updates = less accurate but lighter
   // - 100ms is a good balance: updates 10 times per second (visible motion feels smooth)
   // 
-  // Each simulation step, the stove heat is applied for 0.1 seconds:
-  // energyApplied = heatInputWatts × 0.1 seconds
-  TIME_STEP: 100,
+  // Each simulation step, the stove heat is applied for 0.01 seconds:
+  // energyApplied = heatInputWatts × 0.01 seconds
+  TIME_STEP: 10,
   
   // GAS BURNER OUTPUT (in Watts)
   // A typical medium heat setting on a household gas range

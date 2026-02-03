@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 66,
+  "symbol": "Dy",
+  "name": "Dysprosium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 162.5,
+    "ionizationEnergy": 5.939,
+    "atomicRadius": 229,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 168514122574,
+    "boilingPoint": 284025674653,
+    "density": 8.55,
+    "electronConfiguration": 62410,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 58,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek dysprositos for \"hard to get at\", owing to the difficulty in separating this rare earth element from a holmium mineral in which it was found. It was discovered by the Swiss chemist Marc Delafontaine in the mineral samarskite in 1878 and called philippia. Philippia was subsequently thought to be a mixture of terbium and yttrium. It was later rediscovered in a holmium sample by the French chemist Paul-Emile Lecoq de Boisbaudran in 1886, who was then credited with the discovery. Dysprosium was first isolated by the French chemist Georges Urbain in 1906.",
+      "Dysprosium was discovered by Paul-Émile Lecoq de Boisbaudran, a French chemist, in 1886 as an impurity in erbia, the oxide of erbium. The metal was isolated by Georges Urbain, another French chemist, in 1906. Pure samples of dysprosium were first produced in the 1950s. Today, dysprosium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "From the Greek word dysprositos, meaning hard to get at. Dysprosium was discovered in 1886 by Lecoq de Boisbaudran, but not isolated. Neither the oxide nor the metal was available in relatively pure form until 1950, when the development of ion-exchange separation and metallographic reduction techniques were created by Spedding and associates. Dysprosium occurs along with other so-called rare-earth or lanthanide elements in a variety of minerals such as xenotime, fergusonite, gadolinite, euxenite, polycrase, and blomstrandine. The most important sources, however, are from monaziate and bastnasite. Dysprosium can be prepared by reduction of the trifluoride with calcium."
+    ],
+    "discovery": [],
+    "uses": [
+      "There are no commercial applications for dysprosium. Since it easily absorbs neutrons and has a high melting point, dysprosium might be alloyed with steel for use in nuclear reactors. When combined with vanadium and other rare earth elements, dysprosium is used as a laser material.Dysprosium oxide (Dy2O3), also known as dysprosia, is combined with nickel and added to a special cement used to cool nuclear reactor rods. Other dysprosium compounds include: dysprosium fluoride (DyF3), dysprosium iodide (DyI3) and dysprosium sulfate (Dy2(SO4)3).",
+      "While we have not found many applications for dysprosium, its thermal neutron absorption cross-section and high melting point suggest metallurgical uses in nuclear control applications and for alloying with special stainless steels. A dysprosium oxide-nickel cement has found use in cooling nuclear reactor rods. This cement absorbs neutrons readily without swelling or contracting under prolonged neutron bombardment. In combination with vanadium and other rare earths, dysprosium has been used in making laser materials. Dysprosium-cadmium chalcogenides, as sources of infrared radiation, have been used for studying chemical reactions."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The element has a metallic, bright silver luster. It is relatively stable in air at room temperature, and is readily attacked and dissolved by dilute and concentrated mineral acids, to evolve hydrogen. The metal is soft enough to be cut with a knife and can be machined without sparking if overheating is avoided. Small amounts of impurities can greatly affect its physical properties."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:53.218Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/66",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/dysprosium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele066.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele066.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/66.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=66",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

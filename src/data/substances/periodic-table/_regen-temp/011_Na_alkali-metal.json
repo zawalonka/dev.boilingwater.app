@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 11,
+  "symbol": "Na",
+  "name": "Sodium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 22.98976928,
+    "ionizationEnergy": 5.139,
+    "atomicRadius": 227,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 370.9597,
+    "boilingPoint": 11568831621,
+    "density": 0.97,
+    "electronConfiguration": 31,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the English soda and Latin sodanum for \"headache remedy\". The symbol Na derives from the Latin natrium for \"natron\" (soda in English). Sodium was discovered in 1807 by the English chemist Humphry Davy from electrolysis of caustic soda (NaOH).",
+      "Although sodium is the sixth most abundant element on earth and comprises about 2.6% of the earth's crust, it is a very reactive element and is never found free in nature. Pure sodium was first isolated by Sir Humphry Davy in 1807 through the electrolysis of caustic soda (NaOH). Since sodium can ignite on contact with water, it must be stored in a moisture free environment.",
+      "From the English word, soda; Medieval Latin, sodanum: a headache remedy. Long recognized in compounds, sodium was first isolated by Davy in 1807 by electrolysis of caustic soda."
+    ],
+    "discovery": [],
+    "uses": [
+      "Sodium is used in the production of titanium, sodamide, sodium cyanide, sodium peroxide, and sodium hydride. Liquid sodium has been used as a coolant for nuclear reactors. Sodium vapor is used in streetlights and produces a brilliant yellow light.Sodium also forms many useful compounds. Some of the most common are: table salt (NaCl), soda ash (Na2CO3), baking soda (NaHCO3), caustic soda (NaOH), Chile saltpeter (NaNO3) and borax (Na2B4O7·10H2O).",
+      "Metallic sodium is vital in the manufacture of esters and in the preparation of organic compounds. The metal may be used to improve the structure of certain alloys, descale metal, and purify molten metals.An alloy of sodium with potassium, NaK, is an important heat transfer agent."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Sodium, like every reactive element, is never found free in nature. Sodium is a soft, bright, silvery metal which floats on water. Decomposition in water results in the evolution of hydrogen and the formation of the hydroxide. It may or may not ignite spontaneously on water, depending on the amount of oxide and metal exposed to the water. It normally does not ignite in air at temperatures below 115°C."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:41.267Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/11",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/sodium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele011.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele011.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/11.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=11",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

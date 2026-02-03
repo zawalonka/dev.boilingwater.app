@@ -1,0 +1,72 @@
+{
+  "atomicNumber": 110,
+  "symbol": "Ds",
+  "name": "Darmstadtium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 281,
+    "atomicRadius": 132,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "electronConfiguration": 7251468,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 86420,
+    "oxidationStates_source": "u-s-department-of-energy",
+    "physicalDescription": "Expected to be a Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Darmstadtium was first produced by Peter Armbruster, Gottfried Münzenber and their team working at the Gesellschaft für Schwerionenforschung in Darmstadt, Germany on November 9th, 1994. They bombarded atoms of lead with ions of nickel with a device known as a linear accelerator. This produced one atom of darmstadtium-269, an isotope with a half-life of about 0.17 milliseconds (0.00017 seconds), after at least a billion billion (1,000,000,000,000,000,000) nickel ions were fired at the lead target over the course of a week. Darmstadtium's most stable isotope, darmstadtium-281, has a half-life of about 20 seconds. About 15% of the time, it decays into hassium-277 through alpha decay. The remaining 85% of the time, it decays through spontaneous fission.",
+      "November 9, 1994 at 4:39 pm, the first atom with atomic number 110 was detected at the Gesellschaft fur Schwerionenforschung (GSI) in Darmstadt, in Germany.Element 110 was produced by fusing a nickel and lead atom together. This was achieved by accelerating the nickel atoms to a high energy in the heavy ion accelerator.\"This rare reaction occurs only at a very specific velocity of the nickel projectile. Over a period of many days, many billion billion nickel atoms must be shot at a lead target in order to produce and identify a single atom of element 110. The atoms produced in the nickel-lead collisions are selected by a velocity filter and then captured in a detector system which measures their decay. The energy of the emitted helium nuclei serves to identify the atom\" (Press Release). This element was only found to have a lifetime of less than 1/1000th of a second. It is expected that soon a heavier version of element 110 that might be more stable, and that lives slightly longer will be developed.The name darmstatdium was confirmed by IUPAC in August 2003."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only a few atoms of darmstadtium have ever been produced, it currently has no uses outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Darmstadtium does not occur naturally in the Earth’s crust. Darmstadtium was first synthesized by an international team of scientists from the GSI in Darmstadt, Germany, the Joint Institute for Nuclear Research (JINR) in Dubna, Russia, the Comenius University in Bratislava, Slovakia and the University of Jyväskylä, Finland at the GSI Helmholtz Center for Heavy Ion Research in Darmstadt (Fig. IUPAC.110.1), Germany in 1994 using the nuclear reaction 208Pb (62Ni, n) 269Ds. The element was named darmstadtium after the place where the first synthesis was made [656], [657], [658], [659]. Darmstadtium has no known isotopic applications aside from scientific research.",
+      "Darmstadtium is named after the city Darmstadt, Germany."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:02.997Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/110",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele110.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele110.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/110.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=110",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

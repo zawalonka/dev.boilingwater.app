@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 73,
+  "symbol": "Ta",
+  "name": "Tantalum",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 180.94788,
+    "ionizationEnergy": 7.89,
+    "atomicRadius": 217,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 329030175463,
+    "boilingPoint": 573154589856,
+    "density": 16.4,
+    "electronConfiguration": 6241453,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 5,
+    "groundLevel": 432,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek mythological character Tantalus who was banished to Hades, the region of lost souls where he was placed up to his chin in water, which receded whenever he tried to drink it, and under branches of fruit, which drew back whenever he tried to pick their fruit. This name was selected because of the insolubility of tantalum in acids; thus, when placed in the midst of acids, it is incapable of taking any of them up. Tantalum was discovered by the Swedish chemist and mineralogist Anders- Gustav Ekeberg in 1802.",
+      "Tantalum was discovered by Anders Gustaf Ekenberg, a Swedish chemist, in 1802 in minerals obtained from Ytterby, Sweden. Many scientists believed that he had only discovered an allotrope of niobium, an element that is chemically similar to tantalum. The issue was finally settled in 1866 when, Jean Charles Galissard de Marignac, a Swiss chemist, proved that tantalum and niobium were two distinct elements. The first relatively pure samples of tantalum were first produced in 1907. Today, tantalum is primarily obtained from the minerals columbite ((Fe, Mn, Mg)(Nb, Ta)2O6), tantalite ((Fe, Mn)(Ta, Nb)2O6) and euxenite ((Y, Ca, Er, La, Ce, U, Th)(Nb, Ta, Ti)2O6).",
+      "Named after Tantalos, a Greek a mythological character, father of Niobe. Discovered in 1802 by Ekeberg, but many chemists thought niobium and tantalum were identical elements until Rowe in 1844, and Marignac, in 1866, showed that niobic and tantalic acids were two different acids. The early investigators only isolated the impure metal. The first relatively pure ductile tantalum was produced by von Bolton in 1903. Tantalum occurs principally in the mineral columbite-tantalite."
+    ],
+    "discovery": [],
+    "uses": [
+      "Tantalum is a strong, ductile metal that is nearly immune to chemical attack at room temperatures. It can be drawn into a fine wire that is used to evaporate metals, such as aluminum. It has a high melting point and is frequently used as a substitute for platinum, which is more expensive. Tantalum is used to make components for chemical plants, nuclear power plants, airplanes and missiles. Tantalum does not react with bodily fluids and is used to make surgical equipment. Tantalum also does not irritate the body and is used to make surgical sutures as well as implants, such as artificial joints and cranial plates. Tantalum is alloyed with steel to increase steel's ductility, strength and melting point.Tantalum pentoxide (Ta2O5), one of tantalum's compounds, is a dielectric material and is used to make capacitors. It is also used to make a glass with a high index of refraction that is used in camera lenses. A composite consisting of tantalum carbide (TaC) and graphite is one of the hardest materials known and is used on the cutting edges of high-speed machine tools.",
+      "Scientists at Los Alamos have produced a tantalum carbide graphite composite material, which is said to be one of the hardest materials ever made. The compound has a melting point of 3738°C. Tantalum is used to make electrolytic capacitors and vacuum furnace parts, which account for about 60% of its use. The metal is also widely used to fabricate chemical process equipment, nuclear reactors, aircraft, and missile parts. Tantalum is completely immune to body liquids and is a nonirritating material. It has, therefore, found wide use in making surgical appliances. Tantalum oxide is used to make special glass with high index of refraction for camera lenses. The metal has many other uses."
+    ],
+    "production": [
+      "Separation of tantalum from niobium requires several complicated steps. Several methods are used to commercially produce the element, including electrolysis of molten potassium fluorotantalate, reduction of potassium fluorotantalate with sodium, or reacting tantalum carbide with tantalum oxide. Twenty five isotopes of tantalum are known to exist. Natural tantalum contains two isotopes."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Tantalum is a gray, heavy, and very hard metal. When pure, it is ductile and can be drawn into fine wire, which is used as a filament for evaporating metals such as aluminum. Tantalum is almost completely immune to chemical attack at temperatures below 150°C, and is attacked only by hydrofluoric acid, acidic solutions containing the fluoride ion, and free sulfur trioxide. Alkalis attack it only slowly. At high temperatures, tantalum becomes much more reactive. The element has a melting point exceeded only by tungsten and rhenium. Tantalum is used to make a variety of alloys with desirable properties such as high melting point, high strength, good ductility, etc. Tantalum has a good \"gettering\" ability at high temperatures, and tantalum oxide films are stable and have good rectifying and dielectric properties."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:54.740Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/73",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/tantalum.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele073.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele073.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/73.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=73",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

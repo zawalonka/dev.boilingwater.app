@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 53,
+  "symbol": "I",
+  "name": "Iodine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 126.90447,
+    "ionizationEnergy": 10.451,
+    "atomicRadius": 198,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 386.85113,
+    "boilingPoint": 457.55184,
+    "density": 4.93,
+    "electronConfiguration": 5241055,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 7,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek iodes for \"violet\" because of its violet vapours. Iodine was discovered in seaweed by the French chemist Bernard Courtois in 1811, and named by the French chemist Louis-Joseph Gay-Lussac, when he proved it was an element in 1814.",
+      "Iodine was discovered by the French chemist Barnard Courtois in 1811. Courtois was extracting sodium and potassium compounds from seaweed ash. Once these compounds were removed, he added sulfuric acid (H2SO4) to further process the ash. He accidentally added too much acid and a violet colored cloud erupted from the mass. The gas condensed on metal objects in the room, creating solid iodine. Today, iodine is chiefly obtained from deposits of sodium iodate (NaIO3) and sodium periodate (NaIO4) in Chile and Bolivia. Trace amounts of iodine are required by the human body. Iodine is part of thyroxin, a hormone produced by the thyroid gland that controls the body's rate of physical and mental development. A lack of iodine can also cause a goiter, a swelling of the thyroid gland. Iodine is added to salt (iodized salt) to prevent these diseases.",
+      "From the Greek word iodes, violet. Discovered by Courtois in 1811, Iodine, a halogen, occurs sparingly in the form of iodides in sea water from which it is assimilated by seaweeds, Chilean saltpeter, nitrate-bearing earth (known as caliche), brines from old sea deposits, and in brackish waters from oil and salt wells."
+    ],
+    "discovery": [],
+    "uses": [
+      "Iodine is used as a test for starch and turns a deep blue when it comes in contact with it. Potassium iodide (KI) is used to make photographic film and, when mixed with iodine in alcohol, as an antiseptic for external wounds. A radioactive isotope of iodine, iodine-131, is used to treat some diseases of the thyroid gland.Care should be taken in handling and using iodine. It can burn the skin and damage the eyes and mucous membranes. Pure iodine is poisonous if ingested.",
+      "Iodine compounds are important in organic chemistry and very useful in medicine. Iodides, and thyroxine which contains iodine, are used internally in medicine, and as a solution of KI and iodine in alcohol is used for external wounds. Potassium iodide finds use in photography. The deep blue color with starch solution is characteristic of the free element."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Iodine is a bluish-black, lustrous solid, volatizing at ordinary temperatures into a blue-violet gas with an irritating odor; it forms compounds with many elements, but is less active than the other halogens, which displace it from iodides. Iodine exhibits some metallic-like properties. It dissolves readily in chloroform, carbon tetrachloride, or carbon disulfide to form beautiful purple solutions. It is only slightly soluble in water."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:50.490Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/53",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/iodine.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele053.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele053.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/53.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=53",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

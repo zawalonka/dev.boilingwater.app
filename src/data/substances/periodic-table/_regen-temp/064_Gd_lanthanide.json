@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 64,
+  "symbol": "Gd",
+  "name": "Gadolinium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 157.25,
+    "ionizationEnergy": 6.15,
+    "atomicRadius": 237,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 158613132395,
+    "boilingPoint": 354632735923,
+    "density": 7.9,
+    "electronConfiguration": 624751,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 92,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the mineral gadolinite, in which it was found, and that had been named for the Finnish rare earth chemist Johan Gadolin. Gadolinium was discovered by the Swiss chemist Jean-Charles Galissard de Marignac in 1886, who produced a white oxide in a samarskite mineral. In 1886, the French chemist Paul-Emile Lecoq de Boisbaudran gave the name gadolinium.",
+      "Spectroscopic evidence for the existence of gadolinium was first observed by the Swiss chemist Jean Charles Galissard de Marignac in the minerals didymia and gadolinite ((Ce, La, Nd, Y)2FeBe2Si2O10) in 1880. Today, gadolinium is primarily obtained from the minerals monazite ((Ce, La, Th, Nd, Y)PO4) and bastnasite ((Ce,La,Y)CO3F).",
+      "From gadolinite, a mineral named for Gadolin, a Finnish chemist. The rare earth metal is obtained from the mineral gadolinite. Gadolinia, the oxide of gadolinium, was separated by Marignac in 1880 and Lecoq de Boisbaudran independently isolated it from Mosander's yttria in 1886."
+    ],
+    "discovery": [],
+    "uses": [
+      "Gadolinium has the greatest ability to capture thermal neutrons of all known elements and can be used as control rods for nuclear reactors. Unfortunately, the two isotopes best suited for neutron capture, gadolinium-155 and gadolinium-157, are present in gadolinium in small amounts. As a result, gadolinium control rods quickly lose their effectiveness.Gadolinium can be combined with yttrium to form garnets that have applications in microwave technology. Gadolinium can be alloyed with iron, chromium and other metals to improve their workability and their resistance to high temperatures and oxidation. Gadolinium compounds are used to make phosphors for color televisions.",
+      "Gadolinium yttrium garnets are used in microwave applications and gadolinium compounds are used as phosphors in color television sets.The metal has unusual superconductive properties. As little as 1 percent gadolinium improves the workability and resistance of iron, chromium, and related alloys to high temperatures and oxidation.Gadolinium ethyl sulfate has extremely low noise characteristics and may find use in duplicating the performance of amplifiers, such as the maser.The metal is ferromagnetic. Gadolinium is unique for its high magnetic movement and for its special Curie temperature (above which ferromagnetism vanishes) lying just at room temperature, meaning it could be used as a magnetic component that can sense hot and cold."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "As with other related rare-earth metals, gadolinium is silvery white, has a metallic luster, and is malleable and ductile. At room temperature, gadolinium crystallizes in the hexagonal, close-packed alpha form. Upon heating to 1235°C, alpha gadolinium transforms into the beta form, which has a body-centered cubic structure.The metal is relatively stable in dry air, but tarnishes in moist air and forms a loosely adhering oxide film which falls off and exposes more surface to oxidation. The metal reacts slowly with water and is soluble in dilute acid.Gadolinium has the highest thermal neutron capture cross-section of any known element (49,000 barns)."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:52.815Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/64",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/gadolinium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele064.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele064.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/64.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=64",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

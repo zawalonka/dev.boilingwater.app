@@ -1,0 +1,113 @@
+{
+  "atomicNumber": 3,
+  "symbol": "Li",
+  "name": "Lithium",
+  "elementCategory": "alkali-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 6.941,
+    "ionizationEnergy": 5.392,
+    "atomicRadius": 182,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 453.6518,
+    "boilingPoint": 161513422448,
+    "density": 0.534,
+    "electronConfiguration": 21,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 1,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "states": {
+    "solid": {
+      "phaseName": "solid",
+      "meltingPoint": 453.6518,
+      "density": 0.534,
+      "specificHeat": null
+    },
+    "liquid": {
+      "phaseName": "liquid",
+      "boilingPoint": 161513422448,
+      "meltingPoint": 453.6518,
+      "density": 0.534,
+      "specificHeat": null
+    },
+    "gas": {
+      "phaseName": "gas",
+      "density": null,
+      "boilingPoint": 161513422448
+    }
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin lithos for \"stone\" because lithium was thought to exist only in minerals at that time. It was discovered by the Swedish mineralogist Johan August Arfwedson in 1818 in the mineral petalite LiAl(Si2O5)2. Lithium was isolated in 1855 by the German chemists Robert Wilhelm Bunsen and Augustus Matthiessen.",
+      "Lithium was discovered in the mineral petalite (LiAl(Si2O5)2) by Johann August Arfvedson in 1817. It was first isolated by William Thomas Brande and Sir Humphrey Davy through the electrolysis of lithium oxide (Li2O). Today, larger amounts of the metal are obtained through the electrolysis of lithium chloride (LiCl). Lithium is not found free in nature and makes up only 0.0007% of the earth's crust.",
+      "From the Greek word lithos, stone. Discovered by Arfvedson in 1817. Lithium is the lightest of all metals, with a density only about half that of water."
+    ],
+    "discovery": [],
+    "uses": [
+      "Many uses have been found for lithium and its compounds. Lithium has the highest specific heat of any solid element and is used in heat transfer applications. It is used to make special glasses and ceramics, including the Mount Palomar telescope's 200 inch mirror. Lithium is the lightest known metal and can be alloyed with aluminium, copper, manganese, and cadmium to make strong, lightweight metals for aircraft. Lithium hydroxide (LiOH) is used to remove carbon dioxide from the atmosphere of spacecraft. Lithium stearate (LiC18H35O2) is used as a general purpose and high temperature lubricant. Lithium carbonate (Li2CO3) is used as a drug to treat manic depression disorder.Lithium reacts with water, but not as violently as sodium.",
+      "Since World War II, the production of lithium metal and its compounds has increased greatly. Because the metal has the highest specific heat of any solid element, it has found use in heat transfer applications; however, it is corrosive and requires special handling. The metal has been used as an alloying agent, is of interest in synthesis of organic compounds, and has nuclear applications. It ranks as a leading contender as a battery anode material as it has a high electrochemical potential. Lithium is used in special glasses and ceramics. The glass for the 200-inch telescope at Mt. Palomar contains lithium as a minor ingredient. Lithium chloride is one of the most hygroscopic materials known, and it, as well as lithium bromide, is used in air conditioning and industrial drying systems. Lithium stearate is used as an all-purpose and high-temperature lubricant. Other lithium compounds are used in dry cells and storage batteries. Lithium carbonate is used for the treatment of bipolar disease and other mental illness conditions."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:17:48.252Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/3",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/lithium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele003.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele003.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/3.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=3",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

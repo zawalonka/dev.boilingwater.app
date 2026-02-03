@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 49,
+  "symbol": "In",
+  "name": "Indium",
+  "elementCategory": "post-transition-metal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 114.818,
+    "ionizationEnergy": 5.786,
+    "atomicRadius": 193,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 429.75156,
+    "boilingPoint": 234520723762,
+    "density": 7.31,
+    "electronConfiguration": 5241051,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the term \"indigo\" for the indigo-blue line in the element's spark spectrum. It was discovered in 1863 by the German physicist Ferdinand Reich and the German metallurgist Hieronymus Theodor Richter, while examining zinc blende. They isolated indium in 1867.",
+      "Indium was discovered by the German chemists Ferdinand Reich and Hieronymus Theodor Richter in 1863. Reich and Richter had been looking for traces of the element thallium in samples of zinc ores. A brilliant indigo line in the sample's spectrum revealed the existence of indium. Indium is about as abundant as silver but is much easier to recover since it typically occurs along with zinc, iron, lead and copper ores.",
+      "From the brilliant indigo line in its spectrum. Discovered by Reich and Richter, who later isolated the metal. Until 1924, a gram or so constituted the world's supply of this element in isolated form. It is probably about as abundant as silver. About 4 million troy ounces of indium are now produced annually in the Free World. Canada is presently producing more than 1,000,000 troy ounces annually."
+    ],
+    "discovery": [],
+    "uses": [
+      "Indium is used to coat the bearings of high speed motors since it allows for the even distribution of lubricating oil. Indium is used to dope germanium to make transistors. It is also used to make other electrical components such as rectifiers, thermistors and photoconductors. Indium can be used to make mirrors that are as reflective as silver mirrors but do not tarnish as quickly. Indium is also used to make low melting alloys. An alloy of 24% indium and 76% gallium is a liquid at room temperature.",
+      "It has found application in making low-melting allows; an allow of 24% indium - 76% gallium is liquid at room temperature. It is used in making bearing alloys, germanium transistors, rectifiers, thermistors, and photoconductors. It can be plated onto metal and evaporated onto glass, forming a mirror as good as that made with silver but with more resistance to atmospheric corrosion."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Indium is available in ultra pure form. Indium is a very soft, silvery-white metal with a brilliant luster. The pure metal gives a high-pitched \"cry\" when bent. It wets glass, as does gallium."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:49.639Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/49",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/indium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele049.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele049.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/49.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=49",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

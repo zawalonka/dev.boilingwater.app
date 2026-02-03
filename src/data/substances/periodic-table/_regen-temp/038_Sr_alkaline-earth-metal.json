@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 38,
+  "symbol": "Sr",
+  "name": "Strontium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 87.62,
+    "ionizationEnergy": 5.695,
+    "atomicRadius": 249,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 10507771431,
+    "boilingPoint": 165513822520,
+    "density": 2.64,
+    "electronConfiguration": 52,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from Strontian, a town in Scotland. The mineral strontianite is found in mines in Strontian. The element was discovered in 1792 by the Scottish chemist and physician Thomas Charles Hope, who observed the brilliant red flame colour of strontium. It was first isolated by the English chemist Humphry Davy in 1808.",
+      "Strontium was discovered by Adair Crawford, an Irish chemist, in 1790 while studying the mineral witherite (BaCO3). When he mixed witherite with hydrochloric acid (HCl) he did not get the results he expected. He assumed that his sample of witherite was contaminated with an unknown mineral, a mineral he named strontianite (SrCO3). Strontium was first isolated by Sir Humphry Davy, an English chemist, in 1808 through the electrolysis of a mixture of strontium chloride (SrCl2) and mercuric oxide (HgO). Today, strontium is obtained from two of its most common ores, celestite (SrSO4) and strontianite (SrCO3), by treating them with hydrochloric acid, forming strontium chloride. The strontium chloride, usually mixed with potassium chloride (KCl), is then melted and electrolyzed, forming strontium and chlorine gas (Cl2).",
+      "Named after Strontian, a town in Scotland. Isolated by Davey by electrolysis in 1808, however, Adair Crawford recognized a new mineral (strontianite) as differing from other barium minerals in 1790."
+    ],
+    "discovery": [],
+    "uses": [
+      "Most of the strontium produced today is used in the manufacture of color television picture tubes. It is also used to refine zinc and is combined with iron to make magnets.Two strontium compounds, strontium carbonate (SrCO3) and strontium nitrate (Sr(NO3)2), burn with a bright, red flame and are used in fireworks and signal flares. Strontium carbonate is also used to make certain kinds of glass and is the base material for making most other strontium compounds.Strontium-90, a radioactive isotope of strontium, is a common product of nuclear explosions. It has a half-life of about 28.8 years and decays into yttrium-90 through beta decay. Strontium-90 is especially deadly since it has a relatively long half-life, is strongly radioactive and is absorbed by the body, where it accumulates in the skeletal system. The radiation affects the production of new blood cells, which eventually leads to death.",
+      "In addition to the medical imaging application described in the image caption above, strontium has found use in producing ferrite magnets and in refining zinc. Strontium titanate is an interesting optical material as it has an extremely high refractive index and an optical dispersion greater than that of diamond. It has been used as a gemstone, but is very soft. It does not occur naturally."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Strontium is softer than calcium and decomposes in water more vigorously. It does not absorb nitrogen below 380°C. It should be kept under kerosene to prevent oxidation. Freshly cut strontium has a silvery appearance, but rapidly turns a yellowish color with the formation of the oxide. The finely divided metal ignites spontaneously in air. Volatile strontium salts impart a beautiful crimson color to flames, and these salts are used in pyrotechnics and in the production of flares. Natural strontium is a mixture of four stable isotopes."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:47.204Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/38",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/strontium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele038.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele038.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/38.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=38",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

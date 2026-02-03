@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 16,
+  "symbol": "S",
+  "name": "Sulfur",
+  "elementCategory": "nonmetal",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 32.066,
+    "ionizationEnergy": 10.36,
+    "atomicRadius": 180,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 388.36115,
+    "boilingPoint": 717.75444,
+    "density": 2.067,
+    "electronConfiguration": 3234,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 6,
+    "groundLevel": 32,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin sulphurium and the Sanskrit sulveri. Sulfur was known as brenne stone for \"combustible stone\" from which brim-stone is derived. It was known from prehistoric times and thought to contain hydrogen and oxygen. In 1809, the French chemists Louis-Joseph Gay-Lussac and Louis-Jacques Thenard proved the elemental nature of sulfur.",
+      "Sulfur, the tenth most abundant element in the universe, has been known since ancient times. Sometime around 1777, Antoine Lavoisier convinced the rest of the scientific community that sulfur was an element. Sulfur is a component of many common minerals, such as galena (PbS), gypsum (CaSO4·2(H2O), pyrite (FeS2), sphalerite (ZnS or FeS), cinnabar (HgS), stibnite (Sb2S3), epsomite (MgSO4·7(H2O)), celestite (SrSO4) and barite (BaSO4). Nearly 25% of the sulfur produced today is recovered from petroleum refining operations and as a byproduct of extracting other materials from sulfur containing ores. The majority of the sulfur produced today is obtained from underground deposits, usually found in conjunction with salt deposits, with a process known as the Frasch process. Sulfur is a pale yellow, odorless and brittle material. It displays three allotropic forms: orthorhombic, monoclinic and amorphous. The orthorhombic form is the most stable form of sulfur. Monoclinic sulfur exists between the temperatures of 96°C and 119°C and reverts back to the orthorhombic form when cooled. Amorphous sulfur is formed when molten sulfur is quickly cooled. Amorphous sulfur is soft and elastic and eventually reverts back to the orthorhombic form.",
+      "Known to the ancients; referred to in Genesis as brimstone."
+    ],
+    "discovery": [],
+    "uses": [
+      "Most of the sulfur that is produced is used in the manufacture of sulfuric acid (H2SO4). Large amounts of sulfuric acid, nearly 40 million tons, are used each year to make fertilizers, lead-acid batteries, and in many industrial processes. Smaller amounts of sulfur are used to vulcanize natural rubbers, as an insecticide (the Greek poet Homer mentioned \"pest-averting sulphur\" nearly 2,800 years ago!), in the manufacture of gunpowder and as a dying agent.In addition to sulfuric acid, sulfur forms other interesting compounds. Hydrogen sulfide (H2S) is a gas that smells like rotten eggs. Sulfur dioxide (SO2), formed by burning sulfur in air, is used as a bleaching agent, solvent, disinfectant and as a refrigerant. When combined with water (H2O), sulfur dioxide forms sulfurous acid (H2SO3), a weak acid that is a major component of acid rain.",
+      "Sulfur is a component of black gunpowder, and is used in the vulcanization of natural rubber and a fungicide. It is also used extensively in making phosphatic fertilizers. A tremendous tonnage is used to produce sulfuric acid, the most important manufactured chemical.It is used to make sulfite paper and other papers, to fumigate, and to bleach dried fruits. The element is a good insulator.Sulfur is essential to life. It is a minor constituent of fats, body fluids, and skeletal minerals."
+    ],
+    "production": [
+      "Sulfur is commercially recovered from wells sunk into the salt domes along the Gulf Coast of the U.S. Using the Frasch process heated water is forced into the wells to melt the sulfur, which is then brought to the surface.Sulfur also occurs in natural gas and petroleum crudes and must be removed from these products. Formerly this was done chemically, which wasted the sulfur; new processes now permit recovery. Large amounts of sulfur are being recovered from Alberta gas fields."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Sulfur is pale yellow, odorless, brittle solid, which is insoluble in water but soluble in carbon disulfide. In every state, whether gas, liquid or solid, elemental sulfur occurs in more than one allotropic form or modification; these present a confusing multitude of forms whose relations are not yet fully understood.In 1975, University of Pennsylvania scientists reported synthesis of polymeric sulfur nitride, which has the properties of a metal, although it contains no metal atoms. The material has unusual optical and electrical properties.High-purity sulfur is commercially available in purities of 99.999+%.Amorphous or \"plastic\" sulfur is obtained by fast cooling of the crystalline form. X-ray studies indicate that amorphous sulfur may have a helical structure with eight atoms per spiral. Crystalline sulfur seems to be made of rings, each containing eight sulfur atoms, which fit together to give a normal X-ray pattern."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:42.532Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/16",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/sulfur.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele016.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele016.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/16.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=16",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

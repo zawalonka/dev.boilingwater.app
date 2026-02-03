@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 9,
+  "symbol": "F",
+  "name": "Fluorine",
+  "elementCategory": "halogen",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 18.998403163,
+    "ionizationEnergy": 17.423,
+    "atomicRadius": 135,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 53.53,
+    "boilingPoint": 85.03,
+    "density": 0.001696,
+    "electronConfiguration": 2225,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": -1,
+    "groundLevel": 232,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Latin fluere for \"flow\" or \"flux\" because fluorite (CaF2) was used as a flux in metallurgy owing to its low melting point. It was discovered in hydrofluoric acid by the Swedish pharmacist and chemist Carl-Wilhelm Scheele in 1771, but it was not isolated until 1886 by the French pharmacist and chemist Henri Moissan.",
+      "Fluorine is the most reactive of all elements and no chemical substance is capable of freeing fluorine from any of its compounds. For this reason, fluorine does not occur free in nature and was extremely difficult for scientists to isolate. The first recorded use of a fluorine compound dates to around 1670 to a set of instructions for etching glass that called for Bohemian emerald (CaF2). Chemists attempted to identify the material that was capable of etching glass and George Gore was able to produce a small amount of fluorine through an electrolytic process in 1869. Unknown to Gore, fluorine gas explosively combines with hydrogen gas. That is exactly what happened in Gore's experiment when the fluorine gas that formed on one electrode combined with the hydrogen gas that formed on the other electrode. Ferdinand Frederic Henri Moissan, a French chemist, was the first to successfully isolate fluorine in 1886. He did this through the electrolysis of potassium fluoride (KF) and hydrofluoric acid (HF). He also completely isolated the fluorine gas from the hydrogen gas and he built his electrolysis device completely from platinum. His work was so impressive that he was awarded the Nobel Prize for chemistry in 1906. Today, fluorine is still produced through the electrolysis of potassium fluoride and hydrofluoric acid as well as through the electrolysis of molten potassium acid fluoride (KHF2).",
+      "From the Latin and French fluere: flow or flux. In 1529, Georigius Agricola described the use of fluorspar as a flux, and as early as 1670 Schwandhard found that glass was etched when exposed to fluorspar treated with acid. Scheele and many later investigators, including Davy, Gay-Lussac, Lavoisier, and Thenard, experimented with hydrofluoric acid, some experiments ending tragically.The element was finally isolated in 1866 by Moissan after nearly 74 years of continuous effort."
+    ],
+    "discovery": [],
+    "uses": [
+      "Fluorine is added to city water supplies in the proportion of about one part per million to help prevent tooth decay. Sodium fluoride (NaF), stannous(II) fluoride (SnF2) and sodium monofluorophosphate (Na2PO3F) are all fluorine compounds added to toothpaste, also to help prevent tooth decay. Hydrofluoric acid (HF) is used to etch glass, including most of the glass used in light bulbs. Uranium hexafluoride (UF6) is used to separate isotopes of uranium. Crystals of calcium fluoride (CaF2), also known as fluorite and fluorspar, are used to make lenses to focus infrared light. Fluorine joins with carbon to form a class of compounds known as fluorocarbons. Some of these compounds, such as dichlorodifluoromethane (CF2Cl2), were widely used in air conditioning and refrigeration systems and in aerosol spray cans, but have been phased out due to the damage they were causing to the earth's ozone layer.",
+      "Fluorine and its compounds are used in producing uranium (from the hexafluoride) and more than 100 commercial fluorochemicals, including many high-temperature plastics. Hydrofluoric acid etches glass of light bulbs. Fluorochlorohydrocarbons are extensively used in air conditioning and refrigeration.The presence of fluorine as a soluble fluoride in drinking water to the extent of 2 ppm may cause mottled enamel in teeth when used by children acquiring permanent teeth; in smaller amounts, however, fluoride helps prevent dental cavities.Elemental fluorine has been studied as a rocket propellant as it has an exceptionally high specific impulse value."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Fluorine is the most electronegative and reactive of all elements. It is a pale yellow, corrosive gas, which reacts with most organic and inorganic substances. Finely divided metals, glass, ceramics, carbon, and even water burn in fluorine with a bright flame.Until World War II, there was no commercial production of elemental fluorine. The nuclear bomb project and nuclear energy applications, however, made it necessary to produce large quantities."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:40.915Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/9",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/fluorine.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele009.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele009.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/9.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=9",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

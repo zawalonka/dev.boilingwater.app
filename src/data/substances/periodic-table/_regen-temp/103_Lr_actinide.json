@@ -1,0 +1,74 @@
+{
+  "atomicNumber": 103,
+  "symbol": "Lr",
+  "name": "Lawrencium",
+  "elementCategory": "actinide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 262,
+    "ionizationEnergy": 4.96,
+    "ionizationEnergy_source": "nist-physical-measurement-laboratory",
+    "meltingPoint": 190016272961,
+    "electronConfiguration": 7251461,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 212,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "Lawrencium was created by four American scientists, Albert Ghiorso, Torbjørn Sikkeland, Almon E. Larsh and Robert M. Latimer, in March, 1961. Working at the Lawrence Radiation Laboratory in Berkeley, California, the scientists placed three micrograms (0.000003 grams) of californium in the target chamber of a device called a linear accelerator. The scientists used the accelerator to bombard the californium with boron ions. Several different isotopes of lawrencium were created and there is some confusion as to which isotope the group actually detected. Today, the Lawrence Radiation Laboratory is known as the Lawrence Berkeley Laboratory. Lawrencium's most stable isotope, lawrencium-262, has a half-life of about 4 hours. It decays into nobelium-262 through electron capture, mendelevium-258 through alpha decay or through spontaneous fission.",
+      "Named after Lawrence, inventor of the cyclotron. This member of the 5f transition elements (actinide series) was discovered in March 1961 by A. Ghiorso, T. Sikkeland, A.E. Larsh, and R.M. Latimer. A 3-Mg californium target, consisting of a mixture of isotopes of mass number 249, 250, 251, and 252, was bombarded with either 10B or 11B. The electrically charged transmutation nuclei recoiled with an atmosphere of helium and were collected on a thin copper conveyor tape which was then moved to place collected atoms in front of a series of solid-state detectors. The isotope of element 103 produced in this way decayed by emitting an 8.6 MeV alpha particle with a half-life of 8 s.In 1967, Flerov and associates at the Dubna Laboratory reported their inability to detect an alpha emitter with a half-life of 8 s which was assigned by the Berkeley group to 257103. This assignment has been changed to 258Lr or 259Lr.In 1965, the Dubna workers found a longer-lived lawrencium isotope, 256Lr, with a half-life of 35 s. In 1968, Thiorso and associates at Berkeley used a few atoms of this isotope to study the oxidation behavior of lawrencium. Using solvent extraction techniques and working very rapidly, they extracted lawrencium ions from a buffered aqueous solution into an organic solvent  completing each extraction in about 30 s."
+    ],
+    "discovery": [],
+    "uses": [
+      "Since only tiny amounts of lawrencium have ever been produced, there are currently no uses for it outside of basic scientific research."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Lawrencium does not occur naturally in the Earth’s crust. Credit for the first synthesis of this element in 1971 is given jointly to Albert Ghiorso and his team at the University of California in Berkeley and Georgi Flerov and his team at the Joint Institute for Nuclear Research (JINR) in Dubna, Russia (Fig. IUPAC.103.1). The element is named for Ernest O. Lawrence (Fig. IUPAC.103.2), who developed the cyclotron. The chemical symbol for lawrencium was originally proposed as Lw. At the IUPAC General Assembly in 1963, lawrencium was officially accepted by IUPAC, but the symbol was changed to Lr because the Commission on Inorganic Nomenclature determined that the letter ‘w’ presented a problem in languages other than English [636], [640], [641], [642]. There are no known isotopic applications for lawrencium outside of scientific research.",
+      "Lawrencium behaves differently from dipositive nobelium and more like the tripositive elements earlier in the actinide series."
+    ],
+    "propertyNotes": {}
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:09:01.459Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/103",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele103.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele103.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/103.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=103",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      }
+    }
+  }
+}

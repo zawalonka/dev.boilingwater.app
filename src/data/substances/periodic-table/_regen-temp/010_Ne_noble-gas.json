@@ -1,0 +1,93 @@
+{
+  "atomicNumber": 10,
+  "symbol": "Ne",
+  "name": "Neon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 20.1797,
+    "ionizationEnergy": 21.565,
+    "atomicRadius": 154,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 24.56,
+    "boilingPoint": 27.07,
+    "density": 0.0008999,
+    "electronConfiguration": 2226,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek neos for \"new\". It was discovered from its bright orange spectral lines by the Scottish chemist William Ramsay and the English chemist Morris William Travers in 1898 from a liquefied air sample.",
+      "Neon was discovered by Sir William Ramsay, a Scottish chemist, and Morris M. Travers, an English chemist, shortly after their discovery of the element krypton in 1898. Like krypton, neon was discovered through the study of liquefied air. Although neon is the fourth most abundant element in the universe, only 0.0018% of the earth's atmosphere is neon.",
+      "From the Greek word neos, new. Discovered by Ramsay and Travers in 1898. Neon is a rare gaseous element present in the atmosphere to the extent of 1 part in 65,000 of air. It is obtained by liquefaction of air and separated from the other gases by fractional distillation."
+    ],
+    "discovery": [],
+    "uses": [
+      "The largest use for neon gas is in advertising signs. Neon is also used to make high voltage indicators and is combined with helium to make helium-neon lasers. Liquid neon is used as a cryogenic refrigerant. Neon is highly inert and forms no known compounds, although there is some evidence that it could form a compound with fluorine.",
+      "Although neon advertising signs account for the bulk of its use, neon also functions in high-voltage indicators, lightning arrestors, wave meter tubes, and TV tubes. Neon and helium are used in making gas lasers. Liquid neon is now commercially available and is finding important application as an economical cryogenic refrigerant."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:41.092Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/10",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/neon.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele010.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele010.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/10.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=10",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

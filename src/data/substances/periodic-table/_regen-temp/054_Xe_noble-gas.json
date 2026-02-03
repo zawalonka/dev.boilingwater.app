@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 54,
+  "symbol": "Xe",
+  "name": "Xenon",
+  "elementCategory": "noble-gas",
+  "chemicalBlock": "p",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 131.293,
+    "ionizationEnergy": 12.13,
+    "atomicRadius": 216,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 161.36,
+    "boilingPoint": 165.03,
+    "density": 0.005887,
+    "electronConfiguration": 5241056,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 0,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Gas",
+    "elementClassification": "Non-metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek xenos for \"the stranger\". It was discovered by the Scottish chemist William Ramsay and the English chemist Morris William Travers in 1898 in a liquefied air sample.",
+      "Xenon was discovered by Sir William Ramsay, a Scottish chemist, and Morris M. Travers, an English chemist, on July 12, 1898, shortly after their discovery of the elements krypton and neon. Like krypton and neon, xenon was discovered through the study of liquefied air. The earth's atmosphere is about 0.0000087% xenon.",
+      "From the Greek word xenon, stranger. Discovered in 1898 by Ramsay and Travers in residue left after evaporating liquid air. Xenon is a member of the so-called noble or \"inert\" gases. It is present in the atmosphere to the extent of about one part in twenty million. Xenon is present in the Martian atmosphere to the extent of 0.08 ppm. the element is found in the gases evolved from certain mineral springs, and is commercially obtained by extraction from liquid air."
+    ],
+    "discovery": [],
+    "uses": [
+      "Xenon produces a brilliant white flash of light when it is excited electrically and is widely used in strobe lights. The light emitted from xenon lamps is also used to kill bacteria and to power ruby lasers.Due to its high atomic weight, xenon ions were used as a fuel in an experimental ion engine aboard the space probe Deep Space 1.Once thought to be completely inert, xenon will form compounds, usually with fluorine, oxygen and platinum. XePtF6, XeF2, XeF4, XeF6 and XeO4 are some of the xenon compounds that have been formed.",
+      "The gas is used in making electron tubes, stoboscopic lamps, bactericidal lamps, and lamps used to excite ruby lasers that generate coherent light. Xenon is used in the nuclear energy field in bubble chambers, probes, and other applications where a high molecular weight is of value. The perxenates are used in analytical chemistry as oxidizing agents. 133Xe and 135Xe are produced by neutron irradiation in air cooled nuclear reactors. 133Xe has useful applications as a radioisotope. The element is available in sealed glass containers of gas at standard pressure. Xenon is not toxic, but its compounds are highly toxic because of their strong oxidizing characteristics."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Xenon is used in super bright lamps used for deep sea observation."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:50.674Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/54",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/xenon.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele054.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele054.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/54.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=54",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

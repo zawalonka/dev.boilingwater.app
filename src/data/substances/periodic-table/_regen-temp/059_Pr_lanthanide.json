@@ -1,0 +1,97 @@
+{
+  "atomicNumber": 59,
+  "symbol": "Pr",
+  "name": "Praseodymium",
+  "elementCategory": "lanthanide",
+  "chemicalBlock": "f",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 140.90766,
+    "ionizationEnergy": 5.464,
+    "atomicRadius": 239,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 12049311708,
+    "boilingPoint": 379335206368,
+    "density": 6.77,
+    "electronConfiguration": 6243,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 3,
+    "groundLevel": 492,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek prasios for \"green\" and didymos for \"twin\" because of the pale green salts it forms. Praseodymium was discovered by the Austrian chemist Carl Auer (Baron von Welsbach) in 1885, who separated it and the element neodymium from a didymium sample (didymium had previously been thought to be a separate element).",
+      "Praseodymium was discovered by Carl F. Auer von Welsbach, an Austrian chemist, in 1885. He separated praseodymium, as well as the element neodymium, from a material known as didymium. Today, praseodymium is primarily obtained through an ion exchange process from monazite sand ((Ce, La, Th, Nd, Y)PO4), a material rich in rare earth elements.",
+      "From the Greek word prasios, green, and didymos, twin. In 1841 Mosander extracted the rare earth didymia from lanthana; in 1879, Lecoq de Boisbaudran isolated a new earth, samaria, from didymia obtained from the mineral samarskite. Six years later, in 1885, von Welsbach separated didymia into two others, praseodymia and neodymia, which gave salts of different colors. As with other rare earths, compounds of these elements in solution have distinctive sharp spectral absorption bands or lines, some of which are only a few Angstroms wide."
+    ],
+    "discovery": [],
+    "uses": [
+      "Praseodymium's primary use is as an alloying agent with magnesium to create high-strength metals that are used in aircraft engines. Praseodymium also makes up about 5% of Misch metal, a material that is used to make flints for lighters. Praseodymium forms the core of carbon arc lights which are used in the motion picture industry for studio lighting and projector lights. Praseodymium is added to fiber optic cables as a doping agent where it is used as a signal amplifier. Praseodymium salts are used to give glasses and enamels a yellow color. Praseodymium is also a component of didymium glass, which is used to make certain types of welder's and glass blower's goggles.",
+      "Misch metal, used in making cigarette lighters, contains about 5% praseodymium metal. The rare-earth oxides, including Pr2O3 are among the most refractory substances known. Along with other rare earths, it is widely used as a core material for carbon arcs used by the motion picture industry for studio lighting and projection. Salts of praseodymium are used to color glasses and enamels; when mixed with certain other materials, praseodymium produces an intense and unusually clean yellow color in glass. Didymium glass, of which praseodymium is a component, is a colorant for welders goggles."
+    ],
+    "production": [
+      "Ion-exchange and solvent extraction techniques have led to much easier isolation of the rare earths and the cost has dropped greatly in the past few years. Praseodymium can be prepared by several methods, such as by calcium reduction of the anhydrous chloride of fluoride."
+    ],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "Praseodymium is soft, silvery, malleable, and ductile. It is somewhat more resistant to corrosion in air than europium, lanthanum, cerium, or neodymium, but it does develop a green oxide coating that falls off when exposed to air. As with other rare-earth metals, it should be kept under a light mineral oil or sealed in plastic."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:51.696Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/59",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/praseodymium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele059.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele059.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/59.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=59",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

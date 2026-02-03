@@ -1,0 +1,93 @@
+{
+  "atomicNumber": 48,
+  "symbol": "Cd",
+  "name": "Cadmium",
+  "elementCategory": "transition-metal",
+  "chemicalBlock": "d",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 112.414,
+    "ionizationEnergy": 8.994,
+    "atomicRadius": 158,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 594.22321,
+    "boilingPoint": 10407671413,
+    "density": 8.69,
+    "electronConfiguration": 52410,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from Greek kadmeia for \"calamine\" (zinc carbonate), with which it was found as an impurity in nature. It may have been found in furnace flue dust in Thebes, a city in the Boeottia region of central Greece. The mythological king of Phoenicia, Cadmus, founded Thebes and would be a source for the name of the ore. The element was discovered and first isolated by German physician Friedrich Stromeyer in 1817.",
+      "Cadmium was discovered by Friedrich Strohmeyer, a German chemist, in 1817 while studying samples of calamine (ZnCO3). When heated, Strohmeyer noticed that some samples of calamine glowed with a yellow color while other samples did not. After further examination, he determined that the calamine that changed color when heated contained trace amounts of a new element. There is only one mineral that contains significant amounts of cadmium, greenockite (CdS), but it is not common enough to mine profitably. Fortunately, small amounts of cadmium are found in zinc ores and most of the cadmium produced today is obtained as a byproduct of mining and refining zinc.",
+      "From the Latin word cadmia, Greek kadmeia - the ancient name for calamine, zinc carbonate. Discovered by Stromeyer in 1817 from an impurity in zinc carbonate. Cadmium most often occurs in small quantities associated with zinc ores, such as sphalerite (ZnS). Greenockite (CdS) is the only mineral of any consequence bearing cadmium. Almost all cadmium is obtained as a by-product in the treatment of zinc, copper, and lead ores. It is a soft, bluish-white metal which is easily cut with a knife. It is similar in many respects to zinc. In 1927 the International Conference on Weights and Measures redefined the meter in terms of the wavelength of the red cadmium spectral line (i.e. 1m = 1.553,164.13 wavelengths). This definition has been changed (see Krypton)."
+    ],
+    "discovery": [],
+    "uses": [
+      "Cadmium is a poisonous metal and its use is somewhat limited for this reason. Like zinc, cadmium can be electroplated to other materials to protect them from corrosion. Cadmium easily absorbs neutrons and is used to make control rods for nuclear reactors. Cadmium is also used in rechargeable nickel-cadmium batteries.Cadmium is alloyed with silver to form solder, a metal with a relatively low melting point used to join electrical components, pipes and other metallic items. Cadmium based solders must be handled with care to prevent cadmium poisoning. Cadmium alloys are also used to make low friction bearings that are highly resistant to fatigue.Hydrated cadmium sulfate (3CdSO4·5H2O), one of cadmium's compounds, is used in a device called a Weston cell, a type of battery that produces a precise voltage used to calibrate medical and laboratory equipment. Cadmium sulfide (CdS), another cadmium compound, is a yellow powder that is used as a pigment. Other cadmium compounds are used in the phosphors of black and white television sets and in the blue and green phosphors in color television sets.",
+      "Cadmium is a component of some of the lowest melting alloys; it is used in bearing alloys with low coefficients of friction and great resistance to fatigue; it is used extensively in electroplating, which accounts for about 60% of its use. It is also used in many types of solder, for standard E.M.F. cells, for Ni-Cd batteries, and as a barrier to control nuclear fission. Cadmium compounds are used in black and white television phosphors and in blue and green phosphors for color TV tubes. It forms a number of salts, of which the sulfate is most common; the sulfide is used as a yellow pigment. Cadmium and solutions of its compounds are toxic."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:49.441Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/48",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/cadmium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele048.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele048.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/48.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=48",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "atomicNumber": 4,
+  "symbol": "Be",
+  "name": "Beryllium",
+  "elementCategory": "alkaline-earth-metal",
+  "chemicalBlock": "s",
+  "defaultSource": "jefferson-lab (U.S. Dept of Energy)",
+  "_comment_properties": "Property values from primary source (Jefferson Lab/DoE). Fields with _source suffix indicate fallback from alternate source.",
+  "properties": {
+    "atomicMass": 9.0121831,
+    "ionizationEnergy": 9.323,
+    "atomicRadius": 153,
+    "atomicRadius_source": "u-s-department-of-energy",
+    "meltingPoint": 156012872349,
+    "boilingPoint": 274424714480,
+    "density": 1.85,
+    "electronConfiguration": 22,
+    "electronConfiguration_source": "u-s-department-of-energy",
+    "oxidationStates": 2,
+    "groundLevel": 10,
+    "groundLevel_source": "nist-physical-measurement-laboratory",
+    "physicalDescription": "Solid",
+    "elementClassification": "Metal"
+  },
+  "education": {
+    "_comment": "Educational notes grouped by type for wiki generation.",
+    "history": [
+      "The name derives from the Greek word beryllos for \"beryl\", a gemstone in which it is found (3BeO×Al2O3×6SiO2).Beryllium was discovered by the French chemist and pharmacist Nicholas-Louis Vauquelin in beryl and emerald in 1797. The element was first separated in 1828 by the French chemist Antoine-Alexandre-Brutus Bussy and independently by the German chemist Friedrich Wöhler. Because the salts of beryllium have a sweet taste, the element was also known as glucinium from the Greek glykys for \"sweet\", until IUPAC selected the name beryllium in 1949.",
+      "Although emeralds and beryl were known to ancient civilizations, they were first recognized as the same mineral (Be3Al2(SiO3)6) by Abbé Haüy in 1798. Later that year, Louis-Nicholas Vauquelin, a French chemist, discovered that an unknown element was present in emeralds and beryl. Attempts to isolate the new element finally succeeded in 1828 when two chemists, Friedrich Wölhler of Germany and A. Bussy of France, independently produced beryllium by reducing beryllium chloride (BeCl2) with potassium in a platinum crucible. Today, beryllium is primarily obtained from the minerals beryl (Be3Al2(SiO3)6) and bertrandite (4BeO·2SiO2·H2O) through a chemical process or through the electrolysis of a mixture of molten beryllium chloride (BeCl2) and sodium chloride (NaCl).",
+      "From the Greek word beryllos, beryl; also called glucinium or glucinum, Greek glykys,  sweet. Discovered in the oxide form by Vauquelin in both beryl and emeralds in 1798. The metal was isolated in 1828 by Wohler and by Bussy independently by the action of potassium on beryllium chloride."
+    ],
+    "discovery": [],
+    "uses": [
+      "Beryllium is relatively transparent to X-rays and is used to make windows for X-ray tubes. When exposed to alpha particles, such as those emitted by radium or polonium, beryllium emits neutrons and is used as a neutron source. Beryllium is also used as a moderator in nuclear reactors.Beryllium is alloyed with copper (2% beryllium, 98% copper) to form a wear resistant material, known as beryllium bronze, used in gyroscopes and other devices where wear resistance is important. Beryllium is alloyed with nickel (2% beryllium, 98% nickel) to make springs, spot-welding electrodes and non-sparking tools. Other beryllium alloys are used in the windshield, brake disks and other structural components of the space shuttle.Beryllium oxide (BeO), a compound of beryllium, is used in the nuclear industry and in ceramics.Beryllium was once known as glucinum, which means sweet, since beryllium and many of its compounds have a sugary taste. Unfortunately for the chemists that discovered this particular property, beryllium and many of its compounds are poisonous and should never be tasted or ingested.",
+      "Beryllium is used as an alloying agent in producing beryllium copper, which is extensively used for springs, electrical contacts, spot-welding electrodes, and non-sparking tools. It is applied as a structural material for high-speed aircraft, missiles, spacecraft, and communication satellites. Other uses include windshield frame, brake discs, support beams, and other structural components of the space shuttle.Because beryllium is relatively transparent to X-rays, ultra-thin Be-foil is finding use in X-ray lithography for reproduction of micro-miniature integrated circuits.Beryllium is used in nuclear reactors as a reflector or moderator for it has a low thermal neutron absorption cross section.It is used in gyroscopes, computer parts, and instruments where lightness, stiffness, and dimensional stability are required. The oxide has a very high melting point and is also used in nuclear work and ceramic applications."
+    ],
+    "production": [],
+    "safety": [],
+    "toxicity": [],
+    "environmental": [],
+    "biological": [],
+    "propertiesSummary": [
+      "The metal, steel gray in color, has many desirable properties. As one of the lightest of all metals, it has one of the highest melting points of the light metals. Its modulus of elasticity is about one third greater than that of steel. It resists attack by concentrated nitric acid, has excellent thermal conductivity, and is nonmagnetic. It has a high permeability to X-rays and when bombarded by alpha particles, as from radium or polonium, neutrons are produced in the amount of about 30 neutrons/million alpha particles.At ordinary temperatures, beryllium resists oxidation in air, although its ability to scratch glass is probably due to the formation of a thin layer of the oxide."
+    ],
+    "propertyNotes": {
+      "Atomic Radius": [
+        "Van der Waals Atomic Radius",
+        "Covalent Atomic Radius"
+      ]
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-02-03T06:08:39.984Z",
+    "pubchemUrl": "https://pubchem.ncbi.nlm.nih.gov/element/4",
+    "pubchemSource": "PubChem PUG-View (NIH - multiple authoritative sources)",
+    "dataSources": {
+      "iupac-commission-on-isotopic-abundances-and-atomic-weights-ciaaw": {
+        "name": "IUPAC Commission on Isotopic Abundances and Atomic Weights (CIAAW)",
+        "url": "https://www.ciaaw.org/beryllium.htm",
+        "licenseUrl": "http://www.ciaaw.org/bylaws.htm",
+        "licenseNote": ""
+      },
+      "jefferson-lab": {
+        "name": "Jefferson Lab",
+        "url": "https://education.jlab.org/itselemental/ele004.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "u-s-department-of-energy": {
+        "name": "U.S. Department of Energy",
+        "url": "https://education.jlab.org/itselemental/ele004.html",
+        "licenseUrl": "https://www.jlab.org/privacy-and-security-notice",
+        "licenseNote": "Please see citation and linking information: https://education.jlab.org/faq/index.html"
+      },
+      "los-alamos-national-laboratory": {
+        "name": "Los Alamos National Laboratory",
+        "url": "https://periodic.lanl.gov/4.shtml",
+        "licenseUrl": "https://about.lanl.gov/lanl-resources/web-policies/",
+        "licenseNote": ""
+      },
+      "nist-physical-measurement-laboratory": {
+        "name": "NIST Physical Measurement Laboratory",
+        "url": "https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?element=4",
+        "licenseUrl": "https://www.nist.gov/pml/database-disclaimer",
+        "licenseNote": ""
+      },
+      "pubchem-elements": {
+        "name": "PubChem Elements",
+        "url": "",
+        "licenseUrl": "https://www.nlm.nih.gov/copyright.html",
+        "licenseNote": ""
+      }
+    }
+  }
+}
