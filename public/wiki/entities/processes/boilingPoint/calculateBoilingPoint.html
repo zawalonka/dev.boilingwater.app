@@ -241,7 +241,8 @@ function calculateDynamicElevation(baseBoilingPointC, fluidProps) {
   // If we have dynamic parameters, use them
   if (Number.isFinite(vanHoffFactor) &amp;&amp; Number.isFinite(molality)) {
     // Calculate Kb at actual boiling temperature
-    // TODO: Get solvent molar mass and ΔHvap from JSON for non-water solvents
+    // Note: Currently uses water defaults (18.015 g/mol, 40.66 kJ/mol)
+    // For multi-solvent support, see TODO.md #7
     const Kb = calculateDynamicKb(baseBoilingPointC)
     return calculateBoilingPointElevation(vanHoffFactor, Kb, molality)
   }

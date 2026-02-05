@@ -164,6 +164,11 @@
 - [ ] &quot;Finish Experiment&quot; button
 - [ ] Scorecard download (CSV/JSON)
 - [ ] End-of-experiment modal
+- [ ] **Room pressure uses location altitude** (currently hardcoded to 101325 Pa sea level)
+  - File: `src/utils/roomEnvironment.js` line 456
+  - Import player&#39;s selected altitude
+  - Use ISA model to calculate ambient pressure
+  - Effort: ~30 minutes
 
 **Dependencies:** None | **Unlocks:** Experiment data collection, player feedback loop
 
@@ -199,6 +204,21 @@
 - [ ] Add `decompositionProducts[]` to substance JSON
 
 **Dependencies:** None | **Unlocks:** Realistic hazard simulation, educational safety lessons
+
+---
+
+### 7. Multi-Solvent Solution Support
+**Status:** NOT STARTED | **0% Complete**  
+**Scope:** Support non-water solvents for boiling point elevation (ethanol-based, ammonia-based solutions)
+
+- [ ] Add solvent properties to solution JSON (`solventMolarMass`, `solventHeatOfVap`)
+- [ ] Pass solvent properties to `calculateDynamicKb()` in boiling point calculation
+- [ ] File: `src/utils/physics/processes/boilingPoint/calculateBoilingPoint.js` line 122
+- [ ] Test with ethanol-based solution (e.g., tincture)
+- [ ] Effort: ~1 hour
+
+**Dependencies:** None | **Unlocks:** Broader solution chemistry support
+**Note:** Currently all solutions are water-based (saltwater, etc.) and work correctly
 
 ---
 

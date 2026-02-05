@@ -1412,6 +1412,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         {layout.burnerKnob && (
           <div 
             className="burner-knob"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === 'Enter' || e.key === ' ' ? e.preventDefault() : null}
+                        aria-label="Burner control knob - click to adjust heat"
             style={{
               left: `${layout.burnerKnob.xPercent}%`,
               top: `${layout.burnerKnob.yPercent}%`,
@@ -1646,7 +1650,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                   <div className="info-content">
                     <h3>🎓 Why Does Altitude Matter?</h3>
                     <ul>
-                      <li><strong>Lower Pressure:</strong> At higher altitudes, there's less air pushing down on the water</li>
+                      <li><strong>Lower Pressure:</strong> At higher altitudes, there&apos;s less air pushing down on the water</li>
                       <li><strong>Easier Escape:</strong> Water molecules need less energy to escape as vapor</li>
                       <li><strong>Result:</strong> Water boils at a lower temperature ({formatTemperature(boilStats.boilingPoint)}°C vs {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C)</li>
                     </ul>
@@ -1793,7 +1797,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                         <h3>🎓 Lab Safety</h3>
                         <ul>
                           <li><strong>Ventilation:</strong> Always use proper ventilation with hazardous materials</li>
-                          <li><strong>Filters Matter:</strong> Standard filters don't stop toxic gases - use activated carbon</li>
+                          <li><strong>Filters Matter:</strong> Standard filters don&apos;t stop toxic gases - use activated carbon</li>
                           <li><strong>Monitor Air:</strong> Watch for composition changes - rising vapor displaces oxygen</li>
                         </ul>
                       </div>

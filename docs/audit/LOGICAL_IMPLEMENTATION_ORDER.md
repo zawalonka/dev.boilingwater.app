@@ -278,6 +278,8 @@ npm install --save-dev \
 }
 ```
 
+**Auto-run note:** ESLint becomes **automatic** when CI/CD is added in #5 (lint gate). Until then, run `npm run lint` locally as needed.
+
 These catch 80% of AI coding mistakes immediately in your editor.
 
 **#8 Environment Configuration (1-2 days)**

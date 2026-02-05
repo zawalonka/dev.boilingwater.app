@@ -339,9 +339,6 @@ export async function loadSubstance(substanceId, phase = &#39;liquid&#39;) {
             // Recursively load the solvent compound to get its diffusion data
             const solventData = await loadSubstance(solvent.id, phase)
             diffusionVolumeSum = solventData?.diffusionVolumeSum ?? null
-            if (diffusionVolumeSum) {
-              console.log(`Mixture ${substanceId}: using solvent (${solvent.id}) diffusion volume sum: ${diffusionVolumeSum.toFixed(2)}`)
-            }
           } catch (err) {
             console.warn(`Could not load solvent diffusion for ${substanceId}:`, err.message)
           }
@@ -398,7 +395,7 @@ export async function loadSubstance(substanceId, phase = &#39;liquid&#39;) {
  */
 export async function loadSubstancePhase(substanceId, phase = &#39;liquid&#39;) {
   const rawData = await loadSubstance(substanceId, phase)
-  return parseSubstanceProperties(rawData)
+  return parseProps(rawData)
 }
 
 </code></pre>

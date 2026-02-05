@@ -126,7 +126,7 @@
  * the simulation loop. Keeps room logic out of GameScene.
  */
 
-import { useState, useCallback, useEffect } from &#39;react&#39;
+import { useState, useCallback, useEffect, useRef } from &#39;react&#39;
 import { createRoomState, simulateRoomStep, getRoomSummary } from &#39;../utils/roomEnvironment&#39;
 
 /**
@@ -139,6 +139,7 @@ import { createRoomState, simulateRoomStep, getRoomSummary } from &#39;../utils/
  */
 export function useRoomEnvironment(roomConfig, acUnit, airHandler, altitude = 0) {
   const [roomState, setRoomState] = useState(() =&gt; createRoomState(roomConfig, altitude))
+    const lastUpdateRef = useRef(Date.now())
   
   // Reset room state when config or altitude changes
   useEffect(() =&gt; {

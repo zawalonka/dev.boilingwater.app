@@ -272,6 +272,6 @@ export async function loadSubstance(substanceId, phase = 'liquid') {
  */
 export async function loadSubstancePhase(substanceId, phase = 'liquid') {
   const rawData = await loadSubstance(substanceId, phase)
-  return parseSubstanceProperties(rawData)
+  return parseProps(rawData)
 }
 

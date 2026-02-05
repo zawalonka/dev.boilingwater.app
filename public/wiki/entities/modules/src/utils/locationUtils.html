@@ -82,6 +82,11 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/config/env.html">env.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Used in</div>
         <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/locationUtils.html">locationUtils.js</a></li><li><a href="/wiki/entities/modules/src/utils/unitUtils.html">unitUtils.js</a></li></ul></div>
       </div>
@@ -115,6 +120,8 @@
  * Works anywhere in the world via OpenStreetMap Nominatim API
  */
 
+import { APP_ENV } from &#39;../config/env&#39;
+
 /**
  * Get altitude from coordinates using Open-Elevation API (free, no key required)
  * @param {number} latitude
@@ -123,8 +130,9 @@
  */
 export const getAltitudeFromCoordinates = async (latitude, longitude) =&gt; {
   try {
+    const { openElevationBaseUrl } = APP_ENV
     const response = await fetch(
-      `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`
+      `${openElevationBaseUrl}/lookup?locations=${latitude},${longitude}`
     );
     if (!response.ok) throw new Error(&#39;Open-Elevation API error&#39;);
     const data = await response.json();
@@ -145,11 +153,12 @@ export const getAltitudeFromCoordinates = async (latitude, longitude) =&gt; {
  */
 export const searchLocation = async (locationName) =&gt; {
   try {
+    const { nominatimBaseUrl, nominatimUserAgent, locationResultLimit } = APP_ENV
     const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(locationName)}&amp;format=json&amp;limit=5`,
+      `${nominatimBaseUrl}/search?q=${encodeURIComponent(locationName)}&amp;format=json&amp;limit=${locationResultLimit}`,
       {
         headers: {
-          &#39;User-Agent&#39;: &#39;BoilingWater-EducationalApp/1.0&#39;
+          &#39;User-Agent&#39;: nominatimUserAgent
         }
       }
     );
@@ -216,14 +225,15 @@ export const getUserLocation = async () =&gt; {
       async (position) =&gt; {
         const { latitude, longitude } = position.coords;
         try {
+          const { nominatimBaseUrl, nominatimUserAgent } = APP_ENV
           const altitude = await getAltitudeFromCoordinates(latitude, longitude);
           
           // Try to get location name from reverse geocoding
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&amp;lon=${longitude}&amp;format=json`,
+            `${nominatimBaseUrl}/reverse?lat=${latitude}&amp;lon=${longitude}&amp;format=json`,
             {
               headers: {
-                &#39;User-Agent&#39;: &#39;BoilingWater-EducationalApp/1.0&#39;
+                &#39;User-Agent&#39;: nominatimUserAgent
               }
             }
           );
@@ -246,8 +256,8 @@ export const getUserLocation = async () =&gt; {
       },
       {
         enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 3600000 // Cache location for 1 hour
+        timeout: APP_ENV.geolocationTimeoutMs,
+        maximumAge: APP_ENV.geolocationMaxAgeMs // Cache location for 1 hour
       }
     );
   });

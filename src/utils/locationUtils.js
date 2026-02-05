@@ -4,6 +4,8 @@
  * Works anywhere in the world via OpenStreetMap Nominatim API
  */
 
+import { APP_ENV } from '../config/env'
+
 /**
  * Get altitude from coordinates using Open-Elevation API (free, no key required)
  * @param {number} latitude
@@ -12,8 +14,9 @@
  */
 export const getAltitudeFromCoordinates = async (latitude, longitude) => {
   try {
+    const { openElevationBaseUrl } = APP_ENV
     const response = await fetch(
-      `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`
+      `${openElevationBaseUrl}/lookup?locations=${latitude},${longitude}`
     );
     if (!response.ok) throw new Error('Open-Elevation API error');
     const data = await response.json();
@@ -34,11 +37,12 @@ export const getAltitudeFromCoordinates = async (latitude, longitude) => {
  */
 export const searchLocation = async (locationName) => {
   try {
+    const { nominatimBaseUrl, nominatimUserAgent, locationResultLimit } = APP_ENV
     const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(locationName)}&format=json&limit=5`,
+      `${nominatimBaseUrl}/search?q=${encodeURIComponent(locationName)}&format=json&limit=${locationResultLimit}`,
       {
         headers: {
-          'User-Agent': 'BoilingWater-EducationalApp/1.0'
+          'User-Agent': nominatimUserAgent
         }
       }
     );
@@ -105,14 +109,15 @@ export const getUserLocation = async () => {
       async (position) => {
         const { latitude, longitude } = position.coords;
         try {
+          const { nominatimBaseUrl, nominatimUserAgent } = APP_ENV
           const altitude = await getAltitudeFromCoordinates(latitude, longitude);
           
           // Try to get location name from reverse geocoding
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+            `${nominatimBaseUrl}/reverse?lat=${latitude}&lon=${longitude}&format=json`,
             {
               headers: {
-                'User-Agent': 'BoilingWater-EducationalApp/1.0'
+                'User-Agent': nominatimUserAgent
               }
             }
           );
@@ -135,8 +140,8 @@ export const getUserLocation = async () => {
       },
       {
         enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 3600000 // Cache location for 1 hour
+        timeout: APP_ENV.geolocationTimeoutMs,
+        maximumAge: APP_ENV.geolocationMaxAgeMs // Cache location for 1 hour
       }
     );
   });

@@ -542,10 +542,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         setFluidProps(props)
         setFluidLoadError(null)
         setResidueMass(0)
-        // Debug log: useful for verifying fluid properties loaded correctly
-        console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
-        console.log(`   Boiling point (sea level): ${props.boilingPointSeaLevel}°C`)
-        console.log(`   Raw JSON boilingPoint: ${substanceData.phaseTransitions?.boilingPoint}°C`)
       } catch (error) {
         console.error(&#39;Failed to load fluid properties:&#39;, error)
         setFluidProps(null)
@@ -720,11 +716,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               
               // Add vapor to room air composition (pass formula for atmosphere key)
               addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-              
-              // Debug: Log significant evaporation events
-              if (evapResult.massEvaporatedKg &gt; 1e-6) {
-                console.log(`💨 Pre-boil evap: ${(evapResult.massEvaporatedKg * 1000).toFixed(3)}g, cooling: ${evapResult.tempChangeC.toFixed(3)}°C, final: ${finalTemp.toFixed(2)}°C`)
-              }
             }
           }
         }
@@ -1541,6 +1532,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         {layout.burnerKnob &amp;&amp; (
           &lt;div 
             className=&quot;burner-knob&quot;
+                        role=&quot;button&quot;
+                        tabIndex={0}
+                        onKeyDown={(e) =&gt; e.key === &#39;Enter&#39; || e.key === &#39; &#39; ? e.preventDefault() : null}
+                        aria-label=&quot;Burner control knob - click to adjust heat&quot;
             style={{
               left: `${layout.burnerKnob.xPercent}%`,
               top: `${layout.burnerKnob.yPercent}%`,
@@ -1775,7 +1770,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                   &lt;div className=&quot;info-content&quot;&gt;
                     &lt;h3&gt;🎓 Why Does Altitude Matter?&lt;/h3&gt;
                     &lt;ul&gt;
-                      &lt;li&gt;&lt;strong&gt;Lower Pressure:&lt;/strong&gt; At higher altitudes, there&#39;s less air pushing down on the water&lt;/li&gt;
+                      &lt;li&gt;&lt;strong&gt;Lower Pressure:&lt;/strong&gt; At higher altitudes, there&amp;apos;s less air pushing down on the water&lt;/li&gt;
                       &lt;li&gt;&lt;strong&gt;Easier Escape:&lt;/strong&gt; Water molecules need less energy to escape as vapor&lt;/li&gt;
                       &lt;li&gt;&lt;strong&gt;Result:&lt;/strong&gt; Water boils at a lower temperature ({formatTemperature(boilStats.boilingPoint)}°C vs {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C)&lt;/li&gt;
                     &lt;/ul&gt;
@@ -1922,7 +1917,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
                         &lt;h3&gt;🎓 Lab Safety&lt;/h3&gt;
                         &lt;ul&gt;
                           &lt;li&gt;&lt;strong&gt;Ventilation:&lt;/strong&gt; Always use proper ventilation with hazardous materials&lt;/li&gt;
-                          &lt;li&gt;&lt;strong&gt;Filters Matter:&lt;/strong&gt; Standard filters don&#39;t stop toxic gases - use activated carbon&lt;/li&gt;
+                          &lt;li&gt;&lt;strong&gt;Filters Matter:&lt;/strong&gt; Standard filters don&amp;apos;t stop toxic gases - use activated carbon&lt;/li&gt;
                           &lt;li&gt;&lt;strong&gt;Monitor Air:&lt;/strong&gt; Watch for composition changes - rising vapor displaces oxygen&lt;/li&gt;
                         &lt;/ul&gt;
                       &lt;/div&gt;

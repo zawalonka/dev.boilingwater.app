@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISSUE_02_NO_TYPESCRIPT.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>ISSUE_02_NO_TYPESCRIPT.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ISSUE_02_NO_TYPESCRIPT.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ISSUE_02_NO_TYPESCRIPT.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ISSUE_02_NO_TYPESCRIPT.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\ISSUE_02_NO_TYPESCRIPT.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Issue #2: No TypeScript Type Safety
+
+**Severity:** 🔴 Critical  
+**Status:** ❌ Missing  
+**Priority:** P0 - Should precede feature expansion  
+**Effort:** 4-6 weeks (full migration) or 1-2 weeks (PropTypes minimum)
+
+---
+
+## What It Means
+
+Your code has **no type checking**. JavaScript doesn&#39;t know if a variable should be a number, string, object, or function—until it fails at runtime.
+
+```javascript
+// ❌ This code is valid JavaScript
+function addNumbers(a, b) {
+  return a + b
+}
+
+addNumbers(5, 10)        // ✅ Returns 15
+addNumbers(&quot;5&quot;, 10)      // ❌ Returns &quot;510&quot; (string concatenation!)
+addNumbers(null, 10)     // ❌ Returns 10 (null coerces to 0)
+addNumbers({}, [])       // ❌ Returns &quot;[object Object]&quot; (what even is this?)
+```
+
+With TypeScript, you&#39;d catch this **before the code runs**:
+
+```typescript
+// ✅ Type-safe version
+function addNumbers(a: number, b: number): number {
+  return a + b
+}
+
+addNumbers(5, 10)        // ✅ OK
+addNumbers(&quot;5&quot;, 10)      // ❌ ERROR: Argument of type &#39;string&#39; is not assignable to parameter of type &#39;number&#39;
+addNumbers(null, 10)     // ❌ ERROR: Argument of type &#39;null&#39; is not assignable to parameter of type &#39;number&#39;
+```
+
+---
+
+## Why It&#39;s Critical for Your Project
+
+### Scenario: Complex Boiling Point Function
+
+Your physics engine has deeply nested calculations:
+
+```javascript
+// src/utils/physics/processes/boilingPoint/calculateBoilingPoint.js
+
+export function calculateBoilingPoint(altitude, fluidProps) {
+  if (!fluidProps) return null
+  
+  const pressure = getISAPressure(altitude)  // Returns number (Pa)
+  const antoineResult = solveAntoineEquation(pressure, fluidProps.antoineCoefficients)
+  
+  // If solvent, apply boiling point elevation
+  if (fluidProps.isSolution) {
+    const kb = calculateDynamicKb(antoineResult.temperature, fluidProps)
+    const elevation = fluidProps.vanHoffFactor * kb * fluidProps.molality
+    return { temperature: antoineResult.temperature + elevation }
+  }
+  
+  return antoineResult
+}
+```
+
+**Without TypeScript, these questions are unanswered:**
+
+| Question | Runtime Result | TypeScript Would Catch |
+|----------|-----------------|------------------------|
+| What does `solveAntoineEquation()` return? | Object? Number? Null? | ✅ Defined return type |
+| Is `fluidProps.antoineCoefficients` always an array? | Maybe it&#39;s a string? | ✅ Property type validation |
+| Does `calculateDynamicKb()` ever return undefined? | Find out after 3 hours of debugging | ✅ Caught immediately |
+| Is `vanHoffFactor` a number or object? | Runtime error on multiplication | ✅ Type error in editor |
+| Should I return an object or a number? | Inconsistent returns cause bugs | ✅ Return type enforced |
+
+**Result:** A bug that crashes the app at runtime, hours spent debugging, users affected.
+
+---
+
+## Current State: Catastrophic Type Issues
+
+### Issue 1: Explicitly Disabled Prop Validation
+
+```json
+// .eslintrc.json
+{
+  &quot;rules&quot;: {
+    &quot;react/prop-types&quot;: &quot;off&quot;  // ← Removes the ONLY runtime type check
+  }
+}
+```
+
+This is like saying: &quot;Don&#39;t warn me about type errors&quot; — you&#39;re actively disabling safety.
+
+### Issue 2: GameScene Has 30+ Untyped Props
+
+```jsx
+// src/components/GameScene.jsx
+
+function GameScene({ 
+  stage,                    // Should be: number (0 = gameplay, 1 = results)
+  location,                 // Should be: { altitude: number, name?: string }
+  workshopLayout,           // Should be: WorkshopLayout object
+  workshopImages,           // Should be: { background: string, pot_empty: string, ... }
+  workshopEffects,          // Should be: EffectsConfig?
+  burnerConfig,             // Should be: BurnerConfig
+  roomConfig,               // Should be: RoomConfig
+  acUnitConfig,             // Should be: AcUnitConfig
+  airHandlerConfig,         // Should be: AirHandlerConfig
+  activeLevel,              // Should be: number
+  activeExperiment,         // Should be: string
+  showSelectors,            // Should be: boolean
+  onStageChange,            // Should be: (stage: number) =&gt; void
+  onWaterBoiled,            // Should be: () =&gt; void
+  onSkipTutorial,           // Should be: () =&gt; void
+  onLevelChange,            // Should be: (levelId: number) =&gt; void
+  onExperimentChange,       // Should be: (experimentId: string) =&gt; void
+  hasBoiledBefore,          // Should be: boolean
+  onLocationChange,         // Should be: (location: Location) =&gt; void
+  onEquipmentChange         // Should be: (type: string, id: string) =&gt; void
+}) {
+  // ... 1857 lines of code
+}
+```
+
+**Without types, you can pass:**
+- `stage=&quot;0&quot;` (string instead of number) → breaks comparisons
+- `location=undefined` → crashes when accessing `.altitude`
+- `onStageChange=null` → crashes when calling `onStageChange(1)`
+- Missing `burnerConfig` entirely → undefined reference error
+
+### Issue 3: State Variables Without Contracts
+
+```javascript
+const [fluidProps, setFluidProps] = useState(null)
+// What shape is fluidProps? Nobody knows!
+
+const [roomState, roomSummary, alerts, ...] = useRoomEnvironment(...)
+// What properties does roomState have?
+// What&#39;s the structure of roomSummary?
+```
+
+Later in code:
+
+```javascript
+// This will crash if roomState is undefined or missing .temperature
+const ambientTemperature = roomState.temperature
+
+// Is this a string or number?
+const locationName = location.name
+```
+
+---
+
+## Real-World Bugs Without TypeScript
+
+### Bug #1: Room Pressure Type Mismatch
+
+```javascript
+// src/utils/roomEnvironment.js
+export function updateRoom(deltaTime, source, watts) {
+  // What type is watts? Developer assumes number...
+  
+  const heatAdded = watts * deltaTime  // ← If watts is a string &quot;2000&quot;, this concatenates!
+  this.temperature += heatAdded / this.heatCapacity
+}
+
+// src/components/GameScene.jsx
+updateRoom(deltaTime, &#39;experiment_burner&#39;, &quot;2000&quot;)  // ← Accidental string
+// Result: Temperature calculation is garbage, physics breaks
+```
+
+**With TypeScript:**
+```typescript
+export function updateRoom(deltaTime: number, source: string, watts: number) {
+  // ← TypeScript enforces number type
+}
+
+// Editor error immediately: &quot;Argument of type &#39;string&#39; is not assignable to parameter of type &#39;number&#39;&quot;
+```
+
+### Bug #2: Array vs Object Confusion
+
+```javascript
+// Who knows what antoineCoefficients should be?
+const { A, B, C } = fluidProps.antoineCoefficients
+
+// Is it:
+// A) { A: 10.2, B: 1000, C: 42 }        ✅ Object
+// B) [10.2, 1000, 42]                    ❌ Array (code breaks)
+// C) { coefficients: [10.2, 1000, 42] } ❌ Nested (code breaks)
+```
+
+Without types, you find out in production when water boils at the wrong temperature.
+
+### Bug #3: Missing Optional Properties
+
+```javascript
+const boilingPoint = calculateBoilingPoint(altitude, fluidProps)
+// Is boilingPoint a number or an object?
+// { temperature: 100, isExtrapolated: true } ?
+
+if (boilingPoint &gt; temperature) {  // ← Crashes if boilingPoint is an object
+  setIsBoiling(true)
+}
+```
+
+---
+
+## TypeScript vs PropTypes Trade-off
+
+### Option A: Full TypeScript Migration (4-6 weeks)
+
+**Pros:**
+- Compile-time type checking (catches 100% of type errors before running)
+- IDE autocomplete shows all available properties
+- Refactoring is safe (rename a property → all usages break with error)
+- Self-documenting code
+- Better for large teams
+
+**Cons:**
+- Requires build step compilation
+- Learning curve
+- More verbose initially
+- Converts entire `.js` → `.ts`
+
+```typescript
+// Full type safety
+interface Location {
+  altitude: number
+  name?: string
+  latitude?: number
+  longitude?: number
+}
+
+interface FluidProps {
+  name: string
+  molarMass: number
+  boilingPointSeaLevel: number
+  specificHeat: number
+  antoineCoefficients: AntoineCoefficients
+  // ... 20+ properties
+}
+
+function calculateBoilingPoint(altitude: number, fluidProps: FluidProps): BoilingPointResult {
+  // TypeScript checks EVERY reference
+}
+```
+
+### Option B: PropTypes Only (1-2 weeks)
+
+**Pros:**
+- No build step needed
+- Catches most errors at runtime
+- Quick to implement
+- Works with existing `.js` files
+
+**Cons:**
+- Runtime checking only (errors happen after user triggers code)
+- IDE doesn&#39;t get autocomplete help
+- Refactoring still dangerous
+- Only validates props, not internal state
+
+```javascript
+// Runtime validation only
+GameScene.propTypes = {
+  stage: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    altitude: PropTypes.number.isRequired,
+    name: PropTypes.string,
+  }).isRequired,
+  onStageChange: PropTypes.func.isRequired,
+  // ... etc
+}
+```
+
+---
+
+## How TypeScript Would Have Prevented Your Current Bugs
+
+### Your File: GameScene.jsx (1857 lines)
+
+```typescript
+// BEFORE: No types, 30+ untyped props
+function GameScene({ stage, location, workshopLayout, ... }) {
+  const [waterInPot, setWaterInPot] = useState(0)
+  const [temperature, setTemperature] = useState(GAME_CONFIG.ROOM_TEMPERATURE)
+  
+  const ambientTemperature = roomControlsEnabled &amp;&amp; roomSummary?.temperature != null
+    ? roomSummary.temperature
+    : GAME_CONFIG.ROOM_TEMPERATURE
+  // ↑ What type is roomSummary? Nobody knows!
+}
+
+// AFTER: Fully typed
+interface GameSceneProps {
+  stage: GameStage
+  location: Location
+  workshopLayout: WorkshopLayout
+  workshopImages: WorkshopImages
+  burnerConfig: BurnerConfig
+  roomConfig: RoomConfig
+  activeLevel: number
+  activeExperiment: string
+  showSelectors: boolean
+  onStageChange: (stage: GameStage) =&gt; void
+  onWaterBoiled?: () =&gt; void
+  onLocationChange?: (location: Location) =&gt; void
+  // ... etc - 30 props fully typed
+}
+
+interface RoomSummary {
+  temperature: number
+  pressure: number
+  composition: Record&lt;string, number&gt;
+  alerts: Alert[]
+}
+
+function GameScene(props: GameSceneProps) {
+  const { stage, location, onStageChange } = props
+  
+  // ✅ TypeScript knows these types
+  const [waterInPot, setWaterInPot] = useState&lt;number&gt;(0)
+  const [temperature, setTemperature] = useState&lt;number&gt;(GAME_CONFIG.ROOM_TEMPERATURE)
+  
+  // ✅ roomSummary is typed as RoomSummary
+  const ambientTemperature: number = roomControlsEnabled &amp;&amp; roomSummary?.temperature != null
+    ? roomSummary.temperature
+    : GAME_CONFIG.ROOM_TEMPERATURE
+}
+```
+
+---
+
+## Implementation Path
+
+### Path 1: PropTypes Quick Fix (1-2 weeks) - Start Here
+
+**Day 1-2:**
+```bash
+npm install prop-types
+npm install --save-dev eslint-plugin-prop-types
+```
+
+**Day 3-4:** Add PropTypes to critical components
+
+```javascript
+// src/components/GameScene.jsx
+import PropTypes from &#39;prop-types&#39;
+
+GameScene.propTypes = {
+  stage: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    altitude: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+  }).isRequired,
+  workshopLayout: PropTypes.object.isRequired,
+  workshopImages: PropTypes.shape({
+    background: PropTypes.string.isRequired,
+    pot_empty: PropTypes.string.isRequired,
+    pot_full: PropTypes.string.isRequired,
+    flame: PropTypes.string.isRequired,
+  }).isRequired,
+  burnerConfig: PropTypes.object.isRequired,
+  roomConfig: PropTypes.object.isRequired,
+  acUnitConfig: PropTypes.object.isRequired,
+  airHandlerConfig: PropTypes.object.isRequired,
+  activeLevel: PropTypes.number.isRequired,
+  activeExperiment: PropTypes.string.isRequired,
+  showSelectors: PropTypes.bool.isRequired,
+  onStageChange: PropTypes.func.isRequired,
+  onWaterBoiled: PropTypes.func,
+  onSkipTutorial: PropTypes.func,
+  onLevelChange: PropTypes.func,
+  onExperimentChange: PropTypes.func,
+  hasBoiledBefore: PropTypes.bool,
+  onLocationChange: PropTypes.func,
+  onEquipmentChange: PropTypes.func,
+}
+```
+
+**Day 5:** Extend to physics functions
+
+```javascript
+// src/utils/physics/formulas/latentHeat.js
+import PropTypes from &#39;prop-types&#39;
+
+export function calculateVaporizationEnergy(massKg, heatOfVapKJ) {
+  if (typeof massKg !== &#39;number&#39;) throw new Error(&#39;massKg must be a number&#39;)
+  if (typeof heatOfVapKJ !== &#39;number&#39;) throw new Error(&#39;heatOfVapKJ must be a number&#39;)
+  
+  const heatOfVapJ = heatOfVapKJ * 1000
+  return massKg * heatOfVapJ
+}
+```
+
+**Benefits:** Catches most type errors, minimal setup time  
+**Limitation:** Only checks at runtime, no editor help
+
+---
+
+### Path 2: Full TypeScript Migration (4-6 weeks) - Best Long-term
+
+**Week 1: Setup**
+```bash
+npm install --save-dev typescript ts-loader @types/react @types/react-dom @types/node
+npx tsc --init
+
+# Create tsconfig.json with strict mode
+```
+
+**Week 2-3: Convert core utils**
+```
+src/utils/physics/         # .js → .ts
+src/utils/roomEnvironment/ # .js → .ts
+src/hooks/                 # .js → .ts
+src/constants/             # .js → .ts
+```
+
+**Week 4-5: Convert components**
+```
+src/components/ # .jsx → .tsx
+src/App.jsx     # → .tsx
+```
+
+**Week 6: Testing and polish**
+```
+npm run build    # Catches all type errors
+npm run type-check
+```
+
+---
+
+## Critical Areas for Type Safety
+
+### 1. Physics Engine (HIGHEST PRIORITY)
+
+```typescript
+// src/utils/physics/types.ts
+
+export interface AntoineCoefficients {
+  A: number
+  B: number
+  C: number
+  TminC: number
+  TmaxC: number
+  note?: string
+}
+
+export interface FluidProperties {
+  name: string
+  chemicalFormula: string
+  molarMass: number
+  boilingPointSeaLevel: number
+  specificHeat: number
+  heatOfVaporization: number
+  thermalConductivity: number
+  antoineCoefficients: AntoineCoefficients
+  isSolution: boolean
+  vanHoffFactor?: number
+  molality?: number
+  canBoil: boolean
+}
+
+export interface BoilingPointResult {
+  temperature: number
+  isExtrapolated: boolean
+  verifiedRange: { min: number | null; max: number | null }
+}
+
+// Every function is now type-safe
+export function calculateBoilingPoint(
+  altitude: number,
+  fluidProps: FluidProperties
+): BoilingPointResult | null
+```
+
+### 2. Room Environment
+
+```typescript
+export interface RoomState {
+  roomVolume: number
+  roomTemperature: number
+  acTargetTemperature: number
+  roomPressure: number
+  composition: Record&lt;string, number&gt;
+  heatLog: HeatLogEntry[]
+  compositionLog: CompositionLogEntry[]
+  alerts: Alert[]
+}
+
+export interface HeatLogEntry {
+  timestamp: number
+  source: &#39;experiment_burner&#39; | &#39;ac_cooling&#39; | &#39;reaction&#39;
+  watts: number
+}
+```
+
+### 3. UI State
+
+```typescript
+export interface GameSceneProps {
+  stage: GameStage
+  location: Location
+  workshopLayout: WorkshopLayout
+  // ... all 30 props typed
+}
+
+export type GameStage = 0 | 1 | 2  // Stage 0 = gameplay, etc.
+
+export interface Location {
+  altitude: number
+  name?: string
+  latitude?: number
+  longitude?: number
+}
+```
+
+---
+
+## Real Impact: Before vs After
+
+### Refactoring the Physics Engine
+
+**WITHOUT TypeScript:**
+```javascript
+// OLD CODE
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const pressure = getISAPressure(altitude)
+  return solveAntoineEquation(pressure, fluidProps.antoine)  // ← What shape is this?
+}
+
+// REFACTORED (did I break anything?)
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const pressure = getISAPressure(altitude)
+  const result = solveAntoineEquation(pressure, fluidProps.antoineCoefficients)  // ← Changed property name
+  return result.temperature  // ← Changed return type
+}
+
+// Testing: You have to manually test every experiment to find the bug
+// Time: 3-4 hours debugging
+```
+
+**WITH TypeScript:**
+```typescript
+// OLD CODE
+export function calculateBoilingPoint(
+  altitude: number,
+  fluidProps: FluidProperties
+): BoilingPointResult {
+  const pressure = getISAPressure(altitude)
+  return solveAntoineEquation(pressure, fluidProps.antoine)
+}
+// ❌ ERROR: Property &#39;antoine&#39; does not exist on type &#39;FluidProperties&#39;
+
+// REFACTORED
+export function calculateBoilingPoint(
+  altitude: number,
+  fluidProps: FluidProperties
+): BoilingPointResult {
+  const pressure = getISAPressure(altitude)
+  const result = solveAntoineEquation(pressure, fluidProps.antoineCoefficients)
+  return result.temperature  // ❌ ERROR: Property &#39;temperature&#39; does not exist on type &#39;BoilingPointResult&#39;
+}
+
+// Testing: Editor shows errors immediately, before even running tests
+// Time: &lt; 1 minute fix
+```
+
+---
+
+## Cost-Benefit Analysis
+
+### Without TypeScript (Current)
+
+| Event | Cost | Impact |
+|-------|------|--------|
+| Type error in production | 4-8 hours debugging | User reports bug |
+| Refactoring physics | 3-4 hours verification | Risk of breaking other systems |
+| New developer onboarding | 2-3 days learning prop shapes | Productivity hit |
+| Adding feature | 1-2 hours of manual testing | Missed edge cases |
+| **Total per month** | **40-50 hours wasted** | **🔴 High risk** |
+
+### With TypeScript
+
+| Event | Cost | Impact |
+|-------|------|--------|
+| Type error caught | &lt; 1 minute (editor shows it) | 🟢 Prevented |
+| Refactoring physics | 30 minutes (TypeScript validates) | Safe, confident |
+| New developer onboarding | 4-6 hours (types are docs) | ✅ Clear expectations |
+| Adding feature | 30 minutes (types guide implementation) | ✅ Fewer bugs |
+| **Total per month** | **5-10 hours overhead** | **🟢 Very safe** |
+
+**ROI: 5× time savings within 2 months**
+
+---
+
+## Why This Matters More for Physics Code
+
+Your project teaches **real science**. Type safety is extra critical because:
+
+1. **Physics calculations must be correct**
+   - One unit mismatch (Joules vs kilojoules) breaks everything
+   - Types document units: `temperatureC: number`, `energyJ: number`, `energyKJ: number`
+
+2. **Constants must not vary**
+   - `Lv = 2257 kJ/kg` (water)
+   - `Lv = 838 kJ/kg` (ethanol)
+   - Without types, you can&#39;t distinguish between them
+
+3. **Feedback loops are fragile**
+   - Room pressure → boiling point → vapor release → room pressure
+   - One type error breaks the entire loop
+
+---
+
+## Success Metrics
+
+Once TypeScript is implemented:
+
+| Metric | Target | Current |
+|--------|--------|---------|
+| Type Coverage | 100% | 0% |
+| Props Validated | Yes | ❌ No |
+| IDE Autocomplete | Full | Minimal |
+| Refactoring Safety | Very High | Very Low |
+| Compile-time Errors | Caught | Never |
+
+---
+## AI-Assisted Coding: TypeScript is CRITICAL
+
+### Why TypeScript Matters 10x More with AI Code Generation
+
+AI tools (GitHub Copilot, Cursor, ChatGPT) generate code **fast** but have specific blind spots that TypeScript catches:
+
+**Common AI Type Mistakes:**
+
+1. **Overuses `any` type**
+   ```typescript
+   // ❌ AI generates this
+   function processData(data: any): any {
+     return data.map((item: any) =&gt; item.value)
+   }
+   
+   // ✅ Strict TypeScript catches it
+   function processData(data: DataItem[]): number[] {
+     return data.map(item =&gt; item.value)
+   }
+   ```
+
+2. **Forgets return types**
+   ```typescript
+   // ❌ AI often skips return type
+   async function fetchUserData(id: string) {
+     const response = await fetch(`/api/users/${id}`)
+     return response.json()  // What type is this?
+   }
+   
+   // ✅ Explicit return type
+   async function fetchUserData(id: string): Promise&lt;User&gt; {
+     const response = await fetch(`/api/users/${id}`)
+     return response.json() as User
+   }
+   ```
+
+3. **Misses optional properties**
+   ```typescript
+   // ❌ AI assumes all properties exist
+   interface FluidProps {
+     antoineCoefficients: number[]  // Always present?
+   }
+   
+   // ✅ Explicit optionality
+   interface FluidProps {
+     antoineCoefficients?: number[]  // May be undefined
+   }
+   ```
+
+4. **Uses non-null assertions unsafely**
+   ```typescript
+   // ❌ AI loves the ! operator
+   const user = users.find(u =&gt; u.id === id)!
+   user.name  // Crashes if user is undefined
+   
+   // ✅ Safe handling
+   const user = users.find(u =&gt; u.id === id)
+   if (user) {
+     return user.name
+   }
+   ```
+
+### TypeScript ESLint Rules for AI Code
+
+Add these to `tsconfig.json` and `.eslintrc.json` to catch AI mistakes:
+
+**tsconfig.json (Strict Mode):**
+```json
+{
+  &quot;compilerOptions&quot;: {
+    &quot;strict&quot;: true,  // Enables all strict checks
+    &quot;noImplicitAny&quot;: true,  // No implicit &#39;any&#39;
+    &quot;strictNullChecks&quot;: true,  // Can&#39;t use undefined without checking
+    &quot;strictFunctionTypes&quot;: true,  // Function param checking
+    &quot;noUncheckedIndexedAccess&quot;: true,  // Array/object access safety
+    &quot;noUnusedLocals&quot;: true,  // Catch unused variables
+    &quot;noUnusedParameters&quot;: true,  // Catch unused params
+    &quot;noImplicitReturns&quot;: true,  // All code paths must return
+    &quot;noFallthroughCasesInSwitch&quot;: true  // Switch statement safety
+  }
+}
+```
+
+**.eslintrc.json (TypeScript Rules):**
+```json
+{
+  &quot;extends&quot;: [
+    &quot;plugin:@typescript-eslint/recommended&quot;,
+    &quot;plugin:@typescript-eslint/recommended-requiring-type-checking&quot;
+  ],
+  &quot;rules&quot;: {
+    // AI overuses &#39;any&#39; type
+    &quot;@typescript-eslint/no-explicit-any&quot;: &quot;error&quot;,
+    
+    // AI forgets return types
+    &quot;@typescript-eslint/explicit-function-return-type&quot;: [&quot;warn&quot;, {
+      &quot;allowExpressions&quot;: true,
+      &quot;allowTypedFunctionExpressions&quot;: true
+    }],
+    
+    // AI creates unused variables
+    &quot;@typescript-eslint/no-unused-vars&quot;: [&quot;error&quot;, {
+      &quot;argsIgnorePattern&quot;: &quot;^_&quot;
+    }],
+    
+    // AI uses non-null assertions unsafely
+    &quot;@typescript-eslint/no-non-null-assertion&quot;: &quot;warn&quot;,
+    
+    // AI misses async/await patterns
+    &quot;@typescript-eslint/no-floating-promises&quot;: &quot;error&quot;,
+    
+    // AI uses &#39;as&#39; casts too liberally
+    &quot;@typescript-eslint/consistent-type-assertions&quot;: [&quot;warn&quot;, {
+      &quot;assertionStyle&quot;: &quot;as&quot;,
+      &quot;objectLiteralTypeAssertions&quot;: &quot;never&quot;
+    }],
+    
+    // AI forgets to handle all enum cases
+    &quot;@typescript-eslint/switch-exhaustiveness-check&quot;: &quot;error&quot;
+  }
+}
+```
+
+### Update Copilot Instructions for TypeScript
+
+Create or update `.github/copilot-instructions.md`:
+
+```markdown
+## TypeScript Rules
+
+- NEVER use `any` type. Use `unknown` if type is truly dynamic.
+- ALWAYS add explicit return types to functions.
+- ALWAYS mark optional properties with `?`.
+- NEVER use non-null assertion (`!`) without null check.
+- ALWAYS use type guards before accessing properties.
+- Use `const` assertions for literal types.
+- Prefer `interface` over `type` for object shapes.
+
+## Physics Code
+
+- All physics functions must have typed parameters and return types.
+- Document units in type names: `temperatureC`, `pressurePa`, `energyKJ`.
+- Never mix units (no implicit conversions).
+
+## Examples
+
+```typescript
+// ✅ GOOD: Explicit types, safe access
+function calculateBoilingPoint(
+  altitude: number,  // meters
+  fluidProps: FluidProperties
+): BoilingPointResult | null {
+  if (!fluidProps.antoineCoefficients) {
+    return null
+  }
+  
+  const pressure = getISAPressure(altitude)
+  return solveAntoineEquation(pressure, fluidProps.antoineCoefficients)
+}
+
+// ❌ BAD: Implicit any, unsafe access
+function calculateBoilingPoint(altitude, fluidProps) {
+  const pressure = getISAPressure(altitude)
+  return solveAntoineEquation(pressure, fluidProps.antoineCoefficients!)
+}
+```
+```
+
+### Pre-commit Hooks for TypeScript
+
+```bash
+# .husky/pre-commit
+#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+# Type check before commit
+npm run type-check
+
+# Lint TypeScript files
+npx lint-staged
+```
+
+```json
+// package.json
+{
+  &quot;scripts&quot;: {
+    &quot;type-check&quot;: &quot;tsc --noEmit&quot;
+  },
+  &quot;lint-staged&quot;: {
+    &quot;*.{ts,tsx}&quot;: [
+      &quot;eslint --fix&quot;,
+      &quot;prettier --write&quot;
+    ]
+  }
+}
+```
+
+**This blocks AI-generated broken TypeScript from being committed.**
+
+### AI Coding Best Practices for TypeScript
+
+1. **Review AI type suggestions critically** — AI defaults to `any` too often
+2. **Run type checker immediately** — `npm run type-check` after AI generates code
+3. **Use strict mode from day 1** — Easier than retrofitting
+4. **Add types to Copilot instructions** — Guide AI behavior
+5. **Test edge cases** — AI focuses on happy path, types catch sad path
+6. **Use type guards** — AI forgets runtime checks
+
+---
+## Recommendation
+
+**For Boiling Water, I recommend a hybrid approach:**
+
+1. **Immediate (Week 1):** Add PropTypes to critical components
+   - `&lt;GameScene&gt;` (30 props)
+   - Physics functions (15+ functions)
+   - Room environment functions (10+ functions)
+   - Time: 3-4 days
+   - Benefit: Catch most type errors at runtime
+
+2. **Medium-term (Weeks 3-6):** Migrate to TypeScript
+   - Start with utilities (physics, room, location)
+   - Move to hooks
+   - Finally convert components
+   - Time: 4-6 weeks
+   - Benefit: Full type safety, IDE support, refactoring confidence
+
+---
+
+## Related Issues
+
+- [Issue #1: No Unit Tests](ISSUE_01_NO_UNIT_TESTS.md) (types make tests easier)
+- [Issue #3: Massive Components](../INDUSTRY_STANDARDS_AUDIT.md#3-massive-monolithic-component-files) (types help during refactoring)
+- [Remediation Phase 1](../INDUSTRY_STANDARDS_AUDIT.md#phase-1-foundation-weeks-1-2)
+
+---
+
+**Status:** Ready for decision  
+**Blocking:** Production deployment  
+**Recommended first step:** Add PropTypes to critical components (3-4 days)  
+**Long-term fix:** Migrate to TypeScript (4-6 weeks)
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

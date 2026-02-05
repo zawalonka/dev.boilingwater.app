@@ -7,7 +7,10 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -18,16 +21,46 @@
   },
   "plugins": [
     "react",
-    "react-hooks"
+    "react-hooks",
+    "import",
+    "jsx-a11y",
+    "security",
+    "no-unsanitized"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    
+    // Import/export rules
+    "import/no-unresolved": "off",
+    "import/named": "error",
+    "import/no-cycle": "warn",
+    "import/no-unused-modules": "warn",
+    
+    // AI coding rules
+    "complexity": ["warn", 15],
+    "max-lines-per-function": ["warn", { "max": 100, "skipBlankLines": true, "skipComments": true }],
+    "no-console": ["warn", { "allow": ["error", "warn", "info"] }],
+    
+    // Security rules
+    "security/detect-object-injection": "warn",
+    "no-unsanitized/method": "error",
+    "no-unsanitized/property": "error",
+    
+    // Accessibility rules
+    "jsx-a11y/alt-text": "warn",
+    "jsx-a11y/aria-props": "warn",
+    "jsx-a11y/aria-role": "warn"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
     }
   }
 }

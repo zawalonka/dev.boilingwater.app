@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISSUE_13_MISSING_PROPTYPES.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>ISSUE_13_MISSING_PROPTYPES.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ISSUE_13_MISSING_PROPTYPES.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ISSUE_13_MISSING_PROPTYPES.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ISSUE_13_MISSING_PROPTYPES.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\ISSUE_13_MISSING_PROPTYPES.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Issue #13: Missing PropTypes Validation
+
+**Severity:** 🟡 Low  
+**Status:** ⚠️ No type checking  
+**Priority:** P3  
+**Effort:** 1-2 days
+
+---
+
+## What It Means
+
+Your React components have **no PropTypes** — they don&#39;t validate the data being passed to them. Wrong data types cause silent failures and confusing bugs.
+
+```javascript
+// Current state: No PropTypes
+export function Pot({ waterMass, temperature, color }) {
+  // No validation
+  // waterMass could be string, object, null, undefined
+  // temperature could be any type
+  // color could be missing
+  
+  return (
+    &lt;div style={{ background: color }}&gt;
+      Mass: {waterMass}kg
+      Temp: {temperature}°C
+    &lt;/div&gt;
+  )
+}
+
+// Used incorrectly:
+&lt;Pot 
+  waterMass=&quot;100&quot;        // ← String, not number!
+  temperature={null}     // ← null, not number
+  color={123}            // ← Number, not string!
+/&gt;
+
+// No warning about wrong types
+// Silent bugs result
+```
+
+**Current state:** Components accept any data type, no validation.  
+**After fix:** Components validate all props, warn about mismatches.
+
+---
+
+## Why It&#39;s Important
+
+### 1. Silent Bugs
+
+```javascript
+// src/components/Temperature.jsx
+export function Temperature({ value, unit }) {
+  const display = value.toFixed(1)  // ← Crashes if value is string
+  return &lt;div&gt;{display}°{unit}&lt;/div&gt;
+}
+
+// Used incorrectly:
+&lt;Temperature value=&quot;25.5&quot; unit=&quot;C&quot; /&gt;
+
+// Runtime error: &quot;value.toFixed is not a function&quot;
+// Entire component crashes
+// No warning beforehand
+
+// With PropTypes:
+// Warning during development:
+// &quot;Invalid prop `value` of type `string`, expected `number`&quot;
+// Caught before runtime error
+```
+
+### 2. Silent Data Corruption
+
+```javascript
+// src/components/Burner.jsx
+export function Burner({ maxWatts, currentWatts }) {
+  const percentage = (currentWatts / maxWatts) * 100
+  return &lt;div style={{ width: percentage + &#39;%&#39; }}&gt;...&lt;/div&gt;
+}
+
+// Used incorrectly:
+&lt;Burner 
+  maxWatts=&quot;2000&quot;     // ← String!
+  currentWatts={500}  // ← Number
+/&gt;
+
+// Calculation: &quot;500&quot; / &quot;2000&quot; * 100
+// Result: &quot;5002000&quot; (string concatenation, not math!)
+// Progress bar shows &quot;5002000%&quot; width
+// Component breaks silently
+
+// With PropTypes:
+// Warning: &quot;Invalid prop `maxWatts` of type `string`, expected `number`&quot;
+// Bug caught in development
+```
+
+### 3. Impossible to Debug
+
+```javascript
+// Bug report: &quot;Temperature display is broken&quot;
+// 
+// You look at component - looks fine
+// You look at parent - seems to pass correct data
+// Hours debugging, can&#39;t find issue
+//
+// Root cause: Parent sometimes passes string instead of number
+// But there&#39;s no validation to catch it
+
+// With PropTypes:
+// Warnings immediately show the problem
+// &quot;Hey, this component expects number but got string&quot;
+```
+
+---
+
+## Real Bugs Without PropTypes
+
+### Bug #1: Type Mismatch Crashes Component
+
+```javascript
+// src/utils/physics.js
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const pressure = ISAmodel.calculatePressure(altitude)  // ← Expects number
+  return solveAntoine(pressure, fluidProps)
+}
+
+// Used incorrectly:
+calculateBoilingPoint(&quot;5000&quot;, fluidProps)  // ← Passing string!
+
+// ISA model: tries to do math with string
+// Result: NaN (Not a Number)
+// Returns NaN
+// UI shows: &quot;Boiling point: NaN°C&quot;
+
+// Bug reported: &quot;Calculator is broken at altitude 5000m&quot;
+// Root cause hidden by lack of validation
+```
+
+### Bug #2: Missing Required Prop
+
+```javascript
+// src/components/Workshop.jsx
+export function Workshop({ id, name, description, imageUrl }) {
+  return (
+    &lt;div&gt;
+      &lt;img src={imageUrl} alt={name} /&gt;  // ← Crashes if imageUrl missing
+      &lt;h1&gt;{name}&lt;/h1&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+
+// Used without imageUrl:
+&lt;Workshop 
+  id=&quot;1&quot;
+  name=&quot;Alpha Kitchen&quot;
+  description=&quot;First workshop&quot;
+  // imageUrl forgot!
+/&gt;
+
+// Error: &quot;Cannot set src attribute of null&quot;
+// Or image broken with no alt text
+// No warning about missing prop
+
+// With PropTypes:
+// Warning: &quot;Failed prop type: The prop `imageUrl` is marked as required&quot;
+// Caught before rendering
+```
+
+### Bug #3: Wrong Array Structure
+
+```javascript
+// src/components/WorkshopList.jsx
+export function WorkshopList({ workshops }) {
+  return (
+    &lt;ul&gt;
+      {workshops.map(w =&gt; &lt;li key={w.id}&gt;{w.name}&lt;/li&gt;)}  // ← Expects array of objects
+    &lt;/ul&gt;
+  )
+}
+
+// Used incorrectly:
+&lt;WorkshopList workshops=&quot;alpha,beta,gamma&quot; /&gt;  // ← Passing string!
+
+// JS tries: &quot;alpha,beta,gamma&quot;.map(...)
+// Result: [&quot;a&quot;, &quot;l&quot;, &quot;p&quot;, &quot;h&quot;, ...] (maps over characters!)
+// Output: 
+// - a
+// - l
+// - p
+// - h
+// - a
+
+// Bug: List shows individual characters instead of workshops
+// No warning about wrong data structure
+
+// With PropTypes:
+// Warning: &quot;Invalid prop `workshops` of type `string`, expected `array`&quot;
+```
+
+---
+
+## Current State: No Type Validation
+
+```javascript
+// Your components accept anything
+export function Pot({ waterMass, temperature, color }) {
+  // No PropTypes
+  // No validation
+  // Could be any type
+  
+  return &lt;div&gt;...&lt;/div&gt;
+}
+
+// No validation means:
+// ❌ Wrong types accepted silently
+// ❌ Wrong data structures accepted
+// ❌ Missing required props accepted
+// ❌ Bugs only found at runtime
+// ❌ Hard to debug
+```
+
+---
+
+## Solution: PropTypes
+
+### What PropTypes Does
+
+```javascript
+// Validates at runtime:
+// ✅ Prop type matches expected type
+// ✅ Required props are provided
+// ✅ Prop values are in valid range
+// ✅ Prop values match specific values
+
+// Warnings appear during development:
+// &quot;Invalid prop `value` of type `string`, expected `number`&quot;
+```
+
+### Installation
+
+```bash
+npm install prop-types
+```
+
+### Basic Usage
+
+```javascript
+// src/components/Pot.jsx
+import PropTypes from &#39;prop-types&#39;
+
+export function Pot({ waterMass, temperature, color }) {
+  return (
+    &lt;div style={{ background: color }}&gt;
+      Mass: {waterMass}kg
+      Temp: {temperature}°C
+    &lt;/div&gt;
+  )
+}
+
+Pot.propTypes = {
+  waterMass: PropTypes.number.isRequired,
+  temperature: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired
+}
+
+Pot.defaultProps = {
+  waterMass: 1.0,
+  temperature: 20,
+  color: &#39;#8B7355&#39;
+}
+
+// Now if you pass wrong types:
+// &lt;Pot waterMass=&quot;100&quot; /&gt;
+// Warning: &quot;Invalid prop `waterMass` of type `string`, expected `number`&quot;
+```
+
+---
+
+## PropTypes Validators
+
+### Basic Types
+
+```javascript
+import PropTypes from &#39;prop-types&#39;
+
+MyComponent.propTypes = {
+  // Primitive types
+  stringProp: PropTypes.string,
+  numberProp: PropTypes.number,
+  boolProp: PropTypes.bool,
+  arrayProp: PropTypes.array,
+  objectProp: PropTypes.object,
+  funcProp: PropTypes.func,
+  
+  // Required versions
+  requiredString: PropTypes.string.isRequired,
+  requiredNumber: PropTypes.number.isRequired,
+  
+  // Special types
+  nodeProp: PropTypes.node,              // Anything renderable
+  elementProp: PropTypes.element,         // React element
+  
+  // Specific values
+  statusProp: PropTypes.oneOf([&#39;active&#39;, &#39;inactive&#39;, &#39;pending&#39;]),
+  typeProp: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  
+  // Collections
+  arrayOfNumbers: PropTypes.arrayOf(PropTypes.number),
+  objectWithShape: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    active: PropTypes.bool
+  }),
+  
+  // Custom validation
+  customNumber: PropTypes.number.isRequired.validate((props, propName, componentName) =&gt; {
+    const value = props[propName]
+    if (value &lt; 0 || value &gt; 100) {
+      return new Error(`${componentName}: ${propName} must be between 0-100`)
+    }
+  })
+}
+```
+
+---
+
+## Real PropTypes Examples
+
+### Example 1: Physics Component
+
+```javascript
+// src/components/Temperature.jsx
+import PropTypes from &#39;prop-types&#39;
+
+export function Temperature({ current, target, unit }) {
+  return (
+    &lt;div className=&quot;temperature&quot;&gt;
+      &lt;div className=&quot;current&quot;&gt;{current.toFixed(1)}°{unit}&lt;/div&gt;
+      &lt;div className=&quot;target&quot;&gt;Target: {target.toFixed(1)}°&lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+
+Temperature.propTypes = {
+  current: PropTypes.number.isRequired,
+  target: PropTypes.number.isRequired,
+  unit: PropTypes.oneOf([&#39;C&#39;, &#39;F&#39;, &#39;K&#39;]).isRequired
+}
+
+Temperature.defaultProps = {
+  current: 20,
+  target: 100,
+  unit: &#39;C&#39;
+}
+
+// Usage:
+&lt;Temperature current={25.5} target={100} unit=&quot;C&quot; /&gt;  // ✅ Valid
+&lt;Temperature current=&quot;25.5&quot; target={100} unit=&quot;C&quot; /&gt;  // ⚠️ Warning: string not number
+&lt;Temperature current={25.5} target={100} unit=&quot;X&quot; /&gt;  // ⚠️ Warning: X not in [&#39;C&#39;, &#39;F&#39;, &#39;K&#39;]
+&lt;Temperature current={25.5} unit=&quot;C&quot; /&gt;               // ⚠️ Warning: target is required
+```
+
+### Example 2: Data Structure
+
+```javascript
+// src/components/WorkshopSelector.jsx
+import PropTypes from &#39;prop-types&#39;
+
+export function WorkshopSelector({ workshops, onSelect, disabled }) {
+  return (
+    &lt;select onChange={e =&gt; onSelect(e.target.value)} disabled={disabled}&gt;
+      {workshops.map(w =&gt; (
+        &lt;option key={w.id} value={w.id}&gt;{w.name}&lt;/option&gt;
+      ))}
+    &lt;/select&gt;
+  )
+}
+
+WorkshopSelector.propTypes = {
+  workshops: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      imageUrl: PropTypes.string
+    })
+  ).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  disabled: PropTypes.bool
+}
+
+WorkshopSelector.defaultProps = {
+  disabled: false
+}
+
+// Valid:
+&lt;WorkshopSelector 
+  workshops={[
+    { id: &#39;1&#39;, name: &#39;Alpha&#39;, description: &#39;...&#39; },
+    { id: &#39;2&#39;, name: &#39;Beta&#39; }
+  ]}
+  onSelect={id =&gt; console.log(id)}
+/&gt;
+
+// Invalid:
+&lt;WorkshopSelector 
+  workshops=&quot;alpha,beta&quot;  // ⚠️ Should be array
+  onSelect={() =&gt; {}}
+/&gt;
+```
+
+---
+
+## Implementation Plan
+
+### Phase 1: Identify Components (1 hour)
+
+```bash
+# Find all components
+ls src/components/*.jsx
+
+# For each component, determine its props
+# Are they required? What types?
+```
+
+### Phase 2: Add PropTypes (2-3 hours)
+
+```javascript
+// For each component:
+// 1. Import PropTypes
+// 2. Define propTypes object
+// 3. Define defaultProps
+// 4. Test with invalid props
+```
+
+### Phase 3: Fix Warnings (1-2 hours)
+
+```bash
+npm run dev
+
+# Browser console shows PropTypes warnings
+# Fix each one:
+# - Pass correct types to components
+# - Add missing required props
+# - Fix data structures
+```
+
+### Phase 4: Lint Check (30 min)
+
+```bash
+# Enable ESLint rule for PropTypes
+# Ensure all components have them
+```
+
+---
+
+## Before and After
+
+### Before: No Validation
+
+```javascript
+export function Burner({ maxWatts, currentWatts }) {
+  const percentage = (currentWatts / maxWatts) * 100
+  return &lt;div style={{ width: percentage + &#39;%&#39; }} /&gt;
+}
+
+// Used incorrectly:
+&lt;Burner maxWatts=&quot;2000&quot; currentWatts={500} /&gt;
+// No warning
+// Math fails silently
+// Progress bar shows wrong value
+```
+
+### After: With PropTypes
+
+```javascript
+import PropTypes from &#39;prop-types&#39;
+
+export function Burner({ maxWatts, currentWatts }) {
+  const percentage = (currentWatts / maxWatts) * 100
+  return &lt;div style={{ width: percentage + &#39;%&#39; }} /&gt;
+}
+
+Burner.propTypes = {
+  maxWatts: PropTypes.number.isRequired,
+  currentWatts: PropTypes.number.isRequired
+}
+
+// Used incorrectly:
+&lt;Burner maxWatts=&quot;2000&quot; currentWatts={500} /&gt;
+// Warning appears:
+// &quot;Invalid prop `maxWatts` of type `string`, expected `number`&quot;
+// Bug caught before runtime
+```
+
+---
+
+## Disabling PropTypes in Production
+
+```javascript
+// vite.config.mjs
+export default defineConfig({
+  define: {
+    &#39;process.env.NODE_ENV&#39;: &#39;&quot;production&quot;&#39;
+  },
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [&#39;@babel/plugin-transform-react-constant-elements&#39;],
+          [&#39;babel-plugin-transform-remove-prop-types&#39;, {
+            removeImport: true
+          }]
+        ]
+      }
+    })
+  ]
+})
+```
+
+**Result:** PropTypes stripped from production build (smaller bundle).
+
+---
+
+## Integration with TypeScript
+
+PropTypes are a temporary measure. Eventually:
+
+```
+Phase 1: Add PropTypes (catches bugs now)
+         ↓
+Phase 2: Migrate to TypeScript (full type safety)
+         ↓
+Phase 3: Remove PropTypes (TypeScript has them)
+```
+
+For now: PropTypes + ESLint = good middle ground.
+
+---
+
+## Benefits Summary
+
+| Aspect | Before | After |
+|--------|--------|-------|
+| **Type validation** | None | Comprehensive |
+| **Bug detection** | Runtime | Development |
+| **Developer clarity** | Guess prop types | Clear documentation |
+| **Error messages** | Cryptic crashes | Clear warnings |
+| **New developer onboarding** | Confusing | Self-documenting |
+
+---
+
+## Timeline and Effort
+
+| Task | Duration |
+|------|----------|
+| Identify all components | 1 hour |
+| Add PropTypes to components | 2-3 hours |
+| Fix warnings | 1-2 hours |
+| Testing | 1 hour |
+| **Total** | **5-7 hours** |
+
+**Calendar: 1 day**
+
+---
+
+## Integration with Other Issues
+
+- [Issue #2: No TypeScript](ISSUE_02_NO_TYPESCRIPT.md) (PropTypes → TypeScript migration path)
+- [Issue #6: Incomplete ESLint](ISSUE_06_INCOMPLETE_ESLINT.md) (Can require PropTypes in rules)
+- [Remediation Phase 3](../INDUSTRY_STANDARDS_AUDIT.md#phase-3-polish-week-6)
+
+---
+
+## Recommendation
+
+**Do this in Phase 3 (Polish) or alongside Phase 1:**
+
+Can do before TypeScript migration (temporary type safety) or skip if planning immediate TypeScript migration.
+
+1. Identify all components (1 hour)
+2. Add PropTypes to each (2-3 hours)
+3. Fix warnings as they appear (1-2 hours)
+4. Test with invalid props (30 min)
+5. Commit &quot;feat: add PropTypes validation to all components&quot;
+
+**Alternative:** Skip PropTypes if planning TypeScript migration soon. TypeScript provides better type safety anyway.
+
+---
+
+**Status:** Ready for implementation  
+**Blocking:** Type safety (temporary measure before TypeScript)  
+**Effort:** 1 day  
+**Payoff:** Catch type mismatches in development, self-documenting components  
+**Priority:** P3 - Can skip if migrating to TypeScript soon, otherwise do in Phase 3
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

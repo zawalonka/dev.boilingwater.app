@@ -1,0 +1,1587 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISSUE_06_INCOMPLETE_ESLINT.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>ISSUE_06_INCOMPLETE_ESLINT.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ISSUE_06_INCOMPLETE_ESLINT.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ISSUE_06_INCOMPLETE_ESLINT.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ISSUE_06_INCOMPLETE_ESLINT.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\ISSUE_06_INCOMPLETE_ESLINT.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Issue #6: Incomplete ESLint Configuration
+
+**Severity:** 🟠 Medium  
+**Status:** ⚠️ Missing plugins  
+**Priority:** P2  
+**Effort:** 1-2 days
+
+---
+
+## What It Means
+
+Your ESLint configuration is missing **critical plugins** that catch common bugs, enforce best practices, and prevent accessibility issues.
+
+```json
+// Current .eslintrc.json (INCOMPLETE)
+{
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;,
+    &quot;plugin:react-hooks/recommended&quot;
+  ],
+  &quot;rules&quot;: {
+    &quot;react/prop-types&quot;: &quot;off&quot;,  // ← Disables runtime validation
+    &quot;no-unused-vars&quot;: &quot;warn&quot;     // ← Too lenient
+  }
+}
+
+// What&#39;s missing:
+// ❌ eslint-plugin-import (import order, circular deps)
+// ❌ eslint-plugin-jsx-a11y (accessibility)
+// ❌ eslint-config-prettier (conflict resolution)
+// ❌ eslint-plugin-react-hooks (already installed but not optimized)
+```
+
+**Current state:** Many bugs and anti-patterns go undetected.  
+**After fix:** Automatic detection of 50+ common mistakes.
+
+---
+
+## Why It&#39;s Critical (For Physics Code)
+
+### Your Code Catches These 0% of the Time
+
+```javascript
+// ❌ Circular dependencies (can cause crashes)
+// moduleA imports moduleB
+// moduleB imports moduleA
+// This breaks bundling
+
+// ❌ Accessibility issues (users with disabilities can&#39;t use app)
+&lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;
+// Missing: onKeyDown handler (keyboard users can&#39;t activate)
+
+// ❌ Incorrect hook dependencies (state can go stale)
+useEffect(() =&gt; {
+  console.log(temperature)  // ← Using temperature
+}, [])  // ← But didn&#39;t list it as dependency!
+
+// ❌ Import order chaos (makes code hard to read)
+import React from &#39;react&#39;
+import * as physics from &#39;../utils/physics&#39;
+import Button from &#39;../components/Button&#39;
+import { useState } from &#39;react&#39;  // ← Out of order
+import lodash from &#39;lodash&#39;
+
+// ❌ Unused code
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const debugMessage = `BP: ${altitude}m`  // ← Never used
+  return solveAntoine(...)
+}
+```
+
+**With complete ESLint:**
+```
+✅ Caught: Circular dependency between modules
+✅ Caught: Button missing keyboard handler
+✅ Caught: useEffect missing temperature dependency
+✅ Caught: Imports out of order
+✅ Caught: Unused variable debugMessage
+```
+
+All **automatically in your editor** as you type.
+
+---
+
+## Current Broken ESLint Setup
+
+### .eslintrc.json (Incomplete)
+
+```json
+{
+  &quot;env&quot;: {
+    &quot;browser&quot;: true,
+    &quot;es2021&quot;: true,
+    &quot;node&quot;: true
+  },
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;,
+    &quot;plugin:react-hooks/recommended&quot;
+  ],
+  &quot;parserOptions&quot;: {
+    &quot;ecmaFeatures&quot;: {
+      &quot;jsx&quot;: true
+    },
+    &quot;ecmaVersion&quot;: 2021,
+    &quot;sourceType&quot;: &quot;module&quot;
+  },
+  &quot;plugins&quot;: [
+    &quot;react&quot;,
+    &quot;react-hooks&quot;
+  ],
+  &quot;rules&quot;: {
+    &quot;react/react-in-jsx-scope&quot;: &quot;off&quot;,
+    &quot;react/prop-types&quot;: &quot;off&quot;,        // ← Explicitly disabled!
+    &quot;no-unused-vars&quot;: &quot;warn&quot;          // ← Should be &quot;error&quot;
+  },
+  &quot;settings&quot;: {
+    &quot;react&quot;: {
+      &quot;version&quot;: &quot;detect&quot;
+    }
+  }
+}
+```
+
+### Missing Plugins
+
+| Plugin | Purpose | Missing |
+|--------|---------|---------|
+| `eslint-plugin-import` | Import order, circular deps | ❌ |
+| `eslint-plugin-jsx-a11y` | Accessibility (a11y) | ❌ |
+| `eslint-config-prettier` | Conflict resolution | ❌ |
+| `@typescript-eslint/eslint-plugin` | TypeScript support | ❌ |
+
+### What Gets Missed
+
+```javascript
+// Nobody&#39;s catching these:
+
+1. Circular dependencies
+   ├─ moduleA.js imports moduleB
+   └─ moduleB.js imports moduleA
+
+2. Accessibility violations
+   ├─ Buttons without keyboard support
+   ├─ Missing alt text on images
+   ├─ Color-only instructions
+   └─ Form fields without labels
+
+3. Wrong hook dependencies
+   ├─ useEffect([]) but uses outside state
+   ├─ Stale closures in callbacks
+   └─ Missing dependency updates
+
+4. Messy imports
+   ├─ All over the place
+   └─ Hard to understand file structure
+
+5. Unused code
+   ├─ Dead variables
+   ├─ Dead functions
+   └─ Dead imports (keeps shrinking)
+
+6. Prettier conflicts
+   ├─ ESLint formats one way
+   ├─ Prettier formats another
+   └─ Endless conflicts when both run
+```
+
+---
+
+## Real Bugs Without Complete ESLint
+
+### Bug #1: Circular Dependencies Break at Runtime
+
+```javascript
+// src/utils/physics.js
+import { roomState } from &#39;./roomEnvironment&#39;
+
+export function calculateBoilingPoint(altitude) {
+  const pressure = roomState.calculatePressure(altitude)
+  return solveAntoine(pressure, ...)
+}
+
+// src/utils/roomEnvironment.js
+import { calculateBoilingPoint } from &#39;./physics&#39;
+
+export const roomState = {
+  calculatePressure: (altitude) =&gt; {
+    const bp = calculateBoilingPoint(altitude)  // ← Circular!
+    return derivePressure(bp)
+  }
+}
+```
+
+**Without import plugin:**
+- Code looks fine
+- `npm run build` succeeds
+- Deploy succeeds
+- Runtime error in production: &quot;Cannot read property X of undefined&quot;
+- Hours debugging to find circular dependency
+
+**With import plugin:**
+```
+❌ Circular dependency detected:
+   src/utils/physics.js → src/utils/roomEnvironment.js → src/utils/physics.js
+   
+   Fix by:
+   - Extract shared logic to third module
+   - Use lazy imports
+   - Restructure dependencies
+```
+
+---
+
+### Bug #2: Accessibility Violations Hurt Users
+
+```javascript
+// src/components/ControlPanel.jsx
+
+export function ControlPanel() {
+  const handleClick = () =&gt; setBurnerHeat(prev =&gt; prev + 1)
+  
+  // ❌ No keyboard support
+  return &lt;div onClick={handleClick}&gt;Increase Heat&lt;/div&gt;
+  
+  // ✅ Should be:
+  // return &lt;button onClick={handleClick}&gt;Increase Heat&lt;/button&gt;
+  // or
+  // return &lt;div 
+  //   onClick={handleClick}
+  //   onKeyDown={(e) =&gt; e.key === &#39;Enter&#39; &amp;&amp; handleClick()}
+  //   role=&quot;button&quot;
+  //   tabIndex={0}
+  // &gt;Increase Heat&lt;/div&gt;
+}
+```
+
+**Impact:**
+- Keyboard users (many rely on Tab to navigate) can&#39;t use burner
+- Screen reader users don&#39;t know this is interactive
+- Users with motor disabilities stuck on mouse
+
+**Without a11y plugin:** Nobody knows
+
+**With a11y plugin:**
+```
+⚠️ jsx-a11y/click-events-have-key-events:
+   Visible, non-interactive elements with click handlers must have
+   keyboard handlers and semantic role.
+   
+   Line 35: &lt;div onClick={handleClick}&gt;
+            ^^^ Missing onKeyDown handler
+```
+
+---
+
+### Bug #3: Hook Dependencies Go Stale
+
+```javascript
+// src/components/GameScene.jsx
+
+export function GameScene() {
+  const [temperature, setTemperature] = useState(20)
+  const [altitude, setAltitude] = useState(0)
+  
+  useEffect(() =&gt; {
+    // Recalculate boiling point when altitude changes
+    const bp = calculateBoilingPoint(altitude, fluidProps)
+    console.log(`Temperature: ${temperature}, BP: ${bp}`)
+  }, [altitude])  // ← Missing &#39;temperature&#39; dependency!
+  
+  // If temperature changes, console.log still shows OLD temperature
+  // Physics calculations silently use wrong values
+}
+```
+
+**Problem:** Component renders with new temperature, but effect sees old temperature.
+
+**Without hook plugin:**
+- Silent bug
+- Sometimes works, sometimes doesn&#39;t (depends on render order)
+- Hours debugging state inconsistencies
+
+**With hook plugin:**
+```
+❌ react-hooks/exhaustive-deps:
+   The effect uses variable &#39;temperature&#39; but it&#39;s not in dependencies.
+   
+   Line 42: console.log(`Temperature: ${temperature}, BP: ${bp}`)
+            ^^^^^^^^^^^ Add to dependency array: [altitude, temperature]
+```
+
+---
+
+### Bug #4: Import Chaos
+
+```javascript
+// src/components/GameScene.jsx (no organization)
+
+import React from &#39;react&#39;
+import * as physics from &#39;../utils/physics&#39;
+import Button from &#39;../components/Button&#39;
+import { useState } from &#39;react&#39;
+import lodash from &#39;lodash&#39;
+import { GAME_CONFIG } from &#39;../constants/physics&#39;
+import PropTypes from &#39;prop-types&#39;
+import { loadSubstance } from &#39;../utils/substanceLoader&#39;
+import { createContext } from &#39;react&#39;
+```
+
+**Without import plugin:**
+- Messy
+- Hard to understand what&#39;s needed
+- New developers confused
+- Harder to spot unused imports
+
+**With import plugin:**
+```
+⚠️ import/order:
+   Imports are not sorted alphabetically within each group.
+   
+   Should be organized as:
+   1. React/built-ins
+   2. Third-party (prop-types, lodash)
+   3. Internal (../)
+   4. Alphabetical within each group
+   
+   Suggested fix:
+   import React, { useState, createContext } from &#39;react&#39;
+   import lodash from &#39;lodash&#39;
+   import PropTypes from &#39;prop-types&#39;
+   
+   import { GAME_CONFIG } from &#39;../constants/physics&#39;
+   import Button from &#39;../components/Button&#39;
+   import { loadSubstance } from &#39;../utils/substanceLoader&#39;
+   import * as physics from &#39;../utils/physics&#39;
+```
+
+---
+
+### Bug #5: Dead Code
+
+```javascript
+// src/utils/physics.js
+
+export function simulateTimeStep(state, heat, deltaTime, fluidProps) {
+  // Old calculation method (before optimization)
+  const oldMethod = state.temperature * heat * deltaTime
+  
+  // New calculation method
+  const newTemp = state.temperature + (heat / (state.waterMass * fluidProps.specificHeat)) * deltaTime
+  
+  return { ...state, temperature: newTemp }
+}
+```
+
+**Without lint rule:**
+- Dead variable `oldMethod` stays in code
+- Every developer who reads it wastes 10 seconds wondering why it&#39;s there
+- Git history cluttered with old code
+
+**With lint rule:**
+```
+⚠️ no-unused-vars:
+   &#39;oldMethod&#39; is assigned a value but never used.
+   
+   Line 4: const oldMethod = ...
+           ^^^ Remove or use this variable
+```
+
+---
+
+## Missing Plugins Installation
+
+### Step 1: Install Missing Packages
+
+```bash
+npm install --save-dev \
+  eslint-plugin-import \
+  eslint-plugin-jsx-a11y \
+  eslint-config-prettier \
+  @typescript-eslint/eslint-plugin \
+  @typescript-eslint/parser
+```
+
+### Step 2: Update .eslintrc.json
+
+```json
+{
+  &quot;env&quot;: {
+    &quot;browser&quot;: true,
+    &quot;es2021&quot;: true,
+    &quot;node&quot;: true
+  },
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;,
+    &quot;plugin:react-hooks/recommended&quot;,
+    &quot;plugin:jsx-a11y/recommended&quot;,
+    &quot;prettier&quot;
+  ],
+  &quot;plugins&quot;: [
+    &quot;react&quot;,
+    &quot;react-hooks&quot;,
+    &quot;jsx-a11y&quot;,
+    &quot;import&quot;
+  ],
+  &quot;parserOptions&quot;: {
+    &quot;ecmaFeatures&quot;: {
+      &quot;jsx&quot;: true
+    },
+    &quot;ecmaVersion&quot;: 2021,
+    &quot;sourceType&quot;: &quot;module&quot;
+  },
+  &quot;rules&quot;: {
+    &quot;no-console&quot;: [&quot;warn&quot;, { &quot;allow&quot;: [&quot;warn&quot;, &quot;error&quot;] }],
+    &quot;no-unused-vars&quot;: &quot;error&quot;,
+    &quot;no-warning-comments&quot;: [&quot;warn&quot;, { &quot;terms&quot;: [&quot;TODO&quot;, &quot;FIXME&quot;, &quot;XXX&quot;] }],
+    &quot;react/react-in-jsx-scope&quot;: &quot;off&quot;,
+    &quot;react/prop-types&quot;: &quot;warn&quot;,
+    &quot;react-hooks/rules-of-hooks&quot;: &quot;error&quot;,
+    &quot;react-hooks/exhaustive-deps&quot;: &quot;warn&quot;,
+    &quot;import/order&quot;: [
+      &quot;warn&quot;,
+      {
+        &quot;groups&quot;: [
+          &quot;builtin&quot;,
+          &quot;external&quot;,
+          &quot;internal&quot;,
+          &quot;parent&quot;,
+          &quot;sibling&quot;,
+          &quot;index&quot;
+        ],
+        &quot;alphabeticalOrder&quot;: true,
+        &quot;newlines-between&quot;: &quot;always&quot;
+      }
+    ],
+    &quot;import/no-cycle&quot;: &quot;error&quot;,
+    &quot;import/no-unused-modules&quot;: [&quot;warn&quot;, { &quot;unusedExports&quot;: true }],
+    &quot;jsx-a11y/click-events-have-key-events&quot;: &quot;warn&quot;,
+    &quot;jsx-a11y/no-static-element-interactions&quot;: &quot;warn&quot;
+  },
+  &quot;settings&quot;: {
+    &quot;react&quot;: {
+      &quot;version&quot;: &quot;detect&quot;
+    }
+  }
+}
+```
+
+### Step 3: Run Linter Against Codebase
+
+```bash
+npm run lint
+```
+
+**First run typically finds:**
+- 50-200 violations (depending on codebase size)
+- Most are fixable automatically
+
+### Step 4: Auto-fix Issues
+
+```bash
+npm run lint:fix
+```
+
+**Auto-fixes:**
+- ✅ Import order (alphabetizes)
+- ✅ Unused variables (removes)
+- ✅ Extra spaces/formatting
+- ✅ Console.log in production code
+
+**Requires manual review:**
+- ❌ Circular dependencies (need refactoring)
+- ❌ Accessibility issues (need semantic fixes)
+- ❌ Hook dependencies (need logic review)
+
+---
+
+## Before and After: Real Codebase
+
+### Before: First Lint Run
+
+```bash
+$ npm run lint
+
+/src/components/GameScene.jsx
+  Line 1:    Unused variable &#39;debugConfig&#39;
+  Line 45:   console.log statement left in production
+  Line 78:   Imports not in alphabetical order
+  Line 234:  &#39;temperature&#39; used but not in useEffect dependencies
+  Line 412:  Unused import &#39;utils/oldPhysics&#39;
+
+/src/utils/physics.js
+  Line 3:    Circular dependency detected: physics ← roomEnvironment ← physics
+  Line 67:   Unused variable &#39;legacyCalculation&#39;
+  Line 198:  Unused export &#39;deprecatedFunction&#39;
+
+/src/components/ControlPanel.jsx
+  Line 45:   Div with onClick but no keyboard support
+
+... (100+ more issues)
+
+Found 156 errors, 89 warnings
+```
+
+### After: Auto-fix Applied
+
+```bash
+$ npm run lint:fix
+
+156 auto-fixable issues processed:
+  ✅ 45 imports reorganized
+  ✅ 67 unused variables removed
+  ✅ 12 console.log statements removed
+  ✅ 32 imports ordered alphabetically
+
+Manual review required for:
+  ❌ 2 circular dependencies
+  ❌ 3 accessibility issues
+  ❌ 4 hook dependency fixes
+
+$ npm run lint
+Found 9 errors, 3 warnings  ← Much better!
+```
+
+### After Manual Fixes
+
+```bash
+$ npm run lint
+✅ No errors or warnings!
+```
+
+---
+
+## Rules Explained: What Gets Caught
+
+### 1. Import/Order
+
+```javascript
+// ❌ Wrong order
+import lodash from &#39;lodash&#39;
+import React from &#39;react&#39;
+import Button from &#39;./Button&#39;
+import { useState } from &#39;react&#39;
+
+// ✅ Correct order (automatically fixed)
+import React, { useState } from &#39;react&#39;
+
+import lodash from &#39;lodash&#39;
+
+import Button from &#39;./Button&#39;
+```
+
+**Groups:**
+1. Builtins (React, path, fs)
+2. Externals (lodash, axios)
+3. Internals (../utils, ./Button)
+4. Alphabetical within each group
+5. Blank lines between groups
+
+---
+
+### 2. Import/No-Cycle
+
+```javascript
+// ❌ Circular dependency
+// physics.js imports roomEnvironment
+// roomEnvironment.js imports physics
+// This causes bundler errors
+
+// ✅ Fix by extracting shared logic
+// constants.js (no dependencies)
+// ├─ physics.js (imports constants)
+// └─ roomEnvironment.js (imports constants)
+```
+
+---
+
+### 3. React-Hooks/Exhaustive-Deps
+
+```javascript
+// ❌ Missing dependency
+useEffect(() =&gt; {
+  console.log(temperature)  // Uses temperature
+}, [altitude])  // But temperature not listed!
+
+// ✅ Fix by adding dependency
+useEffect(() =&gt; {
+  console.log(temperature)
+}, [altitude, temperature])  // Now includes all used variables
+```
+
+---
+
+### 4. jsx-a11y/Click-Events-Have-Key-Events
+
+```javascript
+// ❌ Not accessible
+&lt;div onClick={handleClick}&gt;Click me&lt;/div&gt;
+
+// ✅ Accessible
+&lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;
+
+// ✅ Or with semantic markup
+&lt;div 
+  onClick={handleClick}
+  onKeyDown={(e) =&gt; e.key === &#39;Enter&#39; &amp;&amp; handleClick()}
+  role=&quot;button&quot;
+  tabIndex={0}
+&gt;Click me&lt;/div&gt;
+```
+
+---
+
+### 5. No-Unused-Vars
+
+```javascript
+// ❌ Unused variable
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const debugMessage = `BP at ${altitude}m`  // Never used
+  return solveAntoine(...)
+}
+
+// ✅ Remove if not needed
+export function calculateBoilingPoint(altitude, fluidProps) {
+  return solveAntoine(...)
+}
+
+// ✅ Or use it
+export function calculateBoilingPoint(altitude, fluidProps) {
+  const debugMessage = `BP at ${altitude}m`
+  console.debug(debugMessage)  // Used
+  return solveAntoine(...)
+}
+```
+
+---
+
+### 6. No-Console
+
+```javascript
+// ⚠️ Warning in production
+console.log(&#39;Debug message&#39;)  // Should be removed or wrapped
+
+// ✅ Allowed (important info)
+console.error(&#39;Physics calculation failed&#39;)
+console.warn(&#39;Water mass went negative&#39;)
+
+// ✅ Wrap in dev check
+if (process.env.NODE_ENV === &#39;development&#39;) {
+  console.log(&#39;Debug: temperature =&#39;, temperature)
+}
+```
+
+---
+
+## Prettier Integration
+
+### The Problem: ESLint ↔ Prettier Conflict
+
+```javascript
+// ESLint wants this:
+const boilingPoint = calculateBoilingPoint(
+  altitude,
+  fluidProps,
+  ambientTemperature
+)
+
+// Prettier wants this:
+const boilingPoint = calculateBoilingPoint(altitude, fluidProps, ambientTemperature)
+
+// Running both creates endless formatting wars
+// You run prettier → ESLint complains → You run ESLint → Prettier complains
+```
+
+### The Solution: eslint-config-prettier
+
+```json
+{
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;,
+    &quot;prettier&quot;  // ← Disable ESLint formatting rules
+  ]
+}
+```
+
+**Now:**
+- ESLint checks code quality only
+- Prettier handles all formatting
+- No conflicts ✅
+
+**package.json scripts:**
+```json
+{
+  &quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;eslint src --ext js,jsx&quot;,
+    &quot;lint:fix&quot;: &quot;eslint src --ext js,jsx --fix&quot;,
+    &quot;format&quot;: &quot;prettier --write \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;,
+    &quot;format:check&quot;: &quot;prettier --check \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;
+  }
+}
+```
+
+---
+
+## Implementation Plan
+
+### Day 1: Setup
+
+```bash
+# 1. Install all missing plugins
+npm install --save-dev \
+  eslint-plugin-import \
+  eslint-plugin-jsx-a11y \
+  eslint-config-prettier
+
+# 2. Update .eslintrc.json (use the complete config above)
+
+# 3. Test it
+npm run lint
+```
+
+### Day 2: Fix Issues
+
+```bash
+# 1. See what needs fixing
+npm run lint
+
+# 2. Auto-fix what we can
+npm run lint:fix
+
+# 3. Manually review and fix remaining issues
+# - Circular dependencies (need refactoring)
+# - Accessibility issues (need semantic HTML)
+# - Hook dependencies (need logic review)
+
+# 4. Verify all green
+npm run lint
+# ✅ No errors or warnings!
+```
+
+---
+
+## Expected Improvements
+
+### Day 1 Lint Run (Unoptimized Codebase)
+
+```
+GameScene.jsx: 67 issues
+ControlPanel.jsx: 23 issues
+physics.js: 45 issues
+roomEnvironment.js: 34 issues
+Other files: 78 issues
+
+Total: 247 issues
+```
+
+### After Auto-fix (Day 2)
+
+```
+GameScene.jsx: 5 issues (requires manual fix)
+ControlPanel.jsx: 2 issues (requires manual fix)
+physics.js: 3 issues (circular deps - requires refactor)
+roomEnvironment.js: 3 issues (circular deps - requires refactor)
+Other files: 8 issues (requires manual fix)
+
+Total: 21 issues (all require thinking, not auto-fixable)
+```
+
+### After Manual Fixes (Day 2)
+
+```
+✅ All checks passing!
+```
+
+---
+
+## Integration with CI/CD
+
+Once complete ESLint is set up, add to CI pipeline:
+
+```yaml
+# .github/workflows/ci.yml
+- name: Lint Code
+  run: npm run lint
+  # Fails the build if linting errors
+```
+
+**Now every push is automatically checked.**
+
+---
+
+## AI-Assisted Coding: Additional Rules
+
+### Why AI Coding Needs Stricter Rules
+
+AI-assisted coding (GitHub Copilot, Cursor, ChatGPT, etc.) introduces specific patterns that need catching:
+
+**Common AI Mistakes:**
+- Generates code with missing error handling
+- Skips edge cases
+- Uses deprecated patterns
+- Creates overly complex solutions (cognitive complexity)
+- Forgets to clean up imports
+- Generates code that compiles but has logical bugs
+- Overuses `console.log` for debugging
+- Uses `any` type in TypeScript excessively
+- Creates long functions without breaking them down
+
+### Additional ESLint Rules for AI Coding
+
+```json
+// .eslintrc.json (AI-specific additions)
+{
+  &quot;rules&quot;: {
+    // Catch AI&#39;s tendency to generate long functions
+    &quot;max-lines-per-function&quot;: [&quot;warn&quot;, {
+      &quot;max&quot;: 100,
+      &quot;skipBlankLines&quot;: true,
+      &quot;skipComments&quot;: true
+    }],
+    
+    // Catch overly complex AI-generated solutions
+    &quot;complexity&quot;: [&quot;warn&quot;, 15],
+    
+    // AI often generates unused variables
+    &quot;no-unused-vars&quot;: &quot;error&quot;,
+    
+    // AI loves console.log for debugging
+    &quot;no-console&quot;: [&quot;warn&quot;, { &quot;allow&quot;: [&quot;error&quot;, &quot;warn&quot;, &quot;info&quot;] }],
+    
+    // Catch magic numbers AI generates
+    &quot;no-magic-numbers&quot;: [&quot;warn&quot;, {
+      &quot;ignore&quot;: [0, 1, -1],
+      &quot;ignoreArrayIndexes&quot;: true,
+      &quot;enforceConst&quot;: true
+    }],
+    
+    // AI sometimes generates unsafe code
+    &quot;no-eval&quot;: &quot;error&quot;,
+    &quot;no-implied-eval&quot;: &quot;error&quot;
+  }
+}
+```
+
+### Security-Focused Plugins for AI Code
+
+```bash
+# Install security plugins
+npm install --save-dev \
+  eslint-plugin-security \
+  eslint-plugin-no-unsanitized
+```
+
+```json
+// .eslintrc.json
+{
+  &quot;plugins&quot;: [
+    &quot;security&quot;,
+    &quot;no-unsanitized&quot;
+  ],
+  &quot;extends&quot;: [
+    &quot;plugin:security/recommended&quot;
+  ],
+  &quot;rules&quot;: {
+    &quot;security/detect-object-injection&quot;: &quot;warn&quot;,
+    &quot;security/detect-non-literal-regexp&quot;: &quot;warn&quot;,
+    &quot;no-unsanitized/method&quot;: &quot;error&quot;,
+    &quot;no-unsanitized/property&quot;: &quot;error&quot;
+  }
+}
+```
+
+**What these catch:**
+- XSS vulnerabilities (AI often misses sanitization)
+- SQL injection patterns
+- Unsafe regex
+- Dangerous object property access
+- innerHTML usage without sanitization
+
+### TypeScript Rules for AI Code
+
+```json
+// .eslintrc.json (with TypeScript)
+{
+  &quot;rules&quot;: {
+    // AI overuses &#39;any&#39; type
+    &quot;@typescript-eslint/no-explicit-any&quot;: &quot;error&quot;,
+    
+    // AI forgets type annotations
+    &quot;@typescript-eslint/explicit-function-return-type&quot;: &quot;warn&quot;,
+    
+    // AI creates unused imports
+    &quot;@typescript-eslint/no-unused-vars&quot;: &quot;error&quot;,
+    
+    // AI sometimes uses non-null assertions unsafely
+    &quot;@typescript-eslint/no-non-null-assertion&quot;: &quot;warn&quot;
+  }
+}
+```
+
+### Pre-commit Hooks for AI Code
+
+```bash
+# Install husky for git hooks
+npm install --save-dev husky lint-staged
+npx husky install
+```
+
+```json
+// package.json
+{
+  &quot;lint-staged&quot;: {
+    &quot;*.{js,jsx,ts,tsx}&quot;: [
+      &quot;eslint --fix&quot;,
+      &quot;prettier --write&quot;
+    ]
+  }
+}
+```
+
+```bash
+# .husky/pre-commit
+#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+npx lint-staged
+npm run type-check
+```
+
+**Blocks AI-generated broken code from being committed.**
+
+### AI Coding Best Practices
+
+1. **Always review AI suggestions** — Don&#39;t blindly accept
+2. **Run linter immediately** — Catch issues before committing
+3. **Test AI-generated code** — AI doesn&#39;t test its own code
+4. **Add type annotations** — AI often skips them
+5. **Check for edge cases** — AI focuses on happy path
+6. **Use Copilot Instructions** — Your `.github/copilot-instructions.md` guides AI behavior
+
+---
+
+## SonarQube / Code Climate: Beyond ESLint
+
+### What is SonarQube?
+
+SonarQube is a **code quality platform** that goes deeper than ESLint. While ESLint catches syntax and style issues, SonarQube analyzes:
+
+**What SonarQube Catches:**
+
+1. **Code Smells** — Maintainability issues
+   - Duplicated code blocks (copy-paste detection)
+   - Long methods (cognitive complexity &gt; 15)
+   - Too many parameters (&gt; 7 params)
+   - Nested ternaries and complex conditionals
+   - God classes (classes doing too much)
+
+2. **Security Vulnerabilities**
+   - SQL injection patterns
+   - XSS vulnerabilities
+   - Hardcoded credentials
+   - Insecure random number generation
+   - Unvalidated redirects
+
+3. **Bugs** — Logical errors
+   - Null pointer dereferences
+   - Infinite loops
+   - Dead code (unreachable)
+   - Resource leaks (unclosed connections)
+   - Race conditions
+
+4. **Technical Debt** — Time to fix issues
+   - Estimates hours to fix each issue
+   - Tracks debt over time
+   - Shows which files are the worst
+
+**Example: SonarQube Finding in Your Code**
+
+```javascript
+// GameScene.jsx - Line 487
+// ❌ SonarQube: &quot;Cognitive Complexity of 43 exceeds limit of 15&quot;
+useEffect(() =&gt; {
+  if (!isPotFilled || !isBurnerOn || !fluidProps) return
+  
+  const interval = setInterval(() =&gt; {
+    if (gameStage === &#39;active&#39;) {
+      if (waterTemp &gt;= boilingPoint - 0.5) {
+        if (roomPressure &gt; 101325) {
+          // ... 40 more lines of nested conditions
+        }
+      }
+    }
+  }, 100)
+  
+  return () =&gt; clearInterval(interval)
+}, [15 dependencies])  // ❌ Too many dependencies
+```
+
+**SonarQube report:**
+- **Cognitive Complexity:** 43 (should be &lt; 15)
+- **Technical Debt:** 2 hours to refactor
+- **Severity:** Major
+- **Recommendation:** Split into smaller functions
+
+### SonarQube vs ESLint
+
+| Feature | ESLint | SonarQube |
+|---------|--------|----------|
+| Syntax errors | ✅ Yes | ✅ Yes |
+| Style issues | ✅ Yes | ✅ Yes |
+| Code duplication | ❌ No | ✅ Yes |
+| Cognitive complexity | ⚠️ Basic | ✅ Advanced |
+| Security vulnerabilities | ⚠️ With plugins | ✅ Built-in |
+| Technical debt tracking | ❌ No | ✅ Yes |
+| Historical trends | ❌ No | ✅ Yes |
+| Multi-language support | ❌ JS only | ✅ 25+ languages |
+| IDE integration | ✅ Excellent | ⚠️ Plugin required |
+| Free tier | ✅ Yes | ✅ Yes (open source) |
+
+### Setup SonarQube (Optional but Recommended)
+
+**Option 1: SonarCloud (Free for open source)**
+
+```bash
+# 1. Sign up at sonarcloud.io with GitHub
+# 2. Import your repository
+# 3. Add to CI/CD pipeline
+```
+
+```yaml
+# .github/workflows/ci.yml
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Full history for blame
+      
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
+
+**Option 2: Code Climate (Alternative)**
+
+```yaml
+# .github/workflows/ci.yml
+- name: Code Climate
+  uses: paambaati/codeclimate-action@v3.0.0
+  env:
+    CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  with:
+    coverageCommand: npm run test:coverage
+```
+
+**Option 3: Local SonarQube (Self-hosted)**
+
+```bash
+# Run SonarQube server locally
+docker run -d -p 9000:9000 sonarqube
+
+# Install scanner
+npm install --save-dev sonarqube-scanner
+```
+
+```javascript
+// sonar-project.js
+const scanner = require(&#39;sonarqube-scanner&#39;)
+
+scanner(
+  {
+    serverUrl: &#39;http://localhost:9000&#39;,
+    options: {
+      &#39;sonar.projectKey&#39;: &#39;boilingwater&#39;,
+      &#39;sonar.sources&#39;: &#39;src&#39;,
+      &#39;sonar.tests&#39;: &#39;src&#39;,
+      &#39;sonar.test.inclusions&#39;: &#39;**/*.test.js,**/*.test.jsx&#39;,
+      &#39;sonar.javascript.lcov.reportPaths&#39;: &#39;coverage/lcov.info&#39;,
+      &#39;sonar.exclusions&#39;: &#39;node_modules/**,build/**,public/**&#39;
+    }
+  },
+  () =&gt; process.exit()
+)
+```
+
+### When to Use SonarQube
+
+**Use SonarQube if:**
+- Team has 3+ developers (collaboration benefits)
+- Codebase &gt; 10,000 lines (debt tracking matters)
+- Security is critical (educational app with user data)
+- Want historical tracking of code quality
+- Need executive reports (technical debt dashboards)
+
+**Skip SonarQube if:**
+- Solo developer on small project (&lt; 5,000 lines)
+- ESLint + TypeScript already catching most issues
+- No CI/CD pipeline yet (set that up first)
+
+**For Boiling Water App:**
+
+✅ **Recommended:** Set up SonarCloud (free)
+- Your GameScene.jsx is 1,857 lines (SonarQube will scream)
+- Helps prioritize which parts to refactor first
+- Tracks improvement as you implement fixes
+- Great for open source visibility
+
+---
+
+## Copilot Instructions: Guide AI Behavior
+
+### What are Copilot Instructions?
+
+GitHub Copilot reads a special file at `.github/copilot-instructions.md` to understand **how you want code written**. Think of it as a style guide that AI actually follows.
+
+**Without Copilot Instructions:**
+```javascript
+// AI generates this (no guidance)
+function getData(id) {
+  const data = db.query(`SELECT * FROM users WHERE id = ${id}`)  // SQL injection!
+  return data
+}
+```
+
+**With Copilot Instructions:**
+```javascript
+// AI follows your rules
+function getUserById(id: number): Promise&lt;User | null&gt; {
+  // Use parameterized queries (per copilot-instructions.md)
+  const data = await db.query(&#39;SELECT * FROM users WHERE id = $1&#39;, [id])
+  return data.rows[0] || null
+}
+```
+
+### Create Copilot Instructions
+
+**File: `.github/copilot-instructions.md`**
+
+```markdown
+# GitHub Copilot Instructions - Boiling Water App
+
+## Code Style
+
+- Use **TypeScript** for all new files (.tsx, not .jsx)
+- Use **functional components** with hooks (no class components)
+- Use **named exports** (not default exports)
+- Prefer `const` over `let`, never use `var`
+- Use **arrow functions** for callbacks
+- Max line length: 100 characters
+
+## Type Safety
+
+- NEVER use `any` type. Use `unknown` if type is truly dynamic.
+- ALWAYS add explicit return types to functions
+- ALWAYS mark optional properties with `?`
+- Use type guards before accessing optional properties
+- No non-null assertions (`!`) without prior null check
+
+## React Patterns
+
+- Components &lt; 300 lines. If longer, split it.
+- Max 10 props per component. Use composition if more.
+- Use custom hooks for shared logic (useRoomEnvironment, usePhysics)
+- Avoid props drilling. Use context for global state.
+- Name event handlers: `handleClick`, `handleSubmit` (not `onClick`, `submit`)
+
+## Physics Code
+
+- All physics functions must have typed parameters
+- Document units in parameter names: `temperatureC`, `pressurePa`, `massKg`
+- Never mix units (Celsius vs Kelvin, Pa vs kPa)
+- Use constants from `src/constants/physics.js`
+- Add references to equations: `// Antoine equation: log10(P) = A - B/(C+T)`
+
+## Error Handling
+
+- ALWAYS add try-catch to async functions
+- Return `null` for expected failures (not throwing)
+- Throw errors for unexpected failures
+- Log errors with context: `console.error(&#39;Failed to load substance:&#39;, id, error)`
+
+## Security
+
+- Use parameterized queries (no string concatenation in SQL)
+- Sanitize user input before rendering
+- No `eval()` or `Function()` constructors
+- Validate all API responses
+- No hardcoded secrets (use environment variables)
+
+## Testing
+
+- Write tests alongside implementation
+- Use descriptive test names: `it(&#39;should return null when Antoine coefficients are missing&#39;)`
+- Test edge cases: null, undefined, empty arrays, negative numbers
+- Mock external dependencies (fetch, timers)
+
+## Examples
+
+### ✅ GOOD: Follow instructions
+
+```typescript
+export function calculateBoilingPoint(
+  altitudeM: number,
+  fluidProps: FluidProperties
+): BoilingPointResult | null {
+  if (!fluidProps?.antoineCoefficients) {
+    return null  // Expected failure
+  }
+  
+  try {
+    const pressurePa = getISAPressure(altitudeM)
+    return solveAntoineEquation(pressurePa, fluidProps)
+  } catch (error) {
+    console.error(&#39;Boiling point calculation failed:&#39;, error)
+    throw error  // Unexpected failure
+  }
+}
+```
+
+### ❌ BAD: Violates instructions
+
+```javascript
+function calc(a, f) {  // No types, unclear names
+  return solveAntoine(getPress(a), f.antoine!)  // Non-null assertion
+}
+```
+
+## AI-Specific Rules
+
+- Don&#39;t generate long functions (&gt; 100 lines). Break them up.
+- Don&#39;t add unused variables or imports
+- Don&#39;t use complex nested ternaries. Use if/else.
+- Don&#39;t skip error handling
+- Don&#39;t forget to clean up effects (return cleanup function)
+```
+
+### How Copilot Uses Instructions
+
+1. **During code completion** — Suggests code matching your rules
+2. **When generating functions** — Follows naming and structure
+3. **When fixing errors** — Applies your error handling patterns
+4. **When refactoring** — Uses your architectural patterns
+
+### Update Instructions as You Learn
+
+Add to `.github/copilot-instructions.md` whenever you:
+- Find a pattern AI gets wrong repeatedly
+- Establish a new convention
+- Discover a security issue
+- Define domain-specific rules (physics units, workshop structure)
+
+**The file evolves with your codebase.**
+
+---
+
+## Benefits Per Rule
+
+| Rule | Catches | Benefit |
+|------|---------|---------|
+| `import/order` | Messy imports | Cleaner code organization |
+| `import/no-cycle` | Circular deps | Prevents runtime crashes |
+| `react-hooks/exhaustive-deps` | Stale state | Physics calculations accurate |
+| `jsx-a11y/*` | Accessibility | Inclusive for all users |
+| `no-unused-vars` | Dead code | Cleaner, smaller bundle |
+| `no-console` | Debug code in prod | Cleaner production logs |
+
+---
+
+## Cost-Benefit Analysis
+
+| Item | Cost | Benefit |
+|------|------|---------|
+| Install plugins | 30 min | Catches 50+ types of bugs |
+| Update ESLint config | 30 min | Production-grade setup |
+| First lint run review | 2-3 hours | Find 200+ existing issues |
+| Auto-fix issues | 30 min | Fix 80% automatically |
+| Manual fixes | 2-4 hours | Fix remaining 20% |
+| Integrate to CI | 1 hour | Automatic checking forever |
+| **Total overhead** | **6-9 hours** | **Prevents all style/quality bugs** |
+
+**Payoff: Immediate (catches issues in development)**
+
+---
+
+## Success Metrics
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Linting coverage | 3 rules | 15+ rules |
+| Circular deps caught | 0% | 100% |
+| Accessibility issues found | 0% | 100% |
+| Dead code detected | 0% | 100% |
+| Hook issues caught | 0% | 100% |
+| Development friction | High | Low |
+
+---
+
+## Timeline and Effort
+
+| Task | Duration |
+|------|----------|
+| Install packages | 30 min |
+| Update config | 30 min |
+| First lint review | 1-2 hours |
+| Auto-fix | 30 min |
+| Manual fixes | 2-4 hours |
+| CI integration | 1 hour |
+| **Total** | **6-9 hours** |
+
+**Calendar: 1-2 days (depending on issues found)**
+
+---
+
+## Related Issues
+
+- [Issue #5: No CI/CD Testing](ISSUE_05_NO_CICD_TESTING.md) (linting runs in CI)
+- [Issue #2: No TypeScript](ISSUE_02_NO_TYPESCRIPT.md) (TS + ESLint = even better)
+- [Remediation Phase 1](../INDUSTRY_STANDARDS_AUDIT.md#phase-1-foundation-weeks-1-2)
+
+---
+
+## Recommendation
+
+**Do this as part of Phase 1:**
+
+1. Install complete ESLint setup (1 day)
+2. Run linter and see what comes up
+3. Auto-fix 80% of issues
+4. Manually review and fix circular dependencies
+5. Commit &quot;refactor: complete ESLint setup&quot;
+6. Integrate into CI pipeline
+
+**No code changes needed, just configuration.**
+
+---
+
+**Status:** Ready for implementation  
+**Blocking:** Code quality standards  
+**Effort:** 1-2 days  
+**Payoff:** Immediate (catches issues in development)  
+**Priority:** P2 - Do after Phase 1 basics
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

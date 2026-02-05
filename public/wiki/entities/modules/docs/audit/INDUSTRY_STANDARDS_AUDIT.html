@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INDUSTRY_STANDARDS_AUDIT.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>INDUSTRY_STANDARDS_AUDIT.md</span>
+        </nav>
+        <div class="wiki-topbar-title">INDUSTRY_STANDARDS_AUDIT.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">INDUSTRY_STANDARDS_AUDIT.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>INDUSTRY_STANDARDS_AUDIT.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\INDUSTRY_STANDARDS_AUDIT.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Industry Standards Audit Report
+
+**Project:** Boiling Water App  
+**Date:** February 4, 2026  
+**Scope:** Codebase review against web development best practices and industry standards
+
+---
+
+## Executive Summary
+
+The Boiling Water project has solid architectural foundations and excellent documentation practices. However, several critical gaps prevent it from meeting production-grade standards:
+
+- **Critical:** No unit tests, no TypeScript, massive component files (1857 lines)
+- **High:** Complex state management via props drilling, no dedicated state library
+- **Medium:** Missing CI/CD testing stages, incomplete linter config, 1500-line CSS files
+- **Low:** TODOs scattered in code, console.log statements, no error boundaries
+
+**Overall Grade:** C+ (Prototype-ready, not production-ready)
+
+---
+
+## 🔴 Critical Issues (Blocker for Production)
+
+### 1. No Unit Tests or Test Framework
+
+**Status:** ❌ Missing  
+**Severity:** Critical  
+**Impact:** No regression detection, untestable code paths, fragile refactoring
+
+**Current State:**
+- No test files (`*.test.js`, `*.spec.js`)
+- No testing library in `package.json`
+- No test configuration (Jest, Vitest, Playwright, etc.)
+
+**Industry Standard:**
+- 70-80% code coverage minimum for production apps
+- Test pyramid: Unit &gt; Integration &gt; E2E
+- Automated testing in CI/CD pipeline
+
+**Recommendations:**
+```bash
+# Add testing infrastructure
+npm install --save-dev vitest @vitest/ui @testing-library/react @testing-library/jest-dom jsdom
+```
+
+**Priority:** P0 - Must have before production  
+**Effort:** 2-3 weeks (to write tests for critical paths)
+
+---
+
+### 2. No TypeScript Type Safety
+
+**Status:** ❌ Missing  
+**Severity:** Critical  
+**Impact:** Runtime errors, IDE assistance gaps, refactoring blind spots
+
+**Current State:**
+```json
+// .eslintrc.json
+&quot;react/prop-types&quot;: &quot;off&quot;  // ← Explicitly disables runtime prop validation
+```
+
+**Examples of untyped code:**
+- [GameScene.jsx](../src/components/GameScene.jsx) (1857 lines) has 30+ props with no types
+- `handleEquipmentChange(equipmentType, equipmentId)` - no validation
+- `roomState` from `useRoomEnvironment()` - no type guarantees
+
+**Industry Standard:**
+- TypeScript with strict mode (`&quot;strict&quot;: true`)
+- Or minimum PropTypes for critical components
+- IDE IntelliSense prevents bugs before runtime
+
+**Recommendations:**
+- Option A (Full): Migrate to TypeScript (4-6 weeks)
+- Option B (Partial): Add PropTypes for critical components (1-2 weeks)
+- Start with: Components, hooks, utils/physics
+
+**Priority:** P0 - Should precede feature expansion  
+**Effort:** 4-6 weeks (full migration)
+
+---
+
+### 3. Massive Monolithic Component Files
+
+**Status:** ❌ Poor design  
+**Severity:** Critical  
+**Impact:** Unmaintainable code, testing nightmares, cognitive overload
+
+**Current State:**
+- [GameScene.jsx](../src/components/GameScene.jsx): **1857 lines**
+  - 50+ state variables
+  - 20+ event handlers
+  - Mixed rendering logic (UI + physics + room + location)
+  - 4 major effects running simultaneously
+
+**Industry Standard:**
+- Components: 100-300 lines max
+- Single responsibility principle
+- Each component does ONE thing well
+
+**Current Violations:**
+```jsx
+// ❌ GameScene handles ALL of this:
+- Physics simulation
+- Pot dragging &amp; positioning
+- Burner controls
+- Location/altitude UI
+- Room environment state
+- Effects/VFX management
+- Boiling detection &amp; stats
+- Educational popups
+```
+
+**Recommended Refactor:**
+```
+&lt;GameScene&gt;                     // 300 lines - orchestrator
+  ├── &lt;GameWindow&gt;            // 400 lines - game render
+  │   ├── &lt;PotComponent&gt;
+  │   ├── &lt;BurnerComponent&gt;
+  │   ├── &lt;WaterStreamComponent&gt;
+  │   └── &lt;EffectsRenderer&gt;
+  ├── &lt;ControlPanel&gt;           // 200 lines - controls
+  │   ├── &lt;BurnerControls&gt;
+  │   ├── &lt;SpeedControls&gt;
+  │   └── &lt;TimerControls&gt;
+  ├── &lt;LocationPopup&gt;          // 300 lines - location UI
+  ├── &lt;BoilingPopup&gt;           // 250 lines - educational overlay
+  └── &lt;RoomControls&gt;           // 150 lines - AC/handlers
+```
+
+**Priority:** P0 - Blocks maintainability  
+**Effort:** 3-4 weeks
+
+---
+
+## 🟡 High-Priority Issues
+
+### 4. No Centralized State Management
+
+**Status:** ❌ Props Drilling  
+**Severity:** High  
+**Impact:** Prop callback hell, state synchronization bugs, testing complexity
+
+**Current State:**
+```jsx
+// App.jsx → GameScene.jsx (11 props passed down)
+&lt;GameScene 
+  stage={stage}
+  location={userLocation}
+  workshopLayout={activeWorkshopData?.layout}
+  workshopImages={activeWorkshopData?.images}
+  workshopEffects={activeWorkshopData?.effects}
+  burnerConfig={activeWorkshopData?.burnerConfig}
+  roomConfig={activeWorkshopData?.room}
+  acUnitConfig={activeWorkshopData?.acUnit}
+  airHandlerConfig={activeWorkshopData?.airHandler}
+  // ... plus 8 callback props (onStageChange, onWaterBoiled, etc.)
+/&gt;
+```
+
+**Industry Standard:**
+- Use Context API or state library for shared state
+- Max 2-3 props per component
+- Callbacks handled via dispatch or custom hooks
+
+**Recommended Solution:** Zustand or React Context
+```javascript
+// ✅ After refactor
+const { gameStage, location, activeFluid, setLocation } = useGameState()
+```
+
+**Priority:** P1  
+**Effort:** 1-2 weeks
+
+---
+
+### 5. No CI/CD Testing Pipeline
+
+**Status:** ⚠️ Incomplete  
+**Severity:** High  
+**Impact:** Bugs slip to production, no regression safety
+
+**Current State:**
+```yaml
+# .github/workflows/deploy.yml
+# Only runs: build → deploy
+# Missing: lint → test → verify
+```
+
+**Industry Standard:**
+```yaml
+stages:
+  - lint (ESLint, Prettier)
+  - test (unit + integration)
+  - build (vite build)
+  - verify (lighthouse, bundle size)
+  - deploy (only if all pass)
+```
+
+**Recommendations:**
+- Add `npm run lint:check` step
+- Add `npm run test:ci` step
+- Add bundle size check (warn on +10% growth)
+- Add Lighthouse audit for performance
+
+**Priority:** P1  
+**Effort:** 1 week
+
+---
+
+## 🟠 Medium-Priority Issues
+
+### 6. Incomplete ESLint Configuration
+
+**Status:** ⚠️ Missing plugins  
+**Severity:** Medium  
+**Impact:** Code style inconsistencies, accessibility issues undetected
+
+**Current Setup:**
+```json
+{
+  &quot;extends&quot;: [&quot;eslint:recommended&quot;, &quot;plugin:react/recommended&quot;],
+  &quot;rules&quot;: {
+    &quot;react/prop-types&quot;: &quot;off&quot;,  // ← Disabled but no TS replacement
+    &quot;no-unused-vars&quot;: &quot;warn&quot;     // ← Too lenient
+  }
+}
+```
+
+**Missing Standard Plugins:**
+- `eslint-plugin-import` (import order, circular deps)
+- `eslint-plugin-jsx-a11y` (accessibility warnings)
+- `eslint-plugin-react-hooks` (hook dependency validation)
+- `eslint-config-prettier` (conflict resolution)
+
+**Recommended Addition:**
+```json
+{
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;,
+    &quot;plugin:react-hooks/recommended&quot;,
+    &quot;plugin:jsx-a11y/recommended&quot;,
+    &quot;prettier&quot;
+  ],
+  &quot;plugins&quot;: [&quot;import&quot;, &quot;jsx-a11y&quot;],
+  &quot;rules&quot;: {
+    &quot;import/order&quot;: [&quot;warn&quot;, { &quot;alphabeticalOrder&quot;: true }],
+    &quot;no-unused-vars&quot;: &quot;error&quot;,
+    &quot;react-hooks/rules-of-hooks&quot;: &quot;error&quot;
+  }
+}
+```
+
+**Priority:** P2  
+**Effort:** 1-2 days
+
+---
+
+### 7. Large CSS Files (1500 Lines)
+
+**Status:** ⚠️ Poor organization  
+**Severity:** Medium  
+**Impact:** CSS maintenance burden, lack of component scoping
+
+**Current State:**
+- [GameScene.css](../src/styles/GameScene.css): 1500 lines in single file
+- [App.css](../src/styles/App.css): 600+ lines
+- No CSS modules or scoping
+
+**Industry Standard:**
+- CSS Modules or Styled Components
+- One stylesheet per component
+- Max 200 lines per file
+
+**Recommended Refactor:**
+```
+src/styles/
+├── GameScene.module.css      // 300 lines - just GameScene internals
+├── components/
+│   ├── Pot.module.css
+│   ├── Burner.module.css
+│   ├── WaterStream.module.css
+│   └── ControlPanel.module.css
+└── shared/
+    ├── variables.css         // CSS custom properties
+    ├── layout.css
+    └── animations.css
+```
+
+**Priority:** P2  
+**Effort:** 2-3 days
+
+---
+
+### 8. No Environment Configuration
+
+**Status:** ❌ Missing  
+**Severity:** Medium  
+**Impact:** Hardcoded values, difficult deployment, security concerns
+
+**Current Issues:**
+- API endpoints hardcoded in components
+- Workshop paths hardcoded (`/assets/workshops/`)
+- No `.env.example` template
+
+**Industry Standard:**
+```bash
+# .env.example
+VITE_API_BASE_URL=https://api.example.com
+VITE_WORKSHOP_PATH=/assets/workshops
+VITE_ANALYTICS_ID=
+
+# .env.development
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+**Recommendations:**
+- Create `.env.example` with all needed variables
+- Use `import.meta.env` in Vite config
+- Document per-environment setup
+
+**Priority:** P2  
+**Effort:** 2-3 days
+
+---
+
+## 🟡 Low-Priority Issues
+
+### 9. Stale TODOs in Production Code
+
+**Status:** ⚠️ Found 2+ TODOs  
+**Severity:** Low  
+**Impact:** Incomplete work mixed with production code
+
+**Examples:**
+```javascript
+// roomEnvironment.js:456
+const ambientPressure = 101325  // TODO: Use location altitude
+
+// calculateBoilingPoint.js:122
+// TODO: Get solvent molar mass and ΔHvap from JSON for non-water solvents
+```
+
+**Industry Standard:**
+- TODOs tracked as GitHub issues, not in code
+- Code review should require TODOs be resolved
+- Use linter rule to warn on TODOs in production
+
+**Recommendation:**
+```json
+// .eslintrc.json
+&quot;no-warning-comments&quot;: [&quot;warn&quot;, { &quot;terms&quot;: [&quot;TODO&quot;, &quot;FIXME&quot;, &quot;XXX&quot;] }]
+```
+
+**Priority:** P3  
+**Effort:** 1 day
+
+---
+
+### 10. Console.log Statements in Production Code
+
+**Status:** ⚠️ Found in GameScene.jsx  
+**Severity:** Low  
+**Impact:** Unnecessary log pollution, poor user experience, performance hit
+
+**Examples:**
+```javascript
+console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
+console.log(`   Boiling point (sea level): ${props.boilingPointSeaLevel}°C`)
+console.log(`💨 Pre-boil evap: ${(evapResult.massEvaporatedKg * 1000).toFixed(3)}g...`)
+```
+
+**Industry Standard:**
+- Use logging library with levels (DEBUG, INFO, WARN, ERROR)
+- Logs disabled in production
+- Enable via feature flag in dev console
+
+**Recommendations:**
+```javascript
+// Install: npm install loglevel
+import log from &#39;loglevel&#39;
+log.setDefaultLevel(&#39;info&#39;)  // or &#39;debug&#39; in dev
+
+log.debug(`Loaded fluid: ${props.name}`)  // Hidden in production
+log.warn(`Pre-boil evap too high: ${value}g`)  // Always shown
+```
+
+**Priority:** P3  
+**Effort:** 1-2 days
+
+---
+
+### 11. No Error Boundaries
+
+**Status:** ❌ Missing  
+**Severity:** Low (but important for UX)  
+**Impact:** Single component crash crashes entire app
+
+**Current State:**
+- No `&lt;ErrorBoundary&gt;` component
+- Unhandled Promise rejections crash the app
+
+**Industry Standard:**
+- Wrap routes/major sections in ErrorBoundary
+- Graceful error UI with retry options
+- Error logging service integration
+
+**Recommendations:**
+```jsx
+&lt;ErrorBoundary fallback={&lt;ErrorScreen /&gt;}&gt;
+  &lt;GameScene /&gt;
+&lt;/ErrorBoundary&gt;
+```
+
+**Priority:** P3  
+**Effort:** 3-5 days
+
+---
+
+### 12. No Bundle Analysis Configuration
+
+**Status:** ❌ Missing  
+**Severity:** Low  
+**Impact:** Unknown bundle size growth, potential performance issues
+
+**Current State:**
+- No bundle size monitoring
+- No lazy loading analysis
+- Vite build succeeds without warnings on size growth
+
+**Industry Standard:**
+- webpack-bundle-analyzer or vite-plugin-bundle-visualizer
+- Bundle size limits in CI/CD
+- Lazy code splitting for routes
+
+**Recommendations:**
+```bash
+npm install --save-dev vite-plugin-visualizer
+```
+
+**Priority:** P3  
+**Effort:** 2-3 days
+
+---
+
+### 13. Placeholder Author in package.json
+
+**Status:** ⚠️ Needs update  
+**Severity:** Low  
+**Impact:** Package metadata incomplete
+
+**Current:**
+```json
+&quot;author&quot;: &quot;Your Name&quot;
+```
+
+**Should be:**
+```json
+&quot;author&quot;: &quot;Boiling Water Team &lt;team@boilingwater.app&gt; (https://boilingwater.app)&quot;
+```
+
+**Priority:** P3  
+**Effort:** 15 minutes
+
+---
+
+## ✅ What&#39;s Done Well
+
+The project demonstrates excellent practices in several areas:
+
+| Area | Status | Notes |
+|------|--------|-------|
+| **Linting** | ✅ | ESLint + Prettier configured |
+| **Documentation** | ✅ | Comprehensive architecture docs in `/docs` |
+| **Git Workflow** | ✅ | GitHub templates, issue templates |
+| **Versioning** | ✅ | Semantic versioning in package.json |
+| **Code Organization** | ✅ | src/utils, src/components, src/constants well separated |
+| **CSS Architecture** | ✅ | CSS custom properties for theming |
+| **Build Tooling** | ✅ | Modern Vite setup with proper config |
+
+---
+
+## Remediation Roadmap
+
+### Phase 1: Foundation (Weeks 1-2)
+**Goal:** Make code production-safe
+
+- [ ] Add PropTypes or migrate to TypeScript
+- [ ] Set up unit testing (Vitest + React Testing Library)
+- [ ] Update ESLint with missing plugins
+- [ ] Add CI/CD testing stage
+
+**Effort:** 2-3 weeks  
+**Blockers:** None
+
+### Phase 2: Architecture (Weeks 3-5)
+**Goal:** Improve maintainability
+
+- [ ] Refactor GameScene (1857 → 300 lines)
+- [ ] Implement state management (Context or Zustand)
+- [ ] Split CSS files into modules
+- [ ] Add Error Boundaries
+
+**Effort:** 2-3 weeks  
+**Blockers:** Phase 1 completion
+
+### Phase 3: Polish (Week 6)
+**Goal:** Production readiness
+
+- [ ] Add bundle analysis
+- [ ] Replace console.log with logging library
+- [ ] Create .env.example
+- [ ] Migrate TODOs to GitHub issues
+- [ ] Update package.json metadata
+
+**Effort:** 1 week  
+**Blockers:** None
+
+---
+
+## Success Metrics
+
+Once completed, target:
+
+| Metric | Target | Current |
+|--------|--------|---------|
+| Test Coverage | 70%+ | 0% |
+| ESLint Errors | 0 | Unknown |
+| TypeScript Strict | Yes | No |
+| Average Component Size | &lt;300 lines | 1857 lines |
+| CI/CD Stages | 5+ | 1 (deploy only) |
+| Bundle Warnings | 0 | Unknown |
+
+---
+
+## Conclusion
+
+The Boiling Water App is an **excellent prototype** with solid physics implementation and great documentation. However, to move to production, it needs:
+
+1. **Unit tests** (critical)
+2. **TypeScript** or PropTypes (critical)
+3. **Component refactoring** (critical)
+4. **State management** (high)
+5. **CI/CD testing** (high)
+
+Following the 3-phase remediation roadmap above will bring the project to production-grade quality within **6-8 weeks**.
+
+---
+
+**Report Generated:** February 4, 2026  
+**Reviewer:** GitHub Copilot  
+**Status:** Ready for implementation planning
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

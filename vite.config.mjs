@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { visualizer } from 'rollup-plugin-visualizer'
 import fs from 'fs'
 import path from 'path'
 
@@ -39,7 +40,7 @@ const generatePrecacheManifest = () => {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => ({
   plugins: [
     react(),
     {
@@ -74,8 +75,15 @@ export default defineConfig(({ command }) => ({
           return next()
         })
       }
-    }
-  ],
+    },
+    // Bundle analysis visualization
+    mode === 'analyze' && visualizer({
+      open: true,
+      filename: 'dist/stats.html',
+      gzipSize: true,
+      brotliSize: true
+    })
+  ].filter(Boolean),
   base: command === 'build' ? './' : '/',
   server: {
     port: 3000,

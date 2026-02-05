@@ -16,22 +16,39 @@
     "build": "npm run generate-catalog && npm run wiki:build && npm run wiki:sync && vite build",
     "preview": "npm run generate-catalog && vite preview",
     "lint": "eslint src --ext js,jsx",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\"",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "build:analyze": "vite build --mode analyze"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-no-unsanitized": "^4.1.4",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "kekule": "^1.0.3",
+    "eslint-plugin-security": "^3.0.1",
     "glob": "^13.0.0",
+    "jsdom": "^28.0.0",
+    "kekule": "^1.0.3",
     "prettier": "^3.1.1",
+    "rollup-plugin-visualizer": "^6.0.5",
     "sharp": "^0.34.5",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vitest": "^4.0.18"
   },
   "overrides": {
     "esbuild": "0.25.12"

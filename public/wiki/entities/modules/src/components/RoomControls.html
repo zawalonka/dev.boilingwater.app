@@ -213,13 +213,14 @@ function RoomControls({
 
       {/* AC On/Off Toggle */}
       &lt;div className=&quot;room-control-group&quot;&gt;
-        &lt;label className=&quot;control-label&quot;&gt;
+        &lt;label htmlFor=&quot;ac-toggle-button&quot; className=&quot;control-label&quot;&gt;
           &lt;span&gt;❄️ AC Unit&lt;/span&gt;
         &lt;/label&gt;
         &lt;span id=&quot;ac-toggle-help&quot; className=&quot;sr-only&quot;&gt;
           Toggle the AC system on or off.
         &lt;/span&gt;
         &lt;button 
+                    id=&quot;ac-toggle-button&quot;
           type=&quot;button&quot;
           className={`ac-toggle ${summary?.acEnabled ? &#39;active&#39; : &#39;&#39;}`}
           onClick={() =&gt; onAcEnabledChange?.(!summary?.acEnabled)}
@@ -296,7 +297,7 @@ function RoomControls({
 
       {/* Air Handler On/Off Toggle */}
       &lt;div className=&quot;room-control-group&quot;&gt;
-        &lt;label className=&quot;control-label&quot;&gt;
+        &lt;label htmlFor=&quot;air-handler-toggle-button&quot; className=&quot;control-label&quot;&gt;
           &lt;span&gt;🔄 Scrubber&lt;/span&gt;
         &lt;/label&gt;
         &lt;span id=&quot;air-handler-toggle-help&quot; className=&quot;sr-only&quot;&gt;

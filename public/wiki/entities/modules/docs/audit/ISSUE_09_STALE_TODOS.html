@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISSUE_09_STALE_TODOS.md - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>ISSUE_09_STALE_TODOS.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ISSUE_09_STALE_TODOS.md</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">ISSUE_09_STALE_TODOS.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ISSUE_09_STALE_TODOS.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\ISSUE_09_STALE_TODOS.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># Issue #9: Stale TODOs and FIXME Comments
+
+**Severity:** 🟡 Low  
+**Status:** ⚠️ Code contamination  
+**Priority:** P3  
+**Effort:** 1 day
+
+---
+
+## What It Means
+
+Your codebase has **scattered TODO/FIXME comments** left from incomplete work. These clutter the code, confuse developers, and make it hard to know what&#39;s intentional vs. incomplete.
+
+```javascript
+// Current state: Scattered TODOs
+export function calculateBoilingPoint(altitude, fluidProps) {
+  // TODO: Handle negative altitude?
+  // FIXME: This doesn&#39;t work at high altitude
+  // XXX: Make this more efficient
+  const pressure = calculatePressureISA(altitude)
+  
+  // TODO: Add caching here
+  const bp = solveAntoine(pressure, fluidProps)
+  
+  // FIXME: Temperature validation needed
+  return bp
+}
+
+// Problems:
+// ❌ Are these important or abandoned?
+// ❌ Is negative altitude a real issue or forgotten?
+// ❌ Is caching needed or nice-to-have?
+// ❌ Creates confusion when reading code
+```
+
+**Current state:** Dozens of TODOs scattered throughout code.  
+**After fix:** Either implement them, close as issues, or delete.
+
+---
+
+## Why It&#39;s A Problem
+
+### 1. Creates Cognitive Load
+
+```javascript
+// Developer reads code, sees TODO
+function simulateTimeStep(state, heat, deltaTime, fluidProps) {
+  // TODO: Verify this calculation at extreme temperatures
+  const newTemp = state.temperature + (heat / state.waterMass) * deltaTime
+  
+  // New developer thinks:
+  // - Is this calculation wrong?
+  // - Should I avoid it?
+  // - Is it safe to use?
+  // - Do I need to fix this first?
+  
+  // Wastes 5-10 minutes investigating
+}
+```
+
+### 2. Obscures What&#39;s Done
+
+```javascript
+// Old code with abandoned TODO
+export function applyAcControl(roomTemp, setpoint, acUnit, pidState, deltaTime) {
+  // TODO: Implement integral windup guard
+  const error = setpoint - roomTemp
+  const integral = pidState.integral + error * deltaTime  // Missing bounds
+  
+  // Is this unfinished work or intentional?
+  // Should we fix it?
+  // Is it causing bugs?
+```
+
+### 3. Accumulates Over Time
+
+```javascript
+// After 6 months of development:
+// 15 TODOs
+// 8 FIXMEs
+// 3 XXXs
+// 2 HAXXs
+// 1 HACK
+// = 29 scattered incomplete thoughts
+
+// New developer: &quot;Which ones are important?&quot;
+// Dev team: *shrug* &quot;Not sure, they&#39;re all old&quot;
+```
+
+### 4. Fails Code Review
+
+```javascript
+// Pull Request Review:
+// Reviewer: &quot;There&#39;s a TODO here. Is this complete?&quot;
+// Author: &quot;Yeah, it&#39;s fine, just a note&quot;
+// Reviewer: &quot;Should we document what it means?&quot;
+// Author: &quot;Not sure, it was there when I started&quot;
+
+// Review goes back and forth
+// Time wasted on abandoned comments
+```
+
+---
+
+## Real Bugs From Stale TODOs
+
+### Bug #1: Abandoned Safety Check
+
+```javascript
+// src/utils/physics.js
+export function calculateBoilingPoint(altitude, fluidProps) {
+  // TODO: Validate altitude is between -500m and 100km
+  const pressure = calculatePressureISA(altitude)
+  
+  // Two years later...
+  // Someone passes -50,000m (underground/invalid)
+  // ISA model breaks down
+  // Physics calculation returns NaN
+  // UI shows &quot;Boiling point: NaN°C&quot;
+  // Bug report: &quot;Calculator is broken&quot;
+
+  const bp = solveAntoine(pressure, fluidProps)
+  return bp
+}
+
+// TODO was a reminder to add validation
+// But it was forgotten
+// Bug only discovered in production
+```
+
+### Bug #2: Performance Regression
+
+```javascript
+// src/utils/substanceLoader.js
+export async function loadSubstance(id) {
+  // TODO: Add caching to avoid reloading
+  const response = await fetch(`/api/substances/${id}`)
+  const data = await response.json()
+  return data
+}
+
+// Every time substance loads, fetches from API
+// Could load same substance 10 times per experiment
+// 10x slower than necessary
+// Users complain: &quot;App is sluggish&quot;
+
+// TODO was reminder for optimization
+// But it was forgotten
+// Performance degradation unnoticed
+```
+
+### Bug #3: Missing Error Handling
+
+```javascript
+// src/components/GameScene.jsx
+useEffect(() =&gt; {
+  // TODO: Handle loading state and errors
+  const loadWorkshop = async () =&gt; {
+    const workshop = await fetch(&#39;/api/workshops/&#39; + activeWorkshop)
+    return workshop.json()
+  }
+  
+  loadWorkshop()
+}, [activeWorkshop])
+
+// Network error happens
+// No error handling (TODO was never done)
+// Promise rejected silently
+// UI stuck in inconsistent state
+// Users see broken UI
+```
+
+---
+
+## Current TODO Accumulation
+
+### Types of Scattered TODOs
+
+```javascript
+// Type 1: Abandoned feature
+// TODO: Implement room pressure calculation
+
+// Type 2: Forgotten optimization
+// TODO: Memoize this function
+
+// Type 3: Safety reminder (forgotten)
+// TODO: Validate input parameters
+
+// Type 4: Unclear note
+// FIXME: This seems wrong?
+
+// Type 5: Old code comment
+// XXX: Need to rewrite this
+
+// Type 6: Hackish fix
+// HACK: Temporary workaround for bug #123
+
+// Type 7: Non-standard marker
+// FIX
+// TEMP
+// KLUDGE
+// NOLINT
+```
+
+**Problem:** No structure, no priority, no ownership, no deadline.
+
+---
+
+## Solution: Handle Every TODO
+
+### Option 1: Implement It
+
+```javascript
+// Before:
+export function calculateBoilingPoint(altitude, fluidProps) {
+  // TODO: Handle negative altitude
+  const pressure = calculatePressureISA(altitude)
+  const bp = solveAntoine(pressure, fluidProps)
+  return bp
+}
+
+// After:
+export function calculateBoilingPoint(altitude, fluidProps) {
+  if (altitude &lt; -500) {
+    throw new Error(&#39;Altitude cannot be below -500m (deepest ocean)&#39;)
+  }
+  const pressure = calculatePressureISA(altitude)
+  const bp = solveAntoine(pressure, fluidProps)
+  return bp
+}
+
+// Remove TODO, add validation
+```
+
+### Option 2: Create a GitHub Issue
+
+```javascript
+// Before:
+export async function loadSubstance(id) {
+  // TODO: Implement caching to reduce API calls
+  const response = await fetch(`/api/substances/${id}`)
+  return response.json()
+}
+
+// After:
+export async function loadSubstance(id) {
+  const response = await fetch(`/api/substances/${id}`)
+  return response.json()
+}
+
+// Remove TODO, create GitHub Issue:
+// Title: &quot;Performance: Implement substance loading cache&quot;
+// Priority: Medium
+// Effort: 2-4 hours
+// Owned by: @developer
+
+// Comment in code if critical:
+// Note: See issue #247 for caching implementation
+```
+
+### Option 3: Delete It
+
+```javascript
+// Before:
+export function simulateTimeStep(state, heat, deltaTime, fluidProps) {
+  // TODO: Maybe optimize this loop?
+  const newTemp = state.temperature + (heat / state.waterMass) * deltaTime
+  return { ...state, temperature: newTemp }
+}
+
+// After:
+export function simulateTimeStep(state, heat, deltaTime, fluidProps) {
+  const newTemp = state.temperature + (heat / state.waterMass) * deltaTime
+  return { ...state, temperature: newTemp }
+}
+
+// If optimization isn&#39;t planned, remove speculative TODO
+```
+
+---
+
+## Finding All TODOs
+
+### Command to Find Them
+
+```bash
+# Find all TODO-like comments
+grep -r &quot;TODO\|FIXME\|XXX\|HACK\|BUG\|KLUDGE&quot; src/ --include=&quot;*.js&quot; --include=&quot;*.jsx&quot;
+
+# Output:
+# src/components/GameScene.jsx:234:    // TODO: Memoize this component
+# src/utils/physics.js:45:    // FIXME: Handle negative values
+# src/utils/workshopLoader.js:12:    // XXX: This seems inefficient
+```
+
+### ESLint Plugin to Flag Them
+
+```bash
+# Install ESLint rule for TODOs
+npm install --save-dev eslint-plugin-no-warning-comments
+```
+
+```json
+// .eslintrc.json
+{
+  &quot;plugins&quot;: [&quot;no-warning-comments&quot;],
+  &quot;rules&quot;: {
+    &quot;no-warning-comments&quot;: [
+      &quot;warn&quot;,
+      {
+        &quot;terms&quot;: [&quot;TODO&quot;, &quot;FIXME&quot;, &quot;XXX&quot;, &quot;HACK&quot;],
+        &quot;location&quot;: &quot;anywhere&quot;
+      }
+    ]
+  }
+}
+```
+
+**Now ESLint warns about TODOs during development:**
+```bash
+npm run lint
+
+src/components/GameScene.jsx
+  234:12  warning  Unexpected &#39;TODO&#39; comment  no-warning-comments
+  567:8   warning  Unexpected &#39;FIXME&#39; comment  no-warning-comments
+```
+
+---
+
+## Standardized TODO Format
+
+### Good TODO (Actionable)
+
+```javascript
+// TODO(2026-02-04): Implement altitude validation for calculateBoilingPoint
+// Reason: Users can pass invalid altitudes (&lt; -500m or &gt; 100km)
+// Issue: #247
+// Owner: @developer-name
+if (altitude &lt; -500 || altitude &gt; 100000) {
+  throw new Error(&#39;Altitude out of bounds&#39;)
+}
+```
+
+**Format:** `TODO(DATE): Description of what, reason why, issue number, owner`
+
+### Bad TODO (Vague)
+
+```javascript
+// TODO: Fix this?
+// FIXME: Make better
+// XXX: Don&#39;t touch this
+```
+
+---
+
+## Implementation Plan
+
+### Phase 1: Audit (2 hours)
+
+```bash
+# 1. Find all TODOs
+grep -r &quot;TODO\|FIXME\|XXX\|HACK&quot; src/ --include=&quot;*.js&quot; --include=&quot;*.jsx&quot; &gt; todos.txt
+
+# 2. Read each one
+# 3. Categorize: Implement / Create Issue / Delete
+
+# Example output:
+# src/utils/physics.js:45 - TODO: Validate altitude
+#   → Implement (10 min)
+#
+# src/components/GameScene.jsx:234 - FIXME: Memoize component
+#   → Create Issue #248, Priority: Medium
+#
+# src/utils/workshopLoader.js:12 - XXX: Rewrite this someday
+#   → Delete (speculation, not actionable)
+```
+
+### Phase 2: Categorize (1 hour)
+
+**Implement (15 TODOs):** High-impact, quick fixes
+- Validation checks
+- Error handling
+- Safety guards
+
+**Create Issues (8 TODOs):** Enhancements, optimizations
+- Performance improvements
+- Feature completeness
+- Refactoring
+
+**Delete (7 TODOs):** Abandoned, speculative, vague
+- &quot;Fix this?&quot;
+- &quot;Make better&quot;
+- &quot;Someday maybe&quot;
+
+### Phase 3: Implement &amp; Fix (4-6 hours)
+
+```bash
+# For each &quot;Implement&quot; TODO:
+1. Understand what it was asking
+2. Implement the fix
+3. Remove the TODO
+4. Test the change
+
+# For each &quot;Create Issue&quot; TODO:
+1. Remove the TODO from code
+2. Create GitHub Issue with:
+   - Title
+   - Description
+   - Why it matters
+   - Effort estimate
+   - Priority
+```
+
+### Phase 4: Add ESLint Rule (30 minutes)
+
+```bash
+# Prevent new TODOs from accumulating
+npm install --save-dev eslint-plugin-no-warning-comments
+
+# Update .eslintrc.json to flag any new TODOs
+```
+
+---
+
+## Benefits Summary
+
+| Aspect | Before | After |
+|--------|--------|-------|
+| **Code clarity** | Cluttered with TODOs | Clean, no ambiguity |
+| **Developer confusion** | &quot;Is this intentional?&quot; | Clear intent |
+| **Bug prevention** | Forgotten safety checks | Implemented or tracked |
+| **Onboarding** | New devs waste time on old TODOs | Clear what&#39;s done |
+| **Future work** | Scattered in code | Tracked in GitHub Issues |
+
+---
+
+## Timeline and Effort
+
+| Task | Duration |
+|------|----------|
+| Find all TODOs | 30 min |
+| Audit and categorize | 1-2 hours |
+| Implement quick fixes | 2-4 hours |
+| Create GitHub Issues | 1 hour |
+| Add ESLint rule | 30 min |
+| **Total** | **5-8 hours** |
+
+**Calendar: 1 day**
+
+---
+
+## Integration with Other Issues
+
+- [Issue #6: Incomplete ESLint](ISSUE_06_INCOMPLETE_ESLINT.md) (ESLint can flag TODOs)
+- [Remediation Phase 3](../INDUSTRY_STANDARDS_AUDIT.md#phase-3-polish-week-6)
+
+---
+
+## Recommendation
+
+**Do this in Phase 3 (Polish):**
+
+1. Find all TODOs: `grep -r &quot;TODO\|FIXME\|XXX&quot; src/`
+2. Audit each one (quick mental categorization)
+3. Implement important safety checks (2-4 hours)
+4. Create GitHub Issues for enhancements (1 hour)
+5. Delete vague/speculative TODOs (30 min)
+6. Add ESLint rule to prevent future accumulation (30 min)
+7. Commit &quot;refactor: resolve stale TODOs and FIXME comments&quot;
+
+**Payoff:** Cleaner code, less developer confusion, no forgotten bugs.
+
+---
+
+**Status:** Ready for implementation  
+**Blocking:** Code cleanliness  
+**Effort:** 1 day  
+**Payoff:** Cleaner codebase, no forgotten safety checks  
+**Priority:** P3 - Low priority, do in Phase 3
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>
