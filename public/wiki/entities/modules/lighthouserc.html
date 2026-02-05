@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boilingwater Wiki - Boiling Water Wiki</title>
+  <title>lighthouserc.json - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
   <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
@@ -53,45 +53,70 @@
           </nav>
         </details>
         
-        <div class="wiki-topbar-title">Boilingwater Wiki</div>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <span>lighthouserc.json</span>
+        </nav>
+        <div class="wiki-topbar-title">lighthouserc.json</div>
       </header>
       <main class="wiki-content">
         
         <article class="wiki-article">
           
-    <section class="section">
-      <h1>Boilingwater Wiki</h1>
-      <p>Static knowledge base generated from in-repo data.</p>
-    </section>
-    <section class="section">
-      <div class="portal-grid">
-        <div class="portal-box">
-          <h3>Substances</h3>
-          <ul><li><a href="/wiki/entities/elements/index.html">Elements (118)</a></li><li><a href="/wiki/entities/compounds/index.html">Compounds (11)</a></li><li><a href="/wiki/entities/solutions/index.html">Solutions (1)</a></li><li><a href="/wiki/entities/phases/index.html">Phases (24)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Experiments</h3>
-          <ul><li><a href="/wiki/entities/levels/index.html">Levels (3)</a></li><li><a href="/wiki/entities/experiments/index.html">Experiments (5)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Utils</h3>
-          <ul><li><a href="/wiki/entities/formulas/index.html">Formulas (13)</a></li><li><a href="/wiki/entities/processes/index.html">Processes (17)</a></li><li><a href="/wiki/entities/modules/index.html">Modules (399)</a></li><li><a href="/wiki/entities/symbols/index.html">Symbols (128)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Public Files</h3>
-          <ul><li><a href="/wiki/entities/public/index.html">Workshops (4)</a></li><li><a href="/wiki/entities/public/burners/index.html">Burners (8)</a></li><li><a href="/wiki/entities/public/ac-units/index.html">AC Units (8)</a></li><li><a href="/wiki/entities/public/air-handlers/index.html">Air Handlers (8)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Repository</h3>
-          <ul><li><a href="/wiki/entities/docs/index.html">Docs (42)</a></li><li><a href="/wiki/entities/scripts/index.html">Scripts (10)</a></li><li><a href="/wiki/entities/styles/index.html">Styles (5)</a></li><li><a href="/wiki/entities/root-files/index.html">Root Files (12)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Code Health</h3>
-          <ul><li><a href="/wiki/entities/reports/dead-code.html">Dead Code Report</a></li><li><a href="/wiki/entities/reports/orphan-symbols.html">Orphan Symbols</a></li><li><a href="/wiki/entities/reports/orphan-scripts.html">Orphan Scripts</a></li></ul>
-        </div>
+      
+    <aside class="infobox">
+      <div class="infobox-title">lighthouserc.json</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
       </div>
-    </section>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">json</div>
+      </div>
+    
+    </aside>
   
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>lighthouserc.json</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>lighthouserc.json</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-json">{
+  &quot;ci&quot;: {
+    &quot;collect&quot;: {
+      &quot;url&quot;: [&quot;http://localhost:3000&quot;],
+      &quot;startServerCommand&quot;: &quot;npm run preview&quot;,
+      &quot;numberOfRuns&quot;: 3
+    },
+    &quot;assert&quot;: {
+      &quot;preset&quot;: &quot;lighthouse:recommended&quot;,
+      &quot;assertions&quot;: {
+        &quot;categories:performance&quot;: [&quot;warn&quot;, {&quot;minScore&quot;: 0.85}],
+        &quot;categories:accessibility&quot;: [&quot;error&quot;, {&quot;minScore&quot;: 0.90}],
+        &quot;categories:best-practices&quot;: [&quot;warn&quot;, {&quot;minScore&quot;: 0.85}],
+        &quot;categories:seo&quot;: [&quot;warn&quot;, {&quot;minScore&quot;: 0.80}]
+      }
+    },
+    &quot;upload&quot;: {
+      &quot;target&quot;: &quot;temporary-public-storage&quot;
+    }
+  }
+}
+</code></pre>
+        </details>
+      </section>
+    
         </article>
       </main>
     </div>

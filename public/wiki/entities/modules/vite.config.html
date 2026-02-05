@@ -94,6 +94,7 @@
           <summary>View source code</summary>
           <pre class="line-numbers"><code class="language-javascript">import { defineConfig } from &#39;vite&#39;
 import react from &#39;@vitejs/plugin-react&#39;
+import { visualizer } from &#39;rollup-plugin-visualizer&#39;
 import fs from &#39;fs&#39;
 import path from &#39;path&#39;
 
@@ -133,7 +134,7 @@ const generatePrecacheManifest = () =&gt; {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) =&gt; ({
+export default defineConfig(({ command, mode }) =&gt; ({
   plugins: [
     react(),
     {
@@ -168,8 +169,15 @@ export default defineConfig(({ command }) =&gt; ({
           return next()
         })
       }
-    }
-  ],
+    },
+    // Bundle analysis visualization
+    mode === &#39;analyze&#39; &amp;&amp; visualizer({
+      open: true,
+      filename: &#39;dist/stats.html&#39;,
+      gzipSize: true,
+      brotliSize: true
+    })
+  ].filter(Boolean),
   base: command === &#39;build&#39; ? &#39;./&#39; : &#39;/&#39;,
   server: {
     port: 3000,

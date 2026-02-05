@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boilingwater Wiki - Boiling Water Wiki</title>
+  <title>vitest.config.js - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
   <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
@@ -53,45 +53,94 @@
           </nav>
         </details>
         
-        <div class="wiki-topbar-title">Boilingwater Wiki</div>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <span>vitest.config.js</span>
+        </nav>
+        <div class="wiki-topbar-title">vitest.config.js</div>
       </header>
       <main class="wiki-content">
         
         <article class="wiki-article">
           
-    <section class="section">
-      <h1>Boilingwater Wiki</h1>
-      <p>Static knowledge base generated from in-repo data.</p>
-    </section>
-    <section class="section">
-      <div class="portal-grid">
-        <div class="portal-box">
-          <h3>Substances</h3>
-          <ul><li><a href="/wiki/entities/elements/index.html">Elements (118)</a></li><li><a href="/wiki/entities/compounds/index.html">Compounds (11)</a></li><li><a href="/wiki/entities/solutions/index.html">Solutions (1)</a></li><li><a href="/wiki/entities/phases/index.html">Phases (24)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Experiments</h3>
-          <ul><li><a href="/wiki/entities/levels/index.html">Levels (3)</a></li><li><a href="/wiki/entities/experiments/index.html">Experiments (5)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Utils</h3>
-          <ul><li><a href="/wiki/entities/formulas/index.html">Formulas (13)</a></li><li><a href="/wiki/entities/processes/index.html">Processes (17)</a></li><li><a href="/wiki/entities/modules/index.html">Modules (399)</a></li><li><a href="/wiki/entities/symbols/index.html">Symbols (128)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Public Files</h3>
-          <ul><li><a href="/wiki/entities/public/index.html">Workshops (4)</a></li><li><a href="/wiki/entities/public/burners/index.html">Burners (8)</a></li><li><a href="/wiki/entities/public/ac-units/index.html">AC Units (8)</a></li><li><a href="/wiki/entities/public/air-handlers/index.html">Air Handlers (8)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Repository</h3>
-          <ul><li><a href="/wiki/entities/docs/index.html">Docs (42)</a></li><li><a href="/wiki/entities/scripts/index.html">Scripts (10)</a></li><li><a href="/wiki/entities/styles/index.html">Styles (5)</a></li><li><a href="/wiki/entities/root-files/index.html">Root Files (12)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Code Health</h3>
-          <ul><li><a href="/wiki/entities/reports/dead-code.html">Dead Code Report</a></li><li><a href="/wiki/entities/reports/orphan-symbols.html">Orphan Symbols</a></li><li><a href="/wiki/entities/reports/orphan-scripts.html">Orphan Scripts</a></li></ul>
-        </div>
+      
+    <aside class="infobox">
+      <div class="infobox-title">vitest.config.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
       </div>
-    </section>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">vitest/config</span>, <span class="external-import">@vitejs/plugin-react</span>, <span class="external-import">path</span></div>
+      </div>
+    
+    </aside>
   
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>vitest.config.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>vitest.config.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">import { defineConfig } from &#39;vitest/config&#39;
+import react from &#39;@vitejs/plugin-react&#39;
+import path from &#39;path&#39;
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: &#39;jsdom&#39;,
+    setupFiles: &#39;./src/test/setup.js&#39;,
+    css: true,
+    coverage: {
+      provider: &#39;v8&#39;,
+      reporter: [&#39;text&#39;, &#39;json&#39;, &#39;html&#39;, &#39;lcov&#39;],
+      exclude: [
+        &#39;node_modules/&#39;,
+        &#39;src/test/&#39;,
+        &#39;**/*.config.js&#39;,
+        &#39;scripts/&#39;,
+        &#39;public/&#39;,
+        &#39;wiki/&#39;,
+        &#39;dist/&#39;,
+        &#39;src/generated/&#39;,
+        &#39;**/*.test.{js,jsx}&#39;,
+        &#39;**/__tests__/**&#39;
+      ],
+      thresholds: {
+        lines: 50,
+        functions: 50,
+        branches: 50,
+        statements: 50
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      &#39;@&#39;: path.resolve(__dirname, &#39;./src&#39;)
+    }
+  }
+})
+</code></pre>
+        </details>
+      </section>
+    
         </article>
       </main>
     </div>

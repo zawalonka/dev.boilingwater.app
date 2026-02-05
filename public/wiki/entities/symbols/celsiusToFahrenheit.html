@@ -79,6 +79,11 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Internal usage</div>
         <div class="infobox-value"><ul class="call-sites">
           <li>
@@ -109,23 +114,17 @@
 
       </section>
       <section class="section">
-        <h2>Internal Usage (1)</h2>
-        <ul class="call-sites">
-          <li>
-            <span class="call-site-file"><a href="/wiki/entities/formulas/temperatureConversion.html">temperatureConversion.js</a>#L102</span>
-            <code class="call-site-context">return celsiusToFahrenheit(kelvinToCelsius(kelvin))</code>
-          </li>
-        
-            <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L129</span>
-              <code class="call-site-context">celsiusToFahrenheit, (re-export)</code>
-            </li>
-          
-            <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/unitUtils.html">unitUtils.js</a>#L34</span>
-              <code class="call-site-context">export const celsiusToFahrenheit = (celsius) =&gt; { (re-export)</code>
-            </li>
-          </ul>
+        <h2>Call Sites (3)</h2>
+        <ul class="call-sites"><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a>#L11</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(0)).toBeCloseTo(32, 1)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a>#L15</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(100)).toBeCloseTo(212, 1)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a>#L19</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(37)).toBeCloseTo(98.6, 1)</code>
+          </li></ul>
       </section>
     
         </article>

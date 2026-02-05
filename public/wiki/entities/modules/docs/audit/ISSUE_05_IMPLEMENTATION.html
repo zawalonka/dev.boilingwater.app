@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boilingwater Wiki - Boiling Water Wiki</title>
+  <title>ISSUE_05_IMPLEMENTATION.md - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
   <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
@@ -53,45 +53,183 @@
           </nav>
         </details>
         
-        <div class="wiki-topbar-title">Boilingwater Wiki</div>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/index.html">docs</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../docs/audit/index.html">audit</a> <span class="breadcrumb-sep">›</span> <span>ISSUE_05_IMPLEMENTATION.md</span>
+        </nav>
+        <div class="wiki-topbar-title">ISSUE_05_IMPLEMENTATION.md</div>
       </header>
       <main class="wiki-content">
         
         <article class="wiki-article">
           
-    <section class="section">
-      <h1>Boilingwater Wiki</h1>
-      <p>Static knowledge base generated from in-repo data.</p>
-    </section>
-    <section class="section">
-      <div class="portal-grid">
-        <div class="portal-box">
-          <h3>Substances</h3>
-          <ul><li><a href="/wiki/entities/elements/index.html">Elements (118)</a></li><li><a href="/wiki/entities/compounds/index.html">Compounds (11)</a></li><li><a href="/wiki/entities/solutions/index.html">Solutions (1)</a></li><li><a href="/wiki/entities/phases/index.html">Phases (24)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Experiments</h3>
-          <ul><li><a href="/wiki/entities/levels/index.html">Levels (3)</a></li><li><a href="/wiki/entities/experiments/index.html">Experiments (5)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Utils</h3>
-          <ul><li><a href="/wiki/entities/formulas/index.html">Formulas (13)</a></li><li><a href="/wiki/entities/processes/index.html">Processes (17)</a></li><li><a href="/wiki/entities/modules/index.html">Modules (399)</a></li><li><a href="/wiki/entities/symbols/index.html">Symbols (128)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Public Files</h3>
-          <ul><li><a href="/wiki/entities/public/index.html">Workshops (4)</a></li><li><a href="/wiki/entities/public/burners/index.html">Burners (8)</a></li><li><a href="/wiki/entities/public/ac-units/index.html">AC Units (8)</a></li><li><a href="/wiki/entities/public/air-handlers/index.html">Air Handlers (8)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Repository</h3>
-          <ul><li><a href="/wiki/entities/docs/index.html">Docs (42)</a></li><li><a href="/wiki/entities/scripts/index.html">Scripts (10)</a></li><li><a href="/wiki/entities/styles/index.html">Styles (5)</a></li><li><a href="/wiki/entities/root-files/index.html">Root Files (12)</a></li></ul>
-        </div>
-        <div class="portal-box">
-          <h3>Code Health</h3>
-          <ul><li><a href="/wiki/entities/reports/dead-code.html">Dead Code Report</a></li><li><a href="/wiki/entities/reports/orphan-symbols.html">Orphan Symbols</a></li><li><a href="/wiki/entities/reports/orphan-scripts.html">Orphan Scripts</a></li></ul>
-        </div>
+      
+    <aside class="infobox">
+      <div class="infobox-title">ISSUE_05_IMPLEMENTATION.md</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
       </div>
-    </section>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">md</div>
+      </div>
+    
+    </aside>
   
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>ISSUE_05_IMPLEMENTATION.md</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>docs\audit\ISSUE_05_IMPLEMENTATION.md</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-markdown"># CI/CD Testing - Issue #5 ✅ COMPLETE
+
+## Implementation Summary
+
+Complete CI/CD pipeline with comprehensive testing, coverage reporting, bundle analysis, and Lighthouse CI.
+
+## What Was Added
+
+### 1. Test Framework (Vitest)
+- **Installation:** vitest, @vitest/ui, @vitest/coverage-v8
+- **Config:** `vitest.config.js` with coverage thresholds (50% minimum)
+- **Setup:** Test setup file for React Testing Library integration
+- **Scripts:** test, test:ci, test:coverage, test:ui
+
+### 2. Testing Library
+- **Installation:** @testing-library/react, @testing-library/jest-dom, jsdom
+- **Purpose:** Component testing with React support
+- **Environment:** jsdom for DOM simulation
+
+### 3. Bundle Analysis
+- **Installation:** rollup-plugin-visualizer
+- **Script:** `npm run build:analyze` generates stats.html
+- **Vite Config:** Visualizer plugin activated in analyze mode
+- **CI Check:** Bundle size validation (fails if &gt;500MB)
+
+### 4. Lighthouse CI
+- **Config:** `lighthouserc.json` with performance/accessibility thresholds
+- **Thresholds:**
+  - Performance: 85% (warn)
+  - Accessibility: 90% (error)
+  - Best Practices: 85% (warn)
+  - SEO: 80% (warn)
+- **CI Integration:** Runs on preview build after main build completes
+
+### 5. CI Workflow (.github/workflows/ci.yml)
+**Jobs:**
+- **lint:** ESLint check (blocks if fails)
+- **test:** Vitest tests + Codecov coverage upload
+- **build:** Production build + bundle size check + artifact upload
+- **lighthouse:** Performance/a11y audit on preview server
+
+All jobs properly chained with `needs` dependencies.
+
+### 6. Deploy Workflow (.github/workflows/deploy.yml)
+**Updated with full pipeline:**
+- **lint:** ESLint gate
+- **test:** Test gate
+- **build:** Production build
+- **lighthouse:** Performance gate
+- **deploy:** Only runs if ALL gates pass
+
+## File Changes
+
+### Created Files:
+- `vitest.config.js` - Test framework configuration
+- `src/test/setup.js` - Test environment setup
+- `lighthouserc.json` - Lighthouse CI configuration
+- `src/utils/__tests__/unitUtils.test.js` - Sample test suite
+- `.github/workflows/ci.yml` - Complete CI pipeline
+
+### Modified Files:
+- `package.json` - Added test/coverage/analyze scripts
+- `vite.config.mjs` - Added bundle visualizer plugin
+- `.github/workflows/deploy.yml` - Added all CI gates before deploy
+
+## Scripts Reference
+
+```bash
+# Test Commands
+npm run test              # Run tests in watch mode
+npm run test:ci           # Run tests once (CI mode)
+npm run test:coverage     # Run tests with coverage report
+npm run test:ui           # Open Vitest UI
+
+# Bundle Analysis
+npm run build:analyze     # Build + generate bundle visualization
+
+# Build &amp; Deploy
+npm run build             # Production build
+npm run preview           # Preview production build locally
+```
+
+## Coverage Reporting
+
+Coverage reports uploaded to Codecov on every CI run:
+- **Files:** coverage/lcov.info
+- **Token:** CODECOV_TOKEN (GitHub secret)
+- **Thresholds:** 50% minimum (lines/functions/branches/statements)
+
+## Lighthouse CI
+
+Performance audits run automatically:
+- **URL:** Preview server (npm run preview)
+- **Runs:** 3 iterations per audit
+- **Storage:** Temporary public storage
+- **Token:** LHCI_GITHUB_APP_TOKEN (GitHub secret)
+
+## Deploy Gating
+
+Deploy job has hard dependencies:
+```yaml
+needs: [lint, test, build, lighthouse]
+```
+
+**Result:** Production deploy ONLY happens if:
+- ✅ ESLint passes (no errors)
+- ✅ All tests pass
+- ✅ Build succeeds + bundle size OK
+- ✅ Lighthouse scores meet thresholds
+
+## Test Example
+
+Sample test suite in `src/utils/__tests__/unitUtils.test.js`:
+- 7 tests covering temperature conversion functions
+- All passing ✅
+- Demonstrates Vitest + jest-dom integration
+
+## Next Steps (Issue #1)
+
+Write comprehensive test suites:
+- Component tests (GameScene, ControlPanel, RoomControls)
+- Physics utility tests
+- Substance loader tests
+- Hook tests (useRoomEnvironment)
+
+## Status
+
+✅ **Issue #5 COMPLETE** - Full CI/CD pipeline with testing, coverage, bundle checks, and Lighthouse
+
+---
+**Implementation Date:** 2026-02-05  
+**Dependencies Installed:** 124 packages  
+**Test Framework:** Vitest 4.0.18  
+**CI/CD:** GitHub Actions (ci.yml + deploy.yml)
+</code></pre>
+        </details>
+      </section>
+    
         </article>
       </main>
     </div>

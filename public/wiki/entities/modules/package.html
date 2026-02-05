@@ -110,14 +110,23 @@
     &quot;build&quot;: &quot;npm run generate-catalog &amp;&amp; npm run wiki:build &amp;&amp; npm run wiki:sync &amp;&amp; vite build&quot;,
     &quot;preview&quot;: &quot;npm run generate-catalog &amp;&amp; vite preview&quot;,
     &quot;lint&quot;: &quot;eslint src --ext js,jsx&quot;,
-    &quot;format&quot;: &quot;prettier --write \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;
+    &quot;format&quot;: &quot;prettier --write \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;,
+    &quot;test&quot;: &quot;vitest&quot;,
+    &quot;test:ci&quot;: &quot;vitest run&quot;,
+    &quot;test:coverage&quot;: &quot;vitest run --coverage&quot;,
+    &quot;test:ui&quot;: &quot;vitest --ui&quot;,
+    &quot;build:analyze&quot;: &quot;vite build --mode analyze&quot;
   },
   &quot;dependencies&quot;: {
     &quot;react&quot;: &quot;^18.2.0&quot;,
     &quot;react-dom&quot;: &quot;^18.2.0&quot;
   },
   &quot;devDependencies&quot;: {
+    &quot;@testing-library/jest-dom&quot;: &quot;^6.9.1&quot;,
+    &quot;@testing-library/react&quot;: &quot;^16.3.2&quot;,
     &quot;@vitejs/plugin-react&quot;: &quot;^4.2.1&quot;,
+    &quot;@vitest/coverage-v8&quot;: &quot;^4.0.18&quot;,
+    &quot;@vitest/ui&quot;: &quot;^4.0.18&quot;,
     &quot;eslint&quot;: &quot;^8.56.0&quot;,
     &quot;eslint-config-prettier&quot;: &quot;^10.1.8&quot;,
     &quot;eslint-plugin-import&quot;: &quot;^2.32.0&quot;,
@@ -127,10 +136,13 @@
     &quot;eslint-plugin-react-hooks&quot;: &quot;^4.6.0&quot;,
     &quot;eslint-plugin-security&quot;: &quot;^3.0.1&quot;,
     &quot;glob&quot;: &quot;^13.0.0&quot;,
+    &quot;jsdom&quot;: &quot;^28.0.0&quot;,
     &quot;kekule&quot;: &quot;^1.0.3&quot;,
     &quot;prettier&quot;: &quot;^3.1.1&quot;,
+    &quot;rollup-plugin-visualizer&quot;: &quot;^6.0.5&quot;,
     &quot;sharp&quot;: &quot;^0.34.5&quot;,
-    &quot;vite&quot;: &quot;^5.0.8&quot;
+    &quot;vite&quot;: &quot;^5.0.8&quot;,
+    &quot;vitest&quot;: &quot;^4.0.18&quot;
   },
   &quot;overrides&quot;: {
     &quot;esbuild&quot;: &quot;0.25.12&quot;
