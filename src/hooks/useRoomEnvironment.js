@@ -18,6 +18,7 @@ import { createRoomState, simulateRoomStep, getRoomSummary } from '../utils/room
  */
 export function useRoomEnvironment(roomConfig, acUnit, airHandler, altitude = 0) {
   const [roomState, setRoomState] = useState(() => createRoomState(roomConfig, altitude))
+    // eslint-disable-next-line react-hooks/purity
     const lastUpdateRef = useRef(Date.now())
   
   // Reset room state when config or altitude changes

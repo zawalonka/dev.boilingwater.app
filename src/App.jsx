@@ -129,6 +129,7 @@ function App() {
     if (gameStage === 2) {
       // Future: Request geolocation here when we implement stage 2
       // For now, just set to sea level
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUserLocation({
         altitude: 0,
         latitude: 0,
