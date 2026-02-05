@@ -453,7 +453,7 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
   state = trackExposure(state, airHandler, deltaTime)
   
   // 6. Room pressure leak (slow return toward ambient)
-  const ambientPressure = 101325  // TODO: Use location altitude
+  const ambientPressure = 101325  // Hardcoded sea level - See TODO.md #3 (room phase 2)
   const pressureDiff = state.pressure - ambientPressure
   const leakRate = state.leakRatePaPerSecond || 10
   const pressureChange = Math.sign(pressureDiff) * Math.min(Math.abs(pressureDiff), leakRate * deltaTime)

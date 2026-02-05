@@ -422,10 +422,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         setFluidProps(props)
         setFluidLoadError(null)
         setResidueMass(0)
-        // Debug log: useful for verifying fluid properties loaded correctly
-        console.log(`✓ Loaded fluid: ${props.name} (${props.formula})`)
-        console.log(`   Boiling point (sea level): ${props.boilingPointSeaLevel}°C`)
-        console.log(`   Raw JSON boilingPoint: ${substanceData.phaseTransitions?.boilingPoint}°C`)
       } catch (error) {
         console.error('Failed to load fluid properties:', error)
         setFluidProps(null)
@@ -600,11 +596,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
               
               // Add vapor to room air composition (pass formula for atmosphere key)
               addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-              
-              // Debug: Log significant evaporation events
-              if (evapResult.massEvaporatedKg > 1e-6) {
-                console.log(`💨 Pre-boil evap: ${(evapResult.massEvaporatedKg * 1000).toFixed(3)}g, cooling: ${evapResult.tempChangeC.toFixed(3)}°C, final: ${finalTemp.toFixed(2)}°C`)
-              }
             }
           }
         }

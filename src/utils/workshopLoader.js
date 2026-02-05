@@ -29,7 +29,6 @@ export async function loadWorkshop(workshopId) {
       const effectsRes = await fetch(effectsUrl)
       if (effectsRes.ok) {
         workshopData.effects = await effectsRes.json()
-        console.log(`✓ Loaded workshop effects for '${workshopId}' from effects.json`)
       }
     } catch (effectsError) {
       console.info(`No effects.json for workshop '${workshopId}' (optional): ${effectsError.message}`)
@@ -41,7 +40,6 @@ export async function loadWorkshop(workshopId) {
       const roomRes = await fetch(roomUrl)
       if (roomRes.ok) {
         workshopData.room = await roomRes.json()
-        console.log(`✓ Loaded room config for '${workshopId}' from room.json`)
         
         // Load the default burner configuration
         const defaultBurnerId = workshopData.room.defaults?.burner
@@ -51,7 +49,6 @@ export async function loadWorkshop(workshopId) {
             const burnerRes = await fetch(burnerUrl)
             if (burnerRes.ok) {
               workshopData.burner = await burnerRes.json()
-              console.log(`✓ Loaded burner '${defaultBurnerId}' for '${workshopId}'`)
             }
           } catch (burnerError) {
             console.warn(`Failed to load burner '${defaultBurnerId}': ${burnerError.message}`)
@@ -66,7 +63,6 @@ export async function loadWorkshop(workshopId) {
             const acRes = await fetch(acUrl)
             if (acRes.ok) {
               workshopData.acUnit = await acRes.json()
-              console.log(`✓ Loaded AC unit '${defaultAcId}' for '${workshopId}'`)
             }
           } catch (acError) {
             console.warn(`Failed to load AC unit '${defaultAcId}': ${acError.message}`)
@@ -81,7 +77,6 @@ export async function loadWorkshop(workshopId) {
             const ahRes = await fetch(ahUrl)
             if (ahRes.ok) {
               workshopData.airHandler = await ahRes.json()
-              console.log(`✓ Loaded air handler '${defaultAirHandlerId}' for '${workshopId}'`)
             }
           } catch (ahError) {
             console.warn(`Failed to load air handler '${defaultAirHandlerId}': ${ahError.message}`)
@@ -93,7 +88,6 @@ export async function loadWorkshop(workshopId) {
     }
 
     validateWorkshopData(workshopData)
-    console.log(`✓ Loaded workshop: "${workshopData.name}" (${workshopId})`)
     return workshopData
   } catch (error) {
     throw new Error(`Failed to load workshop '${workshopId}': ${error.message}`)
@@ -122,7 +116,6 @@ export async function loadEquipment(workshopId, equipmentType, equipmentId) {
     const res = await fetch(equipmentUrl)
     if (res.ok) {
       const config = await res.json()
-      console.log(`✓ Loaded ${equipmentType} '${equipmentId}' from workshop '${workshopId}'`)
       return config
     }
     console.warn(`Equipment not found: ${equipmentType}/${equipmentId} in ${workshopId}`)
@@ -277,8 +270,6 @@ export function applyWorkshopStyles(processedWorkshop) {
       }
     }
   }
-
-  console.log(`✓ Applied workshop: "${processedWorkshop.name}"`)
 }
 
 export async function preloadWorkshopImages(workshopData) {
@@ -296,10 +287,7 @@ export async function preloadWorkshopImages(workshopData) {
 
   const imagePromises = assets.map(([key, url]) => new Promise((resolve) => {
     const img = new Image()
-    img.onload = () => {
-      console.log(`✓ Preloaded ${key}: ${url}`)
-      resolve()
-    }
+    img.onload = () => resolve()
     img.onerror = () => {
       console.warn(`✗ Failed to preload ${key}: ${url}`)
       resolve()
@@ -308,7 +296,6 @@ export async function preloadWorkshopImages(workshopData) {
   }))
 
   await Promise.all(imagePromises)
-  console.log(`✓ All images preloaded for workshop "${workshopData.name}"`)
 }
 
 export async function getAvailableWorkshops() {

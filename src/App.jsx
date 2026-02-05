@@ -170,7 +170,6 @@ function App() {
       latitude: locationData.latitude,
       longitude: locationData.longitude
     })
-    console.log('✓ Location updated:', locationData.name, `(${locationData.altitude}m)`)
   }
 
   const handleNavigate = (view) => {
