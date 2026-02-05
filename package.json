@@ -15,7 +15,7 @@
     "wiki:sync": "node wiki/src/sync.js",
     "dev": "npm run generate-catalog && npm run wiki:build && npm run wiki:sync && vite",
     "build": "npm run generate-catalog && npm run wiki:build && npm run wiki:sync && vite build",
-    "preview": "npm run generate-catalog && vite preview",
+    "preview": "node scripts/preview-with-ready.js",
     "lint": "eslint src --ext js,jsx",
     "format": "prettier --write \"src/**/*.{js,jsx,css,md}\"",
     "test": "vitest",
