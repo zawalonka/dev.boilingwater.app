@@ -4,6 +4,7 @@
 > **Created**: 2026-02-04  
 > **Updated**: 2026-02-04 - Temperature ±0.01°C (2 decimals) ✅; Energy: Dynamic tolerance (Option 3) ✅ LOCKED  
 > **Context**: User wants rigorous scientific sandbox testing with no magic numbers  
+> **Strategy Reference**: See [PHYSICS_TESTING_STRATEGY.md](./PHYSICS_TESTING_STRATEGY.md) for detailed testing philosophy and mathematical properties
 
 ---
 
