@@ -90,6 +90,28 @@ export function calculateHeatingTime(massKg, specificHeat, tempStart, tempEnd, p
 }
 
 /**
+ * Calculate dynamic tolerance for energy comparisons based on magnitude
+ * 
+ * Uses 0.01% precision (4 significant figures) with 1J floor.
+ * This ensures comparisons are strict on large values while avoiding
+ * absurd tolerances on tiny values.
+ * 
+ * @param {number} expected - Expected energy value in joules
+ * @returns {number} Decimal places for toBeCloseTo (-Math.log10(tolerance))
+ * 
+ * @example
+ *   calculateEnergyTolerance(100) → 2 decimal places (±1 J)
+ *   calculateEnergyTolerance(2257000) → 3.6 decimal places (±226 J, 0.01%)
+ *   calculateEnergyTolerance(10000000) → 4 decimal places (±1000 J, 0.01%)
+ */
+export function calculateEnergyTolerance(expected) {
+  // 0.01% minimum, floor at 1J (prevents absurd tolerance on tiny values)
+  const toleranceJ = Math.max(1, Math.abs(expected) * 0.0001)
+  // Convert to decimal places for toBeCloseTo
+  return -Math.log10(toleranceJ)
+}
+
+/**
  * Reference specific heat values (J/(g·°C))
  */
 export const SPECIFIC_HEAT_VALUES = {

@@ -103,6 +103,7 @@ export {
   calculateHeatEnergy,
   calculateTempChange,
   calculateHeatingTime,
+  calculateEnergyTolerance,
   SPECIFIC_HEAT_VALUES 
 } from './formulas/heatCapacity.js'
 
