@@ -4,6 +4,12 @@
 
 An interactive physics and chemistry learning game that teaches through experimentation, starting with the simplest task: boiling water.
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=zawalonka_Boilingwater.app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=zawalonka_Boilingwater.app)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=zawalonka_Boilingwater.app&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=zawalonka_Boilingwater.app)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=zawalonka_Boilingwater.app&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=zawalonka_Boilingwater.app)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=zawalonka_Boilingwater.app&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=zawalonka_Boilingwater.app)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=zawalonka_Boilingwater.app&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=zawalonka_Boilingwater.app)
+
 ---
 
 ## ⚠️ AI-Generated Code Warning
