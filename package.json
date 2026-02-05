@@ -8,6 +8,7 @@
   "license": "(GPL-3.0 AND CC-BY-NC-ND-4.0)",
   "homepage": "https://boilingwater.app",
   "scripts": {
+    "postinstall": "patch-package",
     "generate-catalog": "node scripts/generateSubstanceCatalog.js",
     "wiki:build": "node wiki/src/index.js",
     "wiki:build:force": "node wiki/src/index.js --force",
@@ -21,18 +22,22 @@
     "test:ci": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "build:analyze": "vite build --mode analyze"
+    "build:analyze": "vite build --mode analyze",
+    "lighthouse": "dotenv -e .env.local lhci autorun"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^4.0.18",
     "@vitest/ui": "^4.0.18",
+    "chrome-launcher": "^1.2.1",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
@@ -44,6 +49,7 @@
     "glob": "^13.0.0",
     "jsdom": "^28.0.0",
     "kekule": "^1.0.3",
+    "patch-package": "^8.0.1",
     "prettier": "^3.1.1",
     "rollup-plugin-visualizer": "^6.0.5",
     "sharp": "^0.34.5",

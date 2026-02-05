@@ -90,7 +90,8 @@ export default defineConfig(({ command, mode }) => ({
     open: true
   },
   preview: {
-    port: 3000
+    port: 3000,
+    open: false
   },
   build: {
     outDir: 'dist',

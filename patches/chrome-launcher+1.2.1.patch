@@ -1,0 +1,15 @@
+diff --git a/node_modules/chrome-launcher/dist/chrome-launcher.js b/node_modules/chrome-launcher/dist/chrome-launcher.js
+index d7fb4cf..d1586ba 100644
+--- a/node_modules/chrome-launcher/dist/chrome-launcher.js
++++ b/node_modules/chrome-launcher/dist/chrome-launcher.js
+@@ -346,7 +346,9 @@ class Launcher {
+             const message = `Chrome could not be killed ${err.message}`;
+             log.warn('ChromeLauncher', message);
+         }
+-        this.destroyTmp();
++        // PR #356 fix: Don't call destroyTmp() here - Chrome hasn't released handles yet
++        // Temp dir cleanup happens automatically on process exit anyway
++        // this.destroyTmp();
+     }
+     destroyTmp() {
+         if (this.outFile) {
