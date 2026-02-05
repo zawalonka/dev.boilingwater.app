@@ -1,12 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
-      - 'LICENSE'
   workflow_dispatch:
 
 permissions:
@@ -19,20 +13,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  check-repo:
-    name: Check Repository
-    runs-on: ubuntu-latest
-    outputs:
-      is-production: ${{ steps.check.outputs.is-production }}
-    steps:
-      - id: check
-        run: |
-          if [ "${{ github.repository }}" == "zawalonka/Boilingwater.app" ]; then
-            echo "is-production=true" >> $GITHUB_OUTPUT
-          else
-            echo "is-production=false" >> $GITHUB_OUTPUT
-          fi
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -125,8 +105,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: [check-repo, lint, test, build, lighthouse]
-    if: ${{ needs.check-repo.outputs.is-production == 'true' }}
+    needs: [lint, test, build, lighthouse]
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
