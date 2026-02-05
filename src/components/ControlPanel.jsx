@@ -13,9 +13,6 @@
  * All state management remains in GameScene; this component is purely presentational.
  */
 
-/* eslint-disable complexity, max-lines-per-function, no-unused-vars */
-// TODO: Remove after Issue #3 (Massive Components) - Component needs refactoring
-// Known tech debt: 433 lines, complexity 73, unused props from parent
 function ControlPanel({
   // Game state
   liquidMass,

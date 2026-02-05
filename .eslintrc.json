@@ -44,9 +44,10 @@
     "import/no-cycle": "warn",
     "import/no-unused-modules": "warn",
     
-    // AI coding rules
+    // AI coding rules (warn until refactoring complete - Issues #3 and #4)
     "complexity": ["warn", 15],
     "max-lines-per-function": ["warn", { "max": 100, "skipBlankLines": true, "skipComments": true }],
+    "no-unused-vars": "warn",
     "no-console": ["warn", { "allow": ["error", "warn", "info"] }],
     
     // Security rules
