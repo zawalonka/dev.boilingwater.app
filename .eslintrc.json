@@ -2,8 +2,18 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "vitest/globals": true
+    "node": true
+  },
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "test": "readonly",
+    "expect": "readonly",
+    "beforeEach": "readonly",
+    "afterEach": "readonly",
+    "beforeAll": "readonly",
+    "afterAll": "readonly",
+    "vi": "readonly"
   },
   "extends": [
     "eslint:recommended",
@@ -11,7 +21,6 @@
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:vitest/recommended",
     "prettier"
   ],
   "parserOptions": {
@@ -27,8 +36,7 @@
     "import",
     "jsx-a11y",
     "security",
-    "no-unsanitized",
-    "vitest"
+    "no-unsanitized"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -65,5 +73,13 @@
         "extensions": [".js", ".jsx"]
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/**/__tests__/**/*.js", "src/**/test/**/*.js"],
+      "rules": {
+        "import/named": "off"
+      }
+    }
+  ]
 }
