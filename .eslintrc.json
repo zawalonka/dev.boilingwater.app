@@ -3,8 +3,14 @@
     "browser": true,
     "es2021": true,
     "node": true
-  },
-  "extends": [
+  },  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "beforeEach": "readonly",
+    "afterEach": "readonly",
+    "vi": "readonly"
+  },  "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",

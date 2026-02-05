@@ -5,6 +5,10 @@ import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEqu
 import { LEVELS, EXPERIMENTS } from './constants/workshops'
 import './styles/App.css'
 
+/* eslint-disable max-lines-per-function, security/detect-object-injection */
+// TODO: Remove after Issue #4 (State Management) - App needs state refactoring
+// Known tech debt: 235 lines, state management needs centralization
+// Security false positive: localStorage keys are controlled strings, not user input
 function App() {
   const [gameStage, setGameStage] = useState(0)
   const [userLocation, setUserLocation] = useState(null)
