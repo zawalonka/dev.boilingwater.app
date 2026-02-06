@@ -78,7 +78,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a>, <a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>, <a href="/wiki/entities/modules/src/utils/workshopLoader.html">workshopLoader.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a>, <a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>, <a href="/wiki/entities/modules/src/utils/workshopLoader.html">workshopLoader.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -102,26 +102,38 @@
         <p><code>src\App.jsx</code></p>
         <details>
           <summary>View source code</summary>
-          <pre class="line-numbers"><code class="language-jsx">import { useState, useEffect } from &#39;react&#39;
+          <pre class="line-numbers"><code class="language-jsx">import { useEffect } from &#39;react&#39;
 import Header from &#39;./components/Header&#39;
 import GameScene from &#39;./components/GameScene&#39;
 import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from &#39;./utils/workshopLoader&#39;
 import { LEVELS, EXPERIMENTS } from &#39;./constants/workshops&#39;
+import { useGameStore } from &#39;./hooks/stores/gameStore&#39;
+import { useWorkshopStore } from &#39;./hooks/stores/workshopStore&#39;
 import &#39;./styles/App.css&#39;
 
 function App() {
-  const [gameStage, setGameStage] = useState(0)
-  const [userLocation, setUserLocation] = useState(null)
-  const [workshopLoaded, setWorkshopLoaded] = useState(false)
-  const [activeView, setActiveView] = useState(&#39;game&#39;)  // game | about | docs | submit-issue | submit-workshop
-  const [gameInstanceKey, setGameInstanceKey] = useState(0)
-  const [activeLevel, setActiveLevel] = useState(1)  // Numeric level (1, 2, 3...)
-  const [activeExperiment, setActiveExperiment] = useState(&#39;boiling-water&#39;)  // Experiment ID within level
-  const [activeWorkshopId, setActiveWorkshopId] = useState(&#39;pre-alpha-kitchen-1&#39;)
-  const [availableWorkshops, setAvailableWorkshops] = useState([{ id: &#39;pre-alpha-kitchen-1&#39;, name: &#39;Pre Alpha Kitchen 1&#39; }])
-  const [activeWorkshopData, setActiveWorkshopData] = useState(null)
-  const [hasBoiledBefore, setHasBoiledBefore] = useState(false)  // Track if user has boiled water once
-  const [showSelectors, setShowSelectors] = useState(false)  // Show level/workshop selectors
+  const gameStage = useGameStore((state) =&gt; state.gameStage)
+  const workshopLoaded = useGameStore((state) =&gt; state.workshopLoaded)
+  const activeView = useGameStore((state) =&gt; state.activeView)
+  const gameInstanceKey = useGameStore((state) =&gt; state.gameInstanceKey)
+  const showSelectors = useGameStore((state) =&gt; state.showSelectors)
+  const setGameStage = useGameStore((state) =&gt; state.setGameStage)
+  const setUserLocation = useGameStore((state) =&gt; state.setUserLocation)
+  const setWorkshopLoaded = useGameStore((state) =&gt; state.setWorkshopLoaded)
+  const setActiveView = useGameStore((state) =&gt; state.setActiveView)
+  const bumpGameInstanceKey = useGameStore((state) =&gt; state.bumpGameInstanceKey)
+  const setShowSelectors = useGameStore((state) =&gt; state.setShowSelectors)
+
+  const activeLevel = useWorkshopStore((state) =&gt; state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
+  const activeWorkshopId = useWorkshopStore((state) =&gt; state.activeWorkshopId)
+  const availableWorkshops = useWorkshopStore((state) =&gt; state.availableWorkshops)
+  const activeWorkshopData = useWorkshopStore((state) =&gt; state.activeWorkshopData)
+  const setActiveLevel = useWorkshopStore((state) =&gt; state.setActiveLevel)
+  const setActiveExperiment = useWorkshopStore((state) =&gt; state.setActiveExperiment)
+  const setActiveWorkshopId = useWorkshopStore((state) =&gt; state.setActiveWorkshopId)
+  const setAvailableWorkshops = useWorkshopStore((state) =&gt; state.setAvailableWorkshops)
+  const setActiveWorkshopData = useWorkshopStore((state) =&gt; state.setActiveWorkshopData)
 
   // Load available workshops and apply default
   useEffect(() =&gt; {
@@ -152,7 +164,7 @@ function App() {
       setActiveWorkshopData(processed)
       // Reset game completely: stage back to 0, force GameScene re-mount
       setGameStage(0)
-      setGameInstanceKey((k) =&gt; k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error(&#39;Failed to change workshop:&#39;, error)
     }
@@ -178,7 +190,7 @@ function App() {
       const defaultExperiment = optionalNextExperimentId || sortedExperiments?.[0]?.id || &#39;boiling-water&#39;
       setActiveExperiment(defaultExperiment)
       setGameStage(0)
-      setGameInstanceKey((k) =&gt; k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error(&#39;Failed to change level:&#39;, error)
     }
@@ -188,7 +200,7 @@ function App() {
   const handleExperimentChange = (experimentId) =&gt; {
     setActiveExperiment(experimentId)
     setGameStage(0)
-    setGameInstanceKey((k) =&gt; k + 1)
+    bumpGameInstanceKey()
     // Location popup will be triggered in GameScene if this is Exp 2+
   }
 
@@ -221,7 +233,7 @@ function App() {
       setActiveWorkshopData(updatedWorkshopData)
       // Reset game to apply new equipment
       setGameStage(0)
-      setGameInstanceKey((k) =&gt; k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error(`Failed to change ${equipmentType}:`, error)
     }
@@ -233,6 +245,7 @@ function App() {
     if (gameStage === 2) {
       // Future: Request geolocation here when we implement stage 2
       // For now, just set to sea level
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUserLocation({
         altitude: 0,
         latitude: 0,
@@ -255,27 +268,6 @@ function App() {
     await handleLevelChange(1, &#39;altitude-effect&#39;)
   }
 
-  // Handle when user completes the tutorial boil (Experiment: boiling-water)
-  const handleWaterBoiled = () =&gt; {
-    if (activeExperiment === &#39;boiling-water&#39; &amp;&amp; !hasBoiledBefore) {
-      setHasBoiledBefore(true)
-      setShowSelectors(true)
-      // Modal stays visible until user clicks button
-    }
-  }
-
-  // Handle location changes (from GameScene location input)
-  const handleLocationChange = (locationData) =&gt; {
-    setUserLocation({
-      altitude: locationData.altitude,
-      zipCode: locationData.zipCode,
-      country: locationData.country,
-      name: locationData.name,
-      latitude: locationData.latitude,
-      longitude: locationData.longitude
-    })
-  }
-
   const handleNavigate = (view) =&gt; {
     setActiveView(view)
     if (view === &#39;game&#39;) {
@@ -285,7 +277,7 @@ function App() {
 
   const handleReload = () =&gt; {
     setGameStage(0)
-    setGameInstanceKey((k) =&gt; k + 1)
+    bumpGameInstanceKey()
     setActiveView(&#39;game&#39;)
   }
 
@@ -342,9 +334,6 @@ function App() {
       &lt;div className=&quot;game-container&quot;&gt;
         &lt;GameScene
           key={gameInstanceKey}
-          stage={gameStage}
-          location={userLocation}
-          onStageChange={setGameStage}
           workshopLayout={activeWorkshopData?.layout}
           workshopImages={activeWorkshopData?.images}
           workshopEffects={activeWorkshopData?.effects}
@@ -352,16 +341,9 @@ function App() {
           roomConfig={activeWorkshopData?.room}
           acUnitConfig={activeWorkshopData?.acUnit}
           airHandlerConfig={activeWorkshopData?.airHandler}
-          activeLevel={activeLevel}
-          activeExperiment={activeExperiment}
-          showSelectors={showSelectors}
-          onWaterBoiled={handleWaterBoiled}
-          onSkipTutorial={handleSkipTutorial}
           onLevelChange={handleLevelChange}
           onExperimentChange={handleExperimentChange}
-          onLocationChange={handleLocationChange}
           onEquipmentChange={handleEquipmentChange}
-          hasBoiledBefore={hasBoiledBefore}
         /&gt;
       &lt;/div&gt;
     )
@@ -377,14 +359,6 @@ function App() {
             onWorkshopChange={handleWorkshopChange}
             onLevelChange={handleLevelChange}
             onExperimentChange={handleExperimentChange}
-            activeWorkshopId={activeWorkshopId}
-            activeLevel={activeLevel}
-            activeExperiment={activeExperiment}
-            availableWorkshops={availableWorkshops}
-            availableLevels={LEVELS}
-            availableExperiments={(EXPERIMENTS[activeLevel] || []).slice().sort((a, b) =&gt; (a.order || 0) - (b.order || 0))}
-            activeView={activeView}
-            showSelectors={showSelectors}
             onSkipTutorial={handleSkipTutorial}
           /&gt;
           {renderView()}

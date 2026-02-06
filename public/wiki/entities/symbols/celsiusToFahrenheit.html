@@ -80,7 +80,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
@@ -92,7 +92,7 @@
           </li>
         
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L129</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L130</span>
               <code class="call-site-context">celsiusToFahrenheit, (re-export)</code>
             </li>
           
@@ -114,7 +114,7 @@
 
       </section>
       <section class="section">
-        <h2>Call Sites (3)</h2>
+        <h2>Call Sites (9)</h2>
         <ul class="call-sites"><li>
             <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a>#L11</span>
             <code class="call-site-context">expect(celsiusToFahrenheit(0)).toBeCloseTo(32, 1)</code>
@@ -124,6 +124,24 @@
           </li><li>
             <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/__tests__/unitUtils.test.html">unitUtils.test.js</a>#L19</span>
             <code class="call-site-context">expect(celsiusToFahrenheit(37)).toBeCloseTo(98.6, 1)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L16</span>
+            <code class="call-site-context">const F = celsiusToFahrenheit(originalC)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L25</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(0)).toBeCloseTo(32, 10)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L31</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(100)).toBeCloseTo(212, 10)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L37</span>
+            <code class="call-site-context">expect(celsiusToFahrenheit(-40)).toBeCloseTo(-40, 10)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L44</span>
+            <code class="call-site-context">const liquidN2F = celsiusToFahrenheit(liquidN2C)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html">temperatureConversion.test.js</a>#L54</span>
+            <code class="call-site-context">const superheatF = celsiusToFahrenheit(superheatC)</code>
           </li></ul>
       </section>
     

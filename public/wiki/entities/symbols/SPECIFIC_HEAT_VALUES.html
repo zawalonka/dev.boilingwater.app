@@ -79,10 +79,15 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html">newtonCooling.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Internal usage</div>
         <div class="infobox-value"><ul class="call-sites">
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L106</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L107</span>
               <code class="call-site-context">SPECIFIC_HEAT_VALUES (re-export)</code>
             </li>
           </ul></div>
@@ -99,13 +104,68 @@
 
       </section>
       <section class="section">
-        <h2>Internal Usage (0)</h2>
-        <ul class="call-sites">
-            <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L106</span>
-              <code class="call-site-context">SPECIFIC_HEAT_VALUES (re-export)</code>
-            </li>
-          </ul>
+        <h2>Call Sites (20)</h2>
+        <ul class="call-sites"><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L23</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L40</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L69</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L114</span>
+            <code class="call-site-context">const sensibleHeat = calculateHeatEnergy(massKg, SPECIFIC_HEAT_VALUES.water, 100)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L123</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L154</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L182</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L196</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html">newtonCooling.test.js</a>#L16</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water  // 4.186 J/(g·°C)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L14</span>
+            <code class="call-site-context">const specificHeat = SPECIFIC_HEAT_VALUES.water  // 4.186 J/(g·°C)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L26</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L38</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.ethanol</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L51</span>
+            <code class="call-site-context">const energyWater = calculateHeatEnergy(massKg, SPECIFIC_HEAT_VALUES.water, dT)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L52</span>
+            <code class="call-site-context">const energyIce = calculateHeatEnergy(massKg, SPECIFIC_HEAT_VALUES.ice, dT)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L57</span>
+            <code class="call-site-context">const ratio = SPECIFIC_HEAT_VALUES.ice / SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L64</span>
+            <code class="call-site-context">const c = SPECIFIC_HEAT_VALUES.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L75</span>
+            <code class="call-site-context">const result = calculateHeatEnergy(5, SPECIFIC_HEAT_VALUES.water, 0)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L81</span>
+            <code class="call-site-context">const cooling = calculateHeatEnergy(1, SPECIFIC_HEAT_VALUES.water, -20)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L91</span>
+            <code class="call-site-context">const waterEnergy = calculateHeatEnergy(massKg, SPECIFIC_HEAT_VALUES.water, dT)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a>#L92</span>
+            <code class="call-site-context">const copperEnergy = calculateHeatEnergy(massKg, SPECIFIC_HEAT_VALUES.copper, dT)</code>
+          </li></ul>
       </section>
     
         </article>

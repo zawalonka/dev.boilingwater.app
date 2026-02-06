@@ -102,13 +102,14 @@
   &quot;license&quot;: &quot;(GPL-3.0 AND CC-BY-NC-ND-4.0)&quot;,
   &quot;homepage&quot;: &quot;https://boilingwater.app&quot;,
   &quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;patch-package&quot;,
     &quot;generate-catalog&quot;: &quot;node scripts/generateSubstanceCatalog.js&quot;,
     &quot;wiki:build&quot;: &quot;node wiki/src/index.js&quot;,
     &quot;wiki:build:force&quot;: &quot;node wiki/src/index.js --force&quot;,
     &quot;wiki:sync&quot;: &quot;node wiki/src/sync.js&quot;,
     &quot;dev&quot;: &quot;npm run generate-catalog &amp;&amp; npm run wiki:build &amp;&amp; npm run wiki:sync &amp;&amp; vite&quot;,
     &quot;build&quot;: &quot;npm run generate-catalog &amp;&amp; npm run wiki:build &amp;&amp; npm run wiki:sync &amp;&amp; vite build&quot;,
-    &quot;preview&quot;: &quot;npm run generate-catalog &amp;&amp; vite preview&quot;,
+    &quot;preview&quot;: &quot;node scripts/preview-with-ready.js&quot;,
     &quot;lint&quot;: &quot;eslint src --ext js,jsx&quot;,
     &quot;format&quot;: &quot;prettier --write \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;,
     &quot;test&quot;: &quot;vitest&quot;,
@@ -116,30 +117,36 @@
     &quot;test:coverage&quot;: &quot;vitest run --coverage&quot;,
     &quot;test:ui&quot;: &quot;vitest --ui&quot;,
     &quot;build:analyze&quot;: &quot;vite build --mode analyze&quot;,
-    &quot;lighthouse&quot;: &quot;lhci autorun&quot;
+    &quot;lighthouse&quot;: &quot;dotenv -e .env.local lhci autorun&quot;
   },
   &quot;dependencies&quot;: {
     &quot;react&quot;: &quot;^18.2.0&quot;,
-    &quot;react-dom&quot;: &quot;^18.2.0&quot;
+    &quot;react-dom&quot;: &quot;^18.2.0&quot;,
+    &quot;zustand&quot;: &quot;^5.0.11&quot;
   },
   &quot;devDependencies&quot;: {
+    &quot;@eslint/js&quot;: &quot;^9.39.2&quot;,
+    &quot;@lhci/cli&quot;: &quot;^0.15.0&quot;,
     &quot;@testing-library/jest-dom&quot;: &quot;^6.9.1&quot;,
     &quot;@testing-library/react&quot;: &quot;^16.3.2&quot;,
-    &quot;@lhci/cli&quot;: &quot;^0.12.2&quot;,
     &quot;@vitejs/plugin-react&quot;: &quot;^4.2.1&quot;,
     &quot;@vitest/coverage-v8&quot;: &quot;^4.0.18&quot;,
     &quot;@vitest/ui&quot;: &quot;^4.0.18&quot;,
-    &quot;eslint&quot;: &quot;^8.56.0&quot;,
+    &quot;chrome-launcher&quot;: &quot;^1.2.1&quot;,
+    &quot;dotenv-cli&quot;: &quot;^11.0.0&quot;,
+    &quot;eslint&quot;: &quot;^9.39.2&quot;,
     &quot;eslint-config-prettier&quot;: &quot;^10.1.8&quot;,
     &quot;eslint-plugin-import&quot;: &quot;^2.32.0&quot;,
     &quot;eslint-plugin-jsx-a11y&quot;: &quot;^6.10.2&quot;,
     &quot;eslint-plugin-no-unsanitized&quot;: &quot;^4.1.4&quot;,
     &quot;eslint-plugin-react&quot;: &quot;^7.33.2&quot;,
-    &quot;eslint-plugin-react-hooks&quot;: &quot;^4.6.0&quot;,
+    &quot;eslint-plugin-react-hooks&quot;: &quot;^7.0.1&quot;,
     &quot;eslint-plugin-security&quot;: &quot;^3.0.1&quot;,
     &quot;glob&quot;: &quot;^13.0.0&quot;,
+    &quot;globals&quot;: &quot;^17.3.0&quot;,
     &quot;jsdom&quot;: &quot;^28.0.0&quot;,
     &quot;kekule&quot;: &quot;^1.0.3&quot;,
+    &quot;patch-package&quot;: &quot;^8.0.1&quot;,
     &quot;prettier&quot;: &quot;^3.1.1&quot;,
     &quot;rollup-plugin-visualizer&quot;: &quot;^6.0.5&quot;,
     &quot;sharp&quot;: &quot;^0.34.5&quot;,
@@ -147,7 +154,8 @@
     &quot;vitest&quot;: &quot;^4.0.18&quot;
   },
   &quot;overrides&quot;: {
-    &quot;esbuild&quot;: &quot;0.25.12&quot;
+    &quot;esbuild&quot;: &quot;0.25.12&quot;,
+    &quot;tmp&quot;: &quot;^0.2.5&quot;
   }
 }
 </code></pre>

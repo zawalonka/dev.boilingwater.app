@@ -12,9 +12,11 @@
  * It's positioned above the main game scene.
  */
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import '../styles/Header.css'
-import { EXPERIMENTS } from '../constants/workshops'
+import { EXPERIMENTS, LEVELS } from '../constants/workshops'
+import { useGameStore } from '../hooks/stores/gameStore'
+import { useWorkshopStore } from '../hooks/stores/workshopStore'
 
 /**
  * Header Function Component
@@ -43,15 +45,7 @@ function Header({
   onWorkshopChange,
   onLevelChange,
   onExperimentChange,
-  onSkipTutorial,
-  activeWorkshopId,
-  activeLevel,
-  activeExperiment,
-  availableWorkshops = [],
-  availableLevels = [],
-  availableExperiments = [],
-  activeView,
-  showSelectors = false
+  onSkipTutorial
 }) {
   // ============================================================================
   // STATE
@@ -64,6 +58,17 @@ function Header({
    * Starts as false (menu closed)
    */
   const [menuOpen, setMenuOpen] = useState(false)
+  const activeView = useGameStore((state) => state.activeView)
+  const showSelectors = useGameStore((state) => state.showSelectors)
+  const activeWorkshopId = useWorkshopStore((state) => state.activeWorkshopId)
+  const activeLevel = useWorkshopStore((state) => state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
+  const availableWorkshops = useWorkshopStore((state) => state.availableWorkshops)
+  const availableLevels = LEVELS
+  const availableExperiments = useMemo(() => {
+    const experiments = EXPERIMENTS[activeLevel] || []
+    return experiments.slice().sort((a, b) => (a.order || 0) - (b.order || 0))
+  }, [activeLevel])
 
   // ============================================================================
   // EVENT HANDLERS

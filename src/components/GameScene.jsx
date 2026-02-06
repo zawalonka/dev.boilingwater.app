@@ -33,6 +33,8 @@ import ControlPanel from './ControlPanel'
 import RoomControls from './RoomControls'
 import { useRoomEnvironment } from '../hooks/useRoomEnvironment'
 import { getAtmosphereKey } from '../utils/roomEnvironment'
+import { useGameStore } from '../hooks/stores/gameStore'
+import { useWorkshopStore } from '../hooks/stores/workshopStore'
 import '../styles/GameScene.css'
 
 // Default layout values (used if workshop layout not provided)
@@ -64,7 +66,18 @@ const DEFAULT_LAYOUT = {
   }
 }
 
-function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, burnerConfig, roomConfig, acUnitConfig, airHandlerConfig, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange, onEquipmentChange }) {
+function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConfig, roomConfig, acUnitConfig, airHandlerConfig, onLevelChange, onExperimentChange, onEquipmentChange }) {
+  const stage = useGameStore((state) => state.gameStage)
+  const location = useGameStore((state) => state.userLocation)
+  const showSelectors = useGameStore((state) => state.showSelectors)
+  const hasBoiledBefore = useGameStore((state) => state.hasBoiledBefore)
+  const setGameStage = useGameStore((state) => state.setGameStage)
+  const setUserLocation = useGameStore((state) => state.setUserLocation)
+  const setShowSelectors = useGameStore((state) => state.setShowSelectors)
+  const setHasBoiledBefore = useGameStore((state) => state.setHasBoiledBefore)
+
+  const activeLevel = useWorkshopStore((state) => state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
   const layout = workshopLayout || DEFAULT_LAYOUT
   const backgroundImage = workshopImages?.background || null
   const potEmptyImage = workshopImages?.pot_empty || null
@@ -652,7 +665,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           } : null
         })
         
-        onWaterBoiled?.()    // Notify parent that water has boiled
+        if (activeExperiment === 'boiling-water' && !hasBoiledBefore) {
+          setHasBoiledBefore(true)
+          setShowSelectors(true)
+        }
       }
       
       // Stop boiling if temperature drops below boiling point (pot removed from heat)
@@ -672,7 +688,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime])  // Re-run if any of these change
+  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime, activeExperiment, activeLevel, hasBoiledBefore, setHasBoiledBefore, setShowSelectors])  // Re-run if any of these change
 
   // ============================================================================
   // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
@@ -928,9 +944,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
    * Transitions to the next stage (more educational content) when user clicks "Learn More"
    */
   const handleLearnMore = () => {
-    // Call the parent component callback to change the game stage
-    // This transitions from Stage 0 (gameplay) to Stage 1 (educational content)
-    onStageChange(1)
+    // Transition from Stage 0 (gameplay) to Stage 1 (educational content)
+    setGameStage(1)
   }
 
   const getNextExperimentInLevel = () => {
@@ -985,7 +1000,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
    * Proceed to next stage from info screen
    */
   const handleNextStage = () => {
-    onStageChange(stage + 1)
+    setGameStage(stage + 1)
   }
 
   // ============================================================================
@@ -1009,7 +1024,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       const result = await getAltitudeFromLocationName(userZipCode)
       
       // Update the location through parent component
-      onLocationChange?.({
+      setUserLocation({
         altitude: result.altitude,
         name: result.name,
         fullName: result.fullName,
@@ -1043,7 +1058,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       return
     }
 
-    onLocationChange?.({
+    setUserLocation({
       altitude: altitudeNum,
       latitude: null,
       longitude: null
@@ -1069,7 +1084,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       const { getUserLocation } = await import('../utils/locationUtils')
       const result = await getUserLocation()
       
-      onLocationChange?.({
+      setUserLocation({
         altitude: result.altitude,
         name: result.name,
         latitude: result.latitude,
@@ -1100,7 +1115,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setLocationError(null)
     setHasSetLocation(false)
     setShowLocationPopup(true)  // Show popup again for selection
-    onLocationChange?.({
+    setUserLocation({
       altitude: 0,
       name: null,
       latitude: null,
@@ -1509,7 +1524,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           timeSpeed={timeSpeed}
           isTimerRunning={isTimerRunning}
           timeElapsed={timeElapsed}
-          activeExperiment={activeExperiment}
           activeFluid={activeFluid}
           availableFluids={availableFluids}
           isAdvancedModeAvailable={isAdvancedModeAvailable}
@@ -1542,7 +1556,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           handleSearchLocation={handleSearchLocation}
           handleSetManualAltitude={handleSetManualAltitude}
           handleFindMyLocation={handleFindMyLocation}
-          onLocationChange={onLocationChange}
           setEditableAltitude={setEditableAltitude}
           setShowLocationPopup={setShowLocationPopup}
           setUserZipCode={setUserZipCode}

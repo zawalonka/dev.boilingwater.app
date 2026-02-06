@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>eslint.config.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <span>eslint.config.js</span>
+        </nav>
+        <div class="wiki-topbar-title">eslint.config.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">eslint.config.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">@eslint/js</span>, <span class="external-import">eslint-config-prettier</span>, <span class="external-import">eslint-plugin-react</span>, <span class="external-import">eslint-plugin-react-hooks</span>, <span class="external-import">eslint-plugin-import</span>, <span class="external-import">eslint-plugin-jsx-a11y</span>, <span class="external-import">eslint-plugin-security</span>, <span class="external-import">eslint-plugin-no-unsanitized</span>, <span class="external-import">globals</span></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>eslint.config.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+    <section class="section">
+      <h2>Educational notes</h2>
+      <p>/*.{js,jsx}&#39;],</p>
+<p>languageOptions: {</p>
+<p>ecmaVersion: 2021,</p>
+<p>sourceType: &#39;module&#39;,</p>
+<p>parserOptions: {</p>
+<p>ecmaFeatures: {</p>
+<p>jsx: true,</p>
+<p>},</p>
+<p>},</p>
+<p>globals: {</p>
+<p>...globals.browser,</p>
+<p>...globals.node,</p>
+<p>...globals.es2021,</p>
+<p>// Vitest globals</p>
+<p>describe: &#39;readonly&#39;,</p>
+<p>it: &#39;readonly&#39;,</p>
+<p>test: &#39;readonly&#39;,</p>
+<p>expect: &#39;readonly&#39;,</p>
+<p>beforeEach: &#39;readonly&#39;,</p>
+<p>afterEach: &#39;readonly&#39;,</p>
+<p>beforeAll: &#39;readonly&#39;,</p>
+<p>afterAll: &#39;readonly&#39;,</p>
+<p>vi: &#39;readonly&#39;,</p>
+<p>},</p>
+<p>},</p>
+<p>plugins: {</p>
+<p>react: reactPlugin,</p>
+<p>&#39;react-hooks&#39;: reactHooksPlugin,</p>
+<p>import: importPlugin,</p>
+<p>&#39;jsx-a11y&#39;: jsxA11yPlugin,</p>
+<p>security: securityPlugin,</p>
+<p>&#39;no-unsanitized&#39;: noUnsanitizedPlugin,</p>
+<p>},</p>
+<p>rules: {</p>
+<p>...js.configs.recommended.rules,</p>
+<p>...reactPlugin.configs.recommended.rules,</p>
+<p>...reactHooksPlugin.configs.recommended.rules,</p>
+<p>...importPlugin.configs.recommended.rules,</p>
+<p>...jsxA11yPlugin.configs.recommended.rules,</p>
+<p>// React-specific rules</p>
+<p>&#39;react/react-in-jsx-scope&#39;: &#39;off&#39;,</p>
+<p>&#39;react/prop-types&#39;: &#39;off&#39;,</p>
+<p>&#39;react/display-name&#39;: &#39;warn&#39;,</p>
+<p>// Import/export rules</p>
+<p>&#39;import/no-unresolved&#39;: &#39;off&#39;,</p>
+<p>&#39;import/named&#39;: &#39;error&#39;,</p>
+<p>&#39;import/no-cycle&#39;: &#39;warn&#39;,</p>
+<p>&#39;import/no-unused-modules&#39;: &#39;warn&#39;,</p>
+<p>// General code quality rules</p>
+<p>&#39;no-unused-vars&#39;: &#39;warn&#39;,</p>
+<p>&#39;no-console&#39;: [&#39;warn&#39;, { allow: [&#39;error&#39;, &#39;warn&#39;, &#39;info&#39;] }],</p>
+<p>&#39;complexity&#39;: [&#39;warn&#39;, 15],</p>
+<p>&#39;max-lines-per-function&#39;: [</p>
+<p>&#39;warn&#39;,</p>
+<p>{ max: 100, skipBlankLines: true, skipComments: true },</p>
+<p>],</p>
+<p>// Security rules</p>
+<p>&#39;security/detect-object-injection&#39;: &#39;warn&#39;,</p>
+<p>&#39;no-unsanitized/method&#39;: &#39;error&#39;,</p>
+<p>&#39;no-unsanitized/property&#39;: &#39;error&#39;,</p>
+<p>// Accessibility rules</p>
+<p>&#39;jsx-a11y/alt-text&#39;: &#39;warn&#39;,</p>
+<p>&#39;jsx-a11y/aria-props&#39;: &#39;warn&#39;,</p>
+<p>&#39;jsx-a11y/aria-role&#39;: &#39;warn&#39;,</p>
+<p>},</p>
+<p>settings: {</p>
+<p>react: {</p>
+<p>version: &#39;detect&#39;,</p>
+<p>},</p>
+<p>&#39;import/resolver&#39;: {</p>
+<p>node: {</p>
+<p>extensions: [&#39;.js&#39;, &#39;.jsx&#39;],</p>
+<p>},</p>
+<p>},</p>
+<p>},</p>
+<p>},</p>
+<p>// Test file overrides</p>
+<p>{</p>
+<p>files: [&#39;src/*</p>
+    </section>
+  
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>eslint.config.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">import js from &#39;@eslint/js&#39;;
+import prettier from &#39;eslint-config-prettier&#39;;
+import reactPlugin from &#39;eslint-plugin-react&#39;;
+import reactHooksPlugin from &#39;eslint-plugin-react-hooks&#39;;
+import importPlugin from &#39;eslint-plugin-import&#39;;
+import jsxA11yPlugin from &#39;eslint-plugin-jsx-a11y&#39;;
+import securityPlugin from &#39;eslint-plugin-security&#39;;
+import noUnsanitizedPlugin from &#39;eslint-plugin-no-unsanitized&#39;;
+import globals from &#39;globals&#39;;
+
+export default [
+  {
+    ignores: [&#39;dist&#39;, &#39;build&#39;, &#39;node_modules&#39;, &#39;.git&#39;, &#39;coverage&#39;],
+  },
+  {
+    files: [&#39;src/**/*.{js,jsx}&#39;],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: &#39;module&#39;,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+        // Vitest globals
+        describe: &#39;readonly&#39;,
+        it: &#39;readonly&#39;,
+        test: &#39;readonly&#39;,
+        expect: &#39;readonly&#39;,
+        beforeEach: &#39;readonly&#39;,
+        afterEach: &#39;readonly&#39;,
+        beforeAll: &#39;readonly&#39;,
+        afterAll: &#39;readonly&#39;,
+        vi: &#39;readonly&#39;,
+      },
+    },
+    plugins: {
+      react: reactPlugin,
+      &#39;react-hooks&#39;: reactHooksPlugin,
+      import: importPlugin,
+      &#39;jsx-a11y&#39;: jsxA11yPlugin,
+      security: securityPlugin,
+      &#39;no-unsanitized&#39;: noUnsanitizedPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+      ...importPlugin.configs.recommended.rules,
+      ...jsxA11yPlugin.configs.recommended.rules,
+
+      // React-specific rules
+      &#39;react/react-in-jsx-scope&#39;: &#39;off&#39;,
+      &#39;react/prop-types&#39;: &#39;off&#39;,
+      &#39;react/display-name&#39;: &#39;warn&#39;,
+
+      // Import/export rules
+      &#39;import/no-unresolved&#39;: &#39;off&#39;,
+      &#39;import/named&#39;: &#39;error&#39;,
+      &#39;import/no-cycle&#39;: &#39;warn&#39;,
+      &#39;import/no-unused-modules&#39;: &#39;warn&#39;,
+
+      // General code quality rules
+      &#39;no-unused-vars&#39;: &#39;warn&#39;,
+      &#39;no-console&#39;: [&#39;warn&#39;, { allow: [&#39;error&#39;, &#39;warn&#39;, &#39;info&#39;] }],
+      &#39;complexity&#39;: [&#39;warn&#39;, 15],
+      &#39;max-lines-per-function&#39;: [
+        &#39;warn&#39;,
+        { max: 100, skipBlankLines: true, skipComments: true },
+      ],
+
+      // Security rules
+      &#39;security/detect-object-injection&#39;: &#39;warn&#39;,
+      &#39;no-unsanitized/method&#39;: &#39;error&#39;,
+      &#39;no-unsanitized/property&#39;: &#39;error&#39;,
+
+      // Accessibility rules
+      &#39;jsx-a11y/alt-text&#39;: &#39;warn&#39;,
+      &#39;jsx-a11y/aria-props&#39;: &#39;warn&#39;,
+      &#39;jsx-a11y/aria-role&#39;: &#39;warn&#39;,
+    },
+    settings: {
+      react: {
+        version: &#39;detect&#39;,
+      },
+      &#39;import/resolver&#39;: {
+        node: {
+          extensions: [&#39;.js&#39;, &#39;.jsx&#39;],
+        },
+      },
+    },
+  },
+  // Test file overrides
+  {
+    files: [&#39;src/**/__tests__/**/*.js&#39;, &#39;src/**/test/**/*.js&#39;],
+    rules: {
+      &#39;import/named&#39;: &#39;off&#39;,
+    },
+  },
+  // Prettier config (must come last to override) prettier/recommended
+  prettier,
+];
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

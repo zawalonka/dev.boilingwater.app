@@ -10,8 +10,10 @@
  * - Boiling status messages
  * - Altitude/location selection
  * 
- * All state management remains in GameScene; this component is purely presentational.
+ * All simulation state remains in GameScene; shared app state is read from stores.
  */
+
+import { useWorkshopStore } from '../hooks/stores/workshopStore'
 
 function ControlPanel({
   // Game state
@@ -35,7 +37,6 @@ function ControlPanel({
   timeSpeed,
   isTimerRunning,
   timeElapsed,
-  activeExperiment,
   activeFluid,
   availableFluids,
   isAdvancedModeAvailable,
@@ -68,7 +69,6 @@ function ControlPanel({
   handleSearchLocation,
   handleSetManualAltitude,
   handleFindMyLocation,
-  onLocationChange,
   setEditableAltitude,
   setShowLocationPopup,
   setUserZipCode,
@@ -78,6 +78,7 @@ function ControlPanel({
   setIsLoadingLocation,
   setHasSetLocation
 }) {
+  const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
   // Format time in mm:ss
   const formatTime = (seconds) => {
     if (seconds === null || seconds === undefined) return '--:--'

@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>temperatureConversion.test.js - Boiling Water Wiki</title>
+  <link rel="stylesheet" href="/wiki/assets/styles.css" />
+  <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+</head>
+<body>
+  <div class="wiki-layout">
+    <div class="wiki-main">
+      <header class="wiki-topbar">
+        <details class="wiki-menu" aria-label="Menu">
+          <summary>☰ Menu</summary>
+          <nav class="wiki-menu-links">
+            <div class="menu-section">
+              <div class="menu-heading">Main</div>
+              <a href="/wiki/index.html">📚 Main page</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Science</div>
+              <a href="/wiki/entities/elements/index.html">⚛️ Elements</a>
+              <a href="/wiki/entities/compounds/index.html">🧪 Compounds</a>
+              <a href="/wiki/entities/solutions/index.html">💧 Solutions</a>
+              <a href="/wiki/entities/phases/index.html">❄️ Phases</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Game Structure</div>
+              <a href="/wiki/entities/levels/index.html">📊 Levels</a>
+              <a href="/wiki/entities/experiments/index.html">🔬 Experiments</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Code Reference</div>
+              <a href="/wiki/entities/formulas/index.html">📐 Formulas</a>
+              <a href="/wiki/entities/processes/index.html">⚙️ Processes</a>
+              <a href="/wiki/entities/modules/index.html">📦 Modules</a>
+              <a href="/wiki/entities/symbols/index.html">🔣 Symbols</a>
+              <a href="/wiki/entities/public/index.html">📁 Public Files</a>
+              <a href="/wiki/entities/assets/index.html">🖼️ Assets</a>
+            </div>
+            <div class="menu-section">
+              <div class="menu-heading">Repository</div>
+              <a href="/wiki/entities/docs/index.html">📖 Docs</a>
+              <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
+              <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
+              <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+            </div>
+            <div class="wiki-menu-divider"></div>
+            <a href="/">⬅️ Back to Game</a>
+          </nav>
+        </details>
+        
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/index.html">utils</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/physics/index.html">physics</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/physics/__tests__/index.html">__tests__</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/utils/physics/__tests__/formulas/index.html">formulas</a> <span class="breadcrumb-sep">›</span> <span>temperatureConversion.test.js</span>
+        </nav>
+        <div class="wiki-topbar-title">temperatureConversion.test.js</div>
+      </header>
+      <main class="wiki-content">
+        
+        <article class="wiki-article">
+          
+      
+    <aside class="infobox">
+      <div class="infobox-title">temperatureConversion.test.js</div>
+      
+      <div class="infobox-row">
+        <div class="infobox-label">Type</div>
+        <div class="infobox-value">Module</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
+      </div>
+    
+      <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><span class="external-import">vitest</span>, <a href="/wiki/entities/formulas/temperatureConversion.html">temperatureConversion</a></div>
+      </div>
+    
+    </aside>
+  
+      <section class="section">
+        
+  <div class="entity-header">
+    <h1>temperatureConversion.test.js</h1>
+    <p class="subtitle">Module</p>
+  </div>
+
+      </section>
+      
+      <section class="section" id="source-file">
+        <h2>Source file</h2>
+        <p><code>src\utils\physics\__tests__\formulas\temperatureConversion.test.js</code></p>
+        <details>
+          <summary>View source code</summary>
+          <pre class="line-numbers"><code class="language-javascript">import { describe, it, expect } from &#39;vitest&#39;
+import {
+  celsiusToFahrenheit,
+  fahrenheitToCelsius,
+  celsiusToKelvin,
+  kelvinToCelsius,
+  fahrenheitToKelvin,
+  kelvinToFahrenheit,
+  formatTemperature
+} from &#39;../../formulas/temperatureConversion.js&#39;
+
+describe(&#39;Temperature Conversion - All Scales&#39;, () =&gt; {
+  // TEST 1: Round-trip C→F→C (reversibility)
+  it(&#39;implements reversible C↔F conversion&#39;, () =&gt; {
+    const originalC = 42.3
+    const F = celsiusToFahrenheit(originalC)
+    const backToC = fahrenheitToCelsius(F)
+    
+    // Allow tiny floating-point error (±0.01°C)
+    expect(backToC).toBeCloseTo(originalC, 2)
+  })
+
+  // TEST 2: Reference point - water freezing (0°C = 32°F)
+  it(&#39;verifies reference: 0°C = 32°F&#39;, () =&gt; {
+    expect(celsiusToFahrenheit(0)).toBeCloseTo(32, 10)
+    expect(fahrenheitToCelsius(32)).toBeCloseTo(0, 10)
+  })
+
+  // TEST 3: Reference point - water boiling (100°C = 212°F)
+  it(&#39;verifies reference: 100°C = 212°F&#39;, () =&gt; {
+    expect(celsiusToFahrenheit(100)).toBeCloseTo(212, 10)
+    expect(fahrenheitToCelsius(212)).toBeCloseTo(100, 10)
+  })
+
+  // TEST 4: Reference point - equal scales (-40°C = -40°F)
+  it(&#39;verifies reference: -40°C = -40°F (equal point)&#39;, () =&gt; {
+    expect(celsiusToFahrenheit(-40)).toBeCloseTo(-40, 10)
+    expect(fahrenheitToCelsius(-40)).toBeCloseTo(-40, 10)
+  })
+
+  // TEST 5: Extreme low temperature (-196°C, liquid nitrogen)
+  it(&#39;handles extreme cold (-196°C to -321°F)&#39;, () =&gt; {
+    const liquidN2C = -196
+    const liquidN2F = celsiusToFahrenheit(liquidN2C)
+    // Expected: -196 × 9/5 + 32 = -320.8°F
+    expect(liquidN2F).toBeCloseTo(-320.8, 1)
+    // Reversible
+    expect(fahrenheitToCelsius(liquidN2F)).toBeCloseTo(liquidN2C, 2)
+  })
+
+  // TEST 6: Extreme high temperature (300°C, superheated steam)
+  it(&#39;handles extreme heat (300°C to 572°F)&#39;, () =&gt; {
+    const superheatC = 300
+    const superheatF = celsiusToFahrenheit(superheatC)
+    // Expected: 300 × 9/5 + 32 = 572°F
+    expect(superheatF).toBeCloseTo(572, 1)
+    expect(fahrenheitToCelsius(superheatF)).toBeCloseTo(superheatC, 2)
+  })
+
+  // TEST 7: Celsius to Kelvin (0°C = 273.15 K)
+  it(&#39;converts Celsius to Kelvin (0°C = 273.15 K)&#39;, () =&gt; {
+    expect(celsiusToKelvin(0)).toBeCloseTo(273.15, 10)
+    expect(celsiusToKelvin(100)).toBeCloseTo(373.15, 10)
+    expect(celsiusToKelvin(-273.15)).toBeCloseTo(0, 10)
+  })
+
+  // TEST 8: Kelvin to Celsius (round-trip)
+  it(&#39;converts Kelvin to Celsius (reversible)&#39;, () =&gt; {
+    const tempK = 298.15  // ~25°C
+    const tempC = kelvinToCelsius(tempK)
+    expect(tempC).toBeCloseTo(25, 10)
+    expect(celsiusToKelvin(tempC)).toBeCloseTo(tempK, 10)
+  })
+
+  // TEST 9: Fahrenheit to Kelvin via composites
+  it(&#39;converts F→K and K→F through composites&#39;, () =&gt; {
+    const tempF = 68  // Room temperature
+    const tempK = fahrenheitToKelvin(tempF)
+    // 68°F = 20°C = 293.15 K
+    expect(tempK).toBeCloseTo(293.15, 1)
+    expect(kelvinToFahrenheit(tempK)).toBeCloseTo(tempF, 1)
+  })
+
+  // TEST 10: Format temperature function
+  it(&#39;formats temperature with correct decimal places&#39;, () =&gt; {
+    expect(formatTemperature(20.456, 1)).toBe(&#39;20.5&#39;)
+    expect(formatTemperature(20.456, 2)).toBe(&#39;20.46&#39;)
+    expect(formatTemperature(20.456, 0)).toBe(&#39;20&#39;)
+    expect(formatTemperature(Infinity, 1)).toBe(&#39;--&#39;)
+    expect(formatTemperature(NaN, 1)).toBe(&#39;--&#39;)
+  })
+})
+</code></pre>
+        </details>
+      </section>
+    
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-jsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-tsx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+  <script>
+    // Lazy-load Kekule only when molecule viewer is expanded (saves bandwidth on low-end devices)
+    (() => {
+      let smilesDrawerLoaded = false
+      let smilesDrawerLoading = false
+      
+      // Convert explicit SMILES like [CH3][CH](OH)[CH3] to standard like CC(O)C
+      const explicitToStandard = (smiles) => {
+        return smiles
+          // Common organic groups - order matters (longer patterns first)
+          .replace(/\[CH3\]/g, 'C')
+          .replace(/\[CH2\]/g, 'C')
+          .replace(/\[CH\]/g, 'C')
+          .replace(/\[OH\]/g, 'O')
+          .replace(/\[NH2\]/g, 'N')
+          .replace(/\[NH\]/g, 'N')
+          .replace(/\[SH\]/g, 'S')
+          // Single atoms in brackets (keep aromatic lowercase)
+          .replace(/\[C\]/g, 'C')
+          .replace(/\[N\]/g, 'N')
+          .replace(/\[O\]/g, 'O')
+          .replace(/\[S\]/g, 'S')
+          .replace(/\[P\]/g, 'P')
+          .replace(/\[F\]/g, 'F')
+          .replace(/\[Cl\]/g, 'Cl')
+          .replace(/\[Br\]/g, 'Br')
+          .replace(/\[I\]/g, 'I')
+          // Bare atoms in branches - H is implicit in standard SMILES
+          .replace(/\(OH\)/g, '(O)')
+          .replace(/\(NH2\)/g, '(N)')
+          .replace(/\(NH\)/g, '(N)')
+          .replace(/\(SH\)/g, '(S)')
+      }
+      
+      const loadSmilesDrawer = async () => {
+        if (smilesDrawerLoaded) return
+        if (smilesDrawerLoading) {
+          return new Promise(resolve => {
+            const check = setInterval(() => {
+              if (smilesDrawerLoaded) { clearInterval(check); resolve() }
+            }, 50)
+          })
+        }
+        smilesDrawerLoading = true
+        
+        // Load SmilesDrawer from CDN (much simpler than Kekule)
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/smiles-drawer@2.1.7/dist/smiles-drawer.min.js'
+          script.onload = resolve
+          script.onerror = reject
+          document.body.appendChild(script)
+        })
+        
+        smilesDrawerLoaded = true
+        smilesDrawerLoading = false
+      }
+      
+      const initMolecule = async (node) => {
+        if (node.dataset.initialized) return
+        node.dataset.initialized = 'true'
+        
+        const rawSmiles = node.getAttribute('data-smiles')
+        if (!rawSmiles) return
+        
+        // Convert explicit format to standard if needed
+        const smiles = explicitToStandard(rawSmiles)
+        
+        try {
+          await loadSmilesDrawer()
+          
+          const drawer = new SmilesDrawer.SvgDrawer({ 
+            width: 300, 
+            height: 200,
+            explicitHydrogens: true,
+            terminalCarbons: true,
+            compactDrawing: false
+          })
+          
+          console.log('Parsing SMILES:', rawSmiles, '->', smiles)
+          SmilesDrawer.parse(smiles, (tree) => {
+            console.log('Parse success, tree:', tree)
+            const svgElement = drawer.draw(tree, null, 'light')
+            console.log('SVG element:', svgElement)
+            node.innerHTML = ''
+            node.appendChild(svgElement)
+          }, (err) => {
+            console.error('SMILES parse error for "' + smiles + '":', err)
+            node.innerHTML = '<code>' + rawSmiles + '</code>'
+          })
+        } catch (err) {
+          console.error('SmilesDrawer load error:', err)
+          node.innerHTML = '<code>' + smiles + '</code>'
+        }
+      }
+      
+      // Use IntersectionObserver for lazy loading when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMolecule(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { rootMargin: '100px' })
+      
+      // Also handle <details> expansion for molecules inside collapsed sections
+      document.addEventListener('toggle', (e) => {
+        if (e.target.tagName === 'DETAILS' && e.target.open) {
+          const molecules = e.target.querySelectorAll('[data-smiles]:not([data-initialized])')
+          molecules.forEach(node => initMolecule(node))
+        }
+      }, true)
+      
+      // Observe all molecule nodes
+      const init = () => {
+        const nodes = document.querySelectorAll('[data-smiles]')
+        nodes.forEach(node => observer.observe(node))
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init)
+      } else {
+        init()
+      }
+    })()
+  </script>
+</body>
+</html>

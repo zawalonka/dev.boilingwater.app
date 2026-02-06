@@ -78,7 +78,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -129,9 +129,11 @@
  * It&#39;s positioned above the main game scene.
  */
 
-import { useState } from &#39;react&#39;
+import { useState, useMemo } from &#39;react&#39;
 import &#39;../styles/Header.css&#39;
-import { EXPERIMENTS } from &#39;../constants/workshops&#39;
+import { EXPERIMENTS, LEVELS } from &#39;../constants/workshops&#39;
+import { useGameStore } from &#39;../hooks/stores/gameStore&#39;
+import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 
 /**
  * Header Function Component
@@ -160,15 +162,7 @@ function Header({
   onWorkshopChange,
   onLevelChange,
   onExperimentChange,
-  onSkipTutorial,
-  activeWorkshopId,
-  activeLevel,
-  activeExperiment,
-  availableWorkshops = [],
-  availableLevels = [],
-  availableExperiments = [],
-  activeView,
-  showSelectors = false
+  onSkipTutorial
 }) {
   // ============================================================================
   // STATE
@@ -181,6 +175,17 @@ function Header({
    * Starts as false (menu closed)
    */
   const [menuOpen, setMenuOpen] = useState(false)
+  const activeView = useGameStore((state) =&gt; state.activeView)
+  const showSelectors = useGameStore((state) =&gt; state.showSelectors)
+  const activeWorkshopId = useWorkshopStore((state) =&gt; state.activeWorkshopId)
+  const activeLevel = useWorkshopStore((state) =&gt; state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
+  const availableWorkshops = useWorkshopStore((state) =&gt; state.availableWorkshops)
+  const availableLevels = LEVELS
+  const availableExperiments = useMemo(() =&gt; {
+    const experiments = EXPERIMENTS[activeLevel] || []
+    return experiments.slice().sort((a, b) =&gt; (a.order || 0) - (b.order || 0))
+  }, [activeLevel])
 
   // ============================================================================
   // EVENT HANDLERS

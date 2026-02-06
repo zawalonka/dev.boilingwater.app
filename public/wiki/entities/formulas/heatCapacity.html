@@ -73,7 +73,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Exports</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/SPECIFIC_HEAT_VALUES.html">SPECIFIC_HEAT_VALUES</a></li><li><a href="/wiki/entities/symbols/calculateHeatEnergy.html">calculateHeatEnergy</a></li><li><a href="/wiki/entities/symbols/calculateHeatingTime.html">calculateHeatingTime</a></li><li><a href="/wiki/entities/symbols/calculateTempChange.html">calculateTempChange</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/SPECIFIC_HEAT_VALUES.html">SPECIFIC_HEAT_VALUES</a></li><li><a href="/wiki/entities/symbols/calculateEnergyTolerance.html">calculateEnergyTolerance</a></li><li><a href="/wiki/entities/symbols/calculateHeatEnergy.html">calculateHeatEnergy</a></li><li><a href="/wiki/entities/symbols/calculateHeatingTime.html">calculateHeatingTime</a></li><li><a href="/wiki/entities/symbols/calculateTempChange.html">calculateTempChange</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
@@ -83,7 +83,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Used in</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html">heatCapacity.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html">newtonCooling.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li></ul></div>
       </div>
     
     </aside>
@@ -224,6 +224,28 @@ export function calculateHeatingTime(massKg, specificHeat, tempStart, tempEnd, p
   
   // time = energy / power
   return Math.abs(energyNeeded) / powerWatts
+}
+
+/**
+ * Calculate dynamic tolerance for energy comparisons based on magnitude
+ * 
+ * Uses 0.01% precision (4 significant figures) with 1J floor.
+ * This ensures comparisons are strict on large values while avoiding
+ * absurd tolerances on tiny values.
+ * 
+ * @param {number} expected - Expected energy value in joules
+ * @returns {number} Decimal places for toBeCloseTo (-Math.log10(tolerance))
+ * 
+ * @example
+ *   calculateEnergyTolerance(100) → 2 decimal places (±1 J)
+ *   calculateEnergyTolerance(2257000) → 3.6 decimal places (±226 J, 0.01%)
+ *   calculateEnergyTolerance(10000000) → 4 decimal places (±1000 J, 0.01%)
+ */
+export function calculateEnergyTolerance(expected) {
+  // 0.01% minimum, floor at 1J (prevents absurd tolerance on tiny values)
+  const toleranceJ = Math.max(1, Math.abs(expected) * 0.0001)
+  // Convert to decimal places for toBeCloseTo
+  return -Math.log10(toleranceJ)
 }
 
 /**

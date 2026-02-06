@@ -78,7 +78,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -153,6 +153,8 @@ import ControlPanel from &#39;./ControlPanel&#39;
 import RoomControls from &#39;./RoomControls&#39;
 import { useRoomEnvironment } from &#39;../hooks/useRoomEnvironment&#39;
 import { getAtmosphereKey } from &#39;../utils/roomEnvironment&#39;
+import { useGameStore } from &#39;../hooks/stores/gameStore&#39;
+import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 import &#39;../styles/GameScene.css&#39;
 
 // Default layout values (used if workshop layout not provided)
@@ -184,7 +186,18 @@ const DEFAULT_LAYOUT = {
   }
 }
 
-function GameScene({ stage, location, onStageChange, workshopLayout, workshopImages, workshopEffects, burnerConfig, roomConfig, acUnitConfig, airHandlerConfig, activeLevel, activeExperiment, showSelectors, onWaterBoiled, onSkipTutorial, onLevelChange, onExperimentChange, hasBoiledBefore = false, onLocationChange, onEquipmentChange }) {
+function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConfig, roomConfig, acUnitConfig, airHandlerConfig, onLevelChange, onExperimentChange, onEquipmentChange }) {
+  const stage = useGameStore((state) =&gt; state.gameStage)
+  const location = useGameStore((state) =&gt; state.userLocation)
+  const showSelectors = useGameStore((state) =&gt; state.showSelectors)
+  const hasBoiledBefore = useGameStore((state) =&gt; state.hasBoiledBefore)
+  const setGameStage = useGameStore((state) =&gt; state.setGameStage)
+  const setUserLocation = useGameStore((state) =&gt; state.setUserLocation)
+  const setShowSelectors = useGameStore((state) =&gt; state.setShowSelectors)
+  const setHasBoiledBefore = useGameStore((state) =&gt; state.setHasBoiledBefore)
+
+  const activeLevel = useWorkshopStore((state) =&gt; state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
   const layout = workshopLayout || DEFAULT_LAYOUT
   const backgroundImage = workshopImages?.background || null
   const potEmptyImage = workshopImages?.pot_empty || null
@@ -772,7 +785,10 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           } : null
         })
         
-        onWaterBoiled?.()    // Notify parent that water has boiled
+        if (activeExperiment === &#39;boiling-water&#39; &amp;&amp; !hasBoiledBefore) {
+          setHasBoiledBefore(true)
+          setShowSelectors(true)
+        }
       }
       
       // Stop boiling if temperature drops below boiling point (pot removed from heat)
@@ -792,7 +808,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime])  // Re-run if any of these change
+  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime, activeExperiment, activeLevel, hasBoiledBefore, setHasBoiledBefore, setShowSelectors])  // Re-run if any of these change
 
   // ============================================================================
   // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
@@ -1048,9 +1064,8 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
    * Transitions to the next stage (more educational content) when user clicks &quot;Learn More&quot;
    */
   const handleLearnMore = () =&gt; {
-    // Call the parent component callback to change the game stage
-    // This transitions from Stage 0 (gameplay) to Stage 1 (educational content)
-    onStageChange(1)
+    // Transition from Stage 0 (gameplay) to Stage 1 (educational content)
+    setGameStage(1)
   }
 
   const getNextExperimentInLevel = () =&gt; {
@@ -1105,7 +1120,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
    * Proceed to next stage from info screen
    */
   const handleNextStage = () =&gt; {
-    onStageChange(stage + 1)
+    setGameStage(stage + 1)
   }
 
   // ============================================================================
@@ -1129,7 +1144,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       const result = await getAltitudeFromLocationName(userZipCode)
       
       // Update the location through parent component
-      onLocationChange?.({
+      setUserLocation({
         altitude: result.altitude,
         name: result.name,
         fullName: result.fullName,
@@ -1163,7 +1178,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       return
     }
 
-    onLocationChange?.({
+    setUserLocation({
       altitude: altitudeNum,
       latitude: null,
       longitude: null
@@ -1189,7 +1204,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
       const { getUserLocation } = await import(&#39;../utils/locationUtils&#39;)
       const result = await getUserLocation()
       
-      onLocationChange?.({
+      setUserLocation({
         altitude: result.altitude,
         name: result.name,
         latitude: result.latitude,
@@ -1220,7 +1235,7 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
     setLocationError(null)
     setHasSetLocation(false)
     setShowLocationPopup(true)  // Show popup again for selection
-    onLocationChange?.({
+    setUserLocation({
       altitude: 0,
       name: null,
       latitude: null,
@@ -1629,7 +1644,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           timeSpeed={timeSpeed}
           isTimerRunning={isTimerRunning}
           timeElapsed={timeElapsed}
-          activeExperiment={activeExperiment}
           activeFluid={activeFluid}
           availableFluids={availableFluids}
           isAdvancedModeAvailable={isAdvancedModeAvailable}
@@ -1662,7 +1676,6 @@ function GameScene({ stage, location, onStageChange, workshopLayout, workshopIma
           handleSearchLocation={handleSearchLocation}
           handleSetManualAltitude={handleSetManualAltitude}
           handleFindMyLocation={handleFindMyLocation}
-          onLocationChange={onLocationChange}
           setEditableAltitude={setEditableAltitude}
           setShowLocationPopup={setShowLocationPopup}
           setUserZipCode={setUserZipCode}

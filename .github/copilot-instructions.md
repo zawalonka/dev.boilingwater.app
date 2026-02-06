@@ -4,6 +4,12 @@
 
 ---
 
+## 🚨 HONESTY RULE (MANDATORY)
+
+Do not claim you observed or verified something you did not actually check. If you are unsure, say so and ask for the missing detail.
+
+---
+
 ## ⚠️ MANDATORY PRE-TOOL-CALL CHECKLIST
 
 **Before EVERY tool execution:**

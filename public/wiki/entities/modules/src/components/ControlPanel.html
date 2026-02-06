@@ -77,6 +77,11 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
         <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li></ul></div>
       </div>
@@ -103,7 +108,7 @@
 <p>- Heat level controls</p>
 <p>- Boiling status messages</p>
 <p>- Altitude/location selection</p>
-<p>All state management remains in GameScene; this component is purely presentational.</p>
+<p>All simulation state remains in GameScene; shared app state is read from stores.</p>
     </section>
   
       <section class="section" id="source-file">
@@ -123,8 +128,10 @@
  * - Boiling status messages
  * - Altitude/location selection
  * 
- * All state management remains in GameScene; this component is purely presentational.
+ * All simulation state remains in GameScene; shared app state is read from stores.
  */
+
+import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 
 function ControlPanel({
   // Game state
@@ -148,7 +155,6 @@ function ControlPanel({
   timeSpeed,
   isTimerRunning,
   timeElapsed,
-  activeExperiment,
   activeFluid,
   availableFluids,
   isAdvancedModeAvailable,
@@ -181,7 +187,6 @@ function ControlPanel({
   handleSearchLocation,
   handleSetManualAltitude,
   handleFindMyLocation,
-  onLocationChange,
   setEditableAltitude,
   setShowLocationPopup,
   setUserZipCode,
@@ -191,6 +196,7 @@ function ControlPanel({
   setIsLoadingLocation,
   setHasSetLocation
 }) {
+  const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
   // Format time in mm:ss
   const formatTime = (seconds) =&gt; {
     if (seconds === null || seconds === undefined) return &#39;--:--&#39;

@@ -79,10 +79,15 @@
       </div>
     
       <div class="infobox-row">
+        <div class="infobox-label">Imported by</div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a></li></ul></div>
+      </div>
+    
+      <div class="infobox-row">
         <div class="infobox-label">Internal usage</div>
         <div class="infobox-value"><ul class="call-sites">
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L115</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L116</span>
               <code class="call-site-context">LATENT_HEAT_VALUES (re-export)</code>
             </li>
           </ul></div>
@@ -99,13 +104,44 @@
 
       </section>
       <section class="section">
-        <h2>Internal Usage (0)</h2>
-        <ul class="call-sites">
-            <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L115</span>
-              <code class="call-site-context">LATENT_HEAT_VALUES (re-export)</code>
-            </li>
-          </ul>
+        <h2>Call Sites (12)</h2>
+        <ul class="call-sites"><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L105</span>
+            <code class="call-site-context">const Lv = LATENT_HEAT_VALUES.vaporization.water  // 2257 kJ/kg</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L15</span>
+            <code class="call-site-context">const Lv = LATENT_HEAT_VALUES.vaporization.water  // 2257 kJ/kg</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L26</span>
+            <code class="call-site-context">const Lv = LATENT_HEAT_VALUES.vaporization.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L35</span>
+            <code class="call-site-context">const energy = calculateVaporizationEnergy(1, LATENT_HEAT_VALUES.vaporization.water)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L45</span>
+            <code class="call-site-context">const Lf = LATENT_HEAT_VALUES.fusion.water  // 334 kJ/kg</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L55</span>
+            <code class="call-site-context">const energy = calculateFusionEnergy(1, LATENT_HEAT_VALUES.fusion.water)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L63</span>
+            <code class="call-site-context">const Lv = LATENT_HEAT_VALUES.vaporization.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L74</span>
+            <code class="call-site-context">const Lf = LATENT_HEAT_VALUES.fusion.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L86</span>
+            <code class="call-site-context">const fusionEnergy = calculateFusionEnergy(massKg, LATENT_HEAT_VALUES.fusion.water)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L87</span>
+            <code class="call-site-context">const vaporizationEnergy = calculateVaporizationEnergy(massKg, LATENT_HEAT_VALUES.vaporization.water</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L98</span>
+            <code class="call-site-context">const waterVapor = calculateVaporizationEnergy(massKg, LATENT_HEAT_VALUES.vaporization.water)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html">latentHeat.test.js</a>#L99</span>
+            <code class="call-site-context">const ethanolVapor = calculateVaporizationEnergy(massKg, LATENT_HEAT_VALUES.vaporization.ethanol)</code>
+          </li></ul>
       </section>
     
         </article>

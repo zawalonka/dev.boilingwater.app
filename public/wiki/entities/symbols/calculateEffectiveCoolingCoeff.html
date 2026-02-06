@@ -80,14 +80,14 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulation/simulateTimeStep</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html">newtonCooling.test.js</a></li><li><a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulation/simulateTimeStep</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
         <div class="infobox-label">Internal usage</div>
         <div class="infobox-value"><ul class="call-sites">
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L120</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L121</span>
               <code class="call-site-context">calculateEffectiveCoolingCoeff, (re-export)</code>
             </li>
           </ul></div>
@@ -104,8 +104,23 @@
 
       </section>
       <section class="section">
-        <h2>Call Sites (1)</h2>
+        <h2>Call Sites (6)</h2>
         <ul class="call-sites"><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L42</span>
+            <code class="call-site-context">const k = calculateEffectiveCoolingCoeff(hA, massKg, c)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L71</span>
+            <code class="call-site-context">const k = calculateEffectiveCoolingCoeff(hA, massKg, c)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L125</span>
+            <code class="call-site-context">const k = calculateEffectiveCoolingCoeff(hA, massKg, c)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html">energyConservation.test.js</a>#L156</span>
+            <code class="call-site-context">const k = calculateEffectiveCoolingCoeff(hA, massKg, c)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html">newtonCooling.test.js</a>#L18</span>
+            <code class="call-site-context">const k = calculateEffectiveCoolingCoeff(hA, massKg, c)</code>
+          </li><li>
             <span class="call-site-file"><a href="/wiki/entities/processes/simulation/simulateTimeStep.html">simulation/simulateTimeStep</a>#L99</span>
             <code class="call-site-context">const coolingCoeff = calculateEffectiveCoolingCoeff(convectiveHT, waterMass, specificHeat)</code>
           </li></ul>

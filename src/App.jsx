@@ -1,23 +1,35 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Header from './components/Header'
 import GameScene from './components/GameScene'
 import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from './utils/workshopLoader'
 import { LEVELS, EXPERIMENTS } from './constants/workshops'
+import { useGameStore } from './hooks/stores/gameStore'
+import { useWorkshopStore } from './hooks/stores/workshopStore'
 import './styles/App.css'
 
 function App() {
-  const [gameStage, setGameStage] = useState(0)
-  const [userLocation, setUserLocation] = useState(null)
-  const [workshopLoaded, setWorkshopLoaded] = useState(false)
-  const [activeView, setActiveView] = useState('game')  // game | about | docs | submit-issue | submit-workshop
-  const [gameInstanceKey, setGameInstanceKey] = useState(0)
-  const [activeLevel, setActiveLevel] = useState(1)  // Numeric level (1, 2, 3...)
-  const [activeExperiment, setActiveExperiment] = useState('boiling-water')  // Experiment ID within level
-  const [activeWorkshopId, setActiveWorkshopId] = useState('pre-alpha-kitchen-1')
-  const [availableWorkshops, setAvailableWorkshops] = useState([{ id: 'pre-alpha-kitchen-1', name: 'Pre Alpha Kitchen 1' }])
-  const [activeWorkshopData, setActiveWorkshopData] = useState(null)
-  const [hasBoiledBefore, setHasBoiledBefore] = useState(false)  // Track if user has boiled water once
-  const [showSelectors, setShowSelectors] = useState(false)  // Show level/workshop selectors
+  const gameStage = useGameStore((state) => state.gameStage)
+  const workshopLoaded = useGameStore((state) => state.workshopLoaded)
+  const activeView = useGameStore((state) => state.activeView)
+  const gameInstanceKey = useGameStore((state) => state.gameInstanceKey)
+  const showSelectors = useGameStore((state) => state.showSelectors)
+  const setGameStage = useGameStore((state) => state.setGameStage)
+  const setUserLocation = useGameStore((state) => state.setUserLocation)
+  const setWorkshopLoaded = useGameStore((state) => state.setWorkshopLoaded)
+  const setActiveView = useGameStore((state) => state.setActiveView)
+  const bumpGameInstanceKey = useGameStore((state) => state.bumpGameInstanceKey)
+  const setShowSelectors = useGameStore((state) => state.setShowSelectors)
+
+  const activeLevel = useWorkshopStore((state) => state.activeLevel)
+  const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
+  const activeWorkshopId = useWorkshopStore((state) => state.activeWorkshopId)
+  const availableWorkshops = useWorkshopStore((state) => state.availableWorkshops)
+  const activeWorkshopData = useWorkshopStore((state) => state.activeWorkshopData)
+  const setActiveLevel = useWorkshopStore((state) => state.setActiveLevel)
+  const setActiveExperiment = useWorkshopStore((state) => state.setActiveExperiment)
+  const setActiveWorkshopId = useWorkshopStore((state) => state.setActiveWorkshopId)
+  const setAvailableWorkshops = useWorkshopStore((state) => state.setAvailableWorkshops)
+  const setActiveWorkshopData = useWorkshopStore((state) => state.setActiveWorkshopData)
 
   // Load available workshops and apply default
   useEffect(() => {
@@ -48,7 +60,7 @@ function App() {
       setActiveWorkshopData(processed)
       // Reset game completely: stage back to 0, force GameScene re-mount
       setGameStage(0)
-      setGameInstanceKey((k) => k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error('Failed to change workshop:', error)
     }
@@ -74,7 +86,7 @@ function App() {
       const defaultExperiment = optionalNextExperimentId || sortedExperiments?.[0]?.id || 'boiling-water'
       setActiveExperiment(defaultExperiment)
       setGameStage(0)
-      setGameInstanceKey((k) => k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error('Failed to change level:', error)
     }
@@ -84,7 +96,7 @@ function App() {
   const handleExperimentChange = (experimentId) => {
     setActiveExperiment(experimentId)
     setGameStage(0)
-    setGameInstanceKey((k) => k + 1)
+    bumpGameInstanceKey()
     // Location popup will be triggered in GameScene if this is Exp 2+
   }
 
@@ -117,7 +129,7 @@ function App() {
       setActiveWorkshopData(updatedWorkshopData)
       // Reset game to apply new equipment
       setGameStage(0)
-      setGameInstanceKey((k) => k + 1)
+      bumpGameInstanceKey()
     } catch (error) {
       console.error(`Failed to change ${equipmentType}:`, error)
     }
@@ -152,27 +164,6 @@ function App() {
     await handleLevelChange(1, 'altitude-effect')
   }
 
-  // Handle when user completes the tutorial boil (Experiment: boiling-water)
-  const handleWaterBoiled = () => {
-    if (activeExperiment === 'boiling-water' && !hasBoiledBefore) {
-      setHasBoiledBefore(true)
-      setShowSelectors(true)
-      // Modal stays visible until user clicks button
-    }
-  }
-
-  // Handle location changes (from GameScene location input)
-  const handleLocationChange = (locationData) => {
-    setUserLocation({
-      altitude: locationData.altitude,
-      zipCode: locationData.zipCode,
-      country: locationData.country,
-      name: locationData.name,
-      latitude: locationData.latitude,
-      longitude: locationData.longitude
-    })
-  }
-
   const handleNavigate = (view) => {
     setActiveView(view)
     if (view === 'game') {
@@ -182,7 +173,7 @@ function App() {
 
   const handleReload = () => {
     setGameStage(0)
-    setGameInstanceKey((k) => k + 1)
+    bumpGameInstanceKey()
     setActiveView('game')
   }
 
@@ -239,9 +230,6 @@ function App() {
       <div className="game-container">
         <GameScene
           key={gameInstanceKey}
-          stage={gameStage}
-          location={userLocation}
-          onStageChange={setGameStage}
           workshopLayout={activeWorkshopData?.layout}
           workshopImages={activeWorkshopData?.images}
           workshopEffects={activeWorkshopData?.effects}
@@ -249,16 +237,9 @@ function App() {
           roomConfig={activeWorkshopData?.room}
           acUnitConfig={activeWorkshopData?.acUnit}
           airHandlerConfig={activeWorkshopData?.airHandler}
-          activeLevel={activeLevel}
-          activeExperiment={activeExperiment}
-          showSelectors={showSelectors}
-          onWaterBoiled={handleWaterBoiled}
-          onSkipTutorial={handleSkipTutorial}
           onLevelChange={handleLevelChange}
           onExperimentChange={handleExperimentChange}
-          onLocationChange={handleLocationChange}
           onEquipmentChange={handleEquipmentChange}
-          hasBoiledBefore={hasBoiledBefore}
         />
       </div>
     )
@@ -274,14 +255,6 @@ function App() {
             onWorkshopChange={handleWorkshopChange}
             onLevelChange={handleLevelChange}
             onExperimentChange={handleExperimentChange}
-            activeWorkshopId={activeWorkshopId}
-            activeLevel={activeLevel}
-            activeExperiment={activeExperiment}
-            availableWorkshops={availableWorkshops}
-            availableLevels={LEVELS}
-            availableExperiments={(EXPERIMENTS[activeLevel] || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0))}
-            activeView={activeView}
-            showSelectors={showSelectors}
             onSkipTutorial={handleSkipTutorial}
           />
           {renderView()}
