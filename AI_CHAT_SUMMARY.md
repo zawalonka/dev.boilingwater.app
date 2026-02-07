@@ -106,6 +106,35 @@
 
 ---
 
+## Session: 2026-02-06 (Physics Worker + Timing + Preferences)
+
+**Duration:** ~1.5 hours  
+**Participants:** GitHub Copilot, User (zawalonka)  
+**Focus:** Physics web worker, timing corrections, workflow preferences
+
+### Key Decisions Made
+
+1. **Physics Simulation in Web Worker**
+   - `simulateTimeStep` moved into a dedicated worker
+   - Main thread runs scheduling and applies results
+   - Worker queue added to avoid skipping ticks
+   - Warning when worker backlog grows
+
+2. **Real-time 1x Speed**
+   - `deltaTime` now based on real elapsed time per tick
+   - High-frequency ticks kept for smoothness
+
+3. **Generated Wiki Output**
+   - `public/wiki/` changes are expected and normal
+   - Include in commits when committing all changes
+
+### User Preferences
+
+- Avoid popup question UI (important info gets cut off)
+- Prefer direct, minimal questions and inline answers
+
+---
+
 ## Session: 2026-01-26 (Git Push Incident & Rule Enforcement)
 
 **Duration:** ~30 minutes  

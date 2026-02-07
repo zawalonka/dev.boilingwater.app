@@ -15,7 +15,7 @@
  * - Stage 1 overlay with post-boil explainer and progression button
  */
 
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { 
   calculateBoilingPoint,           // Calculates fluid's boiling point based on altitude
   calculateBoilingPointAtPressure, // Calculates fluid's boiling point based on pressure (for room feedback)
@@ -333,6 +333,17 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
 
   // Stores reference to the heating simulation interval so we can stop it later
   const simulationRef = useRef(null)
+  const workerRef = useRef(null)
+  const workerHandlerRef = useRef(null)
+  const inFlightTickRef = useRef(false)
+  const tickCounterRef = useRef(0)
+  const pendingTicksRef = useRef(new Map())
+  const workerQueueRef = useRef([])
+  const lastWorkerWarnRef = useRef(0)
+  const lastPhysicsTickRef = useRef(null)
+  const lastRoomTickRef = useRef(null)
+  const WORKER_QUEUE_WARN_LIMIT = 20
+  const WORKER_QUEUE_WARN_COOLDOWN_MS = 2000
 
   // Pre-calculate what temperature fluid will boil at
   // PRESSURE FEEDBACK LOOP:
@@ -445,6 +456,31 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     initializeFluid()
   }, [activeFluid, workshopLayout])
 
+  useEffect(() => {
+    if (!window.Worker) return
+    const worker = new Worker(new URL('../workers/physicsWorker.js', import.meta.url), { type: 'module' })
+    workerRef.current = worker
+
+    worker.onmessage = (event) => {
+      workerHandlerRef.current?.(event.data)
+    }
+
+    worker.onerror = (error) => {
+      console.error('Physics worker error:', error)
+    }
+
+    return () => {
+      worker.terminate()
+      workerRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    const worker = workerRef.current
+    if (!worker) return
+    worker.postMessage({ type: 'setFluidProps', fluidProps })
+  }, [fluidProps])
+
   // EFFECT 2: Initialize the game window dimensions (runs once on component load)
   // ============================================================================
 
@@ -477,6 +513,188 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // EFFECT 3: Physics simulation loop (runs continuously when water is in pot)
   // ============================================================================
 
+  const applySimulationResult = useCallback((newState, context) => {
+    // Update all the values returned from the physics simulation
+    setTemperature(newState.temperature)      // Water is now hotter or cooler
+    setWaterInPot(newState.waterMass)        // Water mass decreases if boiling (evaporation)
+
+    // Room environment: Track burner heat and vapor release
+    // The main room simulation (AC, air handler) runs in a separate effect
+    // Here we only add external heat sources and vapor from boiling
+    if (roomControlsEnabled && roomConfig) {
+      // Track burner heat (waste heat radiating into room)
+      if (context.heatInputWatts > 0) {
+        updateRoom(context.deltaTime, 'experiment_burner', context.heatInputWatts)
+      }
+
+      // ========== PRE-BOILING EVAPORATION (Mass Transfer Model) ==============
+      // Even below boiling point, volatile substances evaporate!
+      // This cools the liquid (can go BELOW ambient) and adds vapor to room.
+      // Uses Fuller-Schettler-Giddings diffusion + boundary layer mass transfer.
+      // Only runs when NOT boiling (boiling evaporation is handled separately).
+      if (!newState.isBoiling && fluidProps?.antoineCoefficients && newState.waterMass > 0) {
+        // Get vapor pressure at current temperature
+        const vaporPressure = solveAntoineForPressure(newState.temperature, fluidProps.antoineCoefficients)
+
+        if (vaporPressure && vaporPressure > 0) {
+          // Get partial pressure of this substance already in room air
+          // Use atmosphere key from chemical formula (e.g., 'H₂O' -> 'H2O')
+          const atmosphereKey = getAtmosphereKey(activeFluid, fluidProps)
+          const roomComposition = roomState?.composition || {}
+          const totalPressure = roomState?.pressure || 101325
+          const partialPressure = (roomComposition[atmosphereKey] || 0) * totalPressure
+
+          // Calculate evaporation using mass transfer model (physically accurate)
+          // Uses diffusion coefficient from Fuller-Schettler-Giddings equation
+          // and natural convection mass transfer correlations
+          const evapResult = simulateEvaporationWithMassTransfer({
+            liquidTempC: newState.temperature,
+            liquidMassKg: newState.waterMass,
+            vaporPressurePa: vaporPressure,
+            pressurePa: totalPressure,
+            molarMassGmol: fluidProps.molarMass || 18.015,
+            latentHeatKJ: fluidProps.heatOfVaporization || 2257,
+            specificHeatJgC: fluidProps.specificHeat || 4.186,
+            potDiameterM: 0.2,  // 20cm pot
+            partialPressurePa: partialPressure,
+            diffusionVolumeSum: fluidProps.diffusionVolumeSum,  // Calculated at load time from element data
+            deltaTimeS: context.deltaTime
+          })
+
+          // Apply evaporative cooling (can cool below ambient!)
+          // IMPORTANT: Apply to newState.temperature (from heating sim), not prev!
+          if (evapResult.massEvaporatedKg > 1e-9) {
+            // Combine heating result + evaporative cooling
+            const finalTemp = newState.temperature + evapResult.tempChangeC
+            setTemperature(finalTemp)
+            setWaterInPot(evapResult.newMassKg)
+
+            // Add vapor to room air composition (pass formula for atmosphere key)
+            addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
+          }
+        }
+      }
+
+      // If water is boiling, add boiling-phase vapor to room
+      if (newState.isBoiling && newState.waterMass < context.prevWaterMass) {
+        const evaporatedMass = context.prevWaterMass - newState.waterMass
+        addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
+      }
+    }
+
+    // Track elapsed time only if timer is running
+    if (isTimerRunning) {
+      setTimeElapsed(prev => prev + context.deltaTime)  // Track elapsed time (accounts for speed)
+    }
+
+    // Check if water just started boiling
+    // We only show "boiling" if it wasn't boiling before but is now boiling
+    // hasShownBoilPopup prevents re-triggering if temp fluctuates around boiling point
+    if (newState.isBoiling && !isBoiling && !hasShownBoilPopup) {
+      setIsBoiling(true)   // Mark as boiling
+      setHasShownBoilPopup(true)  // Prevent re-triggering
+      setShowHook(true)    // Show the educational message
+      setPauseTime(true)   // Pause time while popup is visible
+      setShowNextLevelButton(Boolean(getNextProgression()))
+      // Calculate time it took to boil (from when pot was placed over flame)
+      const elapsedBoilTime = timePotOnFlame !== null ? timePotOnFlame + context.deltaTime : 0
+      setBoilTime(elapsedBoilTime)
+      // Capture the burner heat setting when boiling is achieved
+      setBurnerHeatWhenBoiled(burnerHeat)
+
+      // Capture snapshot of all experiment stats at moment of boiling
+      setBoilStats({
+        temperature: newState.temperature,
+        boilingPoint: boilingPoint,
+        boilingPointSeaLevel: fluidProps?.boilingPointSeaLevel ?? null,
+        altitude: altitude,
+        locationName: locationName,
+        fluidName: fluidProps?.name || 'Fluid',
+        fluidId: activeFluid,
+        timeToBoil: elapsedBoilTime,
+        burnerHeat: burnerHeat,
+        experiment: activeExperiment,
+        level: activeLevel,
+        // Room environment data (L1E4+)
+        roomData: roomControlsEnabled ? {
+          initialComposition: roomState?.initialComposition || null,
+          finalComposition: roomState?.composition || null,
+          initialTemperature: roomState?.initialTemperature || null,
+          finalTemperature: roomState?.temperature || null,
+          energyTotals: roomState?.energyTotals || null,
+          exposureEvents: roomState?.exposureEvents || [],
+          alerts: roomAlerts || []
+        } : null
+      })
+
+      if (activeExperiment === 'boiling-water' && !hasBoiledBefore) {
+        setHasBoiledBefore(true)
+        setShowSelectors(true)
+      }
+    }
+
+    // Stop boiling if temperature drops below boiling point (pot removed from heat)
+    if (canBoil && newState.temperature < boilingPoint && isBoiling) {
+      setIsBoiling(false)
+    }
+
+    if (!canBoil && isBoiling) {
+      setIsBoiling(false)
+    }
+  }, [activeExperiment, activeFluid, activeLevel, addVapor, altitude, boilingPoint, burnerHeat, canBoil, fluidProps, getNextProgression, hasBoiledBefore, hasShownBoilPopup, isBoiling, isTimerRunning, locationName, roomAlerts, roomConfig, roomControlsEnabled, roomState, setHasBoiledBefore, setShowSelectors, setShowHook, setPauseTime, setShowNextLevelButton, setBoilStats, setBoilTime, setBurnerHeatWhenBoiled, setIsBoiling, setTemperature, setTimeElapsed, setWaterInPot, timePotOnFlame, updateRoom])
+
+  const dispatchWorkerStep = useCallback((state, request) => {
+    const worker = workerRef.current
+    if (!worker) return false
+
+    const tickId = tickCounterRef.current + 1
+    tickCounterRef.current = tickId
+
+    const context = {
+      deltaTime: request.deltaTime,
+      heatInputWatts: request.heatInputWatts,
+      prevWaterMass: state.waterMass
+    }
+
+    pendingTicksRef.current.set(tickId, context)
+    inFlightTickRef.current = true
+
+    worker.postMessage({
+      type: 'step',
+      tickId,
+      state: {
+        waterMass: state.waterMass,
+        temperature: state.temperature,
+        altitude: request.altitude,
+        residueMass: request.residueMass
+      },
+      heatInputWatts: request.heatInputWatts,
+      deltaTime: request.deltaTime,
+      ambientTemperature: request.ambientTemperature
+    })
+
+    return true
+  }, [])
+
+  const handleWorkerMessage = useCallback((payload) => {
+    if (!payload || payload.type !== 'stepResult') return
+    const context = pendingTicksRef.current.get(payload.tickId)
+    if (!context) return
+
+    pendingTicksRef.current.delete(payload.tickId)
+    inFlightTickRef.current = false
+    applySimulationResult(payload.newState, context)
+
+    const nextRequest = workerQueueRef.current.shift()
+    if (nextRequest) {
+      dispatchWorkerStep(payload.newState, nextRequest)
+    }
+  }, [applySimulationResult, dispatchWorkerStep])
+
+  useEffect(() => {
+    workerHandlerRef.current = handleWorkerMessage
+  }, [handleWorkerMessage])
+
   useEffect(() => {
     // This effect handles the physics simulation of heating/cooling water
     // It runs continuously while there's water in the pot
@@ -492,7 +710,14 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     // Start a repeating timer that runs every TIME_STEP milliseconds (e.g., every 100ms)
     simulationRef.current = setInterval(() => {
       // Skip simulation if time is paused (e.g., popup visible)
-      if (pauseTime) return
+      const now = performance.now()
+      if (pauseTime) {
+        lastPhysicsTickRef.current = now
+        return
+      }
+      const lastTick = lastPhysicsTickRef.current ?? now
+      lastPhysicsTickRef.current = now
+      const deltaTime = ((now - lastTick) / 1000) * timeSpeed
       
       // Calculate distance from pot center to flame center
       const deltaX = Math.abs(potPosition.x - flameX)
@@ -516,9 +741,8 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
         if (timePotOnFlame === null) {
           setTimePotOnFlame(0)
         } else {
-          // Accumulate time while heating (deltaTime calculated below, use TIME_STEP for now)
-          const dt = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
-          setTimePotOnFlame(prev => (prev ?? 0) + dt)
+          // Accumulate time while heating
+          setTimePotOnFlame(prev => (prev ?? 0) + deltaTime)
         }
       } else if (timePotOnFlame !== null) {
         // Reset if pot is removed from flame or heat is turned off
@@ -530,16 +754,40 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
       // Convert the TIME_STEP from milliseconds to seconds
       // If TIME_STEP = 100 (milliseconds), deltaTime = 0.1 (seconds)
       // Multiply by timeSpeed to speed up simulation (2x, 4x, 8x, etc.)
-      const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
+      const request = {
+        deltaTime,
+        heatInputWatts,
+        altitude,
+        residueMass,
+        ambientTemperature
+      }
 
-      // Call the physics engine function to calculate what happens in this time step
-      // It takes:
-      // - Current fluid properties (mass, temperature, altitude)
-      // - Heat being applied (Watts, 0 for natural cooling)
-      // - Time elapsed in this step (seconds × speed multiplier)
-      // - Fluid properties (specific heat, cooling coefficient, etc.)
-      // - Ambient temperature for equilibration
-      // And returns new temperature, fluid mass, and whether it's boiling
+      const worker = workerRef.current
+      if (worker) {
+        if (inFlightTickRef.current) {
+          workerQueueRef.current.push(request)
+          if (workerQueueRef.current.length >= WORKER_QUEUE_WARN_LIMIT) {
+            const now = Date.now()
+            if (now - lastWorkerWarnRef.current >= WORKER_QUEUE_WARN_COOLDOWN_MS) {
+              lastWorkerWarnRef.current = now
+              console.warn(
+                `Physics worker backlog: ${workerQueueRef.current.length} ticks queued. Simulation is slowing down to keep physics consistent.`
+              )
+            }
+          }
+          return
+        }
+        const state = {
+          waterMass: waterInPot,
+          temperature: temperature,
+          altitude: altitude,
+          residueMass: residueMass
+        }
+        dispatchWorkerStep(state, request)
+        return
+      }
+
+      // Fallback: run physics on main thread if worker is unavailable
       const newState = simulateTimeStep(
         {
           waterMass: waterInPot,         // How much fluid (kg)
@@ -553,133 +801,11 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
         ambientTemperature                // Room temperature for equilibration
       )
 
-      // Update all the values returned from the physics simulation
-      setTemperature(newState.temperature)      // Water is now hotter or cooler
-      setWaterInPot(newState.waterMass)        // Water mass decreases if boiling (evaporation)
-      
-      // Room environment: Track burner heat and vapor release
-      // The main room simulation (AC, air handler) runs in a separate effect
-      // Here we only add external heat sources and vapor from boiling
-      if (roomControlsEnabled && roomConfig) {
-        // Track burner heat (waste heat radiating into room)
-        if (heatInputWatts > 0) {
-          updateRoom(deltaTime, 'experiment_burner', heatInputWatts)
-        }
-        
-        // ========== PRE-BOILING EVAPORATION (Mass Transfer Model) ==========
-        // Even below boiling point, volatile substances evaporate!
-        // This cools the liquid (can go BELOW ambient) and adds vapor to room.
-        // Uses Fuller-Schettler-Giddings diffusion + boundary layer mass transfer.
-        // Only runs when NOT boiling (boiling evaporation is handled separately).
-        if (!newState.isBoiling && fluidProps?.antoineCoefficients && newState.waterMass > 0) {
-          // Get vapor pressure at current temperature
-          const vaporPressure = solveAntoineForPressure(newState.temperature, fluidProps.antoineCoefficients)
-          
-          if (vaporPressure && vaporPressure > 0) {
-            // Get partial pressure of this substance already in room air
-            // Use atmosphere key from chemical formula (e.g., 'H₂O' -> 'H2O')
-            const atmosphereKey = getAtmosphereKey(activeFluid, fluidProps)
-            const roomComposition = roomState?.composition || {}
-            const totalPressure = roomState?.pressure || 101325
-            const partialPressure = (roomComposition[atmosphereKey] || 0) * totalPressure
-            
-            // Calculate evaporation using mass transfer model (physically accurate)
-            // Uses diffusion coefficient from Fuller-Schettler-Giddings equation
-            // and natural convection mass transfer correlations
-            const evapResult = simulateEvaporationWithMassTransfer({
-              liquidTempC: newState.temperature,
-              liquidMassKg: newState.waterMass,
-              vaporPressurePa: vaporPressure,
-              pressurePa: totalPressure,
-              molarMassGmol: fluidProps.molarMass || 18.015,
-              latentHeatKJ: fluidProps.heatOfVaporization || 2257,
-              specificHeatJgC: fluidProps.specificHeat || 4.186,
-              potDiameterM: 0.2,  // 20cm pot
-              partialPressurePa: partialPressure,
-              diffusionVolumeSum: fluidProps.diffusionVolumeSum,  // Calculated at load time from element data
-              deltaTimeS: deltaTime
-            })
-            
-            // Apply evaporative cooling (can cool below ambient!)
-            // IMPORTANT: Apply to newState.temperature (from heating sim), not prev!
-            if (evapResult.massEvaporatedKg > 1e-9) {
-              // Combine heating result + evaporative cooling
-              const finalTemp = newState.temperature + evapResult.tempChangeC
-              setTemperature(finalTemp)
-              setWaterInPot(evapResult.newMassKg)
-              
-              // Add vapor to room air composition (pass formula for atmosphere key)
-              addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-            }
-          }
-        }
-        
-        // If water is boiling, add boiling-phase vapor to room
-        if (newState.isBoiling && newState.waterMass < waterInPot) {
-          const evaporatedMass = waterInPot - newState.waterMass
-          addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-        }
-      }
-      
-      // Track elapsed time only if timer is running
-      if (isTimerRunning) {
-        setTimeElapsed(prev => prev + deltaTime)  // Track elapsed time (accounts for speed)
-      }
-
-      // Check if water just started boiling
-      // We only show "boiling" if it wasn't boiling before but is now boiling
-      // hasShownBoilPopup prevents re-triggering if temp fluctuates around boiling point
-      if (newState.isBoiling && !isBoiling && !hasShownBoilPopup) {
-        setIsBoiling(true)   // Mark as boiling
-        setHasShownBoilPopup(true)  // Prevent re-triggering
-        setShowHook(true)    // Show the educational message
-        setPauseTime(true)   // Pause time while popup is visible
-        setShowNextLevelButton(Boolean(getNextProgression()))
-        // Calculate time it took to boil (from when pot was placed over flame)
-        const elapsedBoilTime = timePotOnFlame !== null ? timePotOnFlame + deltaTime : 0
-        setBoilTime(elapsedBoilTime)
-        // Capture the burner heat setting when boiling is achieved
-        setBurnerHeatWhenBoiled(burnerHeat)
-        
-        // Capture snapshot of all experiment stats at moment of boiling
-        setBoilStats({
-          temperature: newState.temperature,
-          boilingPoint: boilingPoint,
-          boilingPointSeaLevel: fluidProps?.boilingPointSeaLevel ?? null,
-          altitude: altitude,
-          locationName: locationName,
-          fluidName: fluidProps?.name || 'Fluid',
-          fluidId: activeFluid,
-          timeToBoil: elapsedBoilTime,
-          burnerHeat: burnerHeat,
-          experiment: activeExperiment,
-          level: activeLevel,
-          // Room environment data (L1E4+)
-          roomData: roomControlsEnabled ? {
-            initialComposition: roomState?.initialComposition || null,
-            finalComposition: roomState?.composition || null,
-            initialTemperature: roomState?.initialTemperature || null,
-            finalTemperature: roomState?.temperature || null,
-            energyTotals: roomState?.energyTotals || null,
-            exposureEvents: roomState?.exposureEvents || [],
-            alerts: roomAlerts || []
-          } : null
-        })
-        
-        if (activeExperiment === 'boiling-water' && !hasBoiledBefore) {
-          setHasBoiledBefore(true)
-          setShowSelectors(true)
-        }
-      }
-      
-      // Stop boiling if temperature drops below boiling point (pot removed from heat)
-      if (canBoil && newState.temperature < boilingPoint && isBoiling) {
-        setIsBoiling(false)
-      }
-
-      if (!canBoil && isBoiling) {
-        setIsBoiling(false)
-      }
+      applySimulationResult(newState, {
+        deltaTime,
+        heatInputWatts,
+        prevWaterMass: waterInPot
+      })
     }, GAME_CONFIG.TIME_STEP)  // Repeat every TIME_STEP milliseconds
 
     // Cleanup function: runs when component unmounts or dependencies change
@@ -689,7 +815,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
         clearInterval(simulationRef.current)
       }
     }
-  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime, activeExperiment, activeLevel, hasBoiledBefore, setHasBoiledBefore, setShowSelectors])  // Re-run if any of these change
+  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime, activeExperiment, activeLevel, hasBoiledBefore, setHasBoiledBefore, setShowSelectors, ambientTemperature, applySimulationResult])  // Re-run if any of these change
 
   // ============================================================================
   // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
@@ -703,11 +829,16 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     
     const roomSimRef = setInterval(() => {
       // Skip if time is paused
-      if (pauseTime) return
+      const now = performance.now()
+      if (pauseTime) {
+        lastRoomTickRef.current = now
+        return
+      }
+      const lastTick = lastRoomTickRef.current ?? now
+      lastRoomTickRef.current = now
+      const deltaTime = ((now - lastTick) / 1000) * timeSpeed
       
       // Calculate timestep (same as main simulation)
-      const deltaTime = (GAME_CONFIG.TIME_STEP / 1000) * timeSpeed
-      
       // Update room environment (AC maintains temperature, air handler cleans air)
       // Pass 0 for heat since we're not tracking burner heat here (that happens in main sim)
       updateRoom(deltaTime, null, 0)
@@ -949,7 +1080,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     setGameStage(1)
   }
 
-  const getNextExperimentInLevel = () => {
+  function getNextExperimentInLevel() {
     // Get all experiments for current level, sorted by order
     const levelExperiments = EXPERIMENTS[activeLevel]?.slice().sort((a, b) => (a.order || 0) - (b.order || 0)) || []
     const currentIndex = levelExperiments.findIndex((exp) => exp.id === activeExperiment)
@@ -957,14 +1088,14 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     return nextExp?.id ?? null
   }
 
-  const getNextLevelId = () => {
+  function getNextLevelId() {
     const sortedLevels = LEVELS.slice().sort((a, b) => (a.order || 0) - (b.order || 0))
     const currentIndex = sortedLevels.findIndex((level) => level.id === activeLevel)
     const nextLevel = currentIndex >= 0 ? sortedLevels[currentIndex + 1] : null
     return nextLevel?.id ?? null
   }
 
-  const getNextProgression = () => {
+  function getNextProgression() {
     // Check for next experiment in current level first
     const nextExp = getNextExperimentInLevel()
     if (nextExp) {

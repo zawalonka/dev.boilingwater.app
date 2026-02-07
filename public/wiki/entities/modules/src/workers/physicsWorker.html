@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>simulation/simulateTimeStep - Boiling Water Wiki</title>
+  <title>physicsWorker.js - Boiling Water Wiki</title>
   <link rel="stylesheet" href="/wiki/assets/styles.css" />
   <!-- Kekule CSS loaded lazily when molecule viewer is needed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
@@ -55,9 +55,9 @@
         </details>
         
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <a href="/wiki/../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/index.html">Processes</a> <span class="breadcrumb-sep">›</span> <span>simulation/simulateTimeStep</span>
+          <a href="/wiki/../../../index.html">Main</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../index.html">Modules</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/index.html">src</a> <span class="breadcrumb-sep">›</span> <a href="/wiki/../src/workers/index.html">workers</a> <span class="breadcrumb-sep">›</span> <span>physicsWorker.js</span>
         </nav>
-        <div class="wiki-topbar-title">simulation/simulateTimeStep</div>
+        <div class="wiki-topbar-title">physicsWorker.js</div>
       </header>
       <main class="wiki-content">
         
@@ -65,21 +65,21 @@
           
       
     <aside class="infobox">
-      <div class="infobox-title">simulation/simulateTimeStep</div>
+      <div class="infobox-title">physicsWorker.js</div>
       
       <div class="infobox-row">
         <div class="infobox-label">Type</div>
-        <div class="infobox-value">Process</div>
+        <div class="infobox-value">Module</div>
       </div>
     
       <div class="infobox-row">
-        <div class="infobox-label">Exports</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/symbols/simulateTimeStep.html">simulateTimeStep</a></li></ul></div>
+        <div class="infobox-label">File type</div>
+        <div class="infobox-value">js</div>
       </div>
     
       <div class="infobox-row">
-        <div class="infobox-label">Used in</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li><li><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a></li></ul></div>
+        <div class="infobox-label">Imports</div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></div>
       </div>
     
     </aside>
@@ -87,167 +87,41 @@
       <section class="section">
         
   <div class="entity-header">
-    <h1>simulation/simulateTimeStep</h1>
-    <p class="subtitle">Process</p>
+    <h1>physicsWorker.js</h1>
+    <p class="subtitle">Module</p>
   </div>
 
       </section>
       
-    <section class="section">
-      <h2>Educational notes</h2>
-      <h3>SIMULATE TIME STEP</h3>
-<p>This process answers the question:</p>
-<p>&quot;What happens to the fluid in the next 0.1 seconds?&quot;</p>
-<p>This is the MAIN GAME LOOP for the physics simulation. It&#39;s called</p>
-<p>every frame (typically every 100ms) to update the fluid state.</p>
-<p>FORMULA CHAIN:</p>
-<p>1. Boiling Point Process → Get current boiling point at altitude</p>
-<p>2. IF burner on:</p>
-<p>- Heating Process → Apply energy, update temp, maybe generate steam</p>
-<p>3. IF burner off:</p>
-<p>- Newton Cooling → Equilibrate toward ambient temperature</p>
-<p>4. Update mass (subtract evaporated vapor)</p>
-<p>5. Return new state</p>
-<p>SEE STUB FILES IN THIS FOLDER:</p>
-<p>_boilingPoint.js  - Altitude-adjusted boiling point</p>
-<p>_heating.js       - Energy application and vaporization</p>
-<p>_newtonCooling.js - Natural cooling/heating toward ambient</p>
-<p>INPUT:</p>
-<p>state: { waterMass, temperature, altitude }</p>
-<p>heatInputWatts: Power from burner (0 = off)</p>
-<p>deltaTime: Time step in seconds</p>
-<p>fluidProps: Substance properties from JSON</p>
-<p>ambientTemp: Room temperature (°C)</p>
-<p>OUTPUT:</p>
-<p>Updated state with new temperature, mass, and phase info</p>
-    </section>
-  
       <section class="section" id="source-file">
         <h2>Source file</h2>
-        <p><code>src\utils\physics\processes\simulation\simulateTimeStep.js</code></p>
+        <p><code>src\workers\physicsWorker.js</code></p>
         <details>
           <summary>View source code</summary>
-          <pre class="line-numbers"><code class="language-javascript">/**
- * SIMULATE TIME STEP
- * ==================
- * 
- * This process answers the question:
- * &quot;What happens to the fluid in the next 0.1 seconds?&quot;
- * 
- * This is the MAIN GAME LOOP for the physics simulation. It&#39;s called
- * every frame (typically every 100ms) to update the fluid state.
- * 
- * FORMULA CHAIN:
- * 1. Boiling Point Process → Get current boiling point at altitude
- * 2. IF burner on:
- *    - Heating Process → Apply energy, update temp, maybe generate steam
- * 3. IF burner off:
- *    - Newton Cooling → Equilibrate toward ambient temperature
- * 4. Update mass (subtract evaporated vapor)
- * 5. Return new state
- * 
- * SEE STUB FILES IN THIS FOLDER:
- *   _boilingPoint.js  - Altitude-adjusted boiling point
- *   _heating.js       - Energy application and vaporization
- *   _newtonCooling.js - Natural cooling/heating toward ambient
- * 
- * INPUT:
- *   state: { waterMass, temperature, altitude }
- *   heatInputWatts: Power from burner (0 = off)
- *   deltaTime: Time step in seconds
- *   fluidProps: Substance properties from JSON
- *   ambientTemp: Room temperature (°C)
- * 
- * OUTPUT:
- *   Updated state with new temperature, mass, and phase info
- */
+          <pre class="line-numbers"><code class="language-javascript">import { simulateTimeStep } from &#39;../utils/physics&#39;
 
-import { GAME_CONFIG } from &#39;../../../../constants/physics.js&#39;
+let cachedFluidProps = null
 
-// Import from stubs
-import { calculateBoilingPoint } from &#39;./_boilingPoint.js&#39;
-import { applyHeatEnergy } from &#39;./_heating.js&#39;
-import { 
-  calculateEffectiveCoolingCoeff, 
-  applyCoolingStep,
-  CONVECTIVE_HEAT_TRANSFER 
-} from &#39;./_newtonCooling.js&#39;
+self.onmessage = (event) =&gt; {
+  const payload = event.data
+  if (!payload || !payload.type) return
 
-/**
- * Simulate one discrete time step of the fluid heating/boiling process
- * 
- * @param {object} state - Current simulation state:
- *   - waterMass: mass of fluid remaining (kg)
- *   - temperature: current fluid temperature (°C)
- *   - altitude: altitude above sea level (meters)
- *   - residueMass: minimum mass (non-evaporable residue)
- * @param {number} heatInputWatts - Power from stove (Watts, 0 = off)
- * @param {number} deltaTime - Time step duration (seconds, typically 0.1)
- * @param {object} fluidProps - Fluid properties from substance JSON
- * @param {number} ambientTemp - Ambient/room temperature for cooling (°C)
- * @returns {object} Updated state
- */
-export function simulateTimeStep(state, heatInputWatts, deltaTime, fluidProps, ambientTemp = 20) {
-  const { waterMass, temperature, altitude } = state
-  const residueMass = Number.isFinite(state.residueMass) ? state.residueMass : 0
-  const evaporableMass = Math.max(0, waterMass - residueMass)
-  
-  // Safety: if fluid is completely gone, return early
-  if (waterMass &lt;= 0 || evaporableMass &lt;= 0) {
-    return { ...state, allEvaporated: evaporableMass &lt;= 0 }
+  if (payload.type === &#39;setFluidProps&#39;) {
+    cachedFluidProps = payload.fluidProps || null
+    return
   }
-  
-  if (!fluidProps) {
-    return { ...state }
-  }
-  
-  // STEP 1: Calculate boiling point at this altitude
-  const boilingPointResult = calculateBoilingPoint(altitude, fluidProps)
-  const boilingPoint = boilingPointResult?.temperature ?? null
-  const canBoil = Boolean(fluidProps.canBoil) &amp;&amp; Number.isFinite(boilingPoint)
-  
-  let currentTemp = temperature
-  let result = { newTemp: currentTemp, energyToVaporization: 0, steamGenerated: 0 }
-  
-  // STEP 2: HEATING - Apply energy from burner
-  if (heatInputWatts &gt; 0) {
-    // Convert power to energy: E = P × t
-    const energyApplied = heatInputWatts * deltaTime
-    
-    result = applyHeatEnergy(waterMass, currentTemp, energyApplied, boilingPoint, fluidProps)
-    currentTemp = result.newTemp
-  }
-  
-  // STEP 3: COOLING - Apply Newton&#39;s Law when burner is off
-  const AMBIENT = Number.isFinite(ambientTemp) ? ambientTemp : (GAME_CONFIG.ROOM_TEMPERATURE || 20)
-  
-  if (heatInputWatts &lt;= 0 &amp;&amp; Math.abs(currentTemp - AMBIENT) &gt; 0.01) {
-    // Calculate physics-based cooling coefficient
-    const convectiveHT = CONVECTIVE_HEAT_TRANSFER.potInStillAir  // 0.3 W/°C
-    const specificHeat = fluidProps.specificHeat || 4.186
-    const coolingCoeff = calculateEffectiveCoolingCoeff(convectiveHT, waterMass, specificHeat)
-    
-    // Apply cooling step
-    currentTemp = applyCoolingStep(currentTemp, AMBIENT, coolingCoeff, deltaTime)
-  }
-  
-  // STEP 4: Update mass (subtract evaporated vapor)
-  const steamGenerated = canBoil
-    ? Math.min(result.steamGenerated, evaporableMass)
-    : 0
-  const nextWaterMass = Math.max(waterMass - steamGenerated, residueMass)
-  
-  // STEP 5: Return updated state
-  return {
-    ...state,
-    temperature: currentTemp,
-    waterMass: nextWaterMass,
-    energyToVaporization: result.energyToVaporization,
-    steamGenerated: steamGenerated,
-    isBoiling: canBoil &amp;&amp; currentTemp &gt;= boilingPoint &amp;&amp; steamGenerated &gt; 0,
-    // Pass through extrapolation metadata for UI warning
-    isExtrapolated: boilingPointResult?.isExtrapolated ?? false,
-    verifiedRange: boilingPointResult?.verifiedRange ?? { min: null, max: null }
+
+  if (payload.type === &#39;step&#39;) {
+    const { tickId, state, heatInputWatts, deltaTime, ambientTemperature } = payload
+    const newState = simulateTimeStep(
+      state,
+      heatInputWatts,
+      deltaTime,
+      cachedFluidProps,
+      ambientTemperature
+    )
+
+    self.postMessage({ type: &#39;stepResult&#39;, tickId, newState })
   }
 }
 </code></pre>
