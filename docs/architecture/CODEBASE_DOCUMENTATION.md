@@ -40,6 +40,16 @@ Extracted from GameScene for maintainability. Displays:
 - Altitude display + location popup trigger
 - Extrapolation warning (when outside Antoine range)
 
+---
+
+## State Policy (Performance-Safe)
+
+**Goal:** Keep the simulation fast under extreme time compression.
+
+- **Local (GameScene-only, hot path):** Fast-changing simulation state (temperature, mass, boiling, time speed, timers, drag position, physics loop) stays inside `GameScene` or its local context.
+- **Global (Zustand, shared app state):** Slow-changing, cross-component state only (active workshop/level/experiment, view, tutorial selectors, workshop data).
+- **Rule of thumb:** If it updates every tick or every frame, it should **not** go into a global store.
+
 ### `src/components/Header.jsx` - Navigation
 Minimal header with level/experiment dropdowns.
 

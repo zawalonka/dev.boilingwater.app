@@ -75,6 +75,7 @@ export const page = ({ title = 'Boiling Water Wiki', content = '', breadcrumbs =
               <a href="${wikiBase}/entities/scripts/index.html">🧰 Scripts</a>
               <a href="${wikiBase}/entities/styles/index.html">🎨 Styles</a>
               <a href="${wikiBase}/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="${wikiBase}/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>

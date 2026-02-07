@@ -14,70 +14,70 @@
  */
 
 import { useWorkshopStore } from '../hooks/stores/workshopStore'
+import { useGameSceneContext } from './GameSceneContext'
 
-function ControlPanel({
-  // Game state
-  liquidMass,
-  temperature,
-  isBoiling,
-  residueMass,
-  fluidName,
-  boilingPoint,
-  canBoil,
-  isPotOverFlame,
-  expectedBoilTime,
-  formatTemperature,
-  ambientTemperature,
-  
-  // Extrapolation warning data
-  isBoilingPointExtrapolated,
-  boilingPointVerifiedRange,
-  
-  // UI state
-  timeSpeed,
-  isTimerRunning,
-  timeElapsed,
-  activeFluid,
-  availableFluids,
-  isAdvancedModeAvailable,
-  altitude,
-  locationName,
-  showLocationPopup,
-  isLocationPopupAllowed,
-  locationError,
-  isLoadingLocation,
-  userZipCode,
-  manualAltitude,
-  editableAltitude,
-  showNextLevelButton,
-  
-  // Config
-  burnerHeat,
-  wattageSteps,
-  GAME_CONFIG,
-  
-  // Callbacks
-  handleTimerToggle,
-  handleTimerReset,
-  handleSpeedUp,
-  handleSpeedDouble,
-  handleSpeedHalve,
-  handleQuickPause,
-  handleFluidChange,
-  handleNextProgression,
-  nextProgressionType,
-  handleSearchLocation,
-  handleSetManualAltitude,
-  handleFindMyLocation,
-  setEditableAltitude,
-  setShowLocationPopup,
-  setUserZipCode,
-  setManualAltitude,
-  setLocationError,
-  setLocationName,
-  setIsLoadingLocation,
-  setHasSetLocation
-}) {
+function ControlPanel() {
+  const {
+    // Game state
+    liquidMass,
+    temperature,
+    isBoiling,
+    residueMass,
+    fluidName,
+    boilingPoint,
+    canBoil,
+    isPotOverFlame,
+    expectedBoilTime,
+    formatTemperature,
+    ambientTemperature,
+    
+    // Extrapolation warning data
+    isBoilingPointExtrapolated,
+    boilingPointVerifiedRange,
+    
+    // UI state
+    timeSpeed,
+    isTimerRunning,
+    timeElapsed,
+    activeFluid,
+    availableFluids,
+    isAdvancedModeAvailable,
+    altitude,
+    locationName,
+    showLocationPopup,
+    isLocationPopupAllowed,
+    locationError,
+    isLoadingLocation,
+    userZipCode,
+    manualAltitude,
+    editableAltitude,
+    showNextLevelButton,
+    
+    // Config
+    burnerHeat,
+    GAME_CONFIG,
+    
+    // Callbacks
+    handleTimerToggle,
+    handleTimerReset,
+    handleSpeedUp,
+    handleSpeedDouble,
+    handleSpeedHalve,
+    handleQuickPause,
+    handleFluidChange,
+    handleNextProgression,
+    nextProgressionType,
+    handleSearchLocation,
+    handleSetManualAltitude,
+    handleFindMyLocation,
+    setEditableAltitude,
+    setShowLocationPopup,
+    setUserZipCode,
+    setManualAltitude,
+    setLocationError,
+    setLocationName,
+    setIsLoadingLocation
+  } = useGameSceneContext()
   const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
   // Format time in mm:ss
   const formatTime = (seconds) => {

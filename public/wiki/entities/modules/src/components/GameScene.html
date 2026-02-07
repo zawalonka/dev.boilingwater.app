@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -78,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -150,6 +151,7 @@ import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUB
 import { GAME_CONFIG } from &#39;../constants/physics&#39;
 import { LEVELS, EXPERIMENTS } from &#39;../constants/workshops&#39;
 import ControlPanel from &#39;./ControlPanel&#39;
+import { GameSceneProvider } from &#39;./GameSceneContext&#39;
 import RoomControls from &#39;./RoomControls&#39;
 import { useRoomEnvironment } from &#39;../hooks/useRoomEnvironment&#39;
 import { getAtmosphereKey } from &#39;../utils/roomEnvironment&#39;
@@ -1395,6 +1397,68 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     )
   }
 
+  const controlPanelContextValue = {
+    // Game state
+    liquidMass,
+    temperature,
+    isBoiling,
+    residueMass,
+    fluidName,
+    boilingPoint,
+    canBoil,
+    isPotOverFlame,
+    expectedBoilTime,
+    formatTemperature,
+    ambientTemperature,
+
+    // Extrapolation warning data
+    isBoilingPointExtrapolated,
+    boilingPointVerifiedRange,
+
+    // UI state
+    timeSpeed,
+    isTimerRunning,
+    timeElapsed,
+    activeFluid,
+    availableFluids,
+    isAdvancedModeAvailable,
+    altitude,
+    locationName,
+    showLocationPopup,
+    isLocationPopupAllowed,
+    locationError,
+    isLoadingLocation,
+    userZipCode,
+    manualAltitude,
+    editableAltitude,
+    showNextLevelButton,
+
+    // Config
+    burnerHeat,
+    GAME_CONFIG,
+
+    // Callbacks
+    handleTimerToggle,
+    handleTimerReset,
+    handleSpeedUp,
+    handleSpeedDouble,
+    handleSpeedHalve,
+    handleQuickPause,
+    handleFluidChange,
+    handleNextProgression,
+    nextProgressionType: getNextProgression()?.type,
+    handleSearchLocation,
+    handleSetManualAltitude,
+    handleFindMyLocation,
+    setEditableAltitude,
+    setShowLocationPopup,
+    setUserZipCode,
+    setManualAltitude,
+    setLocationError,
+    setLocationName,
+    setIsLoadingLocation
+  }
+
   // Stage 0: Interactive game scene
   return (
     &lt;div className=&quot;game-scene&quot;&gt;
@@ -1622,69 +1686,9 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
           ========== CONTROL PANEL ==========
           Extracted component handling all UI controls, status display, and location/altitude selection
         */}
-        &lt;ControlPanel
-          // Game state
-          liquidMass={liquidMass}
-          temperature={temperature}
-          isBoiling={isBoiling}
-          residueMass={residueMass}
-          fluidName={fluidName}
-          boilingPoint={boilingPoint}
-          canBoil={canBoil}
-          isPotOverFlame={isPotOverFlame}
-          expectedBoilTime={expectedBoilTime}
-          formatTemperature={formatTemperature}
-          ambientTemperature={ambientTemperature}
-          
-          // Extrapolation warning data
-          isBoilingPointExtrapolated={isBoilingPointExtrapolated}
-          boilingPointVerifiedRange={boilingPointVerifiedRange}
-          
-          // UI state
-          timeSpeed={timeSpeed}
-          isTimerRunning={isTimerRunning}
-          timeElapsed={timeElapsed}
-          activeFluid={activeFluid}
-          availableFluids={availableFluids}
-          isAdvancedModeAvailable={isAdvancedModeAvailable}
-          altitude={altitude}
-          locationName={locationName}
-          showLocationPopup={showLocationPopup}
-          isLocationPopupAllowed={isLocationPopupAllowed}
-          locationError={locationError}
-          isLoadingLocation={isLoadingLocation}
-          userZipCode={userZipCode}
-          manualAltitude={manualAltitude}
-          editableAltitude={editableAltitude}
-          showNextLevelButton={showNextLevelButton}
-          
-          // Config
-          burnerHeat={burnerHeat}
-          wattageSteps={wattageSteps}
-          GAME_CONFIG={GAME_CONFIG}
-          
-          // Callbacks
-          handleTimerToggle={handleTimerToggle}
-          handleTimerReset={handleTimerReset}
-          handleSpeedUp={handleSpeedUp}
-          handleSpeedDouble={handleSpeedDouble}
-          handleSpeedHalve={handleSpeedHalve}
-          handleQuickPause={handleQuickPause}
-          handleFluidChange={handleFluidChange}
-          handleNextProgression={handleNextProgression}
-          nextProgressionType={getNextProgression()?.type}
-          handleSearchLocation={handleSearchLocation}
-          handleSetManualAltitude={handleSetManualAltitude}
-          handleFindMyLocation={handleFindMyLocation}
-          setEditableAltitude={setEditableAltitude}
-          setShowLocationPopup={setShowLocationPopup}
-          setUserZipCode={setUserZipCode}
-          setManualAltitude={setManualAltitude}
-          setLocationError={setLocationError}
-          setLocationName={setLocationName}
-          setIsLoadingLocation={setIsLoadingLocation}
-          setHasSetLocation={setHasSetLocation}
-        /&gt;
+        &lt;GameSceneProvider value={controlPanelContextValue}&gt;
+          &lt;ControlPanel /&gt;
+        &lt;/GameSceneProvider&gt;
 
         {/* 
           ========== ROOM CONTROLS ==========

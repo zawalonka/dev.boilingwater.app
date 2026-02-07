@@ -28,7 +28,16 @@ export async function loadWorkshop(workshopId) {
       const effectsUrl = new URL(`${base}assets/workshops/${workshopId}/effects.json`, window.location.href).toString()
       const effectsRes = await fetch(effectsUrl)
       if (effectsRes.ok) {
-        workshopData.effects = await effectsRes.json()
+        const contentType = effectsRes.headers.get('content-type') || ''
+        if (contentType.includes('application/json')) {
+          workshopData.effects = await effectsRes.json()
+        } else {
+          const effectsText = await effectsRes.text()
+          const trimmed = effectsText.trim()
+          if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+            workshopData.effects = JSON.parse(trimmed)
+          }
+        }
       }
     } catch (effectsError) {
       console.info(`No effects.json for workshop '${workshopId}' (optional): ${effectsError.message}`)

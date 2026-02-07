@@ -26,9 +26,10 @@
 ### 🚀 PHASE 2 (READY TO START - Week 4-7 Architecture)
 
 **Next Steps (Priority Order):**
-1. **#4 State Management (1-2 weeks)** - Install Zustand, create game/room/workshop stores, migrate all state
-2. **#3 Component Refactoring (3-4 weeks)** - Split GameScene.jsx (1857 lines) into 30 focused components
-3. **#2 TypeScript (4-6 weeks, parallel)** - Incremental migration: utils → constants → components
+1. **#4 State Management (1-2 weeks)** - Install Zustand, create game/workshop stores, migrate shared app state (keep hot simulation state local)
+2. **#2 Time Stepping (1-2 weeks)** - Web Worker physics loop for extreme time compression (see TIME_STEPPING_TODO.md)
+3. **#3 Component Refactoring (3-4 weeks)** - Split GameScene.jsx (1857 lines) into 30 focused components
+4. **#2 TypeScript (4-6 weeks, parallel)** - Incremental migration: utils → constants → components
 
 **Prerequisites Met:** ✅ ESLint ready to catch circular deps ✅ CI/CD validates every commit ✅ Tests validate behavior
 

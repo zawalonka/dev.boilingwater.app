@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -83,7 +84,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">zustand</span></div>
+        <div class="infobox-value"><span class="external-import">zustand</span>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/utils/workshopLoader.html">workshopLoader.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -113,8 +114,11 @@
         <details>
           <summary>View source code</summary>
           <pre class="line-numbers"><code class="language-javascript">import { create } from &#39;zustand&#39;
+import { EXPERIMENTS } from &#39;../../constants/workshops&#39;
+import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from &#39;../../utils/workshopLoader&#39;
+import { useGameStore } from &#39;./gameStore&#39;
 
-export const useWorkshopStore = create((set) =&gt; ({
+export const useWorkshopStore = create((set, get) =&gt; ({
   activeLevel: 1,
   activeExperiment: &#39;boiling-water&#39;,
   activeWorkshopId: &#39;pre-alpha-kitchen-1&#39;,
@@ -124,7 +128,97 @@ export const useWorkshopStore = create((set) =&gt; ({
   setActiveExperiment: (experimentId) =&gt; set({ activeExperiment: experimentId }),
   setActiveWorkshopId: (workshopId) =&gt; set({ activeWorkshopId: workshopId }),
   setAvailableWorkshops: (workshops) =&gt; set({ availableWorkshops: workshops }),
-  setActiveWorkshopData: (data) =&gt; set({ activeWorkshopData: data })
+  setActiveWorkshopData: (data) =&gt; set({ activeWorkshopData: data }),
+  bootWorkshops: async () =&gt; {
+    const { activeLevel, activeWorkshopId } = get()
+    try {
+      const levelWorkshops = await getWorkshopsByLevel(activeLevel)
+      set({ availableWorkshops: levelWorkshops })
+      const processed = await initializeWorkshop(activeWorkshopId, { apply: true })
+      await preloadWorkshopImages(processed)
+      set({ activeWorkshopData: processed })
+      useGameStore.getState().setWorkshopLoaded(true)
+    } catch (error) {
+      console.error(&#39;Failed to load workshop:&#39;, error)
+      useGameStore.getState().setWorkshopLoaded(true)
+    }
+  },
+  changeWorkshop: async (workshopId) =&gt; {
+    try {
+      const processed = await initializeWorkshop(workshopId, { apply: true })
+      await preloadWorkshopImages(processed)
+      set({ activeWorkshopId: workshopId, activeWorkshopData: processed })
+      const gameStore = useGameStore.getState()
+      gameStore.setGameStage(0)
+      gameStore.bumpGameInstanceKey()
+    } catch (error) {
+      console.error(&#39;Failed to change workshop:&#39;, error)
+    }
+  },
+  changeLevel: async (levelId, optionalNextExperimentId = null) =&gt; {
+    try {
+      const levelWorkshops = await getWorkshopsByLevel(levelId)
+      set({ availableWorkshops: levelWorkshops, activeLevel: levelId })
+
+      const firstWorkshop = levelWorkshops &amp;&amp; levelWorkshops.length &gt; 0
+        ? levelWorkshops[0]
+        : { id: &#39;pre-alpha-kitchen-1&#39; }
+      const processed = await initializeWorkshop(firstWorkshop.id, { apply: true })
+      await preloadWorkshopImages(processed)
+      set({ activeWorkshopId: firstWorkshop.id, activeWorkshopData: processed })
+
+      const sortedExperiments = (EXPERIMENTS[levelId] || [])
+        .slice()
+        .sort((a, b) =&gt; (a.order || 0) - (b.order || 0))
+      const defaultExperiment = optionalNextExperimentId || sortedExperiments?.[0]?.id || &#39;boiling-water&#39;
+      set({ activeExperiment: defaultExperiment })
+
+      const gameStore = useGameStore.getState()
+      gameStore.setGameStage(0)
+      gameStore.bumpGameInstanceKey()
+    } catch (error) {
+      console.error(&#39;Failed to change level:&#39;, error)
+    }
+  },
+  changeExperiment: (experimentId) =&gt; {
+    set({ activeExperiment: experimentId })
+    const gameStore = useGameStore.getState()
+    gameStore.setGameStage(0)
+    gameStore.bumpGameInstanceKey()
+  },
+  changeEquipment: async (equipmentType, equipmentId) =&gt; {
+    const { activeWorkshopData, activeWorkshopId } = get()
+    if (!activeWorkshopData || !activeWorkshopId) return
+
+    try {
+      const newEquipment = await loadEquipment(activeWorkshopId, equipmentType, equipmentId)
+      if (!newEquipment) {
+        console.warn(`Could not load ${equipmentType}/${equipmentId}`)
+        return
+      }
+
+      const updatedWorkshopData = { ...activeWorkshopData }
+      if (equipmentType === &#39;ac-units&#39;) {
+        updatedWorkshopData.acUnit = newEquipment
+      } else if (equipmentType === &#39;air-handlers&#39;) {
+        updatedWorkshopData.airHandler = newEquipment
+      } else if (equipmentType === &#39;burners&#39;) {
+        updatedWorkshopData.burnerConfig = {
+          wattageSteps: newEquipment.wattageSteps || [0, 500, 1000, 2000],
+          controlType: newEquipment.controlType || &#39;knob&#39;,
+          maxWatts: newEquipment.thermalCharacteristics?.maxWatts || 2000,
+          efficiencyPercent: newEquipment.thermalCharacteristics?.efficiencyPercent || 85
+        }
+      }
+
+      set({ activeWorkshopData: updatedWorkshopData })
+      const gameStore = useGameStore.getState()
+      gameStore.setGameStage(0)
+      gameStore.bumpGameInstanceKey()
+    } catch (error) {
+      console.error(`Failed to change ${equipmentType}:`, error)
+    }
+  }
 }))
 </code></pre>
         </details>

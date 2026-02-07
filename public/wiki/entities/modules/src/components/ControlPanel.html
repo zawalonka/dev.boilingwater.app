@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -78,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -132,70 +133,70 @@
  */
 
 import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
+import { useGameSceneContext } from &#39;./GameSceneContext&#39;
 
-function ControlPanel({
-  // Game state
-  liquidMass,
-  temperature,
-  isBoiling,
-  residueMass,
-  fluidName,
-  boilingPoint,
-  canBoil,
-  isPotOverFlame,
-  expectedBoilTime,
-  formatTemperature,
-  ambientTemperature,
-  
-  // Extrapolation warning data
-  isBoilingPointExtrapolated,
-  boilingPointVerifiedRange,
-  
-  // UI state
-  timeSpeed,
-  isTimerRunning,
-  timeElapsed,
-  activeFluid,
-  availableFluids,
-  isAdvancedModeAvailable,
-  altitude,
-  locationName,
-  showLocationPopup,
-  isLocationPopupAllowed,
-  locationError,
-  isLoadingLocation,
-  userZipCode,
-  manualAltitude,
-  editableAltitude,
-  showNextLevelButton,
-  
-  // Config
-  burnerHeat,
-  wattageSteps,
-  GAME_CONFIG,
-  
-  // Callbacks
-  handleTimerToggle,
-  handleTimerReset,
-  handleSpeedUp,
-  handleSpeedDouble,
-  handleSpeedHalve,
-  handleQuickPause,
-  handleFluidChange,
-  handleNextProgression,
-  nextProgressionType,
-  handleSearchLocation,
-  handleSetManualAltitude,
-  handleFindMyLocation,
-  setEditableAltitude,
-  setShowLocationPopup,
-  setUserZipCode,
-  setManualAltitude,
-  setLocationError,
-  setLocationName,
-  setIsLoadingLocation,
-  setHasSetLocation
-}) {
+function ControlPanel() {
+  const {
+    // Game state
+    liquidMass,
+    temperature,
+    isBoiling,
+    residueMass,
+    fluidName,
+    boilingPoint,
+    canBoil,
+    isPotOverFlame,
+    expectedBoilTime,
+    formatTemperature,
+    ambientTemperature,
+    
+    // Extrapolation warning data
+    isBoilingPointExtrapolated,
+    boilingPointVerifiedRange,
+    
+    // UI state
+    timeSpeed,
+    isTimerRunning,
+    timeElapsed,
+    activeFluid,
+    availableFluids,
+    isAdvancedModeAvailable,
+    altitude,
+    locationName,
+    showLocationPopup,
+    isLocationPopupAllowed,
+    locationError,
+    isLoadingLocation,
+    userZipCode,
+    manualAltitude,
+    editableAltitude,
+    showNextLevelButton,
+    
+    // Config
+    burnerHeat,
+    GAME_CONFIG,
+    
+    // Callbacks
+    handleTimerToggle,
+    handleTimerReset,
+    handleSpeedUp,
+    handleSpeedDouble,
+    handleSpeedHalve,
+    handleQuickPause,
+    handleFluidChange,
+    handleNextProgression,
+    nextProgressionType,
+    handleSearchLocation,
+    handleSetManualAltitude,
+    handleFindMyLocation,
+    setEditableAltitude,
+    setShowLocationPopup,
+    setUserZipCode,
+    setManualAltitude,
+    setLocationError,
+    setLocationName,
+    setIsLoadingLocation
+  } = useGameSceneContext()
   const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
   // Format time in mm:ss
   const formatTime = (seconds) =&gt; {

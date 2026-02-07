@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import Header from './components/Header'
 import GameScene from './components/GameScene'
-import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from './utils/workshopLoader'
-import { LEVELS, EXPERIMENTS } from './constants/workshops'
 import { useGameStore } from './hooks/stores/gameStore'
 import { useWorkshopStore } from './hooks/stores/workshopStore'
 import './styles/App.css'
@@ -15,125 +13,21 @@ function App() {
   const showSelectors = useGameStore((state) => state.showSelectors)
   const setGameStage = useGameStore((state) => state.setGameStage)
   const setUserLocation = useGameStore((state) => state.setUserLocation)
-  const setWorkshopLoaded = useGameStore((state) => state.setWorkshopLoaded)
   const setActiveView = useGameStore((state) => state.setActiveView)
   const bumpGameInstanceKey = useGameStore((state) => state.bumpGameInstanceKey)
   const setShowSelectors = useGameStore((state) => state.setShowSelectors)
 
-  const activeLevel = useWorkshopStore((state) => state.activeLevel)
-  const activeExperiment = useWorkshopStore((state) => state.activeExperiment)
-  const activeWorkshopId = useWorkshopStore((state) => state.activeWorkshopId)
-  const availableWorkshops = useWorkshopStore((state) => state.availableWorkshops)
   const activeWorkshopData = useWorkshopStore((state) => state.activeWorkshopData)
-  const setActiveLevel = useWorkshopStore((state) => state.setActiveLevel)
-  const setActiveExperiment = useWorkshopStore((state) => state.setActiveExperiment)
-  const setActiveWorkshopId = useWorkshopStore((state) => state.setActiveWorkshopId)
-  const setAvailableWorkshops = useWorkshopStore((state) => state.setAvailableWorkshops)
-  const setActiveWorkshopData = useWorkshopStore((state) => state.setActiveWorkshopData)
+  const bootWorkshops = useWorkshopStore((state) => state.bootWorkshops)
+  const changeWorkshop = useWorkshopStore((state) => state.changeWorkshop)
+  const changeLevel = useWorkshopStore((state) => state.changeLevel)
+  const changeExperiment = useWorkshopStore((state) => state.changeExperiment)
+  const changeEquipment = useWorkshopStore((state) => state.changeEquipment)
 
   // Load available workshops and apply default
   useEffect(() => {
-    async function bootWorkshop() {
-      try {
-        const levelWorkshops = await getWorkshopsByLevel(activeLevel)
-        setAvailableWorkshops(levelWorkshops)
-        const processed = await initializeWorkshop(activeWorkshopId, { apply: true })
-        // Preload all workshop images to prevent lag
-        await preloadWorkshopImages(processed)
-        setActiveWorkshopData(processed)
-        setWorkshopLoaded(true)
-      } catch (error) {
-        console.error('Failed to load workshop:', error)
-        setWorkshopLoaded(true)
-      }
-    }
-    bootWorkshop()
+    bootWorkshops()
   }, [])
-
-  // Workshop change handler
-  const handleWorkshopChange = async (workshopId) => {
-    try {
-      const processed = await initializeWorkshop(workshopId, { apply: true })
-      // Preload new workshop images immediately
-      await preloadWorkshopImages(processed)
-      setActiveWorkshopId(workshopId)
-      setActiveWorkshopData(processed)
-      // Reset game completely: stage back to 0, force GameScene re-mount
-      setGameStage(0)
-      bumpGameInstanceKey()
-    } catch (error) {
-      console.error('Failed to change workshop:', error)
-    }
-  }
-
-  // Level change handler
-  // optionalNextExperimentId lets callers override the default first experiment for that level
-  const handleLevelChange = async (levelId, optionalNextExperimentId = null) => {
-    try {
-      const levelWorkshops = await getWorkshopsByLevel(levelId)
-      setAvailableWorkshops(levelWorkshops)
-      setActiveLevel(levelId)
-      
-      // Switch to the first workshop of the new level
-      const firstWorkshop = levelWorkshops && levelWorkshops.length > 0 ? levelWorkshops[0] : { id: 'pre-alpha-kitchen-1' }
-      const processed = await initializeWorkshop(firstWorkshop.id, { apply: true })
-      await preloadWorkshopImages(processed)
-      setActiveWorkshopId(firstWorkshop.id)
-      setActiveWorkshopData(processed)
-      
-      // Reset game and set default experiment for this level
-      const sortedExperiments = (EXPERIMENTS[levelId] || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0))
-      const defaultExperiment = optionalNextExperimentId || sortedExperiments?.[0]?.id || 'boiling-water'
-      setActiveExperiment(defaultExperiment)
-      setGameStage(0)
-      bumpGameInstanceKey()
-    } catch (error) {
-      console.error('Failed to change level:', error)
-    }
-  }
-
-  // Experiment change handler
-  const handleExperimentChange = (experimentId) => {
-    setActiveExperiment(experimentId)
-    setGameStage(0)
-    bumpGameInstanceKey()
-    // Location popup will be triggered in GameScene if this is Exp 2+
-  }
-
-  // Equipment change handler - reloads scene with new equipment
-  const handleEquipmentChange = async (equipmentType, equipmentId) => {
-    if (!activeWorkshopData || !activeWorkshopId) return
-    
-    try {
-      const newEquipment = await loadEquipment(activeWorkshopId, equipmentType, equipmentId)
-      if (!newEquipment) {
-        console.warn(`Could not load ${equipmentType}/${equipmentId}`)
-        return
-      }
-      
-      // Update workshop data with new equipment
-      const updatedWorkshopData = { ...activeWorkshopData }
-      if (equipmentType === 'ac-units') {
-        updatedWorkshopData.acUnit = newEquipment
-      } else if (equipmentType === 'air-handlers') {
-        updatedWorkshopData.airHandler = newEquipment
-      } else if (equipmentType === 'burners') {
-        updatedWorkshopData.burnerConfig = {
-          wattageSteps: newEquipment.wattageSteps || [0, 500, 1000, 2000],
-          controlType: newEquipment.controlType || 'knob',
-          maxWatts: newEquipment.thermalCharacteristics?.maxWatts || 2000,
-          efficiencyPercent: newEquipment.thermalCharacteristics?.efficiencyPercent || 85
-        }
-      }
-      
-      setActiveWorkshopData(updatedWorkshopData)
-      // Reset game to apply new equipment
-      setGameStage(0)
-      bumpGameInstanceKey()
-    } catch (error) {
-      console.error(`Failed to change ${equipmentType}:`, error)
-    }
-  }
 
   // Location will be requested when entering stage 2 (altitude-based lessons)
   // For now, default to sea level
@@ -161,7 +55,7 @@ function App() {
   const handleSkipTutorial = async () => {
     setShowSelectors(true)
     // Move directly to Level 1, Experiment 2 (Altitude's Effect)
-    await handleLevelChange(1, 'altitude-effect')
+    await changeLevel(1, 'altitude-effect')
   }
 
   const handleNavigate = (view) => {
@@ -237,9 +131,9 @@ function App() {
           roomConfig={activeWorkshopData?.room}
           acUnitConfig={activeWorkshopData?.acUnit}
           airHandlerConfig={activeWorkshopData?.airHandler}
-          onLevelChange={handleLevelChange}
-          onExperimentChange={handleExperimentChange}
-          onEquipmentChange={handleEquipmentChange}
+          onLevelChange={changeLevel}
+          onExperimentChange={changeExperiment}
+          onEquipmentChange={changeEquipment}
         />
       </div>
     )
@@ -252,9 +146,9 @@ function App() {
           <Header
             onNavigate={handleNavigate}
             onReload={handleReload}
-            onWorkshopChange={handleWorkshopChange}
-            onLevelChange={handleLevelChange}
-            onExperimentChange={handleExperimentChange}
+            onWorkshopChange={changeWorkshop}
+            onLevelChange={changeLevel}
+            onExperimentChange={changeExperiment}
             onSkipTutorial={handleSkipTutorial}
           />
           {renderView()}

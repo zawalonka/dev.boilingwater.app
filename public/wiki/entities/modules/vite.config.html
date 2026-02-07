@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -181,7 +182,7 @@ export default defineConfig(({ command, mode }) =&gt; ({
   base: command === &#39;build&#39; ? &#39;./&#39; : &#39;/&#39;,
   server: {
     port: 3000,
-    open: true
+    open: false
   },
   preview: {
     port: 3000,

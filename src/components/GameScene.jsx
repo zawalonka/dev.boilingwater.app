@@ -30,6 +30,7 @@ import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUB
 import { GAME_CONFIG } from '../constants/physics'
 import { LEVELS, EXPERIMENTS } from '../constants/workshops'
 import ControlPanel from './ControlPanel'
+import { GameSceneProvider } from './GameSceneContext'
 import RoomControls from './RoomControls'
 import { useRoomEnvironment } from '../hooks/useRoomEnvironment'
 import { getAtmosphereKey } from '../utils/roomEnvironment'
@@ -1275,6 +1276,68 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     )
   }
 
+  const controlPanelContextValue = {
+    // Game state
+    liquidMass,
+    temperature,
+    isBoiling,
+    residueMass,
+    fluidName,
+    boilingPoint,
+    canBoil,
+    isPotOverFlame,
+    expectedBoilTime,
+    formatTemperature,
+    ambientTemperature,
+
+    // Extrapolation warning data
+    isBoilingPointExtrapolated,
+    boilingPointVerifiedRange,
+
+    // UI state
+    timeSpeed,
+    isTimerRunning,
+    timeElapsed,
+    activeFluid,
+    availableFluids,
+    isAdvancedModeAvailable,
+    altitude,
+    locationName,
+    showLocationPopup,
+    isLocationPopupAllowed,
+    locationError,
+    isLoadingLocation,
+    userZipCode,
+    manualAltitude,
+    editableAltitude,
+    showNextLevelButton,
+
+    // Config
+    burnerHeat,
+    GAME_CONFIG,
+
+    // Callbacks
+    handleTimerToggle,
+    handleTimerReset,
+    handleSpeedUp,
+    handleSpeedDouble,
+    handleSpeedHalve,
+    handleQuickPause,
+    handleFluidChange,
+    handleNextProgression,
+    nextProgressionType: getNextProgression()?.type,
+    handleSearchLocation,
+    handleSetManualAltitude,
+    handleFindMyLocation,
+    setEditableAltitude,
+    setShowLocationPopup,
+    setUserZipCode,
+    setManualAltitude,
+    setLocationError,
+    setLocationName,
+    setIsLoadingLocation
+  }
+
   // Stage 0: Interactive game scene
   return (
     <div className="game-scene">
@@ -1502,69 +1565,9 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
           ========== CONTROL PANEL ==========
           Extracted component handling all UI controls, status display, and location/altitude selection
         */}
-        <ControlPanel
-          // Game state
-          liquidMass={liquidMass}
-          temperature={temperature}
-          isBoiling={isBoiling}
-          residueMass={residueMass}
-          fluidName={fluidName}
-          boilingPoint={boilingPoint}
-          canBoil={canBoil}
-          isPotOverFlame={isPotOverFlame}
-          expectedBoilTime={expectedBoilTime}
-          formatTemperature={formatTemperature}
-          ambientTemperature={ambientTemperature}
-          
-          // Extrapolation warning data
-          isBoilingPointExtrapolated={isBoilingPointExtrapolated}
-          boilingPointVerifiedRange={boilingPointVerifiedRange}
-          
-          // UI state
-          timeSpeed={timeSpeed}
-          isTimerRunning={isTimerRunning}
-          timeElapsed={timeElapsed}
-          activeFluid={activeFluid}
-          availableFluids={availableFluids}
-          isAdvancedModeAvailable={isAdvancedModeAvailable}
-          altitude={altitude}
-          locationName={locationName}
-          showLocationPopup={showLocationPopup}
-          isLocationPopupAllowed={isLocationPopupAllowed}
-          locationError={locationError}
-          isLoadingLocation={isLoadingLocation}
-          userZipCode={userZipCode}
-          manualAltitude={manualAltitude}
-          editableAltitude={editableAltitude}
-          showNextLevelButton={showNextLevelButton}
-          
-          // Config
-          burnerHeat={burnerHeat}
-          wattageSteps={wattageSteps}
-          GAME_CONFIG={GAME_CONFIG}
-          
-          // Callbacks
-          handleTimerToggle={handleTimerToggle}
-          handleTimerReset={handleTimerReset}
-          handleSpeedUp={handleSpeedUp}
-          handleSpeedDouble={handleSpeedDouble}
-          handleSpeedHalve={handleSpeedHalve}
-          handleQuickPause={handleQuickPause}
-          handleFluidChange={handleFluidChange}
-          handleNextProgression={handleNextProgression}
-          nextProgressionType={getNextProgression()?.type}
-          handleSearchLocation={handleSearchLocation}
-          handleSetManualAltitude={handleSetManualAltitude}
-          handleFindMyLocation={handleFindMyLocation}
-          setEditableAltitude={setEditableAltitude}
-          setShowLocationPopup={setShowLocationPopup}
-          setUserZipCode={setUserZipCode}
-          setManualAltitude={setManualAltitude}
-          setLocationError={setLocationError}
-          setLocationName={setLocationName}
-          setIsLoadingLocation={setIsLoadingLocation}
-          setHasSetLocation={setHasSetLocation}
-        />
+        <GameSceneProvider value={controlPanelContextValue}>
+          <ControlPanel />
+        </GameSceneProvider>
 
         {/* 
           ========== ROOM CONTROLS ==========

@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import crypto from 'crypto'
+import { execFileSync } from 'child_process'
 import { fileURLToPath, pathToFileURL } from 'url'
 import { globSync } from 'glob'
 import { 
@@ -26,6 +27,7 @@ const cacheDir = path.join(wikiRoot, '.cache')
 const cacheFile = path.join(cacheDir, 'build.json')
 
 const basePath = process.env.WIKI_BASE_PATH || '/wiki'
+const repoUrl = 'https://github.com/zawalonka/Boilingwater.app'
 
 const inputGlobs = [
   'wiki/src/**/*.js',
@@ -120,6 +122,36 @@ const withBase = (href) => {
   return `${trimmedBase}/${trimmedHref}`
 }
 
+const runGit = (args) => {
+  try {
+    return execFileSync('git', args, { cwd: repoRoot, encoding: 'utf-8' }).trim()
+  } catch (error) {
+    return null
+  }
+}
+
+const gitBaseRef = runGit(['rev-parse', '--verify', 'origin/main']) ? 'origin/main' : 'HEAD'
+
+const getGitStatusChanges = () => {
+  const raw = runGit(['status', '--porcelain'])
+  if (!raw) return []
+
+  return raw
+    .split('\n')
+    .filter((line) => line.trim())
+    .map((line) => {
+      const status = line.slice(0, 2).trim()
+      const rawPath = line.slice(3).trim()
+      const pathPart = rawPath.includes(' -> ')
+        ? rawPath.split(' -> ').pop()
+        : rawPath
+      return {
+        status: status || '?',
+        file: pathPart.replace(/\\/g, '/')
+      }
+    })
+}
+
 const page = ({ title, content, breadcrumbs = [], toc = [] }) => `<!doctype html>
 <html lang="en">
 <head>
@@ -169,6 +201,7 @@ const page = ({ title, content, breadcrumbs = [], toc = [] }) => `<!doctype html
               <a href="${withBase('entities/scripts/index.html')}">🧰 Scripts</a>
               <a href="${withBase('entities/styles/index.html')}">🎨 Styles</a>
               <a href="${withBase('entities/root-files/index.html')}">🗂️ Root Files</a>
+              <a href="${withBase('entities/reports/changes-since-last-commit.html')}">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -1166,6 +1199,13 @@ const buildUsageMap = async (symbols) => {
 
 const linkTo = (href, label) => `<a href="${withBase(href)}">${escapeHtml(label)}</a>`
 
+const externalLink = (href, label) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`
+
+const encodeWikiHref = (href) => href
+  .split('/')
+  .map((segment) => encodeURIComponent(segment))
+  .join('/')
+
 const renderEntityHeader = (title, subtitle) => `
   <div class="entity-header">
     <h1>${escapeHtml(title)}</h1>
@@ -1790,6 +1830,7 @@ const build = async () => {
         <div class="portal-box">
           <h3>Code Health</h3>
           ${renderList([
+            linkTo('entities/reports/changes-since-last-commit.html', 'Changes since last commit'),
             linkTo('entities/reports/dead-code.html', 'Dead Code Report'),
             linkTo('entities/reports/orphan-symbols.html', 'Orphan Symbols'),
             linkTo('entities/reports/orphan-scripts.html', 'Orphan Scripts')
@@ -1799,7 +1840,142 @@ const build = async () => {
     </section>
   `
 
+  const changeEntries = getGitStatusChanges()
+  const changeSummary = changeEntries.reduce((acc, change) => {
+    acc.total += 1
+    if (change.status === '??') {
+      acc.untracked += 1
+    } else if (change.status.includes('D')) {
+      acc.deleted += 1
+    } else if (change.status.includes('A')) {
+      acc.added += 1
+    } else if (change.status.includes('M')) {
+      acc.modified += 1
+    }
+    return acc
+  }, { total: 0, added: 0, modified: 0, deleted: 0, untracked: 0 })
+
+  const formatCommitLine = (hash, subject, date) => {
+    const hashLink = hash
+      ? externalLink(`${repoUrl}/commit/${encodeURIComponent(hash)}`, hash)
+      : '<span>Unavailable</span>'
+    const subjectText = subject ? ` — ${escapeHtml(subject)}` : ''
+    const dateText = date ? ` (${escapeHtml(date)})` : ''
+    return `${hashLink}${subjectText}${dateText}`
+  }
+
+  const lastCommitRaw = runGit(['log', gitBaseRef, '-1', '--date=short', '--pretty=format:%h|%s|%ad'])
+  const lastCommitParts = lastCommitRaw ? lastCommitRaw.split('|') : null
+  const lastCommitHash = lastCommitParts ? lastCommitParts[0] : null
+  const lastCommitSummary = lastCommitParts
+    ? formatCommitLine(lastCommitParts[0], lastCommitParts[1], lastCommitParts[2])
+    : 'Unavailable'
+
+  const recentCommitsRaw = runGit(['log', gitBaseRef, '-5', '--date=short', '--pretty=format:%h|%s|%ad'])
+  const recentCommitItems = recentCommitsRaw
+    ? recentCommitsRaw.split('\n').filter(Boolean).map((line) => {
+        const parts = line.split('|')
+        const hash = parts[0] || ''
+        const subject = parts[1] || ''
+        const date = parts[2] || ''
+        return formatCommitLine(hash, subject, date)
+      })
+    : []
+
+  const isWikiOutputFile = (filePath) => filePath.startsWith('public/wiki/')
+
+  const getWikiHrefForChange = (change) => {
+    const entity = fileToWikiEntity.get(change.file)
+    if (entity) return entity.href
+    if (!isWikiOutputFile(change.file)) return null
+    const relative = change.file.replace(/^public\/wiki\//, '')
+    return encodeWikiHref(relative)
+  }
+
+  const commitCache = new Map()
+  const getLastCommitForFile = (filePath) => {
+    if (commitCache.has(filePath)) return commitCache.get(filePath)
+    const commit = runGit(['log', gitBaseRef, '-1', '--pretty=format:%h', '--', filePath]) || null
+    commitCache.set(filePath, commit)
+    return commit
+  }
+
+  const getDiffUrlForChange = (change) => {
+    if (change.status === '??') return null
+    const commit = isWikiOutputFile(change.file)
+      ? lastCommitHash
+      : getLastCommitForFile(change.file)
+    if (!commit) return null
+    return `${repoUrl}/commit/${encodeURIComponent(commit)}`
+  }
+
+  const changeItems = changeEntries.map((change) => {
+    const statusLabel = escapeHtml(change.status)
+    const fileLabel = escapeHtml(change.file)
+    const wikiHref = getWikiHrefForChange(change)
+    const diffUrl = getDiffUrlForChange(change)
+    const fileLink = wikiHref
+      ? linkTo(wikiHref, change.file)
+      : diffUrl
+        ? externalLink(diffUrl, change.file)
+        : `<span>${fileLabel}</span>`
+    const diffLink = wikiHref && diffUrl
+      ? ` <span class="change-diff">(${externalLink(diffUrl, 'diff')})</span>`
+      : ''
+
+    return `${statusLabel} ${fileLink}${diffLink}`
+  })
+
+  const wikiChangeCount = changeEntries.filter((change) =>
+    change.file.startsWith('public/wiki/') || change.file.startsWith('wiki/')
+  ).length
+
+  const statusLegendItems = [
+    '<strong>M</strong> Modified',
+    '<strong>A</strong> Added',
+    '<strong>D</strong> Deleted',
+    '<strong>R</strong> Renamed',
+    '<strong>C</strong> Copied',
+    '<strong>U</strong> Unmerged',
+    '<strong>??</strong> Untracked'
+  ]
+
+  const changeReportContent = `
+    <section class="section">
+      ${renderEntityHeader('Changes Since Last Commit', 'Working tree summary and recent commits')}
+      ${renderInfobox('Change Snapshot', [
+        { label: 'Last Commit', value: lastCommitSummary },
+        { label: 'Total Changes', value: String(changeSummary.total) },
+        { label: 'Modified', value: String(changeSummary.modified) },
+        { label: 'Added', value: String(changeSummary.added) },
+        { label: 'Deleted', value: String(changeSummary.deleted) },
+        { label: 'Untracked', value: String(changeSummary.untracked) }
+      ])}
+      <p>${wikiChangeCount > 0
+        ? `Reminder: ${wikiChangeCount} wiki file(s) changed. Review new wiki pages before commit.`
+        : 'Reminder: no wiki output changes detected.'}
+      </p>
+    </section>
+    <section class="section">
+      <h2>Status Key</h2>
+      <p>Git status codes follow <code>git status --porcelain</code> (index status then working tree status).</p>
+      ${renderList(statusLegendItems)}
+    </section>
+    <section class="section">
+      <h2>Working Tree Changes</h2>
+      ${changeItems.length ? renderList(changeItems) : '<p>✅ Working tree clean.</p>'}
+    </section>
+    <section class="section">
+      <h2>Recent Commits</h2>
+      ${recentCommitItems.length ? renderList(recentCommitItems) : '<p>No git history available.</p>'}
+    </section>
+  `
+
   await writePage('index.html', page({ title: 'Boilingwater Wiki', content: indexContent }))
+  await writePage('entities/reports/changes-since-last-commit.html', page({
+    title: 'Changes Since Last Commit',
+    content: changeReportContent
+  }))
   await writePage('404.html', page({
     title: 'Wiki: Not Found',
     content: `

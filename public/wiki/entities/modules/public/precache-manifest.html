@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -379,6 +380,9 @@
   &quot;./wiki/entities/modules/docs/research/SCRIPTS_AND_DATA_SOURCES.html&quot;,
   &quot;./wiki/entities/modules/docs/research/WIKI_IMPLEMENTATION_COMPLETE.html&quot;,
   &quot;./wiki/entities/modules/docs/research/WIKI_SCRIPT_CONNECTIONS.html&quot;,
+  &quot;./wiki/entities/modules/docs/testing/PHYSICS_TESTING_APPROVED_PLAN.html&quot;,
+  &quot;./wiki/entities/modules/docs/testing/PHYSICS_TESTING_STRATEGY.html&quot;,
+  &quot;./wiki/entities/modules/eslint.config.html&quot;,
   &quot;./wiki/entities/modules/index.html&quot;,
   &quot;./wiki/entities/modules/lighthouserc.html&quot;,
   &quot;./wiki/entities/modules/package-lock.html&quot;,
@@ -425,6 +429,7 @@
   &quot;./wiki/entities/modules/scripts/generateSubstanceCatalog.html&quot;,
   &quot;./wiki/entities/modules/scripts/metadata.html&quot;,
   &quot;./wiki/entities/modules/scripts/optimize-images.html&quot;,
+  &quot;./wiki/entities/modules/scripts/preview-with-ready.html&quot;,
   &quot;./wiki/entities/modules/scripts/regenerate-elements.html&quot;,
   &quot;./wiki/entities/modules/scripts/temp-data/educational-notes.html&quot;,
   &quot;./wiki/entities/modules/scripts/update-educational-notes.html&quot;,
@@ -432,6 +437,7 @@
   &quot;./wiki/entities/modules/src/App.html&quot;,
   &quot;./wiki/entities/modules/src/components/ControlPanel.html&quot;,
   &quot;./wiki/entities/modules/src/components/GameScene.html&quot;,
+  &quot;./wiki/entities/modules/src/components/GameSceneContext.html&quot;,
   &quot;./wiki/entities/modules/src/components/Header.html&quot;,
   &quot;./wiki/entities/modules/src/components/RoomControls.html&quot;,
   &quot;./wiki/entities/modules/src/config/env.html&quot;,
@@ -710,6 +716,8 @@
   &quot;./wiki/entities/modules/src/data/substances/periodic-table/_regen-temp/117_Ts_halogen.html&quot;,
   &quot;./wiki/entities/modules/src/data/substances/periodic-table/_regen-temp/118_Og_noble-gas.html&quot;,
   &quot;./wiki/entities/modules/src/data/substances/phases.html&quot;,
+  &quot;./wiki/entities/modules/src/hooks/stores/gameStore.html&quot;,
+  &quot;./wiki/entities/modules/src/hooks/stores/workshopStore.html&quot;,
   &quot;./wiki/entities/modules/src/hooks/useRoomEnvironment.html&quot;,
   &quot;./wiki/entities/modules/src/main.html&quot;,
   &quot;./wiki/entities/modules/src/styles/App.html&quot;,
@@ -722,6 +730,13 @@
   &quot;./wiki/entities/modules/src/utils/acUnitHandler.html&quot;,
   &quot;./wiki/entities/modules/src/utils/airHandlerScrubber.html&quot;,
   &quot;./wiki/entities/modules/src/utils/locationUtils.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/antoineEquation.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/heatCapacity.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/isaAtmosphere.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/latentHeat.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/newtonCooling.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/formulas/temperatureConversion.test.html&quot;,
+  &quot;./wiki/entities/modules/src/utils/physics/__tests__/integration/energyConservation.test.html&quot;,
   &quot;./wiki/entities/modules/src/utils/physics/index.html&quot;,
   &quot;./wiki/entities/modules/src/utils/roomEnvironment.html&quot;,
   &quot;./wiki/entities/modules/src/utils/substanceLoader.html&quot;,
@@ -819,6 +834,7 @@
   &quot;./wiki/entities/public/workshops/level-2-placeholder/index.html&quot;,
   &quot;./wiki/entities/public/workshops/pre-alpha-kitchen-1/index.html&quot;,
   &quot;./wiki/entities/public/workshops/pre-alpha-kitchen-2/index.html&quot;,
+  &quot;./wiki/entities/reports/changes-since-last-commit.html&quot;,
   &quot;./wiki/entities/reports/dead-code.html&quot;,
   &quot;./wiki/entities/reports/orphan-ac-units.html&quot;,
   &quot;./wiki/entities/reports/orphan-air-handlers.html&quot;,
@@ -857,6 +873,7 @@
   &quot;./wiki/entities/symbols/EXPERIMENTS.html&quot;,
   &quot;./wiki/entities/symbols/GAME_CONFIG.html&quot;,
   &quot;./wiki/entities/symbols/GAME_RESOLUTION.html&quot;,
+  &quot;./wiki/entities/symbols/GameSceneProvider.html&quot;,
   &quot;./wiki/entities/symbols/LATENT_HEAT_VALUES.html&quot;,
   &quot;./wiki/entities/symbols/LEVELS.html&quot;,
   &quot;./wiki/entities/symbols/PID_PRESETS.html&quot;,
@@ -889,6 +906,7 @@
   &quot;./wiki/entities/symbols/calculateDiffusionVolumeSum.html&quot;,
   &quot;./wiki/entities/symbols/calculateDynamicKb.html&quot;,
   &quot;./wiki/entities/symbols/calculateEffectiveCoolingCoeff.html&quot;,
+  &quot;./wiki/entities/symbols/calculateEnergyTolerance.html&quot;,
   &quot;./wiki/entities/symbols/calculateEvaporatedMass.html&quot;,
   &quot;./wiki/entities/symbols/calculateEvaporationFlux.html&quot;,
   &quot;./wiki/entities/symbols/calculateEvaporationMass.html&quot;,
@@ -969,7 +987,10 @@
   &quot;./wiki/entities/symbols/solveAntoineForTemperature.html&quot;,
   &quot;./wiki/entities/symbols/temperatureAtTime.html&quot;,
   &quot;./wiki/entities/symbols/timeToCool.html&quot;,
+  &quot;./wiki/entities/symbols/useGameSceneContext.html&quot;,
+  &quot;./wiki/entities/symbols/useGameStore.html&quot;,
   &quot;./wiki/entities/symbols/useRoomEnvironment.html&quot;,
+  &quot;./wiki/entities/symbols/useWorkshopStore.html&quot;,
   &quot;./wiki/entities/symbols/validateWorkshopData.html&quot;,
   &quot;./wiki/entities/symbols/volumeFractionToRH.html&quot;,
   &quot;./wiki/index.html&quot;

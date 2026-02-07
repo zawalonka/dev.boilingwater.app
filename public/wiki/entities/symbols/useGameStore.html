@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -75,7 +76,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/App.html">App.jsx</a></li><li><a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a></li><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/App.html">App.jsx</a></li><li><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></li><li><a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a></li><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li></ul></div>
       </div>
     
     </aside>
@@ -89,40 +90,55 @@
 
       </section>
       <section class="section">
-        <h2>Call Sites (21)</h2>
+        <h2>Call Sites (26)</h2>
         <ul class="call-sites"><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L11</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L9</span>
             <code class="call-site-context">const gameStage = useGameStore((state) =&gt; state.gameStage)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L12</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L10</span>
             <code class="call-site-context">const workshopLoaded = useGameStore((state) =&gt; state.workshopLoaded)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L13</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L11</span>
             <code class="call-site-context">const activeView = useGameStore((state) =&gt; state.activeView)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L14</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L12</span>
             <code class="call-site-context">const gameInstanceKey = useGameStore((state) =&gt; state.gameInstanceKey)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L15</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L13</span>
             <code class="call-site-context">const showSelectors = useGameStore((state) =&gt; state.showSelectors)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L16</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L14</span>
             <code class="call-site-context">const setGameStage = useGameStore((state) =&gt; state.setGameStage)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L17</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L15</span>
             <code class="call-site-context">const setUserLocation = useGameStore((state) =&gt; state.setUserLocation)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L18</span>
-            <code class="call-site-context">const setWorkshopLoaded = useGameStore((state) =&gt; state.setWorkshopLoaded)</code>
-          </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L19</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L16</span>
             <code class="call-site-context">const setActiveView = useGameStore((state) =&gt; state.setActiveView)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L20</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L17</span>
             <code class="call-site-context">const bumpGameInstanceKey = useGameStore((state) =&gt; state.bumpGameInstanceKey)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L21</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/App.html">App.jsx</a>#L18</span>
             <code class="call-site-context">const setShowSelectors = useGameStore((state) =&gt; state.setShowSelectors)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L25</span>
+            <code class="call-site-context">useGameStore.getState().setWorkshopLoaded(true)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L28</span>
+            <code class="call-site-context">useGameStore.getState().setWorkshopLoaded(true)</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L36</span>
+            <code class="call-site-context">const gameStore = useGameStore.getState()</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L61</span>
+            <code class="call-site-context">const gameStore = useGameStore.getState()</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L70</span>
+            <code class="call-site-context">const gameStore = useGameStore.getState()</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>#L100</span>
+            <code class="call-site-context">const gameStore = useGameStore.getState()</code>
           </li><li>
             <span class="call-site-file"><a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a>#L61</span>
             <code class="call-site-context">const activeView = useGameStore((state) =&gt; state.activeView)</code>
@@ -130,27 +146,12 @@
             <span class="call-site-file"><a href="/wiki/entities/modules/src/components/Header.html">Header.jsx</a>#L62</span>
             <code class="call-site-context">const showSelectors = useGameStore((state) =&gt; state.showSelectors)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L70</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L71</span>
             <code class="call-site-context">const stage = useGameStore((state) =&gt; state.gameStage)</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L71</span>
-            <code class="call-site-context">const location = useGameStore((state) =&gt; state.userLocation)</code>
-          </li><li>
             <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L72</span>
-            <code class="call-site-context">const showSelectors = useGameStore((state) =&gt; state.showSelectors)</code>
-          </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L73</span>
-            <code class="call-site-context">const hasBoiledBefore = useGameStore((state) =&gt; state.hasBoiledBefore)</code>
-          </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L74</span>
-            <code class="call-site-context">const setGameStage = useGameStore((state) =&gt; state.setGameStage)</code>
-          </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L75</span>
-            <code class="call-site-context">const setUserLocation = useGameStore((state) =&gt; state.setUserLocation)</code>
-          </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a>#L76</span>
-            <code class="call-site-context">const setShowSelectors = useGameStore((state) =&gt; state.setShowSelectors)</code>
-          </li><li>...and 1 more</li></ul>
+            <code class="call-site-context">const location = useGameStore((state) =&gt; state.userLocation)</code>
+          </li><li>...and 6 more</li></ul>
       </section>
     
         </article>

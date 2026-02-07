@@ -47,6 +47,7 @@
               <a href="/wiki/entities/scripts/index.html">🧰 Scripts</a>
               <a href="/wiki/entities/styles/index.html">🎨 Styles</a>
               <a href="/wiki/entities/root-files/index.html">🗂️ Root Files</a>
+              <a href="/wiki/entities/reports/changes-since-last-commit.html">🧭 Changes</a>
             </div>
             <div class="wiki-menu-divider"></div>
             <a href="/">⬅️ Back to Game</a>
@@ -88,7 +89,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/App.html">App.jsx</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
@@ -152,7 +153,16 @@ export async function loadWorkshop(workshopId) {
       const effectsUrl = new URL(`${base}assets/workshops/${workshopId}/effects.json`, window.location.href).toString()
       const effectsRes = await fetch(effectsUrl)
       if (effectsRes.ok) {
-        workshopData.effects = await effectsRes.json()
+        const contentType = effectsRes.headers.get(&#39;content-type&#39;) || &#39;&#39;
+        if (contentType.includes(&#39;application/json&#39;)) {
+          workshopData.effects = await effectsRes.json()
+        } else {
+          const effectsText = await effectsRes.text()
+          const trimmed = effectsText.trim()
+          if (trimmed.startsWith(&#39;{&#39;) || trimmed.startsWith(&#39;[&#39;)) {
+            workshopData.effects = JSON.parse(trimmed)
+          }
+        }
       }
     } catch (effectsError) {
       console.info(`No effects.json for workshop &#39;${workshopId}&#39; (optional): ${effectsError.message}`)
