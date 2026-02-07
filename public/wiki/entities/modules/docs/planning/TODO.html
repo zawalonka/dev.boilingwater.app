@@ -157,9 +157,9 @@
 ## 🚀 HIGH PRIORITY (Content &amp; Features)
 
 ### 3A. Component Refactoring (Week 5-7)
-**Status:** READY TO START | **0% Complete**
+**Status:** IN PROGRESS | **45% Complete**
 **Reference:** [docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md](docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md)
-**Notes:** Start after state management + CI/CD + ESLint are stable
+**Notes:** Start after state management + CI/CD + ESLint are stable. Last confirmed step before pause: hooks extracted and Pot component split.
 
 **Definition of Done (size targets):**
 - GameScene container ≤ 500 lines (orchestrator only)
@@ -169,14 +169,14 @@
 - No new files exceed 300 lines without written justification in this section
 
 **Week 5: Extract hooks**
-- [ ] Create `useGamePhysics` hook (move physics loop + derived state)
-- [ ] Create `useRoomEnvironment` hook (room heat/pressure/humidity logic)
-- [ ] Create `usePotDragging` hook (drag/position/stream detection)
-- [ ] Create `useBoilingDetection` hook (boil thresholds + stats)
-- [ ] Create `useTimeControls` hook (timer/speed/pause)
+- [x] Create `useGamePhysics` hook (move physics loop + derived state)
+- [x] Create `useRoomEnvironment` hook (room heat/pressure/humidity logic)
+- [x] Create `usePotDragging` hook (drag/position/stream detection)
+- [x] Create `useBoilingDetection` hook (boil thresholds + stats)
+- [x] Create `useTimeControls` hook (timer/speed/pause)
 
 **Week 6: Split rendering**
-- [ ] Create Pot component
+- [x] Create Pot component
 - [ ] Create Burner components (burner base, knob, flame)
 - [ ] Create WaterStream component
 - [ ] Create Effects components (steam, glow)

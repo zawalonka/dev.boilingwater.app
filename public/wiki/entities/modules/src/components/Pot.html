@@ -79,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span></div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/components/SteamEffect.html">SteamEffect.jsx</a></div>
       </div>
     
       <div class="infobox-row">
@@ -104,7 +104,7 @@
         <details>
           <summary>View source code</summary>
           <pre class="line-numbers"><code class="language-jsx">// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
-import React from &#39;react&#39;
+import SteamEffect from &#39;./SteamEffect&#39;
 
 function Pot({
   potRef,
@@ -123,6 +123,8 @@ function Pot({
   onPointerMove,
   onPointerUp
 }) {
+  const showSteam = steamConfig.enabled &amp;&amp; isBoiling &amp;&amp; temperature &gt;= boilingPoint
+
   return (
     &lt;div
       ref={potRef}
@@ -146,20 +148,12 @@ function Pot({
         draggable={false}
       /&gt;
 
-      {steamConfig.enabled &amp;&amp; isBoiling &amp;&amp; temperature &gt;= boilingPoint &amp;&amp; (
-        &lt;div className=&quot;steam-effect&quot; style={steamStyle}&gt;
-          {steamConfig.asset ? (
-            &lt;img
-              src={steamConfig.asset}
-              alt=&quot;Steam rising from the pot&quot;
-              className=&quot;steam-sprite&quot;
-              draggable={false}
-            /&gt;
-          ) : (
-            steamConfig.symbol || &#39;💨&#39;
-          )}
-        &lt;/div&gt;
-      )}
+      &lt;SteamEffect
+        enabled={showSteam}
+        style={steamStyle}
+        asset={steamConfig.asset}
+        symbol={steamConfig.symbol}
+      /&gt;
     &lt;/div&gt;
   )
 }

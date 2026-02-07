@@ -79,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a></div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/LocationPopup.html">LocationPopup.jsx</a></div>
       </div>
     
       <div class="infobox-row">
@@ -135,6 +135,7 @@
 
 import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 import { useGameSceneContext } from &#39;./GameSceneContext&#39;
+import LocationPopup from &#39;./LocationPopup&#39;
 
 function ControlPanel() {
   const {
@@ -508,112 +509,20 @@ function ControlPanel() {
         Modal that appears when user enters an altitude-based experiment
         User must select a location or altitude to proceed
       */}
-      {showLocationPopup &amp;&amp; isLocationPopupAllowed &amp;&amp; (
-        &lt;div className=&quot;location-panel&quot;&gt;
-          {/* Loading overlay */}
-          {isLoadingLocation &amp;&amp; (
-            &lt;div className=&quot;location-loading-overlay&quot;&gt;
-              &lt;div className=&quot;location-loading-spinner&quot;&gt;⏳&lt;/div&gt;
-              &lt;div className=&quot;location-loading-text&quot;&gt;Determining altitude from location...&lt;/div&gt;
-            &lt;/div&gt;
-          )}
-          
-          &lt;h3&gt;📍 Set Your Location&lt;/h3&gt;
-          &lt;p className=&quot;location-subtitle&quot;&gt;
-            Notice how the boiling point changes with altitude? Enter your location or altitude to test.
-          &lt;/p&gt;
-
-          {locationError &amp;&amp; (
-            &lt;div className=&quot;location-error&quot; id=&quot;location-error&quot; role=&quot;alert&quot;&gt;
-              &lt;span className=&quot;error-icon&quot;&gt;⚠️&lt;/span&gt;
-              &lt;span className=&quot;error-text&quot;&gt;{locationError}&lt;/span&gt;
-            &lt;/div&gt;
-          )}
-
-          &lt;div className=&quot;location-section&quot;&gt;
-            &lt;label className=&quot;section-title&quot; htmlFor=&quot;location-input&quot;&gt;Search for a Location (Worldwide)&lt;/label&gt;
-            &lt;div className=&quot;location-inputs&quot;&gt;
-              &lt;input
-                id=&quot;location-input&quot;
-                type=&quot;text&quot;
-                placeholder=&quot;City, landmark, or place (Death Valley, Mt Everest, Tokyo)&quot;
-                value={userZipCode}
-                onChange={(e) =&gt; {
-                  setUserZipCode(e.target.value)
-                  setLocationError(null)
-                }}
-                onKeyPress={(e) =&gt; e.key === &#39;Enter&#39; &amp;&amp; handleSearchLocation()}
-                disabled={isLoadingLocation}
-                aria-invalid={Boolean(locationError)}
-                aria-describedby={`${locationError ? &#39;location-error &#39; : &#39;&#39;}location-search-help`}
-                className=&quot;location-input location-search-input&quot;
-              /&gt;
-              &lt;button
-                onClick={handleSearchLocation}
-                disabled={isLoadingLocation || !userZipCode.trim()}
-                className=&quot;location-button&quot;
-                title=&quot;Search worldwide&quot;
-                aria-label=&quot;Search location&quot;
-                aria-describedby=&quot;location-search-help&quot;
-              &gt;
-                {isLoadingLocation ? &#39;⏳&#39; : &#39;🔍&#39;}
-              &lt;/button&gt;
-            &lt;/div&gt;
-            &lt;small id=&quot;location-search-help&quot; className=&quot;location-help&quot;&gt;
-              Enter a city, landmark, or place name.
-            &lt;/small&gt;
-          &lt;/div&gt;
-
-          &lt;div className=&quot;location-divider&quot;&gt;or&lt;/div&gt;
-
-          &lt;div className=&quot;location-section&quot;&gt;
-            &lt;label className=&quot;section-title&quot; htmlFor=&quot;altitude-input&quot;&gt;Enter Altitude Manually&lt;/label&gt;
-            &lt;div className=&quot;altitude-inputs&quot;&gt;
-              &lt;input
-                id=&quot;altitude-input&quot;
-                type=&quot;number&quot;
-                placeholder=&quot;Meters (negative = below sea level)&quot;
-                value={manualAltitude}
-                onChange={(e) =&gt; {
-                  setManualAltitude(e.target.value)
-                  setLocationError(null)
-                }}
-                onKeyPress={(e) =&gt; e.key === &#39;Enter&#39; &amp;&amp; handleSetManualAltitude()}
-                disabled={isLoadingLocation}
-                aria-invalid={Boolean(locationError)}
-                aria-describedby={`${locationError ? &#39;location-error &#39; : &#39;&#39;}manual-altitude-help`}
-                className=&quot;altitude-input&quot;
-              /&gt;
-              &lt;button
-                onClick={handleSetManualAltitude}
-                disabled={isLoadingLocation || !manualAltitude.trim()}
-                className=&quot;location-button&quot;
-                aria-label=&quot;Set altitude&quot;
-                aria-describedby=&quot;manual-altitude-help&quot;
-              &gt;
-                ✓
-              &lt;/button&gt;
-            &lt;/div&gt;
-            &lt;small id=&quot;manual-altitude-help&quot; className=&quot;location-help&quot;&gt;
-              Negative values are allowed (below sea level).
-            &lt;/small&gt;
-          &lt;/div&gt;
-
-          &lt;div className=&quot;location-divider&quot;&gt;or&lt;/div&gt;
-
-          &lt;div className=&quot;location-section&quot;&gt;
-            &lt;button
-              onClick={handleFindMyLocation}
-              disabled={isLoadingLocation}
-              className=&quot;location-button find-my-location&quot;
-              aria-describedby=&quot;geolocation-help&quot;
-            &gt;
-              {isLoadingLocation ? &#39;⏳ Getting your location...&#39; : &#39;📍 Use My Current Location&#39;}
-            &lt;/button&gt;
-            &lt;small id=&quot;geolocation-help&quot; className=&quot;location-help&quot;&gt;Uses browser geolocation (needs permission)&lt;/small&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      )}
+      &lt;LocationPopup
+        show={showLocationPopup}
+        isAllowed={isLocationPopupAllowed}
+        isLoading={isLoadingLocation}
+        locationError={locationError}
+        userZipCode={userZipCode}
+        manualAltitude={manualAltitude}
+        onSearchLocation={handleSearchLocation}
+        onSetManualAltitude={handleSetManualAltitude}
+        onFindMyLocation={handleFindMyLocation}
+        setUserZipCode={setUserZipCode}
+        setManualAltitude={setManualAltitude}
+        setLocationError={setLocationError}
+      /&gt;
     &lt;/&gt;
   )
 }

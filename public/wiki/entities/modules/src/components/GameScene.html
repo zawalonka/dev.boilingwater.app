@@ -79,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/components/Pot.html">Pot.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/usePotDragging.html">usePotDragging.js</a>, <a href="/wiki/entities/modules/src/hooks/useTimeControls.html">useTimeControls.js</a>, <a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a>, <a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/components/Pot.html">Pot.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerFlame.html">BurnerFlame.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerKnob.html">BurnerKnob.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerButtons.html">BurnerButtons.jsx</a>, <a href="/wiki/entities/modules/src/components/WaterStream.html">WaterStream.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/usePotDragging.html">usePotDragging.js</a>, <a href="/wiki/entities/modules/src/hooks/useTimeControls.html">useTimeControls.js</a>, <a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a>, <a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -154,6 +154,10 @@ import ControlPanel from &#39;./ControlPanel&#39;
 import { GameSceneProvider } from &#39;./GameSceneContext&#39;
 import RoomControls from &#39;./RoomControls&#39;
 import Pot from &#39;./Pot&#39;
+import BurnerFlame from &#39;./BurnerFlame&#39;
+import BurnerKnob from &#39;./BurnerKnob&#39;
+import BurnerButtons from &#39;./BurnerButtons&#39;
+import WaterStream from &#39;./WaterStream&#39;
 import { useRoomEnvironment } from &#39;../hooks/useRoomEnvironment&#39;
 import { usePotDragging } from &#39;../hooks/usePotDragging&#39;
 import { useTimeControls } from &#39;../hooks/useTimeControls&#39;
@@ -1005,13 +1009,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   const flameX = layout.flame.xPercent
   const flameY = layout.flame.yPercent
 
-  // Calculate water stream position (from original 1024x1024: starts at 295,451 ends at 285,724)
-  const waterStreamStartX = layout.waterStream.start.xPercent
-  const waterStreamStartY = layout.waterStream.start.yPercent
-  const waterStreamEndX = layout.waterStream.end.xPercent
-  const waterStreamEndY = layout.waterStream.end.yPercent
-  const waterStreamHeight = waterStreamEndY - waterStreamStartY
-
   // Workshop-driven optional glow/steam tuning
   const flameGlowConfig = effects.flameGlow
   const flameGlowIntensity = flameGlowConfig.intensityByHeat?.[burnerHeat] ?? 1
@@ -1225,156 +1222,46 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
           Pouring water effect from faucet area
           Appears only when pot is passing through the stream
         */}
-        {showWaterStream &amp;&amp; (
-          &lt;div 
-            className=&quot;water-stream&quot;
-            style={{
-              left: `${waterStreamStartX}%`,
-              top: `${waterStreamStartY}%`,
-              width: `${layout.waterStream.widthPercent}%`,
-              height: `${waterStreamHeight}%`
-            }}
-          /&gt;
-        )}
-        
-        {/* 
-          ========== AMBIENT-BOILING STEAM (For low-boiling substances) ==========
-          Upward steam effect for substances that boil at or below 20°C (room temp)
-          Examples: Hydrogen (-252°C), Oxygen (-183°C), Nitrogen (-196°C)
-          Shows colored steam rising instead of downward water stream
-        */}
-        {showAmbientSteam &amp;&amp; fluidProps &amp;&amp; (
-          &lt;div 
-            className=&quot;ambient-boil-steam&quot;
-            style={{
-              left: `${waterStreamStartX}%`,
-              top: `${waterStreamStartY}%`,
-              width: `${layout.waterStream.widthPercent}%`,
-              height: `${waterStreamHeight}%`,
-              // Use substance-specific color from catalog if available
-              backgroundColor: fluidProps.color?.gas || &#39;rgba(200, 230, 255, 0.4)&#39;,
-              opacity: 0.6
-            }}
-          /&gt;
-        )}
+        &lt;WaterStream
+          showWaterStream={showWaterStream}
+          showAmbientSteam={showAmbientSteam}
+          layout={layout}
+          fluidProps={fluidProps}
+        /&gt;
 
         {/* 
           ========== FLAME (Burner visualization) ==========
           Located at center-right where the burner is
           Shows a flame image when heat is on
         */}
-        &lt;div 
-          className=&quot;stove-burner&quot;
-          style={{
-            left: `${flameX}%`,
-            top: `${flameY}%`,
-            width: burnerHeat === 0 ? &#39;0%&#39; : `${(layout.flame.sizePercentByHeat?.[burnerHeat] ?? layout.flame.sizePercentByHeat?.at(-1) ?? 0)}%`,
-            height: burnerHeat === 0 ? &#39;0%&#39; : `${(layout.flame.sizePercentByHeat?.[burnerHeat] ?? layout.flame.sizePercentByHeat?.at(-1) ?? 0)}%`,
-            minWidth: burnerHeat === 0 ? &#39;0px&#39; : `${(layout.flame.minSizePxByHeat?.[burnerHeat] ?? layout.flame.minSizePxByHeat?.at(-1) ?? 0)}px`,
-            minHeight: burnerHeat === 0 ? &#39;0px&#39; : `${(layout.flame.minSizePxByHeat?.[burnerHeat] ?? layout.flame.minSizePxByHeat?.at(-1) ?? 0)}px`
-          }}
-        &gt;
-          {/* Show flame image when burner is on; glow/animation effects applied only if workshop enables them */}
-          {burnerHeat &gt; 0 &amp;&amp; (
-            &lt;img 
-              src={flameImage}
-              alt=&quot;Gas burner flame&quot;
-              className=&quot;flame-graphic&quot;
-              style={{
-                filter: effects.flameGlow.enabled ? flameFilter : &#39;none&#39;,
-                animationDuration: effects.flameGlow.enabled ? flameAnimationDuration : &#39;0s&#39;
-              }}
-            /&gt;
-          )}
-        &lt;/div&gt;
+        &lt;BurnerFlame
+          flameImage={flameImage}
+          burnerHeat={burnerHeat}
+          flameLayout={layout.flame}
+          glowEnabled={effects.flameGlow.enabled}
+          flameFilter={flameFilter}
+          flameAnimationDuration={flameAnimationDuration}
+        /&gt;
 
-        {/* Button-based burner controls (for workshops that replace the knob) */}
-        {layout.burnerControls?.type === &#39;buttons&#39; &amp;&amp; (
-          &lt;&gt;
-            &lt;div
-              className=&quot;burner-wattage-display&quot;
-              style={{
-                left: `${layout.burnerControls.wattageDisplay.xPercent}%`,
-                top: `${layout.burnerControls.wattageDisplay.yPercent}%`,
-                width: `${layout.burnerControls.wattageDisplay.widthPercent}%`,
-                height: `${layout.burnerControls.wattageDisplay.heightPercent}%`,
-                border: `${layout.burnerControls.wattageDisplay.borderPx || 1}px solid ${layout.burnerControls.wattageDisplay.borderColor || &#39;#333&#39;}`,
-                background: layout.burnerControls.wattageDisplay.backgroundColor || &#39;#f0f0f0&#39;,
-                color: layout.burnerControls.wattageDisplay.textColor || &#39;#000&#39;,
-              }}
-            &gt;
-              {`${wattageSteps[burnerHeat] || 0} W`}
-            &lt;/div&gt;
-
-            &lt;span id=&quot;burner-controls-help&quot; className=&quot;sr-only&quot;&gt;
-              Adjust the burner power level to change heating intensity.
-            &lt;/span&gt;
-
-            &lt;button
-              className=&quot;burner-btn burner-btn-down&quot;
-              style={{
-                left: `${layout.burnerControls.downButton.xPercent}%`,
-                top: `${layout.burnerControls.downButton.yPercent}%`,
-                width: `${layout.burnerControls.downButton.sizePercent}%`,
-                height: `${layout.burnerControls.downButton.sizePercent}%`,
-              }}
-              onClick={handleHeatDown}
-              aria-label=&quot;Burner down&quot;
-              aria-describedby=&quot;burner-controls-help&quot;
-              title=&quot;Decrease burner wattage&quot;
-            &gt;
-              {layout.burnerControls.downButton.symbol || &#39;↓&#39;}
-              &lt;div className=&quot;burner-btn-label&quot;&gt;{layout.burnerControls.downButton.label || &#39;down&#39;}&lt;/div&gt;
-            &lt;/button&gt;
-
-            &lt;button
-              className=&quot;burner-btn burner-btn-up&quot;
-              style={{
-                left: `${layout.burnerControls.upButton.xPercent}%`,
-                top: `${layout.burnerControls.upButton.yPercent}%`,
-                width: `${layout.burnerControls.upButton.sizePercent}%`,
-                height: `${layout.burnerControls.upButton.sizePercent}%`,
-              }}
-              onClick={handleHeatUp}
-              aria-label=&quot;Burner up&quot;
-              aria-describedby=&quot;burner-controls-help&quot;
-              title=&quot;Increase burner wattage&quot;
-            &gt;
-              {layout.burnerControls.upButton.symbol || &#39;↑&#39;}
-              &lt;div className=&quot;burner-btn-label&quot;&gt;{layout.burnerControls.upButton.label || &#39;up&#39;}&lt;/div&gt;
-            &lt;/button&gt;
-          &lt;/&gt;
-        )}
+        &lt;BurnerButtons
+          burnerControlsLayout={layout.burnerControls}
+          burnerHeat={burnerHeat}
+          wattageSteps={wattageSteps}
+          onHeatDown={handleHeatDown}
+          onHeatUp={handleHeatUp}
+        /&gt;
 
         {/* 
           ========== BURNER KNOB (Heat Control) ==========
           Tiny dial control at the bottom of the stove
           Render only when the workshop provides burnerKnob layout
         */}
-        {layout.burnerKnob &amp;&amp; (
-          &lt;div 
-            className=&quot;burner-knob&quot;
-                        role=&quot;button&quot;
-                        tabIndex={0}
-                        onKeyDown={(e) =&gt; e.key === &#39;Enter&#39; || e.key === &#39; &#39; ? e.preventDefault() : null}
-                        aria-label=&quot;Burner control knob - click to adjust heat&quot;
-            style={{
-              left: `${layout.burnerKnob.xPercent}%`,
-              top: `${layout.burnerKnob.yPercent}%`,
-              width: `${layout.burnerKnob.sizePercent}%`,
-              height: `${layout.burnerKnob.sizePercent}%`,
-            }}
-            onClick={handleBurnerKnob}
-            title={`Burner: ${wattageSteps[burnerHeat] || 0} W`}
-          &gt;
-            {/* Outer knob rim */}
-            &lt;div className=&quot;knob-rim&quot;&gt;&lt;/div&gt;
-            {/* Inner knob center */}
-            &lt;div className=&quot;knob-center&quot;&gt;&lt;/div&gt;
-            {/* Indicator line showing current position */}
-            &lt;div className=&quot;knob-pointer&quot; style={{ transform: `rotate(${180 + burnerHeat * 90}deg)` }}&gt;&lt;/div&gt;
-          &lt;/div&gt;
-        )}
+        &lt;BurnerKnob
+          burnerKnobLayout={layout.burnerKnob}
+          burnerHeat={burnerHeat}
+          wattageSteps={wattageSteps}
+          onClick={handleBurnerKnob}
+        /&gt;
 
         {/* 
           ========== DRAGGABLE POT ==========

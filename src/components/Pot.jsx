@@ -1,5 +1,5 @@
 // NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
-import React from 'react'
+import SteamEffect from './SteamEffect'
 
 function Pot({
   potRef,
@@ -18,6 +18,8 @@ function Pot({
   onPointerMove,
   onPointerUp
 }) {
+  const showSteam = steamConfig.enabled && isBoiling && temperature >= boilingPoint
+
   return (
     <div
       ref={potRef}
@@ -41,20 +43,12 @@ function Pot({
         draggable={false}
       />
 
-      {steamConfig.enabled && isBoiling && temperature >= boilingPoint && (
-        <div className="steam-effect" style={steamStyle}>
-          {steamConfig.asset ? (
-            <img
-              src={steamConfig.asset}
-              alt="Steam rising from the pot"
-              className="steam-sprite"
-              draggable={false}
-            />
-          ) : (
-            steamConfig.symbol || '💨'
-          )}
-        </div>
-      )}
+      <SteamEffect
+        enabled={showSteam}
+        style={steamStyle}
+        asset={steamConfig.asset}
+        symbol={steamConfig.symbol}
+      />
     </div>
   )
 }
