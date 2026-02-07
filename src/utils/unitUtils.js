@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 /**
  * Unit Conversion & Formatting Utilities
  * Handles temperature unit conversion (Celsius ↔ Fahrenheit)

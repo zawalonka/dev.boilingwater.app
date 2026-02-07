@@ -264,10 +264,11 @@ These docs are NOT in default context. Reference them only for specific tasks:
 
 ### When Editing Code
 1. **Check this file first** - Read relevant sections above
-2. **Understand file context** - Look at related files to understand architecture
-3. **Check git history** - Workshop fixes are well-documented in commits
-4. **Run locally before commit/push** - `npm run dev` and watch console for errors
-5. **Test workshop switching** - Common failure point
+2. **Read the file header** - Always read the first comment block at the top of the file before editing
+3. **Understand file context** - Look at related files to understand architecture
+4. **Check git history** - Workshop fixes are well-documented in commits
+5. **Run locally before commit/push** - `npm run dev` and watch console for errors
+6. **Test workshop switching** - Common failure point
 
 ### When You Find a New Gotcha
 1. Add it to [GOTCHAS.md](../GOTCHAS.md) immediately
@@ -278,6 +279,7 @@ These docs are NOT in default context. Reference them only for specific tasks:
 - **Don't chain silently** - If using multiple git operations, explain between them
 - **Show results** - Confirm what happened after execution
 - **Be specific** - Name the tool/operation and what it accomplishes
+- **No question boxes** - Do not use UI question boxes; ask questions in plain text only
 
 ### Performance Notes
 - Background images are large (optimized to ~200KB each)

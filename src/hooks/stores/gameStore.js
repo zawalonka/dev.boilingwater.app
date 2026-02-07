@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 import { create } from 'zustand'
 
 export const useGameStore = create((set) => ({

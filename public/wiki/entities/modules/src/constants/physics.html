@@ -84,7 +84,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li><li><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a></li><li><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a></li><li><a href="/wiki/entities/modules/src/utils/substanceParser.html">substanceParser.js</a></li><li><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
@@ -118,7 +118,8 @@
         <p><code>src\constants\physics.js</code></p>
         <details>
           <summary>View source code</summary>
-          <pre class="line-numbers"><code class="language-javascript">/**
+          <pre class="line-numbers"><code class="language-javascript">// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
+/**
  * UNIVERSAL PHYSICS CONSTANTS FOR THERMODYNAMICS
  * All values use SI units (meters, kilograms, seconds, Celsius, Joules) unless otherwise specified
  * 

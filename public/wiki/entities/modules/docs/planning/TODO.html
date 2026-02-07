@@ -156,6 +156,39 @@
 
 ## 🚀 HIGH PRIORITY (Content &amp; Features)
 
+### 3A. Component Refactoring (Week 5-7)
+**Status:** READY TO START | **0% Complete**
+**Reference:** [docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md](docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md)
+**Notes:** Start after state management + CI/CD + ESLint are stable
+
+**Definition of Done (size targets):**
+- GameScene container ≤ 500 lines (orchestrator only)
+- `GameSceneView` presenter ≤ 500 lines (render-only)
+- New hooks ≤ 200 lines each
+- New UI components ≤ 200 lines each
+- No new files exceed 300 lines without written justification in this section
+
+**Week 5: Extract hooks**
+- [ ] Create `useGamePhysics` hook (move physics loop + derived state)
+- [ ] Create `useRoomEnvironment` hook (room heat/pressure/humidity logic)
+- [ ] Create `usePotDragging` hook (drag/position/stream detection)
+- [ ] Create `useBoilingDetection` hook (boil thresholds + stats)
+- [ ] Create `useTimeControls` hook (timer/speed/pause)
+
+**Week 6: Split rendering**
+- [ ] Create Pot component
+- [ ] Create Burner components (burner base, knob, flame)
+- [ ] Create WaterStream component
+- [ ] Create Effects components (steam, glow)
+- [ ] Create ControlPanel components (temperature, speed, buttons)
+- [ ] Create LocationPopup component
+
+**Week 7: Integrate and stabilize**
+- [ ] Create `GameSceneView` presenter (render-only)
+- [ ] Wire container to presenter and remove dead props
+- [ ] Update imports and fix circular dependencies
+- [ ] Run regression tests and validate workshop switching
+
 ### 3. Room Environment Phase 2: Scorecard System
 **Status:** IN PROGRESS | **30% Complete**  
 **Last Step:** Created RoomControls.jsx, room environment infrastructure done  

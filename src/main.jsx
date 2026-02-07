@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'

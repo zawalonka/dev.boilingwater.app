@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 import { create } from 'zustand'
 import { EXPERIMENTS } from '../../constants/workshops'
 import { initializeWorkshop, getWorkshopsByLevel, preloadWorkshopImages, loadEquipment } from '../../utils/workshopLoader'

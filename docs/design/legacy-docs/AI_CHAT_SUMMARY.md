@@ -1,8 +1,13 @@
+**LEGACY:** This file is kept for historical reference only and is no longer actively maintained. New preferences and decisions should go in current docs.
+
+
 # AI Chat Session Summary
 
 > **Purpose:** Running summary of AI sessions to prevent repeated context loss.  
 > **Maintenance:** Updated by X0 (free) agents at end of session - no token cost to read.  
 > **Usage:** Reference only when needed to understand prior work or decisions.
+
+
 
 ---
 

@@ -643,16 +643,25 @@ stores/workshopStore.js  # Workshop/theme
 
 **#3 Massive Components (3-4 weeks)**
 
+**Status:** Ready to start (per Feb 6, 2026)
+
+**Primary reference:** [docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md](docs/audit/ISSUE_03_MASSIVE_COMPONENTS.md)
+
+**Kickoff checklist (confirm before starting):**
+- CI/CD pipeline active for PRs
+- ESLint rules enabled (circular import warnings on)
+- State management merged (Zustand) to reduce props drilling
+
 ```bash
-# Week 5: Extract hooks (usePhysics, useRoomEnvironment, useDragging)
-# Week 6: Split rendering (PotRenderer, BurnerRenderer, etc.)
-# Week 7: Organize structure, test everything
+# Week 5: Extract hooks (useGamePhysics, useRoomEnvironment, usePotDragging)
+# Week 6: Split rendering (Pot, Burner, WaterStream, Effects, ControlPanel)
+# Week 7: Organize folders, update imports, run full regression tests
 
 # CI/CD validates every commit
 # Tests ensure behavior unchanged
 # ESLint catches circular deps
 
-# Result: 30 focused components, each &lt;200 lines
+# Result: ~25-35 focused components, each &lt;200 lines
 ```
 
 **Why after state management + CI/CD + ESLint:**

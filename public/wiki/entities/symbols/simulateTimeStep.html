@@ -81,19 +81,19 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li>wiki/src/index.js</li><li><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a></li></ul></div>
+        <div class="infobox-value"><ul><li>wiki/src/index.js</li><li><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a></li><li><a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a></li></ul></div>
       </div>
     
       <div class="infobox-row">
         <div class="infobox-label">Internal usage</div>
         <div class="infobox-value"><ul class="call-sites">
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L56</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L57</span>
               <code class="call-site-context">simulateTimeStep (re-export)</code>
             </li>
           
             <li>
-              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L57</span>
+              <span class="call-site-file"><a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>#L58</span>
               <code class="call-site-context">} from &#39;./processes/simulation/simulateTimeStep.js&#39; (re-export)</code>
             </li>
           </ul></div>
@@ -110,7 +110,7 @@
 
       </section>
       <section class="section">
-        <h2>Call Sites (3)</h2>
+        <h2>Call Sites (4)</h2>
         <ul class="call-sites"><li>
             <span class="call-site-file">index.js#L2632</span>
             <code class="call-site-context">function simulateTimeStep(state, heatInput, deltaTime, substance) {</code>
@@ -118,7 +118,10 @@
             <span class="call-site-file">index.js#L2824</span>
             <code class="call-site-context">function simulateTimeStep(state, heatInput, deltaTime, substance) {</code>
           </li><li>
-            <span class="call-site-file"><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a>#L16</span>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/workers/physicsWorker.html">physicsWorker.js</a>#L17</span>
+            <code class="call-site-context">const newState = simulateTimeStep(</code>
+          </li><li>
+            <span class="call-site-file"><a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a>#L184</span>
             <code class="call-site-context">const newState = simulateTimeStep(</code>
           </li></ul>
       </section>

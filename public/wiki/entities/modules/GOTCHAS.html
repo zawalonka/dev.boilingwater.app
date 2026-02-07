@@ -202,6 +202,27 @@ Align tutorial gating with the experiment system, not a non-existent Level 0. Us
 - [src/components/GameScene.jsx](src/components/GameScene.jsx#L1-L200) - `isAdvancedModeAvailable` depends on `showSelectors`
 - [src/constants/workshops.js](src/constants/workshops.js#L1-L120) - experiment definitions (tutorial flag)
 
+---
+
+## Docs &amp; Generated Outputs
+
+### public/wiki changes are expected
+**Date Observed:** 2026-02-06  
+**Status:** Normal behavior  
+
+**Issue:**
+`public/wiki/` content frequently changes during local runs or docs generation and appears as modified files.
+
+**What happens:**
+- Numerous HTML files under `public/wiki/` show up as modified.
+- These are generated artifacts and are expected to change together.
+
+**Key Lesson:**
+Treat `public/wiki/` diffs as normal generated output; include them when asked to commit all changes.
+
+**Files to check:**
+- [public/wiki/](public/wiki/)
+
 ## How to Use This File
 
 **When adding a gotcha:**

@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 import { AVAILABLE_WORKSHOPS, WORKSHOP_CONFIG, WORKSHOP_METADATA_TEMPLATE } from '../constants/workshops'
 
 /**

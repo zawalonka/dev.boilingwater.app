@@ -1,4 +1,5 @@
-﻿/**
+﻿// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
+/**
  * GameScene Component
  * 
  * This is the main interactive game environment for the Boiling Water educational app.
@@ -19,7 +20,6 @@ import { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { 
   calculateBoilingPoint,           // Calculates fluid's boiling point based on altitude
   calculateBoilingPointAtPressure, // Calculates fluid's boiling point based on pressure (for room feedback)
-  simulateTimeStep,                // Runs one time step of physics (heating/cooling/boiling)
   formatTemperature,               // Formats temperature numbers for display (e.g., 98.5°C)
   // Evaporation physics (pre-boiling)
   solveAntoineForPressure,         // Get vapor pressure at current temperature
@@ -32,7 +32,12 @@ import { LEVELS, EXPERIMENTS } from '../constants/workshops'
 import ControlPanel from './ControlPanel'
 import { GameSceneProvider } from './GameSceneContext'
 import RoomControls from './RoomControls'
+import Pot from './Pot'
 import { useRoomEnvironment } from '../hooks/useRoomEnvironment'
+import { usePotDragging } from '../hooks/usePotDragging'
+import { useTimeControls } from '../hooks/useTimeControls'
+import { useGamePhysics } from '../hooks/useGamePhysics'
+import { useBoilingDetection } from '../hooks/useBoilingDetection'
 import { getAtmosphereKey } from '../utils/roomEnvironment'
 import { useGameStore } from '../hooks/stores/gameStore'
 import { useWorkshopStore } from '../hooks/stores/workshopStore'
@@ -147,8 +152,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // Only applies heat when pot is over the flame AND knob is turned on
   const [burnerHeat, setBurnerHeat] = useState(0)
 
-  // Time speed multiplier (1x = normal, 2x = double speed, 4x = 4x speed, etc.)
-  const [timeSpeed, setTimeSpeed] = useState(1)
 
   // Has the water reached its boiling point? (true once boiling starts)
   const [isBoiling, setIsBoiling] = useState(false)
@@ -177,19 +180,19 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   const [pauseTime, setPauseTime] = useState(false)
   const [showNextLevelButton, setShowNextLevelButton] = useState(false)
 
-  // How many seconds have elapsed since heat was turned on (used for time calculations)
-  const [timeElapsed, setTimeElapsed] = useState(0)
-  
-  // Is the timer running? (user can start/stop manually)
-  const [isTimerRunning, setIsTimerRunning] = useState(false)
+  const {
+    timeSpeed,
+    isTimerRunning,
+    timeElapsed,
+    setTimeElapsed,
+    handleSpeedUp,
+    handleSpeedDouble,
+    handleSpeedHalve,
+    handleQuickPause,
+    handleTimerToggle,
+    handleTimerReset
+  } = useTimeControls()
 
-  // Where is the pot positioned on the screen? Uses percentages (0-100%)
-  // x: 0% = left edge, 100% = right edge
-  // y: 0% = top edge, 100% = bottom edge
-  // The pot's center is positioned at these coordinates
-  // Support both old (pot.start) and new (pot.empty) layout structures
-  const potStartPos = layout.pot.start || layout.pot.empty || { xPercent: 50, yPercent: 50 }
-  const [potPosition, setPotPosition] = useState({ x: potStartPos.xPercent, y: potStartPos.yPercent })
 
   // Resolve heat steps from burner config (new system) or legacy workshopLayout (fallback)
   const wattageSteps = useMemo(() => {
@@ -203,14 +206,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     return [0, 400, 1700, 2500]
   }, [burnerConfig, workshopLayout])
   const maxHeatIndex = wattageSteps.length - 1
-
-  // Is the user currently dragging the pot? (true = dragging, false = not dragging)
-  const [isDragging, setIsDragging] = useState(false)
-
-  // When dragging starts, we store the offset between the mouse and pot center
-  // This prevents the pot from "jumping" to the cursor position
-  // Example: if user clicks 50 pixels left of pot center, dragOffset.x = -50
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
 
   // The dimensions of the game window (workshop-provided, default 1280x800)
   const [sceneDimensions, setSceneDimensions] = useState({ width: 0, height: 0 })
@@ -277,12 +272,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     }
   }, [activeExperiment, isAltitudeExperiment, hasSetLocation, showLocationPopup])
 
-  // Reset pot position when layout changes
-  useEffect(() => {
-    const potStartPos = layout.pot.start || layout.pot.empty || { xPercent: 50, yPercent: 50 }
-    setPotPosition({ x: potStartPos.xPercent, y: potStartPos.yPercent })
-  }, [workshopLayout])
-
   // Clamp burner heat to available steps when layout changes
   useEffect(() => {
     if (burnerHeat > maxHeatIndex) {
@@ -331,19 +320,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // Stores reference to the game scene div (used to calculate coordinates relative to it)
   const sceneRef = useRef(null)
 
-  // Stores reference to the heating simulation interval so we can stop it later
-  const simulationRef = useRef(null)
-  const workerRef = useRef(null)
-  const workerHandlerRef = useRef(null)
-  const inFlightTickRef = useRef(false)
-  const tickCounterRef = useRef(0)
-  const pendingTicksRef = useRef(new Map())
-  const workerQueueRef = useRef([])
-  const lastWorkerWarnRef = useRef(0)
-  const lastPhysicsTickRef = useRef(null)
   const lastRoomTickRef = useRef(null)
-  const WORKER_QUEUE_WARN_LIMIT = 20
-  const WORKER_QUEUE_WARN_COOLDOWN_MS = 2000
 
   // Pre-calculate what temperature fluid will boil at
   // PRESSURE FEEDBACK LOOP:
@@ -381,6 +358,32 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   const ambientTemperature = roomControlsEnabled && roomSummary?.temperature != null
     ? roomSummary.temperature
     : GAME_CONFIG.ROOM_TEMPERATURE
+
+  const handlePotFill = useCallback(() => {
+    const fillMass = GAME_CONFIG.DEFAULT_WATER_MASS
+    const nonVolatileFraction = fluidProps?.nonVolatileMassFraction ?? 0
+    setWaterInPot(fillMass)
+    setResidueMass(fillMass * nonVolatileFraction)
+    setTemperature(ambientTemperature)
+    setIsBoiling(false)
+    setHasShownBoilPopup(false)
+    setBurnerHeatWhenBoiled(0)
+  }, [ambientTemperature, fluidProps?.nonVolatileMassFraction, setBurnerHeatWhenBoiled, setHasShownBoilPopup, setIsBoiling, setResidueMass, setTemperature, setWaterInPot])
+
+  const {
+    potPosition,
+    isDragging,
+    handlePointerDown,
+    handlePointerMove,
+    handlePointerUp
+  } = usePotDragging({
+    layout,
+    potRef,
+    sceneRef,
+    sceneDimensions,
+    liquidMass,
+    onFill: handlePotFill
+  })
 
   // ============================================================================
   // ============================================================================
@@ -456,31 +459,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     initializeFluid()
   }, [activeFluid, workshopLayout])
 
-  useEffect(() => {
-    if (!window.Worker) return
-    const worker = new Worker(new URL('../workers/physicsWorker.js', import.meta.url), { type: 'module' })
-    workerRef.current = worker
-
-    worker.onmessage = (event) => {
-      workerHandlerRef.current?.(event.data)
-    }
-
-    worker.onerror = (error) => {
-      console.error('Physics worker error:', error)
-    }
-
-    return () => {
-      worker.terminate()
-      workerRef.current = null
-    }
-  }, [])
-
-  useEffect(() => {
-    const worker = workerRef.current
-    if (!worker) return
-    worker.postMessage({ type: 'setFluidProps', fluidProps })
-  }, [fluidProps])
-
   // EFFECT 2: Initialize the game window dimensions (runs once on component load)
   // ============================================================================
 
@@ -508,6 +486,36 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // ============================================================================
   // EFFECT 3: Physics simulation loop (runs continuously when water is in pot)
   // ============================================================================
+
+  const { handleBoilingState } = useBoilingDetection({
+    activeExperiment,
+    activeFluid,
+    activeLevel,
+    altitude,
+    boilingPoint,
+    burnerHeat,
+    canBoil,
+    fluidProps,
+    getNextProgression,
+    hasBoiledBefore,
+    hasShownBoilPopup,
+    isBoiling,
+    locationName,
+    roomAlerts,
+    roomControlsEnabled,
+    roomState,
+    setBoilStats,
+    setBoilTime,
+    setBurnerHeatWhenBoiled,
+    setHasBoiledBefore,
+    setHasShownBoilPopup,
+    setIsBoiling,
+    setPauseTime,
+    setShowHook,
+    setShowNextLevelButton,
+    setShowSelectors,
+    timePotOnFlame
+  })
 
   // ============================================================================
   // EFFECT 3: Physics simulation loop (runs continuously when water is in pot)
@@ -587,235 +595,28 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
       setTimeElapsed(prev => prev + context.deltaTime)  // Track elapsed time (accounts for speed)
     }
 
-    // Check if water just started boiling
-    // We only show "boiling" if it wasn't boiling before but is now boiling
-    // hasShownBoilPopup prevents re-triggering if temp fluctuates around boiling point
-    if (newState.isBoiling && !isBoiling && !hasShownBoilPopup) {
-      setIsBoiling(true)   // Mark as boiling
-      setHasShownBoilPopup(true)  // Prevent re-triggering
-      setShowHook(true)    // Show the educational message
-      setPauseTime(true)   // Pause time while popup is visible
-      setShowNextLevelButton(Boolean(getNextProgression()))
-      // Calculate time it took to boil (from when pot was placed over flame)
-      const elapsedBoilTime = timePotOnFlame !== null ? timePotOnFlame + context.deltaTime : 0
-      setBoilTime(elapsedBoilTime)
-      // Capture the burner heat setting when boiling is achieved
-      setBurnerHeatWhenBoiled(burnerHeat)
+    handleBoilingState(newState, context)
+  }, [activeFluid, addVapor, fluidProps, handleBoilingState, isTimerRunning, roomConfig, roomControlsEnabled, roomState, setTemperature, setTimeElapsed, setWaterInPot, updateRoom])
 
-      // Capture snapshot of all experiment stats at moment of boiling
-      setBoilStats({
-        temperature: newState.temperature,
-        boilingPoint: boilingPoint,
-        boilingPointSeaLevel: fluidProps?.boilingPointSeaLevel ?? null,
-        altitude: altitude,
-        locationName: locationName,
-        fluidName: fluidProps?.name || 'Fluid',
-        fluidId: activeFluid,
-        timeToBoil: elapsedBoilTime,
-        burnerHeat: burnerHeat,
-        experiment: activeExperiment,
-        level: activeLevel,
-        // Room environment data (L1E4+)
-        roomData: roomControlsEnabled ? {
-          initialComposition: roomState?.initialComposition || null,
-          finalComposition: roomState?.composition || null,
-          initialTemperature: roomState?.initialTemperature || null,
-          finalTemperature: roomState?.temperature || null,
-          energyTotals: roomState?.energyTotals || null,
-          exposureEvents: roomState?.exposureEvents || [],
-          alerts: roomAlerts || []
-        } : null
-      })
-
-      if (activeExperiment === 'boiling-water' && !hasBoiledBefore) {
-        setHasBoiledBefore(true)
-        setShowSelectors(true)
-      }
-    }
-
-    // Stop boiling if temperature drops below boiling point (pot removed from heat)
-    if (canBoil && newState.temperature < boilingPoint && isBoiling) {
-      setIsBoiling(false)
-    }
-
-    if (!canBoil && isBoiling) {
-      setIsBoiling(false)
-    }
-  }, [activeExperiment, activeFluid, activeLevel, addVapor, altitude, boilingPoint, burnerHeat, canBoil, fluidProps, getNextProgression, hasBoiledBefore, hasShownBoilPopup, isBoiling, isTimerRunning, locationName, roomAlerts, roomConfig, roomControlsEnabled, roomState, setHasBoiledBefore, setShowSelectors, setShowHook, setPauseTime, setShowNextLevelButton, setBoilStats, setBoilTime, setBurnerHeatWhenBoiled, setIsBoiling, setTemperature, setTimeElapsed, setWaterInPot, timePotOnFlame, updateRoom])
-
-  const dispatchWorkerStep = useCallback((state, request) => {
-    const worker = workerRef.current
-    if (!worker) return false
-
-    const tickId = tickCounterRef.current + 1
-    tickCounterRef.current = tickId
-
-    const context = {
-      deltaTime: request.deltaTime,
-      heatInputWatts: request.heatInputWatts,
-      prevWaterMass: state.waterMass
-    }
-
-    pendingTicksRef.current.set(tickId, context)
-    inFlightTickRef.current = true
-
-    worker.postMessage({
-      type: 'step',
-      tickId,
-      state: {
-        waterMass: state.waterMass,
-        temperature: state.temperature,
-        altitude: request.altitude,
-        residueMass: request.residueMass
-      },
-      heatInputWatts: request.heatInputWatts,
-      deltaTime: request.deltaTime,
-      ambientTemperature: request.ambientTemperature
-    })
-
-    return true
-  }, [])
-
-  const handleWorkerMessage = useCallback((payload) => {
-    if (!payload || payload.type !== 'stepResult') return
-    const context = pendingTicksRef.current.get(payload.tickId)
-    if (!context) return
-
-    pendingTicksRef.current.delete(payload.tickId)
-    inFlightTickRef.current = false
-    applySimulationResult(payload.newState, context)
-
-    const nextRequest = workerQueueRef.current.shift()
-    if (nextRequest) {
-      dispatchWorkerStep(payload.newState, nextRequest)
-    }
-  }, [applySimulationResult, dispatchWorkerStep])
-
-  useEffect(() => {
-    workerHandlerRef.current = handleWorkerMessage
-  }, [handleWorkerMessage])
-
-  useEffect(() => {
-    // This effect handles the physics simulation of heating/cooling water
-    // It runs continuously while there's water in the pot
-    // Heat is only applied when the pot is over the flame
-    // Now uses Newton's Law of Cooling for realistic temperature decay
-    if (liquidMass <= 0 || !fluidProps) return  // Wait for fluid props to load
-
-    // Define the heat activation area around the flame (workshop-driven)
-    const flameX = layout.flame.xPercent
-    const flameY = layout.flame.yPercent
-    const heatActivationRadius = layout.flame.activationRadius
-    
-    // Start a repeating timer that runs every TIME_STEP milliseconds (e.g., every 100ms)
-    simulationRef.current = setInterval(() => {
-      // Skip simulation if time is paused (e.g., popup visible)
-      const now = performance.now()
-      if (pauseTime) {
-        lastPhysicsTickRef.current = now
-        return
-      }
-      const lastTick = lastPhysicsTickRef.current ?? now
-      lastPhysicsTickRef.current = now
-      const deltaTime = ((now - lastTick) / 1000) * timeSpeed
-      
-      // Calculate distance from pot center to flame center
-      const deltaX = Math.abs(potPosition.x - flameX)
-      const deltaY = Math.abs(potPosition.y - flameY)
-      const distanceToFlame = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-      
-      // Check if pot is within the heat activation area
-      const potOverFlame = distanceToFlame <= heatActivationRadius
-      
-      // Determine heat output based on burner knob setting and pot position
-      // Heat only applies when BOTH conditions are true:
-      // 1. Burner knob is turned on (not set to 0/off)
-      // 2. Pot is positioned over the flame
-      let heatInputWatts = 0
-      if (burnerHeat > 0 && potOverFlame) {
-        const heatLevels = wattageSteps
-        heatInputWatts = heatLevels[burnerHeat] || 0
-        
-        // Track when pot is first placed over flame with heat on
-        // Initialize to 0 if just started, otherwise accumulate time
-        if (timePotOnFlame === null) {
-          setTimePotOnFlame(0)
-        } else {
-          // Accumulate time while heating
-          setTimePotOnFlame(prev => (prev ?? 0) + deltaTime)
-        }
-      } else if (timePotOnFlame !== null) {
-        // Reset if pot is removed from flame or heat is turned off
-        setTimePotOnFlame(null)
-      }
-      // If heat is off or pot is not over flame, heatInputWatts stays 0
-      // Newton's Law of Cooling will handle the temperature decay automatically
-
-      // Convert the TIME_STEP from milliseconds to seconds
-      // If TIME_STEP = 100 (milliseconds), deltaTime = 0.1 (seconds)
-      // Multiply by timeSpeed to speed up simulation (2x, 4x, 8x, etc.)
-      const request = {
-        deltaTime,
-        heatInputWatts,
-        altitude,
-        residueMass,
-        ambientTemperature
-      }
-
-      const worker = workerRef.current
-      if (worker) {
-        if (inFlightTickRef.current) {
-          workerQueueRef.current.push(request)
-          if (workerQueueRef.current.length >= WORKER_QUEUE_WARN_LIMIT) {
-            const now = Date.now()
-            if (now - lastWorkerWarnRef.current >= WORKER_QUEUE_WARN_COOLDOWN_MS) {
-              lastWorkerWarnRef.current = now
-              console.warn(
-                `Physics worker backlog: ${workerQueueRef.current.length} ticks queued. Simulation is slowing down to keep physics consistent.`
-              )
-            }
-          }
-          return
-        }
-        const state = {
-          waterMass: waterInPot,
-          temperature: temperature,
-          altitude: altitude,
-          residueMass: residueMass
-        }
-        dispatchWorkerStep(state, request)
-        return
-      }
-
-      // Fallback: run physics on main thread if worker is unavailable
-      const newState = simulateTimeStep(
-        {
-          waterMass: waterInPot,         // How much fluid (kg)
-          temperature: temperature,      // Current temperature (°C)
-          altitude: altitude,            // Current altitude (meters)
-          residueMass: residueMass       // Non-volatile residue (kg)
-        },
-        heatInputWatts,                   // How much heat to apply (Watts)
-        deltaTime,                        // How much time this step represents (seconds)
-        fluidProps,                       // Fluid properties (specific heat, cooling, etc.)
-        ambientTemperature                // Room temperature for equilibration
-      )
-
-      applySimulationResult(newState, {
-        deltaTime,
-        heatInputWatts,
-        prevWaterMass: waterInPot
-      })
-    }, GAME_CONFIG.TIME_STEP)  // Repeat every TIME_STEP milliseconds
-
-    // Cleanup function: runs when component unmounts or dependencies change
-    // This stops the interval so we don't have multiple intervals running
-    return () => {
-      if (simulationRef.current) {
-        clearInterval(simulationRef.current)
-      }
-    }
-  }, [waterInPot, liquidMass, residueMass, temperature, altitude, boilingPoint, canBoil, isBoiling, hasShownBoilPopup, timeSpeed, potPosition, burnerHeat, fluidProps, workshopLayout, isTimerRunning, pauseTime, activeExperiment, activeLevel, hasBoiledBefore, setHasBoiledBefore, setShowSelectors, ambientTemperature, applySimulationResult])  // Re-run if any of these change
+  useGamePhysics({
+    altitude,
+    ambientTemperature,
+    burnerHeat,
+    fluidProps,
+    layout,
+    liquidMass,
+    pauseTime,
+    potPosition,
+    residueMass,
+    temperature,
+    timeSpeed,
+    timeStepMs: GAME_CONFIG.TIME_STEP,
+    waterInPot,
+    wattageSteps,
+    onApplySimulationResult: applySimulationResult,
+    timePotOnFlame,
+    setTimePotOnFlame
+  })
 
   // ============================================================================
   // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
@@ -848,7 +649,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   }, [roomControlsEnabled, roomConfig, timeSpeed, pauseTime, updateRoom])
 
   // ============================================================================
-  // POT DRAGGING HANDLERS: Three functions handle the drag lifecycle
+  // FLUID SELECTION
   // ============================================================================
 
   /**
@@ -865,195 +666,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     setHasShownBoilPopup(false)  // Allow popup to trigger again for new fluid
     setShowHook(false)
     setBoilStats(null)
-  }
-
-  /**
-   * handlePointerDown - Called when user presses pointer (mouse/touch/pen) on pot
-   * Starts the dragging process
-   */
-  const handlePointerDown = (e) => {
-    // Prevent any default browser behavior (like native drag-and-drop)
-    e.preventDefault()
-
-    // Safety check: make sure the pot element exists
-    if (!potRef.current || !sceneRef.current) return
-
-    // Request "pointer capture" - this tells the browser that all pointer events
-    // should go to this element while dragging, even if cursor moves outside it
-    // Without this, moving too fast could lose the drag
-    try {
-      potRef.current.setPointerCapture(e.pointerId)
-    } catch (_) {
-      // If the browser doesn't support this, continue anyway (older browsers)
-    }
-
-    // Mark that we are now dragging
-    setIsDragging(true)
-
-    // Calculate the "drag offset" - the distance between where the user clicked
-    // and the pot's center. This prevents the pot from jumping to the cursor.
-    // 
-    // Example: If pot center is at pixel 500 and user clicks at pixel 450 (left side)
-    // Then dragOffset = 450 - 500 = -50
-    // Later, when pot follows cursor to position 550, the offset keeps it from snapping
-    const rect = potRef.current.getBoundingClientRect()  // Get pot's current size/position
-    const centerX = rect.left + rect.width / 2           // Calculate center X position
-    const centerY = rect.top + rect.height / 2           // Calculate center Y position
-
-    setDragOffset({
-      x: e.clientX - centerX,  // How far left/right from center
-      y: e.clientY - centerY   // How far up/down from center
-    })
-  }
-
-  /**
-   * handlePointerMove - Called continuously while pointer is held down and dragging
-   * Updates the pot position to follow the cursor
-   */
-  const handlePointerMove = (e) => {
-    // Only process this if we're currently dragging
-    if (!isDragging || !sceneRef.current) return
-
-    // Get the game scene's position on screen
-    const sceneRect = sceneRef.current.getBoundingClientRect()
-
-    // Calculate where the user's cursor is, relative to the game scene
-    // Subtract the drag offset so the pot follows the cursor correctly
-    // newX and newY are in pixels
-    let newX = e.clientX - sceneRect.left - dragOffset.x
-    let newY = e.clientY - sceneRect.top - dragOffset.y
-
-    // Convert from pixel coordinates to percentages (0-100%)
-    // This makes pot position independent of screen size
-    // If game window is 1280 pixels wide and newX is 640, then newXPercent = 50%
-    let newXPercent = (newX / sceneDimensions.width) * 100
-    let newYPercent = (newY / sceneDimensions.height) * 100
-
-    // Apply boundary constraints: keep pot mostly on screen
-    // Min values (8%) and max values (92%) account for the pot's transparent corners
-    // A 36% size pot with center at 8% means left edge is at 8-18 = -10% (mostly off)
-    // A 36% size pot with center at 92% means right edge is at 92+18 = 110% (mostly off)
-    // But visible pot can nearly reach the edges
-    newXPercent = Math.max(8, Math.min(newXPercent, 92))
-    newYPercent = Math.max(8, Math.min(newYPercent, 92))
-
-    // Update the pot's position state
-    setPotPosition({ x: newXPercent, y: newYPercent })
-
-    // AUTO-FILL: Check if pot is in the water stream area
-    // Water stream is from (295,451) to (285,724) in original 1024x1024 image
-    // Converting to percentages: X is around 27-29%, Y is from 44% to 71%
-    // We check if pot center is passing through this vertical stream AND pot is empty
-    const inWaterStream =
-      newXPercent >= layout.waterStream.xRange[0] &&
-      newXPercent <= layout.waterStream.xRange[1] &&
-      newYPercent >= layout.waterStream.yRange[0] &&
-      newYPercent <= layout.waterStream.yRange[1]
-    if (inWaterStream && liquidMass < 0.1) {  // Refill if nearly empty (< 0.1kg)
-      // Auto-fill with the default water amount (1.0 kg)
-      const fillMass = GAME_CONFIG.DEFAULT_WATER_MASS
-      const nonVolatileFraction = fluidProps?.nonVolatileMassFraction ?? 0
-      setWaterInPot(fillMass)
-      setResidueMass(fillMass * nonVolatileFraction)
-      // Reset temperature to current room/ambient temp when filling with fresh fluid
-      setTemperature(ambientTemperature)
-      // Reset boiling state
-      setIsBoiling(false)
-      setHasShownBoilPopup(false)  // Allow popup to trigger for fresh fill
-      // Reset burner heat tracking
-      setBurnerHeatWhenBoiled(0)
-    }
-  }
-
-  /**
-   * handlePointerUp - Called when user releases pointer (stops dragging)
-   */
-  const handlePointerUp = (e) => {
-    // Release the pointer capture so other elements can receive events again
-    try {
-      if (potRef.current?.hasPointerCapture?.(e.pointerId)) {
-        potRef.current.releasePointerCapture(e.pointerId)
-      }
-    } catch (_) {
-      // If release fails, continue anyway
-    }
-
-    // Mark that we're no longer dragging
-    setIsDragging(false)
-  }
-
-  // ============================================================================
-  // BUTTON HANDLERS
-  // ============================================================================
-
-  /**
-  * Cycle through time speed options: 1x → 2x → 4x → ... → 65536x (Basic Mode)
-   */
-  const handleSpeedUp = () => {
-    setTimeSpeed(current => {
-      // From fractional speeds, go to pause (0)
-      if (current < 1) return 0
-      // From pause, go to 1x
-      if (current === 0) return 1
-      // Normal progression (doubling)
-      const doubled = current * 2
-      return doubled <= 65536 ? doubled : 65536  // Cap at 65536x
-    })
-  }
-
-  /**
-   * Double the time speed (Advanced Mode)
-   */
-  const handleSpeedDouble = () => {
-    setTimeSpeed(current => {
-      // Handle pause state: 0 -> 1x
-      if (current === 0) return 1
-      const doubled = current * 2
-      return doubled <= 65536 ? doubled : 65536  // Cap at 65536x
-    })
-  }
-
-  /**
-   * Halve the time speed (Advanced Mode)
-   * Progression: 1x -> 0 (pause) -> 1/2x -> 1/4x -> ... -> 1/65536x
-   */
-  const handleSpeedHalve = () => {
-    const minSpeed = 1 / 65536  // 1/65536x as slowest
-    setTimeSpeed(current => {
-      // At 1x, go to pause (0)
-      if (current === 1) return 0
-      // At pause, go to 1/2x
-      if (current === 0) return 0.5
-      // Normal halving
-      const halved = current / 2
-      return halved >= minSpeed ? halved : minSpeed  // Min 1/65536x speed
-    })
-  }
-
-  /**
-   * Quick pause button - toggle between current speed and 0 (pause)
-   */
-  const handleQuickPause = () => {
-    setTimeSpeed(current => {
-      // If already paused, return to 1x
-      if (current === 0) return 1
-      // Otherwise pause
-      return 0
-    })
-  }
-
-  /**
-   * Toggle timer (start/stop)
-   */
-  const handleTimerToggle = () => {
-    setIsTimerRunning(prev => !prev)
-  }
-  
-  /**
-   * Reset timer to zero
-   */
-  const handleTimerReset = () => {
-    setTimeElapsed(0)
   }
 
   /**
@@ -1648,49 +1260,23 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
           The main interactive element
           User drags this to the sink to fill it, then moves it to the burner
         */}
-        <div
-          ref={potRef}
-          className={`pot-draggable ${isDragging ? 'dragging' : ''} ${liquidMass > 0 ? 'filled' : 'empty'}`}
-          style={{
-            left: `${potPosition.x}%`,      // Current X position (updated while dragging)
-            top: `${potPosition.y}%`,       // Current Y position (updated while dragging)
-            width: `${layout.pot.sizePercent}%`,
-            height: `${layout.pot.sizePercent}%`,
-            touchAction: 'none'             // Disable default browser touch behaviors (scroll, zoom, etc.)
-          }}
-          onPointerDown={handlePointerDown}  // Start dragging when user clicks
-          onPointerMove={handlePointerMove}  // Update position while dragging
-          onPointerUp={handlePointerUp}      // Stop dragging when user releases
-          onDragStart={(e) => e.preventDefault()}  // Prevent native browser image drag-and-drop
-        >
-          {/* 
-            Show the appropriate pot image based on whether it has water
-            - pot-empty.png: when liquidMass === 0
-            - pot-full.png: when liquidMass > 0
-          */}
-          <img
-            src={liquidMass > 0 ? potFullImage : potEmptyImage}
-            alt={liquidMass > 0 ? 'Pot filled with liquid' : 'Empty pot'}
-            className="pot-image"
-            draggable={false}  // Disable browser's native drag for images
-          />
-          
-          {/* Show steam animation when water is actively boiling at/above boiling point (workshop-tunable, optional) */}
-          {steamConfig.enabled && isBoiling && temperature >= boilingPoint && (
-            <div className="steam-effect" style={steamStyle}>
-              {steamConfig.asset ? (
-                <img
-                  src={steamConfig.asset}
-                  alt="Steam rising from the pot"
-                  className="steam-sprite"
-                  draggable={false}
-                />
-              ) : (
-                steamConfig.symbol || '💨'
-              )}
-            </div>
-          )}
-        </div>
+        <Pot
+          potRef={potRef}
+          isDragging={isDragging}
+          liquidMass={liquidMass}
+          potPosition={potPosition}
+          layout={layout}
+          potFullImage={potFullImage}
+          potEmptyImage={potEmptyImage}
+          steamConfig={steamConfig}
+          steamStyle={steamStyle}
+          isBoiling={isBoiling}
+          temperature={temperature}
+          boilingPoint={boilingPoint}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+        />
 
         {/* 
           ========== CONTROL PANEL ==========

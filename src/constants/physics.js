@@ -1,3 +1,4 @@
+// NOTE: Read the header comments before editing. Reassess splitting into subcomponents when adding new items or behaviors.
 /**
  * UNIVERSAL PHYSICS CONSTANTS FOR THERMODYNAMICS
  * All values use SI units (meters, kilograms, seconds, Celsius, Joules) unless otherwise specified
