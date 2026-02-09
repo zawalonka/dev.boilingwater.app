@@ -80,12 +80,12 @@ export const UNIVERSAL = {
 // Settings that control how the game simulation works
 export const GAME_CONFIG = {
   // SIMULATION TIME STEP (in milliseconds)
-  // The game simulation updates every 100ms (0.1 seconds)
+  // The game simulation updates every 10ms (0.01 seconds)
   // 
   // This controls how fast the simulation runs:
   // - Smaller values (e.g., 50ms) = more frequent updates = more accurate but uses more CPU
   // - Larger values (e.g., 200ms) = less frequent updates = less accurate but lighter
-  // - 100ms is a good balance: updates 10 times per second (visible motion feels smooth)
+  // - 10ms is a high-frequency tick: updates 100 times per second (smooth but more CPU)
   // 
   // Each simulation step, the stove heat is applied for 0.01 seconds:
   // energyApplied = heatInputWatts × 0.01 seconds

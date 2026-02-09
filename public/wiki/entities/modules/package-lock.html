@@ -114,6 +114,11 @@
         &quot;@lhci/cli&quot;: &quot;^0.15.0&quot;,
         &quot;@testing-library/jest-dom&quot;: &quot;^6.9.1&quot;,
         &quot;@testing-library/react&quot;: &quot;^16.3.2&quot;,
+        &quot;@types/node&quot;: &quot;^24.6.1&quot;,
+        &quot;@types/react&quot;: &quot;^18.3.24&quot;,
+        &quot;@types/react-dom&quot;: &quot;^18.3.7&quot;,
+        &quot;@typescript-eslint/eslint-plugin&quot;: &quot;^8.46.1&quot;,
+        &quot;@typescript-eslint/parser&quot;: &quot;^8.46.1&quot;,
         &quot;@vitejs/plugin-react&quot;: &quot;^4.2.1&quot;,
         &quot;@vitest/coverage-v8&quot;: &quot;^4.0.18&quot;,
         &quot;@vitest/ui&quot;: &quot;^4.0.18&quot;,
@@ -135,6 +140,7 @@
         &quot;prettier&quot;: &quot;^3.1.1&quot;,
         &quot;rollup-plugin-visualizer&quot;: &quot;^6.0.5&quot;,
         &quot;sharp&quot;: &quot;^0.34.5&quot;,
+        &quot;typescript&quot;: &quot;^5.9.2&quot;,
         &quot;vite&quot;: &quot;^5.0.8&quot;,
         &quot;vitest&quot;: &quot;^4.0.18&quot;
       }
@@ -2869,13 +2875,43 @@
       &quot;license&quot;: &quot;MIT&quot;
     },
     &quot;node_modules/@types/node&quot;: {
-      &quot;version&quot;: &quot;25.2.0&quot;,
-      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@types/node/-/node-25.2.0.tgz&quot;,
-      &quot;integrity&quot;: &quot;sha512-DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==&quot;,
+      &quot;version&quot;: &quot;24.10.12&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@types/node/-/node-24.10.12.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-68e+T28EbdmLSTkPgs3+UacC6rzmqrcWFPQs1C8mwJhI/r5Uxr0yEuQotczNRROd1gq30NGxee+fo0rSIxpyAw==&quot;,
       &quot;dev&quot;: true,
       &quot;license&quot;: &quot;MIT&quot;,
       &quot;dependencies&quot;: {
         &quot;undici-types&quot;: &quot;~7.16.0&quot;
+      }
+    },
+    &quot;node_modules/@types/prop-types&quot;: {
+      &quot;version&quot;: &quot;15.7.15&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.15.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==&quot;,
+      &quot;devOptional&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;
+    },
+    &quot;node_modules/@types/react&quot;: {
+      &quot;version&quot;: &quot;18.3.28&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@types/react/-/react-18.3.28.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-z9VXpC7MWrhfWipitjNdgCauoMLRdIILQsAEV+ZesIzBq/oUlxk0m3ApZuMFCXdnS4U7KrI+l3WRUEGQ8K1QKw==&quot;,
+      &quot;devOptional&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;peer&quot;: true,
+      &quot;dependencies&quot;: {
+        &quot;@types/prop-types&quot;: &quot;*&quot;,
+        &quot;csstype&quot;: &quot;^3.2.2&quot;
+      }
+    },
+    &quot;node_modules/@types/react-dom&quot;: {
+      &quot;version&quot;: &quot;18.3.7&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@types/react-dom/-/react-dom-18.3.7.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;peer&quot;: true,
+      &quot;peerDependencies&quot;: {
+        &quot;@types/react&quot;: &quot;^18.0.0&quot;
       }
     },
     &quot;node_modules/@types/yauzl&quot;: {
@@ -2887,6 +2923,289 @@
       &quot;optional&quot;: true,
       &quot;dependencies&quot;: {
         &quot;@types/node&quot;: &quot;*&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/eslint-plugin&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-hAAP5io/7csFStuOmR782YmTthKBJ9ND3WVL60hcOjvtGFb+HJxH4O5huAcmcZ9v9G8P+JETiZ/G1B8MALnWZQ==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@eslint-community/regexpp&quot;: &quot;^4.12.2&quot;,
+        &quot;@typescript-eslint/scope-manager&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/type-utils&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/utils&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/visitor-keys&quot;: &quot;8.54.0&quot;,
+        &quot;ignore&quot;: &quot;^7.0.5&quot;,
+        &quot;natural-compare&quot;: &quot;^1.4.0&quot;,
+        &quot;ts-api-utils&quot;: &quot;^2.4.0&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;@typescript-eslint/parser&quot;: &quot;^8.54.0&quot;,
+        &quot;eslint&quot;: &quot;^8.57.0 || ^9.0.0&quot;,
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore&quot;: {
+      &quot;version&quot;: &quot;7.0.5&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/ignore/-/ignore-7.0.5.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;&gt;= 4&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/parser&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-BtE0k6cjwjLZoZixN0t5AKP0kSzlGu7FctRXYuPAm//aaiZhmfq1JwdYpYr1brzEspYyFeF+8XF5j2VK6oalrA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;peer&quot;: true,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/scope-manager&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/typescript-estree&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/visitor-keys&quot;: &quot;8.54.0&quot;,
+        &quot;debug&quot;: &quot;^4.4.3&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;eslint&quot;: &quot;^8.57.0 || ^9.0.0&quot;,
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/project-service&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-YPf+rvJ1s7MyiWM4uTRhE4DvBXrEV+d8oC3P9Y2eT7S+HBS0clybdMIPnhiATi9vZOYDc7OQ1L/i6ga6NFYK/g==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/tsconfig-utils&quot;: &quot;^8.54.0&quot;,
+        &quot;@typescript-eslint/types&quot;: &quot;^8.54.0&quot;,
+        &quot;debug&quot;: &quot;^4.4.3&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/scope-manager&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-27rYVQku26j/PbHYcVfRPonmOlVI6gihHtXFbTdB5sb6qA0wdAQAbyXFVarQ5t4HRojIz64IV90YtsjQSSGlQg==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/visitor-keys&quot;: &quot;8.54.0&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/tsconfig-utils&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-dRgOyT2hPk/JwxNMZDsIXDgyl9axdJI3ogZ2XWhBPsnZUv+hPesa5iuhdYt2gzwA9t8RE5ytOJ6xB0moV0Ujvw==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/type-utils&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-hiLguxJWHjjwL6xMBwD903ciAwd7DmK30Y9Axs/etOkftC3ZNN9K44IuRD/EB08amu+Zw6W37x9RecLkOo3pMA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/typescript-estree&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/utils&quot;: &quot;8.54.0&quot;,
+        &quot;debug&quot;: &quot;^4.4.3&quot;,
+        &quot;ts-api-utils&quot;: &quot;^2.4.0&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;eslint&quot;: &quot;^8.57.0 || ^9.0.0&quot;,
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/types&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/types/-/types-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-PDUI9R1BVjqu7AUDsRBbKMtwmjWcn4J3le+5LpcFgWULN3LvHC5rkc9gCVxbrsrGmO1jfPybN5s6h4Jy+OnkAA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/typescript-estree&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-BUwcskRaPvTk6fzVWgDPdUndLjB87KYDrN5EYGetnktoeAvPtO4ONHlAZDnj5VFnUANg0Sjm7j4usBlnoVMHwA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/project-service&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/tsconfig-utils&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/visitor-keys&quot;: &quot;8.54.0&quot;,
+        &quot;debug&quot;: &quot;^4.4.3&quot;,
+        &quot;minimatch&quot;: &quot;^9.0.5&quot;,
+        &quot;semver&quot;: &quot;^7.7.3&quot;,
+        &quot;tinyglobby&quot;: &quot;^0.2.15&quot;,
+        &quot;ts-api-utils&quot;: &quot;^2.4.0&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/typescript-estree/node_modules/brace-expansion&quot;: {
+      &quot;version&quot;: &quot;2.0.2&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.0.2.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;balanced-match&quot;: &quot;^1.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch&quot;: {
+      &quot;version&quot;: &quot;9.0.5&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/minimatch/-/minimatch-9.0.5.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;ISC&quot;,
+      &quot;dependencies&quot;: {
+        &quot;brace-expansion&quot;: &quot;^2.0.1&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;&gt;=16 || 14 &gt;=14.17&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;url&quot;: &quot;https://github.com/sponsors/isaacs&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/typescript-estree/node_modules/semver&quot;: {
+      &quot;version&quot;: &quot;7.7.4&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/semver/-/semver-7.7.4.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;ISC&quot;,
+      &quot;bin&quot;: {
+        &quot;semver&quot;: &quot;bin/semver.js&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;&gt;=10&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/utils&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-9Cnda8GS57AQakvRyG0PTejJNlA2xhvyNtEVIMlDWOOeEyBkYWhGPnfrIAnqxLMTSTo6q8g12XVjjev5l1NvMA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@eslint-community/eslint-utils&quot;: &quot;^4.9.1&quot;,
+        &quot;@typescript-eslint/scope-manager&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;@typescript-eslint/typescript-estree&quot;: &quot;8.54.0&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;eslint&quot;: &quot;^8.57.0 || ^9.0.0&quot;,
+        &quot;typescript&quot;: &quot;&gt;=4.8.4 &lt;6.0.0&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/visitor-keys&quot;: {
+      &quot;version&quot;: &quot;8.54.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.54.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-VFlhGSl4opC0bprJiItPQ1RfUhGDIBokcPwaFH4yiBCaNPeld/9VeXbiPO1cLyorQi1G1vL+ecBk1x8o1axORA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;dependencies&quot;: {
+        &quot;@typescript-eslint/types&quot;: &quot;8.54.0&quot;,
+        &quot;eslint-visitor-keys&quot;: &quot;^4.2.1&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;type&quot;: &quot;opencollective&quot;,
+        &quot;url&quot;: &quot;https://opencollective.com/typescript-eslint&quot;
+      }
+    },
+    &quot;node_modules/@typescript-eslint/visitor-keys/node_modules/eslint-visitor-keys&quot;: {
+      &quot;version&quot;: &quot;4.2.1&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-4.2.1.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;Apache-2.0&quot;,
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;^18.18.0 || ^20.9.0 || &gt;=21.1.0&quot;
+      },
+      &quot;funding&quot;: {
+        &quot;url&quot;: &quot;https://opencollective.com/eslint&quot;
       }
     },
     &quot;node_modules/@vitejs/plugin-react&quot;: {
@@ -4165,6 +4484,13 @@
       &quot;engines&quot;: {
         &quot;node&quot;: &quot;20 || &gt;=22&quot;
       }
+    },
+    &quot;node_modules/csstype&quot;: {
+      &quot;version&quot;: &quot;3.2.3&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==&quot;,
+      &quot;devOptional&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;
     },
     &quot;node_modules/damerau-levenshtein&quot;: {
       &quot;version&quot;: &quot;1.0.8&quot;,
@@ -10022,6 +10348,19 @@
         &quot;tree-kill&quot;: &quot;cli.js&quot;
       }
     },
+    &quot;node_modules/ts-api-utils&quot;: {
+      &quot;version&quot;: &quot;2.4.0&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-2.4.0.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-3TaVTaAv2gTiMB35i3FiGJaRfwb3Pyn/j3m/bfAvGe8FB7CF6u+LMYqYlDh7reQf7UNvoTvdfAqHGmPGOSsPmA==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;MIT&quot;,
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;&gt;=18.12&quot;
+      },
+      &quot;peerDependencies&quot;: {
+        &quot;typescript&quot;: &quot;&gt;=4.8.4&quot;
+      }
+    },
     &quot;node_modules/tsconfig-paths&quot;: {
       &quot;version&quot;: &quot;3.15.0&quot;,
       &quot;resolved&quot;: &quot;https://registry.npmjs.org/tsconfig-paths/-/tsconfig-paths-3.15.0.tgz&quot;,
@@ -10175,6 +10514,21 @@
       &quot;license&quot;: &quot;MIT&quot;,
       &quot;dependencies&quot;: {
         &quot;is-typedarray&quot;: &quot;^1.0.0&quot;
+      }
+    },
+    &quot;node_modules/typescript&quot;: {
+      &quot;version&quot;: &quot;5.9.3&quot;,
+      &quot;resolved&quot;: &quot;https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz&quot;,
+      &quot;integrity&quot;: &quot;sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==&quot;,
+      &quot;dev&quot;: true,
+      &quot;license&quot;: &quot;Apache-2.0&quot;,
+      &quot;peer&quot;: true,
+      &quot;bin&quot;: {
+        &quot;tsc&quot;: &quot;bin/tsc&quot;,
+        &quot;tsserver&quot;: &quot;bin/tsserver&quot;
+      },
+      &quot;engines&quot;: {
+        &quot;node&quot;: &quot;&gt;=14.17&quot;
       }
     },
     &quot;node_modules/unbox-primitive&quot;: {

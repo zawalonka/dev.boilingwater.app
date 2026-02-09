@@ -15,7 +15,7 @@
  *   │   ├── dynamicKb.js
  *   │   ├── ebullioscopy.js
  *   │   ├── heatCapacity.js
- *   │   ├── latentHeat.js
+ *   │   ├── latentHeat.ts
  *   │   ├── newtonCooling.js
  *   │   ├── temperatureConversion.js
  *   │   ├── pidController.js      ← Control algorithm for AC/Air Handler
@@ -115,7 +115,7 @@ export {
   calculateFusionEnergy,
   calculateMeltedMass,
   LATENT_HEAT_VALUES 
-} from './formulas/latentHeat.js'
+} from './formulas/latentHeat.ts'
 
 // Newton's Law of Cooling - dT/dt = -k(T - Tambient)
 export { 

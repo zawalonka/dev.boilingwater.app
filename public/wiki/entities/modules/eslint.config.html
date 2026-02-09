@@ -79,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">@eslint/js</span>, <span class="external-import">eslint-config-prettier</span>, <span class="external-import">eslint-plugin-react</span>, <span class="external-import">eslint-plugin-react-hooks</span>, <span class="external-import">eslint-plugin-import</span>, <span class="external-import">eslint-plugin-jsx-a11y</span>, <span class="external-import">eslint-plugin-security</span>, <span class="external-import">eslint-plugin-no-unsanitized</span>, <span class="external-import">globals</span></div>
+        <div class="infobox-value"><span class="external-import">@eslint/js</span>, <span class="external-import">eslint-config-prettier</span>, <span class="external-import">eslint-plugin-react</span>, <span class="external-import">eslint-plugin-react-hooks</span>, <span class="external-import">eslint-plugin-import</span>, <span class="external-import">eslint-plugin-jsx-a11y</span>, <span class="external-import">eslint-plugin-security</span>, <span class="external-import">eslint-plugin-no-unsanitized</span>, <span class="external-import">@typescript-eslint/parser</span>, <span class="external-import">@typescript-eslint/eslint-plugin</span>, <span class="external-import">globals</span></div>
       </div>
     
     </aside>
@@ -171,7 +171,6 @@
 <p>},</p>
 <p>},</p>
 <p>},</p>
-<p>// Test file overrides</p>
 <p>{</p>
 <p>files: [&#39;src/*</p>
     </section>
@@ -189,6 +188,8 @@ import importPlugin from &#39;eslint-plugin-import&#39;;
 import jsxA11yPlugin from &#39;eslint-plugin-jsx-a11y&#39;;
 import securityPlugin from &#39;eslint-plugin-security&#39;;
 import noUnsanitizedPlugin from &#39;eslint-plugin-no-unsanitized&#39;;
+import tsParser from &#39;@typescript-eslint/parser&#39;;
+import tsPlugin from &#39;@typescript-eslint/eslint-plugin&#39;;
 import globals from &#39;globals&#39;;
 
 export default [
@@ -277,9 +278,100 @@ export default [
       },
     },
   },
+  {
+    files: [&#39;src/**/*.{ts,tsx}&#39;],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: &#39;module&#39;,
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+        // Vitest globals
+        describe: &#39;readonly&#39;,
+        it: &#39;readonly&#39;,
+        test: &#39;readonly&#39;,
+        expect: &#39;readonly&#39;,
+        beforeEach: &#39;readonly&#39;,
+        afterEach: &#39;readonly&#39;,
+        beforeAll: &#39;readonly&#39;,
+        afterAll: &#39;readonly&#39;,
+        vi: &#39;readonly&#39;,
+      },
+    },
+    plugins: {
+      react: reactPlugin,
+      &#39;react-hooks&#39;: reactHooksPlugin,
+      import: importPlugin,
+      &#39;jsx-a11y&#39;: jsxA11yPlugin,
+      security: securityPlugin,
+      &#39;no-unsanitized&#39;: noUnsanitizedPlugin,
+      &#39;@typescript-eslint&#39;: tsPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+      ...importPlugin.configs.recommended.rules,
+      ...jsxA11yPlugin.configs.recommended.rules,
+
+      // React-specific rules
+      &#39;react/react-in-jsx-scope&#39;: &#39;off&#39;,
+      &#39;react/prop-types&#39;: &#39;off&#39;,
+      &#39;react/display-name&#39;: &#39;warn&#39;,
+
+      // Import/export rules
+      &#39;import/no-unresolved&#39;: &#39;off&#39;,
+      &#39;import/named&#39;: &#39;error&#39;,
+      &#39;import/no-cycle&#39;: &#39;warn&#39;,
+      &#39;import/no-unused-modules&#39;: &#39;warn&#39;,
+
+      // General code quality rules
+      &#39;no-unused-vars&#39;: &#39;off&#39;,
+      &#39;@typescript-eslint/no-unused-vars&#39;: &#39;warn&#39;,
+      &#39;no-console&#39;: [&#39;warn&#39;, { allow: [&#39;error&#39;, &#39;warn&#39;, &#39;info&#39;] }],
+      &#39;complexity&#39;: [&#39;warn&#39;, 15],
+      &#39;max-lines-per-function&#39;: [
+        &#39;warn&#39;,
+        { max: 100, skipBlankLines: true, skipComments: true },
+      ],
+
+      // Security rules
+      &#39;security/detect-object-injection&#39;: &#39;warn&#39;,
+      &#39;no-unsanitized/method&#39;: &#39;error&#39;,
+      &#39;no-unsanitized/property&#39;: &#39;error&#39;,
+
+      // Accessibility rules
+      &#39;jsx-a11y/alt-text&#39;: &#39;warn&#39;,
+      &#39;jsx-a11y/aria-props&#39;: &#39;warn&#39;,
+      &#39;jsx-a11y/aria-role&#39;: &#39;warn&#39;,
+    },
+    settings: {
+      react: {
+        version: &#39;detect&#39;,
+      },
+      &#39;import/resolver&#39;: {
+        node: {
+          extensions: [&#39;.js&#39;, &#39;.jsx&#39;, &#39;.ts&#39;, &#39;.tsx&#39;],
+        },
+      },
+    },
+  },
   // Test file overrides
   {
     files: [&#39;src/**/__tests__/**/*.js&#39;, &#39;src/**/test/**/*.js&#39;],
+    rules: {
+      &#39;import/named&#39;: &#39;off&#39;,
+    },
+  },
+  {
+    files: [&#39;src/**/__tests__/**/*.ts&#39;, &#39;src/**/test/**/*.ts&#39;],
     rules: {
       &#39;import/named&#39;: &#39;off&#39;,
     },

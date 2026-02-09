@@ -187,19 +187,19 @@
 - [x] Create `GameSceneView` presenter (render-only)
 - [x] Wire container to presenter and remove dead props
 - [x] Update imports and fix circular dependencies
-- [ ] Run regression tests and validate workshop switching
+- [x] Run regression tests and validate workshop switching
 
 ---
 #### CONTRACT/STATIC TEST PLAN: MATH WIRING INVARIANTS
 **Goal:** Prevent silent math regressions and hardcoded values in game files. Ensure all math functions are called dynamically, with correct order and config-driven inputs. Detect new math needing coverage.
 
 **Tasks:**
-- [ ] Implement contract/static tests for GameScene.jsx, hooks, workers
-- [ ] Assert all math calls use dynamic, config-driven inputs (no hardcoded values)
-- [ ] Verify correct math function call order and presence for each experiment/level
-- [ ] Fail if any math function is missing, replaced, or called with static values
-- [ ] Detect and report new math functions needing validity tests
-- [ ] Validate tests against old and new levels/experiments
+- [x] Implement contract/static tests for GameScene.jsx, hooks, workers
+- [x] Assert all math calls use dynamic, config-driven inputs (no hardcoded values)
+- [x] Verify correct math function call order and presence for each experiment/level
+- [x] Fail if any math function is missing, replaced, or called with static values
+- [x] Detect and report new math functions needing validity tests
+- [x] Validate tests against old and new levels/experiments
 
 **Pickup:** Resume here to extend tests as new math/physics files are added, and ensure scientific sandbox integrity.
 
@@ -210,7 +210,7 @@
 **Last Step:** Created RoomControls.jsx, room environment infrastructure done  
 **Next:** Build ExperimentScorecard.jsx component
 
-- [ ] Create `ExperimentScorecard.jsx` component
+- [x] Create `ExperimentScorecard.jsx` component
 - [ ] &quot;Finish Experiment&quot; button
 - [ ] Scorecard download (CSV/JSON)
 - [ ] End-of-experiment modal

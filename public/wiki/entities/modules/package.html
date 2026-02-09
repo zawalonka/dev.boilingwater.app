@@ -111,7 +111,7 @@
     &quot;dev&quot;: &quot;npm run generate-catalog &amp;&amp; npm run wiki:build &amp;&amp; npm run wiki:sync &amp;&amp; vite&quot;,
     &quot;build&quot;: &quot;npm run generate-catalog &amp;&amp; npm run wiki:build &amp;&amp; npm run wiki:sync &amp;&amp; vite build&quot;,
     &quot;preview&quot;: &quot;node scripts/preview-with-ready.js&quot;,
-    &quot;lint&quot;: &quot;eslint src --ext js,jsx&quot;,
+    &quot;lint&quot;: &quot;eslint src --ext js,jsx,ts,tsx&quot;,
     &quot;format&quot;: &quot;prettier --write \&quot;src/**/*.{js,jsx,css,md}\&quot;&quot;,
     &quot;test&quot;: &quot;vitest&quot;,
     &quot;test:ci&quot;: &quot;vitest run&quot;,
@@ -126,6 +126,8 @@
     &quot;zustand&quot;: &quot;^5.0.11&quot;
   },
   &quot;devDependencies&quot;: {
+      &quot;@typescript-eslint/eslint-plugin&quot;: &quot;^8.46.1&quot;,
+      &quot;@typescript-eslint/parser&quot;: &quot;^8.46.1&quot;,
     &quot;@eslint/js&quot;: &quot;^9.39.2&quot;,
     &quot;@lhci/cli&quot;: &quot;^0.15.0&quot;,
     &quot;@testing-library/jest-dom&quot;: &quot;^6.9.1&quot;,
@@ -133,6 +135,9 @@
     &quot;@vitejs/plugin-react&quot;: &quot;^4.2.1&quot;,
     &quot;@vitest/coverage-v8&quot;: &quot;^4.0.18&quot;,
     &quot;@vitest/ui&quot;: &quot;^4.0.18&quot;,
+    &quot;@types/node&quot;: &quot;^24.6.1&quot;,
+    &quot;@types/react&quot;: &quot;^18.3.24&quot;,
+    &quot;@types/react-dom&quot;: &quot;^18.3.7&quot;,
     &quot;chrome-launcher&quot;: &quot;^1.2.1&quot;,
     &quot;dotenv-cli&quot;: &quot;^11.0.0&quot;,
     &quot;eslint&quot;: &quot;^9.39.2&quot;,
@@ -151,6 +156,7 @@
     &quot;prettier&quot;: &quot;^3.1.1&quot;,
     &quot;rollup-plugin-visualizer&quot;: &quot;^6.0.5&quot;,
     &quot;sharp&quot;: &quot;^0.34.5&quot;,
+    &quot;typescript&quot;: &quot;^5.9.2&quot;,
     &quot;vite&quot;: &quot;^5.0.8&quot;,
     &quot;vitest&quot;: &quot;^4.0.18&quot;
   },

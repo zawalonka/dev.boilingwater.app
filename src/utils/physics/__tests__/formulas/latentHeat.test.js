@@ -6,7 +6,7 @@ import {
   calculateFusionEnergy,
   calculateMeltedMass,
   LATENT_HEAT_VALUES
-} from '../../formulas/latentHeat.js'
+} from '../../formulas/latentHeat.ts'
 import { calculateEnergyTolerance } from '../../formulas/heatCapacity.js'
 
 describe('Latent Heat - Phase Change Energy', () => {

@@ -94,7 +94,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Used in</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li><li><a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a></li><li><a href="/wiki/entities/modules/src/test/contract/physicsWiring.test.html">physicsWiring.test.js</a></li></ul></div>
       </div>
     
     </aside>
@@ -125,7 +125,6 @@ export function useBoilingDetection({
   burnerHeat,
   canBoil,
   fluidProps,
-  getNextProgression,
   hasBoiledBefore,
   hasShownBoilPopup,
   isBoiling,
@@ -141,7 +140,6 @@ export function useBoilingDetection({
   setIsBoiling,
   setPauseTime,
   setShowHook,
-  setShowNextLevelButton,
   setShowSelectors,
   timePotOnFlame
 }) {
@@ -151,7 +149,6 @@ export function useBoilingDetection({
       setHasShownBoilPopup(true)
       setShowHook(true)
       setPauseTime(true)
-      setShowNextLevelButton(Boolean(getNextProgression()))
 
       const elapsedBoilTime = timePotOnFlame !== null ? timePotOnFlame + context.deltaTime : 0
       setBoilTime(elapsedBoilTime)
@@ -193,7 +190,7 @@ export function useBoilingDetection({
     if (!canBoil &amp;&amp; isBoiling) {
       setIsBoiling(false)
     }
-  }, [activeExperiment, activeFluid, activeLevel, altitude, boilingPoint, burnerHeat, canBoil, fluidProps?.boilingPointSeaLevel, fluidProps?.name, getNextProgression, hasBoiledBefore, hasShownBoilPopup, isBoiling, locationName, roomAlerts, roomControlsEnabled, roomState?.composition, roomState?.energyTotals, roomState?.exposureEvents, roomState?.initialComposition, roomState?.initialTemperature, roomState?.temperature, setBoilStats, setBoilTime, setBurnerHeatWhenBoiled, setHasBoiledBefore, setHasShownBoilPopup, setIsBoiling, setPauseTime, setShowHook, setShowNextLevelButton, setShowSelectors, timePotOnFlame])
+  }, [activeExperiment, activeFluid, activeLevel, altitude, boilingPoint, burnerHeat, canBoil, fluidProps?.boilingPointSeaLevel, fluidProps?.name, hasBoiledBefore, hasShownBoilPopup, isBoiling, locationName, roomAlerts, roomControlsEnabled, roomState?.composition, roomState?.energyTotals, roomState?.exposureEvents, roomState?.initialComposition, roomState?.initialTemperature, roomState?.temperature, setBoilStats, setBoilTime, setBurnerHeatWhenBoiled, setHasBoiledBefore, setHasShownBoilPopup, setIsBoiling, setPauseTime, setShowHook, setShowSelectors, timePotOnFlame])
 
   return {
     handleBoilingState

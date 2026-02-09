@@ -8,9 +8,9 @@
  * Purpose in this process: Calculate how much energy goes into converting
  * liquid to vapor once the substance reaches boiling point.
  * 
- * @see ../../formulas/latentHeat.js for the actual implementation
+ * @see ../../formulas/latentHeat.ts for the actual implementation
  */
 export { 
   calculateVaporizationEnergy,
   calculateVaporizedMass 
-} from '../../formulas/latentHeat.js'
+} from '../../formulas/latentHeat.ts'

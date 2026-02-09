@@ -6,6 +6,8 @@ import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import securityPlugin from 'eslint-plugin-security';
 import noUnsanitizedPlugin from 'eslint-plugin-no-unsanitized';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import globals from 'globals';
 
 export default [
@@ -94,9 +96,100 @@ export default [
       },
     },
   },
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: 'module',
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+        // Vitest globals
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        vi: 'readonly',
+      },
+    },
+    plugins: {
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+      import: importPlugin,
+      'jsx-a11y': jsxA11yPlugin,
+      security: securityPlugin,
+      'no-unsanitized': noUnsanitizedPlugin,
+      '@typescript-eslint': tsPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+      ...importPlugin.configs.recommended.rules,
+      ...jsxA11yPlugin.configs.recommended.rules,
+
+      // React-specific rules
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/display-name': 'warn',
+
+      // Import/export rules
+      'import/no-unresolved': 'off',
+      'import/named': 'error',
+      'import/no-cycle': 'warn',
+      'import/no-unused-modules': 'warn',
+
+      // General code quality rules
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'no-console': ['warn', { allow: ['error', 'warn', 'info'] }],
+      'complexity': ['warn', 15],
+      'max-lines-per-function': [
+        'warn',
+        { max: 100, skipBlankLines: true, skipComments: true },
+      ],
+
+      // Security rules
+      'security/detect-object-injection': 'warn',
+      'no-unsanitized/method': 'error',
+      'no-unsanitized/property': 'error',
+
+      // Accessibility rules
+      'jsx-a11y/alt-text': 'warn',
+      'jsx-a11y/aria-props': 'warn',
+      'jsx-a11y/aria-role': 'warn',
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
+  },
   // Test file overrides
   {
     files: ['src/**/__tests__/**/*.js', 'src/**/test/**/*.js'],
+    rules: {
+      'import/named': 'off',
+    },
+  },
+  {
+    files: ['src/**/__tests__/**/*.ts', 'src/**/test/**/*.ts'],
     rules: {
       'import/named': 'off',
     },

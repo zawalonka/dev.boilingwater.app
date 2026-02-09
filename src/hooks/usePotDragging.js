@@ -16,6 +16,8 @@ export function usePotDragging({
 
   useEffect(() => {
     const nextStartPos = layout.pot.start || layout.pot.empty || { xPercent: 50, yPercent: 50 }
+    // Sync to layout changes (workshop/level swaps) without altering drag logic.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPotPosition({ x: nextStartPos.xPercent, y: nextStartPos.yPercent })
   }, [layout])
 

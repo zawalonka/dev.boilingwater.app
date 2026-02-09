@@ -614,6 +614,8 @@ stores/workshopStore.js  # Workshop/theme
 
 **#13 PropTypes:** Skip if doing TypeScript. TypeScript provides better type safety.
 
+**Note (2026-02-08):** TypeScript primarily impacts build/CI time, not runtime gameplay performance. If gameplay perf is the only priority, this can stay deferred.
+
 ---
 
 ### **Phase 3: Polish (Week 8+)**

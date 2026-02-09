@@ -99,12 +99,12 @@
 **Goal:** Prevent silent math regressions and hardcoded values in game files. Ensure all math functions are called dynamically, with correct order and config-driven inputs. Detect new math needing coverage.
 
 **Tasks:**
-- [ ] Implement contract/static tests for GameScene.jsx, hooks, workers
-- [ ] Assert all math calls use dynamic, config-driven inputs (no hardcoded values)
-- [ ] Verify correct math function call order and presence for each experiment/level
-- [ ] Fail if any math function is missing, replaced, or called with static values
-- [ ] Detect and report new math functions needing validity tests
-- [ ] Validate tests against old and new levels/experiments
+- [x] Implement contract/static tests for GameScene.jsx, hooks, workers
+- [x] Assert all math calls use dynamic, config-driven inputs (no hardcoded values)
+- [x] Verify correct math function call order and presence for each experiment/level
+- [x] Fail if any math function is missing, replaced, or called with static values
+- [x] Detect and report new math functions needing validity tests
+- [x] Validate tests against old and new levels/experiments
 
 **Pickup:** Resume here to extend tests as new math/physics files are added, and ensure scientific sandbox integrity.
 

@@ -9,7 +9,7 @@ import {
 import {
   calculateVaporizationEnergy,
   LATENT_HEAT_VALUES
-} from '../../formulas/latentHeat.js'
+} from '../../formulas/latentHeat.ts'
 import {
   applyCoolingStep,
   temperatureAtTime,

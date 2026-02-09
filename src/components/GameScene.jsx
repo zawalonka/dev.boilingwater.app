@@ -174,7 +174,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
 
   // Should we pause time flow while popup is visible?
   const [pauseTime, setPauseTime] = useState(false)
-  const [showNextLevelButton, setShowNextLevelButton] = useState(false)
 
   const {
     timeSpeed,
@@ -202,6 +201,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     return [0, 400, 1700, 2500]
   }, [burnerConfig, workshopLayout])
   const maxHeatIndex = wattageSteps.length - 1
+  const effectiveBurnerHeat = Math.min(burnerHeat, maxHeatIndex)
 
   // The dimensions of the game window (workshop-provided, default 1280x800)
   const [sceneDimensions, setSceneDimensions] = useState({ width: 0, height: 0 })
@@ -259,12 +259,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     }
   }, [activeExperiment, isAltitudeExperiment, hasSetLocation, showLocationPopup])
 
-  // Clamp burner heat to available steps when layout changes
-  useEffect(() => {
-    if (burnerHeat > maxHeatIndex) {
-      setBurnerHeat(maxHeatIndex)
-    }
-  }, [maxHeatIndex, burnerHeat])
 
   // ============================================================================
   // LOCATION & ALTITUDE: Affects boiling point (must be before room environment)
@@ -313,17 +307,18 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // - Before L1E4: Use altitude to derive pressure (standard behavior)
   // - At L1E4+ (room controls enabled): Use room pressure directly
   //   This creates a feedback loop: boiling → vapor release → pressure rise → BP shift
+  const roomPressure = roomSummary?.pressure ?? null
   const boilingPointResult = useMemo(() => {
     if (!fluidProps) return null
     
     // When room controls are enabled, use room pressure for feedback loop
-    if (roomControlsEnabled && roomSummary?.pressure) {
-      return calculateBoilingPointAtPressure(roomSummary.pressure, fluidProps)
+    if (roomControlsEnabled && roomPressure) {
+      return calculateBoilingPointAtPressure(roomPressure, fluidProps)
     }
     
     // Standard: derive pressure from altitude
     return calculateBoilingPoint(altitude, fluidProps)
-  }, [fluidProps, altitude, roomControlsEnabled, roomSummary?.pressure])
+  }, [fluidProps, altitude, roomControlsEnabled, roomPressure])
   
   const boilingPoint = boilingPointResult?.temperature ?? null
   const isBoilingPointExtrapolated = boilingPointResult?.isExtrapolated ?? false
@@ -423,10 +418,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     loadFluids()
   }, [roomControlsEnabled])  // Re-filter when room controls unlock (L1E3 → L1E4)
 
-  useEffect(() => {
-    setShowNextLevelButton(false)
-  }, [activeExperiment, activeLevel])
-
   // Load the current substance's properties from JSON
   useEffect(() => {
     async function initializeFluid() {
@@ -479,10 +470,9 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     activeLevel,
     altitude,
     boilingPoint,
-    burnerHeat,
+    burnerHeat: effectiveBurnerHeat,
     canBoil,
     fluidProps,
-    getNextProgression,
     hasBoiledBefore,
     hasShownBoilPopup,
     isBoiling,
@@ -498,7 +488,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     setIsBoiling,
     setPauseTime,
     setShowHook,
-    setShowNextLevelButton,
     setShowSelectors,
     timePotOnFlame
   })
@@ -525,7 +514,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   useGamePhysics({
     altitude,
     ambientTemperature,
-    burnerHeat,
+    burnerHeat: effectiveBurnerHeat,
     fluidProps,
     layout,
     liquidMass,
@@ -632,7 +621,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
 
     setShowHook(false)
     setPauseTime(false)
-    setShowNextLevelButton(false)
     setBoilStats(null)
 
     if (progression.type === 'experiment') {
@@ -669,7 +657,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
 
   // Workshop-driven optional glow/steam tuning
   const flameGlowConfig = effects.flameGlow
-  const flameGlowIntensity = flameGlowConfig.intensityByHeat?.[burnerHeat] ?? 1
+  const flameGlowIntensity = flameGlowConfig.intensityByHeat?.[effectiveBurnerHeat] ?? 1
   const flameGlowBlur = (flameGlowConfig.blurPx ?? 16) * flameGlowIntensity
   const flameGlowColor = flameGlowConfig.color || 'var(--workshop-flame-glow, #ff3300)'
   const flameFilter = flameGlowConfig.enabled
@@ -724,9 +712,16 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     liquidMass,
     temperature,
     boilingPoint,
-    burnerHeat,
+    burnerHeat: effectiveBurnerHeat,
     wattageSteps
   })
+
+  const showNextLevelButton = Boolean(
+    boilStats &&
+      boilStats.experiment === activeExperiment &&
+      boilStats.level === activeLevel &&
+      getNextProgression()
+  )
 
   // Format time in mm:ss
   const formatTime = (seconds) => {
@@ -783,7 +778,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     showNextLevelButton,
 
     // Config
-    burnerHeat,
+    burnerHeat: effectiveBurnerHeat,
     GAME_CONFIG,
 
     // Callbacks
@@ -822,7 +817,7 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
       showAmbientSteam={showAmbientSteam}
       fluidProps={fluidProps}
       flameImage={flameImage}
-      burnerHeat={burnerHeat}
+      burnerHeat={effectiveBurnerHeat}
       flameFilter={flameFilter}
       flameAnimationDuration={flameAnimationDuration}
       flameGlowEnabled={effects.flameGlow.enabled}

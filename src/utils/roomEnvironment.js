@@ -453,15 +453,16 @@ export function simulateRoomStep(roomState, acUnit, airHandler, deltaTime, optio
   // 5. Check for toxic exposure and track consequences
   state = trackExposure(state, airHandler, deltaTime)
   
-  // 6. Room pressure leak (slow return toward ambient)
-  const ambientPressure = 101325  // Hardcoded sea level - See TODO.md #3 (room phase 2)
-  const pressureDiff = state.pressure - ambientPressure
-  const leakRate = state.leakRatePaPerSecond || 10
-  const pressureChange = Math.sign(pressureDiff) * Math.min(Math.abs(pressureDiff), leakRate * deltaTime)
-  state = {
-    ...state,
-    pressure: state.pressure - pressureChange
-  }
+  // 6. Room pressure leak (DISABLED: closed-cycle room requested)
+  // NOTE: Keep this block commented for future open-system work.
+  // const ambientPressure = 101325  // Hardcoded sea level - See TODO.md #3 (room phase 2)
+  // const pressureDiff = state.pressure - ambientPressure
+  // const leakRate = state.leakRatePaPerSecond || 10
+  // const pressureChange = Math.sign(pressureDiff) * Math.min(Math.abs(pressureDiff), leakRate * deltaTime)
+  // state = {
+  //   ...state,
+  //   pressure: state.pressure - pressureChange
+  // }
   
   // 7. Check for safety alerts
   const newAlerts = checkCompositionAlerts(state.composition)
