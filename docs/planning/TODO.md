@@ -85,14 +85,14 @@
 - [x] Create Burner components (burner base, knob, flame)
 - [x] Create WaterStream component
 - [x] Create Effects components (steam, glow)
-- [ ] Create ControlPanel components (temperature, speed, buttons)
+- [x] Create ControlPanel components (temperature, speed, buttons)
 - [x] Create LocationPopup component
 
 **Week 7: Integrate and stabilize**
-- [ ] Create `GameSceneView` presenter (render-only)
-- [ ] Wire container to presenter and remove dead props
-- [ ] Update imports and fix circular dependencies
-- [ ] Run regression tests and validate workshop switching
+- [x] Create `GameSceneView` presenter (render-only)
+- [x] Wire container to presenter and remove dead props
+- [x] Update imports and fix circular dependencies
+- [x] Run regression tests and validate workshop switching
 
 ---
 #### CONTRACT/STATIC TEST PLAN: MATH WIRING INVARIANTS
@@ -115,7 +115,7 @@
 **Last Step:** Created RoomControls.jsx, room environment infrastructure done  
 **Next:** Build ExperimentScorecard.jsx component
 
-- [ ] Create `ExperimentScorecard.jsx` component
+- [x] Create `ExperimentScorecard.jsx` component
 - [ ] "Finish Experiment" button
 - [ ] Scorecard download (CSV/JSON)
 - [ ] End-of-experiment modal

@@ -79,7 +79,7 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/ControlPanel.html">ControlPanel.jsx</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/RoomControls.html">RoomControls.jsx</a>, <a href="/wiki/entities/modules/src/components/Pot.html">Pot.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerFlame.html">BurnerFlame.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerKnob.html">BurnerKnob.jsx</a>, <a href="/wiki/entities/modules/src/components/BurnerButtons.html">BurnerButtons.jsx</a>, <a href="/wiki/entities/modules/src/components/WaterStream.html">WaterStream.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/usePotDragging.html">usePotDragging.js</a>, <a href="/wiki/entities/modules/src/hooks/useTimeControls.html">useTimeControls.js</a>, <a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a>, <a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a>, <a href="/wiki/entities/modules/src/utils/roomEnvironment.html">roomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
+        <div class="infobox-value"><span class="external-import">react</span>, <a href="/wiki/entities/modules/src/utils/physics/index.html">index.js</a>, <a href="/wiki/entities/modules/src/utils/substanceLoader.html">substanceLoader.js</a>, <a href="/wiki/entities/modules/src/constants/physics.html">physics.js</a>, <a href="/wiki/entities/modules/src/constants/workshops.html">workshops.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneView.html">GameSceneView.jsx</a>, <a href="/wiki/entities/modules/src/hooks/useRoomEnvironment.html">useRoomEnvironment.js</a>, <a href="/wiki/entities/modules/src/hooks/usePotDragging.html">usePotDragging.js</a>, <a href="/wiki/entities/modules/src/hooks/useTimeControls.html">useTimeControls.js</a>, <a href="/wiki/entities/modules/src/hooks/useGamePhysics.html">useGamePhysics.js</a>, <a href="/wiki/entities/modules/src/hooks/useBoilingDetection.html">useBoilingDetection.js</a>, <a href="/wiki/entities/modules/src/hooks/useLocationControls.html">useLocationControls.js</a>, <a href="/wiki/entities/modules/src/hooks/useRoomSimulation.html">useRoomSimulation.js</a>, <a href="/wiki/entities/modules/src/hooks/useSimulationResultApplier.html">useSimulationResultApplier.js</a>, <a href="/wiki/entities/modules/src/utils/boilTimeUtils.html">boilTimeUtils.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/gameStore.html">gameStore.js</a>, <a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a></div>
       </div>
     
       <div class="infobox-row">
@@ -141,29 +141,21 @@ import { useState, useRef, useEffect, useMemo, useCallback } from &#39;react&#39
 import { 
   calculateBoilingPoint,           // Calculates fluid&#39;s boiling point based on altitude
   calculateBoilingPointAtPressure, // Calculates fluid&#39;s boiling point based on pressure (for room feedback)
-  formatTemperature,               // Formats temperature numbers for display (e.g., 98.5°C)
-  // Evaporation physics (pre-boiling)
-  solveAntoineForPressure,         // Get vapor pressure at current temperature
-  simulateEvaporationWithMassTransfer, // Mass transfer model (physically accurate evaporation)
-  estimatePotSurfaceArea           // Estimate liquid surface area
+  formatTemperature                // Formats temperature numbers for display (e.g., 98.5°C)
 } from &#39;../utils/physics&#39;
 import { loadSubstance, loadSubstanceInfo, parseSubstanceProperties, DEFAULT_SUBSTANCE, getAvailableSubstances } from &#39;../utils/substanceLoader&#39;
 import { GAME_CONFIG } from &#39;../constants/physics&#39;
 import { LEVELS, EXPERIMENTS } from &#39;../constants/workshops&#39;
-import ControlPanel from &#39;./ControlPanel&#39;
-import { GameSceneProvider } from &#39;./GameSceneContext&#39;
-import RoomControls from &#39;./RoomControls&#39;
-import Pot from &#39;./Pot&#39;
-import BurnerFlame from &#39;./BurnerFlame&#39;
-import BurnerKnob from &#39;./BurnerKnob&#39;
-import BurnerButtons from &#39;./BurnerButtons&#39;
-import WaterStream from &#39;./WaterStream&#39;
+import GameSceneView from &#39;./GameSceneView&#39;
 import { useRoomEnvironment } from &#39;../hooks/useRoomEnvironment&#39;
 import { usePotDragging } from &#39;../hooks/usePotDragging&#39;
 import { useTimeControls } from &#39;../hooks/useTimeControls&#39;
 import { useGamePhysics } from &#39;../hooks/useGamePhysics&#39;
 import { useBoilingDetection } from &#39;../hooks/useBoilingDetection&#39;
-import { getAtmosphereKey } from &#39;../utils/roomEnvironment&#39;
+import { useLocationControls } from &#39;../hooks/useLocationControls&#39;
+import { useRoomSimulation } from &#39;../hooks/useRoomSimulation&#39;
+import { useSimulationResultApplier } from &#39;../hooks/useSimulationResultApplier&#39;
+import { calculateExpectedBoilTime } from &#39;../utils/boilTimeUtils&#39;
 import { useGameStore } from &#39;../hooks/stores/gameStore&#39;
 import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 import &#39;../styles/GameScene.css&#39;
@@ -339,32 +331,23 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // LOCATION &amp; ALTITUDE INPUT: For Level 2+ altitude effects experiment
   // ============================================================================
 
-  // User&#39;s entered zip code (for location lookup)
-  const [userZipCode, setUserZipCode] = useState(&#39;&#39;)
-
-  // User&#39;s selected country (USA, UK, Australia, Canada)
-  const [userCountry, setUserCountry] = useState(&#39;USA&#39;)
-
-  // Manual altitude input (in meters) as fallback
-  const [manualAltitude, setManualAltitude] = useState(&#39;&#39;)
-  // Editable altitude input for different-fluids experiment
-  const [editableAltitude, setEditableAltitude] = useState(null)
-  // Track if user has confirmed any location/altitude to avoid reopening popup
-  // Initialize based on whether location prop already has data
-  const [hasSetLocation, setHasSetLocation] = useState(
-    () =&gt; Boolean(location?.altitude !== 0 || location?.name)
-  )
-
-  // Is location lookup currently in progress?
-  const [isLoadingLocation, setIsLoadingLocation] = useState(false)
-
-  // Location lookup error message
-  const [locationError, setLocationError] = useState(null)
-
-  // User&#39;s entered location display name (e.g., &quot;Denver, USA&quot;)
-  // Initialize from location prop if available
-  const [locationName, setLocationName] = useState(() =&gt; location?.name || null)
-  const [showLocationPopup, setShowLocationPopup] = useState(false)
+  const {
+    userZipCode,
+    manualAltitude,
+    editableAltitude,
+    hasSetLocation,
+    isLoadingLocation,
+    locationError,
+    locationName,
+    showLocationPopup,
+    setUserZipCode,
+    setManualAltitude,
+    setLocationError,
+    setShowLocationPopup,
+    handleSearchLocation,
+    handleSetManualAltitude,
+    handleFindMyLocation
+  } = useLocationControls({ location, setUserLocation })
 
   // ============================================================================
   // DERIVED STATE: Post-Tutorial Status
@@ -445,7 +428,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // Stores reference to the game scene div (used to calculate coordinates relative to it)
   const sceneRef = useRef(null)
 
-  const lastRoomTickRef = useRef(null)
 
   // Pre-calculate what temperature fluid will boil at
   // PRESSURE FEEDBACK LOOP:
@@ -646,82 +628,20 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // EFFECT 3: Physics simulation loop (runs continuously when water is in pot)
   // ============================================================================
 
-  const applySimulationResult = useCallback((newState, context) =&gt; {
-    // Update all the values returned from the physics simulation
-    setTemperature(newState.temperature)      // Water is now hotter or cooler
-    setWaterInPot(newState.waterMass)        // Water mass decreases if boiling (evaporation)
-
-    // Room environment: Track burner heat and vapor release
-    // The main room simulation (AC, air handler) runs in a separate effect
-    // Here we only add external heat sources and vapor from boiling
-    if (roomControlsEnabled &amp;&amp; roomConfig) {
-      // Track burner heat (waste heat radiating into room)
-      if (context.heatInputWatts &gt; 0) {
-        updateRoom(context.deltaTime, &#39;experiment_burner&#39;, context.heatInputWatts)
-      }
-
-      // ========== PRE-BOILING EVAPORATION (Mass Transfer Model) ==============
-      // Even below boiling point, volatile substances evaporate!
-      // This cools the liquid (can go BELOW ambient) and adds vapor to room.
-      // Uses Fuller-Schettler-Giddings diffusion + boundary layer mass transfer.
-      // Only runs when NOT boiling (boiling evaporation is handled separately).
-      if (!newState.isBoiling &amp;&amp; fluidProps?.antoineCoefficients &amp;&amp; newState.waterMass &gt; 0) {
-        // Get vapor pressure at current temperature
-        const vaporPressure = solveAntoineForPressure(newState.temperature, fluidProps.antoineCoefficients)
-
-        if (vaporPressure &amp;&amp; vaporPressure &gt; 0) {
-          // Get partial pressure of this substance already in room air
-          // Use atmosphere key from chemical formula (e.g., &#39;H₂O&#39; -&gt; &#39;H2O&#39;)
-          const atmosphereKey = getAtmosphereKey(activeFluid, fluidProps)
-          const roomComposition = roomState?.composition || {}
-          const totalPressure = roomState?.pressure || 101325
-          const partialPressure = (roomComposition[atmosphereKey] || 0) * totalPressure
-
-          // Calculate evaporation using mass transfer model (physically accurate)
-          // Uses diffusion coefficient from Fuller-Schettler-Giddings equation
-          // and natural convection mass transfer correlations
-          const evapResult = simulateEvaporationWithMassTransfer({
-            liquidTempC: newState.temperature,
-            liquidMassKg: newState.waterMass,
-            vaporPressurePa: vaporPressure,
-            pressurePa: totalPressure,
-            molarMassGmol: fluidProps.molarMass || 18.015,
-            latentHeatKJ: fluidProps.heatOfVaporization || 2257,
-            specificHeatJgC: fluidProps.specificHeat || 4.186,
-            potDiameterM: 0.2,  // 20cm pot
-            partialPressurePa: partialPressure,
-            diffusionVolumeSum: fluidProps.diffusionVolumeSum,  // Calculated at load time from element data
-            deltaTimeS: context.deltaTime
-          })
-
-          // Apply evaporative cooling (can cool below ambient!)
-          // IMPORTANT: Apply to newState.temperature (from heating sim), not prev!
-          if (evapResult.massEvaporatedKg &gt; 1e-9) {
-            // Combine heating result + evaporative cooling
-            const finalTemp = newState.temperature + evapResult.tempChangeC
-            setTemperature(finalTemp)
-            setWaterInPot(evapResult.newMassKg)
-
-            // Add vapor to room air composition (pass formula for atmosphere key)
-            addVapor(activeFluid, evapResult.massEvaporatedKg, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-          }
-        }
-      }
-
-      // If water is boiling, add boiling-phase vapor to room
-      if (newState.isBoiling &amp;&amp; newState.waterMass &lt; context.prevWaterMass) {
-        const evaporatedMass = context.prevWaterMass - newState.waterMass
-        addVapor(activeFluid, evaporatedMass, fluidProps?.molarMass || 18.015, fluidProps?.chemicalFormula)
-      }
-    }
-
-    // Track elapsed time only if timer is running
-    if (isTimerRunning) {
-      setTimeElapsed(prev =&gt; prev + context.deltaTime)  // Track elapsed time (accounts for speed)
-    }
-
-    handleBoilingState(newState, context)
-  }, [activeFluid, addVapor, fluidProps, handleBoilingState, isTimerRunning, roomConfig, roomControlsEnabled, roomState, setTemperature, setTimeElapsed, setWaterInPot, updateRoom])
+  const applySimulationResult = useSimulationResultApplier({
+    activeFluid,
+    fluidProps,
+    roomControlsEnabled,
+    roomConfig,
+    roomState,
+    updateRoom,
+    addVapor,
+    isTimerRunning,
+    setTimeElapsed,
+    setTemperature,
+    setWaterInPot,
+    handleBoilingState
+  })
 
   useGamePhysics({
     altitude,
@@ -743,35 +663,14 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     setTimePotOnFlame
   })
 
-  // ============================================================================
-  // EFFECT 4: Room environment simulation (AC, air handler) - runs independently
-  // ============================================================================
-
-  useEffect(() =&gt; {
-    // This effect handles room environment simulation (temperature regulation, air handling)
-    // It runs independently of whether there&#39;s liquid in the pot
-    // Only active when room controls are enabled (L1E4+)
-    if (!roomControlsEnabled || !roomConfig) return
-    
-    const roomSimRef = setInterval(() =&gt; {
-      // Skip if time is paused
-      const now = performance.now()
-      if (pauseTime) {
-        lastRoomTickRef.current = now
-        return
-      }
-      const lastTick = lastRoomTickRef.current ?? now
-      lastRoomTickRef.current = now
-      const deltaTime = ((now - lastTick) / 1000) * timeSpeed
-      
-      // Calculate timestep (same as main simulation)
-      // Update room environment (AC maintains temperature, air handler cleans air)
-      // Pass 0 for heat since we&#39;re not tracking burner heat here (that happens in main sim)
-      updateRoom(deltaTime, null, 0)
-    }, GAME_CONFIG.TIME_STEP)
-    
-    return () =&gt; clearInterval(roomSimRef)
-  }, [roomControlsEnabled, roomConfig, timeSpeed, pauseTime, updateRoom])
+  useRoomSimulation({
+    enabled: roomControlsEnabled,
+    roomConfig,
+    timeSpeed,
+    pauseTime,
+    updateRoom,
+    timeStepMs: GAME_CONFIG.TIME_STEP
+  })
 
   // ============================================================================
   // FLUID SELECTION
@@ -873,126 +772,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   }
 
   // ============================================================================
-  // LOCATION &amp; ALTITUDE HANDLERS
-  // ============================================================================
-
-  /**
-   * Handle location search - works worldwide (city names, landmarks, etc.)
-   */
-  const handleSearchLocation = async () =&gt; {
-    if (!userZipCode.trim()) {
-      setLocationError(&#39;Please enter a location (city, landmark, region, etc.)&#39;)
-      return
-    }
-
-    setIsLoadingLocation(true)
-    setLocationError(null)
-
-    try {
-      const { getAltitudeFromLocationName } = await import(&#39;../utils/locationUtils&#39;)
-      const result = await getAltitudeFromLocationName(userZipCode)
-      
-      // Update the location through parent component
-      setUserLocation({
-        altitude: result.altitude,
-        name: result.name,
-        fullName: result.fullName,
-        latitude: result.latitude,
-        longitude: result.longitude
-      })
-
-      setLocationName(result.name)
-      setLocationError(null)
-      setUserZipCode(&#39;&#39;)  // Clear input after successful search
-      setManualAltitude(&#39;&#39;)  // Clear manual input
-      setHasSetLocation(true)
-      setShowLocationPopup(false)  // Close popup after selection
-    } catch (error) {
-      setLocationError(error.message || &#39;Location not found. Try a city, landmark, or geographic feature.&#39;)
-      console.error(&#39;Location search error:&#39;, error)
-    } finally {
-      setIsLoadingLocation(false)
-    }
-  }
-
-  /**
-   * Handle manual altitude entry
-   */
-  const handleSetManualAltitude = () =&gt; {
-    const altitudeNum = parseFloat(manualAltitude)
-    
-    // Allow any number (negative for below sea level: Death Valley -86m, Dead Sea -430m)
-    if (isNaN(altitudeNum)) {
-      setLocationError(&#39;Please enter a valid altitude in meters (negative for below sea level)&#39;)
-      return
-    }
-
-    setUserLocation({
-      altitude: altitudeNum,
-      latitude: null,
-      longitude: null
-    })
-
-    // Manual altitude entry clears location name (shows only altitude in panel)
-    setLocationName(&#39;&#39;)
-    setUserZipCode(&#39;&#39;)
-    setManualAltitude(&#39;&#39;)
-    setLocationError(null)
-    setHasSetLocation(true)
-    setShowLocationPopup(false)  // Close popup after selection
-  }
-
-  /**
-   * Handle browser geolocation
-   */
-  const handleFindMyLocation = async () =&gt; {
-    setIsLoadingLocation(true)
-    setLocationError(null)
-
-    try {
-      const { getUserLocation } = await import(&#39;../utils/locationUtils&#39;)
-      const result = await getUserLocation()
-      
-      setUserLocation({
-        altitude: result.altitude,
-        name: result.name,
-        latitude: result.latitude,
-        longitude: result.longitude
-      })
-
-      setLocationName(result.name)
-      setUserZipCode(&#39;&#39;)
-      setManualAltitude(&#39;&#39;)
-      setLocationError(null)
-      setHasSetLocation(true)
-      setShowLocationPopup(false)  // Close popup after selection
-    } catch (error) {
-      setLocationError(error.message || &#39;Could not access your location&#39;)
-      console.error(&#39;Geolocation error:&#39;, error)
-    } finally {
-      setIsLoadingLocation(false)
-    }
-  }
-
-  /**
-   * Reset location - show popup again to change location
-   */
-  const handleResetLocation = () =&gt; {
-    setLocationName(null)
-    setUserZipCode(&#39;&#39;)
-    setManualAltitude(&#39;&#39;)
-    setLocationError(null)
-    setHasSetLocation(false)
-    setShowLocationPopup(true)  // Show popup again for selection
-    setUserLocation({
-      altitude: 0,
-      name: null,
-      latitude: null,
-      longitude: null
-    })
-  }
-
-  // ============================================================================
   // CALCULATED VALUES (derived from state)
   // ============================================================================
 
@@ -1060,20 +839,15 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // Calculate expected time to boil (in real-world seconds)
   // Q = m * c * ΔT  (energy needed)
   // Time = Q / Power (in seconds)
-  const calculateExpectedBoilTime = () =&gt; {
-    if (!fluidProps || !canBoil || liquidMass === 0 || temperature &gt;= boilingPoint) return null
-    const powerWatts = wattageSteps[burnerHeat] || 0
-    if (powerWatts === 0) return null
-    
-    if (!Number.isFinite(fluidProps.specificHeat)) return null
-    const specificHeat = fluidProps.specificHeat * 1000  // Convert J/g to J/kg
-    const tempDelta = boilingPoint - temperature
-    const energyNeeded = liquidMass * specificHeat * tempDelta  // Joules
-    const timeSeconds = energyNeeded / powerWatts  // Seconds
-    return timeSeconds
-  }
-
-  const expectedBoilTime = calculateExpectedBoilTime()
+  const expectedBoilTime = calculateExpectedBoilTime({
+    fluidProps,
+    canBoil,
+    liquidMass,
+    temperature,
+    boilingPoint,
+    burnerHeat,
+    wattageSteps
+  })
 
   // Format time in mm:ss
   const formatTime = (seconds) =&gt; {
@@ -1081,27 +855,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     const mins = Math.floor(seconds / 60)
     const secs = Math.floor(seconds % 60)
     return `${mins}:${secs.toString().padStart(2, &#39;0&#39;)}`
-  }
-
-  // Calculate ideal boil time based on burner heat setting
-  // (Energy needed: Q = mcΔT = 1000g × 4.186 J/(g·°C) × 80°C = 334,880 Joules)
-  // (Time = Energy / Power in Watts, but accounting for altitude pressure effects)
-  const calculateIdealBoilTime = (heatLevel, boilPointTarget) =&gt; {
-    const watts = wattageSteps[heatLevel] || wattageSteps[2]  // default to medium if invalid
-    
-    if (watts === 0) return null  // Can&#39;t boil without heat
-    if (!fluidProps || !canBoil || !Number.isFinite(boilPointTarget)) return null
-    
-    // Energy to heat fluid from current ambient temp to boiling point
-    const waterMass = GAME_CONFIG.DEFAULT_WATER_MASS * 1000  // grams
-    if (!Number.isFinite(fluidProps.specificHeat)) return null
-    const specificHeat = fluidProps.specificHeat  // J/(g·°C)
-    const tempDifference = boilPointTarget - ambientTemperature
-    
-    const energyNeeded = waterMass * specificHeat * tempDifference  // Joules
-    const timeSeconds = energyNeeded / watts
-    
-    return timeSeconds
   }
 
   // Drag boundaries: how far the pot center can move (in percentages)
@@ -1114,28 +867,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
   // ============================================================================
   // RENDER: Build and return the UI
   // ============================================================================
-
-  if (!hasRequiredImages) {
-    return (
-      &lt;div className=&quot;info-screen&quot;&gt;
-        &lt;div className=&quot;info-content&quot;&gt;
-          &lt;h2&gt;⚠️ Workshop Assets Missing&lt;/h2&gt;
-          &lt;p&gt;This workshop must provide all required images (background, pot, flame). Add them in the workshop JSON before running the scene.&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    )
-  }
-
-  if (fluidLoadError) {
-    return (
-      &lt;div className=&quot;info-screen&quot;&gt;
-        &lt;div className=&quot;info-content&quot;&gt;
-          &lt;h2&gt;⚠️ Substance Data Load Failed&lt;/h2&gt;
-          &lt;p&gt;{fluidLoadError.message || &#39;Unable to load substance properties from data files.&#39;}&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    )
-  }
 
   const controlPanelContextValue = {
     // Game state
@@ -1170,7 +901,6 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     isLoadingLocation,
     userZipCode,
     manualAltitude,
-    editableAltitude,
     showNextLevelButton,
 
     // Config
@@ -1190,400 +920,74 @@ function GameScene({ workshopLayout, workshopImages, workshopEffects, burnerConf
     handleSearchLocation,
     handleSetManualAltitude,
     handleFindMyLocation,
-    setEditableAltitude,
     setShowLocationPopup,
     setUserZipCode,
     setManualAltitude,
-    setLocationError,
-    setLocationName,
-    setIsLoadingLocation
+    setLocationError
+  }
+
+  const handleCloseScorecard = () =&gt; {
+    setShowHook(false)
+    setPauseTime(false)
   }
 
   // Stage 0: Interactive game scene
   return (
-    &lt;div className=&quot;game-scene&quot;&gt;
-      {/* 
-        The outer game-scene div fills the entire browser viewport
-        It&#39;s centered in the middle and has a black background for letterboxing
-      */}
-
-      &lt;div 
-        ref={sceneRef}
-        className=&quot;game-scene-inner&quot;
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          width: `${layout.scene.width}px`,
-          height: `${layout.scene.height}px`,
-          backgroundSize: &#39;100% 100%&#39;
-        }}
-      &gt;
-        {/* 
-          ========== WATER STREAM (Water Source) ==========
-          Pouring water effect from faucet area
-          Appears only when pot is passing through the stream
-        */}
-        &lt;WaterStream
-          showWaterStream={showWaterStream}
-          showAmbientSteam={showAmbientSteam}
-          layout={layout}
-          fluidProps={fluidProps}
-        /&gt;
-
-        {/* 
-          ========== FLAME (Burner visualization) ==========
-          Located at center-right where the burner is
-          Shows a flame image when heat is on
-        */}
-        &lt;BurnerFlame
-          flameImage={flameImage}
-          burnerHeat={burnerHeat}
-          flameLayout={layout.flame}
-          glowEnabled={effects.flameGlow.enabled}
-          flameFilter={flameFilter}
-          flameAnimationDuration={flameAnimationDuration}
-        /&gt;
-
-        &lt;BurnerButtons
-          burnerControlsLayout={layout.burnerControls}
-          burnerHeat={burnerHeat}
-          wattageSteps={wattageSteps}
-          onHeatDown={handleHeatDown}
-          onHeatUp={handleHeatUp}
-        /&gt;
-
-        {/* 
-          ========== BURNER KNOB (Heat Control) ==========
-          Tiny dial control at the bottom of the stove
-          Render only when the workshop provides burnerKnob layout
-        */}
-        &lt;BurnerKnob
-          burnerKnobLayout={layout.burnerKnob}
-          burnerHeat={burnerHeat}
-          wattageSteps={wattageSteps}
-          onClick={handleBurnerKnob}
-        /&gt;
-
-        {/* 
-          ========== DRAGGABLE POT ==========
-          The main interactive element
-          User drags this to the sink to fill it, then moves it to the burner
-        */}
-        &lt;Pot
-          potRef={potRef}
-          isDragging={isDragging}
-          liquidMass={liquidMass}
-          potPosition={potPosition}
-          layout={layout}
-          potFullImage={potFullImage}
-          potEmptyImage={potEmptyImage}
-          steamConfig={steamConfig}
-          steamStyle={steamStyle}
-          isBoiling={isBoiling}
-          temperature={temperature}
-          boilingPoint={boilingPoint}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-        /&gt;
-
-        {/* 
-          ========== CONTROL PANEL ==========
-          Extracted component handling all UI controls, status display, and location/altitude selection
-        */}
-        &lt;GameSceneProvider value={controlPanelContextValue}&gt;
-          &lt;ControlPanel /&gt;
-        &lt;/GameSceneProvider&gt;
-
-        {/* 
-          ========== ROOM CONTROLS ==========
-          AC and air handler controls, room state display
-          Only visible for experiments with unlocksRoomControls flag (L1E4+)
-        */}
-        &lt;RoomControls
-          enabled={roomControlsEnabled}
-          summary={roomSummary}
-          alerts={roomAlerts}
-          acUnit={acUnitConfig}
-          airHandler={airHandlerConfig}
-          availableAcUnits={roomConfig?.availableAcUnits}
-          availableAirHandlers={roomConfig?.availableAirHandlers}
-          selectedAcUnitId={acUnitConfig?.id || roomConfig?.defaults?.acUnit}
-          selectedAirHandlerId={airHandlerConfig?.id || roomConfig?.defaults?.airHandler}
-          onAcEnabledChange={setAcEnabled}
-          onAcSetpointChange={setAcSetpoint}
-          onAirHandlerModeChange={setAirHandlerMode}
-          onAcUnitChange={(id) =&gt; onEquipmentChange?.(&#39;ac-units&#39;, id)}
-          onAirHandlerChange={(id) =&gt; onEquipmentChange?.(&#39;air-handlers&#39;, id)}
-        /&gt;
-
-        {/* 
-          ========== EDUCATIONAL HOOK ==========
-          Shows experiment-specific results when boiling is achieved
-          Always pauses simulation while visible
-        */}
-
-        {/* Scorecard Popup - Centered modal with experiment-specific stats */}
-        {showHook &amp;&amp; boilStats &amp;&amp; (
-          &lt;div className=&quot;boil-stats-overlay&quot;&gt;
-            &lt;div className=&quot;boil-stats-modal&quot;&gt;
-              {/* EXPERIMENT 1: Tutorial - Basic Boiling */}
-              {boilStats.experiment === &#39;boiling-water&#39; &amp;&amp; (
-                &lt;&gt;
-                  &lt;h2&gt;🎉 You Boiled Water!&lt;/h2&gt;
-                  &lt;p className=&quot;modal-subtitle&quot;&gt;Great job completing the tutorial!&lt;/p&gt;
-
-                  &lt;div className=&quot;stats-grid&quot;&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPoint)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Time to Boil:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTime(boilStats.timeToBoil)}&lt;/span&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-
-                  &lt;div className=&quot;info-content&quot;&gt;
-                    &lt;h3&gt;🎓 What You Learned&lt;/h3&gt;
-                    &lt;ul&gt;
-                      &lt;li&gt;&lt;strong&gt;Heat Transfer:&lt;/strong&gt; The burner transferred thermal energy to the water molecules&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Temperature Rise:&lt;/strong&gt; As molecules gained energy, they moved faster, increasing temperature&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Boiling Point:&lt;/strong&gt; At {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C (sea level), water molecules gain enough energy to escape as vapor&lt;/li&gt;
-                    &lt;/ul&gt;
-                    &lt;p className=&quot;fun-fact&quot;&gt;🏔️ &lt;strong&gt;Next Up:&lt;/strong&gt; Try the Altitude experiment to see how location changes the boiling point!&lt;/p&gt;
-                  &lt;/div&gt;
-                &lt;/&gt;
-              )}
-
-              {/* EXPERIMENT 2: Altitude Effect */}
-              {boilStats.experiment === &#39;altitude-effect&#39; &amp;&amp; (
-                &lt;&gt;
-                  &lt;h2&gt;📍 Altitude Experiment Complete!&lt;/h2&gt;
-                  &lt;p className=&quot;modal-subtitle&quot;&gt;
-                    You boiled water at {boilStats.locationName || `${boilStats.altitude.toLocaleString()}m altitude`}
-                  &lt;/p&gt;
-
-                  &lt;div className=&quot;stats-grid&quot;&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Your Altitude:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{boilStats.altitude.toLocaleString()} m&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Boiling Point Here:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPoint)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Sea Level Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Difference:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;
-                        {formatTemperature((boilStats.boilingPointSeaLevel ?? 100) - boilStats.boilingPoint)}°C lower
-                      &lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Time to Boil:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTime(boilStats.timeToBoil)}&lt;/span&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-
-                  &lt;div className=&quot;info-content&quot;&gt;
-                    &lt;h3&gt;🎓 Why Does Altitude Matter?&lt;/h3&gt;
-                    &lt;ul&gt;
-                      &lt;li&gt;&lt;strong&gt;Lower Pressure:&lt;/strong&gt; At higher altitudes, there&amp;apos;s less air pushing down on the water&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Easier Escape:&lt;/strong&gt; Water molecules need less energy to escape as vapor&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Result:&lt;/strong&gt; Water boils at a lower temperature ({formatTemperature(boilStats.boilingPoint)}°C vs {formatTemperature(boilStats.boilingPointSeaLevel ?? 100)}°C)&lt;/li&gt;
-                    &lt;/ul&gt;
-                    &lt;p className=&quot;fun-fact&quot;&gt;🏔️ &lt;strong&gt;Fun Fact:&lt;/strong&gt; At the top of Mount Everest (8,849m), water boils at only ~68°C!&lt;/p&gt;
-                  &lt;/div&gt;
-                &lt;/&gt;
-              )}
-
-              {/* EXPERIMENT 3: Different Fluids */}
-              {boilStats.experiment === &#39;different-fluids&#39; &amp;&amp; (
-                &lt;&gt;
-                  &lt;h2&gt;🧪 {boilStats.fluidName} Boiled!&lt;/h2&gt;
-                  &lt;p className=&quot;modal-subtitle&quot;&gt;You successfully boiled {boilStats.fluidName.toLowerCase()}&lt;/p&gt;
-
-                  &lt;div className=&quot;stats-grid&quot;&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Substance:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{boilStats.fluidName}&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPoint)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    {boilStats.altitude &gt; 0 &amp;&amp; (
-                      &lt;div className=&quot;stat-item&quot;&gt;
-                        &lt;span className=&quot;stat-label&quot;&gt;Altitude:&lt;/span&gt;
-                        &lt;span className=&quot;stat-value&quot;&gt;{boilStats.altitude.toLocaleString()} m&lt;/span&gt;
-                      &lt;/div&gt;
-                    )}
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Sea Level Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPointSeaLevel)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Time to Boil:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTime(boilStats.timeToBoil)}&lt;/span&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-
-                  &lt;div className=&quot;info-content&quot;&gt;
-                    &lt;h3&gt;🎓 Why Different Boiling Points?&lt;/h3&gt;
-                    &lt;ul&gt;
-                      &lt;li&gt;&lt;strong&gt;Molecular Bonds:&lt;/strong&gt; Different substances have different intermolecular forces&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Stronger Bonds = Higher BP:&lt;/strong&gt; Water (100°C) has strong hydrogen bonds&lt;/li&gt;
-                      &lt;li&gt;&lt;strong&gt;Weaker Bonds = Lower BP:&lt;/strong&gt; Acetone (56°C) and ethanol (78°C) have weaker bonds&lt;/li&gt;
-                    &lt;/ul&gt;
-                    &lt;p className=&quot;fun-fact&quot;&gt;💡 &lt;strong&gt;Try This:&lt;/strong&gt; Compare how long it takes to boil different substances with the same heat setting!&lt;/p&gt;
-                  &lt;/div&gt;
-                &lt;/&gt;
-              )}
-
-              {/* L1E4: Dangerous Liquids - Room Environment Scorecard */}
-              {boilStats.experiment === &#39;dangerous-liquids&#39; &amp;&amp; (
-                &lt;&gt;
-                  &lt;h2&gt;⚠️ Hazardous Material Handled!&lt;/h2&gt;
-                  &lt;p className=&quot;modal-subtitle&quot;&gt;
-                    You boiled {boilStats.fluidName} in a controlled environment
-                  &lt;/p&gt;
-
-                  &lt;div className=&quot;stats-grid&quot;&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Substance:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{boilStats.fluidName}&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPoint)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Time to Boil:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTime(boilStats.timeToBoil)}&lt;/span&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-
-                  {/* Room Environment Section */}
-                  {boilStats.roomData &amp;&amp; (
-                    &lt;&gt;
-                      &lt;h3&gt;🏠 Room Environment&lt;/h3&gt;
-                      &lt;div className=&quot;stats-grid&quot;&gt;
-                        &lt;div className=&quot;stat-item&quot;&gt;
-                          &lt;span className=&quot;stat-label&quot;&gt;Room Temp Change:&lt;/span&gt;
-                          &lt;span className=&quot;stat-value&quot;&gt;
-                            {formatTemperature(boilStats.roomData.initialTemperature)}°C → {formatTemperature(boilStats.roomData.finalTemperature)}°C
-                          &lt;/span&gt;
-                        &lt;/div&gt;
-                        {boilStats.roomData.energyTotals &amp;&amp; (
-                          &lt;&gt;
-                            &lt;div className=&quot;stat-item&quot;&gt;
-                              &lt;span className=&quot;stat-label&quot;&gt;AC Cooling Used:&lt;/span&gt;
-                              &lt;span className=&quot;stat-value&quot;&gt;
-                                {(boilStats.roomData.energyTotals.acCoolingJoules / 1000).toFixed(1)} kJ
-                              &lt;/span&gt;
-                            &lt;/div&gt;
-                            &lt;div className=&quot;stat-item&quot;&gt;
-                              &lt;span className=&quot;stat-label&quot;&gt;Air Handler Energy:&lt;/span&gt;
-                              &lt;span className=&quot;stat-value&quot;&gt;
-                                {(boilStats.roomData.energyTotals.airHandlerJoules / 1000).toFixed(1)} kJ
-                              &lt;/span&gt;
-                            &lt;/div&gt;
-                          &lt;/&gt;
-                        )}
-                      &lt;/div&gt;
-
-                      {/* Composition Changes */}
-                      &lt;h3&gt;🌬️ Air Composition&lt;/h3&gt;
-                      &lt;div className=&quot;composition-comparison&quot;&gt;
-                        &lt;div className=&quot;comp-column&quot;&gt;
-                          &lt;strong&gt;Before:&lt;/strong&gt;
-                          &lt;ul className=&quot;comp-list&quot;&gt;
-                            {Object.entries(boilStats.roomData.initialComposition || {}).slice(0, 5).map(([gas, fraction]) =&gt; (
-                              &lt;li key={gas}&gt;{gas}: {(fraction * 100).toFixed(2)}%&lt;/li&gt;
-                            ))}
-                          &lt;/ul&gt;
-                        &lt;/div&gt;
-                        &lt;div className=&quot;comp-column&quot;&gt;
-                          &lt;strong&gt;After:&lt;/strong&gt;
-                          &lt;ul className=&quot;comp-list&quot;&gt;
-                            {Object.entries(boilStats.roomData.finalComposition || {}).slice(0, 5).map(([gas, fraction]) =&gt; (
-                              &lt;li key={gas}&gt;{gas}: {(fraction * 100).toFixed(2)}%&lt;/li&gt;
-                            ))}
-                          &lt;/ul&gt;
-                        &lt;/div&gt;
-                      &lt;/div&gt;
-
-                      {/* Exposure Events / Consequences */}
-                      {boilStats.roomData.exposureEvents?.length &gt; 0 &amp;&amp; (
-                        &lt;&gt;
-                          &lt;h3&gt;⚠️ Exposure Report&lt;/h3&gt;
-                          {boilStats.roomData.exposureEvents.map((event, idx) =&gt; (
-                            &lt;div key={idx} className={`exposure-event severity-${event.severity}`}&gt;
-                              &lt;strong&gt;{event.name}&lt;/strong&gt;
-                              &lt;p&gt;Peak: {event.peakPPM.toFixed(0)} ppm | Duration: {formatTime(event.durationSec)}&lt;/p&gt;
-                              &lt;p className=&quot;consequence&quot;&gt;{event.consequence}&lt;/p&gt;
-                              {event.isProtected &amp;&amp; (
-                                &lt;p className=&quot;protected-note&quot;&gt;✓ Air handler provided protection&lt;/p&gt;
-                              )}
-                            &lt;/div&gt;
-                          ))}
-                        &lt;/&gt;
-                      )}
-
-                      {/* Safety Tips */}
-                      &lt;div className=&quot;info-content&quot;&gt;
-                        &lt;h3&gt;🎓 Lab Safety&lt;/h3&gt;
-                        &lt;ul&gt;
-                          &lt;li&gt;&lt;strong&gt;Ventilation:&lt;/strong&gt; Always use proper ventilation with hazardous materials&lt;/li&gt;
-                          &lt;li&gt;&lt;strong&gt;Filters Matter:&lt;/strong&gt; Standard filters don&amp;apos;t stop toxic gases - use activated carbon&lt;/li&gt;
-                          &lt;li&gt;&lt;strong&gt;Monitor Air:&lt;/strong&gt; Watch for composition changes - rising vapor displaces oxygen&lt;/li&gt;
-                        &lt;/ul&gt;
-                      &lt;/div&gt;
-                    &lt;/&gt;
-                  )}
-                &lt;/&gt;
-              )}
-
-              {/* FALLBACK: Unknown experiment - show generic stats */}
-              {![&#39;boiling-water&#39;, &#39;altitude-effect&#39;, &#39;different-fluids&#39;, &#39;dangerous-liquids&#39;].includes(boilStats.experiment) &amp;&amp; (
-                &lt;&gt;
-                  &lt;h2&gt;📋 Experiment Complete!&lt;/h2&gt;
-                  &lt;p className=&quot;modal-subtitle&quot;&gt;You boiled {boilStats.fluidName.toLowerCase()}!&lt;/p&gt;
-
-                  &lt;div className=&quot;stats-grid&quot;&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Substance:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{boilStats.fluidName}&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Boiling Point:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTemperature(boilStats.boilingPoint)}°C&lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div className=&quot;stat-item&quot;&gt;
-                      &lt;span className=&quot;stat-label&quot;&gt;Time to Boil:&lt;/span&gt;
-                      &lt;span className=&quot;stat-value&quot;&gt;{formatTime(boilStats.timeToBoil)}&lt;/span&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-                &lt;/&gt;
-              )}
-
-              &lt;button
-                className=&quot;action-button continue-button&quot;
-                onClick={() =&gt; {
-                  setShowHook(false)
-                  setPauseTime(false)
-                }}
-              &gt;
-                Close Scorecard
-              &lt;/button&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        )}
-      &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;GameSceneView
+      hasRequiredImages={hasRequiredImages}
+      fluidLoadError={fluidLoadError}
+      backgroundImage={backgroundImage}
+      layout={layout}
+      sceneRef={sceneRef}
+      showWaterStream={showWaterStream}
+      showAmbientSteam={showAmbientSteam}
+      fluidProps={fluidProps}
+      flameImage={flameImage}
+      burnerHeat={burnerHeat}
+      flameFilter={flameFilter}
+      flameAnimationDuration={flameAnimationDuration}
+      flameGlowEnabled={effects.flameGlow.enabled}
+      burnerControlsLayout={layout.burnerControls}
+      burnerKnobLayout={layout.burnerKnob}
+      wattageSteps={wattageSteps}
+      onHeatDown={handleHeatDown}
+      onHeatUp={handleHeatUp}
+      onBurnerKnob={handleBurnerKnob}
+      potRef={potRef}
+      isDragging={isDragging}
+      liquidMass={liquidMass}
+      potPosition={potPosition}
+      potFullImage={potFullImage}
+      potEmptyImage={potEmptyImage}
+      steamConfig={steamConfig}
+      steamStyle={steamStyle}
+      isBoiling={isBoiling}
+      temperature={temperature}
+      boilingPoint={boilingPoint}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      controlPanelContextValue={controlPanelContextValue}
+      roomControlsEnabled={roomControlsEnabled}
+      roomSummary={roomSummary}
+      roomAlerts={roomAlerts}
+      acUnitConfig={acUnitConfig}
+      airHandlerConfig={airHandlerConfig}
+      availableAcUnits={roomConfig?.availableAcUnits}
+      availableAirHandlers={roomConfig?.availableAirHandlers}
+      selectedAcUnitId={acUnitConfig?.id || roomConfig?.defaults?.acUnit}
+      selectedAirHandlerId={airHandlerConfig?.id || roomConfig?.defaults?.airHandler}
+      onAcEnabledChange={setAcEnabled}
+      onAcSetpointChange={setAcSetpoint}
+      onAirHandlerModeChange={setAirHandlerMode}
+      onAcUnitChange={(id) =&gt; onEquipmentChange?.(&#39;ac-units&#39;, id)}
+      onAirHandlerChange={(id) =&gt; onEquipmentChange?.(&#39;air-handlers&#39;, id)}
+      showHook={showHook}
+      boilStats={boilStats}
+      formatTemperature={formatTemperature}
+      formatTime={formatTime}
+      onCloseScorecard={handleCloseScorecard}
+    /&gt;
   )
 }
 

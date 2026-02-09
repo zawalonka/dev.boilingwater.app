@@ -79,12 +79,12 @@
     
       <div class="infobox-row">
         <div class="infobox-label">Imports</div>
-        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/LocationPopup.html">LocationPopup.jsx</a></div>
+        <div class="infobox-value"><a href="/wiki/entities/modules/src/hooks/stores/workshopStore.html">workshopStore.js</a>, <a href="/wiki/entities/modules/src/components/GameSceneContext.html">GameSceneContext.js</a>, <a href="/wiki/entities/modules/src/components/LocationPopup.html">LocationPopup.jsx</a>, <a href="/wiki/entities/modules/src/components/ControlPanelStatus.html">ControlPanelStatus.jsx</a>, <a href="/wiki/entities/modules/src/components/ControlPanelTimerSpeed.html">ControlPanelTimerSpeed.jsx</a>, <a href="/wiki/entities/modules/src/components/ControlPanelAltitude.html">ControlPanelAltitude.jsx</a></div>
       </div>
     
       <div class="infobox-row">
         <div class="infobox-label">Imported by</div>
-        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameScene.html">GameScene.jsx</a></li></ul></div>
+        <div class="infobox-value"><ul><li><a href="/wiki/entities/modules/src/components/GameSceneView.html">GameSceneView.jsx</a></li></ul></div>
       </div>
     
     </aside>
@@ -136,6 +136,9 @@
 import { useWorkshopStore } from &#39;../hooks/stores/workshopStore&#39;
 import { useGameSceneContext } from &#39;./GameSceneContext&#39;
 import LocationPopup from &#39;./LocationPopup&#39;
+import ControlPanelStatus from &#39;./ControlPanelStatus&#39;
+import ControlPanelTimerSpeed from &#39;./ControlPanelTimerSpeed&#39;
+import ControlPanelAltitude from &#39;./ControlPanelAltitude&#39;
 
 function ControlPanel() {
   const {
@@ -171,7 +174,6 @@ function ControlPanel() {
     isLoadingLocation,
     userZipCode,
     manualAltitude,
-    editableAltitude,
     showNextLevelButton,
     
     // Config
@@ -195,32 +197,9 @@ function ControlPanel() {
     setShowLocationPopup,
     setUserZipCode,
     setManualAltitude,
-    setLocationError,
-    setLocationName,
-    setIsLoadingLocation
+    setLocationError
   } = useGameSceneContext()
   const activeExperiment = useWorkshopStore((state) =&gt; state.activeExperiment)
-  // Format time in mm:ss
-  const formatTime = (seconds) =&gt; {
-    if (seconds === null || seconds === undefined) return &#39;--:--&#39;
-    const mins = Math.floor(seconds / 60)
-    const secs = Math.floor(seconds % 60)
-    return `${mins}:${secs.toString().padStart(2, &#39;0&#39;)}`
-  }
-
-  // Format speed display (handle fractional speeds like 1/2, 1/4, etc.)
-  const formatSpeed = (speed) =&gt; {
-    if (speed === 0) {
-      return &#39;⏸ Pause&#39;
-    }
-    if (speed &gt;= 1) {
-      return `${Math.round(speed)}x`
-    }
-    // For fractional speeds, show as 1/N
-    const denominator = Math.round(1 / speed)
-    return `1/${denominator}x`
-  }
-
   return (
     &lt;&gt;
       {/* 
@@ -230,277 +209,52 @@ function ControlPanel() {
       */}
       &lt;div className=&quot;status-panel&quot;&gt;
         &lt;div className=&quot;status-content&quot;&gt;
-          {/* Ambient/Room temperature */}
-          &lt;div className=&quot;status-item&quot;&gt;
-            &lt;span className=&quot;label&quot;&gt;Ambient:&lt;/span&gt;
-            &lt;span className=&quot;value&quot;&gt;{formatTemperature(ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE)}°C&lt;/span&gt;
-          &lt;/div&gt;
-          
-          {/* Temperature display */}
-          {liquidMass &gt; 0 &amp;&amp; (
-            &lt;div className=&quot;status-item&quot;&gt;
-              &lt;span className=&quot;label&quot;&gt;Temp:&lt;/span&gt;
-              &lt;span className=&quot;value&quot;&gt;{formatTemperature(temperature)}°C&lt;/span&gt;
-            &lt;/div&gt;
-          )}
-          
-          {/* Substance status */}
-          &lt;div className=&quot;status-item&quot;&gt;
-            &lt;span className=&quot;label&quot;&gt;Substance:&lt;/span&gt;
-            &lt;span className=&quot;value&quot;&gt;{fluidName}&lt;/span&gt;
-          &lt;/div&gt;
+          &lt;ControlPanelStatus
+            liquidMass={liquidMass}
+            temperature={temperature}
+            isBoiling={isBoiling}
+            residueMass={residueMass}
+            fluidName={fluidName}
+            boilingPoint={boilingPoint}
+            canBoil={canBoil}
+            isPotOverFlame={isPotOverFlame}
+            expectedBoilTime={expectedBoilTime}
+            formatTemperature={formatTemperature}
+            ambientTemperature={ambientTemperature}
+            isBoilingPointExtrapolated={isBoilingPointExtrapolated}
+            boilingPointVerifiedRange={boilingPointVerifiedRange}
+            activeExperiment={activeExperiment}
+            availableFluids={availableFluids}
+            activeFluid={activeFluid}
+            onFluidChange={handleFluidChange}
+            showNextLevelButton={showNextLevelButton}
+            onNextProgression={handleNextProgression}
+            nextProgressionType={nextProgressionType}
+            burnerHeat={burnerHeat}
+            GAME_CONFIG={GAME_CONFIG}
+          /&gt;
 
-          &lt;div className=&quot;status-item&quot;&gt;
-            &lt;span className=&quot;label&quot;&gt;Liquid:&lt;/span&gt;
-            &lt;span className=&quot;value&quot;&gt;{liquidMass &gt; 0 ? liquidMass.toFixed(2) + &#39;kg&#39; : &#39;Empty&#39;}&lt;/span&gt;
-          &lt;/div&gt;
+          &lt;ControlPanelTimerSpeed
+            isAdvancedModeAvailable={isAdvancedModeAvailable}
+            isTimerRunning={isTimerRunning}
+            timeElapsed={timeElapsed}
+            handleTimerToggle={handleTimerToggle}
+            handleTimerReset={handleTimerReset}
+            liquidMass={liquidMass}
+            activeExperiment={activeExperiment}
+            handleSpeedUp={handleSpeedUp}
+            timeSpeed={timeSpeed}
+            handleSpeedHalve={handleSpeedHalve}
+            handleQuickPause={handleQuickPause}
+            handleSpeedDouble={handleSpeedDouble}
+          /&gt;
 
-          {residueMass &gt; 0 &amp;&amp; (
-            &lt;div className=&quot;status-item&quot;&gt;
-              &lt;span className=&quot;label&quot;&gt;Residue:&lt;/span&gt;
-              &lt;span className=&quot;value&quot;&gt;{Math.round(residueMass * 1000)}g&lt;/span&gt;
-            &lt;/div&gt;
-          )}
-          
-          {/* Boiling point info */}
-          &lt;div className=&quot;status-item&quot;&gt;
-            &lt;span className=&quot;label&quot;&gt;Boils at:&lt;/span&gt;
-            &lt;span className=&quot;value&quot;&gt;{canBoil ? `${formatTemperature(boilingPoint, 2)}°C` : &#39;N/A&#39;}&lt;/span&gt;
-          &lt;/div&gt;
-          
-          {/* Extrapolation warning - shows when boiling point is outside verified Antoine range */}
-          {isBoilingPointExtrapolated &amp;&amp; canBoil &amp;&amp; (
-            &lt;div className=&quot;status-item extrapolation-warning&quot; title=&quot;The boiling point calculation is outside the empirically verified temperature range for this substance. Results are estimated and may have reduced accuracy.&quot;&gt;
-              &lt;span className=&quot;label&quot;&gt;⚠️&lt;/span&gt;
-              &lt;span className=&quot;value warning-text&quot;&gt;
-                {boilingPointVerifiedRange?.max !== null &amp;&amp; boilingPoint &gt; boilingPointVerifiedRange.max
-                  ? `Above verified range (${formatTemperature(boilingPointVerifiedRange.max, 0)}°C)`
-                  : boilingPointVerifiedRange?.min !== null &amp;&amp; boilingPoint &lt; boilingPointVerifiedRange.min
-                    ? `Below verified range (${formatTemperature(boilingPointVerifiedRange.min, 0)}°C)`
-                    : &#39;Outside verified range&#39;}
-              &lt;/span&gt;
-            &lt;/div&gt;
-          )}
-          
-          {/* Timer controls - prominent display with start/stop/reset (Advanced Mode Only) */}
-          {isAdvancedModeAvailable &amp;&amp; (
-            &lt;div className=&quot;timer-controls&quot;&gt;
-              &lt;div className=&quot;timer-display&quot;&gt;
-                &lt;span className=&quot;timer-label&quot;&gt;Timer:&lt;/span&gt;
-                &lt;span className=&quot;timer-value&quot;&gt;{formatTime(timeElapsed)}&lt;/span&gt;
-              &lt;/div&gt;
-              &lt;span id=&quot;timer-controls-help&quot; className=&quot;sr-only&quot;&gt;
-                Use these controls to start, pause, or reset the experiment timer.
-              &lt;/span&gt;
-              &lt;div className=&quot;timer-buttons&quot;&gt;
-                &lt;button 
-                  className=&quot;timer-button&quot;
-                  onClick={handleTimerToggle}
-                  title={isTimerRunning ? &quot;Pause timer&quot; : &quot;Start timer&quot;}
-                  aria-label={isTimerRunning ? &quot;Pause timer&quot; : &quot;Start timer&quot;}
-                  aria-describedby=&quot;timer-controls-help&quot;
-                &gt;
-                    {isTimerRunning ? &#39;⏸&#39; : &#39;▶&#39;}
-                &lt;/button&gt;
-                &lt;button 
-                  className=&quot;timer-button&quot;
-                  onClick={handleTimerReset}
-                  title=&quot;Reset timer to zero&quot;
-                  aria-label=&quot;Reset timer&quot;
-                  aria-describedby=&quot;timer-controls-help&quot;
-                &gt;
-                    ↻
-                &lt;/button&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-          )}
-          
-          {/* Expected time to boil (environmental estimate) */}
-          {liquidMass &gt; 0 &amp;&amp; expectedBoilTime !== null &amp;&amp; !isBoiling &amp;&amp; (
-            &lt;div className=&quot;status-item&quot; title=&quot;Estimated time to reach boiling point at current burner setting&quot;&gt;
-              &lt;span className=&quot;label&quot;&gt;Est. Time:&lt;/span&gt;
-              &lt;span className=&quot;value&quot;&gt;{formatTime(expectedBoilTime)}&lt;/span&gt;
-            &lt;/div&gt;
-          )}
-          
-          {/* Fluid selector (Exp 3+: different-fluids and beyond) */}
-          {activeExperiment !== &#39;boiling-water&#39; &amp;&amp; activeExperiment !== &#39;altitude-effect&#39; &amp;&amp; availableFluids.length &gt; 0 &amp;&amp; (
-            &lt;div className=&quot;fluid-selector&quot;&gt;
-              &lt;label htmlFor=&quot;fluid-select&quot;&gt;Fluid:&lt;/label&gt;
-              &lt;select 
-                id=&quot;fluid-select&quot;
-                value={activeFluid}
-                onChange={handleFluidChange}
-                className=&quot;fluid-dropdown&quot;
-                title=&quot;Select which fluid to boil&quot;
-                aria-describedby=&quot;fluid-select-help&quot;
-              &gt;
-                {availableFluids.map(fluidId =&gt; (
-                  &lt;option key={fluidId} value={fluidId}&gt;
-                    {fluidId.charAt(0).toUpperCase() + fluidId.slice(1).replace(/-/g, &#39; &#39;)}
-                  &lt;/option&gt;
-                ))}
-              &lt;/select&gt;
-              &lt;span id=&quot;fluid-select-help&quot; className=&quot;sr-only&quot;&gt;
-                Choose which substance to heat and boil.
-              &lt;/span&gt;
-            &lt;/div&gt;
-          )}
-
-          {/* Game controls - speed controls (Tutorial/Exp 1 only) */}
-          {liquidMass &gt; 0 &amp;&amp; activeExperiment === &#39;boiling-water&#39; &amp;&amp; (
-            &lt;span id=&quot;speed-control-help&quot; className=&quot;sr-only&quot;&gt;
-              Increase simulation speed during the tutorial.
-            &lt;/span&gt;
-          )}
-
-          {liquidMass &gt; 0 &amp;&amp; activeExperiment === &#39;boiling-water&#39; &amp;&amp; (
-            &lt;button 
-              className=&quot;action-button speed-button status-button&quot;
-              onClick={handleSpeedUp}
-              aria-describedby=&quot;speed-control-help&quot;
-            &gt;
-              ⚡ Speed: {formatSpeed(timeSpeed)}
-            &lt;/button&gt;
-          )}
-          
-          {/* Advanced speed controls with arrows (Advanced Mode Only) */}
-          {isAdvancedModeAvailable &amp;&amp; (
-            &lt;&gt;
-              &lt;div className=&quot;speed-warning&quot; id=&quot;speed-controls-warning&quot;&gt;
-                ⚠️ Speed acceleration is unreliable — results unverified
-              &lt;/div&gt;
-              &lt;span id=&quot;speed-controls-advanced-help&quot; className=&quot;sr-only&quot;&gt;
-                Use these controls to slow down, pause, or speed up the simulation.
-              &lt;/span&gt;
-              &lt;div className=&quot;speed-controls-advanced&quot;&gt;
-              &lt;button 
-                className=&quot;speed-arrow&quot;
-                onClick={handleSpeedHalve}
-                title=&quot;Halve speed&quot;
-                aria-label=&quot;Halve speed&quot;
-                aria-describedby=&quot;speed-controls-advanced-help speed-controls-warning&quot;
-              &gt;
-                ◀
-              &lt;/button&gt;
-              &lt;button 
-                className=&quot;speed-arrow&quot;
-                onClick={handleQuickPause}
-                title={timeSpeed === 0 ? &quot;Resume&quot; : &quot;Pause&quot;}
-                aria-label={timeSpeed === 0 ? &quot;Resume&quot; : &quot;Pause&quot;}
-                aria-describedby=&quot;speed-controls-advanced-help speed-controls-warning&quot;
-              &gt;
-                {timeSpeed === 0 ? &#39;▶&#39; : &#39;⏸&#39;}
-              &lt;/button&gt;
-              &lt;span className=&quot;speed-display&quot;&gt;⚡ {formatSpeed(timeSpeed)}&lt;/span&gt;
-              &lt;button 
-                className=&quot;speed-arrow&quot;
-                onClick={handleSpeedDouble}
-                title=&quot;Double speed&quot;
-                aria-label=&quot;Double speed&quot;
-                aria-describedby=&quot;speed-controls-advanced-help speed-controls-warning&quot;
-              &gt;
-                ▶
-              &lt;/button&gt;
-              &lt;/div&gt;
-            &lt;/&gt;
-          )}
-          
-          {/* Heating status with progress */}
-          {liquidMass &gt; 0 &amp;&amp; burnerHeat &gt; 0 &amp;&amp; isPotOverFlame &amp;&amp; canBoil &amp;&amp; temperature &lt; boilingPoint &amp;&amp; (
-            &lt;p className=&quot;status-text&quot; title=&quot;Wait for the fluid to boil, or speed up time with the speed controls above&quot;&gt;
-              🔥 Heating: {formatTemperature(temperature, 2)}°C → {formatTemperature(boilingPoint, 2)}°C
-            &lt;/p&gt;
-          )}
-
-          {liquidMass &gt; 0 &amp;&amp; burnerHeat &gt; 0 &amp;&amp; isPotOverFlame &amp;&amp; !canBoil &amp;&amp; (
-            &lt;p className=&quot;status-text&quot; title=&quot;This substance has no boiling data, so it won&#39;t boil&quot;&gt;
-              🔥 Heating: {formatTemperature(temperature)}°C (no boiling point data)
-            &lt;/p&gt;
-          )}
-          
-          {/* Cooling - pot is off the flame */}
-          {liquidMass &gt; 0 &amp;&amp; burnerHeat &gt; 0 &amp;&amp; !isPotOverFlame &amp;&amp; temperature &gt; (ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE) &amp;&amp; (
-            &lt;p className=&quot;status-text&quot; title=&quot;Position pot over flame to heat the fluid&quot;&gt;
-              ❄️ Cooling: {formatTemperature(temperature)}°C → {formatTemperature(ambientTemperature ?? GAME_CONFIG.ROOM_TEMPERATURE)}°C (place pot over flame)
-            &lt;/p&gt;
-          )}
-          
-          {/* Waiting to heat */}
-          {liquidMass &gt; 0 &amp;&amp; burnerHeat === 0 &amp;&amp; (!canBoil || temperature &lt; boilingPoint) &amp;&amp; (
-            &lt;p className=&quot;status-text&quot;&gt;
-              💤 Turn on burner to heat the fluid
-            &lt;/p&gt;
-          )}
-          
-          {/* Boiling status with water level */}
-          {liquidMass &gt; 0 &amp;&amp; isBoiling &amp;&amp; canBoil &amp;&amp; temperature &gt;= boilingPoint &amp;&amp; (
-            &lt;p className=&quot;status-text boiling&quot;&gt;
-              💨 Boiling at {formatTemperature(temperature)}°C! ({Math.round(liquidMass * 1000)}g remaining)
-            &lt;/p&gt;
-          )}
-          
-          {/* Water boiled off - can refill */}
-          {liquidMass &lt;= 0.1 &amp;&amp; liquidMass &gt; 0 &amp;&amp; (
-            &lt;p className=&quot;status-text warning&quot;&gt;
-              ⚠️ Almost dry! Drag pot to tap to refill
-            &lt;/p&gt;
-          )}
-          
-          {/* Empty pot hint */}
-          {liquidMass === 0 &amp;&amp; residueMass === 0 &amp;&amp; (
-            &lt;p className=&quot;hint-text&quot;&gt;💧 Drag pot to water tap to fill&lt;/p&gt;
-          )}
-
-          {liquidMass === 0 &amp;&amp; residueMass &gt; 0 &amp;&amp; (
-            &lt;p className=&quot;status-text warning&quot;&gt;
-              🧪 Residue remaining: {Math.round(residueMass * 1000)}g
-            &lt;/p&gt;
-          )}
-
-          {showNextLevelButton &amp;&amp; (
-            &lt;button
-              className=&quot;action-button continue-button&quot;
-              onClick={handleNextProgression}
-            &gt;
-              {nextProgressionType === &#39;level&#39; ? &#39;Next Level →&#39; : &#39;Next Experiment →&#39;}
-            &lt;/button&gt;
-          )}
-
-          {/* Altitude control (Exp 2+: altitude-effect and beyond) - bottom of panel */}
-          {activeExperiment !== &#39;boiling-water&#39; &amp;&amp; (
-            &lt;div className=&quot;altitude-control&quot;&gt;
-              &lt;span className=&quot;altitude-display&quot;&gt;
-                Altitude: {altitude.toLocaleString()}m
-              &lt;/span&gt;
-              &lt;span id=&quot;location-dialog-help&quot; className=&quot;sr-only&quot;&gt;
-                Opens location and altitude settings.
-              &lt;/span&gt;
-              {locationName ? (
-                &lt;button 
-                  className=&quot;action-button location-button&quot;
-                  onClick={() =&gt; {
-                    setShowLocationPopup(true)
-                  }}
-                  title=&quot;Change location&quot;
-                  aria-describedby=&quot;location-dialog-help&quot;
-                &gt;
-                  📍 {locationName}
-                &lt;/button&gt;
-              ) : (
-                &lt;button 
-                  className=&quot;action-button location-button&quot;
-                  onClick={() =&gt; {
-                    setShowLocationPopup(true)
-                  }}
-                  title=&quot;Set your location&quot;
-                  aria-describedby=&quot;location-dialog-help&quot;
-                &gt;
-                  📍 Set Location
-                &lt;/button&gt;
-              )}
-            &lt;/div&gt;
-          )}
+          &lt;ControlPanelAltitude
+            activeExperiment={activeExperiment}
+            altitude={altitude}
+            locationName={locationName}
+            onShowLocationPopup={() =&gt; setShowLocationPopup(true)}
+          /&gt;
         &lt;/div&gt;
       &lt;/div&gt;
 

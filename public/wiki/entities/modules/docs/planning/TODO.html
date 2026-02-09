@@ -177,17 +177,33 @@
 
 **Week 6: Split rendering**
 - [x] Create Pot component
-- [ ] Create Burner components (burner base, knob, flame)
-- [ ] Create WaterStream component
-- [ ] Create Effects components (steam, glow)
-- [ ] Create ControlPanel components (temperature, speed, buttons)
-- [ ] Create LocationPopup component
+- [x] Create Burner components (burner base, knob, flame)
+- [x] Create WaterStream component
+- [x] Create Effects components (steam, glow)
+- [x] Create ControlPanel components (temperature, speed, buttons)
+- [x] Create LocationPopup component
 
 **Week 7: Integrate and stabilize**
-- [ ] Create `GameSceneView` presenter (render-only)
-- [ ] Wire container to presenter and remove dead props
-- [ ] Update imports and fix circular dependencies
+- [x] Create `GameSceneView` presenter (render-only)
+- [x] Wire container to presenter and remove dead props
+- [x] Update imports and fix circular dependencies
 - [ ] Run regression tests and validate workshop switching
+
+---
+#### CONTRACT/STATIC TEST PLAN: MATH WIRING INVARIANTS
+**Goal:** Prevent silent math regressions and hardcoded values in game files. Ensure all math functions are called dynamically, with correct order and config-driven inputs. Detect new math needing coverage.
+
+**Tasks:**
+- [ ] Implement contract/static tests for GameScene.jsx, hooks, workers
+- [ ] Assert all math calls use dynamic, config-driven inputs (no hardcoded values)
+- [ ] Verify correct math function call order and presence for each experiment/level
+- [ ] Fail if any math function is missing, replaced, or called with static values
+- [ ] Detect and report new math functions needing validity tests
+- [ ] Validate tests against old and new levels/experiments
+
+**Pickup:** Resume here to extend tests as new math/physics files are added, and ensure scientific sandbox integrity.
+
+
 
 ### 3. Room Environment Phase 2: Scorecard System
 **Status:** IN PROGRESS | **30% Complete**  
